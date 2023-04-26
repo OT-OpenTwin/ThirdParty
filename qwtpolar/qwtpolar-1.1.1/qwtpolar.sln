@@ -1,0 +1,52 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1401
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qwtpolar", "src\qwtpolar.vcxproj", "{CD16642F-9D3E-3424-9EFF-30D270F87C65}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qwt_polar_designer_plugin", "designer\qwt_polar_designer_plugin.vcxproj", "{53770725-1C5B-3532-90E2-FF6C3AFC21F4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CD16642F-9D3E-3424-9EFF-30D270F87C65} = {CD16642F-9D3E-3424-9EFF-30D270F87C65}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "spectrogram", "examples\spectrogram\spectrogram.vcxproj", "{B64442D2-9A63-3564-9C15-FA70D05818E1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CD16642F-9D3E-3424-9EFF-30D270F87C65} = {CD16642F-9D3E-3424-9EFF-30D270F87C65}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "polardemo", "examples\polardemo\polardemo.vcxproj", "{41F0B19A-EA87-34A3-B3D4-821B2597073E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CD16642F-9D3E-3424-9EFF-30D270F87C65} = {CD16642F-9D3E-3424-9EFF-30D270F87C65}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD16642F-9D3E-3424-9EFF-30D270F87C65}.Debug|x64.ActiveCfg = Debug|x64
+		{CD16642F-9D3E-3424-9EFF-30D270F87C65}.Debug|x64.Build.0 = Debug|x64
+		{CD16642F-9D3E-3424-9EFF-30D270F87C65}.Release|x64.ActiveCfg = Release|x64
+		{CD16642F-9D3E-3424-9EFF-30D270F87C65}.Release|x64.Build.0 = Release|x64
+		{53770725-1C5B-3532-90E2-FF6C3AFC21F4}.Debug|x64.ActiveCfg = Debug|x64
+		{53770725-1C5B-3532-90E2-FF6C3AFC21F4}.Debug|x64.Build.0 = Debug|x64
+		{53770725-1C5B-3532-90E2-FF6C3AFC21F4}.Release|x64.ActiveCfg = Release|x64
+		{53770725-1C5B-3532-90E2-FF6C3AFC21F4}.Release|x64.Build.0 = Release|x64
+		{B64442D2-9A63-3564-9C15-FA70D05818E1}.Debug|x64.ActiveCfg = Debug|x64
+		{B64442D2-9A63-3564-9C15-FA70D05818E1}.Debug|x64.Build.0 = Debug|x64
+		{B64442D2-9A63-3564-9C15-FA70D05818E1}.Release|x64.ActiveCfg = Release|x64
+		{B64442D2-9A63-3564-9C15-FA70D05818E1}.Release|x64.Build.0 = Release|x64
+		{41F0B19A-EA87-34A3-B3D4-821B2597073E}.Debug|x64.ActiveCfg = Debug|x64
+		{41F0B19A-EA87-34A3-B3D4-821B2597073E}.Debug|x64.Build.0 = Debug|x64
+		{41F0B19A-EA87-34A3-B3D4-821B2597073E}.Release|x64.ActiveCfg = Release|x64
+		{41F0B19A-EA87-34A3-B3D4-821B2597073E}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		Qt5Version = $(QTDIR)
+		SolutionGuid = {DE89A0ED-8FE7-4A4C-9DCC-190AC777245C}
+	EndGlobalSection
+EndGlobal
