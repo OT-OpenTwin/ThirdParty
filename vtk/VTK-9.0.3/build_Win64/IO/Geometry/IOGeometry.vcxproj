@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E54F6D83-1D10-32BB-B849-5832D72DAB5D}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>IOGeometry</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\bin\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">IOGeometry.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">vtkIOGeometry-9.0d</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\bin\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">IOGeometry.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">vtkIOGeometry-9.0</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\bin\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">IOGeometry.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">vtkIOGeometry-9.0</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\bin\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">IOGeometry.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">vtkIOGeometry-9.0</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp\json;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;CMAKE_INTDIR="Debug";IOGeometry_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;CMAKE_INTDIR=\"Debug\";IOGeometry_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp\json;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp\json;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\lib\Debug\vtkIOLegacy-9.0d.lib;..\..\lib\Debug\vtkFiltersHybrid-9.0d.lib;..\..\lib\Debug\vtkIOImage-9.0d.lib;..\..\lib\Debug\vtkRenderingCore-9.0d.lib;..\..\lib\Debug\vtkjsoncpp-9.0d.lib;..\..\lib\Debug\vtkIOCore-9.0d.lib;..\..\lib\Debug\vtkFiltersGeneral-9.0d.lib;..\..\lib\Debug\vtkFiltersGeometry-9.0d.lib;..\..\lib\Debug\vtkFiltersCore-9.0d.lib;..\..\lib\Debug\vtkImagingCore-9.0d.lib;..\..\lib\Debug\vtkCommonExecutionModel-9.0d.lib;..\..\lib\Debug\vtkCommonDataModel-9.0d.lib;..\..\lib\Debug\vtkCommonMisc-9.0d.lib;..\..\lib\Debug\vtkCommonSystem-9.0d.lib;..\..\lib\Debug\vtkCommonTransforms-9.0d.lib;..\..\lib\Debug\vtkCommonMath-9.0d.lib;..\..\lib\Debug\vtkCommonCore-9.0d.lib;..\..\lib\Debug\vtksys-9.0d.lib;ws2_32.lib;dbghelp.lib;psapi.lib;..\..\lib\Debug\vtkzlib-9.0d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/lib/Debug/vtkIOGeometry-9.0d.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/bin/Debug/vtkIOGeometry-9.0d.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp\json;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;CMAKE_INTDIR="Release";IOGeometry_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;CMAKE_INTDIR=\"Release\";IOGeometry_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp\json;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp\json;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\lib\Release\vtkIOLegacy-9.0.lib;..\..\lib\Release\vtkFiltersHybrid-9.0.lib;..\..\lib\Release\vtkIOImage-9.0.lib;..\..\lib\Release\vtkRenderingCore-9.0.lib;..\..\lib\Release\vtkjsoncpp-9.0.lib;..\..\lib\Release\vtkIOCore-9.0.lib;..\..\lib\Release\vtkFiltersGeneral-9.0.lib;..\..\lib\Release\vtkFiltersGeometry-9.0.lib;..\..\lib\Release\vtkFiltersCore-9.0.lib;..\..\lib\Release\vtkImagingCore-9.0.lib;..\..\lib\Release\vtkCommonExecutionModel-9.0.lib;..\..\lib\Release\vtkCommonDataModel-9.0.lib;..\..\lib\Release\vtkCommonMisc-9.0.lib;..\..\lib\Release\vtkCommonSystem-9.0.lib;..\..\lib\Release\vtkCommonTransforms-9.0.lib;..\..\lib\Release\vtkCommonMath-9.0.lib;..\..\lib\Release\vtkCommonCore-9.0.lib;..\..\lib\Release\vtksys-9.0.lib;ws2_32.lib;dbghelp.lib;psapi.lib;..\..\lib\Release\vtkzlib-9.0.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/lib/Release/vtkIOGeometry-9.0.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/bin/Release/vtkIOGeometry-9.0.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp\json;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;CMAKE_INTDIR="MinSizeRel";IOGeometry_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;CMAKE_INTDIR=\"MinSizeRel\";IOGeometry_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp\json;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp\json;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\lib\MinSizeRel\vtkIOLegacy-9.0.lib;..\..\lib\MinSizeRel\vtkFiltersHybrid-9.0.lib;..\..\lib\MinSizeRel\vtkIOImage-9.0.lib;..\..\lib\MinSizeRel\vtkRenderingCore-9.0.lib;..\..\lib\MinSizeRel\vtkjsoncpp-9.0.lib;..\..\lib\MinSizeRel\vtkIOCore-9.0.lib;..\..\lib\MinSizeRel\vtkFiltersGeneral-9.0.lib;..\..\lib\MinSizeRel\vtkFiltersGeometry-9.0.lib;..\..\lib\MinSizeRel\vtkFiltersCore-9.0.lib;..\..\lib\MinSizeRel\vtkImagingCore-9.0.lib;..\..\lib\MinSizeRel\vtkCommonExecutionModel-9.0.lib;..\..\lib\MinSizeRel\vtkCommonDataModel-9.0.lib;..\..\lib\MinSizeRel\vtkCommonMisc-9.0.lib;..\..\lib\MinSizeRel\vtkCommonSystem-9.0.lib;..\..\lib\MinSizeRel\vtkCommonTransforms-9.0.lib;..\..\lib\MinSizeRel\vtkCommonMath-9.0.lib;..\..\lib\MinSizeRel\vtkCommonCore-9.0.lib;..\..\lib\MinSizeRel\vtksys-9.0.lib;ws2_32.lib;dbghelp.lib;psapi.lib;..\..\lib\MinSizeRel\vtkzlib-9.0.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/lib/MinSizeRel/vtkIOGeometry-9.0.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/bin/MinSizeRel/vtkIOGeometry-9.0.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp\json;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;CMAKE_INTDIR="RelWithDebInfo";IOGeometry_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;CMAKE_INTDIR=\"RelWithDebInfo\";IOGeometry_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp\json;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\DataModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Math;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Transforms;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\ExecutionModel;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Legacy;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\Misc;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Common\System;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\General;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Hybrid;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Filters\Geometry;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Imaging\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Image;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Rendering\Core;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp\vtkjsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp\json;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWIML;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\jsoncpp;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\lib\RelWithDebInfo\vtkIOLegacy-9.0.lib;..\..\lib\RelWithDebInfo\vtkFiltersHybrid-9.0.lib;..\..\lib\RelWithDebInfo\vtkIOImage-9.0.lib;..\..\lib\RelWithDebInfo\vtkRenderingCore-9.0.lib;..\..\lib\RelWithDebInfo\vtkjsoncpp-9.0.lib;..\..\lib\RelWithDebInfo\vtkIOCore-9.0.lib;..\..\lib\RelWithDebInfo\vtkFiltersGeneral-9.0.lib;..\..\lib\RelWithDebInfo\vtkFiltersGeometry-9.0.lib;..\..\lib\RelWithDebInfo\vtkFiltersCore-9.0.lib;..\..\lib\RelWithDebInfo\vtkImagingCore-9.0.lib;..\..\lib\RelWithDebInfo\vtkCommonExecutionModel-9.0.lib;..\..\lib\RelWithDebInfo\vtkCommonDataModel-9.0.lib;..\..\lib\RelWithDebInfo\vtkCommonMisc-9.0.lib;..\..\lib\RelWithDebInfo\vtkCommonSystem-9.0.lib;..\..\lib\RelWithDebInfo\vtkCommonTransforms-9.0.lib;..\..\lib\RelWithDebInfo\vtkCommonMath-9.0.lib;..\..\lib\RelWithDebInfo\vtkCommonCore-9.0.lib;..\..\lib\RelWithDebInfo\vtksys-9.0.lib;ws2_32.lib;dbghelp.lib;psapi.lib;..\..\lib\RelWithDebInfo\vtkzlib-9.0.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/lib/RelWithDebInfo/vtkIOGeometry-9.0.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/bin/RelWithDebInfo/vtkIOGeometry-9.0.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/IO/Geometry/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3 -BC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64 --check-stamp-file C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/IO/Geometry/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/IO/Geometry/CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.13\Modules\exportheader.cmake.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Geometry\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/IO/Geometry/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3 -BC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64 --check-stamp-file C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/IO/Geometry/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/IO/Geometry/CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.13\Modules\exportheader.cmake.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Geometry\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/IO/Geometry/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3 -BC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64 --check-stamp-file C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/IO/Geometry/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/IO/Geometry/CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.13\Modules\exportheader.cmake.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Geometry\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/IO/Geometry/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3 -BC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64 --check-stamp-file C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/IO/Geometry/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/IO/Geometry/CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.13\Modules\exportheader.cmake.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Geometry\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkAVSucdReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkBYUReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkBYUWriter.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkChacoReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkFacetWriter.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkFLUENTReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkGAMBITReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkGaussianCubeReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkGLTFDocumentLoader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkGLTFReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkHoudiniPolyDataWriter.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkIVWriter.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkMCubesReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkMCubesWriter.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkMFIXReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkMoleculeReaderBase.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkOBJReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkOBJWriter.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkOpenFOAMReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkParticleReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkPDBReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkProStarReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkPTSReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkSTLReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkSTLWriter.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkTecplotReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkWindBladeReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkXYZMolReader.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkGLTFDocumentLoaderInternals.cxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkGLTFUtils.cxx" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkAVSucdReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkBYUReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkBYUWriter.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkChacoReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkFacetWriter.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkFLUENTReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkGAMBITReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkGaussianCubeReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkGLTFDocumentLoader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkGLTFReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkHoudiniPolyDataWriter.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkIVWriter.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkMCubesReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkMCubesWriter.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkMFIXReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkMoleculeReaderBase.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkOBJReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkOBJWriter.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkOpenFOAMReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkParticleReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkPDBReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkProStarReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkPTSReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkSTLReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkSTLWriter.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkTecplotReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkWindBladeReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkXYZMolReader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Geometry\vtkIOGeometryModule.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkGLTFDocumentLoaderInternals.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\IO\Geometry\vtkGLTFUtils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ZERO_CHECK.vcxproj">
+      <Project>{3330E39C-1987-3CA6-AA36-A654A753FBC8}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Core\CommonCore.vcxproj">
+      <Project>{D31ED7DE-8A49-34A8-BD06-FAD2BFA5AD6A}</Project>
+      <Name>CommonCore</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\DataModel\CommonDataModel.vcxproj">
+      <Project>{58A163DB-47AD-3AC4-BB55-CA58358AFB5F}</Project>
+      <Name>CommonDataModel</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\ExecutionModel\CommonExecutionModel.vcxproj">
+      <Project>{13E96AA4-F19E-34C9-8686-230D7DF11FC6}</Project>
+      <Name>CommonExecutionModel</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Math\CommonMath.vcxproj">
+      <Project>{67CCEB28-9024-320F-B0D7-B68A9473019A}</Project>
+      <Name>CommonMath</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Misc\CommonMisc.vcxproj">
+      <Project>{3457E688-853F-30B9-B302-0342325BD7E8}</Project>
+      <Name>CommonMisc</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\System\CommonSystem.vcxproj">
+      <Project>{8014A4EB-F3A4-3AE7-B0ED-E92B6A34D75F}</Project>
+      <Name>CommonSystem</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Common\Transforms\CommonTransforms.vcxproj">
+      <Project>{DC67FCAA-9A78-3025-932A-AA3467D02337}</Project>
+      <Name>CommonTransforms</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Core\FiltersCore.vcxproj">
+      <Project>{F3B9D315-A680-39CF-85BB-7570BCB5760E}</Project>
+      <Name>FiltersCore</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\General\FiltersGeneral.vcxproj">
+      <Project>{24103FD9-18AC-3350-8CFA-810D6BCD8FAD}</Project>
+      <Name>FiltersGeneral</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Geometry\FiltersGeometry.vcxproj">
+      <Project>{1719FDB5-F310-3025-8378-B8949A029E35}</Project>
+      <Name>FiltersGeometry</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Filters\Hybrid\FiltersHybrid.vcxproj">
+      <Project>{27E93FD3-FD4B-3EFF-965A-2B8819FAB0CA}</Project>
+      <Name>FiltersHybrid</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Core\IOCore.vcxproj">
+      <Project>{13C48CFC-6CD4-3298-9DED-0F346D246400}</Project>
+      <Name>IOCore</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Image\IOImage.vcxproj">
+      <Project>{0C2987B7-4C7A-3DD6-B580-31D7C296D298}</Project>
+      <Name>IOImage</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\IO\Legacy\IOLegacy.vcxproj">
+      <Project>{4C994642-9A40-3768-BDE7-DE78FC731B92}</Project>
+      <Name>IOLegacy</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Imaging\Core\ImagingCore.vcxproj">
+      <Project>{752995C2-5F98-39D7-A575-494FC30AA461}</Project>
+      <Name>ImagingCore</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Rendering\Core\RenderingCore.vcxproj">
+      <Project>{D5AFF10D-865A-341D-B18F-35F911241571}</Project>
+      <Name>RenderingCore</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\jsoncpp\vtkjsoncpp\jsoncpp.vcxproj">
+      <Project>{1EC602AC-2B4E-36BD-AA44-C9D4B0E7957E}</Project>
+      <Name>jsoncpp</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\vtksys.vcxproj">
+      <Project>{D80F15D5-87BB-3E47-BA6A-090BAF5B40DE}</Project>
+      <Name>vtksys</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib\zlib.vcxproj">
+      <Project>{ABF3D926-467F-37DE-9A7A-4A02B65BE315}</Project>
+      <Name>zlib</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

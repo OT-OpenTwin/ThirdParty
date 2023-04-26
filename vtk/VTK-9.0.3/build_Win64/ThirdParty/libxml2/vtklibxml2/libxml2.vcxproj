@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DCEE4A5A-EE81-3745-9122-2A0A77A97EC1}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>libxml2</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\bin\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">libxml2.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">vtklibxml2-9.0d</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\bin\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">libxml2.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">vtklibxml2-9.0</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\bin\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">libxml2.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">vtklibxml2-9.0</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\bin\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">libxml2.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">vtklibxml2-9.0</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_GNU_SOURCE;_REENTRANT;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;CMAKE_INTDIR="Debug";libxml2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_GNU_SOURCE;_REENTRANT;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;CMAKE_INTDIR=\"Debug\";libxml2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\lib\Debug\vtkzlib-9.0d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/lib/Debug/vtklibxml2-9.0d.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/bin/Debug/vtklibxml2-9.0d.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_GNU_SOURCE;_REENTRANT;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;CMAKE_INTDIR="Release";libxml2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_GNU_SOURCE;_REENTRANT;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;CMAKE_INTDIR=\"Release\";libxml2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\lib\Release\vtkzlib-9.0.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/lib/Release/vtklibxml2-9.0.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/bin/Release/vtklibxml2-9.0.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_GNU_SOURCE;_REENTRANT;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;CMAKE_INTDIR="MinSizeRel";libxml2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_GNU_SOURCE;_REENTRANT;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;CMAKE_INTDIR=\"MinSizeRel\";libxml2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\lib\MinSizeRel\vtkzlib-9.0.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/lib/MinSizeRel/vtklibxml2-9.0.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/bin/MinSizeRel/vtklibxml2-9.0.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_GNU_SOURCE;_REENTRANT;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;CMAKE_INTDIR="RelWithDebInfo";libxml2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_GNU_SOURCE;_REENTRANT;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;CMAKE_INTDIR=\"RelWithDebInfo\";libxml2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include\libxml;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib\vtkzlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\lib\RelWithDebInfo\vtkzlib-9.0.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/lib/RelWithDebInfo/vtklibxml2-9.0.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/bin/RelWithDebInfo/vtklibxml2-9.0.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/ThirdParty/libxml2/vtklibxml2/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3 -BC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64 --check-stamp-file C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/ThirdParty/libxml2/vtklibxml2/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/ThirdParty/libxml2/vtklibxml2/CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\config_cmake.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlversion.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\libxml2PlatformTests.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindThreads.cmake;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/ThirdParty/libxml2/vtklibxml2/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3 -BC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64 --check-stamp-file C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/ThirdParty/libxml2/vtklibxml2/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/ThirdParty/libxml2/vtklibxml2/CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\config_cmake.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlversion.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\libxml2PlatformTests.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindThreads.cmake;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/ThirdParty/libxml2/vtklibxml2/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3 -BC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64 --check-stamp-file C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/ThirdParty/libxml2/vtklibxml2/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/ThirdParty/libxml2/vtklibxml2/CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\config_cmake.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlversion.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\libxml2PlatformTests.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindThreads.cmake;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/ThirdParty/libxml2/vtklibxml2/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3 -BC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64 --check-stamp-file C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/ThirdParty/libxml2/vtklibxml2/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/ThirdParty/libxml2/vtklibxml2/CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\config_cmake.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlversion.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\libxml2PlatformTests.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindThreads.cmake;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\DOCBparser.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\HTMLparser.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\HTMLtree.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\SAX.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\SAX2.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\buf.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\c14n.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\catalog.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\chvalid.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\debugXML.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\dict.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\encoding.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\entities.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\error.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\globals.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\hash.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\legacy.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\list.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\parser.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\parserInternals.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\pattern.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\relaxng.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\schematron.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\threads.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\tree.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\uri.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\valid.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\xinclude.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\xlink.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\xmlIO.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\xmlmemory.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\xmlmodule.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\xmlreader.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\xmlregexp.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\xmlsave.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\xmlschemas.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\xmlschemastypes.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\xmlstring.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\xmlunicode.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\xmlwriter.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\xpath.c" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\xpointer.c" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\c14n.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\catalog.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\chvalid.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\debugXML.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\dict.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\DOCBparser.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\encoding.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\entities.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\globals.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\hash.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\HTMLparser.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\HTMLtree.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\list.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\nanoftp.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\nanohttp.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\parser.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\parserInternals.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\pattern.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\relaxng.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\SAX.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\SAX2.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\schemasInternals.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\schematron.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\threads.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\tree.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\uri.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\valid.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\vtk_libxml2_mangle.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xinclude.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xlink.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlautomata.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlerror.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlexports.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlIO.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlmemory.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlmodule.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlreader.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlregexp.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlsave.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlschemas.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlschemastypes.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlstring.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlunicode.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlwin32version.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlwriter.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xpath.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xpathInternals.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\ThirdParty\libxml2\vtklibxml2\include\libxml\xpointer.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\libxml2\vtklibxml2\include\libxml\xmlversion.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ZERO_CHECK.vcxproj">
+      <Project>{3330E39C-1987-3CA6-AA36-A654A753FBC8}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ThirdParty\zlib\vtkzlib\zlib.vcxproj">
+      <Project>{ABF3D926-467F-37DE-9A7A-4A02B65BE315}</Project>
+      <Name>zlib</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

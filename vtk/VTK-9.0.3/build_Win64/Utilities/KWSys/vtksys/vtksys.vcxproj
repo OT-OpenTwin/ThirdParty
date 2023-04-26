@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D80F15D5-87BB-3E47-BA6A-090BAF5B40DE}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>vtksys</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\bin\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">vtksys.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">vtksys-9.0d</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\bin\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">vtksys.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">vtksys-9.0</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\bin\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">vtksys.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">vtksys-9.0</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\bin\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">vtksys.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">vtksys-9.0</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;KWSYS_NAMESPACE=vtksys;UNICODE;_UNICODE;CMAKE_INTDIR="Debug";vtksys_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;KWSYS_NAMESPACE=vtksys;UNICODE;_UNICODE;CMAKE_INTDIR=\"Debug\";vtksys_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>ws2_32.lib;dbghelp.lib;psapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/lib/Debug/vtksys-9.0d.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/bin/Debug/vtksys-9.0d.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;KWSYS_NAMESPACE=vtksys;UNICODE;_UNICODE;CMAKE_INTDIR="Release";vtksys_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;KWSYS_NAMESPACE=vtksys;UNICODE;_UNICODE;CMAKE_INTDIR=\"Release\";vtksys_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>ws2_32.lib;dbghelp.lib;psapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/lib/Release/vtksys-9.0.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/bin/Release/vtksys-9.0.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;KWSYS_NAMESPACE=vtksys;UNICODE;_UNICODE;CMAKE_INTDIR="MinSizeRel";vtksys_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;KWSYS_NAMESPACE=vtksys;UNICODE;_UNICODE;CMAKE_INTDIR=\"MinSizeRel\";vtksys_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>ws2_32.lib;dbghelp.lib;psapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/lib/MinSizeRel/vtksys-9.0.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/bin/MinSizeRel/vtksys-9.0.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;KWSYS_NAMESPACE=vtksys;UNICODE;_UNICODE;CMAKE_INTDIR="RelWithDebInfo";vtksys_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VTK_IN_VTK;KWSYS_NAMESPACE=vtksys;UNICODE;_UNICODE;CMAKE_INTDIR=\"RelWithDebInfo\";vtksys_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>ws2_32.lib;dbghelp.lib;psapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/lib/RelWithDebInfo/vtksys-9.0.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/bin/RelWithDebInfo/vtksys-9.0.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/Utilities/KWSys/vtksys/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3 -BC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64 --check-stamp-file C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/Utilities/KWSys/vtksys/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/Utilities/KWSys/vtksys/CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Base64.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\CommandLineArguments.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Configure.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Configure.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Directory.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\DynamicLoader.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Encoding.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Encoding.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\FStream.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Glob.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\MD5.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Process.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\RegularExpression.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\SharedForward.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\String.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\System.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\SystemInformation.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\SystemTools.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\kwsysPlatformTests.cmake;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\kwsysPrivate.h;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckTypeSize.cmake;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/Utilities/KWSys/vtksys/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3 -BC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64 --check-stamp-file C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/Utilities/KWSys/vtksys/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/Utilities/KWSys/vtksys/CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Base64.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\CommandLineArguments.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Configure.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Configure.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Directory.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\DynamicLoader.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Encoding.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Encoding.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\FStream.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Glob.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\MD5.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Process.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\RegularExpression.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\SharedForward.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\String.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\System.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\SystemInformation.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\SystemTools.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\kwsysPlatformTests.cmake;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\kwsysPrivate.h;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckTypeSize.cmake;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/Utilities/KWSys/vtksys/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3 -BC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64 --check-stamp-file C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/Utilities/KWSys/vtksys/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/Utilities/KWSys/vtksys/CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Base64.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\CommandLineArguments.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Configure.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Configure.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Directory.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\DynamicLoader.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Encoding.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Encoding.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\FStream.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Glob.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\MD5.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Process.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\RegularExpression.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\SharedForward.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\String.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\System.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\SystemInformation.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\SystemTools.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\kwsysPlatformTests.cmake;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\kwsysPrivate.h;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckTypeSize.cmake;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/Utilities/KWSys/vtksys/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3 -BC:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64 --check-stamp-file C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/build_Win64/Utilities/KWSys/vtksys/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/vtk/VTK-9.0.3/Utilities/KWSys/vtksys/CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Base64.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\CMakeLists.txt;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\CommandLineArguments.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Configure.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Configure.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Directory.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\DynamicLoader.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Encoding.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Encoding.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\FStream.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Glob.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\MD5.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Process.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\RegularExpression.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\SharedForward.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\String.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\System.h.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\SystemInformation.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\SystemTools.hxx.in;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\kwsysPlatformTests.cmake;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\kwsysPrivate.h;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckTypeSize.cmake;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\ProcessWin32.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Base64.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\EncodingC.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">KWSYS_ENCODING_DEFAULT_CODEPAGE=CP_UTF8;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">KWSYS_ENCODING_DEFAULT_CODEPAGE=CP_UTF8;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">KWSYS_ENCODING_DEFAULT_CODEPAGE=CP_UTF8;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">KWSYS_ENCODING_DEFAULT_CODEPAGE=CP_UTF8;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\MD5.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\System.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">KWSYS_C_HAS_PTRDIFF_T=1;KWSYS_C_HAS_SSIZE_T=0;KWSYS_C_HAS_CLOCK_GETTIME_MONOTONIC=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">KWSYS_C_HAS_PTRDIFF_T=1;KWSYS_C_HAS_SSIZE_T=0;KWSYS_C_HAS_CLOCK_GETTIME_MONOTONIC=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CompileAsC</CompileAs>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">KWSYS_C_HAS_PTRDIFF_T=1;KWSYS_C_HAS_SSIZE_T=0;KWSYS_C_HAS_CLOCK_GETTIME_MONOTONIC=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CompileAsC</CompileAs>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">KWSYS_C_HAS_PTRDIFF_T=1;KWSYS_C_HAS_SSIZE_T=0;KWSYS_C_HAS_CLOCK_GETTIME_MONOTONIC=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\Configure.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\SharedForward.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\Process.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\Base64.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\Encoding.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\MD5.h" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\System.h" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Directory.cxx" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\Directory.hxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\DynamicLoader.cxx">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">KWSYS_SUPPORTS_SHARED_LIBS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">KWSYS_SUPPORTS_SHARED_LIBS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">KWSYS_SUPPORTS_SHARED_LIBS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">KWSYS_SUPPORTS_SHARED_LIBS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\DynamicLoader.hxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\EncodingCXX.cxx">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">KWSYS_ENCODING_DEFAULT_CODEPAGE=CP_UTF8;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">KWSYS_ENCODING_DEFAULT_CODEPAGE=CP_UTF8;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">KWSYS_ENCODING_DEFAULT_CODEPAGE=CP_UTF8;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">KWSYS_ENCODING_DEFAULT_CODEPAGE=CP_UTF8;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\Encoding.hxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\Glob.cxx" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\Glob.hxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\RegularExpression.cxx" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\RegularExpression.hxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\SystemTools.cxx">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">KWSYS_CXX_HAS_SETENV=0;KWSYS_CXX_HAS_UNSETENV=0;KWSYS_CXX_HAS_ENVIRON_IN_STDLIB_H=1;KWSYS_CXX_HAS_UTIMES=0;KWSYS_CXX_HAS_UTIMENSAT=0;KWSYS_CXX_STAT_HAS_ST_MTIM=0;KWSYS_CXX_STAT_HAS_ST_MTIMESPEC=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">KWSYS_CXX_HAS_SETENV=0;KWSYS_CXX_HAS_UNSETENV=0;KWSYS_CXX_HAS_ENVIRON_IN_STDLIB_H=1;KWSYS_CXX_HAS_UTIMES=0;KWSYS_CXX_HAS_UTIMENSAT=0;KWSYS_CXX_STAT_HAS_ST_MTIM=0;KWSYS_CXX_STAT_HAS_ST_MTIMESPEC=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">KWSYS_CXX_HAS_SETENV=0;KWSYS_CXX_HAS_UNSETENV=0;KWSYS_CXX_HAS_ENVIRON_IN_STDLIB_H=1;KWSYS_CXX_HAS_UTIMES=0;KWSYS_CXX_HAS_UTIMENSAT=0;KWSYS_CXX_STAT_HAS_ST_MTIM=0;KWSYS_CXX_STAT_HAS_ST_MTIMESPEC=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">KWSYS_CXX_HAS_SETENV=0;KWSYS_CXX_HAS_UNSETENV=0;KWSYS_CXX_HAS_ENVIRON_IN_STDLIB_H=1;KWSYS_CXX_HAS_UTIMES=0;KWSYS_CXX_HAS_UTIMENSAT=0;KWSYS_CXX_STAT_HAS_ST_MTIM=0;KWSYS_CXX_STAT_HAS_ST_MTIMESPEC=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\SystemTools.hxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\CommandLineArguments.cxx" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\CommandLineArguments.hxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\FStream.cxx" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\FStream.hxx" />
+    <ClCompile Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\Utilities\KWSys\vtksys\SystemInformation.cxx">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">SIZEOF_VOID_P=8;KWSYS_SYS_HAS_PSAPI=1;KWSYS_BUILD_SHARED=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">SIZEOF_VOID_P=8;KWSYS_SYS_HAS_PSAPI=1;KWSYS_BUILD_SHARED=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">SIZEOF_VOID_P=8;KWSYS_SYS_HAS_PSAPI=1;KWSYS_BUILD_SHARED=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">SIZEOF_VOID_P=8;KWSYS_SYS_HAS_PSAPI=1;KWSYS_BUILD_SHARED=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\SystemInformation.hxx" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\Configure.hxx" />
+    <ClInclude Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\Utilities\KWSys\vtksys\String.hxx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\vtk\VTK-9.0.3\build_Win64\ZERO_CHECK.vcxproj">
+      <Project>{3330E39C-1987-3CA6-AA36-A654A753FBC8}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
