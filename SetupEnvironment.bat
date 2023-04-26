@@ -46,10 +46,10 @@ SET QT_TT_INCD=%QT_TT_ROOT%\include
 SET QT_TT_INCR=%QT_TT_ROOT%\include
 SET QT_TT_LIBD=TabToolbard.lib
 SET QT_TT_LIBR=TabToolbar.lib
-SET QT_TT_LIBPATHD=%QT_TT_ROOT%\src\Debug
-SET QT_TT_LIBPATHR=%QT_TT_ROOT%\src\Release
-SET QT_TT_DLLD=%QT_TT_ROOT%\src\Debug
-SET QT_TT_DLLR=%QT_TT_ROOT%\src\Release
+SET QT_TT_LIBPATHD=%QT_TT_ROOT%\src\TabToolbar\Debug
+SET QT_TT_LIBPATHR=%QT_TT_ROOT%\src\TabToolbar\Release
+SET QT_TT_DLLD=%QT_TT_ROOT%\src\TabToolbar\Debug
+SET QT_TT_DLLR=%QT_TT_ROOT%\src\TabToolbar\Release
 
 REM Set Rapid JSON Directory
 SET R_JSON_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\rapidjson
