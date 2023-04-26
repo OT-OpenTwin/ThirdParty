@@ -1,0 +1,496 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Shape_detection/classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png" />
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<meta name="generator" content="Doxygen 1.8.13" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CGAL 5.3 - Shape Detection: CGAL::Shape_detection::deprecated::Region_growing_depr&lt; Traits &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/stylesheet.css" rel="stylesheet" type="text/css" />
+<!-- This should probably be an extrastylesheet instead of hardcoded. -->
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css" />
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+//&amp;amp;lt;![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      }
+  }
+}
+);
+//]]&amp;amp;gt;
+</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <img id="MSearchSelect" src="../Manual/search/mag_sel.png" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" alt="" />
+      <input type="text" id="MSearchField" value="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)" />
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.png" alt="" /></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">CGAL 5.3 - Shape Detection
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.13 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html','');});
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr-members.html">List of all members</a> |
+<a href="#nested-classes">Classes</a>  </div>
+  <div class="headertitle">
+<div class="title">CGAL::Shape_detection::deprecated::Region_growing_depr&lt; Traits &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgShapeDetectionRef.html">Shape Detection Reference</a> » <a class="el" href="group__PkgShapeDetectionDEPR.html">Deprecated</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/Shape_detection/deprecated/Region_growing.h&gt;</code></p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"> 
+
+<p>A shape detection algorithm using a region growing method. </p>
+<p>Given a point set in 3D space with unoriented normals, sampled on surfaces, this class enables to detect subsets of connected points lying on the surface of primitive shapes. Each input point is assigned to either none or at most one detected primitive shape. The implementation follows <a class="el" href="citelist.html#CITEREF_cgal:lm-clscm-12">[1]</a>.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Traits</td><td>a model of <code><a class="el" href="classEfficientRANSACTraits.html" title="A concept that describes the set of types required by the CGAL::Shape_detection::Efficient_RANSAC and...">EfficientRANSACTraits</a></code> </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes" id="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct  </td><td class="memItemRight" valign="bottom"><a class="el" href="structCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr_1_1Parameters.html">Parameters</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft"> </td><td class="mdescRight">Parameters for the shape detection algorithm.  <a href="structCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr_1_1Parameters.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group" id="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:a6191a376826fc01318e56aaab9321ba7"><td class="memItemLeft" align="right" valign="top">typedef Traits::Input_range </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a6191a376826fc01318e56aaab9321ba7">Input_range</a></td></tr>
+<tr class="memdesc:a6191a376826fc01318e56aaab9321ba7"><td class="mdescLeft"> </td><td class="mdescRight">Model of the concept <code><a class="elRef" doxygen="/home/cgal-testsuite/cgal_doc_build/CGAL-5.3-I-162/doc/scripts/doc_1_8_13/doc_tags/Circulator.tag:../Circulator/" href="../Circulator/classRange.html">Range</a></code> with random access iterators, providing input points and normals through the following two property maps.  <a href="#a6191a376826fc01318e56aaab9321ba7">More...</a><br /></td></tr>
+<tr class="separator:a6191a376826fc01318e56aaab9321ba7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9d2f6ef2db039eea8e14f3dde6473782"><td class="memItemLeft" align="right" valign="top"><a id="a9d2f6ef2db039eea8e14f3dde6473782"></a>
+typedef Traits::Point_map </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a9d2f6ef2db039eea8e14f3dde6473782">Point_map</a></td></tr>
+<tr class="memdesc:a9d2f6ef2db039eea8e14f3dde6473782"><td class="mdescLeft"> </td><td class="mdescRight">property map to access the location of an input point. <br /></td></tr>
+<tr class="separator:a9d2f6ef2db039eea8e14f3dde6473782"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2e187b1c4d1e46c165a6a6b823afa74d"><td class="memItemLeft" align="right" valign="top"><a id="a2e187b1c4d1e46c165a6a6b823afa74d"></a>
+typedef Traits::Normal_map </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a2e187b1c4d1e46c165a6a6b823afa74d">Normal_map</a></td></tr>
+<tr class="memdesc:a2e187b1c4d1e46c165a6a6b823afa74d"><td class="mdescLeft"> </td><td class="mdescRight">property map to access the unoriented normal of an input point. <br /></td></tr>
+<tr class="separator:a2e187b1c4d1e46c165a6a6b823afa74d"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a3a93916740239d36f294bac7c70e868b"><td class="memItemLeft" align="right" valign="top"><a id="a3a93916740239d36f294bac7c70e868b"></a>
+typedef <a class="el" href="classCGAL_1_1Shape__detection_1_1Shape__base.html">CGAL::Shape_detection::Shape_base</a>&lt; Traits &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a3a93916740239d36f294bac7c70e868b">Shape</a></td></tr>
+<tr class="memdesc:a3a93916740239d36f294bac7c70e868b"><td class="mdescLeft"> </td><td class="mdescRight">shape type. <br /></td></tr>
+<tr class="separator:a3a93916740239d36f294bac7c70e868b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa1ca4e922ff653d1b115d6e5605f69e7"><td class="memItemLeft" align="right" valign="top"><a id="aa1ca4e922ff653d1b115d6e5605f69e7"></a>
+typedef <a class="el" href="classCGAL_1_1Shape__detection_1_1Plane.html">CGAL::Shape_detection::Plane</a>&lt; Traits &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#aa1ca4e922ff653d1b115d6e5605f69e7">Plane_shape</a></td></tr>
+<tr class="memdesc:aa1ca4e922ff653d1b115d6e5605f69e7"><td class="mdescLeft"> </td><td class="mdescRight">shape type. <br /></td></tr>
+<tr class="separator:aa1ca4e922ff653d1b115d6e5605f69e7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a378ede5055cc55641561d58190d3011b"><td class="memItemLeft" align="right" valign="top"><a id="a378ede5055cc55641561d58190d3011b"></a>
+typedef <a class="elRef" doxygen="/home/cgal-testsuite/cgal_doc_build/CGAL-5.3-I-162/doc/scripts/doc_1_8_13/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/classCGAL_1_1Iterator__range.html">Iterator_range</a>&lt; Point_index_iterator &gt; </td><td class="memItemRight" valign="bottom"><b>Point_index_range</b></td></tr>
+<tr class="separator:a378ede5055cc55641561d58190d3011b"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group" id="member-group"></a>
+Initialization</h2></td></tr>
+<tr class="memitem:ae4b4bb639ed0886240c89d509b199c6b"><td class="memItemLeft" align="right" valign="top"><a id="ae4b4bb639ed0886240c89d509b199c6b"></a>
+ </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#ae4b4bb639ed0886240c89d509b199c6b">Region_growing_depr</a> (Traits t=Traits())</td></tr>
+<tr class="memdesc:ae4b4bb639ed0886240c89d509b199c6b"><td class="mdescLeft"> </td><td class="mdescRight">Constructs an empty shape detection object. <br /></td></tr>
+<tr class="separator:ae4b4bb639ed0886240c89d509b199c6b"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ad831e9786381a9df41497e4140cdc32c"><td class="memItemLeft" align="right" valign="top"><a id="ad831e9786381a9df41497e4140cdc32c"></a>
+ </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#ad831e9786381a9df41497e4140cdc32c">~Region_growing_depr</a> ()</td></tr>
+<tr class="memdesc:ad831e9786381a9df41497e4140cdc32c"><td class="mdescLeft"> </td><td class="mdescRight">Releases all memory allocated by this instances including shapes. <br /></td></tr>
+<tr class="separator:ad831e9786381a9df41497e4140cdc32c"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ab6fd3b4fb934472faa3838bc71a41a6e"><td class="memItemLeft" align="right" valign="top"><a id="ab6fd3b4fb934472faa3838bc71a41a6e"></a>
+const Traits &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#ab6fd3b4fb934472faa3838bc71a41a6e">traits</a> () const</td></tr>
+<tr class="memdesc:ab6fd3b4fb934472faa3838bc71a41a6e"><td class="mdescLeft"> </td><td class="mdescRight">Retrieves the traits class. <br /></td></tr>
+<tr class="separator:ab6fd3b4fb934472faa3838bc71a41a6e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a9a9536dd068d02a37210aa3b90072ac5"><td class="memItemLeft" align="right" valign="top"><a id="a9a9536dd068d02a37210aa3b90072ac5"></a>
+const <a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a9d2f6ef2db039eea8e14f3dde6473782">Point_map</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a9a9536dd068d02a37210aa3b90072ac5">point_map</a> () const</td></tr>
+<tr class="memdesc:a9a9536dd068d02a37210aa3b90072ac5"><td class="mdescLeft"> </td><td class="mdescRight">Retrieves the point property map. <br /></td></tr>
+<tr class="separator:a9a9536dd068d02a37210aa3b90072ac5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a59f2817aa583f550bf4871a55958a315"><td class="memItemLeft" align="right" valign="top"><a id="a59f2817aa583f550bf4871a55958a315"></a>
+const <a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a2e187b1c4d1e46c165a6a6b823afa74d">Normal_map</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a59f2817aa583f550bf4871a55958a315">normal</a> () const</td></tr>
+<tr class="memdesc:a59f2817aa583f550bf4871a55958a315"><td class="mdescLeft"> </td><td class="mdescRight">Retrieves the normal property map. <br /></td></tr>
+<tr class="separator:a59f2817aa583f550bf4871a55958a315"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:acd81c81af25453fc2a92a3b5983d1244"><td class="memItemLeft" align="right" valign="top"><a id="acd81c81af25453fc2a92a3b5983d1244"></a>
+Input_iterator </td><td class="memItemRight" valign="bottom"><b>input_iterator_first</b> () const</td></tr>
+<tr class="separator:acd81c81af25453fc2a92a3b5983d1244"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa3129954274799ddc6812a918d1124d8"><td class="memItemLeft" align="right" valign="top"><a id="aa3129954274799ddc6812a918d1124d8"></a>
+Input_iterator </td><td class="memItemRight" valign="bottom"><b>input_iterator_beyond</b> () const</td></tr>
+<tr class="separator:aa3129954274799ddc6812a918d1124d8"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a2068b88caefa2d88da41b6eef5700d5f"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a2068b88caefa2d88da41b6eef5700d5f">set_input</a> (<a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a6191a376826fc01318e56aaab9321ba7">Input_range</a> &amp;input_range, <a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a9d2f6ef2db039eea8e14f3dde6473782">Point_map</a> <a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a9a9536dd068d02a37210aa3b90072ac5">point_map</a>=<a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a9d2f6ef2db039eea8e14f3dde6473782">Point_map</a>(), <a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a2e187b1c4d1e46c165a6a6b823afa74d">Normal_map</a> normal_map=<a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a2e187b1c4d1e46c165a6a6b823afa74d">Normal_map</a>())</td></tr>
+<tr class="memdesc:a2068b88caefa2d88da41b6eef5700d5f"><td class="mdescLeft"> </td><td class="mdescRight">Sets the input data.  <a href="#a2068b88caefa2d88da41b6eef5700d5f">More...</a><br /></td></tr>
+<tr class="separator:a2068b88caefa2d88da41b6eef5700d5f"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa9d313b00de4002ffdbc1a98d08616a7"><td class="memTemplParams" colspan="2">template&lt;class Shape_type &gt; </td></tr>
+<tr class="memitem:aa9d313b00de4002ffdbc1a98d08616a7"><td class="memTemplItemLeft" align="right" valign="top">void </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#aa9d313b00de4002ffdbc1a98d08616a7">add_shape_factory</a> ()</td></tr>
+<tr class="memdesc:aa9d313b00de4002ffdbc1a98d08616a7"><td class="mdescLeft"> </td><td class="mdescRight">Registers in the detection engine the shape type <code>ShapeType</code> that must inherit from <code><a class="el" href="classCGAL_1_1Shape__detection_1_1Shape__base.html" title="Base class for shape types that defines an interface to construct a shape from a set of points and to...">Shape_base</a></code>.  <a href="#aa9d313b00de4002ffdbc1a98d08616a7">More...</a><br /></td></tr>
+<tr class="separator:aa9d313b00de4002ffdbc1a98d08616a7"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a1f736f936c64a6a4b4db85cb58384494"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a1f736f936c64a6a4b4db85cb58384494">preprocess</a> ()</td></tr>
+<tr class="memdesc:a1f736f936c64a6a4b4db85cb58384494"><td class="mdescLeft"> </td><td class="mdescRight">Constructs internal data structures required for the shape detection.  <a href="#a1f736f936c64a6a4b4db85cb58384494">More...</a><br /></td></tr>
+<tr class="separator:a1f736f936c64a6a4b4db85cb58384494"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group" id="member-group"></a>
+Memory Management</h2></td></tr>
+<tr class="memitem:a513bfc351ad7e6b5781a7cc0ab8f87a5"><td class="memItemLeft" align="right" valign="top"><a id="a513bfc351ad7e6b5781a7cc0ab8f87a5"></a>
+void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a513bfc351ad7e6b5781a7cc0ab8f87a5">clear_shape_factories</a> ()</td></tr>
+<tr class="memdesc:a513bfc351ad7e6b5781a7cc0ab8f87a5"><td class="mdescLeft"> </td><td class="mdescRight">Removes all shape types registered for detection. <br /></td></tr>
+<tr class="separator:a513bfc351ad7e6b5781a7cc0ab8f87a5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:abbad71b0ac11e1161bec7e9b2bf1d84a"><td class="memItemLeft" align="right" valign="top">void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#abbad71b0ac11e1161bec7e9b2bf1d84a">clear</a> ()</td></tr>
+<tr class="memdesc:abbad71b0ac11e1161bec7e9b2bf1d84a"><td class="mdescLeft"> </td><td class="mdescRight">Removes all detected shapes.  <a href="#abbad71b0ac11e1161bec7e9b2bf1d84a">More...</a><br /></td></tr>
+<tr class="separator:abbad71b0ac11e1161bec7e9b2bf1d84a"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group" id="member-group"></a>
+Detection</h2></td></tr>
+<tr class="memitem:ac2e03b04ee8cbe8852d5389dfcc19a8a"><td class="memItemLeft" align="right" valign="top">bool </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#ac2e03b04ee8cbe8852d5389dfcc19a8a">detect</a> (const <a class="el" href="structCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr_1_1Parameters.html">Parameters</a> &amp;options=<a class="el" href="structCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr_1_1Parameters.html">Parameters</a>(), const std::function&lt; bool(double)&gt; &amp;callback=std::function&lt; bool(double)&gt;())</td></tr>
+<tr class="memdesc:ac2e03b04ee8cbe8852d5389dfcc19a8a"><td class="mdescLeft"> </td><td class="mdescRight">Performs the shape detection.  <a href="#ac2e03b04ee8cbe8852d5389dfcc19a8a">More...</a><br /></td></tr>
+<tr class="separator:ac2e03b04ee8cbe8852d5389dfcc19a8a"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group" id="member-group"></a>
+Access</h2></td></tr>
+<tr class="memitem:a2a723d2424375a81dedda820b0154fb5"><td class="memItemLeft" align="right" valign="top">Shape_range </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a2a723d2424375a81dedda820b0154fb5">shapes</a> () const</td></tr>
+<tr class="memdesc:a2a723d2424375a81dedda820b0154fb5"><td class="mdescLeft"> </td><td class="mdescRight">Returns an <code><a class="elRef" doxygen="/home/cgal-testsuite/cgal_doc_build/CGAL-5.3-I-162/doc/scripts/doc_1_8_13/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/classCGAL_1_1Iterator__range.html">Iterator_range</a></code> with a bidirectional iterator with value type <code>boost::shared_ptr&lt;Shape&gt;</code> over the detected shapes in the order of detection.  <a href="#a2a723d2424375a81dedda820b0154fb5">More...</a><br /></td></tr>
+<tr class="separator:a2a723d2424375a81dedda820b0154fb5"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a36eb01adea4b21f90d329120e2fff3bd"><td class="memItemLeft" align="right" valign="top"><a id="a36eb01adea4b21f90d329120e2fff3bd"></a>
+Plane_range </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a36eb01adea4b21f90d329120e2fff3bd">planes</a> () const</td></tr>
+<tr class="memdesc:a36eb01adea4b21f90d329120e2fff3bd"><td class="mdescLeft"> </td><td class="mdescRight">Returns an <code><a class="elRef" doxygen="/home/cgal-testsuite/cgal_doc_build/CGAL-5.3-I-162/doc/scripts/doc_1_8_13/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/classCGAL_1_1Iterator__range.html">Iterator_range</a></code> with a bidirectional iterator with value type <code>boost::shared_ptr&lt;Plane_shape&gt;</code> over only the detected planes in the order of detection. <br /></td></tr>
+<tr class="separator:a36eb01adea4b21f90d329120e2fff3bd"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a910cc20a5e56c8114eb45f2e5ed3134a"><td class="memItemLeft" align="right" valign="top"><a id="a910cc20a5e56c8114eb45f2e5ed3134a"></a>
+std::size_t </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a910cc20a5e56c8114eb45f2e5ed3134a">number_of_unassigned_points</a> ()</td></tr>
+<tr class="memdesc:a910cc20a5e56c8114eb45f2e5ed3134a"><td class="mdescLeft"> </td><td class="mdescRight">Number of points not assigned to a shape. <br /></td></tr>
+<tr class="separator:a910cc20a5e56c8114eb45f2e5ed3134a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:abcbfb1a5798e7e8a88c53a87d2c77435"><td class="memItemLeft" align="right" valign="top"><a id="abcbfb1a5798e7e8a88c53a87d2c77435"></a>
+<a class="elRef" doxygen="/home/cgal-testsuite/cgal_doc_build/CGAL-5.3-I-162/doc/scripts/doc_1_8_13/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/classCGAL_1_1Iterator__range.html">Point_index_range</a> </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#abcbfb1a5798e7e8a88c53a87d2c77435">indices_of_unassigned_points</a> ()</td></tr>
+<tr class="memdesc:abcbfb1a5798e7e8a88c53a87d2c77435"><td class="mdescLeft"> </td><td class="mdescRight">Returns an <code><a class="elRef" doxygen="/home/cgal-testsuite/cgal_doc_build/CGAL-5.3-I-162/doc/scripts/doc_1_8_13/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/classCGAL_1_1Iterator__range.html">Iterator_range</a></code> with a bidirectional iterator with the value type <code>std::size_t</code> as indices into the input data that has not been assigned to a shape. <br /></td></tr>
+<tr class="separator:abcbfb1a5798e7e8a88c53a87d2c77435"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a6191a376826fc01318e56aaab9321ba7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6191a376826fc01318e56aaab9321ba7">◆ </a></span>Input_range</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef Traits::Input_range <a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html">CGAL::Shape_detection::deprecated::Region_growing_depr</a>&lt; Traits &gt;::<a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a6191a376826fc01318e56aaab9321ba7">Input_range</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Model of the concept <code><a class="elRef" doxygen="/home/cgal-testsuite/cgal_doc_build/CGAL-5.3-I-162/doc/scripts/doc_1_8_13/doc_tags/Circulator.tag:../Circulator/" href="../Circulator/classRange.html">Range</a></code> with random access iterators, providing input points and normals through the following two property maps. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa9d313b00de4002ffdbc1a98d08616a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9d313b00de4002ffdbc1a98d08616a7">◆ </a></span>add_shape_factory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits &gt; </div>
+<div class="memtemplate">
+template&lt;class Shape_type &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html">CGAL::Shape_detection::deprecated::Region_growing_depr</a>&lt; Traits &gt;::add_shape_factory </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registers in the detection engine the shape type <code>ShapeType</code> that must inherit from <code><a class="el" href="classCGAL_1_1Shape__detection_1_1Shape__base.html" title="Base class for shape types that defines an interface to construct a shape from a set of points and to...">Shape_base</a></code>. </p>
+<p>For example, for registering a plane as detectable shape you should call <code>region_growing.add_shape_factory&lt; <a class="el" href="classCGAL_1_1Shape__detection_1_1Plane.html" title="Plane implements Shape_base. ">Shape_detection::Plane</a>&lt;Traits&gt; &gt;();</code>.</p>
+<p>Note that if your call is within a template, you should add the <code>template</code> keyword just before <code>add_shape_factory</code>: <code>region_growing.template add_shape_factory&lt; <a class="el" href="classCGAL_1_1Shape__detection_1_1Plane.html" title="Plane implements Shape_base. ">Shape_detection::Plane</a>&lt;Traits&gt; &gt;();</code>.</p>
+<dl class="section note"><dt>Note</dt><dd>So far, region growing algorithm only supports plane detection. </dd></dl>
+
+</div>
+</div>
+<a id="abbad71b0ac11e1161bec7e9b2bf1d84a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbad71b0ac11e1161bec7e9b2bf1d84a">◆ </a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html">CGAL::Shape_detection::deprecated::Region_growing_depr</a>&lt; Traits &gt;::clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes all detected shapes. </p>
+<p>All internal structures are cleaned, including formerly detected shapes. Thus iterators and ranges retrieved through <code><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a2a723d2424375a81dedda820b0154fb5" title="Returns an Iterator_range with a bidirectional iterator with value type boost::shared_ptr&lt;Shape&gt; over...">shapes()</a></code>, <code><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a36eb01adea4b21f90d329120e2fff3bd" title="Returns an Iterator_range with a bidirectional iterator with value type boost::shared_ptr&lt;Plane_shape...">planes()</a></code> and <code><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#abcbfb1a5798e7e8a88c53a87d2c77435" title="Returns an Iterator_range with a bidirectional iterator with the value type std::size_t as indices in...">indices_of_unassigned_points()</a></code> are invalidated. </p>
+
+</div>
+</div>
+<a id="ac2e03b04ee8cbe8852d5389dfcc19a8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2e03b04ee8cbe8852d5389dfcc19a8a">◆ </a></span>detect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html">CGAL::Shape_detection::deprecated::Region_growing_depr</a>&lt; Traits &gt;::detect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr_1_1Parameters.html">Parameters</a> &amp; </td>
+          <td class="paramname"><em>options</em> = <code><a class="el" href="structCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr_1_1Parameters.html">Parameters</a>()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; bool(double)&gt; &amp; </td>
+          <td class="paramname"><em>callback</em> = <code>std::function&lt;bool(double)&gt;()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Performs the shape detection. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">options</td><td>Parameters for shape detection.</td></tr>
+    <tr><td class="paramname">callback</td><td>can be omitted if the algorithm should be run without any callback. It is called regularly when the algorithm is running: the current advancement (between 0. and 1.) is passed as parameter. If it returns <code>true</code>, then the algorithm continues its execution normally; if it returns <code>false</code>, the algorithm is stopped. Note that this interruption may leave the class in an invalid state.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if shape types have been registered and input data has been set. Otherwise, <code>false</code> is returned. </dd></dl>
+
+</div>
+</div>
+<a id="a1f736f936c64a6a4b4db85cb58384494"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f736f936c64a6a4b4db85cb58384494">◆ </a></span>preprocess()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html">CGAL::Shape_detection::deprecated::Region_growing_depr</a>&lt; Traits &gt;::preprocess </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs internal data structures required for the shape detection. </p>
+<p>These structures only depend on the input data, i.e. the points and normal vectors. This method is called by <code><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#ac2e03b04ee8cbe8852d5389dfcc19a8a" title="Performs the shape detection. ">detect()</a></code>, if it was not called before by the user. </p>
+
+</div>
+</div>
+<a id="a2068b88caefa2d88da41b6eef5700d5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2068b88caefa2d88da41b6eef5700d5f">◆ </a></span>set_input()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html">CGAL::Shape_detection::deprecated::Region_growing_depr</a>&lt; Traits &gt;::set_input </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a6191a376826fc01318e56aaab9321ba7">Input_range</a> &amp; </td>
+          <td class="paramname"><em>input_range</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a9d2f6ef2db039eea8e14f3dde6473782">Point_map</a> </td>
+          <td class="paramname"><em>point_map</em> = <code><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a9d2f6ef2db039eea8e14f3dde6473782">Point_map</a>()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a2e187b1c4d1e46c165a6a6b823afa74d">Normal_map</a> </td>
+          <td class="paramname"><em>normal_map</em> = <code><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a2e187b1c4d1e46c165a6a6b823afa74d">Normal_map</a>()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the input data. </p>
+<p>The range must stay valid until the detection has been performed and the access to the results is no longer required. This function first calls <code><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#abbad71b0ac11e1161bec7e9b2bf1d84a" title="Removes all detected shapes. ">clear()</a></code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input_range</td><td>range of input data. </td></tr>
+    <tr><td class="paramname">point_map</td><td>property map to access the position of an input point. </td></tr>
+    <tr><td class="paramname">normal_map</td><td>property map to access the normal of an input point. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2a723d2424375a81dedda820b0154fb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a723d2424375a81dedda820b0154fb5">◆ </a></span>shapes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Traits &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">Shape_range <a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html">CGAL::Shape_detection::deprecated::Region_growing_depr</a>&lt; Traits &gt;::shapes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns an <code><a class="elRef" doxygen="/home/cgal-testsuite/cgal_doc_build/CGAL-5.3-I-162/doc/scripts/doc_1_8_13/doc_tags/STL_Extension.tag:../STL_Extension/" href="../STL_Extension/classCGAL_1_1Iterator__range.html">Iterator_range</a></code> with a bidirectional iterator with value type <code>boost::shared_ptr&lt;Shape&gt;</code> over the detected shapes in the order of detection. </p>
+<dl class="section note"><dt>Note</dt><dd>So far, region growing algorithm only supports plane detection, so this method is equivalent to <code><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html#a36eb01adea4b21f90d329120e2fff3bd" title="Returns an Iterator_range with a bidirectional iterator with value type boost::shared_ptr&lt;Plane_shape...">planes()</a></code> except that it returns planes with the abstract type <code>Shape</code>. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>CGAL</b></li><li class="navelem"><b>Shape_detection</b></li><li class="navelem"><b>deprecated</b></li><li class="navelem"><a class="el" href="classCGAL_1_1Shape__detection_1_1deprecated_1_1Region__growing__depr.html">Region_growing_depr</a></li>
+    <li class="footer">Generated on Sun Jul 4 2021 21:32:31 for CGAL 5.3 - Shape Detection by
+    <a href="https://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen" /></a> 1.8.13 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

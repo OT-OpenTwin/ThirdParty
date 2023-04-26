@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Solver_interface/classCGAL_1_1Eigen__vector.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png" />
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<meta name="generator" content="Doxygen 1.8.13" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CGAL 5.3 - CGAL and Solvers: CGAL::Eigen_vector&lt; T, D &gt; Class Template Reference</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/stylesheet.css" rel="stylesheet" type="text/css" />
+<!-- This should probably be an extrastylesheet instead of hardcoded. -->
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css" />
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+//&amp;amp;lt;![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      }
+  }
+}
+);
+//]]&amp;amp;gt;
+</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <img id="MSearchSelect" src="../Manual/search/mag_sel.png" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" alt="" />
+      <input type="text" id="MSearchField" value="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)" />
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.png" alt="" /></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">CGAL 5.3 - CGAL and Solvers
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.13 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classCGAL_1_1Eigen__vector.html','');});
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="classCGAL_1_1Eigen__vector-members.html">List of all members</a> |
+<a href="#pub-methods">Public Member Functions</a>  </div>
+  <div class="headertitle">
+<div class="title">CGAL::Eigen_vector&lt; T, D &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__PkgSolverInterfaceRef.html">CGAL and Solvers Reference</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;CGAL/Eigen_vector.h&gt;</code></p>
+
+<h2 class="groupheader">Inherits from</h2><p>Matrix&lt; T, D, 1 &gt;.</p>
+<a name="details" id="details"></a><h2 class="groupheader">Definition</h2>
+<div class="textblock"><h3>template&lt;class T, int D = ::Eigen::Dynamic&gt;<br />
+class CGAL::Eigen_vector&lt; T, D &gt;</h3>
+
+<p>The class <code><a class="el" href="classCGAL_1_1Eigen__vector.html" title="The class Eigen_vector is a wrapper around Eigen vector type, which is a simple array of numbers...">Eigen_vector</a></code> is a wrapper around <code>Eigen</code> <a href="http://eigen.tuxfamily.org/dox/classEigen_1_1Matrix.html">vector type</a>, which is a simple array of numbers. </p>
+<dl class="models"><dt><b><a class="el" href="models.html#_models000007">Is Model Of:</a></b></dt><dd><p class="startdd"><code><a class="el" href="classSvdTraits_1_1Vector.html" title="Concept of vector type used by the concept SvdTraits. ">SvdTraits::Vector</a></code> </p>
+<p class="enddd"><code><a class="el" href="classSparseLinearAlgebraTraits__d_1_1Vector.html" title="SparseLinearAlgebraTraits_d::Vector is a concept of a vector that can be multiplied by a sparse matri...">SparseLinearAlgebraTraits_d::Vector</a></code>.</p>
+</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Number type.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="classCGAL_1_1Eigen__solver__traits.html" title="The class Eigen_solver_traits provides an interface to the sparse solvers of Eigen. ">CGAL::Eigen_solver_traits</a>&lt;T&gt;</code> </dd>
+<dd>
+<code><a class="el" href="structCGAL_1_1Eigen__sparse__matrix.html" title="The class Eigen_sparse_matrix is a wrapper around Eigen matrix type Eigen::SparseMatrix that represen...">CGAL::Eigen_sparse_matrix</a>&lt;T&gt;</code> </dd>
+<dd>
+<code><a class="el" href="structCGAL_1_1Eigen__sparse__symmetric__matrix.html" title="The class Eigen_sparse_symmetric_matrix is a wrapper around Eigen matrix type Eigen::SparseMatrix  ...">CGAL::Eigen_sparse_symmetric_matrix</a>&lt;T&gt;</code> </dd></dl>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods" id="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:af048a9bac8a7dd46ff2df253d6615242"><td class="memItemLeft" align="right" valign="top"><a id="af048a9bac8a7dd46ff2df253d6615242"></a>
+<a class="el" href="classCGAL_1_1Eigen__vector.html">Eigen_vector</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Eigen__vector.html#af048a9bac8a7dd46ff2df253d6615242">operator=</a> (const <a class="el" href="classCGAL_1_1Eigen__vector.html">Eigen_vector</a> &amp;other)</td></tr>
+<tr class="separator:af048a9bac8a7dd46ff2df253d6615242"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a11f01b23f077073fa4ac29a39750df75"><td class="memItemLeft" align="right" valign="top"><a id="a11f01b23f077073fa4ac29a39750df75"></a>
+<a class="el" href="classCGAL_1_1Eigen__vector.html">Eigen_vector</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Eigen__vector.html#a11f01b23f077073fa4ac29a39750df75">operator=</a> (const <a class="el" href="classCGAL_1_1Eigen__vector.html#a6d2c26800b032fcc74cd8cf2db6e314a">EigenType</a> &amp;other)</td></tr>
+<tr class="separator:a11f01b23f077073fa4ac29a39750df75"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aaac72d4074b2022ce6e609ed7ebf6b25"><td class="memItemLeft" align="right" valign="top"><a id="aaac72d4074b2022ce6e609ed7ebf6b25"></a>
+ </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Eigen__vector.html#aaac72d4074b2022ce6e609ed7ebf6b25">Eigen_vector</a> ()</td></tr>
+<tr class="memdesc:aaac72d4074b2022ce6e609ed7ebf6b25"><td class="mdescLeft"> </td><td class="mdescRight">Constructs a null vector. <br /></td></tr>
+<tr class="separator:aaac72d4074b2022ce6e609ed7ebf6b25"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a54af501a20426fcf1699f51f3df02499"><td class="memItemLeft" align="right" valign="top"><a id="a54af501a20426fcf1699f51f3df02499"></a>
+ </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Eigen__vector.html#a54af501a20426fcf1699f51f3df02499">Eigen_vector</a> (std::size_t <a class="el" href="classCGAL_1_1Eigen__vector.html#ac6b7343260636edeba168355a69aaf5a">dimension</a>)</td></tr>
+<tr class="memdesc:a54af501a20426fcf1699f51f3df02499"><td class="mdescLeft"> </td><td class="mdescRight">Create a vector initialized with zeros. <br /></td></tr>
+<tr class="separator:a54af501a20426fcf1699f51f3df02499"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:acc6c739c79394c7aa67ee764f15c07a9"><td class="memItemLeft" align="right" valign="top"><a id="acc6c739c79394c7aa67ee764f15c07a9"></a>
+ </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Eigen__vector.html#acc6c739c79394c7aa67ee764f15c07a9">Eigen_vector</a> (const <a class="el" href="classCGAL_1_1Eigen__vector.html">Eigen_vector</a> &amp;toCopy)</td></tr>
+<tr class="memdesc:acc6c739c79394c7aa67ee764f15c07a9"><td class="mdescLeft"> </td><td class="mdescRight">Copy constructor. <br /></td></tr>
+<tr class="separator:acc6c739c79394c7aa67ee764f15c07a9"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a4a64bb8b3fe812ed088a94a5c850c14a"><td class="memItemLeft" align="right" valign="top"><a id="a4a64bb8b3fe812ed088a94a5c850c14a"></a>
+ </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Eigen__vector.html#a4a64bb8b3fe812ed088a94a5c850c14a">~Eigen_vector</a> ()</td></tr>
+<tr class="separator:a4a64bb8b3fe812ed088a94a5c850c14a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ac6b7343260636edeba168355a69aaf5a"><td class="memItemLeft" align="right" valign="top"><a id="ac6b7343260636edeba168355a69aaf5a"></a>
+int </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Eigen__vector.html#ac6b7343260636edeba168355a69aaf5a">dimension</a> () const</td></tr>
+<tr class="memdesc:ac6b7343260636edeba168355a69aaf5a"><td class="mdescLeft"> </td><td class="mdescRight">Return the vector's number of coefficients. <br /></td></tr>
+<tr class="separator:ac6b7343260636edeba168355a69aaf5a"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:adb0f81e847f6d096ee9115210a46af80"><td class="memItemLeft" align="right" valign="top"><a id="adb0f81e847f6d096ee9115210a46af80"></a>
+const <a class="el" href="classCGAL_1_1Eigen__vector.html#a6d2c26800b032fcc74cd8cf2db6e314a">EigenType</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Eigen__vector.html#adb0f81e847f6d096ee9115210a46af80">eigen_object</a> () const</td></tr>
+<tr class="memdesc:adb0f81e847f6d096ee9115210a46af80"><td class="mdescLeft"> </td><td class="mdescRight">Return the internal vector wrapped by this object. <br /></td></tr>
+<tr class="separator:adb0f81e847f6d096ee9115210a46af80"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ae1c702ecfb0574bc0573f9c96ba43324"><td class="memItemLeft" align="right" valign="top"><a id="ae1c702ecfb0574bc0573f9c96ba43324"></a>
+<a class="el" href="classCGAL_1_1Eigen__vector.html#a6d2c26800b032fcc74cd8cf2db6e314a">EigenType</a> &amp; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Eigen__vector.html#ae1c702ecfb0574bc0573f9c96ba43324">eigen_object</a> ()</td></tr>
+<tr class="memdesc:ae1c702ecfb0574bc0573f9c96ba43324"><td class="mdescLeft"> </td><td class="mdescRight">Return the internal vector wrapped by this object. <br /></td></tr>
+<tr class="separator:ae1c702ecfb0574bc0573f9c96ba43324"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a16652cb42a7e011f6f842c7b28cfcc88"><td class="memItemLeft" align="right" valign="top"><a id="a16652cb42a7e011f6f842c7b28cfcc88"></a>
+void </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Eigen__vector.html#a16652cb42a7e011f6f842c7b28cfcc88">set</a> (std::size_t i, <a class="el" href="classCGAL_1_1Eigen__vector.html#ae8a6c0d21dfcd1ce954d81bd91af23e4">NT</a> value)</td></tr>
+<tr class="memdesc:a16652cb42a7e011f6f842c7b28cfcc88"><td class="mdescLeft"> </td><td class="mdescRight">Write access to a vector coefficient: <code>a_i</code> &lt;- <code>value</code>. <br /></td></tr>
+<tr class="separator:a16652cb42a7e011f6f842c7b28cfcc88"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:aa1686bcd7bab5eeca08da336a616378b"><td class="memItemLeft" align="right" valign="top"><a id="aa1686bcd7bab5eeca08da336a616378b"></a>
+<a class="el" href="classCGAL_1_1Eigen__vector.html#ae8a6c0d21dfcd1ce954d81bd91af23e4">NT</a> * </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Eigen__vector.html#aa1686bcd7bab5eeca08da336a616378b">vector</a> ()</td></tr>
+<tr class="memdesc:aa1686bcd7bab5eeca08da336a616378b"><td class="mdescLeft"> </td><td class="mdescRight">Return a pointer to the data array of this vector. <br /></td></tr>
+<tr class="separator:aa1686bcd7bab5eeca08da336a616378b"><td class="memSeparator" colspan="2"> </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group" id="member-group"></a>
+Types</h2></td></tr>
+<tr class="memitem:ae8a6c0d21dfcd1ce954d81bd91af23e4"><td class="memItemLeft" align="right" valign="top"><a id="ae8a6c0d21dfcd1ce954d81bd91af23e4"></a>
+typedef T </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Eigen__vector.html#ae8a6c0d21dfcd1ce954d81bd91af23e4">NT</a></td></tr>
+<tr class="separator:ae8a6c0d21dfcd1ce954d81bd91af23e4"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:a6d2c26800b032fcc74cd8cf2db6e314a"><td class="memItemLeft" align="right" valign="top"><a id="a6d2c26800b032fcc74cd8cf2db6e314a"></a>
+typedef ::Eigen::Matrix&lt; T, D, 1 &gt; </td><td class="memItemRight" valign="bottom"><a class="el" href="classCGAL_1_1Eigen__vector.html#a6d2c26800b032fcc74cd8cf2db6e314a">EigenType</a></td></tr>
+<tr class="memdesc:a6d2c26800b032fcc74cd8cf2db6e314a"><td class="mdescLeft"> </td><td class="mdescRight">The internal vector type from <a class="elRef" doxygen="/home/cgal-testsuite/cgal_doc_build/CGAL-5.3-I-162/doc/scripts/doc_1_8_13/doc_tags/Manual.tag:../Manual/" href="../Manual/thirdparty.html#thirdpartyEigen">Eigen</a>. <br /></td></tr>
+<tr class="separator:a6d2c26800b032fcc74cd8cf2db6e314a"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../Manual/namespaceCGAL.html">CGAL</a></li><li class="navelem"><a class="el" href="classCGAL_1_1Eigen__vector.html">Eigen_vector</a></li>
+    <li class="footer">Generated on Sun Jul 4 2021 21:32:45 for CGAL 5.3 - CGAL and Solvers by
+    <a href="https://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen" /></a> 1.8.13 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+
+
+</html>

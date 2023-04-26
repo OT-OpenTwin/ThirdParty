@@ -1,0 +1,527 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="https://doc.cgal.org/latest/Point_set_3/group__PkgPointSet3IODeprecated.html"/>
+
+<link rel="icon" type="image/png" href="../Manual/g-196x196-doc.png" />
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<meta name="generator" content="Doxygen 1.8.13" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CGAL 5.3 - 3D Point Set: Input/Output (Deprecated)</title>
+<!-- <link href="../Manual/tabs.css" rel="stylesheet" type="text/css"/> -->
+<script type="text/javascript" src="../Manual/jquery.js"></script>
+<script type="text/javascript" src="../Manual/dynsections.js"></script>
+<!-- Manually include treeview and search to avoid bloat and to fix
+     paths to the directory Manual . -->
+<!-- $.treeview -->
+<!-- $.search -->
+<link href="navtree.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/search/searchdata.js"></script>
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../Manual/search/search.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Manual/search/search.js"></script>
+<!-- Manually done below. -->
+<link href="../Manual/stylesheet.css" rel="stylesheet" type="text/css" />
+<!-- This should probably be an extrastylesheet instead of hardcoded. -->
+<link href="../Manual/cgal_stylesheet.css" rel="stylesheet" type="text/css" />
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+//&lt;![CDATA[
+MathJax.Hub.Config(
+{
+  TeX: {
+      Macros: {
+          qprel: [ "{\\gtreqless}", 0],
+          qpx: [ "{\\mathbf{x}}", 0],
+          qpl: [ "{\\mathbf{l}}", 0],
+          qpu: [ "{\\mathbf{u}}", 0],
+          qpc: [ "{\\mathbf{c}}", 0],
+          qpb: [ "{\\mathbf{b}}", 0],
+          qpy: [ "{\\mathbf{y}}", 0],
+          qpw: [ "{\\mathbf{w}}", 0],
+          qplambda: [ "{\\mathbf{\\lambda}}", 0],
+          ssWpoint: [ "{\\bf #1}", 1],
+          ssWeight: [ "{w_{#1}}", 1],
+          dabs: [ "{\\parallel\\! #1 \\!\\parallel}", 1],
+          E: [ "{\\mathrm{E}}", 0],
+          A: [ "{\\mathrm{A}}", 0],
+          R: [ "{\\mathrm{R}}", 0],
+          N: [ "{\\mathrm{N}}", 0],
+          Q: [ "{\\mathrm{Q}}", 0],
+          Z: [ "{\\mathrm{Z}}", 0],
+          ccSum: [ "{\\sum_{#1}^{#2}{#3}}", 3],
+          ccProd: [ "{\\prod_{#1}^{#2}{#3}}", 3],
+          pyr: [ "{\\operatorname{Pyr}}", 0],
+          aff: [ "{\\operatorname{aff}}", 0],
+          Ac: [ "{\\cal A}", 0],
+          Sc: [ "{\\cal S}", 0],
+      }
+  }
+}
+);
+//]]&gt;
+</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
+<script src="../Manual/hacks.js" type="text/javascript"></script>
+<script src="modules.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="back-nav">
+  <ul>
+    <li><a href="https://www.cgal.org/">cgal.org</a></li>
+    <li><a href="../Manual/index.html">Top</a></li>
+    <li><a href="../Manual/general_intro.html">Getting Started</a></li>
+    <li><a href="../Manual/tutorials.html">Tutorials</a></li>
+    <li><a href="../Manual/packages.html">Package Overview</a></li>
+    <li><a href="../Manual/how_to_cite_cgal.html">Acknowledging CGAL</a></li>
+  </ul>
+  <!-- In a package SEARCHENGINE = false, so we cannot use 
+       insertion. That's why we have to do it manually here. Notice
+       that we also take pngs from the Manual. -->
+  <div id="MSearchBox" class="MSearchBoxInactive">
+    <span class="left">
+      <img id="MSearchSelect" src="../Manual/search/mag_sel.png" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" alt="" />
+      <input type="text" id="MSearchField" value="Search" accesskey="S" onfocus="searchBox.OnSearchFieldFocus(true)" onblur="searchBox.OnSearchFieldFocus(false)" onkeyup="searchBox.OnSearchFieldChange(event)" />
+    </span><span class="right">
+      <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../Manual/search/close.png" alt="" /></a>
+    </span>
+  </div>
+</div>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">CGAL 5.3 - 3D Point Set
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- Code below is usually inserted by doxygen when SEARCHENGINE =
+     true. Notice that the path to the search directory is adjusted to
+     the top-level.-->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../Manual/search",false,'Search');
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.13 -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync" style="display: none"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('group__PkgPointSet3IODeprecated.html','');});
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle">
+<div class="title">Input/Output (Deprecated)<div class="ingroups"><a class="el" href="group__PkgPointSet3Ref.html">3D Point Set Reference</a> » <a class="el" href="group__PkgPointSet3IO.html">Input/Output</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader"> </h2>
+<p>These I/O functions are deprecated and newer versions should be used. </p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members" id="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga4d2ca758fa2f51d78af946095c159253"><td class="memTemplParams" colspan="2">template&lt;typename Point , typename Vector &gt; </td></tr>
+<tr class="memitem:ga4d2ca758fa2f51d78af946095c159253"><td class="memTemplItemLeft" align="right" valign="top">CGAL_DEPRECATED bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgPointSet3IODeprecated.html#ga4d2ca758fa2f51d78af946095c159253">CGAL::read_las_point_set</a> (std::istream &amp;is, <a class="el" href="classCGAL_1_1Point__set__3.html">CGAL::Point_set_3</a>&lt; Point, Vector &gt; &amp;point_set)</td></tr>
+<tr class="separator:ga4d2ca758fa2f51d78af946095c159253"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga48c35f061572c2d84281bb0a7cd2ae49"><td class="memTemplParams" colspan="2">template&lt;typename Point , typename Vector &gt; </td></tr>
+<tr class="memitem:ga48c35f061572c2d84281bb0a7cd2ae49"><td class="memTemplItemLeft" align="right" valign="top">CGAL_DEPRECATED bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgPointSet3IODeprecated.html#ga48c35f061572c2d84281bb0a7cd2ae49">CGAL::write_las_point_set</a> (std::ostream &amp;os, <a class="el" href="classCGAL_1_1Point__set__3.html">CGAL::Point_set_3</a>&lt; Point, Vector &gt; &amp;point_set)</td></tr>
+<tr class="separator:ga48c35f061572c2d84281bb0a7cd2ae49"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga6dda966aab992edc48cb2432df37be75"><td class="memTemplParams" colspan="2">template&lt;typename Point , typename Vector &gt; </td></tr>
+<tr class="memitem:ga6dda966aab992edc48cb2432df37be75"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgPointSet3IODeprecated.html#ga6dda966aab992edc48cb2432df37be75">CGAL::read_off_point_set</a> (std::istream &amp;is, <a class="el" href="classCGAL_1_1Point__set__3.html">CGAL::Point_set_3</a>&lt; Point, Vector &gt; &amp;point_set)</td></tr>
+<tr class="separator:ga6dda966aab992edc48cb2432df37be75"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga634f249532b8e072bc6aae2f8c8b449e"><td class="memTemplParams" colspan="2">template&lt;typename Point , typename Vector &gt; </td></tr>
+<tr class="memitem:ga634f249532b8e072bc6aae2f8c8b449e"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgPointSet3IODeprecated.html#ga634f249532b8e072bc6aae2f8c8b449e">CGAL::write_off_point_set</a> (std::ostream &amp;os, const <a class="el" href="classCGAL_1_1Point__set__3.html">CGAL::Point_set_3</a>&lt; Point, Vector &gt; &amp;point_set)</td></tr>
+<tr class="separator:ga634f249532b8e072bc6aae2f8c8b449e"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga0d3f9f83cf3f662a981c032022119973"><td class="memTemplParams" colspan="2">template&lt;typename Point , typename Vector &gt; </td></tr>
+<tr class="memitem:ga0d3f9f83cf3f662a981c032022119973"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgPointSet3IODeprecated.html#ga0d3f9f83cf3f662a981c032022119973">CGAL::read_ply_point_set</a> (std::istream &amp;is, <a class="el" href="classCGAL_1_1Point__set__3.html">CGAL::Point_set_3</a>&lt; Point, Vector &gt; &amp;point_set, std::string &amp;comments)</td></tr>
+<tr class="memdesc:ga0d3f9f83cf3f662a981c032022119973"><td class="mdescLeft"> </td><td class="mdescRight">reads a point set with properties from an input stream in ASCII or Binary PLY format.  <a href="group__PkgPointSet3IODeprecated.html#ga0d3f9f83cf3f662a981c032022119973">More...</a><br /></td></tr>
+<tr class="separator:ga0d3f9f83cf3f662a981c032022119973"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:ga2894fd021f3c68544e3ef5988e67c488"><td class="memTemplParams" colspan="2">template&lt;typename Point , typename Vector &gt; </td></tr>
+<tr class="memitem:ga2894fd021f3c68544e3ef5988e67c488"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgPointSet3IODeprecated.html#ga2894fd021f3c68544e3ef5988e67c488">CGAL::write_ply_point_set</a> (std::ostream &amp;os, const <a class="el" href="classCGAL_1_1Point__set__3.html">CGAL::Point_set_3</a>&lt; Point, Vector &gt; &amp;point_set, const std::string &amp;comments=std::string())</td></tr>
+<tr class="separator:ga2894fd021f3c68544e3ef5988e67c488"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gaa0de7bc47a3795e7398f42630fa703e6"><td class="memTemplParams" colspan="2">template&lt;typename Point , typename Vector &gt; </td></tr>
+<tr class="memitem:gaa0de7bc47a3795e7398f42630fa703e6"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgPointSet3IODeprecated.html#gaa0de7bc47a3795e7398f42630fa703e6">CGAL::read_xyz_point_set</a> (std::istream &amp;is, <a class="el" href="classCGAL_1_1Point__set__3.html">CGAL::Point_set_3</a>&lt; Point, Vector &gt; &amp;point_set)</td></tr>
+<tr class="separator:gaa0de7bc47a3795e7398f42630fa703e6"><td class="memSeparator" colspan="2"> </td></tr>
+<tr class="memitem:gad1dd965b96d8fe096cee41d99f71779b"><td class="memTemplParams" colspan="2">template&lt;typename Point , typename Vector &gt; </td></tr>
+<tr class="memitem:gad1dd965b96d8fe096cee41d99f71779b"><td class="memTemplItemLeft" align="right" valign="top">bool </td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__PkgPointSet3IODeprecated.html#gad1dd965b96d8fe096cee41d99f71779b">CGAL::write_xyz_point_set</a> (std::ostream &amp;os, const <a class="el" href="classCGAL_1_1Point__set__3.html">CGAL::Point_set_3</a>&lt; Point, Vector &gt; &amp;point_set)</td></tr>
+<tr class="separator:gad1dd965b96d8fe096cee41d99f71779b"><td class="memSeparator" colspan="2"> </td></tr>
+</table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga4d2ca758fa2f51d78af946095c159253"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4d2ca758fa2f51d78af946095c159253">◆ </a></span>read_las_point_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Point , typename Vector &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">CGAL_DEPRECATED bool CGAL::read_las_point_set </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp; </td>
+          <td class="paramname"><em>is</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Point__set__3.html">CGAL::Point_set_3</a>&lt; Point, Vector &gt; &amp; </td>
+          <td class="paramname"><em>point_set</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Point_set_3/IO/LAS.h&gt;</code></p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated:</a></b></dt><dd>This function is deprecated since CGAL 5.3, <a class="el" href="group__PkgPointSet3IO.html"><code>CGAL::IO::read_LAS()</code> </a> should be used instead.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">is</td><td>input stream. </td></tr>
+    <tr><td class="paramname">point_set</td><td>point set </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga6dda966aab992edc48cb2432df37be75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6dda966aab992edc48cb2432df37be75">◆ </a></span>read_off_point_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Point , typename Vector &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::read_off_point_set </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp; </td>
+          <td class="paramname"><em>is</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Point__set__3.html">CGAL::Point_set_3</a>&lt; Point, Vector &gt; &amp; </td>
+          <td class="paramname"><em>point_set</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Point_set_3/IO/OFF.h&gt;</code></p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000003">Deprecated:</a></b></dt><dd>This function is deprecated since CGAL 5.3, <a class="el" href="group__PkgPointSet3IO.html"><code>CGAL::IO::read_OFF()</code> </a> should be used instead.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">is</td><td>input stream. </td></tr>
+    <tr><td class="paramname">point_set</td><td>point set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga0d3f9f83cf3f662a981c032022119973"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0d3f9f83cf3f662a981c032022119973">◆ </a></span>read_ply_point_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Point , typename Vector &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::read_ply_point_set </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp; </td>
+          <td class="paramname"><em>is</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Point__set__3.html">CGAL::Point_set_3</a>&lt; Point, Vector &gt; &amp; </td>
+          <td class="paramname"><em>point_set</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp; </td>
+          <td class="paramname"><em>comments</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Point_set_3/IO/PLY.h&gt;</code></p>
+
+<p>reads a point set with properties from an input stream in ASCII or Binary PLY format. </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000005">Deprecated:</a></b></dt><dd>This function is deprecated since CGAL 5.3, <a class="el" href="group__PkgPointSet3IO.html"><code>CGAL::IO::read_PLY()</code> </a> should be used instead.</dd></dl>
+<ul>
+<li>the operator reads the vertex <code>point</code> property;</li>
+<li>if three PLY properties <code>nx</code>, <code>ny</code> and <code>nz</code> with type <code>float</code> or <code>double</code> are found, the normal map is added;</li>
+<li>if any other PLY property is found, a "[name]" property map is added, where <code>[name]</code> is the name of the PLY property.</li>
+</ul>
+<p>The <code>comments</code> parameter can be omitted. If provided, it will be used to store the potential comments found in the PLY header. Each line starting by "comment " in the header is appended to the <code>comments</code> string (without the "comment " word). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">is</td><td>input stream. </td></tr>
+    <tr><td class="paramname">point_set</td><td>point set </td></tr>
+    <tr><td class="paramname">comments</td><td>PLY comments. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="gaa0de7bc47a3795e7398f42630fa703e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa0de7bc47a3795e7398f42630fa703e6">◆ </a></span>read_xyz_point_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Point , typename Vector &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::read_xyz_point_set </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp; </td>
+          <td class="paramname"><em>is</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Point__set__3.html">CGAL::Point_set_3</a>&lt; Point, Vector &gt; &amp; </td>
+          <td class="paramname"><em>point_set</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Point_set_3/IO/XYZ.h&gt;</code></p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000007">Deprecated:</a></b></dt><dd>This function is deprecated since CGAL 5.3, <a class="el" href="group__PkgPointSet3IO.html"><code>CGAL::IO::read_XYZ()</code> </a> should be used instead.</dd></dl>
+
+</div>
+</div>
+<a id="ga48c35f061572c2d84281bb0a7cd2ae49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga48c35f061572c2d84281bb0a7cd2ae49">◆ </a></span>write_las_point_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Point , typename Vector &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">CGAL_DEPRECATED bool CGAL::write_las_point_set </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp; </td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCGAL_1_1Point__set__3.html">CGAL::Point_set_3</a>&lt; Point, Vector &gt; &amp; </td>
+          <td class="paramname"><em>point_set</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Point_set_3/IO/LAS.h&gt;</code></p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">Deprecated:</a></b></dt><dd>This function is deprecated since CGAL 5.3, <a class="el" href="group__PkgPointSet3IO.html"><code>CGAL::IO::write_LAS()</code> </a> should be used instead.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>output stream. </td></tr>
+    <tr><td class="paramname">point_set</td><td>point set </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga634f249532b8e072bc6aae2f8c8b449e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga634f249532b8e072bc6aae2f8c8b449e">◆ </a></span>write_off_point_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Point , typename Vector &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::write_off_point_set </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp; </td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Point__set__3.html">CGAL::Point_set_3</a>&lt; Point, Vector &gt; &amp; </td>
+          <td class="paramname"><em>point_set</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Point_set_3/IO/OFF.h&gt;</code></p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000004">Deprecated:</a></b></dt><dd>This function is deprecated since CGAL 5.3, <a class="el" href="group__PkgPointSet3IO.html"><code>CGAL::IO::write_OFF()</code> </a> should be used instead.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>output stream. </td></tr>
+    <tr><td class="paramname">point_set</td><td>point set </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga2894fd021f3c68544e3ef5988e67c488"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2894fd021f3c68544e3ef5988e67c488">◆ </a></span>write_ply_point_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Point , typename Vector &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::write_ply_point_set </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp; </td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Point__set__3.html">CGAL::Point_set_3</a>&lt; Point, Vector &gt; &amp; </td>
+          <td class="paramname"><em>point_set</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp; </td>
+          <td class="paramname"><em>comments</em> = <code>std::string()</code> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Point_set_3/IO/PLY.h&gt;</code></p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000006">Deprecated:</a></b></dt><dd>This function is deprecated since CGAL 5.3, <a class="el" href="group__PkgPointSet3IO.html"><code>CGAL::IO::write_PLY()</code> </a> should be used instead.</dd></dl>
+
+</div>
+</div>
+<a id="gad1dd965b96d8fe096cee41d99f71779b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad1dd965b96d8fe096cee41d99f71779b">◆ </a></span>write_xyz_point_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Point , typename Vector &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CGAL::write_xyz_point_set </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp; </td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classCGAL_1_1Point__set__3.html">CGAL::Point_set_3</a>&lt; Point, Vector &gt; &amp; </td>
+          <td class="paramname"><em>point_set</em> </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;CGAL/Point_set_3/IO/XYZ.h&gt;</code></p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000008">Deprecated:</a></b></dt><dd>This function is deprecated since CGAL 5.3, <a class="el" href="group__PkgPointSet3IO.html"><code>CGAL::IO::write_XYZ()</code> </a> should be used instead.</dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
+<!-- start footer part -->
+<!-- The footer div is not part of the default but we require it to
+move the footer to the bottom of the page. -->
+<div id="footer">
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Sun Jul 4 2021 21:32:47 for CGAL 5.3 - 3D Point Set by
+    <a href="https://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen" /></a> 1.8.13 </li>
+  </ul>
+</div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+var group__PMP__locate__grp =
+[
+    [ "Barycentric_coordinates", "group__PMP__locate__grp.html#ga6581d3f34a14d533fdab2e6beef2873f", null ],
+    [ "descriptor_variant", "group__PMP__locate__grp.html#ga7a6ffe00d9e7abc54b0f73fcbd1cdd60", null ],
+    [ "Face_location", "group__PMP__locate__grp.html#ga35604eae6b378b8254a3f41f1a274b9e", null ],
+    [ "barycentric_coordinates", "group__PMP__locate__grp.html#gadd9f94997d1963426d38305192345564", null ],
+    [ "build_AABB_tree", "group__PMP__locate__grp.html#ga4abc66db3293bb84775103173183eb0a", null ],
+    [ "construct_point", "group__PMP__locate__grp.html#ga951333641d9cd44a1ece0b3f179ba0b5", null ],
+    [ "get_descriptor_from_location", "group__PMP__locate__grp.html#ga383397e2e3636d311000a46988311014", null ],
+    [ "is_in_face", "group__PMP__locate__grp.html#ga475c1e0acddee2198db30289fa331b1b", null ],
+    [ "is_in_face", "group__PMP__locate__grp.html#gaf90da1db1204afbf66dbebd17d2e3e27", null ],
+    [ "is_on_face_border", "group__PMP__locate__grp.html#ga455a6b4f1edfd88358a1150c870691e9", null ],
+    [ "is_on_halfedge", "group__PMP__locate__grp.html#gad94f826508b2a7d47bffe1c9e9164fa2", null ],
+    [ "is_on_mesh_border", "group__PMP__locate__grp.html#ga905f903215a1123afef50b74d5424bda", null ],
+    [ "is_on_vertex", "group__PMP__locate__grp.html#ga90eb394aab0e2f1a78d5f69c87cdcb53", null ],
+    [ "locate", "group__PMP__locate__grp.html#ga31ac15330b5a5aef19bd22770f3c7560", null ],
+    [ "locate", "group__PMP__locate__grp.html#ga4b9072f21a8a991965f5a38edd693673", null ],
+    [ "locate_in_adjacent_face", "group__PMP__locate__grp.html#ga16079fb353aea6a155b9153af8a343bc", null ],
+    [ "locate_in_face", "group__PMP__locate__grp.html#ga5968eb76dd201aefad0d61d7308cec14", null ],
+    [ "locate_on_halfedge", "group__PMP__locate__grp.html#ga4236e3fa40c2cb569571a4edfc358d9c", null ],
+    [ "locate_vertex", "group__PMP__locate__grp.html#ga66b4eb9881eee5abc0d46e914377b145", null ],
+    [ "locate_vertex", "group__PMP__locate__grp.html#ga96a18300345279e25bd4fa9b389a0eff", null ],
+    [ "locate_with_AABB_tree", "group__PMP__locate__grp.html#ga92106c8af15fab1d186c5a33e6318b8a", null ],
+    [ "locate_with_AABB_tree", "group__PMP__locate__grp.html#gabd078f90a9a901ceca4b874d877a5180", null ],
+    [ "random_location_on_face", "group__PMP__locate__grp.html#gafbe7f0d61f19c7a7d254fd1282f8cdc2", null ],
+    [ "random_location_on_halfedge", "group__PMP__locate__grp.html#gaebabe64806bcd91bb4ab9ed2c15bec11", null ],
+    [ "random_location_on_mesh", "group__PMP__locate__grp.html#ga931d72ffcbc3063287e5487be6d61486", null ]
+];

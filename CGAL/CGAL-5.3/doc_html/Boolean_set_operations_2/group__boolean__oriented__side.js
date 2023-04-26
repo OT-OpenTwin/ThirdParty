@@ -1,0 +1,27 @@
+var group__boolean__oriented__side =
+[
+    [ "oriented_side", "group__boolean__oriented__side.html#gac6162f4d4e8db605d73b5fdb38dbf9e1", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#gaf7907ce485fcbdf49cee892c05eb6ccd", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#gad9c557e1648d40716b9abde027708784", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#ga958dd0458d5f10aa115ff69688b58848", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#gaf1330835f3c52d47697cc3e5eb60ee92", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#ga61106129c24f66f7e77547bc7ed3e009", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#ga510d42f9b3c2736653b79e2279464d30", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#gace74c04b0a13a369d1ab9182ab347fbd", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#gae16559a048d2b5a5221543a28556eb14", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#gafa9dd6e6e93e33359608e7e5d3ff541a", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#ga67a05fc6cb5ca5629abfe9462102924d", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#ga5a00674bf0c793634b856cfb623a5457", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#gad5c3fff7a78ae422dd323fcaf0410f9c", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#ga6c70fe5e7e2893bea79e627812b64739", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#ga330c1a320871c1a88fefc3ae6d1810e2", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#gaf97662919e95a45f6ec2033a8a392ca3", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#ga587095916b470ab34916aa43a8ef9046", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#gaaaadc38264b92e390f5cd17c89630d60", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#gab672810feef2a815ff6d20fd8904008c", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#ga74f660d057ea4c67a1ea6dc12fd141c7", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#ga1de1de1aa06e694353f797bb5d2c0485", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#gaf7df014dbc4407da83d2a6bb35097f6c", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#ga177523e3bce988fed922d1feb537a8c6", null ],
+    [ "oriented_side", "group__boolean__oriented__side.html#ga6b0ce2a27bfb03f037590c03666805fd", null ]
+];
