@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- timer.qdoc -->
+  <title>Timer | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="examples-gammaray.html">Examples</a></li>
+<li>Timer</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#problem">Problem</a></li>
+<li class="level1"><a href="#investigation">Investigation</a></li>
+<li class="level2"><a href="#qtimer-and-qml-timer">QTimer and QML Timer</a></li>
+<li class="level2"><a href="#qtimerevent">QTimerEvent</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Timer</h1>
+<span class="subtitle"></span>
+<!-- $$$timer-brief -->
+<p>Analyze out of control timers.</p>
+<!-- @@@timer -->
+<!-- $$$timer-description -->
+<div class="descr"> <a name="details"></a>
+<p>This examples shows <a href="http://doc.qt.io/GammaRay">GammaRay</a>'s capabilities in analyzing timer activity.</p>
+<a name="problem"></a>
+<h2 id="problem">Problem</h2>
+<p>The example application shows two buttons, clicking any one of them is supposed to trigger a deferred repaint of the application using two variations of a single-shot timer. In both cases we however observe 100% CPU load afterwards.</p>
+<p>Analyzing the CPU load with a debugger or profiler points to frequently firing timers, but doesn't support us in finding where that timer actually came from.</p>
+<a name="investigation"></a>
+<h2 id="investigation">Investigation</h2>
+<p>While the target application is running, open the <a href="gammaray-timertop.html">Timers</a> view in <a href="http://doc.qt.io/GammaRay">GammaRay</a> to obtain a list of all active timers. Sorting by <b>Total Wakeups</b> or <b>Wakeups/Sec</b> allows to quickly identify timers running amok, such as the recurring 0-interval timers in our example.</p>
+<p>When working with a debug build, the context menu on the <a href="gammaray-timertop.html">Timers</a> view allows you directly to navigate to the source code of the created timer object, or timer event receiver.</p>
+<a name="qtimer-and-qml-timer"></a>
+<h3 >QTimer and QML Timer</h3>
+<p>When using timer objects such as <a href="../qtcore/qtimer.html">QTimer</a> or a QML Timer, you can further inspect those by switching to the <a href="gammaray-qobject-browser.html">Object Browser</a> via the context menu in the <a href="gammaray-timertop.html">Timers</a> view. In the object browser the following inspection views are particularly useful for timer objects:</p>
+<ul>
+<li>The <a href="gammaray-connections.html">Connections</a> view allows you to inspect to which action the timeout() signal is connected to, which can help to identify the timer if source navigation is not available.</li>
+<li>The <a href="gammaray-methods.html">Methods</a> view allows to manually stop timers, to verify a specific timer is the source of a problem, or to observe if it gets erroneously restarted.</li>
+</ul>
+<p>In the above example, we notice that the <a href="../qtcore/qtimer.html#singleShot-prop">QTimer::singleShot</a> property was accidentally left on false, causing the timer to fire constantly.</p>
+<pre class="cpp"><span class="keyword">auto</span> timer <span class="operator">=</span> <span class="keyword">new</span> <span class="type"><a href="../qtcore/qtimer.html">QTimer</a></span>(<span class="operator">&amp;</span>w);
+<span class="type"><a href="../qtcore/qobject.html">QObject</a></span><span class="operator">::</span>connect(timer<span class="operator">,</span> SIGNAL(timeout())<span class="operator">,</span> <span class="operator">&amp;</span>w<span class="operator">,</span> SLOT(repaint()));
+timer<span class="operator">-</span><span class="operator">&gt;</span>setInterval(<span class="number">0</span>);
+<span class="comment">// timer-&gt;setSingleShot(true);</span>
+timer<span class="operator">-</span><span class="operator">&gt;</span>start();</pre>
+<p>The <a href="gammaray-signal-plotter.html">Signal Plotter</a> view of <a href="http://doc.qt.io/GammaRay">GammaRay</a> can provide additional help in finding too frequently triggering timer object, by means of observing their timeout signals.</p>
+<a name="qtimerevent"></a>
+<h3 >QTimerEvent</h3>
+<p>Raw timer events are less commonly used than timer object and provide fewer options for runtime diagnostics unfortunately.</p>
+<p>In our example the source of the problem is a missing <a href="../qtcore/qobject.html#killTimer">QObject::killTimer</a> call in the <a href="gammaray-timer-example.html#qtimerevent">QTimerEvent</a> handler.</p>
+<pre class="cpp"><span class="type">void</span> timerEvent(<span class="type"><a href="../qtcore/qtimerevent.html">QTimerEvent</a></span> <span class="operator">*</span>event) override
+{
+    Q_UNUSED(event);
+    m_widget<span class="operator">-</span><span class="operator">&gt;</span>repaint();
+    <span class="comment">// killTimer(event-&gt;timerId());</span>
+}</pre>
+<p>Files:</p>
+<ul>
+<li><a href="gammaray-timer-timer-cpp.html">timer/timer.cpp</a></li>
+<li><a href="gammaray-timer-timer-pro.html">timer/timer.pro</a></li>
+</ul>
+</div>
+<!-- @@@timer -->
+</body>
+</html>

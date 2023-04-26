@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- gammaray-client.qdoc -->
+  <title>GammaRay Client | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li>GammaRay Client</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+  <link rel="prev" href="gammaray-launcher-gui.html" />
+  <link rel="next" href="gammaray-qtcreator.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="gammaray-launcher-gui.html">Graphical Launcher</a>
+<a class="nextPage" href="gammaray-qtcreator.html">Qt Creator Integration</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#overview">Overview</a></li>
+<li class="level2"><a href="#tools">Tools</a></li>
+<li class="level2"><a href="#object-inspection">Object Inspection</a></li>
+<li class="level2"><a href="#object-and-source-code-navigation">Object and Source Code Navigation</a></li>
+<li class="level2"><a href="#finding-objects">Finding Objects</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">GammaRay Client</h1>
+<span class="subtitle"></span>
+<!-- $$$gammaray-client.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="overview"></a>
+<h2 id="overview">Overview</h2>
+<p>After launcher a target application with <a href="http://doc.qt.io/GammaRay">GammaRay</a>, or attaching or connecting to a running one, you are presented with the <a href="http://doc.qt.io/GammaRay">GammaRay</a> client. This is the primary user interface for exploring what is going on inside the target application.</p>
+<p>The <a href="http://doc.qt.io/GammaRay">GammaRay</a> client is available in two forms:</p>
+<ul>
+<li>as a standalone application as depicted in the following screenshot</li>
+<li>as <a href="https://doc.qt.io/qtcreator">Qt Creator</a> plugin (for <a href="https://doc.qt.io/QtAutomotiveSuite">Qt Automotive Suite</a> only)</li>
+</ul>
+<p class="centerAlign"><img src="images/gammaray-object-inspector.png" alt="" /></p><a name="tools"></a>
+<h3 >Tools</h3>
+<p><a href="http://doc.qt.io/GammaRay">GammaRay</a> contains a number of different tools, each providing a different view on the activities and data of the target application. A tool typically focuses on a specific Qt framework such at <a href="../qtquick/qtquick-index.html">Qt Quick</a> or state machines, or model/view.</p>
+<p>Switching between tools is done via the tool list on the left side of the <a href="http://doc.qt.io/GammaRay">GammaRay</a> client window. Only tools applicable to the current target applications are active. Inactive tools can be hidden via the context menu.</p>
+<p>An overview of all available tools can be found in the <a href="gammaray-tools.html">Tools</a> section of this manual.</p>
+<a name="object-inspection"></a>
+<h3 >Object Inspection</h3>
+<p>Many tools in <a href="http://doc.qt.io/GammaRay">GammaRay</a> deal with a set of objects of the target application, most commonly <a href="../qtcore/qobject.html">QObject</a> sub-classes. To explore the properties of a selected object, those tools typically show the <a href="gammaray-object-inspection.html">Object Inspection</a> view on the right hand side (as seen in the above screenshot). The object inspection view contains a number of different tabs, depending on the type of the object.</p>
+<p>An overview of all available object inspection tabs can be found in the <a href="gammaray-object-inspection.html">Object Inspection</a> section of this manual.</p>
+<a name="object-and-source-code-navigation"></a>
+<h3 >Object and Source Code Navigation</h3>
+<p>Different tools might show different aspects of the same object, so it's useful to be able to navigate to the current object in other tools. This is offered in most places via the context menu.</p>
+<p>Equally, it is useful to navigate to the code that declared or instantiated an object, this is offered also via the context menu. This information is available under the following conditions:</p>
+<ul>
+<li>For objects created via QML you can navigate to the QML source line triggering the creation.</li>
+<li>For type declared in QML you can navigate to the QML source file containing the type.</li>
+<li>For objects created via C++ you can navigate to the C++ source code line creating the object given you have a debug build of the target code.</li>
+</ul>
+<p>If you are using <a href="http://doc.qt.io/GammaRay">GammaRay</a> stand-alone (ie. not inside Qt Creator), you can configure the text editor to use for source code navigation via <b>Settings</b> &gt; <b>Code Navigation</b>. Depending on your platform, a number of common pre-configured editors and IDEs can be selected. A custom editor command line can also be specified, using the following placeholders:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Placeholder</th><th >Content</th></tr></thead>
+<tr valign="top" class="odd"><td ><code>%f</code></td><td >The full path to the source file.</td></tr>
+<tr valign="top" class="even"><td ><code>%l</code></td><td >The line number.</td></tr>
+<tr valign="top" class="odd"><td ><code>%c</code></td><td >The column number.</td></tr>
+</table></div>
+<a name="finding-objects"></a>
+<h3 >Finding Objects</h3>
+<p>Finding the right objects in the many thousands existing in a target application typically can be challenging. <a href="http://doc.qt.io/GammaRay">GammaRay</a> supports this by the following means:</p>
+<ul>
+<li>Search fields for most object tree or list views, to quickly filter by type, object name or other displayed properties.</li>
+<li>In-application object picking for visual elements, using Ctrl+Shift+left click on the target application.</li>
+</ul>
+</div>
+<!-- @@@gammaray-client.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="gammaray-launcher-gui.html">Graphical Launcher</a>
+<a class="nextPage" href="gammaray-qtcreator.html">Qt Creator Integration</a>
+</p>
+</body>
+</html>

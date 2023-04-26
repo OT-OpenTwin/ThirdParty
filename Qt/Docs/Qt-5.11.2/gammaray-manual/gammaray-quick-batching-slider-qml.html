@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Slider.qml Example File | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="gammaray-quick-batching-example.html">Qt Quick Batching</a></li>
+<li>Slider.qml Example File</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Slider.qml Example File</h1>
+<span class="subtitle">quick-batching/Slider.qml</span>
+<!-- $$$quick-batching/Slider.qml-description -->
+<div class="descr"> <a name="details"></a>
+<pre class="qml"><span class="comment">/*
+  Slider.qml
+
+  This file is part of GammaRay, the Qt application inspection and
+  manipulation tool.
+
+  Copyright (C) 2016-2018 Klarälvdalens Datakonsult AB, a KDAB Group company, info@kdab.com
+  Author: Volker Krause &lt;volker.krause@kdab.com&gt;
+
+  Licensees holding valid commercial KDAB GammaRay licenses may use this file in
+  accordance with GammaRay Commercial License Agreement provided with the Software.
+
+  Contact info@kdab.com if any conditions of this licensing are not clear to you.
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+*/</span>
+
+import QtQuick 2.0
+
+<span class="type"><a href="../qtquick/qml-qtquick-item.html">Item</a></span> {
+    <span class="name">id</span>: <span class="name">root</span>
+
+    property <span class="type"><a href="../qtqml/qml-bool.html">bool</a></span> <span class="name">mirrorSlider</span>: <span class="number">false</span>
+    property <span class="type"><a href="../qtqml/qml-real.html">real</a></span> <span class="name">minValue</span>: <span class="number">0</span>
+    property <span class="type"><a href="../qtqml/qml-real.html">real</a></span> <span class="name">maxValue</span>: <span class="number">100</span>
+    property <span class="type"><a href="../qtqml/qml-real.html">real</a></span> <span class="name">value</span>: <span class="number">50</span>
+
+    <span class="name">transform</span>: <span class="name">Rotation</span> {
+        <span class="name">angle</span>: <span class="name">mirrorSlider</span> ? <span class="number">180</span> : <span class="number">0</span>
+        <span class="type">axis</span> { <span class="name">x</span>: <span class="number">0</span>; <span class="name">y</span>: <span class="number">1</span>; <span class="name">z</span>: <span class="number">0</span> }
+        <span class="type">origin</span> { <span class="name">x</span>: <span class="name">root</span>.<span class="name">width</span><span class="operator">/</span><span class="number">2</span>; <span class="name">y</span>: <span class="name">root</span>.<span class="name">height</span><span class="operator">/</span><span class="number">2</span> }
+    }
+
+    <span class="type"><a href="../qtquick/qml-qtquick-listview.html">ListView</a></span> {
+        <span class="name">id</span>: <span class="name">view</span>
+        <span class="name">anchors</span>.fill: <span class="name">parent</span>
+        <span class="name">anchors</span>.rightMargin: <span class="name">handle</span>.<span class="name">width</span>
+
+        <span class="name">rotation</span>: <span class="number">180</span> <span class="comment">// for bottom -&gt; top layouting</span>
+        <span class="name">orientation</span>: <span class="name">Qt</span>.<span class="name">Vertical</span>
+        <span class="name">interactive</span>: <span class="number">false</span>
+
+        property <span class="type"><a href="../qtqml/qml-int.html">int</a></span> <span class="name">itemHeight</span>: <span class="number">7</span>
+        <span class="name">model</span>: <span class="name">height</span><span class="operator">/</span><span class="name">itemHeight</span>
+
+        <span class="name">currentIndex</span>: (<span class="name">root</span>.<span class="name">value</span> <span class="operator">-</span> <span class="name">root</span>.<span class="name">minValue</span>) <span class="operator">/</span> (<span class="name">root</span>.<span class="name">maxValue</span> <span class="operator">-</span> <span class="name">root</span>.<span class="name">minValue</span>) <span class="operator">*</span> <span class="name">view</span>.<span class="name">count</span>
+        <span class="name">onCurrentItemChanged</span>: <span class="keyword">if</span> (<span class="name">currentItem</span>) <span class="name">handle</span>.<span class="name">currentItemY</span> <span class="operator">=</span> <span class="name">currentItem</span>.<span class="name">y</span>
+
+        <span class="name">delegate</span>: <span class="name">Item</span> {
+            <span class="name">width</span>: <span class="name">view</span>.<span class="name">width</span>
+            <span class="name">height</span>: <span class="name">view</span>.<span class="name">itemHeight</span>
+            property <span class="type"><a href="../qtqml/qml-int.html">int</a></span> <span class="name">entry</span>: <span class="name">index</span>
+
+            <span class="type"><a href="../qtquick/qml-qtquick-rectangle.html">Rectangle</a></span> {
+                property <span class="type"><a href="../qtqml/qml-bool.html">bool</a></span> <span class="name">active</span>: <span class="name">view</span>.<span class="name">currentIndex</span> <span class="operator">&gt;=</span> <span class="name">index</span>
+                <span class="name">anchors</span>.right: <span class="name">parent</span>.<span class="name">right</span>
+                <span class="name">width</span>: <span class="name">parent</span>.<span class="name">width</span>
+                <span class="name">height</span>: <span class="name">parent</span>.<span class="name">height</span> <span class="operator">-</span> <span class="number">3</span>
+                <span class="name">color</span>: <span class="name">Qt</span>.<span class="name">hsva</span>((<span class="name">index</span><span class="operator">/</span><span class="name">view</span>.<span class="name">count</span>)<span class="operator">/</span><span class="number">3</span>, <span class="name">active</span> ? <span class="number">1.0</span> : <span class="number">0.5</span>, <span class="name">active</span> ? <span class="number">1.0</span> : <span class="number">0.75</span>);
+                <span class="name">scale</span>: <span class="name">active</span> ? <span class="number">1.0</span> : <span class="number">0.9</span>
+            }
+        }
+
+        <span class="type"><a href="../qtquick/qml-qtquick-rectangle.html">Rectangle</a></span> {
+            <span class="name">id</span>: <span class="name">handle</span>
+            property <span class="type"><a href="../qtqml/qml-real.html">real</a></span> <span class="name">currentItemY</span>: <span class="name">view</span>.<span class="name">currentItem</span> ? <span class="name">view</span>.<span class="name">currentItem</span>.<span class="name">y</span> : <span class="number">0</span>
+            <span class="name">anchors</span>.right: <span class="name">parent</span>.<span class="name">left</span>
+            <span class="name">width</span>: <span class="number">10</span>
+            <span class="name">height</span>: <span class="name">width</span>
+            <span class="name">radius</span>: <span class="number">5</span>
+            <span class="name">color</span>: <span class="string">&quot;darkgray&quot;</span>
+            <span class="name">y</span>: <span class="name">currentItemY</span> <span class="operator">-</span> <span class="name">height</span> <span class="operator">/</span> <span class="number">2</span> <span class="operator">+</span> <span class="number">3</span>
+            <span class="name">rotation</span>: <span class="name">root</span>.<span class="name">mirrorSlider</span> ? -<span class="number">180</span> : <span class="number">180</span>
+        }
+
+        <span class="type"><a href="../qtquick/qml-qtquick-mousearea.html">MouseArea</a></span> {
+            <span class="name">id</span>: <span class="name">dragArea</span>
+            <span class="name">anchors</span>.fill: <span class="name">view</span>
+            <span class="name">hoverEnabled</span>: <span class="number">false</span>
+            <span class="name">preventStealing</span>: <span class="number">true</span>
+            <span class="name">onClicked</span>: <span class="name">updateCurrentIndex</span>(<span class="name">mouse</span>.<span class="name">x</span>, <span class="name">mouse</span>.<span class="name">y</span>)
+            <span class="name">onPositionChanged</span>: <span class="name">updateCurrentIndex</span>(<span class="name">mouse</span>.<span class="name">x</span>, <span class="name">mouse</span>.<span class="name">y</span>)
+
+            <span class="keyword">function</span> <span class="name">updateCurrentIndex</span>(<span class="name">x</span>, y) {
+                var <span class="name">item</span> = <span class="name">view</span>.<span class="name">itemAt</span>(<span class="name">x</span>, <span class="name">y</span>);
+                <span class="keyword">if</span> (<span class="name">item</span>) {
+                    var <span class="name">newValue</span> = <span class="name">item</span>.<span class="name">entry</span> <span class="operator">/</span> <span class="name">view</span>.<span class="name">count</span> <span class="operator">*</span> (<span class="name">root</span>.<span class="name">maxValue</span> <span class="operator">-</span> <span class="name">root</span>.<span class="name">minValue</span>) <span class="operator">+</span> <span class="name">root</span>.<span class="name">minValue</span>;
+                    <span class="name">root</span>.<span class="name">value</span> <span class="operator">=</span> <span class="name">Math</span>.<span class="name">min</span>(<span class="name">root</span>.<span class="name">maxValue</span>, <span class="name">Math</span>.<span class="name">max</span>(<span class="name">root</span>.<span class="name">minValue</span>, <span class="name">newValue</span>));
+                }
+            }
+        }
+    }
+}</pre>
+</div>
+<!-- @@@quick-batching/Slider.qml -->
+</body>
+</html>

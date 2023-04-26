@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- gammaray-qt3dgeometry.qdoc -->
+  <title>Qt3D Geometry Inspector | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li>Qt3D Geometry Inspector</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+  <link rel="prev" href="gammaray-widget-attributes.html" />
+  <link rel="next" href="gammaray-application-attributes.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="gammaray-widget-attributes.html">Widget Attributes</a>
+<a class="nextPage" href="gammaray-application-attributes.html">Application Attributes</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#overview">Overview</a></li>
+<li class="level2"><a href="#backface-culling">Backface Culling</a></li>
+<li class="level2"><a href="#normal-vectors">Normal Vectors</a></li>
+<li class="level2"><a href="#diagnostic-shading-modes">Diagnostic Shading Modes</a></li>
+<li class="level2"><a href="#raw-buffer-view">Raw Buffer View</a></li>
+<li class="level1"><a href="#examples">Examples</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Qt3D Geometry Inspector</h1>
+<span class="subtitle"></span>
+<!-- $$$gammaray-qt3dgeometry-inspector.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="overview"></a>
+<h2 id="overview">Overview</h2>
+<p>The <a href="../qt3d/qt3d-index.html">Qt 3D</a> geometry inspector allows you to look at vertices and their associated attributes used by the <a href="../qt3d/qt3d-index.html">Qt 3D</a> renderer in various ways. The geometry inspector is available when one of the following objects has been selected:</p>
+<ul>
+<li>A <a href="../qt3d/qt3drender-qgeometry.html">Qt3DRender::QGeometry</a> instance.</li>
+<li>A <a href="../qt3d/qt3drender-qbuffer.html">Qt3DRender::QBuffer</a> or a <a href="../qt3d/qt3drender-qattribute.html">Qt3DRender::QAttribute</a> belonging to a <a href="../qt3d/qt3drender-qgeometry.html">Qt3DRender::QGeometry</a>.</li>
+<li>A <a href="../qt3d/qt3dcore-qentity.html">Qt3DCore::QEntity</a> with a geometry component attached to it.</li>
+</ul>
+<p class="centerAlign"><img src="images/gammaray-qt3d-geometry-wireframe.png" alt="" /></p><p>The <a href="../qt3d/qt3d-index.html">Qt 3D</a> geometry inspector provides a wireframe view of the vertices, as well as a raw buffer view. It is most easily accessible from within the entity tree view of the <a href="gammaray-qt3d-inspector.html">Qt3D Inspector</a>.</p>
+<p>The wireframe view supports a number of interactions:</p>
+<ul>
+<li>Left mouse button drag changes the view direction.</li>
+<li>Middle mouse button drag moves the camera in an orbit around the geometry.</li>
+<li>Arrow keys and W/A/S/D keys allow to move the camera in a first person view.</li>
+<li>Mouse wheel changes zoom.</li>
+<li>Left mouse click on a triangle face selects the corresponding elements in the raw buffer view.</li>
+</ul>
+<a name="backface-culling"></a>
+<h3 >Backface Culling</h3>
+<p>The wireframe view by default does backface culling as the renderer would do as well. This can be disabled via the corresponding action in the toolbar at the top of the wireframe view. The culled faces are then shown in red, like in the following screenshot.</p>
+<p class="centerAlign"><img src="images/gammaray-qt3d-geometry-backface-culling.png" alt="" /></p><a name="normal-vectors"></a>
+<h3 >Normal Vectors</h3>
+<p>The <a href="../qt3d/qt3d-index.html">Qt 3D</a> geometry inspector can also visualize normal vectors, assuming there is a corresponding <a href="../qt3d/qt3drender-qattribute.html">Qt3DRender::QAttribute</a> present in the vertex buffer. Normal vector visualization is enabled using the corresponding toolbar action in the wireframe view.</p>
+<p class="centerAlign"><img src="images/gammaray-qt3d-geometry-normals.png" alt="" /></p><p>Vertex normals are shown in blue, face normals are shown in yellow.</p>
+<a name="diagnostic-shading-modes"></a>
+<h3 >Diagnostic Shading Modes</h3>
+<p>The 3D geometry view can use a number of different diagnostic shading modes to highlight specific aspects of the vertex data. Some shading modes depend on the availability of specific vertex data (such as normals, texture coordinates or tangents), and are only selectable if corresponding vertex attributes exist.</p>
+<ul>
+<li><b>Wireframe</b>: No shading is applied to faces, allowing you to see through the model.</li>
+<li><b>Flat</b>: Just colors faces with a solid color.</li>
+<li><b>Phong</b>: Basic phong shading is applied, which can help to validate correctness of vertex normal data.</li>
+<li><b>Texture Coordinates</b>: Uses the vertex texture coordinates for the green and blue color channels.</li>
+<li><b>Normal</b>: Uses the vertex normal as the vertex color. This is useful to spot discontinuities in surface normals.</li>
+<li><b>Tangent</b>: Uses the x, y and z component of the vertex tangent and vertex color.</li>
+<li><b>Color</b>: Uses the vertex color attribute for shading.</li>
+</ul>
+<p class="centerAlign"><img src="images/gammaray-qt3d-geometry-diagnostic-shading.png" alt="" /></p><p>The diagnostic shading mode can be selected using the <b>Shading</b> combobox in the toolbar.</p>
+<a name="raw-buffer-view"></a>
+<h3 >Raw Buffer View</h3>
+<p>You can switch to the raw buffer view in the toolbar on top of the <a href="../qt3d/qt3d-index.html">Qt 3D</a> geometry inspection view. A combobox as the top allows you to select the <a href="../qt3d/qt3drender-qbuffer.html">Qt3DRender::QBuffer</a> instance to inspect, typically there is one or more vertex buffer and one index buffer present.</p>
+<p>The buffer view shows a tables with the buffer data decoded based on its associated <a href="../qt3d/qt3drender-qattribute.html">Qt3DRender::QAttribute</a> instances, resulting in one or more columns per attribute.</p>
+<p class="centerAlign"><img src="images/gammaray-qt3d-geometry-buffers.png" alt="" /></p><a name="examples"></a>
+<h2 id="examples">Examples</h2>
+<p>The following examples make use of the <a href="../qt3d/qt3d-index.html">Qt 3D</a> geometry inspector:</p>
+<ul>
+<li><a href="gammaray-qt3d-geometry-example.html">qt3d-geometry</a></li>
+</ul>
+</div>
+<!-- @@@gammaray-qt3dgeometry-inspector.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="gammaray-widget-attributes.html">Widget Attributes</a>
+<a class="nextPage" href="gammaray-application-attributes.html">Application Attributes</a>
+</p>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- gammaray-timertop.qdoc -->
+  <title>Timers | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li>Timers</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+  <link rel="prev" href="gammaray-signal-plotter.html" />
+  <link rel="next" href="gammaray-wayland-compositors.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="gammaray-signal-plotter.html">Signal Plotter</a>
+<a class="nextPage" href="gammaray-wayland-compositors.html">Wayland Compositors</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#overview">Overview</a></li>
+<li class="level1"><a href="#examples">Examples</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Timers</h1>
+<span class="subtitle"></span>
+<!-- $$$gammaray-timertop.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="overview"></a>
+<h2 id="overview">Overview</h2>
+<p>The timer view lists all active timers inside the target application, as well as their desired and actual firing intervals. This includes <a href="../qtcore/qtimer.html">QTimer</a> instances, but also any <a href="../qtcore/qobject.html">QObject</a> that is receiving raw timer events (see <a href="gammaray-timer-example.html#qtimerevent">QTimerEvent</a>).</p>
+<p>This tool is particularly useful for finding timers that fire too often and thus cause unnecessary system wakeup on energy constrained devices.</p>
+<p class="centerAlign"><img src="images/gammaray-timertop.png" alt="" /></p><p>The list view shows the following information:</p>
+<ul>
+<li>The time object name/address.</li>
+<li>Whether or not a timer is active, and if so, does it fire in single shot or continuous mode, and at what interval.</li>
+<li>The amount of wakeups triggered by a timer, that is how often it has fired so far.</li>
+<li>The average time it took to process a timer's timeout signal.</li>
+<li>The maximum time it took to process a timer's timeout signal.</li>
+<li>The timer id, which is mainly relelvant for raw timer events rather than <a href="../qtcore/qtimer.html">QTimer</a> instances.</li>
+</ul>
+<p>The context menu allows to navigate to different views for the timer objects.</p>
+<a name="examples"></a>
+<h2 id="examples">Examples</h2>
+<p>The following examples make use of the timer view:</p>
+<ul>
+<li><a href="gammaray-timer-example.html">timer</a></li>
+</ul>
+</div>
+<!-- @@@gammaray-timertop.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="gammaray-signal-plotter.html">Signal Plotter</a>
+<a class="nextPage" href="gammaray-wayland-compositors.html">Wayland Compositors</a>
+</p>
+</body>
+</html>

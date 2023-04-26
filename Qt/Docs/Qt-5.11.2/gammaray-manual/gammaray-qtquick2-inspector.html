@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- gammaray-qtquick2-inspector.qdoc -->
+  <title>Qt Quick 2 Inspector | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li>Qt Quick 2 Inspector</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+  <link rel="prev" href="gammaray-tools.html" />
+  <link rel="next" href="gammaray-widget-inspector.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="gammaray-tools.html">Tools</a>
+<a class="nextPage" href="gammaray-widget-inspector.html">Widget Inspector</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#overview">Overview</a></li>
+<li class="level1"><a href="#item-tree">Item Tree</a></li>
+<li class="level1"><a href="#remote-view">Remote View</a></li>
+<li class="level1"><a href="#paint-analyzer">Paint Analyzer</a></li>
+<li class="level1"><a href="#scene-graph">Scene Graph</a></li>
+<li class="level1"><a href="#examples">Examples</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Qt Quick 2 Inspector</h1>
+<span class="subtitle"></span>
+<!-- $$$gammaray-qtquick2-inspector.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="overview"></a>
+<h2 id="overview">Overview</h2>
+<p>The Qt Quick 2 inspector is the tool of choice for investigating issues with a <a href="../qtquick/qtquick-index.html">Qt Quick</a> user interface. This includes:</p>
+<ul>
+<li>Inspecting the visual item hierarchy.</li>
+<li>Remote view of the rendered content with diagnostic overlays.</li>
+<li>Inspecting the scene graph used for rendering the user interface on the GPU or via the software renderer.</li>
+</ul>
+<p>If your target has multiple <a href="../qtquick/qquickview.html">QQuickView</a> instances, the combo box at the top can be used to switch between them.</p>
+<a name="item-tree"></a>
+<h2 id="item-tree">Item Tree</h2>
+<p>The item tree is shown on the top left, and it contains the visual hierarchy of <a href="../qtquick/qquickitem.html">QQuickItem</a> instances in the currently selected Qt Quick scene. This does not necessarily match the <a href="../qtcore/qobject.html">QObject</a> parent/child hierarchy. The right side contains universal <a href="gammaray-object-inspection.html">Object Inspection</a> view.</p>
+<p class="centerAlign"><img src="images/gammaray-qq2-inspector.png" alt="" /></p><p>You can navigate to the object browser (and other applicable tools) using the context menu on the item tree. Similarly, you can navigate to the source code locations instantiating the current item, or the file declaring the type of the current item (if available).</p>
+<a name="remote-view"></a>
+<h2 id="remote-view">Remote View</h2>
+<p>The remote view is shown to the lower left in the Qt Quick 2 inspector. Besides giving you a zoomable view of the rendered content, it provides a number of additional features:</p>
+<ul>
+<li>Element picking.</li>
+<li>Diagnostic overlays with layout information.</li>
+<li>Input event forwarding, for working with embedded targets.</li>
+<li>Color picking.</li>
+<li>A measurement tool.</li>
+<li>Taking screenshots of the target output, with or without diagnostic overlays.</li>
+</ul>
+<p class="centerAlign"><img src="images/gammaray-qq2-qsg-visualize.png" alt="" /></p><p>The diagnostic render modes include:</p>
+<ul>
+<li>Clipping visualization: Highlights items using clipping, which is a potentially expensive operations on the OpenGL render backend.</li>
+<li>Overdraw visualization: Allows to spot out-of-view elements that are drawn, as well as elements that are drawn on top of each other, both of which are potentially expensive operations.</li>
+<li>Batch visualization: Highlights items that are in the same render batch on the OpenGL renderer, as well as unmerged batches. Unmerged batches, and more batches in general, can have significant render performance impact with the OpenGL renderer.</li>
+<li>Change visualization: Highlights areas causing view updates.</li>
+<li>Control tracing: Highlights Qt Quick Controls 2 outlines, which can help to identify layouting issues.</li>
+<li>Showing a customized layouting grid.</li>
+<li>Slowing down the animation timer to diagnose motion design issues.</li>
+</ul>
+<p>Diagnostic render modes can be enabled individually, both on the target and the <a href="http://doc.qt.io/GammaRay">GammaRay</a> client via the <b>Quick Scenes</b> &gt; <b>Decorate Target</b> menu option, or the corresponding remote view toolbar action.</p>
+<a name="paint-analyzer"></a>
+<h2 id="paint-analyzer">Paint Analyzer</h2>
+<p>When selecting a <a href="../qtquick/qquickpainteditem.html">QQuickPaintedItem</a> sub-class in the item tree, the paint analyzer tab is activated in the property view on the right.</p>
+<p class="centerAlign"><img src="images/gammaray-qqpainteditem-paint-analyzer.png" alt="" /></p><p>The <a href="gammaray-paint-analyzer.html">Paint Analyzer</a> allows you to inspect every single <a href="../qtgui/qpainter.html">QPainter</a> command that is executed, and look at the visual result after each step.</p>
+<p>When using the Qt Quick software renderer, a full-scene paint analysis is also available via the <b>Quick Scenes</b> menu (requires Qt 5.9&#x2e;3 or newer).</p>
+<a name="scene-graph"></a>
+<h2 id="scene-graph">Scene Graph</h2>
+<p>The scene graph view shows you the internal representation used by <a href="../qtquick/qtquick-index.html">Qt Quick</a> to render the current scene. This is particularly useful for debugging performance issues related to batching and rendering of custom <a href="../qtquick/qquickitem.html">QQuickItem</a> sub-classes.</p>
+<p class="centerAlign"><img src="images/gammaray-qq2-geometry.png" alt="" /></p><p>For nodes in the scene graph you have access to:</p>
+<ul>
+<li><a href="../qtquick/qsgnode.html">QSGNode</a> properties, in particularly node flags and transformation matrices.</li>
+<li>Shader code, if the node has a material associated with it (see <a href="gammaray-qsgmaterial.html">Scene Graph Material</a>).</li>
+<li>Geometry and other per-vertex data, when looking at a geometry node (see <a href="gammaray-qsggeometry.html">Scene Graph Geometry</a>).</li>
+<li>Texture data for image elements, shader effects or distance-field rendered text elements (see <a href="gammaray-qsgtexture.html">Scene Graph Texture</a>).</li>
+</ul>
+<a name="examples"></a>
+<h2 id="examples">Examples</h2>
+<p>The following examples make use of the Qt Quick inspector:</p>
+<ul>
+<li><a href="gammaray-quick-event-handling-example.html">quick-event-handling</a></li>
+<li><a href="gammaray-quick-batching-example.html">quick-batching</a></li>
+</ul>
+</div>
+<!-- @@@gammaray-qtquick2-inspector.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="gammaray-tools.html">Tools</a>
+<a class="nextPage" href="gammaray-widget-inspector.html">Widget Inspector</a>
+</p>
+</body>
+</html>

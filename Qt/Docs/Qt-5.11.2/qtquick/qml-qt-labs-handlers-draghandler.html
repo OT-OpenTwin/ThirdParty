@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- qquickdraghandler.cpp -->
+  <title>DragHandler QML Type | Qt Quick 5.11</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="../qtdoc/index.html">Qt 5.11</a></td><td ><a href="qtquick-index.html">Qt Quick</a></td><td ><a href="qtquick-qmlmodule.html">QML Types</a></td><td >DragHandler QML Type</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Qt 5.11.2 Reference Documentation</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#properties">Properties</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">DragHandler QML Type</h1>
+<span class="subtitle"></span>
+<!-- $$$DragHandler-brief -->
+<p>Handler for dragging. <a href="#details">More...</a></p>
+<!-- @@@DragHandler -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Import Statement:</td><td class="memItemRight bottomAlign"> import Qt.labs.handlers 1.0</td></tr><tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <p><a href="qml-qt-labs-handlers-singlepointhandler.html">SinglePointHandler</a></p>
+</td></tr></table></div><ul>
+<li><a href="qml-qt-labs-handlers-draghandler-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="properties"></a>
+<h2 id="properties">Properties</h2>
+<ul>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#acceptedButtons-prop">acceptedButtons</a></b></b> : int</li>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#acceptedDevices-prop">acceptedDevices</a></b></b> : int</li>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#acceptedModifiers-prop">acceptedModifiers</a></b></b> : int</li>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#acceptedPointerTypes-prop">acceptedPointerTypes</a></b></b> : int</li>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#active-prop">active</a></b></b> : bool</li>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#enabled-prop">enabled</a></b></b> : bool</li>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#grabPermission-prop">grabPermission</a></b></b> : bool</li>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#parent-prop">parent</a></b></b> : Item</li>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#point-prop">point</a></b></b> : HandlerPoint</li>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#target-prop">target</a></b></b> : Item</li>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#translation-prop">translation</a></b></b> : QVector2D</li>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#xAxis-prop">xAxis</a></b></b><ul>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#xAxis.minimum-prop">xAxis.minimum</a></b></b> : real</li>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#xAxis.maximum-prop">xAxis.maximum</a></b></b> : real</li>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#xAxis.enabled-prop">xAxis.enabled</a></b></b> : bool</li>
+</ul>
+</li>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#yAxis-prop">yAxis</a></b></b><ul>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#yAxis.minimum-prop">yAxis.minimum</a></b></b> : real</li>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#yAxis.maximum-prop">yAxis.maximum</a></b></b> : real</li>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#yAxis.enabled-prop">yAxis.enabled</a></b></b> : bool</li>
+</ul>
+</li>
+</ul>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<ul>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#canceled-signal">canceled</a></b></b>(EventPoint <i>point</i>)</li>
+<li class="fn"><b><b><a href="qml-qt-labs-handlers-draghandler.html#grabChanged-signal">grabChanged</a></b></b>(EventPoint <i>point</i>)</li>
+</ul>
+<!-- $$$DragHandler-description -->
+<a name="details"></a>
+<h2 id="details">Detailed Description</h2>
+<p><a href="qml-qt-labs-handlers-draghandler.html">DragHandler</a> is a handler that is used to interactively move an Item. Like other Pointer Handlers, by default it is fully functional, and manipulates its <a href="qml-qt-labs-handlers-draghandler.html#target-prop">target</a>.</p>
+<pre class="qml">
+
+  import QtQuick 2.10
+  import Qt.labs.handlers 1.0
+
+  <span class="type"><a href="qml-qtquick-rectangle.html">Rectangle</a></span> {
+      <span class="name">width</span>: <span class="number">100</span>
+      <span class="name">height</span>: <span class="number">100</span>
+      <span class="name">color</span>: <span class="string">&quot;lightsteelblue&quot;</span>
+      <span class="type"><a href="qml-qt-labs-handlers-draghandler.html">DragHandler</a></span> { }
+  }
+
+</pre>
+<p>It has properties to restrict the range of dragging.</p>
+<p>If it is declared within one Item but is assigned a different <a href="qml-qt-labs-handlers-draghandler.html#target-prop">target</a>, then it handles events within the bounds of the <a href="qml-qt-labs-handlers-draghandler.html#parent-prop">parent</a> Item but manipulates the <code>target</code> Item instead:</p>
+<pre class="qml">
+
+  import QtQuick 2.10
+  import Qt.labs.handlers 1.0
+
+  <span class="type"><a href="qml-qtquick-item.html">Item</a></span> {
+      <span class="name">width</span>: <span class="number">640</span>
+      <span class="name">height</span>: <span class="number">480</span>
+
+      <span class="type"><a href="qml-qtquick-rectangle.html">Rectangle</a></span> {
+          <span class="name">id</span>: <span class="name">feedback</span>
+          <span class="name">border</span>.color: <span class="string">&quot;red&quot;</span>
+          <span class="name">width</span>: <span class="name">Math</span>.<span class="name">max</span>(<span class="number">10</span>, <span class="name">handler</span>.<span class="name">point</span>.<span class="name">ellipseDiameters</span>.<span class="name">width</span>)
+          <span class="name">height</span>: <span class="name">Math</span>.<span class="name">max</span>(<span class="number">10</span>, <span class="name">handler</span>.<span class="name">point</span>.<span class="name">ellipseDiameters</span>.<span class="name">height</span>)
+          <span class="name">radius</span>: <span class="name">Math</span>.<span class="name">max</span>(<span class="name">width</span>, <span class="name">height</span>) <span class="operator">/</span> <span class="number">2</span>
+          <span class="name">visible</span>: <span class="name">handler</span>.<span class="name">active</span>
+      }
+
+      <span class="type"><a href="qml-qt-labs-handlers-draghandler.html">DragHandler</a></span> {
+          <span class="name">id</span>: <span class="name">handler</span>
+          <span class="name">target</span>: <span class="name">feedback</span>
+      }
+  }
+
+</pre>
+<p>A third way to use it is to set <a href="qml-qt-labs-handlers-draghandler.html#target-prop">target</a> to <code>null</code> and react to property changes in some other way:</p>
+<pre class="qml">
+
+  import QtQuick 2.10
+  import Qt.labs.handlers 1.0
+
+  <span class="type"><a href="qml-qtquick-item.html">Item</a></span> {
+      <span class="name">width</span>: <span class="number">640</span>
+      <span class="name">height</span>: <span class="number">480</span>
+
+      <span class="type"><a href="qml-qt-labs-handlers-draghandler.html">DragHandler</a></span> {
+          <span class="name">id</span>: <span class="name">handler</span>
+          <span class="name">target</span>: <span class="number">null</span>
+      }
+
+      <span class="type"><a href="qml-qtquick-text.html">Text</a></span> {
+          <span class="name">color</span>: <span class="name">handler</span>.<span class="name">active</span> ? <span class="string">&quot;darkgreen&quot;</span> : <span class="string">&quot;black&quot;</span>
+          <span class="name">text</span>: <span class="name">handler</span>.<span class="name">point</span>.<span class="name">position</span>.<span class="name">x</span>.<span class="name">toFixed</span>(<span class="number">1</span>) <span class="operator">+</span> <span class="string">&quot;,&quot;</span> <span class="operator">+</span> <span class="name">handler</span>.<span class="name">point</span>.<span class="name">position</span>.<span class="name">y</span>.<span class="name">toFixed</span>(<span class="number">1</span>)
+          <span class="name">x</span>: <span class="name">handler</span>.<span class="name">point</span>.<span class="name">position</span>.<span class="name">x</span> <span class="operator">-</span> <span class="name">width</span> <span class="operator">/</span> <span class="number">2</span>
+          <span class="name">y</span>: <span class="name">handler</span>.<span class="name">point</span>.<span class="name">position</span>.<span class="name">y</span> <span class="operator">-</span> <span class="name">height</span>
+      }
+  }
+
+</pre>
+<p>At this time, drag-and-drop is not yet supported.</p>
+<p><b>See also </b><a href="qml-qtquick-drag.html">Drag</a> and <a href="qml-qtquick-mousearea.html">MouseArea</a>.</p>
+<!-- @@@DragHandler -->
+<h2>Property Documentation</h2>
+<!-- $$$acceptedButtons -->
+<div class="qmlitem"><div class="qmlproto">
+<div class="table"><table class="qmlname">
+<tr valign="top" class="odd" id="acceptedButtons-prop">
+<td class="tblQmlPropNode"><p>
+<a name="acceptedButtons-prop"></a><span class="name">acceptedButtons</span> : <span class="type"><a href="../qtqml/qml-int.html">int</a></span></p></td></tr>
+</table></div>
+</div><div class="qmldoc"><p>The mouse buttons which can activate this Pointer Handler.</p>
+<p>By default, this property is set to <a href="qml-qtquick-mouseevent.html#button-prop">Qt.LeftButton</a>. It can be set to an OR combination of mouse buttons, and will ignore events from other buttons.</p>
+<p>For example, a control could be made to respond to left and right clicks in different ways, with two handlers:</p>
+<pre class="qml">
+
+  <span class="type"><a href="qml-qtquick-item.html">Item</a></span> {
+      <span class="type"><a href="qml-qt-labs-handlers-taphandler.html">TapHandler</a></span> {
+          <span class="name">onTapped</span>: <span class="name">console</span>.<span class="name">log</span>(<span class="string">&quot;left clicked&quot;</span>)
+      }
+      <span class="type"><a href="qml-qt-labs-handlers-taphandler.html">TapHandler</a></span> {
+          <span class="name">acceptedButtons</span>: <span class="name">Qt</span>.<span class="name">RightButton</span>
+          <span class="name">onTapped</span>: <span class="name">console</span>.<span class="name">log</span>(<span class="string">&quot;right clicked&quot;</span>)
+      }
+  }
+
+</pre>
+<p><b>Note: </b>Tapping on a touchscreen or tapping the stylus on a graphics tablet emulates clicking the left mouse button. This behavior can be altered via <a href="qml-qt-labs-handlers-draghandler.html#acceptedDevices-prop">acceptedDevices</a> or <a href="qml-qt-labs-handlers-draghandler.html#acceptedPointerTypes-prop">acceptedPointerTypes</a>.</p></div></div><!-- @@@acceptedButtons -->
+<br/>
+<!-- $$$acceptedDevices -->
+<div class="qmlitem"><div class="qmlproto">
+<div class="table"><table class="qmlname">
+<tr valign="top" class="odd" id="acceptedDevices-prop">
+<td class="tblQmlPropNode"><p>
+<a name="acceptedDevices-prop"></a><span class="name">acceptedDevices</span> : <span class="type"><a href="../qtqml/qml-int.html">int</a></span></p></td></tr>
+</table></div>
+</div><div class="qmldoc"><p>The types of pointing devices that can activate this Pointer Handler.</p>
+<p>By default, this property is set to <a href="qml-qtquick-pointerdevice.html#type-prop">PointerDevice.AllDevices</a>. If you set it to an OR combination of device types, it will ignore events from non-matching devices.</p>
+<p>For example, a control could be made to respond to mouse and stylus clicks in one way, and touchscreen taps in another way, with two handlers:</p>
+<pre class="qml">
+
+  <span class="type"><a href="qml-qtquick-item.html">Item</a></span> {
+     <span class="type"><a href="qml-qt-labs-handlers-taphandler.html">TapHandler</a></span> {
+         <span class="name">acceptedDevices</span>: <span class="name">PointerDevice</span>.<span class="name">Mouse</span> <span class="operator">|</span> <span class="name">PointerDevice</span>.<span class="name">Stylus</span>
+         <span class="name">onTapped</span>: <span class="name">console</span>.<span class="name">log</span>(<span class="string">&quot;clicked&quot;</span>)
+     }
+     <span class="type"><a href="qml-qt-labs-handlers-taphandler.html">TapHandler</a></span> {
+         <span class="name">acceptedDevices</span>: <span class="name">PointerDevice</span>.<span class="name">TouchScreen</span>
+         <span class="name">onTapped</span>: <span class="name">console</span>.<span class="name">log</span>(<span class="string">&quot;tapped&quot;</span>)
+     }
+  }
+
+</pre>
+</div></div><!-- @@@acceptedDevices -->
+<br/>
+<!-- $$$acceptedModifiers -->
+<div class="qmlitem"><div class="qmlproto">
+<div class="table"><table class="qmlname">
+<tr valign="top" class="odd" id="acceptedModifiers-prop">
+<td class="tblQmlPropNode"><p>
+<a name="acceptedModifiers-prop"></a><span class="name">acceptedModifiers</span> : <span class="type"><a href="../qtqml/qml-int.html">int</a></span></p></td></tr>
+</table></div>
+</div><div class="qmldoc"><p>If this property is set, it will require the given keyboard modifiers to be pressed in order to react to pointer events, and otherwise ignore them.</p>
+<p>If this property is set to <code>Qt.KeyboardModifierMask</code> (the default value), then the <a href="qml-qt-labs-handlers-pointerhandler.html">PointerHandler</a> ignores the modifier keys.</p>
+<p>For example, an <a href="qml-qtquick-item.html">Item</a> could have two handlers of the same type, one of which is enabled only if the required keyboard modifiers are pressed:</p>
+<pre class="qml">
+
+  <span class="type"><a href="qml-qtquick-item.html">Item</a></span> {
+     <span class="type"><a href="qml-qt-labs-handlers-taphandler.html">TapHandler</a></span> {
+         <span class="name">acceptedModifiers</span>: <span class="name">Qt</span>.<span class="name">ControlModifier</span>
+         <span class="name">onTapped</span>: <span class="name">console</span>.<span class="name">log</span>(<span class="string">&quot;control-tapped&quot;</span>)
+     }
+     <span class="type"><a href="qml-qt-labs-handlers-taphandler.html">TapHandler</a></span> {
+         <span class="name">acceptedModifiers</span>: <span class="name">Qt</span>.<span class="name">NoModifier</span>
+         <span class="name">onTapped</span>: <span class="name">console</span>.<span class="name">log</span>(<span class="string">&quot;tapped&quot;</span>)
+     }
+  }
+
+</pre>
+</div></div><!-- @@@acceptedModifiers -->
+<br/>
+<!-- $$$acceptedPointerTypes -->
+<div class="qmlitem"><div class="qmlproto">
+<div class="table"><table class="qmlname">
+<tr valign="top" class="odd" id="acceptedPointerTypes-prop">
+<td class="tblQmlPropNode"><p>
+<a name="acceptedPointerTypes-prop"></a><span class="name">acceptedPointerTypes</span> : <span class="type"><a href="../qtqml/qml-int.html">int</a></span></p></td></tr>
+</table></div>
+</div><div class="qmldoc"><p>The types of pointing instruments (finger, stylus, eraser, etc.) that can activate this Pointer Handler.</p>
+<p>By default, this property is set to <a href="qml-qtquick-pointerdevice.html#pointerType-prop">PointerDevice.AllPointerTypes</a>. If you set it to an OR combination of device types, it will ignore events from non-matching events.</p>
+<p>For example, a control could be made to respond to mouse, touch, and stylus clicks in some way, but delete itself if tapped with an eraser tool on a graphics tablet, with two handlers:</p>
+<pre class="qml">
+
+  <span class="type"><a href="qml-qtquick-rectangle.html">Rectangle</a></span> {
+     <span class="name">id</span>: <span class="name">rect</span>
+     <span class="type"><a href="qml-qt-labs-handlers-taphandler.html">TapHandler</a></span> {
+         <span class="name">acceptedPointerTypes</span>: <span class="name">PointerDevice</span>.<span class="name">GenericPointer</span> <span class="operator">|</span> <span class="name">PointerDevice</span>.<span class="name">Finger</span> <span class="operator">|</span> <span class="name">PointerDevice</span>.<span class="name">Pen</span>
+         <span class="name">onTapped</span>: <span class="name">console</span>.<span class="name">log</span>(<span class="string">&quot;clicked&quot;</span>)
+     }
+     <span class="type"><a href="qml-qt-labs-handlers-taphandler.html">TapHandler</a></span> {
+         <span class="name">acceptedPointerTypes</span>: <span class="name">PointerDevice</span>.<span class="name">Eraser</span>
+         <span class="name">onTapped</span>: <span class="name">rect</span>.<span class="name">destroy</span>()
+     }
+  }
+
+</pre>
+</div></div><!-- @@@acceptedPointerTypes -->
+<br/>
+<!-- $$$active -->
+<div class="qmlitem"><div class="qmlproto">
+<div class="table"><table class="qmlname">
+<tr valign="top" class="odd" id="active-prop">
+<td class="tblQmlPropNode"><p>
+<a name="active-prop"></a><span class="qmlreadonly">[read-only] </span><span class="name">active</span> : <span class="type"><a href="../qtqml/qml-bool.html">bool</a></span></p></td></tr>
+</table></div>
+</div><div class="qmldoc"><p>This holds true whenever this <a href="qml-qt-labs-handlers-pointerhandler.html">PointerHandler</a> has taken sole responsibility for handing one or more EventPoints, by successfully taking an exclusive grab of those points. This means that it is keeping its properties up-to-date according to the movements of those Event Points and actively manipulating its <a href="qml-qt-labs-handlers-draghandler.html#target-prop">target</a> (if any).</p>
+</div></div><!-- @@@active -->
+<br/>
+<!-- $$$enabled -->
+<div class="qmlitem"><div class="qmlproto">
+<div class="table"><table class="qmlname">
+<tr valign="top" class="odd" id="enabled-prop">
+<td class="tblQmlPropNode"><p>
+<a name="enabled-prop"></a><span class="name">enabled</span> : <span class="type"><a href="../qtqml/qml-bool.html">bool</a></span></p></td></tr>
+</table></div>
+</div><div class="qmldoc"><p>If a <a href="qml-qt-labs-handlers-pointerhandler.html">PointerHandler</a> is disabled, it will reject all events and no signals will be emitted.</p>
+</div></div><!-- @@@enabled -->
+<br/>
+<!-- $$$grabPermission -->
+<div class="qmlitem"><div class="qmlproto">
+<div class="table"><table class="qmlname">
+<tr valign="top" class="odd" id="grabPermission-prop">
+<td class="tblQmlPropNode"><p>
+<a name="grabPermission-prop"></a><span class="name">grabPermission</span> : <span class="type"><a href="../qtqml/qml-bool.html">bool</a></span></p></td></tr>
+</table></div>
+</div><div class="qmldoc"><p>This property specifies the permissions when this handler's logic decides to take over the exclusive grab, or when it is asked to approve grab takeover or cancellation by another handler.</p>
+<p>The default is <code>CanTakeOverFromItems | CanTakeOverFromHandlersOfDifferentType | ApprovesTakeOverByAnything</code> which allows most takeover scenarios but avoids e.g&#x2e; two PinchHandlers fighting over the same touchpoints.</p>
+</div></div><!-- @@@grabPermission -->
+<br/>
+<!-- $$$parent -->
+<div class="qmlitem"><div class="qmlproto">
+<div class="table"><table class="qmlname">
+<tr valign="top" class="odd" id="parent-prop">
+<td class="tblQmlPropNode"><p>
+<a name="parent-prop"></a><span class="qmlreadonly">[read-only] </span><span class="name">parent</span> : <span class="type"><a href="qml-qtquick-item.html">Item</a></span></p></td></tr>
+</table></div>
+</div><div class="qmldoc"><p>The <a href="qml-qtquick-item.html">Item</a> which is the scope of the handler; the Item in which it was declared. The handler will handle events on behalf of this Item, which means a pointer event is relevant if at least one of its event points occurs within the Item's interior. Initially <a href="qml-qt-labs-handlers-draghandler.html#target-prop">target()</a> is the same, but it can be reassigned.</p>
+<p><b>See also </b><a href="qml-qt-labs-handlers-draghandler.html#target-prop">target</a> and <a href="../qtcore/qobject.html#parent">QObject::parent()</a>.</p>
+</div></div><!-- @@@parent -->
+<br/>
+<!-- $$$point -->
+<div class="qmlitem"><div class="qmlproto">
+<div class="table"><table class="qmlname">
+<tr valign="top" class="odd" id="point-prop">
+<td class="tblQmlPropNode"><p>
+<a name="point-prop"></a><span class="qmlreadonly">[read-only] </span><span class="name">point</span> : <span class="type"><a href="qml-qt-labs-handlers-handlerpoint.html">HandlerPoint</a></span></p></td></tr>
+</table></div>
+</div><div class="qmldoc"><p>The event point currently being handled. When no point is currently being handled, this object is reset to default values (all coordinates are 0).</p>
+</div></div><!-- @@@point -->
+<br/>
+<!-- $$$target -->
+<div class="qmlitem"><div class="qmlproto">
+<div class="table"><table class="qmlname">
+<tr valign="top" class="odd" id="target-prop">
+<td class="tblQmlPropNode"><p>
+<a name="target-prop"></a><span class="name">target</span> : <span class="type"><a href="qml-qtquick-item.html">Item</a></span></p></td></tr>
+</table></div>
+</div><div class="qmldoc"><p>The Item which this handler will manipulate.</p>
+<p>By default, it is the same as the <a href="qml-qt-labs-handlers-draghandler.html#parent-prop">parent</a>, the Item within which the handler is declared. However, it can sometimes be useful to set the target to a different Item, in order to handle events within one item but manipulate another; or to <code>null</code>, to disable the default behavior and do something else instead.</p>
+</div></div><!-- @@@target -->
+<br/>
+<!-- $$$translation -->
+<div class="qmlitem"><div class="qmlproto">
+<div class="table"><table class="qmlname">
+<tr valign="top" class="odd" id="translation-prop">
+<td class="tblQmlPropNode"><p>
+<a name="translation-prop"></a><span class="qmlreadonly">[read-only] </span><span class="name">translation</span> : <span class="type">QVector2D</span></p></td></tr>
+</table></div>
+</div><div class="qmldoc"><p>The translation since the gesture began.</p>
+</div></div><!-- @@@translation -->
+<br/>
+<!-- $$$xAxis -->
+<div class="qmlitem"><div class="qmlproto"><div class="table"><table class="qmlname"><tr valign="top" class="even" id="xAxis-prop"><th class="centerAlign"><p><a name="xAxis-prop"></a><b>xAxis group</b></p></th></tr><tr valign="top" class="odd" id="xAxis.minimum-prop"><td class="tblQmlPropNode"><p><a name="xAxis.minimum-prop"></a><span class="name">xAxis.minimum</span> : <span class="type"><a href="../qtqml/qml-real.html">real</a></span></p></td></tr><tr valign="top" class="odd" id="xAxis.maximum-prop"><td class="tblQmlPropNode"><p><a name="xAxis.maximum-prop"></a><span class="name">xAxis.maximum</span> : <span class="type"><a href="../qtqml/qml-real.html">real</a></span></p></td></tr><tr valign="top" class="odd" id="xAxis.enabled-prop"><td class="tblQmlPropNode"><p><a name="xAxis.enabled-prop"></a><span class="name">xAxis.enabled</span> : <span class="type"><a href="../qtqml/qml-bool.html">bool</a></span></p></td></tr></table></div></div><div class="qmldoc"><p><code>xAxis</code> controls the constraints for horizontal dragging.</p>
+<p><code>minimum</code> is the minimum acceptable value of <a href="qml-qtquick-item.html#x-prop">x</a> to be applied to the <a href="qml-qt-labs-handlers-draghandler.html#target-prop">target</a>. <code>maximum</code> is the maximum acceptable value of <a href="qml-qtquick-item.html#x-prop">x</a> to be applied to the <a href="qml-qt-labs-handlers-draghandler.html#target-prop">target</a>. If <code>enabled</code> is true, horizontal dragging is allowed.</p>
+</div></div><!-- @@@xAxis -->
+<br/>
+<!-- $$$yAxis -->
+<div class="qmlitem"><div class="qmlproto"><div class="table"><table class="qmlname"><tr valign="top" class="even" id="yAxis-prop"><th class="centerAlign"><p><a name="yAxis-prop"></a><b>yAxis group</b></p></th></tr><tr valign="top" class="odd" id="yAxis.minimum-prop"><td class="tblQmlPropNode"><p><a name="yAxis.minimum-prop"></a><span class="name">yAxis.minimum</span> : <span class="type"><a href="../qtqml/qml-real.html">real</a></span></p></td></tr><tr valign="top" class="odd" id="yAxis.maximum-prop"><td class="tblQmlPropNode"><p><a name="yAxis.maximum-prop"></a><span class="name">yAxis.maximum</span> : <span class="type"><a href="../qtqml/qml-real.html">real</a></span></p></td></tr><tr valign="top" class="odd" id="yAxis.enabled-prop"><td class="tblQmlPropNode"><p><a name="yAxis.enabled-prop"></a><span class="name">yAxis.enabled</span> : <span class="type"><a href="../qtqml/qml-bool.html">bool</a></span></p></td></tr></table></div></div><div class="qmldoc"><p><code>yAxis</code> controls the constraints for vertical dragging.</p>
+<p><code>minimum</code> is the minimum acceptable value of <a href="qml-qtquick-item.html#y-prop">y</a> to be applied to the <a href="qml-qt-labs-handlers-draghandler.html#target-prop">target</a>. <code>maximum</code> is the maximum acceptable value of <a href="qml-qtquick-item.html#y-prop">y</a> to be applied to the <a href="qml-qt-labs-handlers-draghandler.html#target-prop">target</a>. If <code>enabled</code> is true, vertical dragging is allowed.</p>
+</div></div><!-- @@@yAxis -->
+<br/>
+<h2>Signal Documentation</h2>
+<!-- $$$canceled -->
+<div class="qmlitem"><div class="qmlproto">
+<div class="table"><table class="qmlname">
+<tr valign="top" class="odd" id="canceled-signal">
+<td class="tblQmlFuncNode"><p>
+<a name="canceled-signal"></a><span class="name">canceled</span>(<span class="type"><a href="qml-qtquick-eventpoint.html">EventPoint</a></span> <i>point</i>)</p></td></tr>
+</table></div>
+</div><div class="qmldoc"><p>If this handler has already grabbed the given <i>point</i>, this signal is emitted when the grab is stolen by a different Pointer Handler or Item.</p>
+</div></div><!-- @@@canceled -->
+<br/>
+<!-- $$$grabChanged -->
+<div class="qmlitem"><div class="qmlproto">
+<div class="table"><table class="qmlname">
+<tr valign="top" class="odd" id="grabChanged-signal">
+<td class="tblQmlFuncNode"><p>
+<a name="grabChanged-signal"></a><span class="name">grabChanged</span>(<span class="type"><a href="qml-qtquick-eventpoint.html">EventPoint</a></span> <i>point</i>)</p></td></tr>
+</table></div>
+</div><div class="qmldoc"><p>This signal is emitted when this handler has acquired or relinquished a passive or exclusive grab of the given <i>point</i>.</p>
+</div></div><!-- @@@grabChanged -->
+<br/>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2018 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

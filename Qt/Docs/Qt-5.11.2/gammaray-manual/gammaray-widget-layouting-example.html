@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- widget-layouting.qdoc -->
+  <title>Widget Layouting | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="examples-gammaray.html">Examples</a></li>
+<li>Widget Layouting</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#problem">Problem</a></li>
+<li class="level1"><a href="#investigation">Investigation</a></li>
+<li class="level2"><a href="#in-app-widget-picking">In-app widget picking</a></li>
+<li class="level2"><a href="#property-inspection">Property inspection</a></li>
+<li class="level2"><a href="#bisection-layouting-problems">Bisection layouting problems</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Widget Layouting</h1>
+<span class="subtitle"></span>
+<!-- $$$widget-layouting-brief -->
+<p>Analyze widget layouting behavior.</p>
+<!-- @@@widget-layouting -->
+<!-- $$$widget-layouting-description -->
+<div class="descr"> <a name="details"></a>
+<p>This examples shows <a href="http://doc.qt.io/GammaRay">GammaRay</a>'s capabilities in analyzing widget layouting issues.</p>
+<a name="problem"></a>
+<h2 id="problem">Problem</h2>
+<p>The widget layouting example application shows a complex dialog window that cannot be resized as small as one would expect.</p>
+<a name="investigation"></a>
+<h2 id="investigation">Investigation</h2>
+<p><a href="http://doc.qt.io/GammaRay">GammaRay</a> supports several approaches of analyzing widget layouting issues. All of them revolve around the <a href="gammaray-widget-inspector.html">Widget Inspector</a>.</p>
+<a name="in-app-widget-picking"></a>
+<h3 >In-app widget picking</h3>
+<p>You can select the widget occupying a specific screen pixel by clicking on the area you are interested in the target applicationi while holding Ctrl+Shift. This will select the top-most <a href="../qtwidgets/qwidget.html">QWidget</a> occupying this space.</p>
+<p>This is particularly useful for identifying the &quot;owner&quot; of seemingly empty space. In our example this can be used to identify the <a href="../qtwidgets/qlabel.html">QLabel</a> on the lower left that has an unnecessarily high minimum size set.</p>
+<a name="property-inspection"></a>
+<h3 >Property inspection</h3>
+<p>For the selected <a href="../qtwidgets/qwidget.html">QWidget</a> or <a href="../qtwidgets/qlayout.html">QLayout</a> instance you can look at and edit many layouting-relevant properties in the <a href="gammaray-properties.html">Properties</a> view on the right. Tweaking these values at runtime avoids lengthy recompile and restart cycles just to verify a specific change.</p>
+<p>In our example, we can change the minimum size of the offending <a href="../qtwidgets/qlabel.html">QLabel</a> in the lower left to something more reasonable and immediately verify that the window resizing has improved.</p>
+<a name="bisection-layouting-problems"></a>
+<h3 >Bisection layouting problems</h3>
+<p>A useful approach for identifying more complicated layouting issues is bisecting them, that is, take our parts of the UI and verify if the problem persists. You can do this at runtime with <a href="http://doc.qt.io/GammaRay">GammaRay</a> too, without needing to recompile or restart the target application, by setting the relevant <a href="../qtwidgets/qwidget.html">QWidget</a> sub-tree to invisible in the <a href="gammaray-properties.html">Properties</a> view.</p>
+<p>In our example, we can use this to exclude the <a href="../qtwidgets/qgroupbox.html">QGroupBox</a> instances at the right side as a possible source for the window resizing issue. Hiding one of them makes it a lot more apparent that the actual source of the problem is the <a href="../qtwidgets/qlabel.html">QLabel</a> on the lower left.</p>
+<p>Files:</p>
+<ul>
+<li><a href="gammaray-widget-layouting-widget-layouting-cpp.html">widget-layouting/widget-layouting.cpp</a></li>
+<li><a href="gammaray-widget-layouting-widget-layouting-pro.html">widget-layouting/widget-layouting.pro</a></li>
+</ul>
+</div>
+<!-- @@@widget-layouting -->
+</body>
+</html>

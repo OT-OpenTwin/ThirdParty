@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- gammaray-properties.qdoc -->
+  <title>Properties | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li>Properties</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+  <link rel="prev" href="gammaray-object-inspection.html" />
+  <link rel="next" href="gammaray-methods.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="gammaray-object-inspection.html">Object Inspection</a>
+<a class="nextPage" href="gammaray-methods.html">Methods</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#overview">Overview</a></li>
+<li class="level2"><a href="#property-sources">Property Sources</a></li>
+<li class="level2"><a href="#property-editing">Property Editing</a></li>
+<li class="level1"><a href="#examples">Examples</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Properties</h1>
+<span class="subtitle"></span>
+<!-- $$$gammaray-properties.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="overview"></a>
+<h2 id="overview">Overview</h2>
+<p>The properties view is the most general way of inspecting a selected objects, and is available for all types of objects.</p>
+<p class="centerAlign"><img src="images/gammaray-properties.png" alt="" /></p><p>The view consists of four columns:</p>
+<ul>
+<li>The name of the property.</li>
+<li>The current value of the property. If change notifications are available for a property, this value is updated live when the property value changes. When looking at a <a href="../qtcore/qmetaobject.html">QMetaObject</a> instead of an object instance (for example in the <a href="gammaray-metaobject-browser.html">Meta Object Browser</a>, this column is not available.</li>
+<li>The data type of the property value.</li>
+<li>The source of the property. This is typically a class name, but may also indicate dynamic <a href="../qtcore/qobject.html">QObject</a> properties, QML attached or context properties.</li>
+</ul>
+<p>Depending on the source of the property, additional information are available in a tooltip, as seen in the above screenshot. Depending on the type of the property value, object navigation actions are available in the context menu, typically for properties containing references to other objects.</p>
+<p>Properties containing container or object values can often be expanded to inspect their content in more detail.</p>
+<a name="property-sources"></a>
+<h3 >Property Sources</h3>
+<p>Properties are taken from the following sources, based on the type of the object you have selected:</p>
+<ul>
+<li>Static <a href="../qtcore/qobject.html">QObject</a> properties, that is properties introspectable via <a href="../qtcore/qmetaproperty.html">QMetaProperty</a>.</li>
+<li>Dynamic <a href="../qtcore/qobject.html">QObject</a> properties.</li>
+<li>QML attached properties, if the selected object has been created via QML.</li>
+<li>QML context properties, if the selected object is a <a href="../qtqml/qqmlcontext.html">QQmlContext</a>.</li>
+<li>A set of non-introspectable but well-known properties of Qt classes built into <a href="http://doc.qt.io/GammaRay">GammaRay</a>.</li>
+</ul>
+<p>Additionally the following container types are supported, and exapanded depending on their content:</p>
+<ul>
+<li><a href="../qtcore/qsequentialiterable.html">QSequentialIterable</a>, which covers most sequential containers like <a href="../qtcore/qvector.html">QVector</a> and <a href="../qtcore/qlist.html">QList</a>.</li>
+<li><a href="../qtcore/qassociativeiterable.html">QAssociativeIterable</a>, which covers most associative containers like <a href="../qtcore/qhash.html#qhash">QHash</a> and <a href="../qtcore/qmap.html">QMap</a>.</li>
+<li><a href="../qtqml/qqmllistproperty.html">QQmlListProperty</a></li>
+<li><a href="../qtcore/qvariant.html">QVariant</a></li>
+<li><a href="../qtqml/qjsvalue.html">QJSValue</a></li>
+</ul>
+<a name="property-editing"></a>
+<h3 >Property Editing</h3>
+<p>As far as supported by a specific property, property values can be edited, with immediate effect on the application. This can generally been done by double-clicking into the value column. For some complex types, an extended editing dialog is available, reachable via the &quot;..&#x2e;&quot; button on the right side of the value editing field.</p>
+<p>The following types can be edited:</p>
+<ul>
+<li>standard numeric and boolean types</li>
+<li><a href="../qtcore/qstring.html">QString</a></li>
+<li>Qt's vector and matrix math types</li>
+<li>most of Qt's geometry types</li>
+<li>some of Qt's graphic types such as <a href="../qtgui/qfont.html">QFont</a> and <a href="../qtgui/qcolor.html">QColor</a></li>
+<li>enum and flag types introspectable via <a href="../qtcore/qmetaenum.html">QMetaEnum</a></li>
+</ul>
+<p>Additionally it is possible to add dynamic properties to a <a href="../qtcore/qobject.html">QObject</a> instance with the controls at the bottom of the property view. Existing dynamic properties can be edited as any other property, and can be removed via the context menu.</p>
+<a name="examples"></a>
+<h2 id="examples">Examples</h2>
+<p>The following examples make use of the properties view:</p>
+<ul>
+<li><a href="gammaray-quick-event-handling-example.html">quick-event-handling</a></li>
+<li><a href="gammaray-quick-batching-example.html">quick-batching</a></li>
+<li><a href="gammaray-widget-layouting-example.html">widget-layouting</a></li>
+</ul>
+</div>
+<!-- @@@gammaray-properties.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="gammaray-object-inspection.html">Object Inspection</a>
+<a class="nextPage" href="gammaray-methods.html">Methods</a>
+</p>
+</body>
+</html>

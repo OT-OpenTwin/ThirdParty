@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- quick-batching.qdoc -->
+  <title>Qt Quick Batching | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="examples-gammaray.html">Examples</a></li>
+<li>Qt Quick Batching</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#problem">Problem</a></li>
+<li class="level1"><a href="#investigation">Investigation</a></li>
+<li class="level2"><a href="#scene-graph-render-diagnostic-messages">Scene graph render diagnostic messages</a></li>
+<li class="level2"><a href="#scene-graph-render-visualziation">Scene graph render visualziation</a></li>
+<li class="level2"><a href="#scene-graph-inspection">Scene graph inspection</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Qt Quick Batching</h1>
+<span class="subtitle"></span>
+<!-- $$$quick-batching-brief -->
+<p>Investiagte render performance issues due to unmerged render batches.</p>
+<!-- @@@quick-batching -->
+<!-- $$$quick-batching-description -->
+<div class="descr"> <a name="details"></a>
+<p>This examples shows <a href="http://doc.qt.io/GammaRay">GammaRay</a>'s capabilities for analyzing <a href="../qtquick/qtquick-index.html">Qt Quick</a> batch rendering issues.</p>
+<a name="problem"></a>
+<h2 id="problem">Problem</h2>
+<p>The example application shows two custom Qt Quick sliders consisting of flat colored rectangles.</p>
+<pre class="qml"><span class="type">Slider</span> {
+    <span class="name">id</span>: <span class="name">leftSlider</span>
+    <span class="name">anchors</span>.top: <span class="name">parent</span>.<span class="name">top</span>
+    <span class="name">anchors</span>.bottom: <span class="name">parent</span>.<span class="name">bottom</span>
+    <span class="name">width</span>: <span class="name">myWindow</span>.<span class="name">width</span> <span class="operator">/</span> <span class="number">2</span> <span class="operator">-</span> <span class="number">1.5</span><span class="operator">*</span><span class="name">myRow</span>.<span class="name">spacing</span>
+}
+
+<span class="type">Slider</span> {
+    <span class="name">id</span>: <span class="name">rightSlider</span>
+    <span class="name">anchors</span>.top: <span class="name">parent</span>.<span class="name">top</span>
+    <span class="name">anchors</span>.bottom: <span class="name">parent</span>.<span class="name">bottom</span>
+    <span class="name">width</span>: <span class="name">myWindow</span>.<span class="name">width</span> <span class="operator">/</span> <span class="number">2</span> <span class="operator">-</span> <span class="number">1.5</span><span class="operator">*</span><span class="name">myRow</span>.<span class="name">spacing</span>
+    <span class="name">mirrorSlider</span>: <span class="number">true</span>
+}</pre>
+<p>Observed in a OpenGL tracing tool or profiler, it can be seen however that the two sliders take several hundred OpenGL calls to be rendered. Closer investigation shows that each rectangle results in a separate OpenGL draw call.</p>
+<a name="investigation"></a>
+<h2 id="investigation">Investigation</h2>
+<p>There are several aspects of this problem that can be analyzed with <a href="http://doc.qt.io/GammaRay">GammaRay</a>.</p>
+<a name="scene-graph-render-diagnostic-messages"></a>
+<h3 >Scene graph render diagnostic messages</h3>
+<p>The <a href="../qtquick/qtquick-index.html">Qt Quick</a> renderer has some built-in diagnostic messages that can sometimes be helpful in such a scenario. Turning them on unconditionally can be inconvenient though, as they are usually triggered by frame. It is therefore useful to only enable them for a short amount of time while triggering the relevant operation in the target application.</p>
+<p>This can be done using the <a href="http://doc.qt.io/GammaRay">GammaRay</a> <a href="gammaray-messages.html">Messages</a> tool. Open the Logging tab, find debug categories you are interested in (qt.scenegraph.* or qt.quick.* for example), and enable the checkbox in the Debug column.</p>
+<a name="scene-graph-render-visualziation"></a>
+<h3 >Scene graph render visualziation</h3>
+<p>The <a href="../qtquick/qtquick-index.html">Qt Quick</a> renderer also has a number of built-in diagnostic visualizations. Those can be usually only enabled at application startup. This is inconvenient however if you first need to navigate to the relevant part of your application to investigate a specific issue.</p>
+<p>The <a href="http://doc.qt.io/GammaRay">GammaRay</a> <a href="gammaray-qtquick2-inspector.html">Qt Quick 2 Inspector</a> allows to enable these diagnostic render modes at runtime too (only available in some Qt versions). The toolbar above the scene view in the lower left part of the Qt Quick inspector view has toggle actions for them.</p>
+<p>In our example, the batch rendering visualization is particularly interesting. Areas of the same color indicate batches of elements that are rendered in a single draw call. This is the optimal scenario we are trying to achieve. Areas with diagonal lines represent sets of items that have some Common state but are rendered by individual draw calls. The scene graph renderer calls this case &quot;unmerged batch&quot;, this is what we are hitting in our example for the elements in the sliders.</p>
+<a name="scene-graph-inspection"></a>
+<h3 >Scene graph inspection</h3>
+<p>After having established that our problem comes from unmerged batched in the scene graph renderer we need to investigate what prevents merging in our case. Batches can't be merged when non-opaque items overlap, or when they have a non-trivial transformation matrix. As our code does neither overlap nor use transparency we can look at the transformation matrices.</p>
+<p>For this we use the scene graph view of the <a href="gammaray-qtquick2-inspector.html">Qt Quick 2 Inspector</a> view in <a href="http://doc.qt.io/GammaRay">GammaRay</a>. This shows the internal scene graph items, which is what the renderer uses as input for the batching.</p>
+<p>Looking at the combinedMatrix property of any node belonging to a slider in the <a href="gammaray-properties.html">Properties</a> view we notice that at least one value of the diagonal is negative, indicating a rotation. This is preventing the batch merging. In order to identify the culprit, we can move up the hierarchy to the first node introducing this transformation.</p>
+<p>In order to match this to the actual code causing the problem, switch back to the item tree view, and use the context menu action &quot;Go to declaration&quot;, which will open a code editor around the following piece of code:</p>
+<pre class="qml"><span class="type"><a href="../qtquick/qml-qtquick-listview.html">ListView</a></span> {
+    <span class="name">id</span>: <span class="name">view</span>
+    <span class="name">anchors</span>.fill: <span class="name">parent</span>
+    <span class="name">anchors</span>.rightMargin: <span class="name">handle</span>.<span class="name">width</span>
+
+    <span class="name">rotation</span>: <span class="number">180</span> <span class="comment">// for bottom -&gt; top layouting</span>
+    <span class="name">orientation</span>: <span class="name">Qt</span>.<span class="name">Vertical</span>
+    <span class="name">interactive</span>: <span class="number">false</span></pre>
+<p>In order to verify that this is our problem you don't need to restart the application, you can also use the editing capabilities of the <a href="gammaray-properties.html">Properties</a> tab in the item tree view to adjust the rotation live. After doing this we see that the left slider is no having a trivial diagonal in its combined transformation matrix, and thus is rendered with a single OpenGL draw call. For the right slider we have to repeat this procedure to identify a second transformation:</p>
+<pre class="qml"><span class="name">transform</span>: <span class="name">Rotation</span> {
+    <span class="name">angle</span>: <span class="name">mirrorSlider</span> ? <span class="number">180</span> : <span class="number">0</span>
+    <span class="type">axis</span> { <span class="name">x</span>: <span class="number">0</span>; <span class="name">y</span>: <span class="number">1</span>; <span class="name">z</span>: <span class="number">0</span> }
+    <span class="type">origin</span> { <span class="name">x</span>: <span class="name">root</span>.<span class="name">width</span><span class="operator">/</span><span class="number">2</span>; <span class="name">y</span>: <span class="name">root</span>.<span class="name">height</span><span class="operator">/</span><span class="number">2</span> }
+}</pre>
+<p>Just removing the transformations is of course not a proper fix (as it changes the visual appearance of the application), it merely verifies that it's these rotations causing our performance problem. You would now need to refactor the code in a way that it achieves the same behavior and visual appearance without the use of rotational transformations.</p>
+<p>Files:</p>
+<ul>
+<li><a href="gammaray-quick-batching-slider-qml.html">quick-batching/Slider.qml</a></li>
+<li><a href="gammaray-quick-batching-quick-batching-pro.html">quick-batching/quick-batching.pro</a></li>
+<li><a href="gammaray-quick-batching-quick-batching-qml.html">quick-batching/quick-batching.qml</a></li>
+</ul>
+</div>
+<!-- @@@quick-batching -->
+</body>
+</html>

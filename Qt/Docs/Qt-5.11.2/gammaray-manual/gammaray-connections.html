@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- gammaray-connections.qdoc -->
+  <title>Connections | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li>Connections</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+  <link rel="prev" href="gammaray-methods.html" />
+  <link rel="next" href="gammaray-enums.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="gammaray-methods.html">Methods</a>
+<a class="nextPage" href="gammaray-enums.html">Enums and Flags</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#overview">Overview</a></li>
+<li class="level2"><a href="#navigation">Navigation</a></li>
+<li class="level2"><a href="#warnings">Warnings</a></li>
+<li class="level1"><a href="#examples">Examples</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Connections</h1>
+<span class="subtitle"></span>
+<!-- $$$gammaray-connections.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="overview"></a>
+<h2 id="overview">Overview</h2>
+<p>The connections view is available for all <a href="../qtcore/qobject.html">QObject</a> instances and shows inbound and outbound signal/slot connections for the currently selected object.</p>
+<p class="centerAlign"><img src="images/gammaray-connections.png" alt="" /></p><p>The connections view consists of two identical parts. The upper half is showing inbound connections, that is signals connected to slots of the current objects. The lower half is showing outbound connections, that is signals of the current object connected to other slots or arbitrary functions or lambda expressions. The latter is displayed as &quot;slot object&quot;.</p>
+<p>Each of the two connection views has four columns:</p>
+<ul>
+<li>The sender object (inbound only), or the receiver object (outbound only).</li>
+<li>The name of the signal that is connected.</li>
+<li>The name of the slot the signal is connected to, if available.</li>
+<li>The type of the connection (automatic, direct or queued).</li>
+</ul>
+<a name="navigation"></a>
+<h3 >Navigation</h3>
+<p>The context menu on both the inbound and outbound connections view allows you to navigate to the sender or receiver object respectively.</p>
+<a name="warnings"></a>
+<h3 >Warnings</h3>
+<p>A warning icon is displayed in the first column of the inbound and outbound connections view if <a href="http://doc.qt.io/GammaRay">GammaRay</a> detected a possible issue with the connection, such as:</p>
+<ul>
+<li>The connection exists multiple times.</li>
+<li>The connection is explicitly set to direct mode, but the sender and receiver are in different threads.</li>
+</ul>
+<p>Note that these are merely warnings about common problems, but can in some cases actually be valid usage.</p>
+<a name="examples"></a>
+<h2 id="examples">Examples</h2>
+<p>The following examples make use of the connections view:</p>
+<ul>
+<li><a href="gammaray-signal-slot-example.html">signal-slot</a></li>
+<li><a href="gammaray-timer-example.html">timer</a></li>
+</ul>
+</div>
+<!-- @@@gammaray-connections.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="gammaray-methods.html">Methods</a>
+<a class="nextPage" href="gammaray-enums.html">Enums and Flags</a>
+</p>
+</body>
+</html>

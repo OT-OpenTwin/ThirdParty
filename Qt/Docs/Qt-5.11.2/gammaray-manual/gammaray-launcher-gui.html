@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- gammaray-launcher-gui.qdoc -->
+  <title>Graphical Launcher | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li>Graphical Launcher</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+  <link rel="prev" href="gammaray-basic-operations.html" />
+  <link rel="next" href="gammaray-client.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="gammaray-basic-operations.html">Basic Operations</a>
+<a class="nextPage" href="gammaray-client.html">GammaRay Client</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#overview">Overview</a></li>
+<li class="level1"><a href="#launching-applications">Launching Applications</a></li>
+<li class="level1"><a href="#attaching-to-an-application">Attaching to an Application</a></li>
+<li class="level1"><a href="#connecting-to-a-remote-target">Connecting to a Remote Target</a></li>
+<li class="level1"><a href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Graphical Launcher</h1>
+<span class="subtitle"></span>
+<!-- $$$gammaray-launcher-gui.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="overview"></a>
+<h2 id="overview">Overview</h2>
+<p>The graphical launcher of allows you to connect <a href="http://doc.qt.io/GammaRay">GammaRay</a> to a target in application in three different ways:</p>
+<ul>
+<li>Launch a new target application, with <a href="http://doc.qt.io/GammaRay">GammaRay</a> injected right from the start.</li>
+<li>Attach to a locally running application that has already been started by other means.</li>
+<li>Connect to a remotely running target that has already been injected by <a href="http://doc.qt.io/GammaRay">GammaRay</a> by other means.</li>
+</ul>
+<p>The graphical launcher can be started as follows:</p>
+<ul>
+<li>On Windows, by starting gammaray.exe without arguments, or by selecting &quot;<a href="http://doc.qt.io/GammaRay">GammaRay</a>&quot; from the <b>Start</b> menu.</li>
+<li>On Mac OSX , by running the <a href="http://doc.qt.io/GammaRay">GammaRay</a> app bundle.</li>
+<li>On Linux, by running &quot;gammaray&quot; without arguments on the command line, or by selecting &quot;<a href="http://doc.qt.io/GammaRay">GammaRay</a>&quot; from the start menu.</li>
+</ul>
+<a name="launching-applications"></a>
+<h2 id="launching-applications">Launching Applications</h2>
+<p>The <b>Launch</b> tab of the graphical launcher allows you to start new applications and inject <a href="http://doc.qt.io/GammaRay">GammaRay</a> into them. You just have to select an applcation from the list at the top, and specify command line arguments in the field below.</p>
+<p class="centerAlign"><img src="images/gammaray-launcher-launch.png" alt="" /></p><p><a href="http://doc.qt.io/GammaRay">GammaRay</a> automatically selects the best matching probe for the target application. You can verify this in the combo box at the bottom of the page. If <a href="http://doc.qt.io/GammaRay">GammaRay</a> could not find a compatible probe, launching fails.</p>
+<a name="attaching-to-an-application"></a>
+<h2 id="attaching-to-an-application">Attaching to an Application</h2>
+<p>The <b>Attach</b> tab of the graphical launcher allows you to attach to an application that is already running, and inject <a href="http://doc.qt.io/GammaRay">GammaRay</a> into it.</p>
+<p>The process list shows all local Qt-based processes that are potential targets. For each of them, <a href="http://doc.qt.io/GammaRay">GammaRay</a> tries to determine the exact Qt version they are using and list only those that has a compatible probe available.</p>
+<p>A tooltip in the process list shows detailed information about the Qt version and used probe for each process.</p>
+<p class="centerAlign"><img src="images/gammaray-launcher-attach.png" alt="" /></p><a name="connecting-to-a-remote-target"></a>
+<h2 id="connecting-to-a-remote-target">Connecting to a Remote Target</h2>
+<p>The <b>Connect</b> tab of the graphical launcher allows you to connect to a target on a remote device that has already been injected with <a href="http://doc.qt.io/GammaRay">GammaRay</a>. This is mainly useful when working with embedded devices.</p>
+<p><a href="http://doc.qt.io/GammaRay">GammaRay</a> tries to automatically discover viable targets on your local network, these are displayed in the list view on the <b>Connect</b> page, and can be used by selecting the corresponding items. Discovered targets using an incompatible <a href="http://doc.qt.io/GammaRay">GammaRay</a> version will be shown but will be disabled for selection.</p>
+<p>Should <a href="http://doc.qt.io/GammaRay">GammaRay</a> not be able to discover the desired target automatically, the network address of the target can also be specified manually in the entry field on the top. This might be necessary depending on your local network setup.</p>
+<p class="centerAlign"><img src="images/gammaray-launcher-connect.png" alt="" /></p><a name="troubleshooting"></a>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>Opening the <b>Self Test</b> tab makes <a href="http://doc.qt.io/GammaRay">GammaRay</a> verify its installation and identify problems (if any). The results are displayed on this page.</p>
+<p class="centerAlign"><img src="images/gammaray-launcher-selftest.png" alt="" /></p></div>
+<!-- @@@gammaray-launcher-gui.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="gammaray-basic-operations.html">Basic Operations</a>
+<a class="nextPage" href="gammaray-client.html">GammaRay Client</a>
+</p>
+</body>
+</html>

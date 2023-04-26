@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>mycylinder.cpp Example File | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="gammaray-qt3d-geometry-example.html">Qt3D Geometry</a></li>
+<li>mycylinder.cpp Example File</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">mycylinder.cpp Example File</h1>
+<span class="subtitle">qt3d-geometry/mycylinder.cpp</span>
+<!-- $$$qt3d-geometry/mycylinder.cpp-description -->
+<div class="descr"> <a name="details"></a>
+<pre class="cpp"><span class="comment">/*
+  mycylinder.cpp
+
+  This file is part of GammaRay, the Qt application inspection and
+  manipulation tool.
+
+  Copyright (C) 2016-2018 Klarälvdalens Datakonsult AB, a KDAB Group company, info@kdab.com
+  Author: Volker Krause &lt;volker.krause@kdab.com&gt;
+
+  Licensees holding valid commercial KDAB GammaRay licenses may use this file in
+  accordance with GammaRay Commercial License Agreement provided with the Software.
+
+  Contact info@kdab.com if any conditions of this licensing are not clear to you.
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+*/</span>
+
+<span class="preprocessor">#include &quot;mycylinder.h&quot;</span>
+
+<span class="preprocessor">#include &lt;Qt3DRender/QAttribute&gt;</span>
+<span class="preprocessor">#include &lt;Qt3DRender/QBuffer&gt;</span>
+<span class="preprocessor">#include &lt;Qt3DRender/QGeometry&gt;</span>
+
+<span class="preprocessor">#include &lt;QVector3D&gt;</span>
+<span class="preprocessor">#include &lt;qmath.h&gt;</span>
+
+<span class="keyword">class</span> MyCylinderGeometry : <span class="keyword">public</span> <span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type">QGeometry</span>
+{
+    Q_OBJECT
+<span class="keyword">public</span>:
+    <span class="keyword">explicit</span> MyCylinderGeometry(<span class="type">QNode</span> <span class="operator">*</span>parent <span class="operator">=</span> nullptr);
+    <span class="operator">~</span>MyCylinderGeometry();
+
+<span class="keyword">private</span>:
+    <span class="type">void</span> createVertexData();
+    <span class="type">void</span> createSidesVertices(<span class="type">float</span> <span class="operator">*</span><span class="operator">&amp;</span>verticesPtr);
+    <span class="type">void</span> createDiscVertices(<span class="type">float</span> <span class="operator">*</span><span class="operator">&amp;</span>verticesPtr<span class="operator">,</span> <span class="type">float</span> yPosition);
+    <span class="type">void</span> createIndexData();
+    <span class="type">void</span> createSidesIndices(<span class="type"><a href="../qtcore/qtglobal.html#quint16-typedef">quint16</a></span> <span class="operator">*</span><span class="operator">&amp;</span>indicesPtr);
+    <span class="type">void</span> createDiscIndices(<span class="type"><a href="../qtcore/qtglobal.html#quint16-typedef">quint16</a></span> <span class="operator">*</span><span class="operator">&amp;</span>indicesPtr<span class="operator">,</span> <span class="type">int</span> discCenterIndex<span class="operator">,</span> <span class="type">float</span> yPosition);
+
+    <span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type">QAttribute</span> <span class="operator">*</span>m_positionAttribute;
+    <span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type">QAttribute</span> <span class="operator">*</span>m_normalAttribute;
+    <span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type">QAttribute</span> <span class="operator">*</span>m_indexAttribute;
+
+    <span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type"><a href="../qtcore/qbuffer.html">QBuffer</a></span> <span class="operator">*</span>m_vertexBuffer;
+    <span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type"><a href="../qtcore/qbuffer.html">QBuffer</a></span> <span class="operator">*</span>m_indexBuffer;
+
+    <span class="type">int</span> m_rings <span class="operator">=</span> <span class="number">7</span>;
+    <span class="type">int</span> m_slices <span class="operator">=</span> <span class="number">16</span>;
+    <span class="type">float</span> m_radius <span class="operator">=</span> <span class="number">1.0f</span>;
+    <span class="type">float</span> m_length <span class="operator">=</span> <span class="number">4.0f</span>;
+};
+
+MyCylinderGeometry<span class="operator">::</span>MyCylinderGeometry(<span class="type">QNode</span><span class="operator">*</span> parent)
+    : <span class="type">QGeometry</span>(parent)
+{
+    m_positionAttribute <span class="operator">=</span> <span class="keyword">new</span> <span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type">QAttribute</span>(<span class="keyword">this</span>);
+    m_normalAttribute <span class="operator">=</span> <span class="keyword">new</span> <span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type">QAttribute</span>(<span class="keyword">this</span>);
+    m_indexAttribute <span class="operator">=</span> <span class="keyword">new</span> <span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type">QAttribute</span>(<span class="keyword">this</span>);
+
+    m_vertexBuffer <span class="operator">=</span> <span class="keyword">new</span> <span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type"><a href="../qtcore/qbuffer.html">QBuffer</a></span>(<span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type"><a href="../qtcore/qbuffer.html">QBuffer</a></span><span class="operator">::</span>VertexBuffer<span class="operator">,</span> <span class="keyword">this</span>);
+    m_indexBuffer <span class="operator">=</span> <span class="keyword">new</span> <span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type"><a href="../qtcore/qbuffer.html">QBuffer</a></span>(<span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type"><a href="../qtcore/qbuffer.html">QBuffer</a></span><span class="operator">::</span>IndexBuffer<span class="operator">,</span> <span class="keyword">this</span>);
+
+    <span class="comment">// vec3 pos, vec3 normal</span>
+    <span class="keyword">const</span> <span class="type"><a href="../qtcore/qtglobal.html#quint32-typedef">quint32</a></span> elementSize <span class="operator">=</span> <span class="number">3</span> <span class="operator">+</span> <span class="number">3</span>;
+    <span class="keyword">const</span> <span class="type"><a href="../qtcore/qtglobal.html#quint32-typedef">quint32</a></span> stride <span class="operator">=</span> elementSize <span class="operator">*</span> <span class="keyword">sizeof</span>(<span class="type">float</span>);
+    <span class="keyword">const</span> <span class="type">int</span> nVerts <span class="operator">=</span> (m_slices <span class="operator">+</span> <span class="number">1</span>) <span class="operator">*</span> m_rings <span class="operator">+</span> <span class="number">2</span> <span class="operator">*</span> (m_slices <span class="operator">+</span> <span class="number">1</span>) <span class="operator">+</span> <span class="number">2</span>;
+    <span class="keyword">const</span> <span class="type">int</span> faces <span class="operator">=</span> (m_slices <span class="operator">*</span> <span class="number">2</span>) <span class="operator">*</span> (m_rings <span class="operator">-</span> <span class="number">1</span>) <span class="operator">+</span> (m_slices <span class="operator">*</span> <span class="number">2</span>);
+
+    m_positionAttribute<span class="operator">-</span><span class="operator">&gt;</span>setName(<span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type">QAttribute</span><span class="operator">::</span>defaultPositionAttributeName());
+    m_positionAttribute<span class="operator">-</span><span class="operator">&gt;</span>setDataType(<span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type">QAttribute</span><span class="operator">::</span>Float);
+    m_positionAttribute<span class="operator">-</span><span class="operator">&gt;</span>setDataSize(<span class="number">3</span>);
+    m_positionAttribute<span class="operator">-</span><span class="operator">&gt;</span>setAttributeType(<span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type">QAttribute</span><span class="operator">::</span>VertexAttribute);
+    m_positionAttribute<span class="operator">-</span><span class="operator">&gt;</span>setBuffer(m_vertexBuffer);
+    m_positionAttribute<span class="operator">-</span><span class="operator">&gt;</span>setByteStride(stride);
+    m_positionAttribute<span class="operator">-</span><span class="operator">&gt;</span>setCount(nVerts);
+
+    m_normalAttribute<span class="operator">-</span><span class="operator">&gt;</span>setName(<span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type">QAttribute</span><span class="operator">::</span>defaultNormalAttributeName());
+    m_normalAttribute<span class="operator">-</span><span class="operator">&gt;</span>setDataType(<span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type">QAttribute</span><span class="operator">::</span>Float);
+    m_normalAttribute<span class="operator">-</span><span class="operator">&gt;</span>setDataSize(<span class="number">3</span>);
+    m_normalAttribute<span class="operator">-</span><span class="operator">&gt;</span>setAttributeType(<span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type">QAttribute</span><span class="operator">::</span>VertexAttribute);
+    m_normalAttribute<span class="operator">-</span><span class="operator">&gt;</span>setBuffer(m_vertexBuffer);
+    m_normalAttribute<span class="operator">-</span><span class="operator">&gt;</span>setByteStride(stride);
+    m_normalAttribute<span class="operator">-</span><span class="operator">&gt;</span>setByteOffset(<span class="number">3</span> <span class="operator">*</span> <span class="keyword">sizeof</span>(<span class="type">float</span>));
+    m_normalAttribute<span class="operator">-</span><span class="operator">&gt;</span>setCount(nVerts);
+
+    m_indexAttribute<span class="operator">-</span><span class="operator">&gt;</span>setAttributeType(<span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type">QAttribute</span><span class="operator">::</span>IndexAttribute);
+    m_indexAttribute<span class="operator">-</span><span class="operator">&gt;</span>setDataType(<span class="type"><a href="../qt3d/qt3drender-module.html">Qt3DRender</a></span><span class="operator">::</span><span class="type">QAttribute</span><span class="operator">::</span>UnsignedShort);
+    m_indexAttribute<span class="operator">-</span><span class="operator">&gt;</span>setBuffer(m_indexBuffer);
+
+    m_indexAttribute<span class="operator">-</span><span class="operator">&gt;</span>setCount(faces <span class="operator">*</span> <span class="number">3</span>);
+
+    createVertexData();
+    createIndexData();
+
+    addAttribute(m_positionAttribute);
+    addAttribute(m_normalAttribute);
+    addAttribute(m_indexAttribute);
+}
+
+MyCylinderGeometry<span class="operator">::</span><span class="operator">~</span>MyCylinderGeometry()
+{
+}
+
+<span class="type">void</span> MyCylinderGeometry<span class="operator">::</span>createVertexData()
+{
+    <span class="keyword">const</span> <span class="type">int</span> verticesCount  <span class="operator">=</span> (m_slices <span class="operator">+</span> <span class="number">1</span>) <span class="operator">*</span> m_rings <span class="operator">+</span> <span class="number">2</span> <span class="operator">*</span> (m_slices <span class="operator">+</span> <span class="number">1</span>) <span class="operator">+</span> <span class="number">2</span>;
+    <span class="comment">// vec3 pos, vec3 normal</span>
+    <span class="keyword">const</span> <span class="type"><a href="../qtcore/qtglobal.html#quint32-typedef">quint32</a></span> vertexSize <span class="operator">=</span> (<span class="number">3</span> <span class="operator">+</span> <span class="number">3</span>) <span class="operator">*</span> <span class="keyword">sizeof</span>(<span class="type">float</span>);
+
+    <span class="type"><a href="../qtcore/qbytearray.html">QByteArray</a></span> verticesData;
+    verticesData<span class="operator">.</span>resize(vertexSize <span class="operator">*</span> verticesCount);
+    <span class="type">float</span> <span class="operator">*</span>verticesPtr <span class="operator">=</span> <span class="keyword">reinterpret_cast</span><span class="operator">&lt;</span><span class="type">float</span><span class="operator">*</span><span class="operator">&gt;</span>(verticesData<span class="operator">.</span>data());
+
+    createSidesVertices(verticesPtr);
+    createDiscVertices(verticesPtr<span class="operator">,</span> <span class="operator">-</span>m_length <span class="operator">*</span> <span class="number">0.5f</span>);
+    createDiscVertices(verticesPtr<span class="operator">,</span> m_length <span class="operator">*</span> <span class="number">0.5f</span>);
+
+    m_vertexBuffer<span class="operator">-</span><span class="operator">&gt;</span>setData(verticesData);
+}
+
+<span class="type">void</span> MyCylinderGeometry<span class="operator">::</span>createSidesVertices(<span class="type">float</span><span class="operator">*</span><span class="operator">&amp;</span> verticesPtr)
+{
+    <span class="keyword">const</span> <span class="type">float</span> dY <span class="operator">=</span> m_length <span class="operator">/</span> <span class="keyword">static_cast</span><span class="operator">&lt;</span><span class="type">float</span><span class="operator">&gt;</span>(m_rings <span class="operator">-</span> <span class="number">1</span>);
+    <span class="keyword">const</span> <span class="type">float</span> dTheta <span class="operator">=</span> (M_PI <span class="operator">*</span> <span class="number">2</span>) <span class="operator">/</span> <span class="keyword">static_cast</span><span class="operator">&lt;</span><span class="type">float</span><span class="operator">&gt;</span>(m_slices);
+
+    <span class="keyword">for</span> (<span class="type">int</span> ring <span class="operator">=</span> <span class="number">0</span>; ring <span class="operator">&lt;</span> m_rings; <span class="operator">+</span><span class="operator">+</span>ring) {
+        <span class="keyword">const</span> <span class="type">float</span> y <span class="operator">=</span> <span class="operator">-</span>m_length <span class="operator">/</span> <span class="number">2.0f</span> <span class="operator">+</span> <span class="keyword">static_cast</span><span class="operator">&lt;</span><span class="type">float</span><span class="operator">&gt;</span>(ring) <span class="operator">*</span> dY;
+        <span class="keyword">for</span> (<span class="type">int</span> slice <span class="operator">=</span> <span class="number">0</span>; slice <span class="operator">&lt;</span><span class="operator">=</span> m_slices; <span class="operator">+</span><span class="operator">+</span>slice) {
+            <span class="keyword">const</span> <span class="type">float</span> theta <span class="operator">=</span> <span class="keyword">static_cast</span><span class="operator">&lt;</span><span class="type">float</span><span class="operator">&gt;</span>(slice) <span class="operator">*</span> dTheta;
+            <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> m_radius <span class="operator">*</span> <a href="../qtcore/qtmath.html#qCos">qCos</a>(theta);;
+            <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> y;
+            <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> m_radius <span class="operator">*</span> <a href="../qtcore/qtmath.html#qSin">qSin</a>(theta);
+
+            QVector3D n(<a href="../qtcore/qtmath.html#qCos">qCos</a>(theta)<span class="operator">,</span> <span class="operator">-</span>y <span class="operator">*</span><span class="number">0.5f</span><span class="operator">,</span> <a href="../qtcore/qtmath.html#qSin">qSin</a>(theta));
+            n<span class="operator">.</span>normalize();
+            <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> n<span class="operator">.</span>x();
+            <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> n<span class="operator">.</span>y();
+            <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> n<span class="operator">.</span>z();
+        }
+    }
+}
+
+<span class="type">void</span> MyCylinderGeometry<span class="operator">::</span>createDiscVertices(<span class="type">float</span> <span class="operator">*</span><span class="operator">&amp;</span>verticesPtr<span class="operator">,</span> <span class="type">float</span> yPosition)
+{
+    <span class="keyword">const</span> <span class="type">float</span> dTheta <span class="operator">=</span> (M_PI <span class="operator">*</span> <span class="number">2</span>) <span class="operator">/</span> <span class="keyword">static_cast</span><span class="operator">&lt;</span><span class="type">float</span><span class="operator">&gt;</span>(m_slices);
+    <span class="keyword">const</span> <span class="type">float</span> yNormal <span class="operator">=</span> (yPosition <span class="operator">&lt;</span> <span class="number">0.0f</span>) <span class="operator">?</span> <span class="operator">-</span><span class="number">1.0f</span> : <span class="number">1.0f</span>;
+
+    <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> <span class="number">0.0f</span>;
+    <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> yPosition;
+    <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> <span class="number">0.0f</span>;
+
+    <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> <span class="number">0.0f</span>;
+    <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> yNormal;
+    <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> <span class="number">0.0f</span>;
+
+    <span class="keyword">for</span> (<span class="type">int</span> slice <span class="operator">=</span> <span class="number">0</span>; slice <span class="operator">&lt;</span><span class="operator">=</span> m_slices; <span class="operator">+</span><span class="operator">+</span>slice) {
+        <span class="keyword">const</span> <span class="type">float</span> theta <span class="operator">=</span> <span class="keyword">static_cast</span><span class="operator">&lt;</span><span class="type">float</span><span class="operator">&gt;</span>(slice) <span class="operator">*</span> dTheta;
+        <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> m_radius <span class="operator">*</span> <a href="../qtcore/qtmath.html#qCos">qCos</a>(theta);
+        <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> yPosition;
+        <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> m_radius <span class="operator">*</span> <a href="../qtcore/qtmath.html#qSin">qSin</a>(theta);
+
+        <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> <span class="number">0.0f</span>;
+        <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> yNormal;
+        <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> <span class="number">0.0f</span>;
+    }
+}
+
+<span class="type">void</span> MyCylinderGeometry<span class="operator">::</span>createIndexData()
+{
+    <span class="keyword">const</span> <span class="type">int</span> facesCount <span class="operator">=</span> (m_slices <span class="operator">*</span> <span class="number">2</span>) <span class="operator">*</span> (m_rings <span class="operator">-</span> <span class="number">1</span>) <span class="comment">// two tris per side, for each pair of adjacent rings</span>
+            <span class="operator">+</span> m_slices <span class="operator">*</span> <span class="number">2</span>; <span class="comment">// two caps</span>
+    <span class="keyword">const</span> <span class="type">int</span> indicesCount <span class="operator">=</span> facesCount <span class="operator">*</span> <span class="number">3</span>;
+    <span class="keyword">const</span> <span class="type">int</span> indexSize <span class="operator">=</span> <span class="keyword">sizeof</span>(<span class="type"><a href="../qtcore/qtglobal.html#quint16-typedef">quint16</a></span>);
+    Q_ASSERT(indicesCount <span class="operator">&lt;</span> <span class="number">65536</span>);
+
+    <span class="type"><a href="../qtcore/qbytearray.html">QByteArray</a></span> indicesBytes;
+    indicesBytes<span class="operator">.</span>resize(indicesCount <span class="operator">*</span> indexSize);
+    <span class="type"><a href="../qtcore/qtglobal.html#quint16-typedef">quint16</a></span> <span class="operator">*</span>indicesPtr <span class="operator">=</span> <span class="keyword">reinterpret_cast</span><span class="operator">&lt;</span><span class="type"><a href="../qtcore/qtglobal.html#quint16-typedef">quint16</a></span><span class="operator">*</span><span class="operator">&gt;</span>(indicesBytes<span class="operator">.</span>data());
+
+    createSidesIndices(indicesPtr);
+    createDiscIndices(indicesPtr<span class="operator">,</span> m_rings <span class="operator">*</span> (m_slices <span class="operator">+</span> <span class="number">1</span>)<span class="operator">,</span> <span class="operator">-</span>m_length <span class="operator">*</span> <span class="number">0.5</span>);
+    createDiscIndices(indicesPtr<span class="operator">,</span> m_rings <span class="operator">*</span> (m_slices <span class="operator">+</span> <span class="number">1</span>) <span class="operator">+</span> m_slices <span class="operator">+</span> <span class="number">2</span><span class="operator">,</span> m_length <span class="operator">*</span> <span class="number">0.5</span>);
+
+    m_indexBuffer<span class="operator">-</span><span class="operator">&gt;</span>setData(indicesBytes);
+}
+
+<span class="type">void</span> MyCylinderGeometry<span class="operator">::</span>createSidesIndices(<span class="type"><a href="../qtcore/qtglobal.html#quint16-typedef">quint16</a></span> <span class="operator">*</span><span class="operator">&amp;</span>indicesPtr)
+{
+    <span class="keyword">for</span> (<span class="keyword">auto</span> ring <span class="operator">=</span> <span class="number">0</span>; ring <span class="operator">&lt;</span> m_rings <span class="operator">-</span> <span class="number">1</span>; <span class="operator">+</span><span class="operator">+</span>ring) {
+        <span class="keyword">const</span> <span class="keyword">auto</span> ringIndexStart <span class="operator">=</span> ring <span class="operator">*</span> (m_slices <span class="operator">+</span> <span class="number">1</span>);
+        <span class="keyword">const</span> <span class="keyword">auto</span> nextRingIndexStart <span class="operator">=</span> (ring <span class="operator">+</span> <span class="number">1</span>) <span class="operator">*</span> (m_slices <span class="operator">+</span> <span class="number">1</span>);
+
+        <span class="keyword">for</span> (<span class="keyword">auto</span> slice <span class="operator">=</span> <span class="number">0</span>; slice <span class="operator">&lt;</span> m_slices; <span class="operator">+</span><span class="operator">+</span>slice) {
+            <span class="keyword">const</span> <span class="keyword">auto</span> nextSlice <span class="operator">=</span> slice <span class="operator">+</span> <span class="number">1</span>;
+            <span class="operator">*</span>indicesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> (ringIndexStart <span class="operator">+</span> slice);
+            <span class="operator">*</span>indicesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> (nextRingIndexStart <span class="operator">+</span> slice);
+            <span class="operator">*</span>indicesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> (ringIndexStart <span class="operator">+</span> nextSlice);
+            <span class="operator">*</span>indicesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> (ringIndexStart <span class="operator">+</span> nextSlice);
+            <span class="operator">*</span>indicesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> (nextRingIndexStart <span class="operator">+</span> slice);
+            <span class="operator">*</span>indicesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> (nextRingIndexStart <span class="operator">+</span> nextSlice);
+        }
+    }
+}
+
+<span class="type">void</span> MyCylinderGeometry<span class="operator">::</span>createDiscIndices(<span class="type"><a href="../qtcore/qtglobal.html#quint16-typedef">quint16</a></span> <span class="operator">*</span><span class="operator">&amp;</span>indicesPtr<span class="operator">,</span> <span class="type">int</span> discCenterIndex<span class="operator">,</span> <span class="type">float</span> <span class="comment">/*yPosition*/</span>)
+{
+    <span class="comment">//const auto yNormal = (yPosition &lt; 0.0f) ? -1.0f : 1.0f;</span>
+    <span class="keyword">for</span> (<span class="keyword">auto</span> slice <span class="operator">=</span> <span class="number">0</span>; slice <span class="operator">&lt;</span> m_slices; <span class="operator">+</span><span class="operator">+</span>slice) {
+        <span class="keyword">const</span> <span class="keyword">auto</span> nextSlice <span class="operator">=</span> slice <span class="operator">+</span> <span class="number">1</span>;
+        <span class="operator">*</span>indicesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> discCenterIndex;
+        <span class="operator">*</span>indicesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> (discCenterIndex <span class="operator">+</span> <span class="number">1</span> <span class="operator">+</span> nextSlice);
+        <span class="operator">*</span>indicesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> (discCenterIndex <span class="operator">+</span> <span class="number">1</span> <span class="operator">+</span> slice);
+
+        <span class="comment">//if (yNormal &lt; 0.0f)</span>
+        <span class="comment">//    qSwap(*(indicesPtr -1), *(indicesPtr - 2));</span>
+    }
+}
+
+MyCylinder<span class="operator">::</span>MyCylinder(<span class="type"><a href="../qt3d/qt3dcore-module.html">Qt3DCore</a></span><span class="operator">::</span><span class="type">QNode</span><span class="operator">*</span> parent)
+    : <span class="type">QGeometryRenderer</span>(parent)
+{
+    setGeometry(<span class="keyword">new</span> MyCylinderGeometry(<span class="keyword">this</span>));
+}
+
+MyCylinder<span class="operator">::</span><span class="operator">~</span>MyCylinder()
+{
+}
+
+<span class="preprocessor">#include &quot;mycylinder.moc&quot;</span></pre>
+</div>
+<!-- @@@qt3d-geometry/mycylinder.cpp -->
+</body>
+</html>

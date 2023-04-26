@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- gammaray-install.qdoc -->
+  <title>Installation | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li>Installation</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+  <link rel="prev" href="gammaray-getting-started.html" />
+  <link rel="next" href="gammaray-basic-operations.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="gammaray-getting-started.html">Getting Started</a>
+<a class="nextPage" href="gammaray-basic-operations.html">Basic Operations</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#overview">Overview</a></li>
+<li class="level1"><a href="#local-development">Local Development</a></li>
+<li class="level2"><a href="#pre-built-packages">Pre-built packages</a></li>
+<li class="level2"><a href="#build-recipes">Build recipes</a></li>
+<li class="level2"><a href="#building-manually">Building manually</a></li>
+<li class="level1"><a href="#embedded-targets">Embedded Targets</a></li>
+<li class="level2"><a href="#yocto">Yocto</a></li>
+<li class="level2"><a href="#buildroot">Buildroot</a></li>
+<li class="level2"><a href="#manual-cross-compilation">Manual cross-compilation</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Installation</h1>
+<span class="subtitle"></span>
+<!-- $$$gammaray-install.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="overview"></a>
+<h2 id="overview">Overview</h2>
+<p><a href="http://doc.qt.io/GammaRay">GammaRay</a> consists of two parts, the client and the probe. The client is the graphical user interface you are going to interact with. The probe interacts very closely with the Qt application it analyzes, using a number of internal APIs of Qt. This makes it necessary that the probe is built for exactly your Qt.</p>
+<p>All of the following affect the compatibility of the <a href="http://doc.qt.io/GammaRay">GammaRay</a> probe with the target application:</p>
+<ul>
+<li>Qt version</li>
+<li>Qt configuration</li>
+<li>system architecture (most prominently 32bit vs 64bit)</li>
+<li>compiler vendor (particularly on Windows)</li>
+<li>compiler settings (particularly debug or release mode, on Windows)</li>
+</ul>
+<p>This tight coupling to Qt makes it unfortunately somewhat difficult to provide pre-compiled binaries for the <a href="http://doc.qt.io/GammaRay">GammaRay</a> probe in all cases, the following instructions therefore also cover how to build <a href="http://doc.qt.io/GammaRay">GammaRay</a> from source code, should no pre-built probe be available for your configuration.</p>
+<a name="local-development"></a>
+<h2 id="local-development">Local Development</h2>
+<a name="pre-built-packages"></a>
+<h3 >Pre-built packages</h3>
+<p>Pre-built <a href="http://doc.qt.io/GammaRay">GammaRay</a> packages are available for the following systems:</p>
+<ul>
+<li><a href="https://doc.qt.io/QtAutomotiveSuite">Qt Automotive Suite</a> contains everything needed as part of the standard SDK already.</li>
+<li>For some Linux distributions <a href="https://www.kdab.com/">KDAB</a> provides packages via the Open Build Service <a href="http://download.opensuse.org/repositories/isv:/KDAB/">here</a>.</li>
+</ul>
+<a name="build-recipes"></a>
+<h3 >Build recipes</h3>
+<p>Build recipes for the following source-based software distribution systems are available:</p>
+<ul>
+<li><a href="https://github.com/KDAB/homebrew-tap">Homebrew</a> (macOS)</li>
+<li><a href="https://cgit.kde.org/craft.git/tree/portage/qt-apps/gammaray">KDE Craft</a> (Windows)</li>
+</ul>
+<a name="building-manually"></a>
+<h3 >Building manually</h3>
+<p>You can obtain the source code of <a href="http://doc.qt.io/GammaRay">GammaRay</a> on <a href="https://github.com/KDAB/GammaRay">Github</a>. To build it you need the following requirements:</p>
+<ul>
+<li>Qt 4.8 or 5.3 or newer</li>
+<li><a href="https://www.cmake.org/">CMake</a> 3.0 or newer</li>
+<li>a C++11 compatible compiler</li>
+</ul>
+<p><a href="http://doc.qt.io/GammaRay">GammaRay</a> is build using the normal <a href="https://www.cmake.org/">CMake</a> build process, you can find more information in the Install.txt file in the <a href="http://doc.qt.io/GammaRay">GammaRay</a> source tree.</p>
+<a name="embedded-targets"></a>
+<h2 id="embedded-targets">Embedded Targets</h2>
+<p>The <a href="https://doc.qt.io/QtAutomotiveSuite">Qt Automotive Suite</a> contains pre-built <a href="http://doc.qt.io/GammaRay">GammaRay</a> probes are included in the device images.</p>
+<p>For the following source-based embedded Linux distributions, there are example build recipes included below. Note that these likely need to be adjusted for your specific setup.</p>
+<ul>
+<li>Yocto</li>
+<li>Buildroot</li>
+</ul>
+<p>In all other cases, including non-Linux target systems, refer to the cross-compilation instructions below.</p>
+<a name="yocto"></a>
+<h3 >Yocto</h3>
+<p>A Yocto recipe for <a href="https://doc.qt.io/QtAutomotiveSuite">Qt Automotive Suite</a> is available as part of the meta-boot2qt Yocto layer <a href="http://code.qt.io/cgit/yocto/meta-boot2qt.git/tree/recipes-qt/automotive/gammaray_git.bb">here</a>. See the example below on how to customize this to your needs.</p>
+<p>Example gammaray_git.bb:</p>
+<pre class="cpp">SUMMARY = &quot;GammaRay Qt introspection probe&quot;
+HOMEPAGE = &quot;http://www.kdab.com/gammaray&quot;
+
+LICENSE = &quot;GPLv2&quot;
+LIC_FILES_CHKSUM = &quot;file://LICENSE.GPL.txt;md5=2abfe5daa817fd4346b6d55293941415&quot;
+
+inherit cmake_qt5
+
+SRC_URI = &quot;git://github.com/KDAB/GammaRay;branch=master&quot;
+
+SRCREV = &quot;1728dff87163c370fa6903a6d739d1a132b4c62f&quot;
+PV = &quot;2.7.0+git${SRCPV}&quot;
+
+DEPENDS = &quot;qtdeclarative&quot;
+
+S = &quot;${WORKDIR}/git&quot;
+
+EXTRA_OECMAKE += &quot; -DGAMMARAY_BUILD_UI=OFF&quot;
+
+FILES_${PN}-dev += &quot; \
+    /usr/lib/cmake/* \
+    /usr/mkspecs/modules/* \
+&quot;
+FILES_${PN}-dbg += &quot; \
+    /usr/lib/.debug/* \
+    /usr/lib/gammaray/*/*/.debug \
+    /usr/lib/gammaray/*/*/styles/.debug \
+&quot;</pre>
+<p>The lines you probably want to adjust are:</p>
+<ul>
+<li>SRCREV: to use newer versions</li>
+<li>DEPENDS: to select the Qt modules you are using, in order to enable all relevant <a href="http://doc.qt.io/GammaRay">GammaRay</a> features</li>
+</ul>
+<a name="buildroot"></a>
+<h3 >Buildroot</h3>
+<p>Example Config.in:</p>
+<pre class="cpp">config BR2_PACKAGE_GAMMARAY
+        bool <span class="string">&quot;gammaray&quot;</span>
+        depends on BR2_PACKAGE_QT5
+        help
+        GammaRay <span class="type"><a href="gammaray-manual-attribution-qt.html">Qt</a></span> introspection probe<span class="operator">.</span></pre>
+<p>Example gammaray.mk:</p>
+<pre class="cpp">GAMMARAY_VERSION <span class="operator">=</span> <span class="number">1728dff87163c370fa6903a6d739d1a132b4c62f</span>
+GAMMARAY_SITE <span class="operator">=</span> git:<span class="comment">//github.com/KDAB/GammaRay.git</span>
+GAMMARAY_INSTALL_STAGING <span class="operator">=</span> NO
+GAMMARAY_INSTALL_TARGET <span class="operator">=</span> YES
+GAMMARAY_LICENSE <span class="operator">=</span> GPLv2
+GAMMARAY_LICENSE_FILES <span class="operator">=</span> LICENSE
+GAMMARAY_DEPENDENCIES <span class="operator">=</span> qt5base
+
+GAMMARAY_CONF_OPTS <span class="operator">+</span><span class="operator">=</span> <span class="operator">-</span>DGAMMARAY_BUILD_UI<span class="operator">=</span>OFF
+
+$(eval $(cmake<span class="operator">-</span>package))</pre>
+<p>The lines you probably want to adjust are:</p>
+<ul>
+<li>GAMMARAY_VERSION: to use newer versions</li>
+<li>GAMMARAY_DEPENDENCIES: to select the Qt modules you are using, in order to enable all relevant <a href="http://doc.qt.io/GammaRay">GammaRay</a> features</li>
+</ul>
+<a name="manual-cross-compilation"></a>
+<h3 >Manual cross-compilation</h3>
+<p><a href="http://doc.qt.io/GammaRay">GammaRay</a> can be cross-compiled using the normal cross-compilation mechanism of <a href="https://www.cmake.org/">CMake</a>, ie. passing <a href="https://www.cmake.org/">CMake</a> a toolchain file. The <a href="http://doc.qt.io/GammaRay">GammaRay</a> source code contains a number of example toolchain files for Linux (generic Yocto, RaspberryPI, iMX6), QNX (6.5, 6.6, 7.0) and Android you can use or adjust.</p>
+<p>The toolchain file is passed to <a href="https://www.cmake.org/">CMake</a> using the -DCMAKE_TOOLCHAIN_FILE command line option. Note that this only works on the very first <a href="https://www.cmake.org/">CMake</a> run, <a href="https://www.cmake.org/">CMake</a> doesn't like changing the toolchain file on an existing build directory. In that case, make sure to wipe the entire build directory first (just deleting CMakeCache.txt is not enough!).</p>
+<p>Additionally you might need to pass one or more -DCMAKE_PREFIX_PATH=..&#x2e; command line options to point <a href="https://www.cmake.org/">CMake</a> to the location your sysroot has Qt (or any other dependency) installed in, just as during desktop builds.</p>
+<p>A default build of <a href="http://doc.qt.io/GammaRay">GammaRay</a> includes both the client and the probe, for cross-compiling you normally only want the probe, which can be achieved by setting the <a href="https://www.cmake.org/">CMake</a> option GAMMARAY_BUILD_UI to off.</p>
+<p>Here's an example <a href="https://www.cmake.org/">CMake</a> invocation for building for RaspberryPI:</p>
+<pre class="cpp"><span class="keyword">export</span> SYSROOT<span class="operator">=</span><span class="operator">/</span>where<span class="operator">/</span>your<span class="operator">/</span>rpi<span class="operator">/</span>sysroot<span class="operator">/</span>is<span class="operator">/</span>located
+<span class="keyword">export</span> PATH<span class="operator">=</span><span class="operator">&lt;</span>toolchain<span class="operator">&gt;</span>:$PATH
+
+cd <span class="operator">&lt;</span>builddir<span class="operator">&gt;</span>
+cmake <span class="operator">-</span>DCMAKE_TOOLCHAIN_FILE<span class="operator">=</span><span class="operator">&lt;</span>srcdir<span class="operator">&gt;</span><span class="operator">/</span>cmake<span class="operator">/</span>Toolchain<span class="operator">-</span>RPI<span class="operator">.</span>cmake  <span class="operator">-</span>DCMAKE_PREFIX_PATH<span class="operator">=</span>$SYSROOT<span class="operator">/</span>usr<span class="operator">/</span>local<span class="operator">/</span><span class="type"><a href="gammaray-manual-attribution-qt.html">Qt</a></span><span class="operator">-</span><span class="number">5.5.1</span> <span class="operator">-</span>DCMAKE_INSTALL_PREFIX<span class="operator">=</span>$SYSROOT<span class="operator">/</span>usr<span class="operator">/</span> <span class="operator">-</span>DGAMMARAY_BUILD_UI<span class="operator">=</span>OFF</pre>
+</div>
+<!-- @@@gammaray-install.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="gammaray-getting-started.html">Getting Started</a>
+<a class="nextPage" href="gammaray-basic-operations.html">Basic Operations</a>
+</p>
+</body>
+</html>

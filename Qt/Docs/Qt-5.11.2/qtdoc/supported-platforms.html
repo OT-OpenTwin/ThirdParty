@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- supported-platforms.qdoc -->
+  <title>Supported Platforms | Qt 5.11</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="index.html">Qt 5.11</a></td><td >Supported Platforms</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Qt 5.11.2 Reference Documentation</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#supported-configurations">Supported Configurations</a></li>
+<li class="level2"><a href="#reference-configurations">Reference Configurations</a></li>
+<li class="level1"><a href="#availability-of-packages">Availability of Packages</a></li>
+<li class="level1"><a href="#deployment-of-qt-applications">Deployment of Qt Applications</a></li>
+<li class="level1"><a href="#general-legal-disclaimer">General Legal Disclaimer</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Supported Platforms</h1>
+<span class="subtitle"></span>
+<!-- $$$supported-platforms.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>Qt is a commercial and open source licensed cross-platform application and UI framework. It is developed by The Qt Company, together with the Qt Project Community under an open source governance model.</p>
+<p>Using Qt, you can write GUI applications once and deploy them across desktop, mobile and embedded operating systems without rewriting the source code.</p>
+<p>Qt is supported on a variety of 32-bit and 64-bit platforms, and can usually be built on each platform with GCC, a vendor-supplied compiler, or a third party compiler. Open GL (ES) 2.0, DirectX 9 or 11 (with ANGLE), or an <a href="http://doc.qt.io/QtQuick2DRenderer">alternative renderer</a> is required for <a href="../qtquick/qtquick-index.html">Qt Quick</a> 2. <a href="../qtwidgets/qtwidgets-index.html">Widgets</a> can be used without hardware acceleration.</p>
+<p>In Qt 5 all platforms are created using the <a href="qpa.html">Qt Platform Abstraction</a> (QPA), which makes it easier than before to port Qt into a new operating system.</p>
+<a name="desktop-platforms"></a><a name="supported-configurations"></a>
+<h2 id="supported-configurations">Supported Configurations</h2>
+<p>The following table lists configurations supported by The Qt Company. A <i>configuration</i> is a combination of an operating system version, a compiler version, and a graphics system.</p>
+<p><b>Supported configurations for Qt 5.11</b></p>
+<div class="table"><table class="generic" width="80%">
+ <thead><tr class="qt-style"><th >Platform</th><th >Compiler</th><th >Notes</th></tr>
+<tr class="qt-style"><th  colspan="3"><a href="windows-support.html">Windows</a></th></tr></thead>
+<tr valign="top" class="odd"><td >Windows 10 (x86_64)</td><td ><b>MSVC 2017</b>, <b>MSVC 2015</b>, <a href="https://mingw-w64.org/">MinGW</a> 5.3</td><td >Tested on <i>Windows 10 Creators Update</i></td></tr>
+<tr valign="top" class="even"><td >Windows 10 (x86)</td><td ><b>MSVC 2017</b>, <b>MSVC 2015</b>, <a href="https://mingw-w64.org/">MinGW</a> 5.3</td><td >Tested on <i>Windows 10 Creators Update</i></td></tr>
+<tr valign="top" class="odd"><td >Windows 8.1 (x86_64)</td><td >MSVC 2017, <b>MSVC 2015</b>, <a href="https://mingw-w64.org/">MinGW</a> 5.3</td><td ></td></tr>
+<tr valign="top" class="even"><td >Windows 8.1 (x86)</td><td >MSVC 2017, <b>MSVC 2015</b>, <a href="https://mingw-w64.org/">MinGW</a> 5.3</td><td ></td></tr>
+<tr valign="top" class="odd"><td >Windows 7 (x86_64)</td><td >MSVC 2017, MSVC 2015, <b><a href="https://mingw-w64.org/">MinGW</a> 5.3</b></td><td ></td></tr>
+<tr valign="top" class="even"><td >Windows 7 (x86)</td><td >MSVC 2017, MSVC 2015, <b><a href="https://mingw-w64.org/">MinGW</a> 5.3</b></td><td ><a href="https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/5.3.0/threads-posix/dwarf/i686-5.3.0-release-posix-dwarf-rt_v4-rev0.7z/download">MinGW-builds gcc 5.3&#x2e;0 (x86)</a></td></tr>
+<tr valign="top" class="odd"><td  colspan="3"></td></tr>
+<thead><tr class="qt-style"><th  colspan="3">Universal Windows Platform (UWP)</th></tr></thead>
+<tr valign="top" class="even"><td >UWP 10 (<b>x86</b>, <b>x86_64</b>, <b>armv7</b>)</td><td ><b>MSVC 2017</b>, <b>MSVC 2015</b></td><td >Host: <b>Windows 10 (x86_64)</b> <i>Creators Update</i></td></tr>
+<tr valign="top" class="odd"><td  colspan="3"></td></tr>
+<thead><tr class="qt-style"><th  colspan="3"><a href="linux.html">Linux/X11</a></th></tr></thead>
+<tr valign="top" class="even"><td >openSUSE 42.2 (x86_64)</td><td >GCC 4.8, <b>GCC 7</b>, <b>ICC</b></td><td ></td></tr>
+<tr valign="top" class="odd"><td >Red Hat Enterprise Linux 6.6 (x86_64)</td><td >GCC 4.9&#x2e;1</td><td >devtoolset-3</td></tr>
+<tr valign="top" class="even"><td >Red Hat Enterprise Linux 7.2 (x86_64)</td><td ><b>GCC 5.3&#x2e;1</b></td><td >devtoolset-4</td></tr>
+<tr valign="top" class="odd"><td >Ubuntu 16.04 (x86_64)</td><td >GCC as provided by Canonical, <b>GCC 5.4&#x2e;0</b></td><td ></td></tr>
+<tr valign="top" class="even"><td >Linux (x86 and x86_64)</td><td >GCC 4.8, GCC 4.9, GCC 5, GCC 6, GCC 7</td><td ></td></tr>
+<tr valign="top" class="odd"><td  colspan="3"></td></tr>
+<thead><tr class="qt-style"><th  colspan="3"><a href="android-support.html">Android</a></th></tr></thead>
+<tr valign="top" class="even"><td >Android 4.1, 5, 6, 7, 8 (armv7, x86)<br />
+ API Level 16</td><td ><b>GCC as provided by Google</b>, <b><a href="https://mingw-w64.org/">MinGW</a> 5.3</b></td><td >Hosts: <b>RHEL 7.2 (x86_64)</b>, <b>macOS 10.12 (x86_64)</b>, <b>Windows 7 (x86_64)</b></td></tr>
+<tr valign="top" class="odd"><td  colspan="3"></td></tr>
+<thead><tr class="qt-style"><th  colspan="3">Darwin Platforms: <a href="osx.html">macOS</a>, <a href="ios-support.html">iOS</a>, tvOS, watchOS</th></tr></thead>
+<tr valign="top" class="even"><td ><a href="osx.html">macOS</a> <b>10.11</b>, <b>10.12</b>, <b>10.13</b> (x86_64)</td><td ><b>Clang as provided by Apple</b></td><td ><b>Xcode 8.2 (macOS 10.11)</b>, <b>Xcode 8.3&#x2e;3 (macOS 10.12)</b>, <b>Xcode 9 (macOS 10.13)</b></td></tr>
+<tr valign="top" class="odd"><td ><a href="ios-support.html">iOS</a> 10, <b>iOS 11</b> (armv8)</td><td ><b>Clang as provided by Apple</b></td><td ><b>Xcode 9 (macOS 10.13)</b></td></tr>
+<tr valign="top" class="even"><td >tvOS 10, <b>tvOS 11</b> (armv8) (Technology Preview)</td><td ><b>Clang as provided by Apple</b></td><td ><b>Xcode 9 (macOS 10.13)</b></td></tr>
+<tr valign="top" class="odd"><td >watchOS 3, <b>watchOS 4</b> (armv7k) (Technology Preview)</td><td ><b>Clang as provided by Apple</b></td><td ><b>Xcode 9 (macOS 10.13)</b></td></tr>
+<tr valign="top" class="even"><td  colspan="3"></td></tr>
+<thead><tr class="qt-style"><th  colspan="3">Embedded Platforms: <a href="embedded-linux.html">Embedded Linux</a>, <a href="platform-notes-qnx.html">QNX</a>, <a href="platform-notes-integrity.html">INTEGRITY</a></th></tr></thead>
+<tr valign="top" class="odd"><td ><a href="embedded-linux.html">Embedded Linux</a></td><td >GCC</td><td >ARM Cortex-A, Intel boards with GCC-based toolchains</td></tr>
+<tr valign="top" class="even"><td ><a href="http://doc.qt.io/QtForDeviceCreation">Embedded Linux (Boot2Qt)</a> (armv7, armv8, x86, x86_64)</td><td ><b>GCC 6.2</b></td><td ><b>Yocto 2.3</b>, Hosts: RHEL 7.2 (x86_64), Windows 7 (x86_64)</td></tr>
+<tr valign="top" class="odd"><td ><b>QNX 6.6&#x2e;0</b>, 7.0 (armv7 and x86)</td><td ><b>QCC as provided by QNX</b></td><td >Hosts: <b>RHEL 7.2 (x86_64)</b>, <b>Windows 7 (x86_64)</b>, <b>Windows 10 (x86_64)</b>, <b>Windows 7 (x86)</b>, <b>macOS 10.12</b></td></tr>
+<tr valign="top" class="even"><td ><a href="platform-notes-integrity.html">INTEGRITY 11.4&#x2e;4</a></td><td >As provided by Green Hills INTEGRITY</td><td >Host: RHEL 7.2 (x86_64)</td></tr>
+</table></div>
+<p>In the above table, the configurations in <b>bold</b> are <i>reference configurations</i>.</p>
+<p><b>See also</b>: <a href="http://doc.qt.io/QtForDeviceCreation/qtee-supported-platforms.html">Qt for Device Creation: Supported Target Devices and Development Hosts</a>.</p>
+<a name="reference-configurations"></a>
+<h3 >Reference Configurations</h3>
+<p>The reference configurations are run on the continuous integration (CI) system within Qt Project. In addition, they are subjected to unit test suite and other internal testing tools on a frequent basis (prior to new version releases, source tree branching, and at other significant period points in the development process). Errors or bugs discovered in these platforms are prioritized for correction. Significant errors discovered in tested configurations can impact release dates.</p>
+<p>Any configurations not listed above are not actively tested by the Qt Project. However, Qt may run on configurations other than those actively tested on, and additional configurations may be raised to tested state, if sufficient effort is made to bring continuous integration to an acceptable state for that particular configuration.</p>
+<p>The following page lists the configurations supported by The Qt Company for each released Qt version:</p>
+<ul>
+<li><a href="supported-platforms-and-configurations.html">Supported Platforms and Configurations</a></li>
+</ul>
+<p>The Qt Company, Qt partners, open source projects and community users are able to provide assistance with various different supported platforms and configurations.</p>
+<a name="availability-of-packages"></a>
+<h2 id="availability-of-packages">Availability of Packages</h2>
+<p>You can download the Qt 5 installers and source packages from the <a href="http://qt.io/download">Downloads</a> page. For more information, visit the <a href="gettingstarted.html">Getting Started with Qt</a> page.</p>
+<a name="deployment-of-qt-applications"></a>
+<h2 id="deployment-of-qt-applications">Deployment of Qt Applications</h2>
+<p>The deployment procedure for each platform is different and they are covered in greater detail in their platform pages. Meanwhile, there is a deployment article for summarizing the deployment procedure in general.</p>
+<ul>
+<li><a href="deployment.html">Deploying Qt Applications</a><ul>
+<li><a href="platform-notes-android.html#deployment">Android</a></li>
+<li><a href="ios-support.html">iOS</a></li>
+<li><a href="linux-deployment.html">Linux/X11</a></li>
+<li><a href="osx-deployment.html">macOS</a></li>
+<li><a href="windows-deployment.html">Windows</a></li>
+</ul>
+</li>
+</ul>
+<a name="general-legal-disclaimer"></a>
+<h2 id="general-legal-disclaimer">General Legal Disclaimer</h2>
+<p>Please note that Qt is offered on an &quot;as is&quot; basis without warranty of any kind and that our products are not error or bug free. To the maximum extent permitted by applicable law, The Qt Company on behalf of itself and its suppliers, disclaims all warranties and conditions, either express or implied, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, title and non-infringement with regard to the Licensed Software.</p>
+</div>
+<!-- @@@supported-platforms.html -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2018 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

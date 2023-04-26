@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- gammaray-metaobject-browser.qdoc -->
+  <title>Meta-Object Browser | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li>Meta-Object Browser</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+  <link rel="prev" href="gammaray-translator-inspector.html" />
+  <link rel="next" href="gammaray-metatype-browser.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="gammaray-translator-inspector.html">Translations</a>
+<a class="nextPage" href="gammaray-metatype-browser.html">Meta Type Browser</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#overview">Overview</a></li>
+<li class="level1"><a href="#instance-statistics">Instance Statistics</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Meta-Object Browser</h1>
+<span class="subtitle"></span>
+<!-- $$$gammaray-metaobject-browser.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="overview"></a>
+<h2 id="overview">Overview</h2>
+<p>The meta-object browser shows the hierarchy of all <a href="../qtcore/qmetaobject.html">QMetaObject</a> instances found in the target in the tree view on the left side. The property view on the right side shows information known by the <a href="../qtcore/qmetaobject.html">QMetaObject</a> system, including data from:</p>
+<ul>
+<li><a href="../qtcore/qmetaproperty.html">QMetaProperty</a>,</li>
+<li><a href="../qtcore/qmetamethod.html">QMetaMethod</a>,</li>
+<li><a href="../qtcore/qmetaenum.html">QMetaEnum</a>,</li>
+<li>and <a href="../qtcore/qmetaclassinfo.html">QMetaClassInfo</a>.</li>
+</ul>
+<p><a href="http://doc.qt.io/GammaRay">GammaRay</a> checks all <a href="../qtcore/qmetaobject.html">QMetaObject</a> instances for typical problems such as using unregistered or improperly qualified types on properties or method arguments. In case such issues are detected, a warning icon is shown, and a tooltip informs you about the details. These problems are usually harmless when working with C++ API, but tend to be relevant for dynamic invocation or language bindings, ie. most commonly when exposing the affected types to QML.</p>
+<a name="instance-statistics"></a>
+<h2 id="instance-statistics">Instance Statistics</h2>
+<p>The meta-object tree view also contains columns with information about how many instances of a specific type have been created, including and excluding sub-classes.</p>
+<p class="centerAlign"><img src="images/gammaray-metaobject-browser.png" alt="" /></p><p>In particular, these numbers are:</p>
+<ul>
+<li>Self total: The total amount of instances of this type ever created, excluding instances of sub-classes.</li>
+<li>Inclusive total: The total amount of instances of this type ever created, including sub-classes.</li>
+<li>Self alive: The amount of instances created but not destroyed yet of this type, excluding sub-classes.</li>
+<li>Inclusive alive: The amount of instances created but not destroyed yet of this type, including sub-classes.</li>
+</ul>
+<p>Tooltips and colorization of these columns show the ratio of this type on the overall amount of <a href="../qtcore/qobject.html">QObject</a> instances. This is particularly useful for identifying unnecessarily created instances, as <a href="../qtcore/qobject.html">QObject</a> construction is not exactly cheap.</p>
+<p>For dynamically created <a href="../qtcore/qmetaobject.html">QMetaObject</a> instances (such as found in QML defined types or dynamic QtSCXML state charts), it might not be possible for <a href="http://doc.qt.io/GammaRay">GammaRay</a> to determine the lifetime correctly, those types are grayed out in order to avoid access to already freed memory. For those types you will not be able to access information beyond the basic statistics.</p>
+</div>
+<!-- @@@gammaray-metaobject-browser.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="gammaray-translator-inspector.html">Translations</a>
+<a class="nextPage" href="gammaray-metatype-browser.html">Meta Type Browser</a>
+</p>
+</body>
+</html>

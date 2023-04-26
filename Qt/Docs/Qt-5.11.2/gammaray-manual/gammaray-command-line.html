@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- gammaray-command-line.qdoc -->
+  <title>Command Line Interface | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li>Command Line Interface</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+  <link rel="prev" href="gammaray-qtcreator.html" />
+  <link rel="next" href="gammaray-tools.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="gammaray-qtcreator.html">Qt Creator Integration</a>
+<a class="nextPage" href="gammaray-tools.html">Tools</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#overview">Overview</a></li>
+<li class="level1"><a href="#command-line-options">Command Line Options</a></li>
+<li class="level2"><a href="#injector-types">Injector Types</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Command Line Interface</h1>
+<span class="subtitle"></span>
+<!-- $$$gammaray-command-line.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="overview"></a>
+<h2 id="overview">Overview</h2>
+<p>All basic <a href="http://doc.qt.io/GammaRay">GammaRay</a> operations such as launching a target application or attaching to a running one are also available from the command line interface. This is particularly useful when working with embedded devices. Additionally some specialized options to control <a href="http://doc.qt.io/GammaRay">GammaRay</a>'s injection behavior are only available via the command line interface.</p>
+<p>Launching a target application with <a href="http://doc.qt.io/GammaRay">GammaRay</a> is done as follows:</p>
+<pre class="cpp">gammaray <span class="operator">[</span>gammaray args<span class="operator">]</span> <span class="operator">&lt;</span>target application<span class="operator">&gt;</span> <span class="operator">[</span>application args<span class="operator">]</span></pre>
+<p>When run without any arguments, <code>gammaray</code> will bring up the <a href="gammaray-launcher-gui.html">Graphical Launcher</a>. Valid arguments for the <code>gammaray</code> command are described in the next section.</p>
+<a name="command-line-options"></a>
+<h2 id="command-line-options">Command Line Options</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Option</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td ><code>--help</code></td><td >Print command line options.</td></tr>
+<tr valign="top" class="even"><td ><code>--version</code></td><td >Print the <a href="http://doc.qt.io/GammaRay">GammaRay</a> version and the <a href="http://doc.qt.io/GammaRay">GammaRay</a> protocol version.</td></tr>
+<tr valign="top" class="odd"><td ><code>-p</code>, <code>--pid</code> <code>&lt;pid&gt;</code></td><td >Attach to a a running application with process id <code>&lt;pid&gt;</code>.</td></tr>
+<tr valign="top" class="even"><td ><code>-i</code>, <code>--injector</code> <code>&lt;injector&gt;</code></td><td >Specify injector type to use (see below).</td></tr>
+<tr valign="top" class="odd"><td ><code>--inprocess</code></td><td >Use the Gammaray 1.x in-process UI. This is not necessary in most cases, apart from using tools that do not work remotely.</td></tr>
+<tr valign="top" class="even"><td ><code>--inject-only</code></td><td >This will only inject the <a href="http://doc.qt.io/GammaRay">GammaRay</a> probe into a process, but not start the <a href="gammaray-client.html">GammaRay Client</a>. This is useful for example when doing remote debugging on embedded devices.</td></tr>
+<tr valign="top" class="odd"><td ><code>--listen &lt;address&gt;</code></td><td >Specify on which network address the <a href="http://doc.qt.io/GammaRay">GammaRay</a> server should listen on. This is useful when <a href="http://doc.qt.io/GammaRay">GammaRay</a> is selecting the wrong network interface by default, or for restricting remote access in untrusted networks.</td></tr>
+<tr valign="top" class="even"><td ><code>--no-listen</code></td><td >Disables the <a href="http://doc.qt.io/GammaRay">GammaRay</a> server. This implies <code>--inprocess</code> as there is no other way to connect to the <a href="http://doc.qt.io/GammaRay">GammaRay</a> probe in this case.</td></tr>
+<tr valign="top" class="odd"><td ><code>--list-probes</code></td><td >List all installed probes.</td></tr>
+<tr valign="top" class="even"><td ><code>--probe &lt;abi&gt;</code></td><td >Explicitly specify which probe to use. This should only be needed when the automatic probe ABI detection fails, or on platforms that don't have probe ABI detection implemented yet.</td></tr>
+<tr valign="top" class="odd"><td ><code>--connect tcp://&lt;host&gt;[:port]</code></td><td >Connect to a target with an already injected <a href="http://doc.qt.io/GammaRay">GammaRay</a> probe. Useful for example for remote debugging.</td></tr>
+<tr valign="top" class="even"><td ><code>--self-test [injector]</code></td><td >Runs the <a href="http://doc.qt.io/GammaRay">GammaRay</a> self-tests, if an injector is specified only that specific one will be tested. The exit code is 0 on success, and 1 otherwise.</td></tr>
+</table></div>
+<a name="injector-types"></a>
+<h3 >Injector Types</h3>
+<p><a href="http://doc.qt.io/GammaRay">GammaRay</a> contains various methods of injecting itself into a target process. By default it picks the most suitable method on its own, based on the current platform and properties of the target application. It can however be necessary to override the default, in particular if other tools are used at the same time that already occupy specific ways, or if the target application is incompatible with a specific injection method.</p>
+<p>The following injection methods are supported:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Method</th><th >Launch</th><th >Attach</th><th >Supported Platforms</th></tr></thead>
+<tr valign="top" class="odd"><td >preload</td><td >X</td><td ></td><td >Linux, macOS, QNX</td></tr>
+<tr valign="top" class="even"><td >gdb</td><td >X</td><td >X</td><td >Linux, QNX</td></tr>
+<tr valign="top" class="odd"><td >lldb</td><td >X</td><td >X</td><td >Linux, macOS</td></tr>
+<tr valign="top" class="even"><td >windll</td><td >X</td><td >X</td><td >Windows</td></tr>
+<tr valign="top" class="odd"><td >style</td><td >X</td><td ></td><td >all</td></tr>
+</table></div>
+</div>
+<!-- @@@gammaray-command-line.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="gammaray-qtcreator.html">Qt Creator Integration</a>
+<a class="nextPage" href="gammaray-tools.html">Tools</a>
+</p>
+</body>
+</html>

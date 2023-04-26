@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- gammaray-paint-analyzer.qdoc -->
+  <title>Paint Analyzer | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li>Paint Analyzer</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+  <link rel="prev" href="gammaray-qsgtexture.html" />
+  <link rel="next" href="gammaray-widget-attributes.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="gammaray-qsgtexture.html">Scene Graph Texture</a>
+<a class="nextPage" href="gammaray-widget-attributes.html">Widget Attributes</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#overview">Overview</a></li>
+<li class="level1"><a href="#command-and-argument-inspection">Command and Argument Inspection</a></li>
+<li class="level1"><a href="#render-preview">Render Preview</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Paint Analyzer</h1>
+<span class="subtitle"></span>
+<!-- $$$gammaray-paint-analyzer.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="overview"></a>
+<h2 id="overview">Overview</h2>
+<p>The paint analyzer allows you to inspect every single operation performed on a <a href="../qtgui/qpainter.html">QPainter</a>. It is available on objects using a <a href="../qtgui/qpainter.html">QPainter</a> for rendering their visual appearance, as well as on entire scenes.</p>
+<p>For individual objects, the paint analyzer is typically not applied recursively to child elements of the selected object, so you only see operations by the current object itself. Supported object types for this include:</p>
+<ul>
+<li><a href="../qtwidgets/qwidget.html">QWidget</a></li>
+<li><a href="../qtquick/qquickpainteditem.html">QQuickPaintedItem</a></li>
+<li><a href="../qtwidgets/qgraphicsitem.html">QGraphicsItem</a></li>
+<li><a href="../qt3d/qt3drender-qpaintedtextureimage.html">Qt3DRender::QPaintedTextureImage</a></li>
+</ul>
+<p>Alternatively you can apply the paint analyzer to full scenes recursively. This is available in the following tools:</p>
+<ul>
+<li>The <a href="gammaray-widget-inspector.html">Widget Inspector</a>.</li>
+<li>The <a href="gammaray-qtquick2-inspector.html">Qt Quick 2 Inspector</a> for windows using the Qt Quick software renderer backend.</li>
+</ul>
+<p class="centerAlign"><img src="images/gammaray-paint-analyzer.png" alt="" /></p><p>The paint analyzer consists of three main elements, the command list on the top left, the command details view on the bottom left and the render preview on the right side.</p>
+<a name="command-and-argument-inspection"></a>
+<h2 id="command-and-argument-inspection">Command and Argument Inspection</h2>
+<p>The command list shows all <a href="../qtgui/qpainter.html">QPainter</a> commands in chronological order. The following information are provided:</p>
+<ul>
+<li>The command type, in the first column.</li>
+<li>The command arguments. This is either shown directly in the second column if there is only one argument for a command, or as sub-entries in the list for multiple arguments. If an argument is of a complex type, the argument value is also shown in the <b>Argument</b> tab in the argument details view.</li>
+<li>The relative contribution of a command to the overall rendering cost, in the third column.</li>
+</ul>
+<p>The argument details view will also show a stack trace for the currently selected painter command, showing what call chain lead to the command being executed. If debug information are available for the corresponding code, the corresponding source location is also shown, and can be directly opened using the context menu.</p>
+<a name="render-preview"></a>
+<h2 id="render-preview">Render Preview</h2>
+<p>Selecting a command in the command list view will cause the render preview to show the visual result up to the selected command, allowing you to inspect the visual output step by step.</p>
+<p>The render preview can be panned and zoomed using the corresponding actions in the toolbar at its top. Additionally, a measurement and color picking tool is available that way too.</p>
+<p>The render preview can also visualize the current clip area of the <a href="../qtgui/qpainter.html">QPainter</a>, at the selected command. This is shown with a red shaded overlay, areas covered by this will be clipped.</p>
+</div>
+<!-- @@@gammaray-paint-analyzer.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="gammaray-qsgtexture.html">Scene Graph Texture</a>
+<a class="nextPage" href="gammaray-widget-attributes.html">Widget Attributes</a>
+</p>
+</body>
+</html>

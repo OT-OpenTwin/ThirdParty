@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- signal-slot.qdoc -->
+  <title>Signal/Slot Connections | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="examples-gammaray.html">Examples</a></li>
+<li>Signal/Slot Connections</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#problem">Problem</a></li>
+<li class="level1"><a href="#investigation">Investigation</a></li>
+<li class="level2"><a href="#watch-a-signal-emission">Watch a signal emission</a></li>
+<li class="level2"><a href="#check-existing-signal-slot-connections">Check existing signal/slot connections</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Signal/Slot Connections</h1>
+<span class="subtitle"></span>
+<!-- $$$signal-slot-brief -->
+<p>Investiagte issues regarding signal/slot connection handling.</p>
+<!-- @@@signal-slot -->
+<!-- $$$signal-slot-description -->
+<div class="descr"> <a name="details"></a>
+<p>This examples shows <a href="http://doc.qt.io/GammaRay">GammaRay</a>'s capabilities in analyzing signal/slot connection problems.</p>
+<a name="problem"></a>
+<h2 id="problem">Problem</h2>
+<p>The application shows two buttons and a LCD widget. The LCD widget is connected to the clicked() signal of the first button and increments every time the clicked() signal is emitted. The second button recreates the connection.</p>
+<p>Clicking the reconnect button multiple times however breaks things, so that clicking the emit button will result in more than on increment of the LCD widget.</p>
+<pre class="cpp"><span class="keyword">auto</span> layout <span class="operator">=</span> <span class="keyword">new</span> <span class="type"><a href="../qtwidgets/qvboxlayout.html">QVBoxLayout</a></span>(<span class="keyword">this</span>);
+m_emitButton <span class="operator">=</span> <span class="keyword">new</span> <span class="type"><a href="../qtwidgets/qpushbutton.html">QPushButton</a></span>(<span class="string">&quot;Emit Signal&quot;</span><span class="operator">,</span> <span class="keyword">this</span>);
+layout<span class="operator">-</span><span class="operator">&gt;</span>addWidget(m_emitButton);
+connect(m_emitButton<span class="operator">,</span> <span class="operator">&amp;</span><span class="type"><a href="../qtwidgets/qpushbutton.html">QPushButton</a></span><span class="operator">::</span>clicked<span class="operator">,</span> <span class="keyword">this</span><span class="operator">,</span> <span class="operator">&amp;</span>Widget<span class="operator">::</span>signalEmitted);
+
+<span class="keyword">auto</span> reconnectButton <span class="operator">=</span> <span class="keyword">new</span> <span class="type"><a href="../qtwidgets/qpushbutton.html">QPushButton</a></span>(<span class="string">&quot;Reconnect Signal&quot;</span><span class="operator">,</span> <span class="keyword">this</span>);
+layout<span class="operator">-</span><span class="operator">&gt;</span>addWidget(reconnectButton);
+connect(reconnectButton<span class="operator">,</span> <span class="operator">&amp;</span><span class="type"><a href="../qtwidgets/qpushbutton.html">QPushButton</a></span><span class="operator">::</span>clicked<span class="operator">,</span> <span class="keyword">this</span><span class="operator">,</span> <span class="operator">&amp;</span>Widget<span class="operator">::</span>reconnectSignal);
+
+m_counter <span class="operator">=</span> <span class="keyword">new</span> <span class="type"><a href="../qtwidgets/qlcdnumber.html">QLCDNumber</a></span>(<span class="keyword">this</span>);
+layout<span class="operator">-</span><span class="operator">&gt;</span>addWidget(m_counter);</pre>
+<a name="investigation"></a>
+<h2 id="investigation">Investigation</h2>
+<p>There are several aspects of this problem that can be analyzed with <a href="http://doc.qt.io/GammaRay">GammaRay</a>.</p>
+<a name="watch-a-signal-emission"></a>
+<h3 >Watch a signal emission</h3>
+<p>Select the emit button in the <a href="gammaray-qobject-browser.html">Object Browser</a> or the <a href="gammaray-widget-inspector.html">Widget Inspector</a> tool, and open the <a href="gammaray-methods.html">Methods</a> tab on the right. Find the clicked() signal in the method list, and chose <b>Connect to</b> in the context menu. Clicking on the emit button will now show each emitted clicked() signal in the method log at the bottom half on the right side. This allows you to verify that the signal is emitted correctly, and here in particular is only emitted once per click.</p>
+<p>Alternatively, you can also observe this in the <a href="gammaray-signal-plotter.html">Signal Plotter</a> view.</p>
+<a name="check-existing-signal-slot-connections"></a>
+<h3 >Check existing signal/slot connections</h3>
+<p>Select the emit button in the <a href="gammaray-qobject-browser.html">Object Browser</a> or the <a href="gammaray-widget-inspector.html">Widget Inspector</a> tool, and open the <a href="gammaray-connections.html">Connections</a> tab on the right. The list of outbound connections at the bottom half will show all existing connections to the LCD widget incrementing code. You will notice that multiple connections to the same slot exist, and that <a href="http://doc.qt.io/GammaRay">GammaRay</a> shows a warning icon for this.</p>
+<p>Looking at the reconnection slot we then see that the code mixes string based and function pointer based connect()/disconnect() calls, which is not supported by <a href="../qtcore/qobject.html">QObject</a>:</p>
+<pre class="cpp">disconnect(m_emitButton<span class="operator">,</span> <span class="operator">&amp;</span><span class="type"><a href="../qtwidgets/qpushbutton.html">QPushButton</a></span><span class="operator">::</span>clicked<span class="operator">,</span> <span class="keyword">this</span><span class="operator">,</span> <span class="operator">&amp;</span>Widget<span class="operator">::</span>signalEmitted);
+connect(m_emitButton<span class="operator">,</span> SIGNAL(clicked())<span class="operator">,</span> <span class="keyword">this</span><span class="operator">,</span> SLOT(signalEmitted()));</pre>
+<p>This code therefore adds another connection each time its called, resulting in multiple increments in the LCD widget per emit button click.</p>
+<p>Files:</p>
+<ul>
+<li><a href="gammaray-signal-slot-signal-slot-cpp.html">signal-slot/signal-slot.cpp</a></li>
+<li><a href="gammaray-signal-slot-signal-slot-pro.html">signal-slot/signal-slot.pro</a></li>
+</ul>
+</div>
+<!-- @@@signal-slot -->
+</body>
+</html>

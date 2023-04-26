@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- gammaray-methods.qdoc -->
+  <title>Methods | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li>Methods</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+  <link rel="prev" href="gammaray-properties.html" />
+  <link rel="next" href="gammaray-connections.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="gammaray-properties.html">Properties</a>
+<a class="nextPage" href="gammaray-connections.html">Connections</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#overview">Overview</a></li>
+<li class="level2"><a href="#invoking-methods">Invoking Methods</a></li>
+<li class="level2"><a href="#monitoring-signals">Monitoring Signals</a></li>
+<li class="level1"><a href="#examples">Examples</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Methods</h1>
+<span class="subtitle"></span>
+<!-- $$$gammaray-methods.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="overview"></a>
+<h2 id="overview">Overview</h2>
+<p>The methods view is available for all <a href="../qtcore/qobject.html">QObject</a> and <a href="../qtcore/qmetaobject.html">QMetaObject</a> instances and shows methods, signals and slots declared in there.</p>
+<p class="centerAlign"><img src="images/gammaray-methods.png" alt="" /></p><p>The methods view contains four columns:</p>
+<ul>
+<li>The signature of the method, including its name and as far as the information is available, its return type and the types and names of its arguments.</li>
+<li>The method type, that is signal, slot or a <a href="../qtcore/qobject.html#Q_INVOKABLE">Q_INVOKABLE</a> method.</li>
+<li>The access type of the method.</li>
+<li>The source of the method, which normally is the class it is declared in.</li>
+</ul>
+<p>For some methods, additional information provided via <a href="../qtcore/qmetamethod.html">QMetaMethod</a> are available in a tooltip. A warning icon in the method name column indicates possible issues detected by <a href="http://doc.qt.io/GammaRay">GammaRay</a>.</p>
+<a name="invoking-methods"></a>
+<h3 >Invoking Methods</h3>
+<p>Methods can also be dynamically invoked, using the <b>Invoke</b> action from the context menu. Similarly, you can emit signals by using the <b>Emit</b> action from the context menu. In both cases the method invocation dialog shown below is displayed.</p>
+<p class="centerAlign"><img src="images/gammaray-method-invocation.png" alt="" /></p><p>In the method invocation dialog you can specify any argument the method or signal may take, the types as in the <a href="gammaray-properties.html">Properties</a> view are supported here too. You can also specify whether to invoke the method directly or queued.</p>
+<a name="monitoring-signals"></a>
+<h3 >Monitoring Signals</h3>
+<p>It is also possible to monitor specific signals of the current <a href="../qtcore/qobject.html">QObject</a>, by using the <b>Connect to</b> action in the context menu of the corresponding signal.</p>
+<p>Whenever the signal is emitted, the signal log at the bottom of the methods view shows the time stamp of the emission, as well as the values of the signal arguments, if any. This can also be seen in the above screenshot.</p>
+<a name="examples"></a>
+<h2 id="examples">Examples</h2>
+<p>The following examples make use of the methods view:</p>
+<ul>
+<li><a href="gammaray-signal-slot-example.html">signal-slot</a></li>
+<li><a href="gammaray-timer-example.html">timer</a></li>
+</ul>
+</div>
+<!-- @@@gammaray-methods.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="gammaray-properties.html">Properties</a>
+<a class="nextPage" href="gammaray-connections.html">Connections</a>
+</p>
+</body>
+</html>

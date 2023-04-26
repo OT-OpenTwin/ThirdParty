@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- eventcallback.cpp -->
+  <title>EventCallback Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >EventCallback</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right"><a href="extending-index.html">Extending Qt Creator Manual 4.9&#x2e;1</a></td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">EventCallback Class</h1>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;EventCallback&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="eventcallback-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#EventCallback">EventCallback</a></b>(IDebugEventCallbacks *<i>wrapped</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#dtor.EventCallback">~EventCallback</a></b>()</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual ULONG </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#AddRef">AddRef</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual HRESULT </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#Breakpoint">Breakpoint</a></b>(PDEBUG_BREAKPOINT <i>Bp</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual HRESULT </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#ChangeDebuggeeState">ChangeDebuggeeState</a></b>(ULONG <i>Flags</i>, ULONG64 <i>Argument</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual HRESULT </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#ChangeEngineState">ChangeEngineState</a></b>(ULONG <i>Flags</i>, ULONG64 <i>Argument</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual HRESULT </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#ChangeSymbolState">ChangeSymbolState</a></b>(ULONG <i>Flags</i>, ULONG64 <i>Argument</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual HRESULT </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#CreateProcessA">CreateProcessA</a></b>(ULONG64 <i>ImageFileHandle</i>, ULONG64 <i>Handle</i>, ULONG64 <i>BaseOffset</i>, ULONG <i>ModuleSize</i>, PCSTR <i>ModuleName</i>, PCSTR <i>ImageName</i>, ULONG <i>CheckSum</i>, ULONG <i>TimeDateStamp</i>, ULONG64 <i>InitialThreadHandle</i>, ULONG64 <i>ThreadDataOffset</i>, ULONG64 <i>StartOffset</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual HRESULT </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#CreateThread">CreateThread</a></b>(ULONG64 <i>Handle</i>, ULONG64 <i>DataOffset</i>, ULONG64 <i>StartOffset</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual HRESULT </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#Exception">Exception</a></b>(PEXCEPTION_RECORD64 <i>Exception</i>, ULONG <i>FirstChance</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual HRESULT </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#ExitProcess">ExitProcess</a></b>(ULONG <i>ExitCode</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual HRESULT </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#ExitThread">ExitThread</a></b>(ULONG <i>ExitCode</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual HRESULT </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#GetInterestMask">GetInterestMask</a></b>(PULONG <i>mask</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual HRESULT </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#LoadModule">LoadModule</a></b>(ULONG64 <i>ImageFileHandle</i>, ULONG64 <i>BaseOffset</i>, ULONG <i>ModuleSize</i>, PCSTR <i>ModuleName</i>, PCSTR <i>ImageName</i>, ULONG <i>CheckSum</i>, ULONG <i>TimeDateStamp</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual HRESULT </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#QueryInterface">QueryInterface</a></b>(const IID &amp;<i>InterfaceId</i>, PVOID *<i>Interface</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual ULONG </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#Release">Release</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual HRESULT </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#SessionStatus">SessionStatus</a></b>(ULONG <i>Status</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual HRESULT </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#SystemError">SystemError</a></b>(ULONG <i>Error</i>, ULONG <i>Level</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual HRESULT </td><td class="memItemRight bottomAlign"><b><a href="eventcallback.html#UnloadModule">UnloadModule</a></b>(PCSTR <i>ImageBaseName</i>, ULONG64 <i>BaseOffset</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$EventCallback-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Event handler wrapping the original IDebugEventCallbacks to catch and store exceptions (report crashes as stop reasons).</p>
+</div>
+<!-- @@@EventCallback -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$EventCallback[overload1]$$$EventCallbackIDebugEventCallbacks* -->
+<h3 class="fn" id="EventCallback"><a name="EventCallback"></a>EventCallback::<span class="name">EventCallback</span>(<span class="type">IDebugEventCallbacks</span> *<i>wrapped</i>)</h3>
+<p>Default constructs an instance of EventCallback.</p><!-- @@@EventCallback -->
+<!-- $$$~EventCallback[overload1]$$$~EventCallback -->
+<h3 class="fn" id="dtor.EventCallback"><a name="dtor.EventCallback"></a><code>[virtual] </code>EventCallback::<span class="name">~EventCallback</span>()</h3>
+<p>Destroys the instance of EventCallback. The destructor is virtual.</p><!-- @@@~EventCallback -->
+<!-- $$$AddRef[overload1]$$$AddRef -->
+<h3 class="fn" id="AddRef"><a name="AddRef"></a><code>[virtual] </code><span class="type">ULONG</span> EventCallback::<span class="name">AddRef</span>()</h3>
+<!-- @@@AddRef -->
+<!-- $$$Breakpoint[overload1]$$$BreakpointPDEBUG_BREAKPOINT -->
+<h3 class="fn" id="Breakpoint"><a name="Breakpoint"></a><code>[virtual] </code><span class="type">HRESULT</span> EventCallback::<span class="name">Breakpoint</span>(<span class="type">PDEBUG_BREAKPOINT</span> <i>Bp</i>)</h3>
+<!-- @@@Breakpoint -->
+<!-- $$$ChangeDebuggeeState[overload1]$$$ChangeDebuggeeStateULONGULONG64 -->
+<h3 class="fn" id="ChangeDebuggeeState"><a name="ChangeDebuggeeState"></a><code>[virtual] </code><span class="type">HRESULT</span> EventCallback::<span class="name">ChangeDebuggeeState</span>(<span class="type">ULONG</span> <i>Flags</i>, <span class="type">ULONG64</span> <i>Argument</i>)</h3>
+<!-- @@@ChangeDebuggeeState -->
+<!-- $$$ChangeEngineState[overload1]$$$ChangeEngineStateULONGULONG64 -->
+<h3 class="fn" id="ChangeEngineState"><a name="ChangeEngineState"></a><code>[virtual] </code><span class="type">HRESULT</span> EventCallback::<span class="name">ChangeEngineState</span>(<span class="type">ULONG</span> <i>Flags</i>, <span class="type">ULONG64</span> <i>Argument</i>)</h3>
+<!-- @@@ChangeEngineState -->
+<!-- $$$ChangeSymbolState[overload1]$$$ChangeSymbolStateULONGULONG64 -->
+<h3 class="fn" id="ChangeSymbolState"><a name="ChangeSymbolState"></a><code>[virtual] </code><span class="type">HRESULT</span> EventCallback::<span class="name">ChangeSymbolState</span>(<span class="type">ULONG</span> <i>Flags</i>, <span class="type">ULONG64</span> <i>Argument</i>)</h3>
+<!-- @@@ChangeSymbolState -->
+<!-- $$$CreateProcessA[overload1]$$$CreateProcessAULONG64ULONG64ULONG64ULONGPCSTRPCSTRULONGULONGULONG64ULONG64ULONG64 -->
+<h3 class="fn" id="CreateProcessA"><a name="CreateProcessA"></a><code>[virtual] </code><span class="type">HRESULT</span> EventCallback::<span class="name">CreateProcessA</span>(<span class="type">ULONG64</span> <i>ImageFileHandle</i>, <span class="type">ULONG64</span> <i>Handle</i>, <span class="type">ULONG64</span> <i>BaseOffset</i>, <span class="type">ULONG</span> <i>ModuleSize</i>, <span class="type">PCSTR</span> <i>ModuleName</i>, <span class="type">PCSTR</span> <i>ImageName</i>, <span class="type">ULONG</span> <i>CheckSum</i>, <span class="type">ULONG</span> <i>TimeDateStamp</i>, <span class="type">ULONG64</span> <i>InitialThreadHandle</i>, <span class="type">ULONG64</span> <i>ThreadDataOffset</i>, <span class="type">ULONG64</span> <i>StartOffset</i>)</h3>
+<!-- @@@CreateProcessA -->
+<!-- $$$CreateThread[overload1]$$$CreateThreadULONG64ULONG64ULONG64 -->
+<h3 class="fn" id="CreateThread"><a name="CreateThread"></a><code>[virtual] </code><span class="type">HRESULT</span> EventCallback::<span class="name">CreateThread</span>(<span class="type">ULONG64</span> <i>Handle</i>, <span class="type">ULONG64</span> <i>DataOffset</i>, <span class="type">ULONG64</span> <i>StartOffset</i>)</h3>
+<!-- @@@CreateThread -->
+<!-- $$$Exception[overload1]$$$ExceptionPEXCEPTION_RECORD64ULONG -->
+<h3 class="fn" id="Exception"><a name="Exception"></a><code>[virtual] </code><span class="type">HRESULT</span> EventCallback::<span class="name">Exception</span>(<span class="type">PEXCEPTION_RECORD64</span> <i>Exception</i>, <span class="type">ULONG</span> <i>FirstChance</i>)</h3>
+<!-- @@@Exception -->
+<!-- $$$ExitProcess[overload1]$$$ExitProcessULONG -->
+<h3 class="fn" id="ExitProcess"><a name="ExitProcess"></a><code>[virtual] </code><span class="type">HRESULT</span> EventCallback::<span class="name">ExitProcess</span>(<span class="type">ULONG</span> <i>ExitCode</i>)</h3>
+<!-- @@@ExitProcess -->
+<!-- $$$ExitThread[overload1]$$$ExitThreadULONG -->
+<h3 class="fn" id="ExitThread"><a name="ExitThread"></a><code>[virtual] </code><span class="type">HRESULT</span> EventCallback::<span class="name">ExitThread</span>(<span class="type">ULONG</span> <i>ExitCode</i>)</h3>
+<!-- @@@ExitThread -->
+<!-- $$$GetInterestMask[overload1]$$$GetInterestMaskPULONG -->
+<h3 class="fn" id="GetInterestMask"><a name="GetInterestMask"></a><code>[virtual] </code><span class="type">HRESULT</span> EventCallback::<span class="name">GetInterestMask</span>(<span class="type">PULONG</span> <i>mask</i>)</h3>
+<!-- @@@GetInterestMask -->
+<!-- $$$LoadModule[overload1]$$$LoadModuleULONG64ULONG64ULONGPCSTRPCSTRULONGULONG -->
+<h3 class="fn" id="LoadModule"><a name="LoadModule"></a><code>[virtual] </code><span class="type">HRESULT</span> EventCallback::<span class="name">LoadModule</span>(<span class="type">ULONG64</span> <i>ImageFileHandle</i>, <span class="type">ULONG64</span> <i>BaseOffset</i>, <span class="type">ULONG</span> <i>ModuleSize</i>, <span class="type">PCSTR</span> <i>ModuleName</i>, <span class="type">PCSTR</span> <i>ImageName</i>, <span class="type">ULONG</span> <i>CheckSum</i>, <span class="type">ULONG</span> <i>TimeDateStamp</i>)</h3>
+<!-- @@@LoadModule -->
+<!-- $$$QueryInterface[overload1]$$$QueryInterfaceconstIID&PVOID* -->
+<h3 class="fn" id="QueryInterface"><a name="QueryInterface"></a><code>[virtual] </code><span class="type">HRESULT</span> EventCallback::<span class="name">QueryInterface</span>(const <span class="type">IID</span> &amp;<i>InterfaceId</i>, <span class="type">PVOID</span> *<i>Interface</i>)</h3>
+<!-- @@@QueryInterface -->
+<!-- $$$Release[overload1]$$$Release -->
+<h3 class="fn" id="Release"><a name="Release"></a><code>[virtual] </code><span class="type">ULONG</span> EventCallback::<span class="name">Release</span>()</h3>
+<!-- @@@Release -->
+<!-- $$$SessionStatus[overload1]$$$SessionStatusULONG -->
+<h3 class="fn" id="SessionStatus"><a name="SessionStatus"></a><code>[virtual] </code><span class="type">HRESULT</span> EventCallback::<span class="name">SessionStatus</span>(<span class="type">ULONG</span> <i>Status</i>)</h3>
+<!-- @@@SessionStatus -->
+<!-- $$$SystemError[overload1]$$$SystemErrorULONGULONG -->
+<h3 class="fn" id="SystemError"><a name="SystemError"></a><code>[virtual] </code><span class="type">HRESULT</span> EventCallback::<span class="name">SystemError</span>(<span class="type">ULONG</span> <i>Error</i>, <span class="type">ULONG</span> <i>Level</i>)</h3>
+<!-- @@@SystemError -->
+<!-- $$$UnloadModule[overload1]$$$UnloadModulePCSTRULONG64 -->
+<h3 class="fn" id="UnloadModule"><a name="UnloadModule"></a><code>[virtual] </code><span class="type">HRESULT</span> EventCallback::<span class="name">UnloadModule</span>(<span class="type">PCSTR</span> <i>ImageBaseName</i>, <span class="type">ULONG64</span> <i>BaseOffset</i>)</h3>
+<!-- @@@UnloadModule -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2019 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

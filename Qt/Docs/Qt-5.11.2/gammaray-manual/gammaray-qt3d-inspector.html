@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- gammaray-qt3d-inspector.qdoc -->
+  <title>Qt3D Inspector | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li>Qt3D Inspector</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+  <link rel="prev" href="gammaray-graphicsscene-inspector.html" />
+  <link rel="next" href="gammaray-styles.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="gammaray-graphicsscene-inspector.html">Graphics Scene Inspector</a>
+<a class="nextPage" href="gammaray-styles.html">Styles</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#overview">Overview</a></li>
+<li class="level2"><a href="#entity-tree">Entity Tree</a></li>
+<li class="level2"><a href="#render-settings">Render Settings</a></li>
+<li class="level1"><a href="#geometry-inspection">Geometry Inspection</a></li>
+<li class="level2"><a href="#wireframe-view">Wireframe View</a></li>
+<li class="level2"><a href="#buffer-view">Buffer View</a></li>
+<li class="level1"><a href="#examples">Examples</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Qt3D Inspector</h1>
+<span class="subtitle"></span>
+<!-- $$$gammaray-qt3d-inspector.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="overview"></a>
+<h2 id="overview">Overview</h2>
+<p>The <a href="../qt3d/qt3d-index.html">Qt 3D</a> inspector allows you to browse the entity tree and the frame graph of a <a href="../qt3d/qt3d-index.html">Qt 3D</a> scene. If the target application contains multiple <a href="../qt3d/qt3d-index.html">Qt 3D</a> engine, you can select the desired <a href="../qt3d/qt3dcore-qaspectengine.html">Qt3DCore::QAspectEngine</a> in the combo box at the top.</p>
+<p>On the left side you can switch between two views with the tabs at the bottom:</p>
+<ul>
+<li>The entity tree of the scene.</li>
+<li>The frame graph composing the render settings of the scene.</li>
+</ul>
+<a name="entity-tree"></a>
+<h3 >Entity Tree</h3>
+<p>The entity tree shows the hierarchy of the <a href="../qt3d/qt3dcore-qentity.html">Qt3DCore::QEntity</a> instances of the scenes. The checkbox next to each entity shows the state of the entity enabled state (see <a href="../qt3d/qt3dcore-qnode.html#enabled-prop">Qt3DCore::QEntity::enabled</a>), which can also be changed this way. The context menu on the entity tree allows navigation to other views of the entity object.</p>
+<a name="render-settings"></a>
+<h3 >Render Settings</h3>
+<p>The frame graph tree shows the hierarchy of the <a href="../qt3d/qt3drender-qframegraphnode.html">Qt3DRender::QFrameGraphNode</a> instances composing the <a href="../qt3d/qt3drender-qrendersettings.html">Qt3DRender::QRenderSettings</a> of a scene. The checkbox next to each node shows the state of the frame graph node enabled state (see <a href="../qt3d/qt3dcore-qnode.html#enabled-prop">Qt3DRender::QFrameGraphNode::enabled</a>), which can also be changed this way. The context menu on the entity tree allows navigation to other views of the node object.</p>
+<a name="geometry-inspection"></a>
+<h2 id="geometry-inspection">Geometry Inspection</h2>
+<p>When selecting an entity with a geometry component attached, or a geometry component directly in a different view, the <a href="gammaray-qt3dgeometry-inspector.html">Qt3D Geometry Inspector</a> tab is shown on the right hand side.</p>
+<p>The geometry inspection tab has two views:</p>
+<ul>
+<li>A graphical wireframe view of the geometry with various diagnostic shading modes.</li>
+<li>A raw data view on its associated <a href="../qt3d/qt3drender-qbuffer.html">Qt3DRender::QBuffer</a> instances.</li>
+</ul>
+<a name="wireframe-view"></a>
+<h3 >Wireframe View</h3>
+<p>The wireframe view renders the selected geometry separately, so it can be inspected for defects easily. Common issues involve:</p>
+<ul>
+<li>Wrong triangle ordering. Toggle backface culling in the toolbar above the wireframe view to get culled back faces highlighted.</li>
+<li>Wrong normal vectors. Toggle the normal vector visualization to get vertex and face normals displayed.</li>
+</ul>
+<p class="centerAlign"><img src="images/gammaray-qt3d-geometry.png" alt="" /></p><p>You can move the camera in the wireframe view using mouse (left and middle mouse buttons) or keyboard (arrow keys, page up/page down, W/A/S/D).</p>
+<a name="buffer-view"></a>
+<h3 >Buffer View</h3>
+<p>You can switch to the raw buffer view in the toolbar of the <a href="gammaray-qt3dgeometry-inspector.html">Qt3D Geometry Inspector</a> tab, and select the <a href="../qt3d/qt3drender-qbuffer.html">Qt3DRender::QBuffer</a> instance to inspect in the combo box at the top right.</p>
+<p class="centerAlign"><img src="images/gammaray-qt3d-buffers.png" alt="" /></p><p>The buffer view then shows the buffer data decoded based on its associated <a href="../qt3d/qt3drender-qattribute.html">Qt3DRender::QAttribute</a> instances.</p>
+<a name="examples"></a>
+<h2 id="examples">Examples</h2>
+<p>The following examples make use of the Qt3D inspector:</p>
+<ul>
+<li><a href="gammaray-qt3d-geometry-example.html">qt3d-geometry</a></li>
+</ul>
+</div>
+<!-- @@@gammaray-qt3d-inspector.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="gammaray-graphicsscene-inspector.html">Graphics Scene Inspector</a>
+<a class="nextPage" href="gammaray-styles.html">Styles</a>
+</p>
+</body>
+</html>

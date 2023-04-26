@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- gammaray-model-inspector.qdoc -->
+  <title>Models | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li>Models</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+  <link rel="prev" href="gammaray-action-inspector.html" />
+  <link rel="next" href="gammaray-text-documents.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="gammaray-action-inspector.html">Actions</a>
+<a class="nextPage" href="gammaray-text-documents.html">Text Documents</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#overview">Overview</a></li>
+<li class="level2"><a href="#model-inspection">Model Inspection</a></li>
+<li class="level2"><a href="#proxy-model-inspection">Proxy Model Inspection</a></li>
+<li class="level2"><a href="#selection-model-inspection">Selection Model Inspection</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Models</h1>
+<span class="subtitle"></span>
+<!-- $$$gammaray-model-inspector.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="overview"></a>
+<h2 id="overview">Overview</h2>
+<p>The model inspector allows you to look at <a href="../qtcore/qabstractitemmodel.html">QAbstractItemModel</a> instances, chains of <a href="../qtcore/qabstractproxymodel.html">QAbstractProxyModel</a> instances built on top of these, as well as <a href="../qtcore/qitemselectionmodel.html">QItemSelectionModel</a> instances associated with any of them.</p>
+<p class="centerAlign"><img src="images/gammaray-model-inspector.png" alt="" /></p><a name="model-inspection"></a>
+<h3 >Model Inspection</h3>
+<p>The model view on the top left shows a list of all <a href="../qtcore/qabstractitemmodel.html">QAbstractItemModel</a> instances in the target application. Selecting a model shows its content in the model content view at the center. In the model content view, you can select a single cell for inspecting its content in detail. The cell content view on the right will show you:</p>
+<ul>
+<li>information about the <a href="../qtcore/qmodelindex.html">QModelIndex</a> of that cell,</li>
+<li>cell flags (see <a href="gammaray-manual-attribution-qt.html">Qt::ItemFlags</a>),</li>
+<li>and values for all default (see <a href="gammaray-manual-attribution-qt.html">Qt::ItemDataRole</a>) and custom roles.</li>
+</ul>
+<p>If the source model allows changing values, you can edit the value column in the cell content view.</p>
+<p>The context menu on the model list allows navigation to and from the <a href="../qtcore/qobject.html">QObject</a> browser for analyzing object properties.</p>
+<a name="proxy-model-inspection"></a>
+<h3 >Proxy Model Inspection</h3>
+<p>If the target application uses <a href="../qtcore/qabstractproxymodel.html">QAbstractProxyModel</a> instances, those are shown in the tree view in the upper left, beneath there corresponding source model. This allows you to inspect intermediate results of proxy model chains.</p>
+<a name="selection-model-inspection"></a>
+<h3 >Selection Model Inspection</h3>
+<p>For each selected model, the selection model list on the lower left shows all <a href="../qtcore/qitemselectionmodel.html">QItemSelectionModel</a> instances for that model, as well as how many cells, rows, and columns are currently selected. Selecting a selection model shows its current selection in the model content view at the center.</p>
+<p>The context menu on the selection model list allows navigation to and from the <a href="../qtcore/qobject.html">QObject</a> browser for analyzing object properties.</p>
+</div>
+<!-- @@@gammaray-model-inspector.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="gammaray-action-inspector.html">Actions</a>
+<a class="nextPage" href="gammaray-text-documents.html">Text Documents</a>
+</p>
+</body>
+</html>

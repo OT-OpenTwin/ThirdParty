@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- gammaray-translator-inspector.qdoc -->
+  <title>Translations | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li>Translations</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+  <link rel="prev" href="gammaray-qresource-browser.html" />
+  <link rel="next" href="gammaray-metaobject-browser.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="gammaray-qresource-browser.html">Resources</a>
+<a class="nextPage" href="gammaray-metaobject-browser.html">Meta-Object Browser</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#overview">Overview</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Translations</h1>
+<span class="subtitle"></span>
+<!-- $$$gammaray-translator-inspector.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="overview"></a>
+<h2 id="overview">Overview</h2>
+<p>The translation inspector allows you to observe and override translation lookups on active <a href="../qtcore/qtranslator.html">QTranslator</a> instances at runtime. This is useful for debugging translation issues as it also shows context and disambiguation information, as well as for verifying UI layouting as the length or format of translated strings change.</p>
+<p class="centerAlign"><img src="images/gammaray-translations.png" alt="" /></p><p>The translation inspector lists all active <a href="../qtcore/qtranslator.html">QTranslator</a> instance on the left hand side. These are not necessarily all <a href="../qtcore/qtranslator.html">QTranslator</a> instances that exist in the target application, but those registered with <a href="../qtcore/qcoreapplication.html#installTranslator">QCoreApplication::installTranslator</a>, as only those are considered for translation lookup.</p>
+<p>Selecting a translator on in the left view shows the corresponding translations that have been looked up and found in its catalog in the translations view on the right. This view contains the following information:</p>
+<ul>
+<li>The message source text.</li>
+<li>The context (typically the class in which the message is used, unless manually specified).</li>
+<li>A disambiguation message, if present.</li>
+<li>The translated message. This is editable inline.</li>
+</ul>
+<p>Translated messages can be edited in the translations view. To revert changes made there, use the &quot;Reset Selected Translations&quot; action found in the translations menu or the context menu on the translations view. For changes to take effect, it's often needed to notify the target application via a <a href="../qtcore/qevent.html#Type-enum">QEvent::LanguageChange</a> event, this can be triggered via a corresponding action in the translations menu.</p>
+</div>
+<!-- @@@gammaray-translator-inspector.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="gammaray-qresource-browser.html">Resources</a>
+<a class="nextPage" href="gammaray-metaobject-browser.html">Meta-Object Browser</a>
+</p>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- gammaray-qtcreator.qdoc -->
+  <title>Qt Creator Integration | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li>Qt Creator Integration</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+  <link rel="prev" href="gammaray-client.html" />
+  <link rel="next" href="gammaray-command-line.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="gammaray-client.html">GammaRay Client</a>
+<a class="nextPage" href="gammaray-command-line.html">Command Line Interface</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#overview">Overview</a></li>
+<li class="level1"><a href="#launching-applications">Launching Applications</a></li>
+<li class="level1"><a href="#attaching-to-an-application">Attaching to an Application</a></li>
+<li class="level1"><a href="#connecting-to-a-running-application">Connecting to a Running Application</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Qt Creator Integration</h1>
+<span class="subtitle"></span>
+<!-- $$$gammaray-qtcreator.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="overview"></a>
+<h2 id="overview">Overview</h2>
+<p>The <a href="http://doc.qt.io/GammaRay">GammaRay</a> <a href="https://doc.qt.io/qtcreator">Qt Creator</a> integration plug-in allows you to interact with a target application with <a href="http://doc.qt.io/GammaRay">GammaRay</a> conveniently from within Qt Creator. The <a href="gammaray-client.html">GammaRay Client</a> is embedded inside Qt Creator in this case, and you can directly launch, attach to or connect to target applications using the currently active project configuration. Code navigation from <a href="http://doc.qt.io/GammaRay">GammaRay</a> will directly open the corresponding source file inside Qt Creator.</p>
+<p class="centerAlign"><img src="images/gammaray-qtcreator.png" alt="" /></p><p>The <a href="http://doc.qt.io/GammaRay">GammaRay</a> Qt Creator integration plug-in is only available in the <a href="https://doc.qt.io/QtAutomotiveSuite">Qt Automotive Suite</a>.</p>
+<a name="launching-applications"></a>
+<h2 id="launching-applications">Launching Applications</h2>
+<p>Launching a target application with <a href="http://doc.qt.io/GammaRay">GammaRay</a> from within <a href="https://doc.qt.io/qtcreator">Qt Creator</a> is as easy as starting it in the debugger. Just select <b>Analyze</b> &gt; <b>Start with <a href="http://doc.qt.io/GammaRay">GammaRay</a></b>. Your target application will be started and the <a href="http://doc.qt.io/GammaRay">GammaRay</a> client appears inside Qt Creator. All necessary configuration for <a href="http://doc.qt.io/GammaRay">GammaRay</a> is automatically determined from the project settings in Qt Creator.</p>
+<p>The following remote targets are supported:</p>
+<ul>
+<li>Generic Linux targets using SSH</li>
+<li>QNX targets using SSH</li>
+<li>Linux Boot2Qt targets</li>
+</ul>
+<a name="attaching-to-an-application"></a>
+<h2 id="attaching-to-an-application">Attaching to an Application</h2>
+<p>To attach to a locally running application select <b>Analyze</b> &gt; <b>Attach <a href="http://doc.qt.io/GammaRay">GammaRay</a> to a local running process</b>. This will show you the standard process selection dialog of <a href="https://doc.qt.io/qtcreator">Qt Creator</a>. Select the process you want to attach to and press <b>Attach to Process</b>. After attaching the <a href="http://doc.qt.io/GammaRay">GammaRay</a> client will be shown inside Qt Creator.</p>
+<p class="centerAlign"><img src="images/gammaray-qtcreator-attach.png" alt="" /></p><a name="connecting-to-a-running-application"></a>
+<h2 id="connecting-to-a-running-application">Connecting to a Running Application</h2>
+<p>It is also possible to connect to a target on a remote device that has already been injected with <a href="http://doc.qt.io/GammaRay">GammaRay</a>. This option is available under <b>Analyze</b> &gt; <b>Connect <a href="http://doc.qt.io/GammaRay">GammaRay</a> to a remote running process</b>. Selecting this option will show the connection dialog depicted in the following screenshot.</p>
+<p class="centerAlign"><img src="images/gammaray-qtcreator-connect.png" alt="" /></p><p><a href="http://doc.qt.io/GammaRay">GammaRay</a> tries to automatically discover viable targets on your local network, these are displayed in the list view in this dialog, and can be used by selecting the corresponding items. Discovered targets using an incompatible <a href="http://doc.qt.io/GammaRay">GammaRay</a> version will be shown but will be disabled for selection.</p>
+<p>Should <a href="http://doc.qt.io/GammaRay">GammaRay</a> not be able to discover the desired target automatically, the network address of the target can also be specified manually in the entry field on the top. This might be necessary depending on your local network setup.</p>
+</div>
+<!-- @@@gammaray-qtcreator.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="gammaray-client.html">GammaRay Client</a>
+<a class="nextPage" href="gammaray-command-line.html">Command Line Interface</a>
+</p>
+</body>
+</html>

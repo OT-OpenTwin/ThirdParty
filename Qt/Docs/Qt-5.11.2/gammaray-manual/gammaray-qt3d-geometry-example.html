@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- qt3d-geometry.qdoc -->
+  <title>Qt3D Geometry | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="examples-gammaray.html">Examples</a></li>
+<li>Qt3D Geometry</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#problem">Problem</a></li>
+<li class="level1"><a href="#investigation">Investigation</a></li>
+<li class="level2"><a href="#backface-culling">Backface culling</a></li>
+<li class="level2"><a href="#normal-vector-visualization">Normal vector visualization</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Qt3D Geometry</h1>
+<span class="subtitle"></span>
+<!-- $$$qt3d-geometry-brief -->
+<p>Geometry data inspection.</p>
+<!-- @@@qt3d-geometry -->
+<!-- $$$qt3d-geometry-description -->
+<div class="descr"> <a name="details"></a>
+<p>This examples shows <a href="http://doc.qt.io/GammaRay">GammaRay</a>'s capabilities for inspecting <a href="../qt3d/qt3d-index.html">Qt 3D</a> vertex and index attribute data.</p>
+<a name="problem"></a>
+<h2 id="problem">Problem</h2>
+<p>The example shows a three dimensional cylinder using <a href="../qt3d/qt3d-index.html">Qt 3D</a>. It's implemented as a custom <a href="../qt3d/qt3drender-qgeometry.html">Qt3DRender::QGeometry</a> sub-class and computes the cylinder geometry, surface normals and vertex indexes.</p>
+<p>Looking at the rendered result we notice that one side of the cylinder is not rendered correctly, and on closer look we also see that the phong shading doesn't match the expected light reflections on a cylinder</p>
+<a name="investigation"></a>
+<h2 id="investigation">Investigation</h2>
+<p><a href="http://doc.qt.io/GammaRay">GammaRay</a> provides several features supporting the analysis of issues regarding vertex data provided via <a href="../qt3d/qt3drender-qattribute.html">Qt3DRender::QAttribute</a> and <a href="../qt3d/qt3drender-qbuffer.html">Qt3DRender::QBuffer</a>. They are all available by opening the <a href="gammaray-qt3d-inspector.html">Qt3D Inspector</a> view, selecting a geometry entity in the entity tree view on the left side and then opening the <a href="gammaray-qt3dgeometry-inspector.html">Qt3D Geometry Inspector</a> tab on the right side.</p>
+<a name="backface-culling"></a>
+<h3 >Backface culling</h3>
+<p>A common problem for seemingly &quot;missing&quot; parts of the geometry is a wrong vertex order. The <a href="gammaray-qt3dgeometry-inspector.html">Qt3D Geometry Inspector</a> in <a href="http://doc.qt.io/GammaRay">GammaRay</a> allows you to disable the normally active backface culling to easily spot such cases. You find the action for that in the toolbar above the geometry view.</p>
+<p>Back faces of triangles are rendered in red with culling disabled. Rotating the cylinder in our example using the middle mouse button so you can see the bottom disc will show that the triangles are indeed the wrong way around, and thus aren't rendred.</p>
+<pre class="cpp"><span class="comment">//const auto yNormal = (yPosition &lt; 0.0f) ? -1.0f : 1.0f;</span>
+<span class="keyword">for</span> (<span class="keyword">auto</span> slice <span class="operator">=</span> <span class="number">0</span>; slice <span class="operator">&lt;</span> m_slices; <span class="operator">+</span><span class="operator">+</span>slice) {
+    <span class="keyword">const</span> <span class="keyword">auto</span> nextSlice <span class="operator">=</span> slice <span class="operator">+</span> <span class="number">1</span>;
+    <span class="operator">*</span>indicesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> discCenterIndex;
+    <span class="operator">*</span>indicesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> (discCenterIndex <span class="operator">+</span> <span class="number">1</span> <span class="operator">+</span> nextSlice);
+    <span class="operator">*</span>indicesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> (discCenterIndex <span class="operator">+</span> <span class="number">1</span> <span class="operator">+</span> slice);
+
+    <span class="comment">//if (yNormal &lt; 0.0f)</span>
+    <span class="comment">//    qSwap(*(indicesPtr -1), *(indicesPtr - 2));</span>
+}</pre>
+<a name="normal-vector-visualization"></a>
+<h3 >Normal vector visualization</h3>
+<p>With the geometry fixed, we can look into the shading issues. Light reflection in the phong model largely depends on surface normal vectors, which are also provided via a <a href="../qt3d/qt3drender-qattribute.html">Qt3DRender::QAttribute</a> in our example. Normals can be visualized with the <a href="gammaray-qt3dgeometry-inspector.html">Qt3D Geometry Inspector</a> by choosing the corresponding action in the toolbar above the geometry view. The resulting blue lines show the vertex normals, the yellow lines the corresponding face normals.</p>
+<p>In our case we can easily see that the normals for the side faces are bent towards the center line of the cylinder, that is their y value isn't 0 for all vertices as it is supposed to be.</p>
+<pre class="cpp"><span class="keyword">const</span> <span class="type">float</span> dY <span class="operator">=</span> m_length <span class="operator">/</span> <span class="keyword">static_cast</span><span class="operator">&lt;</span><span class="type">float</span><span class="operator">&gt;</span>(m_rings <span class="operator">-</span> <span class="number">1</span>);
+<span class="keyword">const</span> <span class="type">float</span> dTheta <span class="operator">=</span> (M_PI <span class="operator">*</span> <span class="number">2</span>) <span class="operator">/</span> <span class="keyword">static_cast</span><span class="operator">&lt;</span><span class="type">float</span><span class="operator">&gt;</span>(m_slices);
+
+<span class="keyword">for</span> (<span class="type">int</span> ring <span class="operator">=</span> <span class="number">0</span>; ring <span class="operator">&lt;</span> m_rings; <span class="operator">+</span><span class="operator">+</span>ring) {
+    <span class="keyword">const</span> <span class="type">float</span> y <span class="operator">=</span> <span class="operator">-</span>m_length <span class="operator">/</span> <span class="number">2.0f</span> <span class="operator">+</span> <span class="keyword">static_cast</span><span class="operator">&lt;</span><span class="type">float</span><span class="operator">&gt;</span>(ring) <span class="operator">*</span> dY;
+    <span class="keyword">for</span> (<span class="type">int</span> slice <span class="operator">=</span> <span class="number">0</span>; slice <span class="operator">&lt;</span><span class="operator">=</span> m_slices; <span class="operator">+</span><span class="operator">+</span>slice) {
+        <span class="keyword">const</span> <span class="type">float</span> theta <span class="operator">=</span> <span class="keyword">static_cast</span><span class="operator">&lt;</span><span class="type">float</span><span class="operator">&gt;</span>(slice) <span class="operator">*</span> dTheta;
+        <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> m_radius <span class="operator">*</span> <a href="../qtcore/qtmath.html#qCos">qCos</a>(theta);;
+        <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> y;
+        <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> m_radius <span class="operator">*</span> <a href="../qtcore/qtmath.html#qSin">qSin</a>(theta);
+
+        QVector3D n(<a href="../qtcore/qtmath.html#qCos">qCos</a>(theta)<span class="operator">,</span> <span class="operator">-</span>y <span class="operator">*</span><span class="number">0.5f</span><span class="operator">,</span> <a href="../qtcore/qtmath.html#qSin">qSin</a>(theta));
+        n<span class="operator">.</span>normalize();
+        <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> n<span class="operator">.</span>x();
+        <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> n<span class="operator">.</span>y();
+        <span class="operator">*</span>verticesPtr<span class="operator">+</span><span class="operator">+</span> <span class="operator">=</span> n<span class="operator">.</span>z();
+    }
+}</pre>
+<p>Files:</p>
+<ul>
+<li><a href="gammaray-qt3d-geometry-mycylinder-cpp.html">qt3d-geometry/mycylinder.cpp</a></li>
+<li><a href="gammaray-qt3d-geometry-mycylinder-h.html">qt3d-geometry/mycylinder.h</a></li>
+<li><a href="gammaray-qt3d-geometry-qt3d-geometry-cpp.html">qt3d-geometry/qt3d-geometry.cpp</a></li>
+<li><a href="gammaray-qt3d-geometry-qt3d-geometry-pro.html">qt3d-geometry/qt3d-geometry.pro</a></li>
+</ul>
+</div>
+<!-- @@@qt3d-geometry -->
+</body>
+</html>

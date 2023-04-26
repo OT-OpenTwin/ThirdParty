@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- gammaray-qsgtexture.qdoc -->
+  <title>Scene Graph Texture | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li>Scene Graph Texture</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+  <link rel="prev" href="gammaray-qsggeometry.html" />
+  <link rel="next" href="gammaray-paint-analyzer.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="gammaray-qsggeometry.html">Scene Graph Geometry</a>
+<a class="nextPage" href="gammaray-paint-analyzer.html">Paint Analyzer</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#overview">Overview</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Scene Graph Texture</h1>
+<span class="subtitle"></span>
+<!-- $$$gammaray-qsgtexture.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="overview"></a>
+<h2 id="overview">Overview</h2>
+<p>When having a scene graph node or a <a href="../qtquick/qquickitem.html">QQuickItem</a> with an attached <a href="../qtquick/qsgtexture.html">QSGTexture</a> selected selected, the scene graph texture view shows the texture content as sent to the GPU. This can be either an Individual texture or part of a texture atlas. In particular, the following elements are supported:</p>
+<ul>
+<li>QML Image elements.</li>
+<li>QML Text elements using distance field rendering.</li>
+<li>Texture-backed shader effect elements.</li>
+</ul>
+<p>This is primarily accessible via the scene graph browser in the <a href="gammaray-qtquick2-inspector.html">Qt Quick 2 Inspector</a> tool.</p>
+<p class="centerAlign"><img src="images/gammaray-qsgtexture.png" alt="" /></p><p>The texture view offers a number of generic interactions also available in other image inspection views in <a href="http://doc.qt.io/GammaRay">GammaRay</a>, such as:</p>
+<ul>
+<li>Zooming</li>
+<li>Distance measurements in source coordinates</li>
+<li>Color picking</li>
+</ul>
+<p>Additionally, texture-specific diagnostics are available checking for common issues such as:</p>
+<ul>
+<li>Fully transparent borders, which can be optimized by cropping the texture.</li>
+<li>Repeating horizontal or vertical content, which can be optimized by using a <a href="../qtquick/qml-qtquick-borderimage.html">BorderImage</a> element.</li>
+</ul>
+<p>If any of these issues are detected, a summary text at the bottom of the view will list the amount of memory that can be saved, and a diagnostic overlay will show the affected regions of the texture.</p>
+</div>
+<!-- @@@gammaray-qsgtexture.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="gammaray-qsggeometry.html">Scene Graph Geometry</a>
+<a class="nextPage" href="gammaray-paint-analyzer.html">Paint Analyzer</a>
+</p>
+</body>
+</html>

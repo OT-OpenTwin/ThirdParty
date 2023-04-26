@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- quick-event-handling.qdoc -->
+  <title>Qt Quick Event Handling | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="examples-gammaray.html">Examples</a></li>
+<li>Qt Quick Event Handling</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#problem">Problem</a></li>
+<li class="level1"><a href="#investigation">Investigation</a></li>
+<li class="level2"><a href="#qt-quick-element-picking">Qt Quick element picking</a></li>
+<li class="level2"><a href="#live-property-editing">Live property editing</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Qt Quick Event Handling</h1>
+<span class="subtitle"></span>
+<!-- $$$quick-event-handling-brief -->
+<p>Investigate issues regarding Qt Quick input events.</p>
+<!-- @@@quick-event-handling -->
+<!-- $$$quick-event-handling-description -->
+<div class="descr"> <a name="details"></a>
+<p>This examples shows <a href="http://doc.qt.io/GammaRay">GammaRay</a>'s capabilities for analyzing <a href="../qtquick/qtquick-index.html">Qt Quick</a> event handling issues.</p>
+<a name="problem"></a>
+<h2 id="problem">Problem</h2>
+<p>The example application shows a simple Qt Quick button. Clicking the button is supposed to emit a debug message acknowledging the click.</p>
+<pre class="qml"><span class="type">Button</span> {
+    <span class="name">id</span>: <span class="name">myButton</span>
+    <span class="name">anchors</span>.fill: <span class="name">parent</span>
+    <span class="name">anchors</span>.margins: <span class="number">20</span>
+    <span class="name">text</span>: <span class="string">&quot;Click me!&quot;</span>
+    <span class="name">onClicked</span>: <span class="name">console</span>.<span class="name">log</span>(<span class="string">&quot;Button clicked!&quot;</span>)
+}</pre>
+<p>However, you can observe that this only works on the left side of the button, on the right side clicks have no effect.</p>
+<a name="investigation"></a>
+<h2 id="investigation">Investigation</h2>
+<p>There are several aspects of this problem that can be analyzed with <a href="http://doc.qt.io/GammaRay">GammaRay</a>.</p>
+<a name="qt-quick-element-picking"></a>
+<h3 >Qt Quick element picking</h3>
+<p>Open the <a href="gammaray-qtquick2-inspector.html">Qt Quick 2 Inspector</a> and select the element picking tool above the scene view on the lower left. Clicking on to the view will select the element at that location. You can notice that picking on the left side of the button will select the button as expected (or one of its internal elements), but picking on the right side selects a second, invisible button.</p>
+<pre class="qml"><span class="type">Button</span> {
+    <span class="name">id</span>: <span class="name">hiddenButton</span>
+    <span class="name">anchors</span>.fill: <span class="name">parent</span>
+    <span class="name">anchors</span>.leftMargin: <span class="name">parent</span>.<span class="name">width</span> <span class="operator">/</span> <span class="number">2</span>
+    <span class="name">text</span>: <span class="string">&quot;Hidden button&quot;</span>
+    <span class="name">opacity</span>: <span class="number">0</span>
+}</pre>
+<p>This hidden button consumes the events and thus breaks our example.</p>
+<a name="live-property-editing"></a>
+<h3 >Live property editing</h3>
+<p>Selecting the hidden button in the <a href="gammaray-qtquick2-inspector.html">Qt Quick 2 Inspector</a> or <a href="gammaray-qobject-browser.html">Object Browser</a> tools will show the <a href="gammaray-properties.html">Properties</a> view on the right. In there we can investigate why the hidden button consumes events, and test our theory by changing properties in the running application.</p>
+<p>In our case we will notice that the button is not actually hidden (the visible property is still true), it is merely set to be fully transparent (the opacity property is 0). If we change its visible property to false, our example works as expected, that is clicks on the right half of the button work as well.</p>
+<p>Files:</p>
+<ul>
+<li><a href="gammaray-quick-event-handling-quick-event-handling-pro.html">quick-event-handling/quick-event-handling.pro</a></li>
+<li><a href="gammaray-quick-event-handling-quick-event-handling-qml.html">quick-event-handling/quick-event-handling.qml</a></li>
+</ul>
+</div>
+<!-- @@@quick-event-handling -->
+</body>
+</html>

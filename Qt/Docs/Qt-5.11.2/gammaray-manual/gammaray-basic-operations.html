@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- gammaray-basic-operations.qdoc -->
+  <title>Basic Operations | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li>Basic Operations</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+  <link rel="prev" href="gammaray-install.html" />
+  <link rel="next" href="gammaray-launcher-gui.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="gammaray-install.html">Installation</a>
+<a class="nextPage" href="gammaray-launcher-gui.html">Graphical Launcher</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#launching-a-new-application">Launching a New Application</a></li>
+<li class="level2"><a href="#on-the-command-line">On the command line</a></li>
+<li class="level2"><a href="#with-a-graphical-user-interface">With a graphical user interface</a></li>
+<li class="level2"><a href="#with-qt-creator">With Qt Creator</a></li>
+<li class="level2"><a href="#on-an-embedded-target">On an embedded target</a></li>
+<li class="level1"><a href="#attaching-to-a-running-application">Attaching to a Running Application</a></li>
+<li class="level2"><a href="#on-the-command-line">On the command line</a></li>
+<li class="level2"><a href="#with-a-graphical-user-interface">With a graphical user interface</a></li>
+<li class="level2"><a href="#with-qt-creator">With Qt Creator</a></li>
+<li class="level2"><a href="#on-an-embedded-target">On an embedded target</a></li>
+<li class="level1"><a href="#connecting-to-a-running-application">Connecting to a Running Application</a></li>
+<li class="level2"><a href="#on-the-command-line">On the command line</a></li>
+<li class="level2"><a href="#with-a-graphical-user-interface">With a graphical user interface</a></li>
+<li class="level2"><a href="#with-qt-creator">With Qt Creator</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Basic Operations</h1>
+<span class="subtitle"></span>
+<!-- $$$gammaray-basic-operations.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="launching-a-new-application"></a>
+<h2 id="launching-a-new-application">Launching a New Application</h2>
+<a name="on-the-command-line"></a>
+<h3 >On the command line</h3>
+<p>Launching an application with <a href="http://doc.qt.io/GammaRay">GammaRay</a> on the command line is similar to tools like valgrind:</p>
+<pre class="cpp">gammaray <span class="operator">&lt;</span>gammaray<span class="operator">-</span>args<span class="operator">&gt;</span> <span class="operator">&lt;</span>app<span class="operator">&gt;</span> <span class="operator">&lt;</span>app<span class="operator">-</span>args<span class="operator">&gt;</span></pre>
+<p>This will launch the application with <a href="http://doc.qt.io/GammaRay">GammaRay</a> attached to it right from the start. The <a href="http://doc.qt.io/GammaRay">GammaRay</a> arguments allow you to select a different injection method. While the default is suitable for most target applications, the simultaneous use of other tools using the same entry points as <a href="http://doc.qt.io/GammaRay">GammaRay</a> might require using alternative injection methods for example.</p>
+<p><a href="gammaray-command-line.html">Read more..&#x2e;</a></p>
+<a name="with-a-graphical-user-interface"></a>
+<h3 >With a graphical user interface</h3>
+<p>Launching applications is also available in the graphical user interface. Launch <a href="http://doc.qt.io/GammaRay">GammaRay</a> without command line arguments (or use the menu shortcut if you have one), select the <b>Launch</b> tab. There you can select the executable to launch as well as optional command line arguments to pass to it.</p>
+<p><a href="gammaray-launcher-gui.html">Read more..&#x2e;</a></p>
+<a name="with-qt-creator"></a>
+<h3 >With Qt Creator</h3>
+<p>You can launch both local and remote applications from within <a href="https://doc.qt.io/qtcreator">Qt Creator</a> with <a href="http://doc.qt.io/GammaRay">GammaRay</a> via <b>Analyze</b> &gt; <b>Start with <a href="http://doc.qt.io/GammaRay">GammaRay</a></b>. All environment and application settings are taken from your regular run configuration in Qt Creator.</p>
+<p><a href="gammaray-qtcreator.html">Read more..&#x2e;</a></p>
+<p><a href="https://doc.qt.io/qtcreator">Qt Creator</a> integration is only available in the <a href="https://doc.qt.io/QtAutomotiveSuite">Qt Automotive Suite</a>.</p>
+<a name="on-an-embedded-target"></a>
+<h3 >On an embedded target</h3>
+<p>If you want to run the <a href="http://doc.qt.io/GammaRay">GammaRay</a> UI on a different machine, which is commonly the case for embedded targets, you can proceed as described in the command line section above, with the extra <code>--inject-only</code> argument passed to <a href="http://doc.qt.io/GammaRay">GammaRay</a>. Then follow the instructions below on how to connect to a already running instance.</p>
+<a name="attaching-to-a-running-application"></a>
+<h2 id="attaching-to-a-running-application">Attaching to a Running Application</h2>
+<a name="on-the-command-line"></a>
+<h3 >On the command line</h3>
+<p>Attaching to a running application on the command line is similar to gdb:</p>
+<pre class="cpp">gammaray <span class="operator">&lt;</span>gammaray<span class="operator">-</span>args<span class="operator">&gt;</span> <span class="operator">-</span><span class="operator">-</span>pid <span class="operator">&lt;</span>pid<span class="operator">&gt;</span></pre>
+<p>This will attach <a href="http://doc.qt.io/GammaRay">GammaRay</a> to the application running with process id <code>&lt;pid&gt;</code>. Keep in mind that this process has to be a Qt application with matching build settings and Qt version for <a href="http://doc.qt.io/GammaRay">GammaRay</a> to work.</p>
+<p><a href="gammaray-command-line.html">Read more..&#x2e;</a></p>
+<a name="with-a-graphical-user-interface"></a>
+<h3 >With a graphical user interface</h3>
+<p>Launch <a href="http://doc.qt.io/GammaRay">GammaRay</a> without command line arguments (or use the menu shortcut if you have one) to bring up the <a href="http://doc.qt.io/GammaRay">GammaRay</a> UI. It will show you a list of processes <a href="http://doc.qt.io/GammaRay">GammaRay</a> can attach to, that is, those with the same build settings and Qt version as your <a href="http://doc.qt.io/GammaRay">GammaRay</a> instance. You'll find the process list on the <b>Attach</b> tab.</p>
+<p><a href="gammaray-launcher-gui.html">Read more..&#x2e;</a></p>
+<a name="with-qt-creator"></a>
+<h3 >With Qt Creator</h3>
+<p>You can attach <a href="http://doc.qt.io/GammaRay">GammaRay</a> to already locally running applications from within <a href="https://doc.qt.io/qtcreator">Qt Creator</a> using <b>Analyze</b> &gt; <b>Attach <a href="http://doc.qt.io/GammaRay">GammaRay</a> to a local running process</b>. Just as when attaching a regular debugger, Qt Creator will open a process selection dialog allowing you to pick which process to attach to.</p>
+<p><a href="gammaray-qtcreator.html">Read more..&#x2e;</a></p>
+<p><a href="https://doc.qt.io/qtcreator">Qt Creator</a> integration is only available in the <a href="https://doc.qt.io/QtAutomotiveSuite">Qt Automotive Suite</a>.</p>
+<a name="on-an-embedded-target"></a>
+<h3 >On an embedded target</h3>
+<p>If you want to run the <a href="http://doc.qt.io/GammaRay">GammaRay</a> UI on a different machine, which is commonly the case for embedded targets, you can proceed as described in the command line section above, with the extra <code>--inject-only</code> argument passed to <a href="http://doc.qt.io/GammaRay">GammaRay</a>. Then follow the instructions below on how to connect to a already running instance.</p>
+<a name="connecting-to-a-running-application"></a>
+<h2 id="connecting-to-a-running-application">Connecting to a Running Application</h2>
+<a name="on-the-command-line"></a>
+<h3 >On the command line</h3>
+<p>Run the following command to connect to a running remote instance:</p>
+<pre class="cpp">gammaray <span class="operator">-</span><span class="operator">-</span>connect tcp:<span class="comment">//&lt;host&gt;:&lt;port&gt;</span></pre>
+<p>Insert the IP address or host name of the target device, and if needed the port number accordingly. The port number can usually be omitted if there's only a single <a href="http://doc.qt.io/GammaRay">GammaRay</a> instance active on the target. The port number to use is printed on the command line after injection as described above.</p>
+<p><a href="gammaray-command-line.html">Read more..&#x2e;</a></p>
+<a name="with-a-graphical-user-interface"></a>
+<h3 >With a graphical user interface</h3>
+<p>Launch <a href="http://doc.qt.io/GammaRay">GammaRay</a> without any command line arguments to get to the launcher UI. Select the <b>Connect</b> tab. Depending on your network setup active targets will be already listed here and can simply be selected from the list. Manual entry of host name or IP address, and if necessary the port number is also possible.</p>
+<p><a href="gammaray-launcher-gui.html">Read more..&#x2e;</a></p>
+<a name="with-qt-creator"></a>
+<h3 >With Qt Creator</h3>
+<p>You can connect to remotely running applications with <a href="http://doc.qt.io/GammaRay">GammaRay</a> already injected from within <a href="https://doc.qt.io/qtcreator">Qt Creator</a> using <b>Analyze</b> &gt; <b>Connect <a href="http://doc.qt.io/GammaRay">GammaRay</a> to a remote running process</b>. Qt Creator will then show all running instances discovered on the local network, as well as an option to manually specify a network address to connect to.</p>
+<p><a href="gammaray-qtcreator.html">Read more..&#x2e;</a></p>
+<p><a href="https://doc.qt.io/qtcreator">Qt Creator</a> integration is only available in the <a href="https://doc.qt.io/QtAutomotiveSuite">Qt Automotive Suite</a>.</p>
+</div>
+<!-- @@@gammaray-basic-operations.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="gammaray-install.html">Installation</a>
+<a class="nextPage" href="gammaray-launcher-gui.html">Graphical Launcher</a>
+</p>
+</body>
+</html>

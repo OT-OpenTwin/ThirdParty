@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>widget-layouting.cpp Example File | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="gammaray-widget-layouting-example.html">Widget Layouting</a></li>
+<li>widget-layouting.cpp Example File</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">widget-layouting.cpp Example File</h1>
+<span class="subtitle">widget-layouting/widget-layouting.cpp</span>
+<!-- $$$widget-layouting/widget-layouting.cpp-description -->
+<div class="descr"> <a name="details"></a>
+<pre class="cpp"><span class="comment">/*
+  widget-layouting.cpp
+
+  This file is part of GammaRay, the Qt application inspection and
+  manipulation tool.
+
+  Copyright (C) 2016-2018 Klarälvdalens Datakonsult AB, a KDAB Group company, info@kdab.com
+  Author: Volker Krause &lt;volker.krause@kdab.com&gt;
+
+  Licensees holding valid commercial KDAB GammaRay licenses may use this file in
+  accordance with GammaRay Commercial License Agreement provided with the Software.
+
+  Contact info@kdab.com if any conditions of this licensing are not clear to you.
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+*/</span>
+
+<span class="preprocessor">#include &quot;ui_contactform.h&quot;</span>
+
+<span class="preprocessor">#include &lt;QApplication&gt;</span>
+
+<span class="keyword">class</span> ContactForm : <span class="keyword">public</span> <span class="type"><a href="../qtwidgets/qwidget.html">QWidget</a></span>
+{
+    Q_OBJECT
+<span class="keyword">public</span>:
+    <span class="keyword">explicit</span> ContactForm(<span class="type"><a href="../qtwidgets/qwidget.html">QWidget</a></span> <span class="operator">*</span>parent <span class="operator">=</span> nullptr) :
+        <span class="type"><a href="../qtwidgets/qwidget.html">QWidget</a></span>(parent)<span class="operator">,</span>
+        ui(<span class="keyword">new</span> Ui<span class="operator">::</span>ContactForm)
+    {
+        ui<span class="operator">-</span><span class="operator">&gt;</span>setupUi(<span class="keyword">this</span>);
+    }
+
+<span class="keyword">private</span>:
+    <span class="type"><a href="../qtcore/qscopedpointer.html">QScopedPointer</a></span><span class="operator">&lt;</span>Ui<span class="operator">::</span>ContactForm<span class="operator">&gt;</span> ui;
+};
+
+<span class="type">int</span> main(<span class="type">int</span> argc<span class="operator">,</span> <span class="type">char</span><span class="operator">*</span><span class="operator">*</span> argv)
+{
+    <span class="type"><a href="../qtwidgets/qapplication.html">QApplication</a></span> app(argc<span class="operator">,</span> argv);
+    <span class="type"><a href="../qtwidgets/qwidget.html">QWidget</a></span> w1;
+    <span class="type"><a href="../qtwidgets/qwidget.html">QWidget</a></span> w2;
+    ContactForm form;
+    form<span class="operator">.</span>show();
+    <span class="keyword">return</span> app<span class="operator">.</span>exec();
+}
+
+<span class="preprocessor">#include &quot;widget-layouting.moc&quot;</span></pre>
+</div>
+<!-- @@@widget-layouting/widget-layouting.cpp -->
+</body>
+</html>

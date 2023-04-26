@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>qt3d-geometry.cpp Example File | GammaRay User Manual</title>
+</head>
+<body>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="index.html">GammaRay User Manual</a></li>
+<li><a href="gammaray-qt3d-geometry-example.html">Qt3D Geometry</a></li>
+<li>qt3d-geometry.cpp Example File</li>
+<li id="buildversion">GammaRay User Manual 2.9.0</li>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">qt3d-geometry.cpp Example File</h1>
+<span class="subtitle">qt3d-geometry/qt3d-geometry.cpp</span>
+<!-- $$$qt3d-geometry/qt3d-geometry.cpp-description -->
+<div class="descr"> <a name="details"></a>
+<pre class="cpp"><span class="comment">/*
+  qt3d-geometry.cpp
+
+  This file is part of GammaRay, the Qt application inspection and
+  manipulation tool.
+
+  Copyright (C) 2016-2018 Klarälvdalens Datakonsult AB, a KDAB Group company, info@kdab.com
+  Author: Volker Krause &lt;volker.krause@kdab.com&gt;
+
+  Licensees holding valid commercial KDAB GammaRay licenses may use this file in
+  accordance with GammaRay Commercial License Agreement provided with the Software.
+
+  Contact info@kdab.com if any conditions of this licensing are not clear to you.
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+*/</span>
+
+<span class="preprocessor">#include &quot;mycylinder.h&quot;</span>
+
+<span class="preprocessor">#include &lt;Qt3DExtras/QPhongMaterial&gt;</span>
+<span class="preprocessor">#include &lt;Qt3DExtras/Qt3DWindow&gt;</span>
+<span class="preprocessor">#include &lt;Qt3DExtras/QOrbitCameraController&gt;</span>
+
+<span class="preprocessor">#include &lt;Qt3DRender/QCamera&gt;</span>
+<span class="preprocessor">#include &lt;Qt3DRender/QCameraLens&gt;</span>
+
+<span class="preprocessor">#include &lt;Qt3DCore/QEntity&gt;</span>
+<span class="preprocessor">#include &lt;Qt3DCore/QTransform&gt;</span>
+
+<span class="preprocessor">#include &lt;QGuiApplication&gt;</span>
+<span class="preprocessor">#include &lt;QPropertyAnimation&gt;</span>
+
+<span class="type">int</span> main(<span class="type">int</span> argc<span class="operator">,</span> <span class="type">char</span><span class="operator">*</span> argv<span class="operator">[</span><span class="operator">]</span>)
+{
+    <span class="type"><a href="../qtgui/qguiapplication.html">QGuiApplication</a></span> app(argc<span class="operator">,</span> argv);
+    <span class="type"><a href="../qt3d/qt3dextras-module.html">Qt3DExtras</a></span><span class="operator">::</span><span class="type">Qt3DWindow</span> view;
+
+    <span class="keyword">auto</span> rootEntity <span class="operator">=</span> <span class="keyword">new</span> <span class="type"><a href="../qt3d/qt3dcore-module.html">Qt3DCore</a></span><span class="operator">::</span><span class="type">QEntity</span>;
+    rootEntity<span class="operator">-</span><span class="operator">&gt;</span>setObjectName(<span class="string">&quot;rootEntity&quot;</span>);
+
+    <span class="keyword">auto</span> cylinderEntity <span class="operator">=</span> <span class="keyword">new</span> <span class="type"><a href="../qt3d/qt3dcore-module.html">Qt3DCore</a></span><span class="operator">::</span><span class="type">QEntity</span>(rootEntity);
+    cylinderEntity<span class="operator">-</span><span class="operator">&gt;</span>setObjectName(<span class="string">&quot;cylinderEntity&quot;</span>);
+
+    <span class="keyword">auto</span> mesh <span class="operator">=</span> <span class="keyword">new</span> MyCylinder;
+
+    <span class="keyword">auto</span> material <span class="operator">=</span> <span class="keyword">new</span> <span class="type"><a href="../qt3d/qt3dextras-module.html">Qt3DExtras</a></span><span class="operator">::</span><span class="type">QPhongMaterial</span>(rootEntity);
+    material<span class="operator">-</span><span class="operator">&gt;</span>setAmbient(<span class="type"><a href="../qtgui/qcolor.html">QColor</a></span>(<span class="number">0</span><span class="operator">,</span> <span class="number">85</span><span class="operator">,</span> <span class="number">128</span>));
+    material<span class="operator">-</span><span class="operator">&gt;</span>setDiffuse(<span class="type"><a href="../qtgui/qcolor.html">QColor</a></span>(<span class="number">0</span><span class="operator">,</span> <span class="number">128</span><span class="operator">,</span> <span class="number">192</span>));
+    material<span class="operator">-</span><span class="operator">&gt;</span>setSpecular(<span class="type"><a href="../qtgui/qcolor.html">QColor</a></span>(<span class="number">0</span><span class="operator">,</span> <span class="number">170</span><span class="operator">,</span> <span class="number">255</span>));
+
+    <span class="keyword">auto</span> transform <span class="operator">=</span> <span class="keyword">new</span> <span class="type"><a href="../qt3d/qt3dcore-module.html">Qt3DCore</a></span><span class="operator">::</span><span class="type"><a href="../qtgui/qtransform.html">QTransform</a></span>;
+    transform<span class="operator">-</span><span class="operator">&gt;</span>setRotation(<span class="type"><a href="../qtgui/qquaternion.html">QQuaternion</a></span><span class="operator">::</span>fromAxisAndAngle(QVector3D(<span class="number">1</span><span class="operator">,</span> <span class="number">0</span><span class="operator">,</span> <span class="number">0</span>)<span class="operator">,</span> <span class="number">45.0f</span>));
+    <span class="keyword">auto</span> animation <span class="operator">=</span> <span class="keyword">new</span> <span class="type"><a href="../qtcore/qpropertyanimation.html">QPropertyAnimation</a></span>(transform);
+    animation<span class="operator">-</span><span class="operator">&gt;</span>setTargetObject(transform);
+    animation<span class="operator">-</span><span class="operator">&gt;</span>setPropertyName(<span class="string">&quot;rotationZ&quot;</span>);
+    animation<span class="operator">-</span><span class="operator">&gt;</span>setStartValue(<span class="type"><a href="../qtcore/qvariant.html">QVariant</a></span><span class="operator">::</span>fromValue(<span class="number">0</span>));
+    animation<span class="operator">-</span><span class="operator">&gt;</span>setEndValue(<span class="type"><a href="../qtcore/qvariant.html">QVariant</a></span><span class="operator">::</span>fromValue(<span class="number">360</span>));
+    animation<span class="operator">-</span><span class="operator">&gt;</span>setDuration(<span class="number">10000</span>);
+    animation<span class="operator">-</span><span class="operator">&gt;</span>setLoopCount(<span class="operator">-</span><span class="number">1</span>);
+    animation<span class="operator">-</span><span class="operator">&gt;</span>start();
+
+    cylinderEntity<span class="operator">-</span><span class="operator">&gt;</span>addComponent(mesh);
+    cylinderEntity<span class="operator">-</span><span class="operator">&gt;</span>addComponent(transform);
+    cylinderEntity<span class="operator">-</span><span class="operator">&gt;</span>addComponent(material);
+
+    <span class="comment">// Camera</span>
+    <span class="keyword">auto</span> camera <span class="operator">=</span> view<span class="operator">.</span>camera();
+    camera<span class="operator">-</span><span class="operator">&gt;</span>setObjectName(<span class="string">&quot;camera&quot;</span>);
+    camera<span class="operator">-</span><span class="operator">&gt;</span>lens()<span class="operator">-</span><span class="operator">&gt;</span>setPerspectiveProjection(<span class="number">45.0f</span><span class="operator">,</span> <span class="number">16.0f</span><span class="operator">/</span><span class="number">9.0f</span><span class="operator">,</span> <span class="number">0.1f</span><span class="operator">,</span> <span class="number">1000.0f</span>);
+    camera<span class="operator">-</span><span class="operator">&gt;</span>setPosition(QVector3D(<span class="number">0</span><span class="operator">,</span> <span class="number">0</span><span class="operator">,</span> <span class="number">6.0f</span>));
+    camera<span class="operator">-</span><span class="operator">&gt;</span>setViewCenter(QVector3D(<span class="number">0</span><span class="operator">,</span> <span class="number">0</span><span class="operator">,</span> <span class="number">0</span>));
+
+    <span class="keyword">auto</span> camController <span class="operator">=</span> <span class="keyword">new</span> <span class="type"><a href="../qt3d/qt3dextras-module.html">Qt3DExtras</a></span><span class="operator">::</span><span class="type">QOrbitCameraController</span>(rootEntity);
+    camController<span class="operator">-</span><span class="operator">&gt;</span>setLinearSpeed( <span class="number">50.0f</span> );
+    camController<span class="operator">-</span><span class="operator">&gt;</span>setLookSpeed( <span class="number">180.0f</span> );
+    camController<span class="operator">-</span><span class="operator">&gt;</span>setCamera(camera);
+
+    view<span class="operator">.</span>setRootEntity(rootEntity);
+    view<span class="operator">.</span>show();
+
+    <span class="keyword">return</span> app<span class="operator">.</span>exec();
+}</pre>
+</div>
+<!-- @@@qt3d-geometry/qt3d-geometry.cpp -->
+</body>
+</html>
