@@ -85,11 +85,14 @@ SET VTK_LIBLIST_DEBUG=vtkChartsCore-9.0d.lib;vtkCommonColor-9.0d.lib;vtkCommonCo
 
 REM Set CURL Directory
 SET CURL_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\curl\curl-7.62.0
-SET CURL_LIB=%CURL_ROOT%\build-win-x64\Release\lib
-SET CURL_INC=%CURL_ROOT%\build-win-x64\Release\include
-SET CURL_DLL=%CURL_ROOT%\build-win-x64\Release\bin
-SET CURL_LIBD=%CURL_ROOT%\build-win-x64\Debug\lib
+SET CURL_INCD=%CURL_ROOT%\build-win-x64\Debug\include
+SET CURL_INCR=%CURL_ROOT%\build-win-x64\Release\include
+SET CURL_LIBD=libcurl_debug.lib
+SET CURL_LIBR=libcurl.lib
+SET CURL_LIBPATHD=%CURL_ROOT%\build-win-x64\Debug\lib
+SET CURL_LIBPATHR=%CURL_ROOT%\build-win-x64\Release\lib
 SET CURL_DLLD=%CURL_ROOT%\build-win-x64\Debug\bin
+SET CURL_DLLR=%CURL_ROOT%\build-win-x64\Release\bin
 
 REM Set OpenSSL Directory
 set OPENSSL_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenSSL\OpenSSL-1.1.1
