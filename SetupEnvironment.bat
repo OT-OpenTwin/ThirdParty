@@ -37,6 +37,14 @@ SET CFG_OC_DLLS=$(OC_ROOT)\win64\vc14\bin\TKBin.dll;$(OC_ROOT)\win64\vc14\bin\TK
 
 REM Set Tab Toolbar Root Directory
 SET QT_TT_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\QtTabToolbar
+SET QT_TT_INCD=%QT_TT_ROOT%\include
+SET QT_TT_INCR=%QT_TT_ROOT%\include
+SET QT_TT_LIBD=TabToolbard.lib
+SET QT_TT_LIBR=TabToolbar.lib
+SET QT_TT_LIBPATHD=%QT_TT_ROOT%\src\Debug
+SET QT_TT_LIBPATHR=%QT_TT_ROOT%\src\Release
+SET QT_TT_DLLD=%QT_TT_ROOT%\src\Debug
+SET QT_TT_DLLR=%QT_TT_ROOT%\src\Release
 
 REM Set Rapid JSON Directory
 SET R_JSON_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\rapidjson
