@@ -138,6 +138,8 @@ SET GOOGLE_TEST_INCD=%GOOGLE_TEST_ROOT%\googletest\include
 SET GOOGLE_TEST_INCR=%GOOGLE_TEST_ROOT%\googletest\include
 SET GOOGLE_TEST_LIBPATHD=%GOOGLE_TEST_ROOT%\build\x64-Debug\lib
 SET GOOGLE_TEST_LIBPATHR=%GOOGLE_TEST_ROOT%\build\x64-Release\lib
+SET GOOGLE_TEST_LIBD=gtest_main.lib;gtest.lib
+SET GOOGLE_TEST_LIBR=gtest_main.lib;gtest.lib
 
 ECHO Third Party environment was set up successfully.
 
