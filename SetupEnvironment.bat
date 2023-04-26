@@ -17,6 +17,8 @@ IF "%OPENTWIN_THIRDPARTY_ROOT%" == "" (
 REM Set Qt Environment 
 SET QDIR=%OPENTWIN_THIRDPARTY_ROOT%\Qt\5.11.2\msvc2017_64
 SET QTDIR=%QDIR%
+SET QT_DLLR=%QDIR%\bin
+
 
 REM Set QWT and QWT wrapper Environment
 SET QWT_LIB_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\qwt\qwt-6.1.4
@@ -56,11 +58,23 @@ SET OC_INCD=%OPENTWIN_THIRDPARTY_ROOT%\inc
 SET OC_INCR=%OPENTWIN_THIRDPARTY_ROOT%\inc
 SET OC_LIBPATHD=%OPENTWIN_THIRDPARTY_ROOT%\win64\vc14\lib
 SET OC_LIBPATHR=%OPENTWIN_THIRDPARTY_ROOT%\win64\vc14\lib
+SET OC_DLLD=%OPENTWIN_THIRDPARTY_ROOT%\win64\vc14\bin
+SET OC_DLLR=%OPENTWIN_THIRDPARTY_ROOT%\win64\vc14\bin
 
 SET TBB_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenCASCADE\OpenCASCADE-7.5.0-vc14-64\tbb_2017.0.100
+SET TBB_DLLR=%TBB_ROOT%\bin\intel64\vc14
+
 SET FRI_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenCASCADE\OpenCASCADE-7.5.0-vc14-64\freeimage-3.17.0-vc14-64
+SET FRI_DLLR=%FRI_ROOT%\bin
+
 SET FRT_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenCASCADE\OpenCASCADE-7.5.0-vc14-64\freetype-2.5.5-vc14-64
+SET FRT_DLLR=%FRT_ROOT%\bin
+
 SET FMP_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenCASCADE\OpenCASCADE-7.5.0-vc14-64\ffmpeg-3.3.4-64
+SET FMP_DLLR=%FMP_ROOT%\bin
+
+SET OVR_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenCASCADE\OpenCASCADE-7.5.0-vc14-64\openvr-1.14.15-64
+SET OVR_DLLR=%OVR_ROOT%\bin\win64
 
 SET CFG_OC_LIBS=TKBin.lib;TKBinL.lib;TKBinTObj.lib;TKBinXCAF.lib;TKBO.lib;TKBool.lib;TKBRep.lib;TKCAF.lib;TKCDF.lib;TKD3DHost.lib;TKDCAF.lib;TKDFBrowser.lib;TKDraw.lib;TKernel.lib;TKFeat.lib;TKFillet.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKHLR.lib;TKIGES.lib;TKIVtk.lib;TKIVtkDraw.lib;TKLCAF.lib;TKMath.lib;TKMesh.lib;TKMeshVS.lib;TKOffset.lib;TKOpenGl.lib;TKPrim.lib;TKQADraw.lib;TKService.lib;TKShapeView.lib;TKShHealing.lib;TKStd.lib;TKStdL.lib;TKSTEP.lib;TKSTEP209.lib;TKSTEPAttr.lib;TKSTEPBase.lib;TKSTL.lib;TKTInspector.lib;TKTInspectorAPI.lib;TKTObj.lib;TKTObjDRAW.lib;TKToolsDraw.lib;TKTopAlgo.lib;TKTopTest.lib;TKTreeModel.lib;TKV3d.lib;TKVCAF.lib;TKView.lib;TKViewerTest.lib;TKVInspector.lib;TKVRML.lib;TKXCAF.lib;TKXDEDRAW.lib;TKXDEIGES.lib;TKXDESTEP.lib;TKXMesh.lib;TKXml.lib;TKXmlL.lib;TKXmlTObj.lib;TKXmlXCAF.lib;TKXSBase.lib;TKXSDRAW.lib
 SET CFG_OC_DLLS=$(OC_ROOT)\win64\vc14\bin\TKBin.dll;$(OC_ROOT)\win64\vc14\bin\TKBinL.dll;$(OC_ROOT)\win64\vc14\bin\TKBinTObj.dll;$(OC_ROOT)\win64\vc14\bin\TKBinXCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKBO.dll;$(OC_ROOT)\win64\vc14\bin\TKBool.dll;$(OC_ROOT)\win64\vc14\bin\TKBRep.dll;$(OC_ROOT)\win64\vc14\bin\TKCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKCDF.dll;$(OC_ROOT)\win64\vc14\bin\TKD3DHost.dll;$(OC_ROOT)\win64\vc14\bin\TKDCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKDFBrowser.dll;$(OC_ROOT)\win64\vc14\bin\TKDraw.dll;$(OC_ROOT)\win64\vc14\bin\TKernel.dll;$(OC_ROOT)\win64\vc14\bin\TKFeat.dll;$(OC_ROOT)\win64\vc14\bin\TKFillet.dll;$(OC_ROOT)\win64\vc14\bin\TKG2d.dll;$(OC_ROOT)\win64\vc14\bin\TKG3d.dll;$(OC_ROOT)\win64\vc14\bin\TKGeomAlgo.dll;$(OC_ROOT)\win64\vc14\bin\TKGeomBase.dll;$(OC_ROOT)\win64\vc14\bin\TKHLR.dll;$(OC_ROOT)\win64\vc14\bin\TKIGES.dll;$(OC_ROOT)\win64\vc14\bin\TKIVtk.dll;$(OC_ROOT)\win64\vc14\bin\TKIVtkDraw.dll;$(OC_ROOT)\win64\vc14\bin\TKLCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKMath.dll;$(OC_ROOT)\win64\vc14\bin\TKMesh.dll;$(OC_ROOT)\win64\vc14\bin\TKMeshVS.dll;$(OC_ROOT)\win64\vc14\bin\TKOffset.dll;$(OC_ROOT)\win64\vc14\bin\TKOpenGl.dll;$(OC_ROOT)\win64\vc14\bin\TKPrim.dll;$(OC_ROOT)\win64\vc14\bin\TKQADraw.dll;$(OC_ROOT)\win64\vc14\bin\TKService.dll;$(OC_ROOT)\win64\vc14\bin\TKShapeView.dll;$(OC_ROOT)\win64\vc14\bin\TKShHealing.dll;$(OC_ROOT)\win64\vc14\bin\TKStd.dll;$(OC_ROOT)\win64\vc14\bin\TKStdL.dll;$(OC_ROOT)\win64\vc14\bin\TKSTEP.dll;$(OC_ROOT)\win64\vc14\bin\TKSTEP209.dll;$(OC_ROOT)\win64\vc14\bin\TKSTEPAttr.dll;$(OC_ROOT)\win64\vc14\bin\TKSTEPBase.dll;$(OC_ROOT)\win64\vc14\bin\TKSTL.dll;$(OC_ROOT)\win64\vc14\bin\TKTInspector.dll;$(OC_ROOT)\win64\vc14\bin\TKTInspectorAPI.dll;$(OC_ROOT)\win64\vc14\bin\TKTObj.dll;$(OC_ROOT)\win64\vc14\bin\TKTObjDRAW.dll;$(OC_ROOT)\win64\vc14\bin\TKToolsDraw.dll;$(OC_ROOT)\win64\vc14\bin\TKTopAlgo.dll;$(OC_ROOT)\win64\vc14\bin\TKTopTest.dll;$(OC_ROOT)\win64\vc14\bin\TKTreeModel.dll;$(OC_ROOT)\win64\vc14\bin\TKV3d.dll;$(OC_ROOT)\win64\vc14\bin\TKVCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKView.dll;$(OC_ROOT)\win64\vc14\bin\TKViewerTest.dll;$(OC_ROOT)\win64\vc14\bin\TKVInspector.dll;$(OC_ROOT)\win64\vc14\bin\TKVRML.dll;$(OC_ROOT)\win64\vc14\bin\TKXCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKXDEDRAW.dll;$(OC_ROOT)\win64\vc14\bin\TKXDEIGES.dll;$(OC_ROOT)\win64\vc14\bin\TKXDESTEP.dll;$(OC_ROOT)\win64\vc14\bin\TKXMesh.dll;$(OC_ROOT)\win64\vc14\bin\TKXml.dll;$(OC_ROOT)\win64\vc14\bin\TKXmlL.dll;$(OC_ROOT)\win64\vc14\bin\TKXmlTObj.dll;$(OC_ROOT)\win64\vc14\bin\TKXmlXCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKXSBase.dll;$(OC_ROOT)\win64\vc14\bin\TKXSDRAW.dll
@@ -112,6 +126,8 @@ REM Set VTK Directory
 SET VTK_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\vtk\VTK-9.0.3
 SET VTK_LIB=%VTK_ROOT%\build_Win64\lib\
 SET VTK_DLL=%VTK_ROOT%\build_Win64\bin\
+SET VTK_DLLR=%VTK_ROOT%\build_Win64\bin\Release
+SET VTK_DLLD=%VTK_ROOT%\build_Win64\bin\Debug
 SET VTK_DIR=%VTK_ROOT%\build_Win64
 SET VTK_DIR=%VTK_DIR:\=/%
 SET VTK_INC=$(VTK_ROOT)\Rendering\Core;$(VTK_ROOT)\Filters\Sources;$(VTK_ROOT)\Filters\Core;$(VTK_ROOT)\Filters\Modeling;$(VTK_ROOT)\Filters\Core;$(VTK_ROOT)\Filters\Geometry;$(VTK_ROOT)\Filters\Extraction;$(VTK_ROOT)\Common\Color;$(VTK_ROOT)\Common\Core;$(VTK_ROOT)\Common\Misc;$(VTK_ROOT)\build_Win64\Common\Core;$(VTK_ROOT)\Utilities\KWIML;$(VTK_ROOT)\build_Win64\Utilities\KWIML;$(VTK_ROOT)\build_Win64\Rendering\Core;$(VTK_ROOT)\build_Win64\Filters\Core;$(VTK_ROOT)\Common\DataModel;$(VTK_ROOT)\Common\Math;$(VTK_ROOT)\build_Win64\Filters\Sources;$(VTK_ROOT)\build_Win64\Filters\Modeling;$(VTK_ROOT)\build_Win64\Filters\Geometry;$(VTK_ROOT)\build_Win64\Filters\Extraction;$(VTK_ROOT)\Common\ExecutionModel;$(VTK_ROOT)\build_Win64\Common\ExecutionModel;$(VTK_ROOT)\build_Win64\Common\DataModel;$(VTK_ROOT)\build_Win64\Common\Color;$(VTK_ROOT)\build_Win64\Common\Misc;$(VTK_ROOT)\Rendering\External;$(VTK_ROOT)\Rendering\OpenGL2;$(VTK_ROOT)\build_Win64\Rendering\OpenGL2;$(VTK_ROOT)\build_Win64\Rendering\UI;$(VTK_ROOT)\build_Win64\Rendering\External;$(VTK_ROOT)\Rendering\External;$(VTK_ROOT)\IO\Legacy;$(VTK_ROOT)\build_Win64\IO\Legacy
@@ -132,8 +148,9 @@ SET CURL_DLLD=%CURL_ROOT%\build-win-x64\Debug\bin
 SET CURL_DLLR=%CURL_ROOT%\build-win-x64\Release\bin
 
 REM Set OpenSSL Directory
-set OPENSSL_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenSSL\OpenSSL-1.1.1
-set OPENSSL_DLL=%OPENSSL_ROOT%\build-win-x64\dll\x64\Release\bin
+SET OPENSSL_WEBSOCKET_DLLR=%OPENTWIN_THIRDPARTY_ROOT%\OpenSSL\LibsForQtWebsocket
+SET OPENSSL_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenSSL\OpenSSL-1.1.1
+SET OPENSSL_DLL=%OPENSSL_ROOT%\build-win-x64\dll\x64\Release\bin
 
 REM Set BASE64 Directory
 SET BASE64_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\base64
@@ -158,6 +175,7 @@ SET EMBREE_LIBPATHR=%EMBREE_ROOT%\lib
 SET EMBREE_BIN=%EMBREE_ROOT%\bin
 
 REM Set Python Directory
+SET PYTHON_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\Python\python-3.9.5.amd64
 SET PYTHONPATH=%OPENTWIN_THIRDPARTY_ROOT%\Python\python-3.9.5.amd64;%OPENTWIN_THIRDPARTY_ROOT%\Python\python-3.9.5.amd64\Scripts
 SET PATH=%PYTHONPATH%;%PATH%
 
@@ -169,6 +187,8 @@ SET GMP_INCD=%CGAL_ROOT%\auxiliary\gmp\include
 SET GMP_INCR=%CGAL_ROOT%\auxiliary\gmp\include
 SET GMP_LIBPATHD=%CGAL_ROOT%\auxiliary\gmp\lib
 SET GMP_LIBPATHR=%CGAL_ROOT%\auxiliary\gmp\lib
+SET GMP_DLLPATHD=%CGAL_ROOT%\auxiliary\gmp\lib
+SET GMP_DLLPATHR=%CGAL_ROOT%\auxiliary\gmp\lib
 
 REM Set Boost Directory
 SET BOOST_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\boost\boost_1_71_0
@@ -176,6 +196,8 @@ SET BOOST_INCD=%BOOST_ROOT%
 SET BOOST_INCR=%BOOST_ROOT%
 SET BOOST_LIBPATHD=%BOOST_ROOT%\lib64-msvc-14.1
 SET BOOST_LIBPATHR=%BOOST_ROOT%\lib64-msvc-14.1
+SET BOOST_DLLPATHD=%BOOST_ROOT%\lib64-msvc-14.1
+SET BOOST_DLLPATHR=%BOOST_ROOT%\lib64-msvc-14.1
 
 REM Set Expression Evaluator Directory
 SET EXPREVAL_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\tinyexpr
@@ -189,6 +211,16 @@ SET GOOGLE_TEST_LIBPATHD=%GOOGLE_TEST_ROOT%\build\x64-Debug\lib
 SET GOOGLE_TEST_LIBPATHR=%GOOGLE_TEST_ROOT%\build\x64-Release\lib
 SET GOOGLE_TEST_LIBD=gtest_main.lib;gtest.lib
 SET GOOGLE_TEST_LIBR=gtest_main.lib;gtest.lib
+
+REM Set GETDP Directory
+SET GETDP_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\getdp
+SET GETDP_BIN=%GETDP_ROOT%\Windows
+
+REM Set VisualStudio Redist Directory
+SET VC_REDIST_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\VisualStudioRuntime
+
+REM Set Apache Directory
+SET APACHE_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\Apache\Apache24\Windows
 
 ECHO Third Party environment was set up successfully.
 
