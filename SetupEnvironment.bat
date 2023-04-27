@@ -18,6 +18,7 @@ REM Set Qt Environment
 SET QDIR=%OPENTWIN_THIRDPARTY_ROOT%\Qt\5.11.2\msvc2017_64
 SET QTDIR=%QDIR%
 SET QT_DLLR=%QDIR%\bin
+SET QT_INC=%QDIR%\include
 
 
 REM Set QWT and QWT wrapper Environment
@@ -45,8 +46,8 @@ REM Set Open Scene Graph (OSG) Root Directory
 SET OSG_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenSceneGraph\OpenSceneGraph-OpenSceneGraph-3.6.3
 SET OSG_INCD=%OSG_ROOT%\include
 SET OSG_INCR=%OSG_ROOT%\include
-REM SET OSG_LIBD=
-REM SET OSG_LIBR=
+SET OSG_LIBD=OpenThreadsd.lib;osgAnimationd.lib;osgd.lib;osgDBd.lib;osgFXd.lib;osgGAd.lib;osgManipulatord.lib;osgParticled.lib;osgPresentationd.lib;osgQt5d.lib;osgShadowd.lib;osgSimd.lib;osgTerraind.lib;osgTextd.lib;osgUId.lib;osgUtild.lib;osgViewerd.lib;osgVolumed.lib;osgWidgetd.lib;
+SET OSG_LIBR=OpenThreadsd.lib;osgAnimationd.lib;osgd.lib;osgDBd.lib;osgFXd.lib;osgGAd.lib;osgManipulatord.lib;osgParticled.lib;osgPresentationd.lib;osgQt5d.lib;osgShadowd.lib;osgSimd.lib;osgTerraind.lib;osgTextd.lib;osgUId.lib;osgUtild.lib;osgViewerd.lib;osgVolumed.lib;osgWidgetd.lib;
 SET OSG_LIBPATHD=%OSG_ROOT%\lib\Debug
 SET OSG_LIBPATHR=%OSG_ROOT%\lib\Release
 SET OSG_DLLD=%OSG_ROOT%\bin\Debug
@@ -226,6 +227,9 @@ SET VC_REDIST_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\VisualStudioRuntime
 
 REM Set Apache Directory
 SET APACHE_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\Apache\Apache24\Windows
+
+REM Set Certificate creation tools Directory
+SET CERT_CREATE_TOOLS=%OPENTWIN_THIRDPARTY_ROOT%\CertificateCreation
 
 ECHO Third Party environment was set up successfully.
 
