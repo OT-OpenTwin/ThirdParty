@@ -1,10 +1,10 @@
 @ECHO OFF
 
 REM This script requires the following environment variables to be set:
-REM 1. SIM_PLAT_ROOT
+REM 1. OPENTWIN_DEV_ROOT
 REM 2. DEVENV_ROOT
-IF "%SIM_PLAT_ROOT%" == "" (
-	ECHO Please specify the following environment variables: SIM_PLAT_ROOT
+IF "%OPENTWIN_DEV_ROOT%" == "" (
+	ECHO Please specify the following environment variables: OPENTWIN_DEV_ROOT
 	goto END
 )
 
@@ -14,9 +14,9 @@ IF "%DEVENV_ROOT%" == "" (
 )
 
 ECHO Setting up environment
-CALL "%SIM_PLAT_ROOT%\MasterBuild\set_env.bat"
+CALL "%OPENTWIN_DEV_ROOT%\Scripts\SetupEnvironment.bat"
 
-"%DEVENV_ROOT%\devenv.exe" "%SIM_PLAT_ROOT%\Third_Party_Libraries\qwt-6.1.4\qwt.sln"
+"%DEVENV_ROOT_2022%\devenv.exe" "%OPENTWIN_THIRDPARTY_ROOT%\qwt\qwt-6.1.4\qwt.sln"
 
   
 :END
