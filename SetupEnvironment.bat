@@ -230,7 +230,7 @@ SET APACHE_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\Apache\Apache24\Windows
 REM Set Certificate creation tools Directory
 SET CERT_CREATE_TOOLS=%OPENTWIN_THIRDPARTY_ROOT%\CertificateCreation
 
-ECHO Third Party environment was set up successfully.
+ECHO OpenTwin Third Party environment was set up successfully.
 
 :END
 
