@@ -77,7 +77,7 @@ static void FillStyle(QString& style, const StyleParams& params)
         const QMetaProperty prop = params.metaObject()->property(i);
         if(QString(prop.name()) == "objectName")
             continue;
-        if(prop.type() == QVariant::Bool)
+        if(prop.type() == QMetaType::Type::Bool)
             continue;
         const QString propStr = QString("%") + prop.name() + "%";
         if(!style.contains(propStr))
@@ -87,13 +87,13 @@ static void FillStyle(QString& style, const StyleParams& params)
         const QVariant property = params.property(prop.name());
         switch(prop.type())
         {
-            case QVariant::String:
+        case QMetaType::Type::QString:
                 style = style.arg(property.toString() + "px");
                 break;
-            case QVariant::Int:
+            case QMetaType::Type::Int:
                 style = style.arg(property.toInt());
                 break;
-            case QVariant::UserType:
+            case QMetaType::Type::User:
             {
                 const Colors& colors = property.value<Colors>();
                 if(colors.size() == 0)

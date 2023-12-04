@@ -12,8 +12,8 @@ IF "%OPENTWIN_DEV_ROOT%"=="" (
 	goto END
 )
 
-IF "%DEVENV_ROOT%"=="" (
-	ECHO Please specify the following environment variables: DEVENV_ROOT
+IF "%DEVENV_ROOT_2022%"=="" (
+	ECHO Please specify the following environment variables: DEVENV_ROOT_2022
 	goto END
 )
 
@@ -21,12 +21,12 @@ REM Setup eviroment
 
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\SetupEnvironment.bat"
 
-ECHO Setup Qt5 enviroment
+ECHO Setup Qt6 enviroment
 
 REM Set Qt Environment 
-SET Qt5Core_DIR=%QDIR%\lib\cmake\Qt5Core
-SET Qt5Gui_DIR=%QDIR%\lib\cmake\Qt5Gui
-SET Qt5Widgets_DIR=%QDIR%\lib\cmake\Qt5Widgets
+SET Qt6Core_DIR=%QDIR%\lib\cmake\Qt6Core
+SET Qt6Gui_DIR=%QDIR%\lib\cmake\Qt6Gui
+SET Qt6Widgets_DIR=%QDIR%\lib\cmake\Qt6Widgets
 
 ECHO call cmake-gui
 

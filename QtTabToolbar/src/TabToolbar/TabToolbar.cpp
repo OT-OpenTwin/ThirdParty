@@ -42,8 +42,8 @@ TabToolbar::TabToolbar(QWidget* parent, unsigned _groupMaxHeight, unsigned _grou
     tempShowTimer.setInterval(QApplication::doubleClickInterval());
 
     setProperty("TabToolbar", QVariant(true));
+    setContentsMargins(0, 0, 0, 0);
     layout()->setContentsMargins(0, 0, 0, 0);
-    layout()->setMargin(0);
     layout()->setSpacing(0);
     setContentsMargins(0, 0, 0, 0);
     setFloatable(false);
@@ -62,7 +62,6 @@ TabToolbar::TabToolbar(QWidget* parent, unsigned _groupMaxHeight, unsigned _grou
     cornerActions->setContentsMargins(0, 0, 0, 0);
     cornerActions->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
     QHBoxLayout* cornerLayout = new QHBoxLayout(cornerActions);
-    cornerLayout->setMargin(0);
     cornerLayout->setContentsMargins(0, 0, 0, 0);
     cornerLayout->setSpacing(0);
     cornerLayout->setDirection(QBoxLayout::LeftToRight);
