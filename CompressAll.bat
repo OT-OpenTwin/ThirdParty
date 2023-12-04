@@ -27,12 +27,21 @@ IF NOT "%OPENTWIN_DEV_ENV_DEFINED%" == "1" (
 	goto PAUSE_END
 )
 
-REM Qt
+REM Qt bin
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt6Guid.pdb" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt6Guid.7z"
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt6Pdfd.pdb" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt6Pdfd.7z"
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt6Qmld.pdb" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt6Qmld.7z"
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt6Quickd.pdb" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt6Quickd.7z"
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt63DRenderd.pdb" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt63DRenderd.7z"
+
+REM Qt lib
+CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6QmlDomd.lib" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6QmlDomd.7z"
+CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6BundledPhysXd.lib" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6BundledPhysXd.7z"
+CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6QmlLSd.lib" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6QmlLSd.7z"
+CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6BundledPhysX.lib" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6BundledPhysX.7z"
+CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6QmlDom.lib" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6QmlDom.7z"
+CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6QmlLS.lib" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6QmlLS.7z"
+CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6BundledResonanceAudiod.lib" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6BundledResonanceAudiod.7z"
 
 goto END
 :PAUSE_END
