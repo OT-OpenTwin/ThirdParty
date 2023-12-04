@@ -1,0 +1,11 @@
+QT.pdfquick_private.VERSION = 6.6.1
+QT.pdfquick_private.name = QtPdfQuick
+QT.pdfquick_private.module =
+QT.pdfquick_private.libs = $$QT_MODULE_LIB_BASE
+QT.pdfquick_private.includes = $$QT_MODULE_INCLUDE_BASE/QtPdfQuick/6.6.1 $$QT_MODULE_INCLUDE_BASE/QtPdfQuick/6.6.1/QtPdfQuick
+QT.pdfquick_private.frameworks = 
+QT.pdfquick_private.depends = pdfquick
+QT.pdfquick_private.uses = 
+QT.pdfquick_private.module_config = v2 internal_module
+QT.pdfquick_private.enabled_features = 
+QT.pdfquick_private.disabled_features = 

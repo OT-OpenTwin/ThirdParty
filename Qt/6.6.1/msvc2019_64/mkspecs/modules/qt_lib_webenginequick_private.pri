@@ -1,0 +1,11 @@
+QT.webenginequick_private.VERSION = 6.6.1
+QT.webenginequick_private.name = QtWebEngineQuick
+QT.webenginequick_private.module =
+QT.webenginequick_private.libs = $$QT_MODULE_LIB_BASE
+QT.webenginequick_private.includes = $$QT_MODULE_INCLUDE_BASE/QtWebEngineQuick/6.6.1 $$QT_MODULE_INCLUDE_BASE/QtWebEngineQuick/6.6.1/QtWebEngineQuick
+QT.webenginequick_private.frameworks = 
+QT.webenginequick_private.depends = webenginequick
+QT.webenginequick_private.uses = 
+QT.webenginequick_private.module_config = v2 internal_module
+QT.webenginequick_private.enabled_features = webenginequick-ui-delegates
+QT.webenginequick_private.disabled_features = 

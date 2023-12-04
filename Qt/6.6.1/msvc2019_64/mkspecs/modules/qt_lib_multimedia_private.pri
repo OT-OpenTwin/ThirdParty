@@ -1,0 +1,15 @@
+QT.multimedia_private.VERSION = 6.6.1
+QT.multimedia_private.name = QtMultimedia
+QT.multimedia_private.module =
+QT.multimedia_private.libs = $$QT_MODULE_LIB_BASE
+QT.multimedia_private.includes = $$QT_MODULE_INCLUDE_BASE/QtMultimedia/6.6.1 $$QT_MODULE_INCLUDE_BASE/QtMultimedia/6.6.1/QtMultimedia
+QT.multimedia_private.frameworks = 
+QT.multimedia_private.depends = core_private gui_private multimedia
+QT.multimedia_private.uses = 
+QT.multimedia_private.module_config = v2 internal_module
+QT.multimedia_private.enabled_features = ffmpeg evr wmsdk wmf spatialaudio spatialaudio_quick3d
+QT.multimedia_private.disabled_features = alsa avfoundation coreaudio videotoolbox gstreamer_1_0 gstreamer gstreamer_app gstreamer_photography gstreamer_gl gpu_vivante linux_v4l linux_dmabuf vaapi mmrenderer pulseaudio opensles wasm
+QMAKE_LIBS_WMF = -lpropsys -lMfcore -lMfplat -lmfuuid -lMf -lOleAut32 -lOle32 -lmsdmo -lUuid -ldmoguids -lamstrmid -lstrmiids
+QMAKE_LIBS_FFMPEG = -L"C:/FFmpeg-n6.0/build/msvc/installed/lib" -lswscale swscale.lib -L"C:/FFmpeg-n6.0/build/msvc/installed/lib" -lswresample swresample.lib -L"C:/FFmpeg-n6.0/build/msvc/installed/lib" -lavdevice vfw32 gdi32 shlwapi oleaut32 uuid strmiids ole32 psapi avdevice.lib -L"C:/FFmpeg-n6.0/build/msvc/installed/lib" -lavutil bcrypt user32 avutil.lib -L"C:/FFmpeg-n6.0/build/msvc/installed/lib" -lavformat ws2_32 secur32 avformat.lib -L"C:/FFmpeg-n6.0/build/msvc/installed/lib" -lavcodec user32 ole32 strmiids ole32 mfuuid avcodec.lib
+QMAKE_LIBDIR_FFMPEG = C:/FFmpeg-n6.0/build/msvc/installed/lib
+QMAKE_INCDIR_FFMPEG = C:/FFmpeg-n6.0/build/msvc/installed/include

@@ -1,0 +1,11 @@
+QT.pdf_private.VERSION = 6.6.1
+QT.pdf_private.name = QtPdf
+QT.pdf_private.module =
+QT.pdf_private.libs = $$QT_MODULE_LIB_BASE
+QT.pdf_private.includes = $$QT_MODULE_INCLUDE_BASE/QtPdf/6.6.1 $$QT_MODULE_INCLUDE_BASE/QtPdf/6.6.1/QtPdf
+QT.pdf_private.frameworks = 
+QT.pdf_private.depends = pdf
+QT.pdf_private.uses = 
+QT.pdf_private.module_config = v2 internal_module
+QT.pdf_private.enabled_features = 
+QT.pdf_private.disabled_features = pdf-v8 pdf-xfa pdf-xfa-bmp pdf-xfa-gif pdf-xfa-png pdf-xfa-tiff pdf-bitcode pdf-static-runtime

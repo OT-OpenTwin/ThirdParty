@@ -1,0 +1,11 @@
+QT.pdfwidgets_private.VERSION = 6.6.1
+QT.pdfwidgets_private.name = QtPdfWidgets
+QT.pdfwidgets_private.module =
+QT.pdfwidgets_private.libs = $$QT_MODULE_LIB_BASE
+QT.pdfwidgets_private.includes = $$QT_MODULE_INCLUDE_BASE/QtPdfWidgets/6.6.1 $$QT_MODULE_INCLUDE_BASE/QtPdfWidgets/6.6.1/QtPdfWidgets
+QT.pdfwidgets_private.frameworks = 
+QT.pdfwidgets_private.depends = pdfwidgets
+QT.pdfwidgets_private.uses = 
+QT.pdfwidgets_private.module_config = v2 internal_module
+QT.pdfwidgets_private.enabled_features = 
+QT.pdfwidgets_private.disabled_features = 

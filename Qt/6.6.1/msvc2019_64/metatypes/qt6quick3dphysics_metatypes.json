@@ -1,0 +1,2183 @@
+[
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "CollisionShape"
+                    },
+                    {
+                        "name": "QML.Creatable",
+                        "value": "false"
+                    },
+                    {
+                        "name": "QML.UncreatableReason",
+                        "value": "abstract interface"
+                    }
+                ],
+                "className": "QAbstractCollisionShape",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "name": "enableDebugDraw",
+                        "notify": "enableDebugDrawChanged",
+                        "read": "enableDebugDraw",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setEnableDebugDraw"
+                    }
+                ],
+                "qualifiedClassName": "QAbstractCollisionShape",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "enableDebugDraw",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "enableDebugDrawChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "type": "QObject*"
+                            }
+                        ],
+                        "name": "needsRebuild",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "enableDebugDraw",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "setEnableDebugDraw",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "name": "handleScaleChange",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DNode"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qabstractcollisionshape_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "PhysicsBody"
+                    },
+                    {
+                        "name": "QML.Creatable",
+                        "value": "false"
+                    },
+                    {
+                        "name": "QML.UncreatableReason",
+                        "value": "abstract interface"
+                    }
+                ],
+                "className": "QAbstractPhysicsBody",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "name": "physicsMaterial",
+                        "notify": "physicsMaterialChanged",
+                        "read": "physicsMaterial",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QPhysicsMaterial*",
+                        "user": false,
+                        "write": "setPhysicsMaterial"
+                    }
+                ],
+                "qualifiedClassName": "QAbstractPhysicsBody",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "physicsMaterialChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QAbstractPhysicsNode"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qabstractphysicsbody_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "PhysicsNode"
+                    },
+                    {
+                        "name": "QML.Creatable",
+                        "value": "false"
+                    },
+                    {
+                        "name": "QML.UncreatableReason",
+                        "value": "abstract interface"
+                    }
+                ],
+                "className": "QAbstractPhysicsNode",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "name": "collisionShapes",
+                        "read": "collisionShapes",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQmlListProperty<QAbstractCollisionShape>",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "name": "sendContactReports",
+                        "notify": "sendContactReportsChanged",
+                        "read": "sendContactReports",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setSendContactReports"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "name": "receiveContactReports",
+                        "notify": "receiveContactReportsChanged",
+                        "read": "receiveContactReports",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setReceiveContactReports"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "name": "sendTriggerReports",
+                        "notify": "sendTriggerReportsChanged",
+                        "read": "sendTriggerReports",
+                        "required": false,
+                        "revision": 1541,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setSendTriggerReports"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "name": "receiveTriggerReports",
+                        "notify": "receiveTriggerReportsChanged",
+                        "read": "receiveTriggerReports",
+                        "required": false,
+                        "revision": 1541,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setReceiveTriggerReports"
+                    }
+                ],
+                "qualifiedClassName": "QAbstractPhysicsNode",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "body",
+                                "type": "QAbstractPhysicsNode*"
+                            },
+                            {
+                                "name": "positions",
+                                "type": "QList<QVector3D>"
+                            },
+                            {
+                                "name": "impulses",
+                                "type": "QList<QVector3D>"
+                            },
+                            {
+                                "name": "normals",
+                                "type": "QList<QVector3D>"
+                            }
+                        ],
+                        "name": "bodyContact",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "sendContactReports",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "sendContactReportsChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "receiveContactReports",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "receiveContactReportsChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "sendTriggerReports",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "sendTriggerReportsChanged",
+                        "returnType": "void",
+                        "revision": 1541
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "receiveTriggerReports",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "receiveTriggerReportsChanged",
+                        "returnType": "void",
+                        "revision": 1541
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "body",
+                                "type": "QAbstractPhysicsNode*"
+                            }
+                        ],
+                        "name": "enteredTriggerBody",
+                        "returnType": "void",
+                        "revision": 1541
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "body",
+                                "type": "QAbstractPhysicsNode*"
+                            }
+                        ],
+                        "name": "exitedTriggerBody",
+                        "returnType": "void",
+                        "revision": 1541
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "object",
+                                "type": "QObject*"
+                            }
+                        ],
+                        "name": "onShapeDestroyed",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "object",
+                                "type": "QObject*"
+                            }
+                        ],
+                        "name": "onShapeNeedsRebuild",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DNode"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qabstractphysicsnode_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "BoxShape"
+                    }
+                ],
+                "className": "QBoxShape",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "name": "extents",
+                        "notify": "extentsChanged",
+                        "read": "extents",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setExtents"
+                    }
+                ],
+                "qualifiedClassName": "QBoxShape",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "extents",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "extentsChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "extents",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setExtents",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QAbstractCollisionShape"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qboxshape_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "CapsuleShape"
+                    }
+                ],
+                "className": "QCapsuleShape",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "name": "diameter",
+                        "notify": "diameterChanged",
+                        "read": "diameter",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setDiameter"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "name": "height",
+                        "notify": "heightChanged",
+                        "read": "height",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setHeight"
+                    }
+                ],
+                "qualifiedClassName": "QCapsuleShape",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "diameterChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "heightChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QAbstractCollisionShape"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qcapsuleshape_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "CharacterController"
+                    }
+                ],
+                "className": "QCharacterController",
+                "enums": [
+                    {
+                        "alias": "Collision",
+                        "isClass": true,
+                        "isFlag": true,
+                        "name": "Collisions",
+                        "values": [
+                            "None",
+                            "Side",
+                            "Up",
+                            "Down"
+                        ]
+                    }
+                ],
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "position",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "teleport",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "name": "movement",
+                        "notify": "movementChanged",
+                        "read": "movement",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setMovement"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "name": "gravity",
+                        "notify": "gravityChanged",
+                        "read": "gravity",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setGravity"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "name": "midAirControl",
+                        "notify": "midAirControlChanged",
+                        "read": "midAirControl",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setMidAirControl"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "name": "collisions",
+                        "notify": "collisionsChanged",
+                        "read": "collisions",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "Collisions",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "name": "enableShapeHitCallback",
+                        "notify": "enableShapeHitCallbackChanged",
+                        "read": "enableShapeHitCallback",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setEnableShapeHitCallback"
+                    }
+                ],
+                "qualifiedClassName": "QCharacterController",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "movementChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "gravityChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "midAirControlChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "collisionsChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "enableShapeHitCallbackChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "body",
+                                "type": "QAbstractPhysicsNode*"
+                            },
+                            {
+                                "name": "position",
+                                "type": "QVector3D"
+                            },
+                            {
+                                "name": "impulse",
+                                "type": "QVector3D"
+                            },
+                            {
+                                "name": "normal",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "shapeHit",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QAbstractPhysicsBody"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qcharactercontroller_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "ConvexMeshShape"
+                    }
+                ],
+                "className": "QConvexMeshShape",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "name": "source",
+                        "notify": "sourceChanged",
+                        "read": "source",
+                        "required": false,
+                        "revision": 1541,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QUrl",
+                        "user": false,
+                        "write": "setSource"
+                    }
+                ],
+                "qualifiedClassName": "QConvexMeshShape",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "sourceChanged",
+                        "returnType": "void",
+                        "revision": 1541
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QAbstractCollisionShape"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qconvexmeshshape_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "DynamicRigidBody"
+                    }
+                ],
+                "className": "QDynamicRigidBody",
+                "enums": [
+                    {
+                        "isClass": true,
+                        "isFlag": false,
+                        "name": "MassMode",
+                        "values": [
+                            "DefaultDensity",
+                            "CustomDensity",
+                            "Mass",
+                            "MassAndInertiaTensor",
+                            "MassAndInertiaMatrix"
+                        ]
+                    },
+                    {
+                        "isClass": false,
+                        "isFlag": false,
+                        "name": "AxisLock",
+                        "values": [
+                            "LockNone",
+                            "LockX",
+                            "LockY",
+                            "LockZ"
+                        ]
+                    }
+                ],
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "force",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "applyCentralForce",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "force",
+                                "type": "QVector3D"
+                            },
+                            {
+                                "name": "position",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "applyForce",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "torque",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "applyTorque",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "impulse",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "applyCentralImpulse",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "impulse",
+                                "type": "QVector3D"
+                            },
+                            {
+                                "name": "position",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "applyImpulse",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "impulse",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "applyTorqueImpulse",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "angularVelocity",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setAngularVelocity",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "linearVelocity",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setLinearVelocity",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "position",
+                                "type": "QVector3D"
+                            },
+                            {
+                                "name": "eulerRotation",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "reset",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "name": "mass",
+                        "notify": "massChanged",
+                        "read": "mass",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setMass"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "name": "density",
+                        "notify": "densityChanged",
+                        "read": "density",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setDensity"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "name": "linearAxisLock",
+                        "notify": "linearAxisLockChanged",
+                        "read": "linearAxisLock",
+                        "required": false,
+                        "revision": 1541,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "AxisLock",
+                        "user": false,
+                        "write": "setLinearAxisLock"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "name": "angularAxisLock",
+                        "notify": "angularAxisLockChanged",
+                        "read": "angularAxisLock",
+                        "required": false,
+                        "revision": 1541,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "AxisLock",
+                        "user": false,
+                        "write": "setAngularAxisLock"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "name": "isKinematic",
+                        "notify": "isKinematicChanged",
+                        "read": "isKinematic",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setIsKinematic"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 5,
+                        "name": "gravityEnabled",
+                        "notify": "gravityEnabledChanged",
+                        "read": "gravityEnabled",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setGravityEnabled"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 6,
+                        "name": "massMode",
+                        "notify": "massModeChanged",
+                        "read": "massMode",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "MassMode",
+                        "user": false,
+                        "write": "setMassMode"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 7,
+                        "name": "inertiaTensor",
+                        "notify": "inertiaTensorChanged",
+                        "read": "inertiaTensor",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setInertiaTensor"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 8,
+                        "name": "centerOfMassPosition",
+                        "notify": "centerOfMassPositionChanged",
+                        "read": "centerOfMassPosition",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setCenterOfMassPosition"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 9,
+                        "name": "centerOfMassRotation",
+                        "notify": "centerOfMassRotationChanged",
+                        "read": "centerOfMassRotation",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuaternion",
+                        "user": false,
+                        "write": "setCenterOfMassRotation"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 10,
+                        "name": "inertiaMatrix",
+                        "notify": "inertiaMatrixChanged",
+                        "read": "readInertiaMatrix",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QList<float>",
+                        "user": false,
+                        "write": "setInertiaMatrix"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 11,
+                        "name": "kinematicPosition",
+                        "notify": "kinematicPositionChanged",
+                        "read": "kinematicPosition",
+                        "required": false,
+                        "revision": 1541,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setKinematicPosition"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 12,
+                        "name": "kinematicEulerRotation",
+                        "notify": "kinematicEulerRotationChanged",
+                        "read": "kinematicEulerRotation",
+                        "required": false,
+                        "revision": 1541,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setKinematicEulerRotation"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 13,
+                        "name": "kinematicRotation",
+                        "notify": "kinematicRotationChanged",
+                        "read": "kinematicRotation",
+                        "required": false,
+                        "revision": 1541,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuaternion",
+                        "user": false,
+                        "write": "setKinematicRotation"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 14,
+                        "name": "kinematicPivot",
+                        "notify": "kinematicPivotChanged",
+                        "read": "kinematicPivot",
+                        "required": false,
+                        "revision": 1541,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setKinematicPivot"
+                    }
+                ],
+                "qualifiedClassName": "QDynamicRigidBody",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "mass",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "massChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "density",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "densityChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "isKinematic",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "isKinematicChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "linearAxisLockChanged",
+                        "returnType": "void",
+                        "revision": 1541
+                    },
+                    {
+                        "access": "public",
+                        "name": "angularAxisLockChanged",
+                        "returnType": "void",
+                        "revision": 1541
+                    },
+                    {
+                        "access": "public",
+                        "name": "gravityEnabledChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "massModeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "inertiaTensorChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "centerOfMassPositionChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "centerOfMassRotationChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "inertiaMatrixChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "kinematicPosition",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "kinematicPositionChanged",
+                        "returnType": "void",
+                        "revision": 1541
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "kinematicRotation",
+                                "type": "QQuaternion"
+                            }
+                        ],
+                        "name": "kinematicRotationChanged",
+                        "returnType": "void",
+                        "revision": 1541
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "kinematicEulerRotation",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "kinematicEulerRotationChanged",
+                        "returnType": "void",
+                        "revision": 1541
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "kinematicPivot",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "kinematicPivotChanged",
+                        "returnType": "void",
+                        "revision": 1541
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QAbstractPhysicsBody"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qdynamicrigidbody_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "HeightFieldShape"
+                    }
+                ],
+                "className": "QHeightFieldShape",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "name": "extents",
+                        "notify": "extentsChanged",
+                        "read": "extents",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setExtents"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "name": "source",
+                        "notify": "sourceChanged",
+                        "read": "source",
+                        "required": false,
+                        "revision": 1541,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QUrl",
+                        "user": false,
+                        "write": "setSource"
+                    }
+                ],
+                "qualifiedClassName": "QHeightFieldShape",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "sourceChanged",
+                        "returnType": "void",
+                        "revision": 1541
+                    },
+                    {
+                        "access": "public",
+                        "name": "extentsChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QAbstractCollisionShape"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qheightfieldshape_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "PhysicsMaterial"
+                    }
+                ],
+                "className": "QPhysicsMaterial",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "name": "staticFriction",
+                        "notify": "staticFrictionChanged",
+                        "read": "staticFriction",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setStaticFriction"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "name": "dynamicFriction",
+                        "notify": "dynamicFrictionChanged",
+                        "read": "dynamicFriction",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setDynamicFriction"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "name": "restitution",
+                        "notify": "restitutionChanged",
+                        "read": "restitution",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setRestitution"
+                    }
+                ],
+                "qualifiedClassName": "QPhysicsMaterial",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "staticFrictionChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "dynamicFrictionChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "restitutionChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qphysicsmaterial_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "PhysicsWorld"
+                    }
+                ],
+                "className": "QPhysicsWorld",
+                "interfaces": [
+                    [
+                        {
+                            "className": "QQmlParserStatus",
+                            "id": "\"org.qt-project.Qt.QQmlParserStatus\""
+                        }
+                    ]
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "name": "gravity",
+                        "notify": "gravityChanged",
+                        "read": "gravity",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVector3D",
+                        "user": false,
+                        "write": "setGravity"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "name": "running",
+                        "notify": "runningChanged",
+                        "read": "running",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setRunning"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "name": "forceDebugDraw",
+                        "notify": "forceDebugDrawChanged",
+                        "read": "forceDebugDraw",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setForceDebugDraw"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "name": "enableCCD",
+                        "notify": "enableCCDChanged",
+                        "read": "enableCCD",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setEnableCCD"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "name": "typicalLength",
+                        "notify": "typicalLengthChanged",
+                        "read": "typicalLength",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setTypicalLength"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 5,
+                        "name": "typicalSpeed",
+                        "notify": "typicalSpeedChanged",
+                        "read": "typicalSpeed",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setTypicalSpeed"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 6,
+                        "name": "defaultDensity",
+                        "notify": "defaultDensityChanged",
+                        "read": "defaultDensity",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setDefaultDensity"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 7,
+                        "name": "viewport",
+                        "notify": "viewportChanged",
+                        "read": "viewport",
+                        "required": false,
+                        "revision": 1541,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DNode*",
+                        "user": false,
+                        "write": "setViewport"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 8,
+                        "name": "minimumTimestep",
+                        "notify": "minimumTimestepChanged",
+                        "read": "minimumTimestep",
+                        "required": false,
+                        "revision": 1541,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setMinimumTimestep"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 9,
+                        "name": "maximumTimestep",
+                        "notify": "maximumTimestepChanged",
+                        "read": "maximumTimestep",
+                        "required": false,
+                        "revision": 1541,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setMaximumTimestep"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 10,
+                        "name": "scene",
+                        "notify": "sceneChanged",
+                        "read": "scene",
+                        "required": false,
+                        "revision": 1541,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQuick3DNode*",
+                        "user": false,
+                        "write": "setScene"
+                    }
+                ],
+                "qualifiedClassName": "QPhysicsWorld",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "gravity",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "gravityChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "running",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "runningChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "enableCCD",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "enableCCDChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "forceDebugDraw",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "forceDebugDrawChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "typicalLength",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "typicalLengthChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "typicalSpeed",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "typicalSpeedChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "defaultDensity",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "defaultDensityChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "viewport",
+                                "type": "QQuick3DNode*"
+                            }
+                        ],
+                        "name": "viewportChanged",
+                        "returnType": "void",
+                        "revision": 1541
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "minimumTimestep",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "minimumTimestepChanged",
+                        "returnType": "void",
+                        "revision": 1541
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "maxTimestep",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "maximumTimestepChanged",
+                        "returnType": "void",
+                        "revision": 1541
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "minTimestep",
+                                "type": "float"
+                            },
+                            {
+                                "name": "maxTimestep",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "simulateFrame",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "timestep",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "frameDone",
+                        "returnType": "void",
+                        "revision": 1541
+                    },
+                    {
+                        "access": "public",
+                        "name": "sceneChanged",
+                        "returnType": "void",
+                        "revision": 1541
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "gravity",
+                                "type": "QVector3D"
+                            }
+                        ],
+                        "name": "setGravity",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "running",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "setRunning",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "forceDebugDraw",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "setForceDebugDraw",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "enableCCD",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "setEnableCCD",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "typicalLength",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setTypicalLength",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "typicalSpeed",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setTypicalSpeed",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "defaultDensity",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setDefaultDensity",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "viewport",
+                                "type": "QQuick3DNode*"
+                            }
+                        ],
+                        "name": "setViewport",
+                        "returnType": "void",
+                        "revision": 1541
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "minTimestep",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setMinimumTimestep",
+                        "returnType": "void",
+                        "revision": 1541
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "maxTimestep",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setMaximumTimestep",
+                        "returnType": "void",
+                        "revision": 1541
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "newScene",
+                                "type": "QQuick3DNode*"
+                            }
+                        ],
+                        "name": "setScene",
+                        "returnType": "void",
+                        "revision": 1541
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    },
+                    {
+                        "access": "public",
+                        "name": "QQmlParserStatus"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qphysicsworld_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "PlaneShape"
+                    }
+                ],
+                "className": "QPlaneShape",
+                "object": true,
+                "qualifiedClassName": "QPlaneShape",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QAbstractCollisionShape"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qplaneshape_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "SphereShape"
+                    }
+                ],
+                "className": "QSphereShape",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "name": "diameter",
+                        "notify": "diameterChanged",
+                        "read": "diameter",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setDiameter"
+                    }
+                ],
+                "qualifiedClassName": "QSphereShape",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "diameter",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "diameterChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "diameter",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setDiameter",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QAbstractCollisionShape"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qsphereshape_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "StaticRigidBody"
+                    }
+                ],
+                "className": "QStaticRigidBody",
+                "object": true,
+                "qualifiedClassName": "QStaticRigidBody",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QAbstractPhysicsBody"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qstaticrigidbody_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "TriangleMeshShape"
+                    }
+                ],
+                "className": "QTriangleMeshShape",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "name": "source",
+                        "notify": "sourceChanged",
+                        "read": "source",
+                        "required": false,
+                        "revision": 1541,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QUrl",
+                        "user": false,
+                        "write": "setSource"
+                    }
+                ],
+                "qualifiedClassName": "QTriangleMeshShape",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "sourceChanged",
+                        "returnType": "void",
+                        "revision": 1541
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QAbstractCollisionShape"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qtrianglemeshshape_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "TriggerBody"
+                    }
+                ],
+                "className": "QTriggerBody",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "name": "collisionCount",
+                        "notify": "collisionCountChanged",
+                        "read": "collisionCount",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false
+                    }
+                ],
+                "qualifiedClassName": "QTriggerBody",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "body",
+                                "type": "QAbstractPhysicsNode*"
+                            }
+                        ],
+                        "name": "bodyEntered",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "body",
+                                "type": "QAbstractPhysicsNode*"
+                            }
+                        ],
+                        "name": "bodyExited",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "collisionCountChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QAbstractPhysicsNode"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qtriggerbody_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "className": "SimulationWorker",
+                "object": true,
+                "qualifiedClassName": "SimulationWorker",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "deltaTime",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "frameDone",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "frameDoneDesignStudio",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "minTimestep",
+                                "type": "float"
+                            },
+                            {
+                                "name": "maxTimestep",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "simulateFrame",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "minTimestep",
+                                "type": "float"
+                            },
+                            {
+                                "name": "maxTimestep",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "simulateFrameDesignStudio",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qphysicsworld.cpp",
+        "outputRevision": 68
+    }
+]
