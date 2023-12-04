@@ -29,6 +29,10 @@ IF NOT "%OPENTWIN_DEV_ENV_DEFINED%" == "1" (
 
 REM Qt
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt6Guid.pdb" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt6Guid.7z"
+CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt6Pdfd.pdb" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt6Pdfd.7z"
+CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt6Qmld.pdb" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt6Qmld.7z"
+CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt6Quickd.pdb" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt6Quickd.7z"
+CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt63DRenderd.pdb" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt63DRenderd.7z"
 
 goto END
 :PAUSE_END
