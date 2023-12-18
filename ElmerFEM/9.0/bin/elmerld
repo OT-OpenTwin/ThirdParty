@@ -1,0 +1,19 @@
+#!/bin/sh -f
+
+if test "$ELMER_LIB" = ""; then
+  if  test "$ELMER_HOME" = ""; then
+     LIBDIR=C:/Program Files (x86)/Elmer/lib
+  else
+     LIBDIR=$ELMER_HOME/lib
+  fi
+else
+  LIBDIR=$ELMER_LIB
+fi
+
+LD=D:/msys64/mingw64/bin/gfortran.exe
+cmd="$LD  -fallow-argument-mismatch  -shared $* -LC:/Program Files (x86)/Elmer/lib/elmersolver -L$LIBDIR -lelmersolver"
+printf "%s " $cmd
+printf "\n"
+$LD  -fallow-argument-mismatch  -shared $* -LC:/Program Files (x86)/Elmer/lib/elmersolver -L$LIBDIR -lelmersolver
+#      $* -L$LIBDIR -lelmersolver
+#      $*
