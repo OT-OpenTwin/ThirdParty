@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-projects-view.qdoc -->
+  <meta name="description" content="Shows a list of projects in a project tree.">
+  <title>Projects | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Projects</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-reference.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#projects-view-context-menu">Projects View Context Menu</a></li>
+<li class="level1"><a href="#projects-view-toolbar">Projects View Toolbar</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Projects</h1>
+<!-- $$$creator-projects-view.html-description -->
+<div class="descr" id="details">
+<p>The project tree has a list of all projects open in the current <a href="creator-project-managing-sessions.html" translate="no">session</a>. For each project, the tree visualizes the build system structure of the project and lists all files that are part of the project.</p>
+<p class="centerAlign"><img src="images/qtcreator-projects-view-edit.png" alt="{Projects view in the sidebar}" /></p><div class="admonition note">
+<p><b>Note: </b>Usually, <a href="creator-editor-locator.html" translate="no">searching with the locator</a> is the fastest way to find a particular project, file, class, or function, or almost anything else in your project. You can use the project tree in the following ways:</p>
+</div>
+<ul>
+<li>To open files that belong to a <a href="creator-project-creating.html" translate="no">project</a>, double-click them in the project tree. Files open in the appropriate editor, according to the file type. For example, code source files open in the code editor. Use the <a href="creator-how-to-switch-between-modes.html" translate="no">mode selector</a> to open the current file in another editor.</li>
+<li>To bring up a <a href="creator-projects-view.html#projects-view-context-menu" translate="no">context menu</a> that has the actions most commonly needed, right-click an item in the project tree. For example, through the menu of the project root directory you can, among other actions, run and close the project.</li>
+<li>To see the absolute path of a file, move the mouse pointer over the file name.</li>
+<li>To move files from one project to another, drag-and-drop them in the project tree. Qt Creator makes the necessary changes to project configuration files.</li>
+</ul>
+<div class="admonition note">
+<p><b>Note: </b>If you cannot see a file in the <a href="creator-projects-view.html" translate="no">Projects</a> view, switch to the <b translate="no">File System</b> view, which shows all the files in the file system.</p>
+</div>
+<h2 id="projects-view-context-menu">Projects View Context Menu</h2>
+<p>The <b translate="no">Projects</b> view has context menus for managing projects, subprojects, folders, and files. Use the following functions to manage projects and subprojects:</p>
+<ul>
+<li>Set a project as the active project.</li>
+<li>Execute <b translate="no">Build</b> menu commands.</li>
+<li>Create new files. For more information, see <a href="creator-file-creating.html" translate="no">Create files</a>.</li>
+<li>Rename existing files. If you change the base name of a file, Qt Creator displays a list of other files with the same base name and offers to rename them as well. If you rename a UI file (.ui), Qt Creator also changes corresponding include statements accordingly.</li>
+<li>Remove existing files.</li>
+<li>Remove existing directories from <a href="creator-project-generic.html" translate="no">generic projects</a>.</li>
+<li>Add existing files and directories.</li>
+<li>Add libraries. For more information, see <a href="creator-project-qmake-libraries.html" translate="no">Add libraries to qmake projects</a>.</li>
+<li>Add and remove subprojects.</li>
+<li>Find unused functions.</li>
+<li>Search in the selected directory.</li>
+<li>Open a terminal window in the project directory. To specify the terminal to use on Linux and macOS, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Environment</b> &gt; <b translate="no">System</b>. To use an <a href="creator-reference-terminal-view.html" translate="no">internal terminal</a>, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Terminal</b> &gt; <b translate="no">Use internal terminal</b>.</li>
+<li>Open a terminal window in the project directory that you configured for building or running the project.</li>
+<li>Expand or collapse the tree view to show or hide all files and folders.</li>
+<li>Close all files in a project.</li>
+<li>Close the selected project or all projects except the selected one. By default, this closes all files in the projects. To keep them open, deselect the <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Build &amp; Run</b> &gt; <b translate="no">General</b> &gt; <b translate="no">Close source files along with project</b> check box.</li>
+</ul>
+<p>For managing files and directories, use the same functions as in the <a href="creator-file-system-view.html" translate="no">File System</a> view. To view a project in it, select <b translate="no">Show in File System View</b>.</p>
+<h2 id="projects-view-toolbar">Projects View Toolbar</h2>
+<p>The toolbar in the <b translate="no">Projects</b> view has additional options.</p>
+<p>To filter view contents, select <img src="images/filtericon.png" alt="" /> (<b translate="no">Filter Tree</b>):</p>
+<ul>
+<li><b translate="no">Simplify Tree</b> hides the categories and sorts project files alphabetically.</li>
+<li><b translate="no">Hide Generated Files</b> hides the source files that the build system automatically generates.</li>
+<li><b translate="no">Hide Disabled Files</b> hides the source files that you have not enabled for the current target,</li>
+<li><b translate="no">Hide Empty Directories</b> hides directories that do not have any files.</li>
+<li><b translate="no">Show Source and Header Groups</b> shows source and header files grouped together in the view, regardless of their location in the file system.</li>
+</ul>
+<p>To stop synchronizing the position in the project tree with the file currently opened in the editor, deselect <img src="images/linkicon.png" alt="" /> (<b translate="no">Synchronize with Editor</b>).</p>
+<p>Some build systems support adding and removing files to a project in Qt Creator (currently qmake and Qbs). The faithful display of the project structure enables you to specify exactly where to place a new file in the build system.</p>
+<p>If you cannot see some files, you might have to declare them as part of the project. For more information, see <a href="creator-how-to-specify-project-contents.html" translate="no">Specify project contents</a>.</p>
+<p>If the project is under version control, you might see information from the version control system in brackets after the project name. Qt Creator currently implements this for Git (the view displays the branch name or a tag) and ClearCase (the view displays the branch name).</p>
+</div>
+<p><b>See also </b><a href="creator-how-to-view-cmake-project-contents.html" translate="no">View CMake project contents</a> and <a href="creator-file-system-view.html" translate="no">File System</a>.</p>
+<!-- @@@creator-projects-view.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

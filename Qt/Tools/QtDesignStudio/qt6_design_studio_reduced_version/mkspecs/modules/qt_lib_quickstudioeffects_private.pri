@@ -1,0 +1,11 @@
+QT.quickstudioeffects_private.VERSION = 6.2.4
+QT.quickstudioeffects_private.name = QtQuickStudioEffects
+QT.quickstudioeffects_private.module =
+QT.quickstudioeffects_private.libs = $$QT_MODULE_LIB_BASE
+QT.quickstudioeffects_private.includes = 
+QT.quickstudioeffects_private.frameworks = 
+QT.quickstudioeffects_private.depends = quickstudioeffects
+QT.quickstudioeffects_private.uses = 
+QT.quickstudioeffects_private.module_config = v2 internal_module
+QT.quickstudioeffects_private.enabled_features = 
+QT.quickstudioeffects_private.disabled_features = 

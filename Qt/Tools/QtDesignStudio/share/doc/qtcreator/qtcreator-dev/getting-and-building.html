@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- getting-and-building.qdoc -->
+  <title>Getting Qt and Qt Creator | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li>Getting Qt and Qt Creator</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#getting-qt">Getting Qt</a></li>
+<li class="level1"><a href="#getting-qt-design-studio">Getting Qt Design Studio</a></li>
+<li class="level2"><a href="#installing-a-prebuilt-package">Installing a Prebuilt Package</a></li>
+<li class="level2"><a href="#building-qt-design-studio">Building Qt Design Studio</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Getting Qt and Qt Creator</h1>
+<!-- $$$getting-and-building.html-description -->
+<div class="descr" id="details">
+<p>To create and build a Qt Design Studio plugin, you need a compatible version of Qt, and either a Qt Design Studio package (released or snapshot) or your own Qt Design Studio build.</p>
+<p>There are several reasons why you might want to do your own build of Qt Design Studio, like using the most current development version and being able to tweak Qt Design Studio at one or the other place. But it is not strictly necessary for creating plugins. The Qt Design Studio packages contain a <b translate="no">Plugin Development</b> component that enables plugin development with the Qt Design Studio contained in the package.</p>
+<h2 id="getting-qt">Getting Qt</h2>
+<p>Prebuilt Qt Design Studio packages usually use the latest stable release of Qt. See the exact Qt version that a Qt Design Studio package was built with in its <b translate="no">About Qt Design Studio</b> dialog.</p>
+<p>The minimum requirement for building Qt Design Studio is stated in the <a href="https://code.qt.io/cgit/qt-creator/qt-creator.git/about/README.md" translate="no">README.md</a> and near the top of the <a href="https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/cmake/QtCreatorAPI.cmake" translate="no">cmake/QtCreatorAPI.cmake</a> file in the sources.</p>
+<p>You can get prebuilt Qt packages from <a href="https://download.qt.io" translate="no">Qt Downloads</a>. If you want to use Qt as provided by your Linux distribution, you need to make sure that all Qt development packages and private header packages are also installed.</p>
+<h2 id="getting-qt-design-studio">Getting Qt Design Studio</h2>
+<h3 id="installing-a-prebuilt-package">Installing a Prebuilt Package</h3>
+<p>The prebuilt Qt Design Studio packages contain a <b translate="no">Plugin Development</b> component that contains the CMake files, headers and other files that you need to build a plugin. It is not installed by default, so make sure to select the component when installing Qt Design Studio.</p>
+<p>When developing your plugin, point the <code translate="no">CMAKE_PREFIX_PATH</code> to the installation location of Qt Design Studio, or the Qt Design Studio app on macOS.</p>
+<p>Get prebuilt packages either from <a href="https://download.qt.io/official_releases/online_installers/" translate="no">Qt Online Installer</a>, or a standalone Qt Design Studio installer either for a <a href="https://download.qt.io/official_releases/qtcreator/" translate="no">released Qt Design Studio version</a> or a <a href="https://download.qt.io/snapshots/qtcreator/" translate="no">development snapshot</a>.</p>
+<h3 id="building-qt-design-studio">Building Qt Design Studio</h3>
+<p>You can get the Qt Design Studio sources for a specific version either by using one of the released source bundles or by cloning the sources from the Git repository <a href="https://code.qt.io/cgit/qt-creator/qt-creator.git" translate="no">https://code.qt.io/cgit/qt-creator/qt-creator.git</a>. If you intend to contribute to Qt Design Studio itself, you should use the repository from our Gerrit review tool as described in: <a href="https://wiki.qt.io/Setting_up_Gerrit" translate="no">Setting up Gerrit</a>.</p>
+<p>Refer to the <a href="https://code.qt.io/cgit/qt-creator/qt-creator.git/about/README.md" translate="no">README.md</a> included in the sources for details on building Qt Design Studio.</p>
+<p>When developing your plugin, point the <code translate="no">CMAKE_PREFIX_PATH</code> to the build location of Qt Design Studio.</p>
+</div>
+<!-- @@@getting-and-building.html -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

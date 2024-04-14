@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-custom-effects-materials.qdoc -->
+  <title>Custom Effects and Materials | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Custom Effects and Materials</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-3d-custom-shaders.html" />
+  <link rel="next" href="studio-3d-lights.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-3d-custom-shaders.html">Custom Shaders</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-lights.html">Lights</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#creating-custom-effects">Creating Custom Effects</a></li>
+<li class="level1"><a href="#creating-custom-materials">Creating Custom Materials</a></li>
+<li class="level1"><a href="#creating-shader-files">Creating Shader Files</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Custom Effects and Materials</h1>
+<!-- $$$studio-3d-custom-effects-materials.html-description -->
+<div class="descr" id="details">
+<p>The <a href="studio-3d-effects.html" translate="no">Qt Quick 3D Effects</a> and <a href="studio-3d-materials-types.html" translate="no">Qt Quick 3D Materials</a> modules contain a set of ready-made effects and materials that you can apply to 3D models. If the ready-made effects and materials don't meet your needs, you can create custom effects and materials. Each effect or material must have a fragment shader that implements all the functions needed to calculate the shaded color. The material system also offers ready-made functions to help you implement the material. If the 3D effects and materials are not displayed in <a href="quick-components-view.html" translate="no">Components</a>, you should add the <b translate="no">QtQuick3D.Effects</b> and <b translate="no">QtQuick3D.Materials</b> modules to your project, as described in <a href="quick-components-view.html#adding-and-removing-modules" translate="no">Adding and Removing Modules</a>.</p>
+<p>The material system supports dielectric, metallic, and transparent materials, point lights, area lights, ambient occlusion, shadowing, two-sided polygons, index-of-refraction, and fragment cutoff (masking). For more information, see Qt Quick 3D Custom Material Reference.</p>
+<p>Use the components in <b translate="no">Components</b> &gt; <b translate="no">QtQuick3D</b> &gt; <b translate="no">Qt Quick 3D Custom Shader Utils</b> to create custom effects and materials. You can find the <b translate="no">Effect</b> component in <b translate="no">Components</b> &gt; <b translate="no"><a href="https://doc.qt.io/qt/qtquick3d-module.html" translate="no">QtQuick3D</a> Effects</b> &gt; <b translate="no">Qt Quick 3D Custom Shader Utils</b>, and the <b translate="no">Custom Material</b> component in <b translate="no">Components&gt;</b> <b translate="no"><a href="https://doc.qt.io/qt/qtquick3d-module.html" translate="no">QtQuick3D</a> Materials</b> &gt; <b translate="no">Qt Quick 3D Custom Shader Utils</b>. For more information about the shader utilities and commands and their properties, see <a href="studio-3d-custom-shaders.html" translate="no">Custom Shaders</a>.</p>
+<div class="admonition note">
+<p><b>Note: </b>You must create the actual shader source files with some other tool and copy them to your project folder. You can then specify the source file names in the custom effect or material properties. To use custom <i>uniforms</i> in the shader files, you must specify them as QML properties for the custom effect or material component. Qt Design Studio automatically generates the uniforms for the shaders based on the property values.</p>
+</div>
+<h2 id="creating-custom-effects">Creating Custom Effects</h2>
+<p>By default, a custom effect component contains a Pass component and a Shader component in the fragment stage. You can add passes, shaders, and other shader utilities to the effect.</p>
+<p class="centerAlign"><img src="images/studio-qtquick-3d-custom-effect-navigator.png" alt="&quot;Custom effect in Navigator&quot;" /></p><p>The fragment shader component is created with a placeholder for the path to the shader file. Specify the path to the shader file to use in the shader properties.</p>
+<p>To create a custom effect:</p>
+<ol class="1" type="1"><li>Drag-and-drop an <b translate="no">Effect</b> component from the <b translate="no">Qt Quick 3D Custom Shader Utils</b> tab of <b translate="no">Component</b> to a Model component in <a href="qtquick-navigator.html" translate="no">Navigator</a>.</li>
+<li>Select the custom effect component in <b translate="no">Navigator</b> to edit the values of its properties in the <a href="qtquick-properties-view.html" translate="no">Properties</a> view.<p class="centerAlign"><img src="images/studio-qtquick-3d-custom-effect.png" alt="&quot;Custom effect properties&quot;" /></p></li>
+<li>In the <b translate="no">Passes</b> field, select the pass components for the effect.</li>
+<li>Select the pass component in <b translate="no">Navigator</b> to specify values for its properties in <b translate="no">Properties</b>.<p class="centerAlign"><img src="images/studio-qtquick-3d-pass.png" alt="&quot;Pass properties&quot;" /></p></li>
+<li>To execute commands during the pass, drag-and-drop the following command components from <b translate="no">Component</b> to the custom material in <b translate="no">Navigator</b>: <b translate="no">Blending</b>, <b translate="no">Buffer Blit</b>, <b translate="no">Buffer Input</b>, <b translate="no">Cull Mode</b>, <b translate="no">Depth Input</b>, <b translate="no">Render State</b>, and <b translate="no">Set Uniform Value</b>. Then select the commands in the <b translate="no">Commands</b> field.</li>
+<li>To allocate a buffer for the pass, drag-and-drop a <b translate="no">Buffer</b> component to the custom material. Then select the buffer in the <b translate="no">Buffer</b> field.</li>
+<li>Select the shader component in <b translate="no">Navigator</b> to set the path to the shader files in the <b translate="no">Source</b> field in <b translate="no">Properties</b>.<p class="centerAlign"><img src="images/studio-qtquick-3d-shader-properties.png" alt="&quot;Shader properties&quot;" /></p></li>
+</ol>
+<h2 id="creating-custom-materials">Creating Custom Materials</h2>
+<p>By default, a Custom Material component contains two Shader components, a Shader Info component, and a Pass component. You can add shaders, passes, and other shader utilities to the material.</p>
+<p class="centerAlign"><img src="images/studio-qtquick-3d-custom-material-navigator.png" alt="&quot;Custom material in Navigator&quot;" /></p><p>By default, fragment and vertex shaders are created with placeholders for the paths to the shader files. Specify the paths to the shader files to use in the shader properties.</p>
+<p>The Shader Info component specifies the shader component and version, as well as the options used by the shader based on the selected shader key values, such as diffuse or specular lighting, refraction, transparency, displacement, transmissiveness, glossiness, and alpha cutout.</p>
+<p>The shaders are used with the Pass component to create the resulting material. A pass can contain multiple rendering passes and other commands. You can use a Buffer component to allocate a buffer for storing intermediate rendering results.</p>
+<p>To create a custom material:</p>
+<ol class="1" type="1"><li>Drag-and-drop a <b translate="no">Custom Material</b> component from the <b translate="no">Qt Quick 3D Custom Shader Utils</b> tab of <b translate="no">Component</b> to a Model component in <b translate="no">Navigator</b>.</li>
+<li>Select the custom material component in <b translate="no">Navigator</b> to edit the values of its properties in the <b translate="no">Properties</b> view.<p class="centerAlign"><img src="images/studio-qtquick-3d-custom-material.png" alt="&quot;Custom material properties&quot;" /></p></li>
+<li>Select the <b translate="no">Transparency</b> check box to make the material transparent.</li>
+<li>Select the <b translate="no">Refraction</b> check box to specify that the material is <a href="studio-material-editor.html#using-highlights-and-reflections" translate="no">reflective</a>.</li>
+<li>Select the <b translate="no">Always dirty</b> check box to determine that the material needs to be refreshed every time it is used.</li>
+<li>In the <b translate="no">Shader Info</b> field, select the shader info component to use.</li>
+<li>In the <b translate="no">Passes</b> field, select the pass components for the effect.</li>
+<li>In the <b translate="no">Material</b> group, select the <a href="studio-material-editor.html#using-highlights-and-reflections" translate="no">light probe</a>, <a href="studio-material-editor.html#simulating-geometry-displacement" translate="no">displacement map and amount</a>, and <a href="studio-material-editor.html#culling-faces" translate="no">culling mode</a> to use.</li>
+<li>Select the shader info component in <b translate="no">Navigator</b> to specify values for its properties in <b translate="no">Properties</b>.<p class="centerAlign"><img src="images/studio-qtquick-3d-shader-info.png" alt="&quot;Shader Info properties&quot;" /></p></li>
+<li>Select the pass component in <b translate="no">Navigator</b> to specify values for its properties in <b translate="no">Properties</b>.<p class="centerAlign"><img src="images/studio-qtquick-3d-pass.png" alt="&quot;Pass properties&quot;" /></p></li>
+<li>To execute commands during the pass, drag-and-drop the following command components from <b translate="no">Component</b> to the pass component in <b translate="no">Navigator</b>: <b translate="no">Blending</b>, <b translate="no">Buffer Blit</b>, <b translate="no">Buffer Input</b>, <b translate="no">Cull Mode</b>, <b translate="no">Depth Input</b>, <b translate="no">Render State</b>, and <b translate="no">Set Uniform Value</b>. The command components are created at the same level as the pass component and automatically added to the <b translate="no">Commands</b> field.</li>
+<li>To allocate a buffer for the pass, drag-and-drop a <b translate="no">Buffer</b> component to the custom material. Then select the buffer in the <b translate="no">Buffer</b> field.</li>
+<li>To add a shader to the pass, drag-and-drop the <b translate="no">Shader</b> component from the <b translate="no">Component</b> to the pass component in <b translate="no">Navigator</b>. The shader components are created at the same level as the pass component and automatically added to the <b translate="no">Shaders</b> field.</li>
+<li>Select the shader components in <b translate="no">Navigator</b> to set the paths to the shader files in the <b translate="no">Source</b> field in <b translate="no">Properties</b>.<p class="centerAlign"><img src="images/studio-qtquick-3d-shader-properties.png" alt="&quot;Shader properties&quot;" /></p></li>
+</ol>
+<h2 id="creating-shader-files">Creating Shader Files</h2>
+<p>The requirements set for shaders that you can use in custom effects and materials are described in Qt Quick 3D Custom Material Reference.</p>
+<p>If you use custom uniforms in the shader files, you must specify them as QML properties for the custom effect or material component. Qt Design Studio automatically generates the uniforms based on the property values.</p>
+<p>For example, the following code snippet shows fragment shader code that uses two uniforms: <code translate="no">uTextureInUse</code> and <code translate="no">uInputTexture</code>.</p>
+<pre class="cpp" translate="no">
+ out vec4 fragColor;
+
+ in vec3 pos;
+ in vec3 texCoord0;
+
+ <span class="type">void</span> main() {
+
+     vec4 textCol;
+     <span class="keyword">if</span> (uTextureInUse)
+         textCol <span class="operator">=</span> texture( uInputTexture<span class="operator">,</span> texCoord0<span class="operator">.</span>xy );
+
+     fragColor <span class="operator">=</span> vec4(pos<span class="operator">.</span>x <span class="operator">*</span> <span class="number">0.02</span> <span class="operator">*</span> textCol<span class="operator">.</span>x<span class="operator">,</span> pos<span class="operator">.</span>y <span class="operator">*</span> <span class="number">0.02</span> <span class="operator">*</span> textCol<span class="operator">.</span>y<span class="operator">,</span> pos<span class="operator">.</span>z <span class="operator">*</span> <span class="number">0.02</span><span class="operator">,</span> <span class="number">1.0</span>);
+ }
+</pre>
+<p>To use the above fragment shader in a custom effect or material component, you must remove the uniforms from the shader code and define them as properties for the component on the <b translate="no">Properties</b> tab in the <a href="qtquick-connection-view.html" translate="no">Connections</a> view.</p>
+<p class="centerAlign"><img src="images/studio-custom-material-uniform-properties.png" alt="&quot;Uniforms as properties in Connections view Properties tab&quot;" /></p><p>For more information about adding properties, see <a href="quick-dynamic-properties.html" translate="no">Specifying Custom Properties</a>.</p>
+</div>
+<!-- @@@studio-3d-custom-effects-materials.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-3d-custom-shaders.html">Custom Shaders</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-lights.html">Lights</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

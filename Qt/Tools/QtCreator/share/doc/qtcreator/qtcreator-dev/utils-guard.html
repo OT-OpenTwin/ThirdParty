@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- guard.cpp -->
+  <meta name="description" content="The Guard class implements a recursive guard with locking mechanism.">
+  <title>Guard Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>Guard</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">Guard Class</h1>
+<span class="small-subtitle" translate="no">class <a href="utils.html" translate="no">Utils</a>::Guard</span>
+<!-- $$$Guard-brief -->
+<p>The Guard class implements a recursive guard with locking mechanism. <a href="#details">More...</a></p>
+<!-- @@@Guard -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;Guard&gt;</span></td></tr>
+</table></div>
+<!-- $$$Guard-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>It may be used as an alternative to QSignalBlocker. QSignalBlocker blocks all signals of the object which is usually not desirable. It may also block signals which are needed internally by the object itself. The Guard and GuardLocker classes don't block signals at all.</p>
+<p>When calling a object's method which may in turn emit a signal which you are connected to, and you want to ignore this notification, you should keep the Guard object as your class member and declare the GuardLocker object just before calling the mentioned method, like:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">class</span> MyClass : <span class="keyword">public</span> <span class="type">QObject</span>
+ {
+ \dots
+ <span class="keyword">private</span>:
+     Guard updateGuard; <span class="comment">// member of your class</span>
+ };
+
+ \dots
+
+ <span class="type">void</span> MyClass<span class="operator">::</span>updateOtherObject()
+ {
+     GuardLocker updatelocker(updateGuard);
+     otherObject<span class="operator">-</span><span class="operator">&gt;</span>update(); <span class="comment">// this may trigger a signal</span>
+ }
+</pre>
+<p>Inside a slot which is connected to the other's object signal you may check if the guard is locked and ignore the further operations in this case:</p>
+<pre class="cpp" translate="no">
+ <span class="type">void</span> MyClass<span class="operator">::</span>otherObjectUpdated()
+ {
+     <span class="keyword">if</span> (updateGuard<span class="operator">.</span>isLocked())
+         <span class="keyword">return</span>;
+
+     <span class="comment">// we didn't trigger the update</span>
+     <span class="comment">// so do update now</span>
+     \dots
+ }
+</pre>
+<p>The GuardLocker unlocks the Guard in its destructor.</p>
+<p>The Guard object is recursive, you may declare many GuardLocker objects for the same Guard instance and the Guard will be locked as long as at least one GuardLocker object created for the Guard is in scope.</p>
+</div>
+<!-- @@@Guard -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

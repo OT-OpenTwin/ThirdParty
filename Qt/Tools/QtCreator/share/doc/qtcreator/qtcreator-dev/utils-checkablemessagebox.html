@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- checkablemessagebox.cpp -->
+  <meta name="description" content="The CheckableMessageBox class implements a message box suitable for questions with a Do not ask again or Do not show again checkbox.">
+  <title>CheckableMessageBox Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>CheckableMessageBox</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">CheckableMessageBox Class</h1>
+<span class="small-subtitle" translate="no">class <a href="utils.html" translate="no">Utils</a>::CheckableMessageBox</span>
+<!-- $$$CheckableMessageBox-brief -->
+<p>The CheckableMessageBox class implements a message box suitable for questions with a <b translate="no">Do not ask again</b> or <b translate="no">Do not show again</b> checkbox. <a href="#details">More...</a></p>
+<!-- @@@CheckableMessageBox -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;CheckableMessageBox&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="utils-checkablemessagebox-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-checkablemessagebox.html#hasSuppressedQuestions" translate="no">hasSuppressedQuestions</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-checkablemessagebox.html#msgDoNotAskAgain" translate="no">msgDoNotAskAgain</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-checkablemessagebox.html#msgDoNotShowAgain" translate="no">msgDoNotShowAgain</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-checkablemessagebox.html#resetAllDoNotAskAgainQuestions" translate="no">resetAllDoNotAskAgainQuestions</a></b>()</td></tr>
+</table></div>
+<!-- $$$CheckableMessageBox-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Emulates the QMessageBox API with static conveniences. The message label can open external URLs.</p>
+</div>
+<!-- @@@CheckableMessageBox -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$hasSuppressedQuestions[overload1]$$$hasSuppressedQuestions -->
+<h3 class="fn" translate="no" id="hasSuppressedQuestions"><code translate="no">[static] </code><span class="type">bool</span> CheckableMessageBox::<span class="name">hasSuppressedQuestions</span>()</h3>
+<p>Returns whether any message boxes from doNotAskAgainQuestion() are suppressed in the settings.</p>
+<!-- @@@hasSuppressedQuestions -->
+<!-- $$$msgDoNotAskAgain[overload1]$$$msgDoNotAskAgain -->
+<h3 class="fn" translate="no" id="msgDoNotAskAgain"><code translate="no">[static] </code><span class="type">QString</span> CheckableMessageBox::<span class="name">msgDoNotAskAgain</span>()</h3>
+<p>Returns the standard <b translate="no">Do not ask again</b> check box text.</p>
+<!-- @@@msgDoNotAskAgain -->
+<!-- $$$msgDoNotShowAgain[overload1]$$$msgDoNotShowAgain -->
+<h3 class="fn" translate="no" id="msgDoNotShowAgain"><code translate="no">[static] </code><span class="type">QString</span> CheckableMessageBox::<span class="name">msgDoNotShowAgain</span>()</h3>
+<p>Returns the standard <b translate="no">Do not show again</b> check box text.</p>
+<!-- @@@msgDoNotShowAgain -->
+<!-- $$$resetAllDoNotAskAgainQuestions[overload1]$$$resetAllDoNotAskAgainQuestions -->
+<h3 class="fn" translate="no" id="resetAllDoNotAskAgainQuestions"><code translate="no">[static] </code><span class="type">void</span> CheckableMessageBox::<span class="name">resetAllDoNotAskAgainQuestions</span>()</h3>
+<p>Resets all suppression settings for doNotAskAgainQuestion() so all these message boxes are shown again.</p>
+<!-- @@@resetAllDoNotAskAgainQuestions -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-animation-overview.qdoc -->
+  <title>Introduction to Animation Techniques | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Introduction to Animation Techniques</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="qtquick-motion-design.html" />
+  <link rel="next" href="studio-timeline.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="qtquick-motion-design.html">Motion Design</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-timeline.html">Creating Timeline Animations</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#common-motion-design-techniques">Common Motion Design Techniques</a></li>
+<li class="level2"><a href="#timeline-and-keyframe-based-animation">Timeline and Keyframe Based Animation</a></li>
+<li class="level2"><a href="#easing-curves">Easing Curves</a></li>
+<li class="level2"><a href="#animation-curves">Animation Curves</a></li>
+<li class="level1"><a href="#screen-to-screen-or-state-to-state-animations">Screen-to-Screen or State-to-State Animations</a></li>
+<li class="level2"><a href="#application-flows">Application Flows</a></li>
+<li class="level2"><a href="#transitions-between-states">Transitions Between States</a></li>
+<li class="level1"><a href="#data-driven-ui-logic-animations">Data-Driven UI Logic Animations</a></li>
+<li class="level2"><a href="#data-driven-timeline-animation">Data-Driven Timeline Animation</a></li>
+<li class="level2"><a href="#programmatic-animation">Programmatic Animation</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Introduction to Animation Techniques</h1>
+<!-- $$$quick-animation-overview.html-description -->
+<div class="descr" id="details">
+<p class="centerAlign"><img src="images/timeline-rotation-animation.gif" alt="&quot;Timeline animation of rotation and opacity&quot;" /></p><p>Qt Design Studio supports the following types of animation techniques that are suitable for different purposes:</p>
+<ul>
+<li>Common motion design techniques for 2D and 3D</li>
+<li>Screen-to-screen or state-to-state animations</li>
+<li>Data-driven UI logic animations</li>
+</ul>
+<h2 id="common-motion-design-techniques">Common Motion Design Techniques</h2>
+<p>The following table summarizes common motion design techniques for 2D and 3D and their typical use cases.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Technique</th><th >Use Case</th></tr></thead>
+<tr valign="top" class="odd"><td ><a href="qtquick-timeline-view.html" translate="no">Timeline animation</a></td><td >Linear interpolation through intermediate values at specified keyframes instead of immediately changing to the target value.</td></tr>
+<tr valign="top" class="even"><td ><a href="qtquick-editing-easing-curves.html" translate="no">Easing curves</a> attached to keyframes</td><td >Nonlinear interpolation between keyframes to make components appear to pick up speed, slow down, or bounce back at the end of the animation.</td></tr>
+<tr valign="top" class="odd"><td ><a href="qtquick-curve-editor.html" translate="no">Animation curves</a> attached to keyframes</td><td >Complex 3D animations that require several keyframes so it becomes necessary to visualize the value and the interpolation of a keyframe simultaneously.</td></tr>
+</table></div>
+<h3 id="timeline-and-keyframe-based-animation">Timeline and Keyframe Based Animation</h3>
+<p>Timeline animation is based on <i>keyframes</i>. In Qt Design Studio, keyframes determine the value of the property of a <a href="studio-terms.html#glossary-component" translate="no">component</a> at a certain time. Animating properties enables their values to move through intermediate values instead of immediately changing to the target value.</p>
+<p>For example, you can set the y position property of a rectangle to 0 at the start of your animation and to 100 at the end of the animation. When the animation is run, the rectangle moves from position 0 to 100 on the y axis. In the middle of the animation, the y property has the value of 50 since keyframes are interpolated linearly by default.</p>
+<h3 id="easing-curves">Easing Curves</h3>
+<p>Sometimes you don't want linear movement but would rather like the rectangle to move faster at the beginning and slower at the end of the animation. To achieve this effect, you could insert a large number of keyframes between the start frame and the end frame. To avoid this effort, you can specify <i>easing curves</i> for nonlinear interpolation between keyframes. The easing curves can make components appear to pick up speed, slow down, or bounce back at the end of the animation.</p>
+<h3 id="animation-curves">Animation Curves</h3>
+<p>While easing curves work well for most simple UI animations, more complex 3D animations require several keyframes so it becomes necessary to visualize the value and the interpolation of a keyframe simultaneously. The <a href="qtquick-curve-editor.html" translate="no">Curves</a> view visualizes the whole animation of a property at once and shows the effective values of a keyframe together with the interpolation between keyframes. It can also show animations of different properties simultaneously so that you can see the animation for the x position and the animation for the y position side-by-side.</p>
+<h2 id="screen-to-screen-or-state-to-state-animations">Screen-to-Screen or State-to-State Animations</h2>
+<p>The following table summarizes techniques used for navigating between screens and UI states.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Technique</th><th >Use Case</th></tr></thead>
+<tr valign="top" class="odd"><td ><a href="studio-app-flows.html" translate="no">Application flows</a></td><td >An interactive prototype that can be clicked through to simulate the user experience of the application.</td></tr>
+<tr valign="top" class="even"><td ><a href="qtquick-transition-editor.html" translate="no">Transitions between states</a></td><td >Transitions between different states of the UI using a transition timeline that is based on keyframes. You can apply easing curves to the keyframes.</td></tr>
+</table></div>
+<h3 id="application-flows">Application Flows</h3>
+<p>You can design an application in the form of a <i>schematic diagram</i> that shows all the significant components of the application UI and their interconnections by means of symbols. This results in an interactive prototype that can be clicked through to simulate the user experience of the application. Code is created in the background and can be used as the base of the production version of the application.</p>
+<p>For more information, see <a href="studio-app-flows.html" translate="no">Designing Application Flows</a>.</p>
+<h3 id="transitions-between-states">Transitions Between States</h3>
+<p>UIs are designed to present different UI configurations in different scenarios, or to modify their appearances in response to user interaction. Often, several changes are made concurrently so that the UI can be seen to be internally changing from one <i>state</i> to another.</p>
+<p>This applies generally to UIs regardless of their complexity. A photo viewer may initially present images in a grid, and when an image is clicked, change to a detailed state where the individual image is expanded and the interface is changed to present new options for image editing. At the other end of the scale, when a button is pressed, it may change to a <i>pressed</i> state in which its color and position are modified so that it appears to be pressed down.</p>
+<p>Any component can change between different states to apply sets of changes that modify the properties of relevant components. Each state can present a different configuration that can, for example:</p>
+<ul>
+<li>Show some UI components and hide others.</li>
+<li>Present different available actions to the user.</li>
+<li>Start, stop, or pause animations.</li>
+<li>Execute some script required in the new state.</li>
+<li>Change a property value for a particular component.</li>
+<li>Show a different view.</li>
+</ul>
+<p>State changes introduce abrupt motion that you can make visually appealing by using <i>transitions</i>. Transitions are animation types that interpolate property changes caused by state changes.</p>
+<p>In <a href="qtquick-transition-editor.html" translate="no">Transitions</a>, you can set the start frame, end frame, and duration for the transition of each property. You can also set an <a href="qtquick-editing-easing-curves.html" translate="no">easing curve</a> for each animation and the maximum duration of the whole transition.</p>
+<h2 id="data-driven-ui-logic-animations">Data-Driven UI Logic Animations</h2>
+<p>The following table summarizes techniques used for animating the UI logic by using real or mock data from a backend.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Technique</th><th >Use Case</th></tr></thead>
+<tr valign="top" class="odd"><td >Data-driven timeline animation</td><td >Using real or mock data from a backend to control motion.</td></tr>
+<tr valign="top" class="even"><td >Programmatic property animation</td><td >Interpolating property values programmatically to create smooth transitions.</td></tr>
+</table></div>
+<h3 id="data-driven-timeline-animation">Data-Driven Timeline Animation</h3>
+<p>You can connect property values to data backends to drive timeline animation. You can fetch data from various sources, such as data models, JavaScript files, and backend services. You can also connect your UI to Simulink to load live data from a Simulink simulation.</p>
+<p>You can connect these data sources to the current frame of a timeline, creating animation when the backend changes the current frame property.</p>
+<p>For example, you could connect the speed value from a backend to a tachometer dial in a cluster. As the speed value is increased or decreased from the backend, it moves the needle animation from one end of the timeline to the other.</p>
+<p>For more information, see <a href="studio-simulation-overview.html" translate="no">Simulating Complex Experiences</a>.</p>
+<h3 id="programmatic-animation">Programmatic Animation</h3>
+<p>You can control property animation programmatically. Property animations are created by binding <b translate="no">Animation</b> components to property values of component instances to gradually change the property values over time. The property animations apply smooth movement by interpolating values between property value changes. They provide timing controls and enable different interpolations through easing curves.</p>
+<p>Developers can control the execution of property animations by using the <code translate="no">start()</code>, <code translate="no">stop()</code>, <code translate="no">resume()</code>, <code translate="no">pause()</code>, <code translate="no">restart()</code>, and <code translate="no">complete()</code> functions.</p>
+<p>You can create instances of preset animation components available in <b translate="no">Components</b> &gt; <b translate="no">Default Components</b> &gt; <b translate="no">Animation</b> to create animations depending on the type of the property and the behavior that you want.</p>
+<p>For more information about <b translate="no">Animation</b> components and their properties, see <a href="quick-animations.html" translate="no">Animations</a>.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Component</th><th >Use Case</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Property Animation</b></td><td >Applying animation when the value of a property changes. Color and number animations are property animation types for specific purposes.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Property Action</b></td><td >Setting non-animated property values during an animation.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Color Animation</b></td><td >Applying animation when a color value changes.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Number Animation</b></td><td >Applying animation when a numerical value changes.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Parallel Animation</b></td><td >Running animations in parallel.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Sequential Animation</b></td><td >Running animations sequentially.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Pause Animation</b></td><td >Creating a step in a sequential animation where nothing happens for a specified duration.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Script Action</b></td><td >Executing JavaScript during an animation.</td></tr>
+</table></div>
+</div>
+<!-- @@@quick-animation-overview.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="qtquick-motion-design.html">Motion Design</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-timeline.html">Creating Timeline Animations</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

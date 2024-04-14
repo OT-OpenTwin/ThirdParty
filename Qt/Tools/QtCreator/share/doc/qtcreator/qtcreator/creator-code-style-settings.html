@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
 <!-- creator-projects-settings-code-style.qdoc -->
-  <title>Specifying Code Style Settings | Qt Creator Manual</title>
+  <title>Specify code style | Qt Creator Manual</title>
   <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
   <script type="text/javascript">
     document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
@@ -22,49 +21,48 @@
 </head>
 <body>
 <div class="header" id="qtdocheader">
-  <div class="main">
+    <div class="main">
     <div class="main-rounded">
-      <div class="navigationbar">
-        <table><tr>
-<td ><a href="index.html">Qt Creator Manual</a></td><td >Specifying Code Style Settings</td></tr></table><table class="buildversion"><tr>
-<td id="buildversion" width="100%" align="right"><a href="index.html">Qt Creator Manual 4.9&#x2e;1</a></td>
-        </tr></table>
-      </div>
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Specify code style</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
     </div>
+</div>
 <div class="content">
 <div class="line">
 <div class="content mainContent">
-  <link rel="prev" href="creator-editor-settings.html" />
-  <link rel="next" href="creator-build-dependencies.html" />
+  <link rel="prev" href="creator-how-tos.html" />
 <p class="naviNextPrevious headerNavi">
-<a class="prevPage" href="creator-editor-settings.html">Specifying Editor Settings</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-build-dependencies.html">Specifying Dependencies</a>
-</p><p/>
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
 <div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
-<h1 class="title">Specifying Code Style Settings</h1>
-<span class="subtitle"></span>
+<h1 class="title">Specify code style</h1>
 <!-- $$$creator-code-style-settings.html-description -->
-<div class="descr"> <a name="details"></a>
-<p>Qt Creator uses the <a href="creator-mime-types.html">MIME type</a> of the file to determine which mode and editor to use for opening the file. Qt Creator opens C++ files in <b>Edit</b> mode in the C++ code editor and QML files in the Qt Quick editor.</p>
-<p>You can configure the code style according to your needs. You can specify code style either globally for all projects or separately for each project. You can specify several sets of code style settings and easily switch between them. In addition, you can import and export code style settings.</p>
-<p class="centerAlign"><img src="images/qtcreator-projects-code-style.png" alt="&quot;Code Style settings in Projects mode&quot;" /></p><p>Alternatively, you can enable the Clang Format plugin to enforce the code style specified in a <code>.clang-format</code> file. It uses the <a href="https://clang.llvm.org/docs/LibFormat.html">LibFormat</a> library for automatic code formatting and indentation. For more information, see <a href="creator-indenting-code.html#automatic-formatting-and-indentation">Automatic Formatting and Indentation</a>.</p>
-<p class="centerAlign"><img src="images/qtcreator-code-style-clang-format.png" alt="&quot;Clang Format Code Style settings in Projects mode&quot;" /></p><p>To specify global code style settings sets for C++ files, select <b>Tools &gt; Options &gt; C++</b>.</p>
-<p>To specify global code style settings sets for QML files, select <b>Tools &gt; Options &gt; Qt Quick</b>.</p>
-<p>To configure the editor behavior for the current project:</p>
-<ol class="1" type="1"><li>Select <b>Projects</b> &gt; <b>Project Settings</b> &gt; <b>Code Style</b>.</li>
-<li>In the <b>Language</b> field, select <b>C++</b>, <b>Qt Quick</b>, or <b>Nim</b>.</li>
-<li>In the <b>Current settings</b> field, select the settings to modify and click <b>Copy</b>.</li>
-<li>Give a name to the settings and click <b>OK</b>.</li>
-<li>Click <b>Edit</b> to specify code style settings for the project.<p class="centerAlign"><img src="images/qtcreator-code-style-settings-edit-cpp.png" alt="&quot;Edit Code Style Settings dialog&quot;" /></p><p><b>Note: </b>Only <b>General</b> settings are available for QML files.</p><p class="centerAlign"><img src="images/qtcreator-code-style-settings-edit-qtquick.png" alt="&quot;Edit Code Style Settings view&quot;" /></p></li>
+<div class="descr" id="details">
+<p>The MIME type of the file determines which mode and editor the file opens in. Qt Creator opens C++ files in <b translate="no">Edit</b> mode in the C++ code editor and QML files in the Qt Quick editor.</p>
+<p>Specify indentation for:</p>
+<ul>
+<li>C++ files</li>
+<li>QML files</li>
+<li>Nim files</li>
+</ul>
+<p>Specify code style either globally or separately for each project. You can specify several sets of code style settings and easily switch between them. In addition, you can import and export code style settings.</p>
+<p>To override the global code style for the current project:</p>
+<ol class="1" type="1"><li>Go to <b translate="no">Projects</b> &gt; <b translate="no">Project Settings</b> &gt; <b translate="no">Code Style</b>.<p class="centerAlign"><img src="images/qtcreator-code-style-clang-format-project.webp" alt="{Code Style settings in Projects mode}" /></p></li>
+<li>In <b translate="no">Language</b>, select <b translate="no">C++</b>, <b translate="no">Qt Quick</b>, or <b translate="no">Nim</b>.</li>
+<li>For C++, clear <b translate="no">Use global settings</b> to use the <code translate="no">.clang-format</code> file for the project.</li>
+<li>To override the project's <code translate="no">.clang-format</code> file, select <b translate="no">Use custom settings</b>.</li>
+<li>In <b translate="no">Custom settings</b>, select the settings to use for the project.</li>
 </ol>
-<p>For more information about the settings, see <a href="creator-indenting-code.html">Indenting Text or Code</a>.</p>
+<p>In rare cases, ClangFormat can trip over a code construct and trigger a Qt Creator crash. If that happens for your project, select <b translate="no">Use Built-In Indenter</b> in <b translate="no">Formatting mode</b> to turn off ClangFormat for the project. If you can reproduce the crash, go to <b translate="no">Help</b> &gt; <b translate="no">Report Bug</b> to report the bug and attach the code that triggers the crash to the bug report.</p>
 </div>
+<p><b>See also </b><a href="creator-indenting-code.html" translate="no">Indent text or code</a>, <a href="creator-mime-types.html" translate="no">Edit MIME types</a>, <a href="creator-preferences-cpp-code-style.html" translate="no">C++ Code Style</a>, <a href="creator-preferences-qtquick-code-style.html" translate="no">Qt Quick Code Style</a>, and <a href="creator-preferences-nim.html" translate="no">Nim</a>.</p>
 <!-- @@@creator-code-style-settings.html -->
 <p class="naviNextPrevious footerNavi">
-<a class="prevPage" href="creator-editor-settings.html">Specifying Editor Settings</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-build-dependencies.html">Specifying Dependencies</a>
+<a class="prevPage" href="creator-how-tos.html">How To</a>
 </p>
         </div>
        </div>
@@ -73,7 +71,7 @@
 </div>
 <div class="footer">
    <p>
-   <acronym title="Copyright">&copy;</acronym> 2019 The Qt Company Ltd.
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
    Documentation contributions included herein are the copyrights of
    their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
    of their respective owners. </p>

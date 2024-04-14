@@ -48,25 +48,26 @@ Module {
     property string buildVariant: defaultBuildVariant
 
     property bool enableDebugCode: buildVariant == "debug"
-    property bool debugInformation: (buildVariant == "debug")
-    property string optimization: (buildVariant == "debug" ? "none" : "fast")
+    property bool debugInformation: (buildVariant !== "release")
+    property string optimization: (buildVariant === "debug" ? "none" : "fast")
     readonly property string hostPlatform: undefined // set internally
     readonly property stringList hostOS: Utilities.canonicalPlatform(hostPlatform)
     property string hostOSVersion: {
-        if (hostOS && hostOS.contains("macos")) {
+        if (hostOS && hostOS.includes("macos")) {
             return Utilities.getNativeSetting("/System/Library/CoreServices/ServerVersion.plist", "ProductVersion") ||
                    Utilities.getNativeSetting("/System/Library/CoreServices/SystemVersion.plist", "ProductVersion");
-        } else if (hostOS && hostOS.contains("windows")) {
+        } else if (hostOS && hostOS.includes("windows")) {
             var version = Utilities.getNativeSetting(windowsRegistryKey, "CurrentVersion");
             return version + "." + hostOSBuildVersion;
         }
     }
+    readonly property string hostArchitecture: undefined // set internally
 
     property string hostOSBuildVersion: {
-        if (hostOS.contains("macos")) {
+        if (hostOS.includes("macos")) {
             return Utilities.getNativeSetting("/System/Library/CoreServices/ServerVersion.plist", "ProductBuildVersion") ||
                    Utilities.getNativeSetting("/System/Library/CoreServices/SystemVersion.plist", "ProductBuildVersion");
-        } else if (hostOS.contains("windows")) {
+        } else if (hostOS.includes("windows")) {
             return Utilities.getNativeSetting(windowsRegistryKey, "CurrentBuildNumber");
         }
     }
@@ -78,19 +79,19 @@ Module {
 
     property string targetPlatform: hostPlatform
     readonly property stringList targetOS: Utilities.canonicalPlatform(targetPlatform)
-    property string pathListSeparator: hostOS.contains("windows") ? ";" : ":"
-    property string pathSeparator: hostOS.contains("windows") ? "\\" : "/"
-    property string nullDevice: hostOS.contains("windows") ? "NUL" : "/dev/null"
-    property path shellPath: hostOS.contains("windows") ? windowsShellPath : "/bin/sh"
+    property string pathListSeparator: hostOS.includes("windows") ? ";" : ":"
+    property string pathSeparator: hostOS.includes("windows") ? "\\" : "/"
+    property string nullDevice: hostOS.includes("windows") ? "NUL" : "/dev/null"
+    property path shellPath: hostOS.includes("windows") ? windowsShellPath : "/bin/sh"
     property string profile: project.profile
     property string toolchainType: {
-        if (targetOS.contains("windows"))
-            return hostOS.contains("windows") ? "msvc" : "mingw";
-        if (targetOS.contains("darwin"))
-            return hostOS.contains("macos") ? "xcode" : "clang";
-        if (targetOS.contains("freebsd"))
+        if (targetOS.includes("windows"))
+            return hostOS.includes("windows") ? "msvc" : "mingw";
+        if (targetOS.includes("darwin"))
+            return hostOS.includes("macos") ? "xcode" : "clang";
+        if (targetOS.includes("freebsd"))
             return "clang";
-        if (targetOS.contains("qnx"))
+        if (targetOS.includes("qnx"))
             return "qcc";
         if (targetOS.containsAny(["haiku", "vxworks", "unix"]))
             return "gcc";
@@ -101,12 +102,12 @@ Module {
     property path installSourceBase
     property string installRoot: project.buildDirectory + "/install-root"
     property string installDir
-    property string installPrefix: qbs.targetOS.contains("unix") ? "/usr/local" : ""
+    property string installPrefix: targetOS.includes("unix") ? "/usr/local" : ""
     property path sysroot
 
     PropertyOptions {
         name: "buildVariant"
-        allowedValues: ['debug', 'release']
+        allowedValues: ['debug', 'release', 'profiling']
         description: "name of the build variant"
     }
 
@@ -121,12 +122,12 @@ Module {
         validator.setRequiredProperty("hostOS", hostOS);
         validator.setRequiredProperty("targetOS", targetOS);
         validator.addCustomValidator("targetOS", targetOS, function (value) {
-            if (!value || (value.contains("osx") && !value.contains("macos")))
+            if (!value || (value.includes("osx") && !value.includes("macos")))
                 return false;
             return true;
         }, "the value 'osx' has been replaced by 'macos'; use that instead and update "
             + "hostOS and targetOS condition checks in your project accordingly");
-        if (hostOS && (hostOS.contains("windows") || hostOS.contains("macos"))) {
+        if (hostOS && (hostOS.includes("windows") || hostOS.includes("macos"))) {
             validator.setRequiredProperty("hostOSVersion", hostOSVersion,
                                           "could not detect host operating system version; " +
                                           "verify that system files and registry keys have not " +
@@ -142,8 +143,9 @@ Module {
 
         validator.addCustomValidator("architecture", architecture, function (value) {
             return !architecture || architecture === Utilities.canonicalArchitecture(architecture);
-        }, "'" + architecture + "' is invalid. You must use the canonical name '" +
-        Utilities.canonicalArchitecture(architecture) + "'");
+        }, "'" + architecture + "' is invalid." + (architecture
+            ? " You must use the canonical name '" + Utilities.canonicalArchitecture(architecture)
+            : "") + "'");
 
         validator.addCustomValidator("toolchain", toolchain, function (value) {
             if (toolchain === undefined)
@@ -168,7 +170,7 @@ Module {
             ];
             var canonical = Utilities.canonicalToolchain.apply(Utilities, value);
             for (var i = 0; i < pairs.length; ++i) {
-                if (canonical.contains(pairs[i][0]) && canonical.contains(pairs[i][1]))
+                if (canonical.includes(pairs[i][0]) && canonical.includes(pairs[i][1]))
                     return false;
             }
             return true;
@@ -181,14 +183,14 @@ Module {
     property string windowsRegistryKey: "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion"
     property path windowsSystemRoot: FileInfo.fromWindowsSeparators(Utilities.getNativeSetting(windowsRegistryKey, "SystemRoot"))
     property path windowsShellPath: FileInfo.fromWindowsSeparators(Environment.getEnv("COMSPEC")) || FileInfo.joinPaths(windowsSystemRoot, "System32", "cmd.exe")
-    property string windowsPathVariable: hostOS.contains("windows") ? "PATH" : "WINEPATH"
+    property string windowsPathVariable: hostOS.includes("windows") ? "PATH" : "WINEPATH"
 
     property var commonRunEnvironment: ({})
     setupRunEnvironment: {
         var env = product.qbs.commonRunEnvironment;
         for (var i in env) {
             var v = new ModUtils.EnvironmentVariable(i, product.qbs.pathListSeparator,
-                                                     product.qbs.hostOS.contains("windows"));
+                                                     product.qbs.hostOS.includes("windows"));
             v.value = env[i];
             v.set();
         }

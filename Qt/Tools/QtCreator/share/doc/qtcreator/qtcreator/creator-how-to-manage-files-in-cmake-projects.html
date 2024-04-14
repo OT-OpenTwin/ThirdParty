@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-projects-cmake.qdoc -->
+  <title>Manage files in CMake projects | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Manage files in CMake projects</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Manage files in CMake projects</h1>
+<!-- $$$creator-how-to-manage-files-in-cmake-projects.html-description -->
+<div class="descr" id="details">
+<p>When you <a href="creator-file-creating.html" translate="no">add new or existing files</a> to a project, Qt Creator automatically adds them to the qt_add_executable, <a href="https://cmake.org/cmake/help/latest/command/add_executable.html" translate="no">add_executable</a>, or qt_add_library function in the CMakeLists.txt file.</p>
+<p>If Qt Creator cannot recognize where the target is created, it will use the <a href="https://cmake.org/cmake/help/latest/command/target_sources.html" translate="no">target_sources</a> function to add the files.</p>
+<p>For Qt Quick projects, the files are added to the qt_add_qml_module function, prefixed with the <code translate="no">QML_FILES</code>, <code translate="no">SOURCES</code>, or <code translate="no">RESOURCES</code> function argument.</p>
+<p>When you rename or remove files in the <a href="creator-projects-view.html" translate="no">Projects</a> or <a href="creator-file-system-view.html" translate="no">File System</a> view, Qt Creator renames them in the CMakeLists.txt file or removes them from it.</p>
+</div>
+<p><b>See also </b><a href="creator-file-creating.html" translate="no">Create files</a>, <a href="creator-how-tos.html#build-with-cmake" translate="no">How To: Build with CMake</a>, <a href="creator-project-cmake.html" translate="no">CMake</a>, <a href="creator-file-system-view.html" translate="no">File System</a>, and <a href="creator-projects-view.html" translate="no">Projects</a>.</p>
+<!-- @@@creator-how-to-manage-files-in-cmake-projects.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

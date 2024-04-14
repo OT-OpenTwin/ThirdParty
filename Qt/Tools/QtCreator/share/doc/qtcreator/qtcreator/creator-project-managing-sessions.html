@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
 <!-- creator-sessions.qdoc -->
-  <title>Managing Sessions | Qt Creator Manual</title>
+  <title>Manage sessions | Qt Creator Manual</title>
   <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
   <script type="text/javascript">
     document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
@@ -22,59 +21,80 @@
 </head>
 <body>
 <div class="header" id="qtdocheader">
-  <div class="main">
+    <div class="main">
     <div class="main-rounded">
-      <div class="navigationbar">
-        <table><tr>
-<td ><a href="index.html">Qt Creator Manual</a></td><td >Managing Sessions</td></tr></table><table class="buildversion"><tr>
-<td id="buildversion" width="100%" align="right"><a href="index.html">Qt Creator Manual 4.9&#x2e;1</a></td>
-        </tr></table>
-      </div>
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Manage sessions</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
     </div>
+</div>
 <div class="content">
 <div class="line">
 <div class="content mainContent">
-  <link rel="prev" href="creator-sharing-project-settings.html" />
-  <link rel="next" href="creator-design-mode.html" />
+  <link rel="prev" href="creator-how-tos.html" />
 <p class="naviNextPrevious headerNavi">
-<a class="prevPage" href="creator-sharing-project-settings.html">Sharing Project Settings</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-design-mode.html">Designing User Interfaces</a>
-</p><p/>
-<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
-<h1 class="title">Managing Sessions</h1>
-<span class="subtitle"></span>
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#create-new-sessions">Create new sessions</a></li>
+<li class="level1"><a href="#open-sessions">Open sessions</a></li>
+<li class="level1"><a href="#open-sessions-from-the-locator">Open sessions from the locator</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Manage sessions</h1>
 <!-- $$$creator-project-managing-sessions.html-description -->
-<div class="descr"> <a name="details"></a>
-<p>When you exit Qt Creator, a snapshot of your current workspace is stored as a <i>session</i>. To restore the session automatically when you start Qt Creator, select <b>File &gt; Sessions &gt; Manage &gt; Restore last session on startup</b>.</p>
+<div class="descr" id="details">
+<p>When you exit Qt Creator, it stores a snapshot of your current workspace as a <i>session</i>. To restore the session automatically when you start Qt Creator, select <b translate="no">File</b> &gt; <b translate="no">Sessions</b> &gt; <b translate="no">Manage</b> &gt; <b translate="no">Restore last session on startup</b>.</p>
 <p>When you open or create any of the following items, they automatically become a part of the session:</p>
 <ul>
-<li>Projects with their dependencies (including SUBDIRS projects)</li>
+<li>Projects with their dependencies (including SUBDIRS projects when using qmake)</li>
 <li>Editors</li>
 <li>Breakpoints and expressions</li>
 <li>Bookmarks</li>
 </ul>
 <p>A session is personal, that is, not meant to be shared. It is not supposed to reflect the project structure. It contains personal data, such as bookmarks and breakpoints that are usually not of interest to other developers working on the same projects.</p>
 <p>For example, if you work on a project and need to switch to another project for a while, you can clone the current session to save it under a name and create a new session for the other project. Everything that you open after switching to the new session becomes a part of it. When you want to return to working on the first project, switch to the saved session. Qt Creator opens the projects and files that belong to the session.</p>
-<p>To manage sessions, select <b>File</b> &gt; <b>Sessions</b> &gt; <b>Manage</b>.</p>
-<p class="centerAlign"><img src="images/qtcreator-session-manager.png" alt="" /></p><p>To save a session under a new name, select <b>Clone</b>.</p>
+<p>To manage sessions, select <b translate="no">File</b> &gt; <b translate="no">Sessions</b> &gt; <b translate="no">Manage</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-session-manager.png" alt="{Session Manager}" /></p><p>To save a session under a new name, select <b translate="no">Clone</b>.</p>
+<h2 id="create-new-sessions">Create new sessions</h2>
 <p>To create a new session:</p>
-<ol class="1" type="1"><li>Select <b>New</b>.</li>
-<li>In the <b>Enter the name of the session</b> field, enter a name for the session.</li>
-<li>Select <b>Create</b> to create a new empty session or <b>Create and Open</b> to create a session and to switch to it.</li>
+<ol class="1" type="1"><li>Select <b translate="no">New</b>.</li>
+<li>In the <b translate="no">Enter the name of the session</b> field, enter a name for the session.</li>
+<li>Select <b translate="no">Create</b> to create a new empty session or <b translate="no">Create and Open</b> to create a session and to switch to it.</li>
 </ol>
-<p>To switch between sessions, select <b>Switch to</b>.</p>
-<p>When you launch Qt Creator, a list of existing sessions is displayed in the <b>Welcome</b> mode. To open a session, select it or press <b>Ctrl+Alt+&lt;number&gt;</b>, where <i>&lt;number&gt;</i> is the number of the session to open (available for the first nine sessions).</p>
-<p class="centerAlign"><img src="images/qtcreator-welcome-session.png" alt="" /></p><p>You can also use the <code>t</code> locator filter to open a session. For more information, see <a href="creator-editor-locator.html">Searching with the Locator</a>.</p>
-<p>To view more information about a session, select the down arrow icon that appears when you move the mouse cursor over the session name. Select actions to clone, rename, and delete sessions.</p>
-<p>When you start Qt Creator from the command line, you can give the name of a session as argument and Qt Creator will start with this session.</p>
-<p>For more information, see <a href="creator-cli.html">Using Command Line Options</a>.</p>
+<h2 id="open-sessions">Open sessions</h2>
+<p>To switch between sessions:</p>
+<ul>
+<li>Go to <b translate="no">File</b> &gt; <b translate="no">Sessions</b>, and select a session.</li>
+<li>Select <b translate="no">Open</b> in <b translate="no">Session Manager</b>.</li>
+</ul>
+<p>The <b translate="no">Projects</b> tab in the <b translate="no">Welcome</b> mode lists existing sessions. To open a session, select it or press <b>Ctrl+Alt+&lt;number&gt;</b>, where <i>&lt;number&gt;</i> is the number of the session to open (available for the first nine sessions).</p>
+<p class="centerAlign"><img src="images/qtcreator-welcome-session.webp" alt="{Sessions in the Welcome mode}" /></p><p>To view more information about a session, select the down arrow icon that appears when you move the mouse cursor over the session name. Select actions to clone, rename, and delete sessions.</p>
+<p>When you start Qt Creator from the command line, you can give the name of a session as an argument to start Qt Creator with this session.</p>
+<h2 id="open-sessions-from-the-locator">Open sessions from the locator</h2>
+<p>Use the <code translate="no">t</code> filter that triggers menu commands to open sessions.</p>
+<p>To locate a session:</p>
+<ol class="1" type="1"><li>Press <b>Ctrl+K</b> (<b>Cmd+K</b> on macOS) to activate the locator.</li>
+<li>Enter:<ul>
+<li><code translate="no">t</code> <i>&lt;session_name&gt;</i></li>
+<li><code translate="no">t sess</code> <i>&lt;session_name&gt;</i></li>
+</ul>
+<p>where <i>&lt;session_name&gt;</i> is the name of the session to open.</p>
+</li>
+<li>Double-click the session name to open it.</li>
+</ol>
 </div>
+<p><b>See also </b><a href="creator-editor-locator.html" translate="no">Navigate with locator</a> and <a href="creator-cli.html" translate="no">Command-Line Options</a>.</p>
 <!-- @@@creator-project-managing-sessions.html -->
 <p class="naviNextPrevious footerNavi">
-<a class="prevPage" href="creator-sharing-project-settings.html">Sharing Project Settings</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-design-mode.html">Designing User Interfaces</a>
+<a class="prevPage" href="creator-how-tos.html">How To</a>
 </p>
         </div>
        </div>
@@ -83,7 +103,7 @@
 </div>
 <div class="footer">
    <p>
-   <acronym title="Copyright">&copy;</acronym> 2019 The Qt Company Ltd.
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
    Documentation contributions included herein are the copyrights of
    their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
    of their respective owners. </p>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-model.qdoc -->
+  <title>3D Models | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>3D Models</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-skeletal-components.html" />
+  <link rel="next" href="studio-3d-materials.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-skeletal-components.html">Skeletal Animation</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-materials.html">Materials and Shaders</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#model-properties">Model Properties</a></li>
+<li class="level1"><a href="#tessellation-properties-available-in-qt-5">Tessellation Properties Available in Qt 5</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">3D Models</h1>
+<!-- $$$studio-3d-model.html-description -->
+<div class="descr" id="details">
+<p>The <a href="quick-components-view.html" translate="no">Components</a> view features some built-in primitive 3D models. This allows you to add cubes, cones, cylinders, spheres, and planes (rectangles) to your scene.</p>
+<p class="centerAlign"><img src="images/studio-3d-models.webp" alt="&quot;Various 3D models in the 3D view&quot;" /></p><p>A model component loads mesh data from a file. You can modify how the component is shaded by using materials. For more information, see <a href="studio-3d-materials.html" translate="no">Materials and Shaders</a> and <a href="studio-3d-custom-effects-materials.html#creating-custom-materials" translate="no">Creating Custom Materials</a>.</p>
+<p>To add a model component to your UI, do one of the following:</p>
+<ul>
+<li>Drag a model component from <b translate="no">Components</b> &gt; <b translate="no">Qt Quick 3D</b> to the <a href="studio-3d-editor.html" translate="no">3D</a> view or to <a href="qtquick-navigator.html" translate="no">Navigator</a> &gt; <b translate="no"><a href="https://doc.qt.io/qt/qml-qtquick3d-view3d.html" translate="no">View3D</a></b> &gt; <b translate="no">Scene</b>.</li>
+<li>Right-click in the <b translate="no">3D</b> view and select <b translate="no">Create</b> &gt; <b translate="no">Primitives</b> from the context menu.<div class="admonition note">
+<p><b>Note: </b>You can not create <b translate="no">Empty</b> models this way.</p>
+</div>
+</li>
+</ul>
+<p>If you cannot find the model components in <b translate="no">Components</b>, add the <b translate="no">QtQuick3D</b> module to your project, as described in <a href="quick-components-view.html#adding-and-removing-modules" translate="no">Adding and Removing Modules</a>.</p>
+<p class="centerAlign"><img src="images/studio-qtquick-3d-components.png" alt="&quot;The Qt Quick 3D section in Components&quot;" /></p><h2 id="model-properties">Model Properties</h2>
+<p>You can change the model type in <b translate="no">Properties</b> &gt; <b translate="no">Model</b> &gt; <b translate="no">Source</b> field. Select the <img src="images/plus.png" alt="" /> button to add custom model types to the list.</p>
+<p class="centerAlign"><img src="images/studio-qtquick-3d-model.png" alt="&quot;Model properties&quot;" /></p><p>To use the geometry of this model when rendering to shadow maps, select the <b translate="no">Casts shadows</b> check box. To allow casting shadows on the model, select the <b translate="no">Receives shadows</b> check box.</p>
+<p>To enable picking the model against the scene, select the <b translate="no">Pickable</b> check box. Picking transforms the screen space x and y coordinates to a ray cast towards the specified position in scene space.</p>
+<p>A model can consist of several sub-meshes, each of which can have its own material. Select the material from the list in the <b translate="no">Materials</b> field. Select the <img src="images/plus.png" alt="" /> button to add materials to the list. For more information about materials, see <a href="studio-3d-materials.html" translate="no">Materials and Shaders</a>.</p>
+<p>Specify a custom geometry for the model in the <b translate="no">Geometry</b> field. The <b translate="no">Source</b> field must be empty when custom geometry is used.</p>
+<p>Set the <b translate="no">Instancing</b> property to render a number of instances of the model as defined by an instancing table. The instancing tables can be defined by using one of the <a href="studio-3d-instancing.html" translate="no">instancing components</a> available in <b translate="no">Components</b> &gt; <b translate="no">Qt Quick 3D</b> &gt; {Qt Quick 3D}.</p>
+<p>Set the <b translate="no">Instance root</b> property to define the origin of the instance's coordinate system.</p>
+<p>Specify the <b translate="no">Skeleton</b> property to define the <b translate="no">Skeleton</b> component used for this model. <b translate="no">Skeletons</b> are used for skeletal animation.</p>
+<p>Specify <b translate="no">Morph targets</b> to use for rendering the provided geometry. Meshes should have at least one attribute among positions, normals, tangent, and bitangent for the morph targets. <b translate="no">Quick 3D</b> supports the maximum of eight <b translate="no">Morph targets</b>. Any additional targets after the first eight will be ignored. This property is not used when the model is shaded by a <b translate="no">Custom Material</b>.</p>
+<p>Define the <b translate="no">Depth bias</b> property to ensure the shadows of your model are displayed correctly.</p>
+<h2 id="tessellation-properties-available-in-qt-5">Tessellation Properties Available in Qt 5</h2>
+<p>The properties discussed in this section are only available if you selected <b translate="no">Qt 5</b> as the <b translate="no">Target Qt Version</b> when creating the project.</p>
+<p class="centerAlign"><img src="images/studio-qtquick-3d-properties-tessellation.png" alt="&quot;Tessellation properties&quot;" /></p><p>Tessellation refers to additional geometry that resembles tiling, which you can add to your model. To dynamically generate tessellation for the model, select <b translate="no">Linear</b>, <b translate="no">Phong</b>, or <b translate="no">NPatch</b> as the <b translate="no">Tessellation mode</b>. Tessellation is useful when using a displacement map with geometry, or to generate a smoother silhouette when zooming in.</p>
+<p>Specify an edge multiplier to the tessellation generator in the <b translate="no">Edge tessellation</b> field and an inner multiplier in the <b translate="no">Inner tessellation</b> field.</p>
+<p>To display a wireframe that highlights the additional geometry created by the tessellation generator, select the <b translate="no">Enable wireframe mode</b> check box.</p>
+</div>
+<!-- @@@studio-3d-model.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-skeletal-components.html">Skeletal Animation</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-materials.html">Materials and Shaders</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

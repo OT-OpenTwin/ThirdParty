@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-mobile-app-tutorial.qdoc -->
+  <meta name="description" content="How to create a Qt Quick application that uses Qt Quick Controls and runs on Android and iOS devices.">
+  <title>Creating a Mobile Application | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Creating a Mobile Application</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-tutorials.html" />
+  <link rel="next" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-tutorials.html">Tutorials</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#setting-up-the-development-environment">Setting up the Development Environment</a></li>
+<li class="level1"><a href="#creating-the-project">Creating the Project</a></li>
+<li class="level1"><a href="#adding-images-as-resources">Adding Images as Resources</a></li>
+<li class="level1"><a href="#creating-the-accelbubble-main-view">Creating the Accelbubble Main View</a></li>
+<li class="level1"><a href="#locking-device-orientation">Locking Device Orientation</a></li>
+<li class="level1"><a href="#adding-dependencies">Adding Dependencies</a></li>
+<li class="level1"><a href="#running-the-application">Running the Application</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Creating a Mobile Application</h1>
+<!-- $$$accelbubble-brief -->
+<p>How to create a Qt Quick application that uses Qt Quick Controls and runs on Android and iOS devices.</p>
+<!-- @@@accelbubble -->
+<!-- $$$accelbubble-description -->
+<div class="descr" id="details">
+<p>This tutorial describes how to use Qt Creator to develop Qt Quick applications for Android and iOS devices when using Qt 6 as the minimum Qt version and CMake as the build system.</p>
+<p>You will develop a Qt Quick application that accelerates an SVG (Scalable Vector Graphics) image based on changing accelerometer values.</p>
+<div class="admonition note">
+<p><b>Note: </b>You must have the Qt Sensors module from Qt 6.2 or later installed to be able to follow this tutorial.</p>
+</div>
+<p class="centerAlign"><img src="images/creator_android_tutorial_ex_app.png" alt="" /></p><h4 id="setting-up-the-development-environment">Setting up the Development Environment</h4>
+<p>To build the application for and run it on a mobile device, you must set up the development environment for the device platform and configure a connection between Qt Creator and the mobile device.</p>
+<p>To develop for Android devices, you must install Qt for Android and set up the development environment, as instructed in <a href="creator-developing-android.html" translate="no">Connecting Android Devices</a>.</p>
+<p>To develop for iOS devices, you must install Xcode and use it to configure a device. For this, you need an Apple developer account and iOS Developer Program certificate that you receive from Apple. For more information, see <a href="creator-developing-ios.html" translate="no">Connecting iOS Devices</a>.</p>
+<h4 id="creating-the-project">Creating the Project</h4>
+<ol class="1" type="1"><li>Select <b translate="no">File</b> &gt; <b translate="no">New Project</b> &gt; <b translate="no">Application (Qt)</b> &gt; <b translate="no">Qt Quick Application</b>.<p class="centerAlign"><img src="images/qtcreator-project-qt-quick.webp" alt="{New Project dialog}" /></p></li>
+<li>Select <b translate="no">Choose</b> to open the <b translate="no">Project Location</b> dialog.</li>
+<li>In the <b translate="no">Name</b> field, enter a name for the application. When naming your own projects, keep in mind that you cannot easily rename them later.</li>
+<li>In the <b translate="no">Create in</b> field, enter the path for the project files. You can move project folders later without problems.</li>
+<li>Select <b translate="no">Next</b> to open the <b translate="no">Define Project Details</b> dialog.<p class="centerAlign"><img src="images/qtcreator-project-qt-quick-details.webp" alt="{Define Project Details dialog}" /></p></li>
+<li>Deselect the <b translate="no">Create a project that you can open in Qt Design Studio</b> check box.<div class="admonition note">
+<p><b>Note: </b>This tutorial shows how to create the application in the <b translate="no">Edit</b> mode. If you leave the check box selected, the following instructions won't apply.</p>
+</div>
+</li>
+<li>Select <b translate="no">Next</b> to open the <b translate="no">Kit Selection</b> dialog.</li>
+<li>Select Qt 6.4 or later <a href="creator-glossary.html#glossary-buildandrun-kit" translate="no">kits</a> for the platforms that you want to build the application for. To build applications for mobile devices, select kits also for Android and iOS.<div class="admonition note">
+<p><b>Note: </b>The list shows kits that you specify in <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Kits</b>. For more information, see <a href="creator-targets.html" translate="no">Add kits</a> and <a href="creator-preferences-kits.html#kits-tab" translate="no">Kits</a>.</p>
+</div>
+</li>
+<li>Select <b translate="no">Next</b> to open the <b translate="no">Project Management</b> dialog.</li>
+<li>Review the project settings, and select <b translate="no">Finish</b> (or <b translate="no">Done</b> on macOS) to create the project.</li>
+</ol>
+<p>For more information about the settings that you skipped, see <a href="quick-projects.html" translate="no">Create Qt Quick Applications</a>.</p>
+<h4 id="adding-images-as-resources">Adding Images as Resources</h4>
+<p>The main view of the application displays an SVG bubble image that moves around the screen when you tilt the device.</p>
+<p>For the image to appear when you run the application, you must specify it as a resource in the <code translate="no">RESOURCES</code> section of <i>CMakeLists.txt</i> file that the wizard created for you:</p>
+<pre class="cpp" translate="no">
+ qt_add_qml_module(appaccelbubble
+     URI accelbubble
+     VERSION 1.0
+     QML_FILES Main.qml
+     RESOURCES Bluebubble.svg
+ )
+</pre>
+<h4 id="creating-the-accelbubble-main-view">Creating the Accelbubble Main View</h4>
+<p>Create the main view in the <i>main.qml</i> file by adding an Image component with <i>Bluebubble.svg</i> as the source:</p>
+<pre class="cpp" translate="no">
+     <span class="type">Image</span> {
+         <span class="name">id</span>: <span class="name">bubble</span>
+         <span class="name">source</span>: <span class="string">&quot;Bluebubble.svg&quot;</span>
+         <span class="name">smooth</span>: <span class="number">true</span>
+</pre>
+<p>You can use any other image or component instead.</p>
+<p>Add custom properties to position the image in respect to the width and height of the main window:</p>
+<pre class="cpp" translate="no">
+         property <span class="type">real</span> <span class="name">centerX</span>: <span class="name">mainWindow</span>.<span class="name">width</span> <span class="operator">/</span> <span class="number">2</span>
+         property <span class="type">real</span> <span class="name">centerY</span>: <span class="name">mainWindow</span>.<span class="name">height</span> <span class="operator">/</span> <span class="number">2</span>
+         property <span class="type">real</span> <span class="name">bubbleCenter</span>: <span class="name">bubble</span>.<span class="name">width</span> <span class="operator">/</span> <span class="number">2</span>
+         <span class="name">x</span>: <span class="name">centerX</span> <span class="operator">-</span> <span class="name">bubbleCenter</span>
+         <span class="name">y</span>: <span class="name">centerY</span> <span class="operator">-</span> <span class="name">bubbleCenter</span>
+</pre>
+<p>Add code to move the bubble based on Accelerometer sensor values. First, add the following import statement:</p>
+<pre class="cpp" translate="no">
+ import QtSensors
+</pre>
+<p>Add the Accelerometer component with the necessary properties:</p>
+<pre class="cpp" translate="no">
+     <span class="type">Accelerometer</span> {
+         <span class="name">id</span>: <span class="name">accel</span>
+         <span class="name">dataRate</span>: <span class="number">100</span>
+         <span class="name">active</span>:<span class="number">true</span>
+</pre>
+<p>Add the following JavaScript functions that calculate the x and y position of the bubble based on the current Accelerometer values:</p>
+<pre class="cpp" translate="no">
+     <span class="keyword">function </span><span class="name">calcPitch</span>(x,y,z) {
+         <span class="keyword">return</span> -<span class="name">Math</span>.<span class="name">atan2</span>(<span class="name">y</span>, <span class="name">Math</span>.<span class="name">hypot</span>(<span class="name">x</span>, <span class="name">z</span>)) <span class="operator">*</span> <span class="name">mainWindow</span>.<span class="name">radians_to_degrees</span>;
+     }
+     <span class="keyword">function </span><span class="name">calcRoll</span>(x,y,z) {
+         <span class="keyword">return</span> -<span class="name">Math</span>.<span class="name">atan2</span>(<span class="name">x</span>, <span class="name">Math</span>.<span class="name">hypot</span>(<span class="name">y</span>, <span class="name">z</span>)) <span class="operator">*</span> <span class="name">mainWindow</span>.<span class="name">radians_to_degrees</span>;
+     }
+</pre>
+<p>Add the following JavaScript code for <code translate="no">onReadingChanged</code> signal of Accelerometer component to make the bubble move when the Accelerometer values change:</p>
+<pre class="cpp" translate="no">
+         <span class="name">onReadingChanged</span>: {
+             var newX = (<span class="name">bubble</span>.<span class="name">x</span> <span class="operator">+</span> <span class="name">calcRoll</span>(<span class="name">accel</span>.<span class="name">reading</span>.<span class="name">x</span>, <span class="name">accel</span>.<span class="name">reading</span>.<span class="name">y</span>, <span class="name">accel</span>.<span class="name">reading</span>.<span class="name">z</span>) <span class="operator">*</span> <span class="number">.1</span>)
+             var newY = (<span class="name">bubble</span>.<span class="name">y</span> <span class="operator">-</span> <span class="name">calcPitch</span>(<span class="name">accel</span>.<span class="name">reading</span>.<span class="name">x</span>, <span class="name">accel</span>.<span class="name">reading</span>.<span class="name">y</span>, <span class="name">accel</span>.<span class="name">reading</span>.<span class="name">z</span>) <span class="operator">*</span> <span class="number">.1</span>)
+
+             <span class="keyword">if</span> (<span class="name">isNaN</span>(<span class="name">newX</span>) <span class="operator">||</span> <span class="name">isNaN</span>(<span class="name">newY</span>))
+                 <span class="keyword">return</span>;
+
+             <span class="keyword">if</span> (<span class="name">newX</span> <span class="operator">&lt;</span> <span class="number">0</span>)
+                 <span class="name">newX</span> <span class="operator">=</span> <span class="number">0</span>
+
+             <span class="keyword">if</span> (<span class="name">newX</span> <span class="operator">&gt;</span> <span class="name">mainWindow</span>.<span class="name">width</span> <span class="operator">-</span> <span class="name">bubble</span>.<span class="name">width</span>)
+                 <span class="name">newX</span> <span class="operator">=</span> <span class="name">mainWindow</span>.<span class="name">width</span> <span class="operator">-</span> <span class="name">bubble</span>.<span class="name">width</span>
+
+             <span class="keyword">if</span> (<span class="name">newY</span> <span class="operator">&lt;</span> <span class="number">18</span>)
+                 <span class="name">newY</span> <span class="operator">=</span> <span class="number">18</span>
+
+             <span class="keyword">if</span> (<span class="name">newY</span> <span class="operator">&gt;</span> <span class="name">mainWindow</span>.<span class="name">height</span> <span class="operator">-</span> <span class="name">bubble</span>.<span class="name">height</span>)
+                 <span class="name">newY</span> <span class="operator">=</span> <span class="name">mainWindow</span>.<span class="name">height</span> <span class="operator">-</span> <span class="name">bubble</span>.<span class="name">height</span>
+
+                 <span class="name">bubble</span>.<span class="name">x</span> <span class="operator">=</span> <span class="name">newX</span>
+                 <span class="name">bubble</span>.<span class="name">y</span> <span class="operator">=</span> <span class="name">newY</span>
+         }
+</pre>
+<p>You need to ensure that the position of the bubble is always within the bounds of the screen. If the Accelerometer returns <i>not a number</i> (NaN), the value is ignored and the bubble position is not updated.</p>
+<p>Add SmoothedAnimation behavior on the <code translate="no">x</code> and <code translate="no">y</code> properties of the bubble to make its movement look smoother.</p>
+<pre class="cpp" translate="no">
+         Behavior on <span class="name">y</span> {
+             <span class="type">SmoothedAnimation</span> {
+                 <span class="name">easing</span>.type: <span class="name">Easing</span>.<span class="name">Linear</span>
+                 <span class="name">duration</span>: <span class="number">100</span>
+             }
+         }
+         Behavior on <span class="name">x</span> {
+             <span class="type">SmoothedAnimation</span> {
+                 <span class="name">easing</span>.type: <span class="name">Easing</span>.<span class="name">Linear</span>
+                 <span class="name">duration</span>: <span class="number">100</span>
+             }
+         }
+</pre>
+<h4 id="locking-device-orientation">Locking Device Orientation</h4>
+<p>The device display is rotated by default when the device orientation changes between portrait and landscape. For this example, it would be better for the screen orientation to be fixed.</p>
+<p>To lock the orientation to portrait or landscape on Android, specify it in an <i>AndroidManifest.xml</i> that you can generate in Qt Creator. For more information, see <a href="creator-deploying-android.html#editing-manifest-files" translate="no">Editing Manifest Files</a>.</p>
+<p class="centerAlign"><img src="images/qtquick-mobile-tutorial-manifest.png" alt="{Accelbubble manifest file}" /></p><p>To generate and use a manifest file, you must specify the Android package source directory, <code translate="no">QT_ANDROID_PACKAGE_SOURCE_DIR</code> in the <i>CMakeLists.txt</i> file:</p>
+<pre class="cpp" translate="no">
+ set_property(TARGET appaccelbubble APPEND PROPERTY
+     QT_ANDROID_PACKAGE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/android
+ )
+</pre>
+<p>For compatibility with CMake versions older than 3.19, add a manual finalization step to the <code translate="no">qt_add_executable</code> function:</p>
+<pre class="cpp" translate="no">
+ qt_add_executable(appaccelbubble
+     main.cpp
+     MANUAL_FINALIZATION
+ )
+</pre>
+<p>Then, add the <code translate="no">qt_finalize_executable</code> function:</p>
+<pre class="cpp" translate="no">
+ qt_finalize_executable(appaccelbubble)
+</pre>
+<p>On iOS, you can lock the device orientation in an <i>Info.plist</i> file that you specify in the <i>CMakeLists.txt</i> file as the value of the <code translate="no">MACOSX_BUNDLE_INFO_PLIST</code> variable:</p>
+<pre class="cpp" translate="no">
+ set_target_properties(appaccelbubble PROPERTIES
+     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
+     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+     MACOSX_BUNDLE_INFO_PLIST &quot;${CMAKE_CURRENT_SOURCE_DIR}/Info.plist&quot;
+     MACOSX_BUNDLE TRUE
+     WIN32_EXECUTABLE TRUE
+ )
+</pre>
+<h4 id="adding-dependencies">Adding Dependencies</h4>
+<p>You must tell the build system which Qt modules your application needs by specifying dependencies in the project file. Select <b translate="no">Projects</b> to update the CMake configuration with the following Qt module information: <code translate="no">Sensors</code>, <code translate="no">Svg</code>, <code translate="no">Xml</code>.</p>
+<p>The <i>CMakeLists.txt</i> file should have the following entries that tell CMake to look up the Qt installation and import the Qt Sensors, Qt SVG, and Qt XML modules needed by the application:</p>
+<pre class="cpp" translate="no">
+ find_package(Qt6 6.4 REQUIRED COMPONENTS Quick Sensors Svg Xml)
+</pre>
+<p>You also need to add the Qt modules to the list of target link libraries. <code translate="no">target_link_libraries</code> tells CMake that the accelbubble executable uses the Qt Sensors, Qt SVG, and Qt XML modules by referencing the targets imported by the <code translate="no">find_package()</code> call above. This adds the necessary arguments to the linker and makes sure that the appropriate include directories and compiler definitions are passed to the C++ compiler.</p>
+<pre class="cpp" translate="no">
+ target_link_libraries(appaccelbubble
+     PRIVATE Qt6::Quick Qt6::Sensors Qt6::Svg Qt6::Xml)
+</pre>
+<p>After adding the dependencies, select <b translate="no">Build</b> &gt; <b translate="no">Run CMake</b> to apply configuration changes.</p>
+<p>For more information about the CMakeLists.txt file, see Getting started with CMake.</p>
+<h4 id="running-the-application">Running the Application</h4>
+<p>You can now deploy the application to a device:</p>
+<ol class="1" type="1"><li>Enable <i>USB Debugging</i> on the Android device or <i>developer mode</i> on the iOS device.</li>
+<li>Connect the device to the development PC.<p>If you are using a device running Android v4.2&#x2e;2, it should prompt you to verify the connection to allow USB debugging from the PC. To avoid such prompts every time you connect the device, select the <b translate="no">Always allow from this computer</b> check box, and then select <b translate="no">OK</b>.</p>
+</li>
+<li>To run the application on the device, press <b>Ctrl+R</b>.</li>
+</ol>
+<p>Files:</p>
+<ul>
+<li><a href="qtcreator-accelbubble-bluebubble-svg.html" translate="no">accelbubble/Bluebubble.svg</a></li>
+<li><a href="qtcreator-accelbubble-cmakelists-txt.html" translate="no">accelbubble/CMakeLists.txt</a></li>
+<li><a href="qtcreator-accelbubble-main-qml.html" translate="no">accelbubble/main.qml</a></li>
+</ul>
+</div>
+<!-- @@@accelbubble -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-tutorials.html">Tutorials</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

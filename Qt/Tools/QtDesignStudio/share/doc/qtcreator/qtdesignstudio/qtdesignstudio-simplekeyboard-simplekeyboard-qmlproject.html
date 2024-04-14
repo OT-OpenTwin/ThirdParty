@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- simplekeyboard.qdoc -->
+  <meta name="description" content="Illustrates how to use a virtual keyboard in an application.">
+  <title>Simple Keyboard | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="studioexamples.html" translate="no">Examples</a></li>
+<li>Simple Keyboard</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<h1 class="title">Simple Keyboard</h1>
+<pre class="cpp" translate="no">
+ import QmlProject 1.1
+
+ Project {
+     mainFile: &quot;SimpleKeyboard.qml&quot;
+
+     /* Include .qml, .js, and image files from current directory and subdirectories */
+     QmlFiles {
+         directory: &quot;.&quot;
+     }
+
+     JavaScriptFiles {
+         directory: &quot;.&quot;
+     }
+
+     ImageFiles {
+         directory: &quot;.&quot;
+     }
+
+     Files {
+         filter: &quot;*.conf&quot;
+         files: [&quot;qtquickcontrols2.conf&quot;]
+     }
+
+     Files {
+         filter: &quot;qmldir&quot;
+         directory: &quot;.&quot;
+     }
+
+     Files {
+         filter: &quot;*.ttf;*.otf&quot;
+     }
+
+     Environment {
+         QT_QUICK_CONTROLS_CONF: &quot;qtquickcontrols2.conf&quot;
+         QT_AUTO_SCREEN_SCALE_FACTOR: &quot;1&quot;
+         QT_IM_MODULE: &quot;qtvirtualkeyboard&quot;
+         QT_VIRTUALKEYBOARD_DESKTOP_DISABLE: 1
+     }
+
+     /* List of plugin directories passed to QML runtime */
+     importPaths: [ &quot;imports&quot;, &quot;asset_imports&quot; ]
+
+     /* Required for deployment */
+     targetDirectory: &quot;/opt/SimpleKeyboard&quot;
+ }
+</pre>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-particles.qdoc -->
+  <title>Particles | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Particles</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-3d-loader-3d.html" />
+  <link rel="next" href="studio-3d-particle-system.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-3d-loader-3d.html">Loader3D</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-particle-system.html">Particle System</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#particle-components">Particle Components</a></li>
+<li class="level1"><a href="#particle-templates">Particle Templates</a></li>
+<li class="level1"><a href="#particle-effects">Particle Effects</a></li>
+<li class="level1"><a href="#adding-a-particle-system">Adding a Particle System</a></li>
+<li class="level1"><a href="#performance-considerations">Performance Considerations</a></li>
+<li class="level1"><a href="#particle-system-tutorials">Particle System Tutorials</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Particles</h1>
+<!-- $$$studio-3d-particles.html-description -->
+<div class="descr" id="details">
+<p>With a <i>particle system</i> you can use sprites, 3D models, or images to create effects that are hard to reproduce with conventional rendering techniques. This includes chaotic systems, natural phenomena, or processes caused by chemical reactions. For example, you can simulate fire, smoke, sparks, explosions, flowing water, fog, snow, stars, and galaxies.</p>
+<p>The Qt Design Studio particle system contains the following main types of components:</p>
+<ul>
+<li><a href="studio-3d-particle-system.html" translate="no">Particle System</a></li>
+<li><a href="studio-3d-logical-particles.html" translate="no">Logical Particles</a></li>
+<li><a href="studio-3d-particle-emitters.html" translate="no">Particle Emitters</a></li>
+<li><a href="studio-3d-particle-affectors.html" translate="no">Particle Affectors</a></li>
+<li><a href="studio-3d-particle-directions.html" translate="no">Particle Directions</a></li>
+</ul>
+<p>Preset particle <a href="studio-3d-particles.html#particle-components" translate="no">components</a>, <a href="studio-3d-particles.html#particle-templates" translate="no">templates</a>, and <a href="studio-3d-particles.html#particle-effects" translate="no">effects</a> are available in <b translate="no">Components</b> &gt; <b translate="no"><a href="https://doc.qt.io/qt/qtquick3d-module.html" translate="no">QtQuick3D</a> Particles3D</b> after you add the <b translate="no"><a href="https://doc.qt.io/qt/qtquick3d-module.html" translate="no">QtQuick3D</a>.Particles3D</b> module to your project, as instructed in <a href="quick-components-view.html#adding-and-removing-modules" translate="no">Adding and Removing Modules</a>.</p>
+<p class="centerAlign"><img src="images/studio-3d-particles.png" alt="&quot;3D Particles&quot;" /></p><h2 id="particle-components">Particle Components</h2>
+<p>When you add an instance of the <b translate="no">Particle System</b> component to a scene, Qt Design Studio automatically adds instances of the <b translate="no">Sprite Particle</b>, <b translate="no">Emitter</b>, and <b translate="no">Vector Direction</b> components for you.</p>
+<p class="centerAlign"><img src="images/studio-3d-particle-system-navigator.png" alt="&quot;Particle System in Navigator&quot;" /></p><p>The <b translate="no">Sprite Particle</b> is a visual <a href="studio-3d-texture.html" translate="no">2D texture</a> particle. To use <a href="studio-3d-model.html" translate="no">3D model</a> particles, add instances of the <b translate="no">Model Particle</b> component to the particle system. It is important to define the amount of particles to use in <b translate="no">Properties</b> &gt; <b translate="no">Particle</b> &gt; <b translate="no">Max amount</b>, so that the optimal buffer sizes get allocated. You can also specify the color and opacity of the particles, as well as the speed at which they fade in and out.</p>
+<p>The <b translate="no">Emitter</b> component emits the sprite or model particles. You can specify particle shape and the area where they are emitted. Use variation in particle size and rotation for more natural results. Further, define the life span and initial direction of speed of the emitted particles.</p>
+<p>Usually, affectors are used to make particle movement more interesting. For example, you could add an instance of the <b translate="no">Gravity</b> component to simulate falling objects, an instance of the <b translate="no">Wander</b> component to simulate flying objects that follow wavy curves, or an instance of the <b translate="no">Point Rotator</b> to simulate windy weather.</p>
+<p>The following table lists preset particle components.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Icon</th><th >Name</th><th >Purpose</th></tr></thead>
+<tr valign="top" class="odd"><td ><img src="images/attractor-16px.png" alt="" /></td><td >Attractor</td><td >Attracts particles towards a specific point.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/emit-burst-16px.png" alt="" /></td><td >Dynamic Burst</td><td >Emits particles in dynamic bursts. Use dynamic burst for emitters that are moving.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/emit-burst-16px.png" alt="" /></td><td >Emit Burst</td><td >Emits particles in bursts.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/emitter-16px.png" alt="" /></td><td >Emitter</td><td >Emits logical particles.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/gravity-16px.png" alt="" /></td><td >Gravity</td><td >Accelerates particles to a vector of the specified magnitude in the specified direction.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/line-particles-16px.png" alt="" /></td><td >Line Particle</td><td >Creates line-shaped sprite particles.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/model-blend-particle-16px.png" alt="" /></td><td >Model Blend Particle</td><td >Blends a particle effect with an instance of a <b translate="no">Model</b> component.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/model-particle-16px.png" alt="" /></td><td >Model Particle</td><td >Creates a particle that uses an instance of a <b translate="no">Model</b> component.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/model-shape-16px.png" alt="" /></td><td >Model Shape</td><td >Provides 3D shapes from a model to emitters and affectors.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/particle-shape-16px.png" alt="" /></td><td >Particle Shape</td><td >Provides 3D shapes to emitters and affectors.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/particle-system-16px.png" alt="" /></td><td >Particle System</td><td >Creates a particle system that includes particle, emitter, and affector components.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/point-rotator-16px.png" alt="" /></td><td >Point Rotator</td><td >Rotates particles around a pivot point.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/repeller-16px.png" alt="" /></td><td >Repeller</td><td >Repels particles from its location.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/scale-affector-16px.png" alt="" /></td><td >Scale Affector</td><td >Scales particles based on the particles' lifetime and other parameters.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/sprite-particle-16px.png" alt="" /></td><td >Sprite Particle</td><td >Creates particles that use a 2D sprite texture.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/sprite-sequence-16px.png" alt="" /></td><td >Sprite Sequence</td><td >Provides image sequence features for <b translate="no">Sprite Particle</b> component instances.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/target-direction-16px.png" alt="" /></td><td >Target Direction</td><td >Specifies a direction towards the target position.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/trail-emitter-16px.png" alt="" /></td><td >Trail Emitter</td><td >Emits logical particles from other particles.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/vector-direction-16px.png" alt="" /></td><td >Vector Direction</td><td >Specifies a direction towards the target direction.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/wander-16px.png" alt="" /></td><td >Wander</td><td >Applies random wave curves to particles.</td></tr>
+</table></div>
+<h2 id="particle-templates">Particle Templates</h2>
+<p>A particle template is a preset of particle components that you can use to create specific particle effects in a convenient way.</p>
+<p>The following table lists particle templates and their components.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Template</th><th >Components</th></tr></thead>
+<tr valign="top" class="odd"><td >Animated Sprite</td><td >Particle System<ul>
+<li>Particle Emitter<ul>
+<li>Sprite Particle</li>
+<li>Sprite Sequence</li>
+<li>Texture</li>
+</ul>
+</li>
+<li>Vector Direction</li>
+</ul>
+</td></tr>
+<tr valign="top" class="even"><td >Attractor</td><td >Particle System<ul>
+<li>Particle Emitter<ul>
+<li>Sprite Particle</li>
+<li>Vector Direction</li>
+</ul>
+</li>
+<li>Particle Attractor</li>
+</ul>
+</td></tr>
+<tr valign="top" class="odd"><td >Burst</td><td >Particle System<ul>
+<li>Particle Emitter<ul>
+<li>Sprite Particle</li>
+<li>Vector Direction</li>
+<li>Emit Burst</li>
+</ul>
+</li>
+</ul>
+</td></tr>
+<tr valign="top" class="even"><td >Model Blend</td><td >Particle System<ul>
+<li>Particle Emitter<ul>
+<li>Node</li>
+<li>Model Blend Particle</li>
+<li>Particle Emitter<ul>
+<li>Vector Direction</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</td></tr>
+<tr valign="top" class="odd"><td >Model Shape</td><td >Particle System<ul>
+<li>Particle Emitter<ul>
+<li>Sprite Particle<ul>
+<li>Vector Direction</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Particle Model Shape</li>
+</ul>
+</td></tr>
+<tr valign="top" class="even"><td >Particle Trail</td><td >Particle System<ul>
+<li>Trail Emitter<ul>
+<li>Vector Direction</li>
+<li>Sprite Particle</li>
+</ul>
+</li>
+<li>Particle Emitter<ul>
+<li>Vector Direction</li>
+<li>Sprite Particle</li>
+</ul>
+</li>
+</ul>
+</td></tr>
+<tr valign="top" class="odd"><td >Sprite</td><td >Particle System<ul>
+<li>Sprite Emitter<ul>
+<li>Sprite Particle</li>
+<li>Vector Direction</li>
+</ul>
+</li>
+</ul>
+</td></tr>
+<tr valign="top" class="even"><td >Wander</td><td >Particle System<ul>
+<li>Sprite Emitter<ul>
+<li>Sprite Particle<ul>
+<li>Texture</li>
+</ul>
+</li>
+<li>Wander</li>
+<li>Node</li>
+</ul>
+</li>
+</ul>
+</td></tr>
+</table></div>
+<h2 id="particle-effects">Particle Effects</h2>
+<p>A particle effect is a ready-made effect that you can use to create, for example, fire, rain, or mist in a convenient way.</p>
+<p>The following particle effects are available:</p>
+<ul>
+<li>Clouds</li>
+<li>Dust</li>
+<li>Exhaust</li>
+<li>Fire</li>
+<li>Heavy Rain</li>
+<li>Heavy Tire Spray</li>
+<li>Light Rain</li>
+<li>Light Tire Spray</li>
+<li>Rain Mist</li>
+<li>Snow</li>
+<li>Steam</li>
+</ul>
+<h2 id="adding-a-particle-system">Adding a Particle System</h2>
+<p>The recommended way to add a particle system is to use one of the <a href="studio-3d-particles.html#particle-templates" translate="no">particle templates</a> and then add or remove particle components according to your use case.</p>
+<p>For example, to add a particle system that emits sprite particles:</p>
+<ul>
+<li>From <b translate="no">Qt Quick 3D Particles System Templates</b> in <b translate="no">Components</b>, drag <b translate="no">Sprite</b> to a scene component in <b translate="no">Navigator</b>. You can also drag it to the <b translate="no">3D</b> view.</li>
+</ul>
+<p class="centerAlign"><img src="images/studio-3d-particles-sprite-template.png" alt="" /></p><h2 id="performance-considerations">Performance Considerations</h2>
+<p>The particles are designed to be usable on a variety of hardware on desktops, as well as mobile and embedded devices. However, in addition to rendering the maximum amount of particle elements on the screen, extensibility to different use-cases, rendering quality, integration with the other UI elements, are also important.</p>
+<p>Currently, the rendering runs on GPU, while the particle system logic runs on CPU. However, the <i>stateless particle system</i> enables you to move the system logic onto GPU if that seems beneficial. The initial measurements indicate that the system is quite well balanced between CPU and GPU. The stateless system also enables animating particles by using a <a href="qtquick-timeline-view.html" translate="no">timeline</a>. The model particles use instanced rendering to boost the performance. Therefore, OpenGL ES 2.0 isn't sufficient to make rendering performant, and at least OpenGL ES 3.0, Vulkan, or some other modern backend is required.</p>
+<p>To get a more concrete view on the actual performance, the video below shows a particles Testbed application running on four different Android devices. These devices and their chipsets and GPUs could be considered to be lower-end to mid-range, confirming that the particles can perform well also on affordable hardware.</p>
+<div class="video">
+<a href="https://www.youtube.com/watch/?v=9MqUCP6JLCQ">
+<img src="images/9MqUCP6JLCQ.jpg" title="Click to play in a browser" /></a>
+</div>
+<h2 id="particle-system-tutorials">Particle System Tutorials</h2>
+<ul>
+<li><a href="fire-particle-effect.html" translate="no">Particle System: Fire Effect</a></li>
+<li><a href="rain-snow-particle-effect.html" translate="no">Particle System: Rain and Snow Effect</a></li>
+</ul>
+</div>
+<!-- @@@studio-3d-particles.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-3d-loader-3d.html">Loader3D</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-particle-system.html">Particle System</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

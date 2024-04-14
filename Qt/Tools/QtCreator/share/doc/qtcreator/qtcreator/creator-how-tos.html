@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-how-tos.qdoc -->
+  <title>How To | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>How To</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-tutorials.html" />
+  <link rel="next" href="creator-reference.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-tutorials.html">Tutorials</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-reference.html">Reference</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#analyze">Analyze</a></li>
+<li class="level1"><a href="#build-and-run">Build and Run</a></li>
+<li class="level2"><a href="#build-with-cmake">Build with CMake</a></li>
+<li class="level2"><a href="#build-with-qmake">Build with qmake</a></li>
+<li class="level2"><a href="#run-applications">Run applications</a></li>
+<li class="level1"><a href="#create-models-and-diagrams">Create Models and Diagrams</a></li>
+<li class="level1"><a href="#debug">Debug</a></li>
+<li class="level1"><a href="#design-uis">Design UIs</a></li>
+<li class="level1"><a href="#edit-code">Edit Code</a></li>
+<li class="level2"><a href="#configure-editors">Configure Editors</a></li>
+<li class="level2"><a href="#manage-language-servers">Manage Language Servers</a></li>
+<li class="level2"><a href="#search">Search</a></li>
+<li class="level1"><a href="#manage-kits">Manage Kits</a></li>
+<li class="level1"><a href="#manage-projects">Manage Projects</a></li>
+<li class="level2"><a href="#create-projects">Create Projects</a></li>
+<li class="level2"><a href="#add-files">Add Files</a></li>
+<li class="level2"><a href="#configure-projects">Configure Projects</a></li>
+<li class="level1"><a href="#read-documentation">Read Documentation</a></li>
+<li class="level1"><a href="#test">Test</a></li>
+<li class="level1"><a href="#use-qt-creator">Use Qt Creator</a></li>
+<li class="level1"><a href="#use-the-ui">Use the UI</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">How To</h1>
+<!-- $$$creator-how-tos.html-description -->
+<div class="descr" id="details">
+<p>The following topics describe how to use Qt Creator to perform a particular task.</p>
+<h2 id="analyze">Analyze</h2>
+<p>Use integrated code analysis tools to detect memory leaks, profile function execution, analyze CPU use, and eliminate unnecessary complexity of code. Other integrated tools provide code coverage and visualize trace events.</p>
+<ul>
+<li translate="no"><a href="creator-clang-tools.html">Analyze code with Clang-Tidy and Clazy</a></li>
+<li translate="no"><a href="creator-how-to-configure-clang-diagnostics.html">Configure Clang diagnostics</a></li>
+<li translate="no"><a href="creator-how-to-create-compiler-explorer-sessions.html">Create compiler explorer sessions</a></li>
+<li translate="no"><a href="creator-how-to-explore-compiler-code.html">Explore compiler code</a></li>
+<li translate="no"><a href="creator-axivion.html">Prevent code erosion</a></li>
+<li translate="no"><a href="creator-how-to-profile-cmake-code.html">Profile CMake code</a></li>
+<li translate="no"><a href="creator-run-settings-valgrind.html">Specify Valgrind settings for a project</a></li>
+</ul>
+<h2 id="build-and-run">Build and Run</h2>
+<p>Use integrated cross-platform systems for build automation to compile your source code for different target platforms or with different compilers, debuggers, or Qt versions. Deploy applications to the target platforms and run them there.</p>
+<ul>
+<li translate="no"><a href="creator-how-to-activate-custom-output-parsers.html">Activate custom output parsers</a></li>
+<li translate="no"><a href="creator-custom-output-parsers.html">Add custom output parsers</a></li>
+<li translate="no"><a href="creator-building-targets.html">Build for many platforms</a></li>
+<li translate="no"><a href="creator-build-settings.html">Configure projects for building</a></li>
+<li translate="no"><a href="creator-build-process-customizing.html">Customize the build process</a></li>
+<li translate="no"><a href="creator-how-to-edit-qbs-profiles.html">Edit Qbs profiles</a></li>
+<li translate="no"><a href="creator-how-to-edit-vcpkg-manifest-files.html">Edit vcpkg manifest files</a></li>
+<li translate="no"><a href="creator-how-to-enble-debugging.html">Enable debugging</a></li>
+<li translate="no"><a href="creator-how-to-use-compilation-databases.html">Use compilation databases</a></li>
+</ul>
+<h3 id="build-with-cmake">Build with CMake</h3>
+<p>CMake controls the software compilation process by using simple configuration files, called <i>CMakeLists.txt</i> files.</p>
+<ul>
+<li translate="no"><a href="creator-how-to-add-cmake-tools.html">Add CMake tools</a></li>
+<li translate="no"><a href="creator-how-to-add-external-libraries-to-cmake-projects.html">Add libraries to CMake projects</a></li>
+<li translate="no"><a href="creator-how-to-complete-cmake-code.html">Complete CMake code</a></li>
+<li translate="no"><a href="creator-how-to-debug-cmake-files.html">Debug CMake project files</a></li>
+<li translate="no"><a href="creator-how-to-edit-cmake-config-files.html">Edit CMake configuration files</a></li>
+<li translate="no"><a href="creator-how-to-format-cmake-files.html">Format CMake files</a></li>
+<li translate="no"><a href="creator-how-to-manage-files-in-cmake-projects.html">Manage files in CMake projects</a></li>
+<li translate="no"><a href="creator-how-to-profile-cmake-code.html">Profile CMake code</a></li>
+<li translate="no"><a href="creator-how-to-read-cmake-documentation.html">Read CMake documentation</a></li>
+<li translate="no"><a href="creator-how-to-view-cmake-project-contents.html">View CMake project contents</a></li>
+</ul>
+<h3 id="build-with-qmake">Build with qmake</h3>
+<p>qmake automates the generation of Makefiles based on the information in a project file that has the extension <i>.pro</i>.</p>
+<ul>
+<li translate="no"><a href="creator-project-qmake-libraries.html">Add libraries to qmake projects</a></li>
+<li translate="no"><a href="creator-how-to-run-qmake-before-building.html">Run qmake before building</a></li>
+</ul>
+<h3 id="run-applications">Run applications</h3>
+<p>Run applications on local and remote desktop systems, as well as on embedded and mobile devices that you connect to the computer.</p>
+<ul>
+<li translate="no"><a href="creator-run-settings.html">Configure projects for running</a></li>
+<li translate="no"><a href="creator-how-to-run-python-apps.html">Run Python applications</a></li>
+<li translate="no"><a href="creator-how-to-run-in-app-manager.html">Run in Qt Application Manager</a></li>
+<li translate="no"><a href="creator-how-to-run-on-qnx.html">Run on QNX devices</a></li>
+<li translate="no"><a href="creator-running-targets.html">Run on many platforms</a></li>
+<li translate="no"><a href="creator-how-to-run-on-remote-linux.html">Run on remote Linux devices</a></li>
+<li translate="no"><a href="creator-how-to-run-custom-executables.html">Specify a custom executable to run</a></li>
+</ul>
+<h2 id="create-models-and-diagrams">Create Models and Diagrams</h2>
+<p>Create Universal Modeling Language (UML) style models with structured and behavioral diagrams that offer different views to your system. Or, use a file wizard to create State Chart XML (SCXML) files with boilerplate code and edit them with an SCXML editor.</p>
+<ul>
+<li translate="no"><a href="creator-how-to-create-models.html">Create UML-style models</a></li>
+<li translate="no"><a href="creator-how-to-create-class-diagrams.html">Create class diagrams</a></li>
+<li translate="no"><a href="creator-how-to-create-component-diagrams.html">Create component diagrams</a></li>
+<li translate="no"><a href="creator-how-to-create-package-diagrams.html">Create package diagrams</a></li>
+<li translate="no"><a href="creator-how-to-create-state-charts.html">Create state charts</a></li>
+</ul>
+<h2 id="debug">Debug</h2>
+<p>Use native debuggers to inspect the state of your application while debugging.</p>
+<ul>
+<li translate="no"><a href="creator-how-to-debug-cmake-files.html">Debug CMake project files</a></li>
+</ul>
+<h2 id="design-uis">Design UIs</h2>
+<p>Design UIs with either Qt Quick or Qt Widgets. Qt Creator integrates a visual editor, Qt Designer, for designing widget-based UIs in the <b translate="no">Design</b> mode. For Qt Quick UIs, use a separate visual editor, <a href="https://doc.qt.io/qtdesignstudio/index.html" translate="no">Qt Design Studio</a>, or the <b translate="no">Edit</b> mode.</p>
+<ul>
+<li translate="no"><a href="creator-how-to-export-svg-images.html">Create pixmaps from SVG images</a></li>
+<li translate="no"><a href="creator-how-to-run-qml-files.html">Run QML files</a></li>
+<li translate="no"><a href="creator-how-to-view-images.html">View images</a></li>
+</ul>
+<h2 id="edit-code">Edit Code</h2>
+<p>The code editor offers useful features for editing C++ and QML code, such as semantic highlighting, checking code syntax, code completion, and quick fixes. Some of these features are also for other programming languages, such as Python, for which a <i>language server</i> is available that provides information about the code to IDEs.</p>
+<ul>
+<li translate="no"><a href="creator-editor-quick-fixes.html">Apply quick fixes</a></li>
+<li translate="no"><a href="creator-how-to-autoformat-qml-js.html">Automatically format QML/JS files</a></li>
+<li translate="no"><a href="creator-how-to-use-bookmarks.html">Bookmark code</a></li>
+<li translate="no"><a href="creator-checking-code-syntax.html">Check code syntax</a></li>
+<li translate="no"><a href="creator-diff-editor.html">Compare files</a></li>
+<li translate="no"><a href="creator-completing-code.html">Complete code</a></li>
+<li translate="no"><a href="creator-how-to-document-code.html">Document code</a></li>
+<li translate="no"><a href="creator-highlighting.html">Download highlight definitions</a></li>
+<li translate="no"><a href="creator-markdown-editor.html">Edit Markdown files</a></li>
+<li translate="no"><a href="qt-quick-toolbars.html">Edit properties of QML types</a></li>
+<li translate="no"><a href="creator-enclose-code-in-characters.html">Enclose code in brackets or quotes</a></li>
+<li translate="no"><a href="creator-how-to-use-code-blocks.html">Highlight code blocks</a></li>
+<li translate="no"><a href="creator-indenting-code.html">Indent text or code</a></li>
+<li translate="no"><a href="creator-how-to.html">Insert multiple cursors</a></li>
+<li translate="no"><a href="creator-how-to-inspect-code-model.html">Inspect the code model</a></li>
+<li translate="no"><a href="creator-how-to-locate-files-using-keyboard.html">Locate files using the keyboard</a></li>
+<li translate="no"><a href="creator-how-to-move-between-open-files.html">Move between files</a></li>
+<li translate="no"><a href="creator-how-to-navigate-qml-code.html">Move in QML code</a></li>
+<li translate="no"><a href="creator-how-to-move-to-symbols.html">Move to symbols</a></li>
+<li translate="no"><a href="creator-how-to-reparse-files.html">Parse files</a></li>
+<li translate="no"><a href="creator-editor-codepasting.html">Paste and fetch code snippets</a></li>
+<li translate="no"><a href="creator-how-to-paste-text-from-clipboard-history.html">Paste text from clipboard history</a></li>
+<li translate="no"><a href="creator-how-to-perform-calculations.html">Perform calculations</a></li>
+<li translate="no"><a href="creator-macros.html">Record text editing macros</a></li>
+<li translate="no"><a href="creator-how-to-select-enclosing-block.html">Select the current code block</a></li>
+<li translate="no"><a href="creator-how-to-split-editor-views.html">Split the editor view</a></li>
+<li translate="no"><a href="creator-how-to-switch-to-edit-mode.html">Switch to Edit mode</a></li>
+<li translate="no"><a href="creator-copilot.html">Use GitHub Copilot</a></li>
+<li translate="no"><a href="creator-how-to-write-notes.html">Write down notes</a></li>
+</ul>
+<h3 id="configure-editors">Configure Editors</h3>
+<p>Configure the code and text editor to suit your specific needs by changing the fonts, colors, highlighting, and indentation.</p>
+<ul>
+<li translate="no"><a href="creator-how-to-add-code-snippets.html">Add code snippets to the auto-complete menu</a></li>
+<li translate="no"><a href="creator-beautifier.html">Beautify source code</a></li>
+<li translate="no"><a href="creator-how-to-change-editor-colors.html">Change editor colors</a></li>
+<li translate="no"><a href="creator-how-to-change-text-encoding.html">Change text encoding</a></li>
+<li translate="no"><a href="creator-mime-types.html">Edit MIME types</a></li>
+<li translate="no"><a href="creator-how-to-edit-vim-style.html">Edit like in Vim</a></li>
+<li translate="no"><a href="creator-how-to-select-line-endings.html">Select line ending style</a></li>
+<li translate="no"><a href="creator-code-style-settings.html">Specify code style</a></li>
+</ul>
+<h3 id="manage-language-servers">Manage Language Servers</h3>
+<p>Configure language servers that Qt Creator adds by default or add more of them.</p>
+<ul>
+<li translate="no"><a href="creator-how-to-add-java-language-servers.html">Add a Java language server</a></li>
+<li translate="no"><a href="creator-how-to-add-generic-language-servers.html">Add generic language servers</a></li>
+<li translate="no"><a href="creator-how-to-configure-python-language-servers.html">Configure Python language servers</a></li>
+<li translate="no"><a href="creator-how-to-configure-lsp-workspace.html">Configure language server workspace</a></li>
+<li translate="no"><a href="creator-how-to-inspect-language-clients.html">Inspect language clients</a></li>
+<li translate="no"><a href="creator-how-to-use-qml-language-server.html">Turn on QML Language Server</a></li>
+</ul>
+<h3 id="search">Search</h3>
+<p>Use the incremental and advanced search to search in currently open projects or files on the file system or use the locator to browse through projects, files, classes, functions, documentation, and file systems.</p>
+<ul>
+<li translate="no"><a href="creator-editor-how-to-find-symbols.html">Find symbols</a></li>
+<li translate="no"><a href="creator-editor-locator.html">Navigate with locator</a></li>
+<li translate="no"><a href="creator-how-to-rename-symbols.html">Rename symbols</a></li>
+<li translate="no"><a href="creator-how-to-search-and-replace-using-regexp.html">Search and replace using a regular expression</a></li>
+<li translate="no"><a href="creator-editor-finding.html">Search in current file</a></li>
+<li translate="no"><a href="creator-how-to-advanced-search.html">Search in projects or file systems</a></li>
+<li translate="no"><a href="creator-how-to-silver-searcher.html">Turn on Silver Searcher</a></li>
+</ul>
+<h2 id="manage-kits">Manage Kits</h2>
+<p>Qt Creator groups build and run specific settings as kits to make cross-platform development easier. Each kit consists of a set of values that define one environment, such as a device, tool chain, Qt version, and debugger command to use.</p>
+<ul>
+<li translate="no"><a href="creator-how-to-add-nim-compilers.html">Add Nim compilers</a></li>
+<li translate="no"><a href="creator-project-qmake.html">Add Qt versions</a></li>
+<li translate="no"><a href="creator-tool-chains.html">Add compilers</a></li>
+<li translate="no"><a href="creator-how-to-add-custom-compilers.html">Add custom compilers</a></li>
+<li translate="no"><a href="creator-debuggers.html">Add debuggers</a></li>
+<li translate="no"><a href="creator-targets.html">Add kits</a></li>
+</ul>
+<h2 id="manage-projects">Manage Projects</h2>
+<p>Create projects for developing applications and libraries. Then configure the projects for building and running the applications on target platforms.</p>
+<ul>
+<li translate="no"><a href="creator-how-to-add-external-libraries-to-cmake-projects.html">Add libraries to CMake projects</a></li>
+<li translate="no"><a href="creator-build-settings.html">Configure projects for building</a></li>
+<li translate="no"><a href="creator-run-settings.html">Configure projects for running</a></li>
+<li translate="no"><a href="creator-how-to-create-vcpkg-manifest-files.html">Create vcpkg manifest files</a></li>
+<li translate="no"><a href="creator-python-development.html">Develop Qt for Python applications</a></li>
+<li translate="no"><a href="creator-how-to-edit-environment-settings.html">Edit environment settings</a></li>
+<li translate="no"><a href="creator-how-to-enble-debugging.html">Enable debugging</a></li>
+<li translate="no"><a href="creator-project-generic.html">Import an existing project</a></li>
+<li translate="no"><a href="creator-how-to-run-python-apps.html">Run Python applications</a></li>
+<li translate="no"><a href="creator-how-set-project-environment.html">Specify the environment for projects</a></li>
+<li translate="no"><a href="creator-how-to-use-qtc-variables.html">Use Qt Creator variables</a></li>
+</ul>
+<h3 id="create-projects">Create Projects</h3>
+<p>Use preset wizards to create projects or add custom wizards. You can also import projects from version control systems.</p>
+<ul>
+<li translate="no"><a href="creator-project-qmake-libraries.html">Add libraries to qmake projects</a></li>
+<li translate="no"><a href="creator-how-to-add-subprojects-to-projects.html">Add subprojects to projects</a></li>
+<li translate="no"><a href="creator-how-to-add-wizards.html">Add wizards</a></li>
+<li translate="no"><a href="creator-how-to-create-nimble.html">Create Nimble projects</a></li>
+<li translate="no"><a href="quick-projects.html">Create Qt Quick Applications</a></li>
+<li translate="no"><a href="creator-how-to-create-qtquick-ui-prototype.html">Create Qt Quick UI Prototypes</a></li>
+<li translate="no"><a href="creator-how-to-create-vcs-repositories.html">Create VCS repositories for new projects</a></li>
+<li translate="no"><a href="creator-how-to-select-build-system.html">Select the build system</a></li>
+<li translate="no"><a href="creator-how-to-use-project-wizards.html">Use project wizards</a></li>
+</ul>
+<h3 id="add-files">Add Files</h3>
+<p>Add files to projects.</p>
+<ul>
+<li translate="no"><a href="creator-how-to-add-license-header-templates.html">Add a license header template for C++ code</a></li>
+<li translate="no"><a href="creator-how-to-add-ts-files.html">Add translation files</a></li>
+<li translate="no"><a href="creator-how-to-create-cpp-classes.html">Create C++ classes</a></li>
+<li translate="no"><a href="creator-how-to-create-opengl-shaders.html">Create OpenGL fragment and vertex shaders</a></li>
+<li translate="no"><a href="creator-file-creating.html">Create files</a></li>
+<li translate="no"><a href="creator-how-to-create-resource-files.html">Create resource files</a></li>
+<li translate="no"><a href="creator-how-to-set-cpp-file-naming.html">Set C++ file naming preferences</a></li>
+</ul>
+<h3 id="configure-projects">Configure Projects</h3>
+<p>Change the default configurations that installation programs and project wizards create.</p>
+<ul>
+<li translate="no"><a href="creator-how-to-activate-kits.html">Activate kits for a project</a></li>
+<li translate="no"><a href="creator-how-to-configure-lsp-workspace.html">Configure language server workspace</a></li>
+<li translate="no"><a href="creator-how-to-excludes-files-from-to-do-lists.html">Exclude files from to-do lists</a></li>
+<li translate="no"><a href="creator-link-axivion-dashboards.html">Link projects to Axivion dashboards</a></li>
+<li translate="no"><a href="creator-how-to-link-with-gitlab.html">Link projects with GitLab</a></li>
+<li translate="no"><a href="creator-project-opening.html">Open projects</a></li>
+<li translate="no"><a href="creator-sharing-project-settings.html">Share project settings</a></li>
+<li translate="no"><a href="creator-how-to-override-clang-tools-preferences.html">Specify Clang tools settings</a></li>
+<li translate="no"><a href="creator-how-to-override-clangd-preferences.html">Specify clangd settings</a></li>
+<li translate="no"><a href="creator-build-dependencies.html">Specify dependencies</a></li>
+<li translate="no"><a href="creator-editor-settings.html">Specify editor settings</a></li>
+<li translate="no"><a href="creator-how-to-specify-project-contents.html">Specify project contents</a></li>
+<li translate="no"><a href="creator-how-to-specify-settings-for-quick-fixes.html">Specify settings for quick fixes</a></li>
+</ul>
+<h2 id="read-documentation">Read Documentation</h2>
+<p>Qt Creator integrates the reference documentation for the Qt versions that you install. You can add documentation from other sources.</p>
+<ul>
+<li translate="no"><a href="creator-how-to-add-bookmarks-to-help-pages.html">Add bookmarks to help pages</a></li>
+<li translate="no"><a href="creator-how-to-add-external-documentation.html">Add external documentation</a></li>
+<li translate="no"><a href="creator-how-to-detach-help-window.html">Detach the help window</a></li>
+<li translate="no"><a href="creator-how-to-filter-documentation.html">Filter documentation</a></li>
+<li translate="no"><a href="creator-how-to-find-info-in-documentation.html">Find information in Qt documentation</a></li>
+<li translate="no"><a href="creator-how-to-get-help.html">Get help</a></li>
+<li translate="no"><a href="creator-how-to-read-cmake-documentation.html">Read CMake documentation</a></li>
+<li translate="no"><a href="creator-how-to-search-from-docs.html">Search from documentation</a></li>
+<li translate="no"><a href="creator-how-to-set-help-start-page.html">Select the help start page</a></li>
+</ul>
+<h2 id="test">Test</h2>
+<p>Create and run <i>code based tests</i> and <i>build system based tests</i>. Code based testing offers special handling for particular testing frameworks that strongly ties to the underlying code models or specialized parsers. Build system based testing is independent from any testing frameworks. It retrieves information directly from the underlying build system and uses it or even the build system as such to execute the respective tests.</p>
+<ul>
+<li translate="no"><a href="creator-how-to-add-tests-to-projects.html">Add tests to existing test projects</a></li>
+<li translate="no"><a href="creator-how-to-build-and-run-tests.html">Build and run tests</a></li>
+<li translate="no"><a href="creator-how-to-create-boost-tests.html">Create Boost tests</a></li>
+<li translate="no"><a href="creator-how-to-create-ctests.html">Create CTest Based Tests</a></li>
+<li translate="no"><a href="creator-how-to-create-catch2-tests.html">Create Catch2 tests</a></li>
+<li translate="no"><a href="creator-how-to-create-google-tests.html">Create Google tests</a></li>
+<li translate="no"><a href="creator-how-to-create-qtquick-tests.html">Create Qt Quick tests</a></li>
+<li translate="no"><a href="creator-how-to-create-qt-tests.html">Create Qt tests</a></li>
+</ul>
+<h2 id="use-qt-creator">Use Qt Creator</h2>
+<p>Use basic Qt Creator features and preinstalled plugins. Install more plugins and configure external tools for use.</p>
+<ul>
+<li translate="no"><a href="collecting-usage-statistics.html">Collect usage statistics</a></li>
+<li translate="no"><a href="creator-how-to-contact-qt.html">Contact Qt</a></li>
+<li translate="no"><a href="creator-how-to-enable-plugins.html">Enable and disable plugins</a></li>
+<li translate="no"><a href="creator-how-to-find-settings-files.html">Find settings files</a></li>
+<li translate="no"><a href="creator-logging-viewer.html">Inspect internal logs</a></li>
+<li translate="no"><a href="creator-how-to-install.html">Install Qt Creator</a></li>
+<li translate="no"><a href="creator-how-to-install-plugins.html">Install plugins</a></li>
+<li translate="no"><a href="creator-telemetry.html">Manage data collection</a></li>
+<li translate="no"><a href="creator-project-managing-sessions.html">Manage sessions</a></li>
+<li translate="no"><a href="creator-how-to-record-screens.html">Record screens</a></li>
+<li translate="no"><a href="creator-how-to-run-from-cli.html">Run Qt Creator from the command line</a></li>
+<li translate="no"><a href="creator-how-to-set-up-vcs.html">Set up version control systems</a></li>
+<li translate="no"><a href="creator-how-to-use-qtlinguist.html">Use Qt Linguist</a></li>
+<li translate="no"><a href="creator-how-to-use-common-vcs-functions.html">Use common VCS functions</a></li>
+<li translate="no"><a href="creator-how-to-use-external-text-editors.html">Use external text editors</a></li>
+<li translate="no"><a href="creator-editor-external.html">Use external tools</a></li>
+</ul>
+<h2 id="use-the-ui">Use the UI</h2>
+<p>Navigate the UI or change its appearance and behavior.</p>
+<ul>
+<li translate="no"><a href="creator-how-to-assign-keyboard-shortcuts.html">Assign keyboard shortcuts</a></li>
+<li translate="no"><a href="creator-how-to-detach-views.html">Detach views</a></li>
+<li translate="no"><a href="creator-how-to-find-keyboard-shortcuts.html">Find keyboard shortcuts</a></li>
+<li translate="no"><a href="creator-how-to-find-preferences.html">Find preferences</a></li>
+<li translate="no"><a href="creator-how-to-set-high-dpi-scaling.html">Set high DPI scaling</a></li>
+<li translate="no"><a href="creator-how-to-set-recent-files.html">Set the number of recent files shown</a></li>
+<li translate="no"><a href="creator-how-to-show-and-hide-sidebars.html">Show and hide sidebars</a></li>
+<li translate="no"><a href="creator-how-to-show-and-hide-main-menu.html">Show and hide the main menu</a></li>
+<li translate="no"><a href="creator-task-lists.html">Show task list files in issues</a></li>
+<li translate="no"><a href="creator-how-to-switch-ui-themes.html">Switch UI themes</a></li>
+<li translate="no"><a href="creator-how-to-switch-between-modes.html">Switch between modes</a></li>
+<li translate="no"><a href="creator-how-to-view-output.html">View output</a></li>
+</ul>
+</div>
+<!-- @@@creator-how-tos.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-tutorials.html">Tutorials</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-reference.html">Reference</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

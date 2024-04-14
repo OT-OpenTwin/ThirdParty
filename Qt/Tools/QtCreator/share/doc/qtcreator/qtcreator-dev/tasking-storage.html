@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- tasktree.cpp -->
+  <meta name="description" content="A class template for custom data exchange in the running task tree.">
+  <title>Storage Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="taskingsolution-module.html" translate="no">TaskingSolution</a></li>
+<li>Storage</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">Storage Class</h1>
+<span class="small-subtitle" translate="no">template &lt;typename StorageStruct&gt; class <a href="tasking.html" translate="no">Tasking</a>::Storage</span>
+<!-- $$$Storage-brief -->
+<p>A class template for custom data exchange in the running task tree. <a href="#details">More...</a></p>
+<!-- @@@Storage -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;solutions/tasking/tasktree.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> Tasking::StorageBase</td></tr>
+</table></div>
+<ul>
+<li><a href="tasking-storage-members.html">List of all members, including inherited members</a></li>
+</ul>
+<p><b>Note:</b> All functions in this class are reentrant.</p>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="tasking-storage.html#Storage" translate="no">Storage</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> StorageStruct *</td><td class="memItemRight bottomAlign"><b><a href="tasking-storage.html#activeStorage" translate="no">activeStorage</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> StorageStruct &amp;</td><td class="memItemRight bottomAlign"><b><a href="tasking-storage.html#operator-2a" translate="no">operator*</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> StorageStruct *</td><td class="memItemRight bottomAlign"><b><a href="tasking-storage.html#operator--gt" translate="no">operator-&gt;</a></b>() const</td></tr>
+</table></div>
+<!-- $$$Storage-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The Storage class template is responsible for dynamically creating and destructing objects of the custom <code translate="no">StorageStruct</code> type. The creation and destruction are managed by the running task tree. If a Storage object is placed inside a <a href="tasking-group.html" translate="no">Group</a> element, the running task tree creates the <code translate="no">StorageStruct</code> object when the group is started and before the group's setup handler is called. Later, whenever any handler inside this group is called, the task tree activates the previously created instance of the <code translate="no">StorageStruct</code> object. This includes all tasks' and groups' setup and done handlers inside the group where the Storage object was placed, also within the nested groups. When a copy of the Storage object is passed to the handler via the lambda capture, the handler may access the instance activated by the running task tree via the <a href="tasking-storage.html#operator--gt" translate="no">operator-&gt;</a>(), <a href="tasking-storage.html#operator-2a" translate="no">operator*</a>(), or <a href="tasking-storage.html#activeStorage" translate="no">activeStorage</a>() method. If two handlers capture the same Storage object, one of them may store a custom data there, and the other may read it afterwards. When the group is finished, the previously created instance of the <code translate="no">StorageStruct</code> object is destroyed after the group's done handler is called.</p>
+<p>An example of data exchange between tasks:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">const</span> Storage<span class="operator">&lt;</span><span class="type">QString</span><span class="operator">&gt;</span> storage;
+
+ <span class="keyword">const</span> <span class="keyword">auto</span> onFirstDone <span class="operator">=</span> <span class="operator">[</span>storage<span class="operator">]</span>(<span class="keyword">const</span> Task <span class="operator">&amp;</span>task) {
+     <span class="comment">// Assings QString, taken from the first task result, to the active QString instance</span>
+     <span class="comment">// of the Storage object.</span>
+     <span class="operator">*</span>storage <span class="operator">=</span> task<span class="operator">.</span>getResultAsString();
+ };
+
+ <span class="keyword">const</span> <span class="keyword">auto</span> onSecondSetup <span class="operator">=</span> <span class="operator">[</span>storage<span class="operator">]</span>(Task <span class="operator">&amp;</span>task) {
+     <span class="comment">// Reads QString from the active QString instance of the Storage object and use it to</span>
+     <span class="comment">// configure the second task before start.</span>
+     task<span class="operator">.</span>configureWithString(<span class="operator">*</span>storage);
+ };
+
+ <span class="keyword">const</span> Group root {
+     <span class="comment">// The running task tree creates QString instance when root in entered</span>
+     storage<span class="operator">,</span>
+     <span class="comment">// The done handler of the first task stores the QString in the storage</span>
+     TaskItem(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">,</span> onFirstDone)<span class="operator">,</span>
+     <span class="comment">// The setup handler of the second task reads the QString from the storage</span>
+     TaskItem(onSecondSetup<span class="operator">,</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)
+ };
+</pre>
+<p>Since the root group executes its tasks sequentially, the <code translate="no">onFirstDone</code> handler is always called before the <code translate="no">onSecondSetup</code> handler. This means that the QString data, read from the <code translate="no">storage</code> inside the <code translate="no">onSecondSetup</code> handler's body, has already been set by the <code translate="no">onFirstDone</code> handler. You can always rely on it in <a href="tasking.html#sequential-var" translate="no">sequential</a> execution mode.</p>
+<p>The Storage internals are shared between all of its copies. That is why the copies of the Storage object inside the handlers' lambda captures still refer to the same Storage instance. You may place multiple Storage objects inside one <a href="tasking-group.html" translate="no">Group</a> element, provided that they do not include copies of the same Storage object. Otherwise, an assert is triggered at runtime that includes an error message. However, you can place copies of the same Storage object in different <a href="tasking-group.html" translate="no">Group</a> elements of the same recipe. In this case, the running task tree will create multiple instances of the <code translate="no">StorageStruct</code> objects (one for each copy) and storage shadowing will take place. Storage shadowing works in a similar way to C++ variable shadowing inside the nested blocks of code:</p>
+<pre class="cpp" translate="no">
+ Storage<span class="operator">&lt;</span><span class="type">QString</span><span class="operator">&gt;</span> storage;
+
+ <span class="keyword">const</span> Group root {
+     storage<span class="operator">,</span>                             <span class="comment">// Top copy, 1st instance of StorageStruct</span>
+     onGroupSetup(<span class="operator">[</span>storage<span class="operator">]</span> { <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span> })<span class="operator">,</span>     <span class="comment">// Top copy is active</span>
+     Group {
+         storage<span class="operator">,</span>                         <span class="comment">// Nested copy, 2nd instance of StorageStruct,</span>
+                                          <span class="comment">// shadows Top copy</span>
+         onGroupSetup(<span class="operator">[</span>storage<span class="operator">]</span> { <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span> })<span class="operator">,</span> <span class="comment">// Nested copy is active</span>
+     }<span class="operator">,</span>
+     Group {
+         onGroupSetup(<span class="operator">[</span>storage<span class="operator">]</span> { <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span> })<span class="operator">,</span> <span class="comment">// Top copy is active</span>
+     }
+ };
+</pre>
+<p>The Storage objects may also be used for passing the initial data to the executed task tree, and for reading the final data out of the task tree before it finishes. To do this, use <a href="tasking-tasktree.html#onStorageSetup" translate="no">onStorageSetup</a>() or <a href="tasking-tasktree.html#onStorageDone" translate="no">onStorageDone</a>(), respectively.</p>
+<div class="admonition note">
+<p><b>Note: </b>If you use an unreachable Storage object inside the handler, because you forgot to place the storage in the recipe, or placed it, but not in any handler's ancestor group, you may expect a crash, preceded by the following message: <i>The referenced storage is not reachable in the running tree. A nullptr will be returned which might lead to a crash in the calling code. It is possible that no storage was added to the tree, or the storage is not reachable from where it is referenced.</i></p>
+</div>
+</div>
+<!-- @@@Storage -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Storage[overload1]$$$Storage -->
+<h3 class="fn" translate="no" id="Storage">Storage::<span class="name">Storage</span>()</h3>
+<p>Creates a storage for the given <code translate="no">StorageStruct</code> type.</p>
+<div class="admonition note">
+<p><b>Note: </b>All copies of <code translate="no">this</code> object are considered to be the same Storage instance.</p>
+</div>
+<!-- @@@Storage -->
+<!-- $$$activeStorage[overload1]$$$activeStorage -->
+<h3 class="fn" translate="no" id="activeStorage"><span class="type">StorageStruct</span> *Storage::<span class="name">activeStorage</span>() const</h3>
+<p>Returns a <i>pointer</i> to the active <code translate="no">StorageStruct</code> object, created by the running task tree. Use this function only from inside the handler body of any <a href="tasking-groupitem.html" translate="no">GroupItem</a> element placed in the recipe, otherwise you may expect a crash. Make sure that Storage is placed in any group ancestor of the handler's group item.</p>
+<div class="admonition note">
+<p><b>Note: </b>The returned pointer is valid as long as the group that created this instance is still running.</p>
+</div>
+<p><b>See also </b><a href="tasking-storage.html#operator--gt" translate="no">operator-&gt;</a>() and <a href="tasking-storage.html#operator-2a" translate="no">operator*</a>().</p>
+<!-- @@@activeStorage -->
+<!-- $$$operator*[overload1]$$$operator* -->
+<h3 class="fn" translate="no" id="operator-2a"><code translate="no">[noexcept] </code><span class="type">StorageStruct</span> &amp;Storage::<span class="name">operator*</span>() const</h3>
+<p>Returns a <i>reference</i> to the active <code translate="no">StorageStruct</code> object, created by the running task tree. Use this function only from inside the handler body of any <a href="tasking-groupitem.html" translate="no">GroupItem</a> element placed in the recipe, otherwise you may expect a crash. Make sure that Storage is placed in any group ancestor of the handler's group item.</p>
+<div class="admonition note">
+<p><b>Note: </b>The returned reference is valid as long as the group that created this instance is still running.</p>
+</div>
+<p><b>See also </b><a href="tasking-storage.html#activeStorage" translate="no">activeStorage</a>() and <a href="tasking-storage.html#operator--gt" translate="no">operator-&gt;</a>().</p>
+<!-- @@@operator* -->
+<!-- $$$operator->[overload1]$$$operator-> -->
+<h3 class="fn" translate="no" id="operator--gt"><code translate="no">[noexcept] </code><span class="type">StorageStruct</span> *Storage::<span class="name">operator-&gt;</span>() const</h3>
+<p>Returns a <i>pointer</i> to the active <code translate="no">StorageStruct</code> object, created by the running task tree. Use this function only from inside the handler body of any <a href="tasking-groupitem.html" translate="no">GroupItem</a> element placed in the recipe, otherwise you may expect a crash. Make sure that Storage is placed in any group ancestor of the handler's group item.</p>
+<div class="admonition note">
+<p><b>Note: </b>The returned pointer is valid as long as the group that created this instance is still running.</p>
+</div>
+<p><b>See also </b><a href="tasking-storage.html#activeStorage" translate="no">activeStorage</a>() and <a href="tasking-storage.html#operator-2a" translate="no">operator*</a>().</p>
+<!-- @@@operator-> -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

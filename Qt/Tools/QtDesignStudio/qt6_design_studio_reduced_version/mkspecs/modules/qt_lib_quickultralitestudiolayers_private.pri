@@ -1,0 +1,11 @@
+QT.quickultralitestudiolayers_private.VERSION = 6.2.4
+QT.quickultralitestudiolayers_private.name = QtQuickUltraLiteStudioLayers
+QT.quickultralitestudiolayers_private.module =
+QT.quickultralitestudiolayers_private.libs = $$QT_MODULE_LIB_BASE
+QT.quickultralitestudiolayers_private.includes = 
+QT.quickultralitestudiolayers_private.frameworks = 
+QT.quickultralitestudiolayers_private.depends = quickultralitestudiolayers
+QT.quickultralitestudiolayers_private.uses = 
+QT.quickultralitestudiolayers_private.module_config = v2 internal_module
+QT.quickultralitestudiolayers_private.enabled_features = 
+QT.quickultralitestudiolayers_private.disabled_features = 

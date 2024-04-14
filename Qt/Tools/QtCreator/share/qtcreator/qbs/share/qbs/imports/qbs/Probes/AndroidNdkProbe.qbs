@@ -32,12 +32,12 @@
 import qbs.Environment
 import qbs.File
 import qbs.FileInfo
+import qbs.Host
 import qbs.TextFile
 import "../../../modules/Android/android-utils.js" as AndroidUtils
 
 PathProbe {
     // Inputs
-    property stringList hostOS: qbs.hostOS
     property path sdkPath
 
     environmentPaths: Environment.getEnv("ANDROID_NDK_ROOT")
@@ -45,13 +45,13 @@ PathProbe {
         var paths = [];
         if (sdkPath)
             paths.push(FileInfo.joinPaths(sdkPath, "ndk-bundle"));
-        if (qbs.hostOS.contains("windows"))
+        if (Host.os().contains("windows"))
             paths.push(FileInfo.joinPaths(Environment.getEnv("LOCALAPPDATA"),
                                           "Android", "sdk", "ndk-bundle"));
-        if (qbs.hostOS.contains("macos"))
+        if (Host.os().contains("macos"))
             paths.push(FileInfo.joinPaths(Environment.getEnv("HOME"),
                                           "Library", "Android", "sdk", "ndk-bundle"));
-        if (qbs.hostOS.contains("linux"))
+        if (Host.os().contains("linux"))
             paths.push(FileInfo.joinPaths(Environment.getEnv("HOME"),
                                           "Android", "Sdk", "ndk-bundle"));
         return paths;
@@ -63,7 +63,6 @@ PathProbe {
     property var hostArch
     property stringList toolchains: []
     property string ndkVersion
-    property string ndkPlatform
 
     configure: {
         function readFileContent(filePath) {
@@ -84,18 +83,15 @@ PathProbe {
         candidatePaths = allPaths;
         for (i in allPaths) {
             var platforms = [];
-            if (hostOS.contains("windows"))
+            if (Host.os().contains("windows"))
                 platforms.push("windows-x86_64", "windows");
-            if (hostOS.contains("darwin"))
+            if (Host.os().contains("darwin"))
                 platforms.push("darwin-x86_64", "darwin-x86");
-            if (hostOS.contains("linux"))
+            if (Host.os().contains("linux"))
                 platforms.push("linux-x86_64", "linux-x86");
             for (j in platforms) {
                 if (File.exists(FileInfo.joinPaths(allPaths[i], "prebuilt", platforms[j]))) {
                     path = allPaths[i];
-                    var ndkPlatforms = AndroidUtils.availablePlatforms(path);
-                    if (ndkPlatforms.length > 0)
-                        ndkPlatform = ndkPlatforms[ndkPlatforms.length - 1];
                     if (File.exists(FileInfo.joinPaths(path, "samples")))
                         samplesDir = FileInfo.joinPaths(path, "samples"); // removed in r11
                     hostArch = platforms[j];

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- icontext.cpp -->
+  <meta name="description" content="The Context class implements a list of context IDs.">
+  <title>Context Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>Context</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">Context Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::Context</span>
+<!-- $$$Context-brief -->
+<p>The Context class implements a list of context IDs. <a href="#details">More...</a></p>
+<!-- @@@Context -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/icontext.h&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="core-context-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-context.html#const_iterator-typedef" translate="no">const_iterator</a></b></td></tr>
+</table></div>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-context.html#Context" translate="no">Context</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-context.html#Context-1" translate="no">Context</a></b>(Utils::Id <i>c1</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-context.html#Context-2" translate="no">Context</a></b>(Utils::Id <i>c1</i>, Utils::Id <i>c2</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-context.html#Context-3" translate="no">Context</a></b>(Utils::Id <i>c1</i>, Utils::Id <i>c2</i>, Utils::Id <i>c3</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-context.html#add" translate="no">add</a></b>(const Core::Context &amp;<i>c</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-context.html#add-1" translate="no">add</a></b>(Utils::Id <i>c</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Id </td><td class="memItemRight bottomAlign"><b><a href="core-context.html#at" translate="no">at</a></b>(int <i>i</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::Context::const_iterator </td><td class="memItemRight bottomAlign"><b><a href="core-context.html#begin" translate="no">begin</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-context.html#contains" translate="no">contains</a></b>(Utils::Id <i>c</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::Context::const_iterator </td><td class="memItemRight bottomAlign"><b><a href="core-context.html#end" translate="no">end</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="core-context.html#indexOf" translate="no">indexOf</a></b>(Utils::Id <i>c</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-context.html#isEmpty" translate="no">isEmpty</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-context.html#prepend" translate="no">prepend</a></b>(Utils::Id <i>c</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-context.html#removeAt" translate="no">removeAt</a></b>(int <i>i</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="core-context.html#size" translate="no">size</a></b>() const</td></tr>
+</table></div>
+<!-- $$$Context-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Contexts are used for registering actions with <a href="core-actionmanager.html" translate="no">Core::ActionManager</a>, and when creating UI elements that provide a context for actions.</p>
+<p>See <a href="actionmanager.html" translate="no">The Action Manager and Commands</a> for an overview of how contexts are used.</p>
+</div>
+<p><b>See also </b><a href="core-icontext.html" translate="no">Core::IContext</a>, <a href="core-actionmanager.html" translate="no">Core::ActionManager</a>, and <a href="actionmanager.html" translate="no">The Action Manager and Commands</a>.</p>
+<!-- @@@Context -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$const_iterator -->
+<h3 class="fn" translate="no" id="const_iterator-typedef"><code translate="no">[alias] </code>Context::<span class="name">const_iterator</span></h3>
+<p>The Context::const_iterator provides an STL-style const interator for Context.</p>
+<!-- @@@const_iterator -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Context[overload1]$$$Context -->
+<h3 class="fn" translate="no" id="Context">Context::<span class="name">Context</span>()</h3>
+<p>Creates a context list that represents the global context.</p>
+<!-- @@@Context -->
+<!-- $$$Context$$$ContextUtils::Id -->
+<h3 class="fn" translate="no" id="Context-1"><code translate="no">[explicit] </code>Context::<span class="name">Context</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>c1</i>)</h3>
+<p>Creates a context list with a single ID <i translate="no">c1</i>.</p>
+<!-- @@@Context -->
+<!-- $$$Context$$$ContextUtils::IdUtils::Id -->
+<h3 class="fn" translate="no" id="Context-2">Context::<span class="name">Context</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>c1</i>, <span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>c2</i>)</h3>
+<p>Creates a context list with IDs <i translate="no">c1</i> and <i translate="no">c2</i>.</p>
+<!-- @@@Context -->
+<!-- $$$Context$$$ContextUtils::IdUtils::IdUtils::Id -->
+<h3 class="fn" translate="no" id="Context-3">Context::<span class="name">Context</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>c1</i>, <span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>c2</i>, <span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>c3</i>)</h3>
+<p>Creates a context list with IDs <i translate="no">c1</i>, <i translate="no">c2</i> and <i translate="no">c3</i>.</p>
+<!-- @@@Context -->
+<!-- $$$add[overload1]$$$addconstCore::Context& -->
+<h3 class="fn" translate="no" id="add"><span class="type">void</span> Context::<span class="name">add</span>(const <span class="type"><a href="core-context.html" translate="no">Core::Context</a></span> &amp;<i>c</i>)</h3>
+<p>Adds the context list <i translate="no">c</i> at the end of this context list.</p>
+<!-- @@@add -->
+<!-- $$$add$$$addUtils::Id -->
+<h3 class="fn" translate="no" id="add-1"><span class="type">void</span> Context::<span class="name">add</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>c</i>)</h3>
+<p>Adds the ID <i translate="no">c</i> at the end of the context list.</p>
+<!-- @@@add -->
+<!-- $$$at[overload1]$$$atint -->
+<h3 class="fn" translate="no" id="at"><span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> Context::<span class="name">at</span>(<span class="type">int</span> <i>i</i>) const</h3>
+<p>Returns the ID at index <i translate="no">i</i> in the context list.</p>
+<!-- @@@at -->
+<!-- $$$begin[overload1]$$$begin -->
+<h3 class="fn" translate="no" id="begin"><span class="type"><a href="core-context.html#const_iterator-typedef" translate="no">Core::Context::const_iterator</a></span> Context::<span class="name">begin</span>() const</h3>
+<p>Returns an STL-style iterator pointing to the first ID in the context list.</p>
+<!-- @@@begin -->
+<!-- $$$contains[overload1]$$$containsUtils::Id -->
+<h3 class="fn" translate="no" id="contains"><span class="type">bool</span> Context::<span class="name">contains</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>c</i>) const</h3>
+<p>Returns whether this context list contains the ID <i translate="no">c</i>.</p>
+<!-- @@@contains -->
+<!-- $$$end[overload1]$$$end -->
+<h3 class="fn" translate="no" id="end"><span class="type"><a href="core-context.html#const_iterator-typedef" translate="no">Core::Context::const_iterator</a></span> Context::<span class="name">end</span>() const</h3>
+<p>Returns an STL-style iterator pointing to the imaginary item after the last ID in the context list.</p>
+<!-- @@@end -->
+<!-- $$$indexOf[overload1]$$$indexOfUtils::Id -->
+<h3 class="fn" translate="no" id="indexOf"><span class="type">int</span> Context::<span class="name">indexOf</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>c</i>) const</h3>
+<p>Returns the index position of the ID <i translate="no">c</i> in the context list. Returns -1 if no item matched.</p>
+<!-- @@@indexOf -->
+<!-- $$$isEmpty[overload1]$$$isEmpty -->
+<h3 class="fn" translate="no" id="isEmpty"><span class="type">bool</span> Context::<span class="name">isEmpty</span>() const</h3>
+<p>Returns whether this context list is empty and therefore default constructed.</p>
+<!-- @@@isEmpty -->
+<!-- $$$prepend[overload1]$$$prependUtils::Id -->
+<h3 class="fn" translate="no" id="prepend"><span class="type">void</span> Context::<span class="name">prepend</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>c</i>)</h3>
+<p>Adds the ID <i translate="no">c</i> as the first item to the context list.</p>
+<!-- @@@prepend -->
+<!-- $$$removeAt[overload1]$$$removeAtint -->
+<h3 class="fn" translate="no" id="removeAt"><span class="type">void</span> Context::<span class="name">removeAt</span>(<span class="type">int</span> <i>i</i>)</h3>
+<p>Removes the ID at index <i translate="no">i</i> from the context list.</p>
+<!-- @@@removeAt -->
+<!-- $$$size[overload1]$$$size -->
+<h3 class="fn" translate="no" id="size"><span class="type">int</span> Context::<span class="name">size</span>() const</h3>
+<p>Returns the number of IDs in the context list.</p>
+<!-- @@@size -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

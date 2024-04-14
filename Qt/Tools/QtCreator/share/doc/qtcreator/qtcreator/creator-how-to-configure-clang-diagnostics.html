@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-clang-static-analyzer.qdoc -->
+  <title>Configure Clang diagnostics | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Configure Clang diagnostics</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level2"><a href="#suppressing-diagnostics">Suppressing Diagnostics</a></li>
+<li class="level2"><a href="#selecting-clazy-check-levels">Selecting Clazy Check Levels</a></li>
+<li class="level2"><a href="#creating-clang-tidy-configuration-files">Creating Clang-Tidy Configuration Files</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Configure Clang diagnostics</h1>
+<!-- $$$creator-how-to-configure-clang-diagnostics.html-description -->
+<div class="descr" id="details">
+<p>Detect problems in C, C++, and Objective-C programs with Clang-Tidy and Clazy.</p>
+<p>To select and edit the Clang checks to perform:</p>
+<ol class="1" type="1"><li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Analyzer</b> &gt; <b translate="no">Clang Tools</b>.<p class="centerAlign"><img src="images/qtcreator-preferences-analyzer-clang-tools.webp" alt="{Clang Tools preferences}" /></p></li>
+<li>The <b translate="no">Diagnostic configuration</b> field shows the checks to perform. Click the value of the field to open the <b translate="no">Diagnostic Configurations</b> dialog, where you can select and edit the checks to perform.<p class="centerAlign"><img src="images/qtcreator-clang-tools-diagnostics-configuration.png" alt="{Diagnostics Configuration dialog}" /></p><p>To perform checks from a Clang-Tidy configuration file instead, select <b translate="no">Prefer .clang-tidy file, if present</b> in the <b translate="no">Clang Tools</b> tab.</p>
+</li>
+<li>Select <b translate="no">Copy</b> to copy the selected diagnostics for editing.<p class="centerAlign"><img src="images/qtcreator-clang-copy-diagnostic-configuration.png" alt="{Copy Diagnostic Configuration dialog}" /></p></li>
+<li>In the <b translate="no">Diagnostic configuration name</b> field, give the configuration a name, and then select <b translate="no">OK</b>.</li>
+<li>In the <b translate="no">Clang Warnings</b> tab, select the <b translate="no">Use diagnostic flags from the build system</b> check box to forward diagnostic flags, such as warning flags, from the build system to the Clang code model for displaying annotations in the code editor.</li>
+<li>In the <b translate="no">Clang-Tidy Checks</b> tab, select <b translate="no">Select Checks</b> to select the checks to perform. To filter the checks, enter a string in the <b translate="no">Filter by name</b> field.<p class="centerAlign"><img src="images/qtcreator-clang-tidy.png" alt="{Clang-Tidy Checks tab}" /></p><p>For more information about the available checkers, see <a href="https://clang-analyzer.llvm.org/available_checks.html" translate="no">Clang Static Analyzer documentation</a>.</p>
+</li>
+<li>To edit the selected checks as plain text, select <b translate="no">Edit Checks as String</b>.</li>
+<li>In the <b translate="no">Clazy Checks</b> tab, select the level of Clazy checks to perform.<p class="centerAlign"><img src="images/qtcreator-clazy.webp" alt="{Clazy Checks tab}" /></p></li>
+<li>To edit the selected checks as plain text, select <b translate="no">Edit Checks as String</b>.</li>
+<li>In the <b translate="no">Filters</b> field, select topics to view only checks related to those areas in the <b translate="no">Checks</b> field. To filter the checks in the selected areas, enter a string in the <b translate="no">Filter by name</b> field.</li>
+<li>To view all checks again, select <b translate="no">Reset Topic Filter</b>.</li>
+<li>To view more information about the checks online, select the <b translate="no">Web Page</b> links next to them.</li>
+</ol>
+<h3 id="suppressing-diagnostics">Suppressing Diagnostics</h3>
+<p>To suppress diagnostics, select <b translate="no">Suppress This Diagnostic</b> in the context menu. To view the suppression list for a project and to remove diagnostics from it, select <b translate="no">Projects</b> &gt; <b translate="no">Project Settings</b> &gt; <b translate="no">Clang Tools</b>.</p>
+<h3 id="selecting-clazy-check-levels">Selecting Clazy Check Levels</h3>
+<p>The Clazy checks are divided into levels from 0 to 3. The checks at level 0 are very stable and show hardly any false positives, while the checks at level 3 are experimental. You can select the checks to perform at each level. To include the checks from the lower levels automatically, select the <b translate="no">Enable lower levels automatically</b> check box.</p>
+<h3 id="creating-clang-tidy-configuration-files">Creating Clang-Tidy Configuration Files</h3>
+<p>Clang-Tidy reads the configuration for each source file from a .clang-tidy file located in the closest parent directory of the source file. If any configuration options have a corresponding command-line option, the command-line option takes precedence. The effective configuration can be inspected using <code translate="no">-dump-config</code>.</p>
+<p>Qt Creator creates the configuration for you based on the checks you select. To store the checks in file format, you can create a .clang-tidy file, as follows:</p>
+<ol class="1" type="1"><li>Select <b translate="no">Edit Checks as String</b> and copy the contents of the field.</li>
+<li>Pipe the output of <code translate="no">clang-tidy -dump-config</code> into a file named <code translate="no">.clang-tidy</code>. For example: <code translate="no">clang-tidy -checks=-*,bugprone-*,cppcoreguidelines-avoid-* -dump-config &gt; .clang-tidy</code></li>
+<li>Move the .clang-tidy file to the parent directory of the sources.</li>
+</ol>
+<p>To add more checks using Qt Creator later on, copy the checks from your .clang-tidy file into the <b translate="no">Edit Checks as String</b> field, select additional checks, and copy-paste the contents of the field to the .clang-tidy file.</p>
+</div>
+<p><b>See also </b><a href="creator-clang-tools.html" translate="no">Analyze code with Clang-Tidy and Clazy</a>, <a href="creator-how-to-override-clang-tools-preferences.html" translate="no">Specify Clang tools settings</a>, and <a href="creator-preferences-analyzer-clang-tools.html" translate="no">Clang Tools</a>.</p>
+<!-- @@@creator-how-to-configure-clang-diagnostics.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- actioncontainer.cpp -->
+  <meta name="description" content="The ActionContainer class represents a menu or menu bar in Qt Creator.">
+  <title>ActionContainer Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>ActionContainer</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">ActionContainer Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::ActionContainer</span>
+<!-- $$$ActionContainer-brief -->
+<p>The ActionContainer class represents a menu or menu bar in Qt Creator. <a href="#details">More...</a></p>
+<!-- @@@ActionContainer -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/actionmanager/actioncontainer.h&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="core-actioncontainer-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="core-actioncontainer.html#OnAllDisabledBehavior-enum" translate="no">OnAllDisabledBehavior</a></b> { Disable, Hide, Show }</td></tr>
+</table></div>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-actioncontainer.html#addAction" translate="no">addAction</a></b>(Core::Command *<i>action</i>, Utils::Id <i>group</i> = Id()) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-actioncontainer.html#addMenu" translate="no">addMenu</a></b>(Core::ActionContainer *<i>menu</i>, Utils::Id <i>group</i> = Utils::Id()) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-actioncontainer.html#addMenu-1" translate="no">addMenu</a></b>(Core::ActionContainer *<i>before</i>, Core::ActionContainer *<i>menu</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::Command *</td><td class="memItemRight bottomAlign"><b><a href="core-actioncontainer.html#addSeparator" translate="no">addSeparator</a></b>(Utils::Id <i>group</i> = {})</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Core::Command *</td><td class="memItemRight bottomAlign"><b><a href="core-actioncontainer.html#addSeparator-1" translate="no">addSeparator</a></b>(const Core::Context &amp;<i>context</i>, Utils::Id <i>group</i> = {}, QAction **<i>outSeparator</i> = nullptr) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-actioncontainer.html#appendGroup" translate="no">appendGroup</a></b>(Utils::Id <i>group</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-actioncontainer.html#clear" translate="no">clear</a></b>() = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-actioncontainer.html#insertGroup" translate="no">insertGroup</a></b>(Utils::Id <i>before</i>, Utils::Id <i>group</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QAction *</td><td class="memItemRight bottomAlign"><b><a href="core-actioncontainer.html#insertLocation" translate="no">insertLocation</a></b>(Utils::Id <i>group</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QMenu *</td><td class="memItemRight bottomAlign"><b><a href="core-actioncontainer.html#menu" translate="no">menu</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QMenuBar *</td><td class="memItemRight bottomAlign"><b><a href="core-actioncontainer.html#menuBar" translate="no">menuBar</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual ActionContainer::OnAllDisabledBehavior </td><td class="memItemRight bottomAlign"><b><a href="core-actioncontainer.html#onAllDisabledBehavior" translate="no">onAllDisabledBehavior</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-actioncontainer.html#setOnAllDisabledBehavior" translate="no">setOnAllDisabledBehavior</a></b>(Core::ActionContainer::OnAllDisabledBehavior <i>behavior</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Utils::TouchBar *</td><td class="memItemRight bottomAlign"><b><a href="core-actioncontainer.html#touchBar" translate="no">touchBar</a></b>() const = 0</td></tr>
+</table></div>
+<!-- $$$ActionContainer-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>You don't create instances of this class directly, but instead use the <a href="core-actionmanager.html#createMenu" translate="no">ActionManager::createMenu</a>(), <a href="core-actionmanager.html#createMenuBar" translate="no">ActionManager::createMenuBar</a>() and <a href="core-actionmanager.html#createTouchBar" translate="no">ActionManager::createTouchBar</a>() functions. Retrieve existing action containers for an ID with <a href="core-actionmanager.html#actionContainer" translate="no">ActionManager::actionContainer</a>().</p>
+<p>Within a menu or menu bar you can group menus and items together by defining groups (the order of the groups is defined by the order of the <a href="core-actioncontainer.html#appendGroup" translate="no">ActionContainer::appendGroup</a>() calls), and adding menus or actions to these groups. If no custom groups are defined, an action container has three default groups <code translate="no">Core::Constants::G_DEFAULT_ONE</code>, <code translate="no">Core::Constants::G_DEFAULT_TWO</code> and <code translate="no">Core::Constants::G_DEFAULT_THREE</code>.</p>
+<p>You can specify whether the menu represented by this action container should be automatically disabled or hidden whenever it only contains disabled items and submenus by setting the corresponding <a href="core-actioncontainer.html#setOnAllDisabledBehavior" translate="no">setOnAllDisabledBehavior</a>(). The default is <a href="core-actioncontainer.html#OnAllDisabledBehavior-enum" translate="no">ActionContainer::Disable</a> for menus, and <a href="core-actioncontainer.html#OnAllDisabledBehavior-enum" translate="no">ActionContainer::Show</a> for menu bars.</p>
+</div>
+<!-- @@@ActionContainer -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$OnAllDisabledBehavior$$$Disable$$$Hide$$$Show -->
+<h3 class="fn" translate="no" id="OnAllDisabledBehavior-enum">enum ActionContainer::<span class="name">OnAllDisabledBehavior</span></h3>
+<p>Defines what happens when the represented menu is empty or contains only disabled or invisible items.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Core::ActionContainer::Disable</code></td><td class="topAlign tblval"><code translate="no">0</code></td><td class="topAlign">The menu will be visible but disabled.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::ActionContainer::Hide</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">The menu will not be visible until the state of the subitems changes.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::ActionContainer::Show</code></td><td class="topAlign tblval"><code translate="no">2</code></td><td class="topAlign">The menu will still be visible and active.</td></tr>
+</table></div>
+<!-- @@@OnAllDisabledBehavior -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$addAction[overload1]$$$addActionCore::Command*Utils::Id -->
+<h3 class="fn" translate="no" id="addAction"><code translate="no">[pure virtual] </code><span class="type">void</span> ActionContainer::<span class="name">addAction</span>(<span class="type"><a href="core-command.html" translate="no">Core::Command</a></span> *<i>action</i>, <span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>group</i> = Id())</h3>
+<p>Add the <i translate="no">action</i> as a menu item to this action container. The action is added as the last item of the specified <i translate="no">group</i>.</p>
+<p><b>See also </b><a href="core-actioncontainer.html#appendGroup" translate="no">appendGroup</a>() and <a href="core-actioncontainer.html#addMenu" translate="no">addMenu</a>().</p>
+<!-- @@@addAction -->
+<!-- $$$addMenu[overload1]$$$addMenuCore::ActionContainer*Utils::Id -->
+<h3 class="fn" translate="no" id="addMenu"><code translate="no">[pure virtual] </code><span class="type">void</span> ActionContainer::<span class="name">addMenu</span>(<span class="type"><a href="core-actioncontainer.html" translate="no">Core::ActionContainer</a></span> *<i>menu</i>, <span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>group</i> = Utils::Id())</h3>
+<p>Add the <i translate="no">menu</i> as a submenu to this action container. The menu is added as the last item of the specified <i translate="no">group</i>.</p>
+<p><b>See also </b><a href="core-actioncontainer.html#appendGroup" translate="no">appendGroup</a>() and <a href="core-actioncontainer.html#addAction" translate="no">addAction</a>().</p>
+<!-- @@@addMenu -->
+<!-- $$$addMenu$$$addMenuCore::ActionContainer*Core::ActionContainer* -->
+<h3 class="fn" translate="no" id="addMenu-1"><code translate="no">[pure virtual] </code><span class="type">void</span> ActionContainer::<span class="name">addMenu</span>(<span class="type"><a href="core-actioncontainer.html" translate="no">Core::ActionContainer</a></span> *<i>before</i>, <span class="type"><a href="core-actioncontainer.html" translate="no">Core::ActionContainer</a></span> *<i>menu</i>)</h3>
+<p>Add <i translate="no">menu</i> as a submenu to this action container before the menu specified by <i translate="no">before</i>.</p>
+<p><b>See also </b><a href="core-actioncontainer.html#appendGroup" translate="no">appendGroup</a>() and <a href="core-actioncontainer.html#addAction" translate="no">addAction</a>().</p>
+<!-- @@@addMenu -->
+<!-- $$$addSeparator[overload1]$$$addSeparatorUtils::Id -->
+<h3 class="fn" translate="no" id="addSeparator"><span class="type"><a href="core-command.html" translate="no">Core::Command</a></span> *ActionContainer::<span class="name">addSeparator</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>group</i> = {})</h3>
+<p>Adds a separator to the end of <i translate="no">group</i> to the action container.</p>
+<p>Returns the created separator.</p>
+<!-- @@@addSeparator -->
+<!-- $$$addSeparator$$$addSeparatorconstCore::Context&Utils::IdQAction** -->
+<h3 class="fn" translate="no" id="addSeparator-1"><code translate="no">[pure virtual] </code><span class="type"><a href="core-command.html" translate="no">Core::Command</a></span> *ActionContainer::<span class="name">addSeparator</span>(const <span class="type"><a href="core-context.html" translate="no">Core::Context</a></span> &amp;<i>context</i>, <span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>group</i> = {}, <span class="type">QAction</span> **<i>outSeparator</i> = nullptr)</h3>
+<p>Adds a separator to the end of the given <i translate="no">group</i> to the action container, which is enabled for a given <i translate="no">context</i>. Returns the created separator action, <i translate="no">outSeparator</i>.</p>
+<!-- @@@addSeparator -->
+<!-- $$$appendGroup[overload1]$$$appendGroupUtils::Id -->
+<h3 class="fn" translate="no" id="appendGroup"><code translate="no">[pure virtual] </code><span class="type">void</span> ActionContainer::<span class="name">appendGroup</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>group</i>)</h3>
+<p>Adds <i translate="no">group</i> to the action container.</p>
+<p>Use groups to segment your action container into logical parts. You can add actions and menus directly into groups.</p>
+<p><b>See also </b><a href="core-actioncontainer.html#addAction" translate="no">addAction</a>() and <a href="core-actioncontainer.html#addMenu" translate="no">addMenu</a>().</p>
+<!-- @@@appendGroup -->
+<!-- $$$clear[overload1]$$$clear -->
+<h3 class="fn" translate="no" id="clear"><code translate="no">[pure virtual] </code><span class="type">void</span> ActionContainer::<span class="name">clear</span>()</h3>
+<p>Clears this menu and submenus from all actions and submenus. However, does does not destroy the submenus and commands, just removes them from their parents.</p>
+<!-- @@@clear -->
+<!-- $$$insertGroup[overload1]$$$insertGroupUtils::IdUtils::Id -->
+<h3 class="fn" translate="no" id="insertGroup"><code translate="no">[pure virtual] </code><span class="type">void</span> ActionContainer::<span class="name">insertGroup</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>before</i>, <span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>group</i>)</h3>
+<p>Inserts <i translate="no">group</i> to the action container before the group specified by <i translate="no">before</i>.</p>
+<!-- @@@insertGroup -->
+<!-- $$$insertLocation[overload1]$$$insertLocationUtils::Id -->
+<h3 class="fn" translate="no" id="insertLocation"><code translate="no">[pure virtual] </code><span class="type">QAction</span> *ActionContainer::<span class="name">insertLocation</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>group</i>) const</h3>
+<p>Returns an action representing the <i translate="no">group</i>, that could be used with <code translate="no">QWidget::insertAction</code>.</p>
+<!-- @@@insertLocation -->
+<!-- $$$menu[overload1]$$$menu -->
+<h3 class="fn" translate="no" id="menu"><code translate="no">[pure virtual] </code><span class="type">QMenu</span> *ActionContainer::<span class="name">menu</span>() const</h3>
+<p>Returns the QMenu instance that is represented by this action container, or 0 if this action container represents a menu bar.</p>
+<!-- @@@menu -->
+<!-- $$$menuBar[overload1]$$$menuBar -->
+<h3 class="fn" translate="no" id="menuBar"><code translate="no">[pure virtual] </code><span class="type">QMenuBar</span> *ActionContainer::<span class="name">menuBar</span>() const</h3>
+<p>Returns the QMenuBar instance that is represented by this action container, or 0 if this action container represents a menu.</p>
+<!-- @@@menuBar -->
+<!-- $$$onAllDisabledBehavior[overload1]$$$onAllDisabledBehavior -->
+<h3 class="fn" translate="no" id="onAllDisabledBehavior"><code translate="no">[pure virtual] </code><span class="type"><a href="core-actioncontainer.html#OnAllDisabledBehavior-enum" translate="no">ActionContainer::OnAllDisabledBehavior</a></span> ActionContainer::<span class="name">onAllDisabledBehavior</span>() const</h3>
+<p>Returns the behavior of the menu represented by this action container for the case whenever it only contains disabled items and submenus. The default is <a href="core-actioncontainer.html#OnAllDisabledBehavior-enum" translate="no">ActionContainer::Disable</a> for menus, and <a href="core-actioncontainer.html#OnAllDisabledBehavior-enum" translate="no">ActionContainer::Show</a> for menu bars.</p>
+<p><b>See also </b><a href="core-actioncontainer.html#OnAllDisabledBehavior-enum" translate="no">OnAllDisabledBehavior</a> and <a href="core-actioncontainer.html#setOnAllDisabledBehavior" translate="no">setOnAllDisabledBehavior</a>().</p>
+<!-- @@@onAllDisabledBehavior -->
+<!-- $$$setOnAllDisabledBehavior[overload1]$$$setOnAllDisabledBehaviorCore::ActionContainer::OnAllDisabledBehavior -->
+<h3 class="fn" translate="no" id="setOnAllDisabledBehavior"><code translate="no">[pure virtual] </code><span class="type">void</span> ActionContainer::<span class="name">setOnAllDisabledBehavior</span>(<span class="type"><a href="core-actioncontainer.html#OnAllDisabledBehavior-enum" translate="no">Core::ActionContainer::OnAllDisabledBehavior</a></span> <i>behavior</i>)</h3>
+<p>Defines the <i translate="no">behavior</i> of the menu represented by this action container for the case whenever it only contains disabled items and submenus. The default is <a href="core-actioncontainer.html#OnAllDisabledBehavior-enum" translate="no">ActionContainer::Disable</a> for menus, and <a href="core-actioncontainer.html#OnAllDisabledBehavior-enum" translate="no">ActionContainer::Show</a> for menu bars.</p>
+<p><b>See also </b><a href="core-actioncontainer.html#OnAllDisabledBehavior-enum" translate="no">ActionContainer::OnAllDisabledBehavior</a> and <a href="core-actioncontainer.html#onAllDisabledBehavior" translate="no">ActionContainer::onAllDisabledBehavior</a>().</p>
+<!-- @@@setOnAllDisabledBehavior -->
+<!-- $$$touchBar[overload1]$$$touchBar -->
+<h3 class="fn" translate="no" id="touchBar"><code translate="no">[pure virtual] </code><span class="type">Utils::TouchBar</span> *ActionContainer::<span class="name">touchBar</span>() const</h3>
+<p>Returns the touch bar that is represented by this action container.</p>
+<!-- @@@touchBar -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

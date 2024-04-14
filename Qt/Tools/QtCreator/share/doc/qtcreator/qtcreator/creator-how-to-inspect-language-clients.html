@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-language-server.qdoc -->
+  <title>Inspect language clients | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Inspect language clients</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#check-language-server-capabilities">Check language server capabilities</a></li>
+<li class="level1"><a href="#inspect-memory-usage">Inspect memory usage</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Inspect language clients</h1>
+<!-- $$$creator-how-to-inspect-language-clients.html-description -->
+<div class="descr" id="details">
+<p>Qt Creator sends messages (<i>requests</i>) to a <a href="creator-language-servers.html" translate="no">language server</a> and receives responses that have the requested information if the language server is capable of handling the requests. To inspect the communication between Qt Creator and language servers and to view server capabilities, select <b translate="no">Tools</b> &gt; <b translate="no">Debug Qt Creator</b> &gt; <b translate="no">Inspect Language Clients</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-language-client-inspector-log.webp" alt="{Language Client Inspector dialog}" /></p><p>Select a running language server in <b translate="no">Language Server</b>. The information displayed depends on the language server.</p>
+<p>For a generic language server, the value of the <b translate="no">Startup behavior</b> field in the <a href="creator-how-to-add-generic-language-servers.html" translate="no">language server preferences</a> determines when the server is started. To restart language servers, select <img src="images/languageclient.png" alt="" /> on the <a href="creator-coding-navigating.html" translate="no">editor toolbar</a>, and go to <b translate="no">Restart</b>.</p>
+<p><b translate="no">Log</b> displays additional information about the selected log entry. You can see the <b translate="no">Content length</b> and <b translate="no">MIME type</b> of a <b translate="no">Client Message</b> and <b translate="no">Server Message</b>, as well as inspect the data sent between Qt Creator and the language server.</p>
+<p>To remove old entries, select <b translate="no">Clear</b>.</p>
+<h2 id="check-language-server-capabilities">Check language server capabilities</h2>
+<p>In <b translate="no">Capabilities</b>, you can check whether a language server is capable of a specific task. You cannot modify the server capabilities in this dialog.</p>
+<p>You can view the <b translate="no">Name</b>, <b translate="no">Value</b>, and <b translate="no">Type</b> of the capability.</p>
+<p class="centerAlign"><img src="images/qtcreator-language-client-inspector-capabilities.webp" alt="{Language Client Inspector Capabilities tab}" /></p><p>For some language servers, <b translate="no">Dynamic Capabilities</b> lists the <b translate="no">Methods</b> and <b translate="no">Options</b> available.</p>
+<h2 id="inspect-memory-usage">Inspect memory usage</h2>
+<p>For a clangd server, you can inspect the total amount of memory used by a particular component in <b translate="no">Memory Usage</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-language-client-inspector-memory-usage.webp" alt="{Language Client Inspector Memory Usage tab}" /></p></div>
+<p><b>See also </b><a href="creator-how-tos.html#manage-language-servers" translate="no">How To: Manage Language Servers</a> and <a href="creator-language-servers.html" translate="no">Language Servers</a>.</p>
+<!-- @@@creator-how-to-inspect-language-clients.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

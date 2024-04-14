@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- persistentsettings.cpp -->
+  <meta name="description" content="The PersistentSettingsReader class reads a QVariantMap of arbitrary, nested data structures from an XML file.">
+  <title>PersistentSettingsReader Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>PersistentSettingsReader</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">PersistentSettingsReader Class</h1>
+<span class="small-subtitle" translate="no">class <a href="utils.html" translate="no">Utils</a>::PersistentSettingsReader</span>
+<!-- $$$PersistentSettingsReader-brief -->
+<p>The PersistentSettingsReader class reads a <a href="https://doc.qt.io/qt/qvariant.html#QVariantMap-typedef" translate="no">QVariantMap</a> of arbitrary, nested data structures from an XML file. <a href="#details">More...</a></p>
+<!-- @@@PersistentSettingsReader -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;PersistentSettingsReader&gt;</span></td></tr>
+</table></div>
+<!-- $$$PersistentSettingsReader-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Handles all string-serializable simple types and <a href="https://doc.qt.io/qt/qvariant.html#QVariantList-typedef" translate="no">QVariantList</a> and <a href="https://doc.qt.io/qt/qvariant.html#QVariantMap-typedef" translate="no">QVariantMap</a>. Example:</p>
+<pre class="cpp" translate="no">
+ <span class="operator">&lt;</span>qtcreator<span class="operator">&gt;</span>
+     <span class="operator">&lt;</span>data<span class="operator">&gt;</span>
+         <span class="operator">&lt;</span>variable<span class="operator">&gt;</span>ProjectExplorer<span class="operator">.</span>Project<span class="operator">.</span>ActiveTarget<span class="operator">&lt;</span><span class="operator">/</span>variable<span class="operator">&gt;</span>
+         <span class="operator">&lt;</span>value type<span class="operator">=</span><span class="string">&quot;int&quot;</span><span class="operator">&gt;</span><span class="number">0</span><span class="operator">&lt;</span><span class="operator">/</span>value<span class="operator">&gt;</span>
+     <span class="operator">&lt;</span><span class="operator">/</span>data<span class="operator">&gt;</span>
+     <span class="operator">&lt;</span>data<span class="operator">&gt;</span>
+         <span class="operator">&lt;</span>variable<span class="operator">&gt;</span>ProjectExplorer<span class="operator">.</span>Project<span class="operator">.</span>EditorSettings<span class="operator">&lt;</span><span class="operator">/</span>variable<span class="operator">&gt;</span>
+         <span class="operator">&lt;</span>valuemap type<span class="operator">=</span><span class="string">&quot;QVariantMap&quot;</span><span class="operator">&gt;</span>
+             <span class="operator">&lt;</span>value type<span class="operator">=</span><span class="string">&quot;bool&quot;</span> key<span class="operator">=</span><span class="string">&quot;EditorConfiguration.AutoIndent&quot;</span><span class="operator">&gt;</span><span class="keyword">true</span><span class="operator">&lt;</span><span class="operator">/</span>value<span class="operator">&gt;</span>
+         <span class="operator">&lt;</span><span class="operator">/</span>valuemap<span class="operator">&gt;</span>
+     <span class="operator">&lt;</span><span class="operator">/</span>data<span class="operator">&gt;</span>
+</pre>
+<p>When parsing the structure, a parse stack of ParseValueStackEntry is used for each &lt;data&gt; element. ParseValueStackEntry is a variant/union of:</p>
+<ul>
+<li>simple value</li>
+<li>map</li>
+<li>list</li>
+</ul>
+<p>You can register string-serialize functions for custom types by registering them in the Qt Meta type system. Example:</p>
+<pre class="cpp" translate="no">
+ <span class="type"><a href="https://doc.qt.io/qt/qmetatype.html" translate="no">QMetaType</a></span><span class="operator">::</span>registerConverter(<span class="operator">&amp;</span>MyCustomType<span class="operator">::</span>toString);
+ <span class="type"><a href="https://doc.qt.io/qt/qmetatype.html" translate="no">QMetaType</a></span><span class="operator">::</span>registerConverter<span class="operator">&lt;</span><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span><span class="operator">,</span> MyCustomType<span class="operator">&gt;</span>(<span class="operator">&amp;</span>myCustomTypeFromString);
+</pre>
+<p>When entering a value element ( <code translate="no">&lt;value&gt;</code> / <code translate="no">&lt;valuelist&gt;</code> , <code translate="no">&lt;valuemap&gt;</code> ), entry is pushed accordingly. When leaving the element, the <a href="https://doc.qt.io/qt/qvariant.html" translate="no">QVariant</a>-value of the entry is taken off the stack and added to the stack entry below (added to list or inserted into map). The first element of the stack is the value of the &lt;data&gt; element.</p>
+</div>
+<p><b>See also </b><a href="utils-persistentsettingswriter.html" translate="no">Utils::PersistentSettingsWriter</a>.</p>
+<!-- @@@PersistentSettingsReader -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtbridge-figma-template.qdoc -->
+  <title>Using Figma Quick Control Template Components in Qt Design Studio | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Using Figma Quick Control Template Components in Qt Design Studio</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="qtbridge-figma-using.html" />
+  <link rel="next" href="exporting-3d-assets.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="qtbridge-figma-using.html">Using Qt Bridge for Figma</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="exporting-3d-assets.html">Exporting 3D Assets</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#using-figma-template-components">Using Figma Template Components</a></li>
+<li class="level2"><a href="#creating-figma-design-with-template-components">Creating Figma Design with Template Components</a></li>
+<li class="level2"><a href="#importing-the-figma-design-to-qt-design-studio-with-qt-bridge-for-figma">Importing the Figma Design to Qt Design Studio with Qt Bridge for Figma</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Using Figma Quick Control Template Components in Qt Design Studio</h1>
+<!-- $$$qtbridge-figma-template.html-description -->
+<div class="descr" id="details">
+<p>You can design with the template components created by Qt Design Studio in Figma and import them to Qt Design Studio with Qt Bridge for Figma. These template components are structured specifically for Figma. When you design in Figma using them, and import the design with Qt Bridge for Figma, they generate functional QML components for Qt Design Studio. So, you can edit components both in Qt Design Studio and Figma.</p>
+<h2 id="using-figma-template-components">Using Figma Template Components</h2>
+<p>You should have these prerequisites available:</p>
+<ul>
+<li>A Figma professional account.</li>
+<li>Qt Design Studio Enterprise license.</li>
+<li>Qt Design Studio 3.9 or above.<div class="admonition note">
+<p><b>Note: </b>You can try out the template features with a Figma starter account as well. However, if you want to publish template assets in Figma, you need a Figma professional account for that.</p>
+</div>
+</li>
+</ul>
+<h3 id="creating-figma-design-with-template-components">Creating Figma Design with Template Components</h3>
+<ol class="1" type="1"><li>Sign in to Figma.</li>
+<li>Go to the Template provided by Qt Design Studio team <a href="https://www.figma.com/community/file/1185200043286168239" target="_blank">here</a>.</li>
+<li>Select <b translate="no">Get a copy</b> and then your account to have a copy on your Figma workspace.<div class="admonition note">
+<p><b>Note: </b>From the <b translate="no">Layers</b> tab you can find pages of contents. Here, select <b translate="no">Introduction</b> to access all the knowledge about the templates workflow and key concepts.</p>
+</div>
+</li>
+<li>There are templates for individual components in separate pages. Select the page you want to work on from template and copy all of its contents.</li>
+<li>Create a new Figma design file. In Figma, select <b translate="no">Menu</b> &gt; <b translate="no">File</b> &gt; <b translate="no">New design file</b>.</li>
+<li>Paste the copied content to this file and save. Here, do all the modification you need using Figma tools.</li>
+<li>Next, publish this template assets. In Figma, select <b translate="no">Menu</b> &gt; <b translate="no">Libraries</b>. Then select <b translate="no">Publish</b>. You don't need to publish the template itself, just publish the components. You can clear <b translate="no">Template</b> from the <b translate="no">Changes</b> section to have it removed from publishing assets.</li>
+<li>Create another new project, where you would use this published component. Or, you can use this component in one of your existing projects in Figma.<div class="admonition note">
+<p><b>Note: </b>In Figma, select <b translate="no">Menu</b> &gt; <b translate="no">Libraries</b> to find the published components. You can find these components under <b translate="no">Your teams</b>. Toggle them active to use in a project.</p>
+</div>
+</li>
+</ol>
+<h3 id="importing-the-figma-design-to-qt-design-studio-with-qt-bridge-for-figma">Importing the Figma Design to Qt Design Studio with Qt Bridge for Figma</h3>
+<ol class="1" type="1"><li>In Figma, do one of the following:<ul>
+<li>Select <b translate="no">Menu</b> &gt; <b translate="no">Plugins</b> &gt; <b translate="no">Qt Bridge for Figma</b>.</li>
+<li>Select <b translate="no">Resources</b> <i>(Shift + I)</i> &gt; <b translate="no">Qt Bridge for Figma</b> &gt; <b translate="no">Run</b>.</li>
+</ul>
+</li>
+<li>Save the file to your local system.</li>
+<li>Import the Qt Bridge for Figma file to a project in Qt Design Studio. You can drag the file to project. Then, select <b translate="no">Import</b>, and wait until the process is finished.</li>
+<li>Drag the imported Qt Bridge for Figma file to the Qt Design Studio open project. Select <b translate="no">Import</b>, and wait until the process is finished.</li>
+<li>You can find the imported design as QML files in Qt Design Studio. Figma assets are also imported as components in Qt Design Studio. You can manipulate <b translate="no">states</b> or <b translate="no">properties</b> natively.<div class="admonition note">
+<p><b>Note: </b>You can also edit the design in Figma and bring it again to Qt Design Studio using Qt Bridge for Figma. However, you need to name this imported file exactly same as before. Then import it to the project in Qt Design Studio to have it synchronized. Qt Design Studio lets you have the updates you have made locally on top of the imported component updates.</p>
+</div>
+</li>
+</ol>
+</div>
+<!-- @@@qtbridge-figma-template.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="qtbridge-figma-using.html">Using Qt Bridge for Figma</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="exporting-3d-assets.html">Exporting 3D Assets</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

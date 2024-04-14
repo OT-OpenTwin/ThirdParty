@@ -48,21 +48,6 @@
 **
 ****************************************************************************/
 
-import qbs
-
-Project {
-    references: [
-        "app-and-lib/app_and_lib.qbs",
-        "cocoa-application/CocoaApplication.qbs",
-        "cocoa-touch-application/CocoaTouchApplication.qbs",
-        "code-generator/code-generator.qbs",
-        "collidingmice/collidingmice.qbs",
-        "compiled-qml/myapp.qbs",
-        "helloworld-complex/hello.qbs",
-        "helloworld-minimal/hello.qbs",
-        "helloworld-qt/hello.qbs",
-        "install-bundle/install-bundle.qbs",
-        "protobuf/cpp/addressbook.qbs",
-        "protobuf/objc/addressbook.qbs",
-    ]
+Product {
+    files: "**/*"
 }

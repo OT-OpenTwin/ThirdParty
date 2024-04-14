@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- command.cpp -->
+  <meta name="description" content="The Command class represents an action, such as a menu item, tool button, or shortcut.">
+  <title>Command Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>Command</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">Command Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::Command</span>
+<!-- $$$Command-brief -->
+<p>The Command class represents an action, such as a menu item, tool button, or shortcut. <a href="#details">More...</a></p>
+<!-- @@@Command -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/actionmanager/command.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a></td></tr>
+</table></div>
+<ul>
+<li><a href="core-command-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#CommandAttribute-enum" translate="no">CommandAttribute</a></b> { CA_UpdateText, CA_UpdateIcon, CA_Hide, CA_NonConfigurable }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> flags </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#CommandAttribute-enum" translate="no">CommandAttributes</a></b></td></tr>
+</table></div>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> QAction *</td><td class="memItemRight bottomAlign"><b><a href="core-command.html#action" translate="no">action</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#augmentActionWithShortcutToolTip" translate="no">augmentActionWithShortcutToolTip</a></b>(QAction *<i>a</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::Context </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#context" translate="no">context</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;QKeySequence&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#defaultKeySequences" translate="no">defaultKeySequences</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#description" translate="no">description</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#hasAttribute" translate="no">hasAttribute</a></b>(Core::Command::CommandAttribute <i>attribute</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#isActive" translate="no">isActive</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#isScriptable" translate="no">isScriptable</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QKeySequence </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#keySequence" translate="no">keySequence</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;QKeySequence&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#keySequences" translate="no">keySequences</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#removeAttribute" translate="no">removeAttribute</a></b>(Core::Command::CommandAttribute <i>attribute</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#setAttribute" translate="no">setAttribute</a></b>(Core::Command::CommandAttribute <i>attribute</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#setDefaultKeySequence" translate="no">setDefaultKeySequence</a></b>(const QKeySequence &amp;<i>key</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#setDefaultKeySequences" translate="no">setDefaultKeySequences</a></b>(const QList&lt;QKeySequence&gt; &amp;<i>keys</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#setDescription" translate="no">setDescription</a></b>(const QString &amp;<i>text</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#setTouchBarIcon" translate="no">setTouchBarIcon</a></b>(const QIcon &amp;<i>icon</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#setTouchBarText" translate="no">setTouchBarText</a></b>(const QString &amp;<i>text</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#stringWithAppendedShortcut" translate="no">stringWithAppendedShortcut</a></b>(const QString &amp;<i>string</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QIcon </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#touchBarIcon" translate="no">touchBarIcon</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#touchBarText" translate="no">touchBarText</a></b>() const</td></tr>
+</table></div>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#activeStateChanged" translate="no">activeStateChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-command.html#keySequenceChanged" translate="no">keySequenceChanged</a></b>()</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> QToolButton *</td><td class="memItemRight bottomAlign"><b><a href="core-command.html#toolButtonWithAppendedShortcut" translate="no">toolButtonWithAppendedShortcut</a></b>(QAction *<i>action</i>, Core::Command *<i>cmd</i>)</td></tr>
+</table></div>
+<!-- $$$Command-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>You do not create Command objects directly, but use <a href="core-actionmanager.html#registerAction" translate="no">ActionManager::registerAction</a>() to register an action and retrieve a Command. The Command object represents the user visible action and its properties. If multiple actions are registered with the same ID (but different contexts) the returned Command is the shared one between these actions.</p>
+<p>A Command has two basic properties: a list of default shortcuts and a default text. The default shortcuts are key sequence that the user can use to trigger the active action that the Command represents. The first shortcut in that list is the main shortcut that is for example also shown in tool tips and menus. The default text is used for representing the Command in the keyboard shortcut preference pane. If the default text is empty, the text of the visible action is used.</p>
+<p>The user visible action is updated to represent the state of the active action (if any). For performance reasons only the enabled and visible state are considered by default though. You can tell a Command to also update the actions icon and text by setting the corresponding <a href="core-command.html#CommandAttribute-enum" translate="no">attribute</a>.</p>
+<p>If there is no active action, the default behavior of the visible action is to be disabled. You can change that behavior to make the visible action hide instead via the Command's <a href="core-command.html#CommandAttribute-enum" translate="no">attributes</a>.</p>
+<p>See <a href="actionmanager.html" translate="no">The Action Manager and Commands</a> for an overview of how <a href="core-command.html" translate="no">Core::Command</a> and <a href="core-actionmanager.html" translate="no">Core::ActionManager</a> interact.</p>
+</div>
+<p><b>See also </b><a href="core-actionmanager.html" translate="no">Core::ActionManager</a> and <a href="actionmanager.html" translate="no">The Action Manager and Commands</a>.</p>
+<!-- @@@Command -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$CommandAttribute$$$CA_Hide$$$CA_UpdateText$$$CA_UpdateIcon$$$CA_NonConfigurable -->
+<h3 class="flags" id="CommandAttribute-enum">enum Command::<span class="name">CommandAttribute</span><br/>flags Command::<span class="name">CommandAttributes</span></h3>
+<p>This enum defines how the user visible action is updated when the active action changes. The default is to update the enabled and visible state, and to disable the user visible action when there is no active action.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Core::Command::CA_UpdateText</code></td><td class="topAlign tblval"><code translate="no">2</code></td><td class="topAlign">Also update the actions text.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::Command::CA_UpdateIcon</code></td><td class="topAlign tblval"><code translate="no">4</code></td><td class="topAlign">Also update the actions icon.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::Command::CA_Hide</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">When there is no active action, hide the user-visible action, instead of just disabling it.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::Command::CA_NonConfigurable</code></td><td class="topAlign tblval"><code translate="no">8</code></td><td class="topAlign">Flag to indicate that the keyboard shortcuts of this Command should not be configurable by the user.</td></tr>
+</table></div>
+<p>The CommandAttributes type is a typedef for <a href="https://doc.qt.io/qt/qflags.html">QFlags</a>&lt;CommandAttribute&gt;. It stores an OR combination of CommandAttribute values.</p>
+<!-- @@@CommandAttribute -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$action[overload1]$$$action -->
+<h3 class="fn" translate="no" id="action"><span class="type"><a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a></span> *Command::<span class="name">action</span>() const</h3>
+<p>Returns the user visible action for this Command. Use this action to put it on e.g. tool buttons. The action automatically forwards <code translate="no">triggered()</code> and <code translate="no">toggled()</code> signals to the action that is currently active for this Command. It also shows the current main keyboard shortcut in its tool tip (in addition to the tool tip of the active action) and gets disabled/hidden when there is no active action for the current context.</p>
+<!-- @@@action -->
+<!-- $$$activeStateChanged[overload1]$$$activeStateChanged -->
+<h3 class="fn" translate="no" id="activeStateChanged"><code translate="no">[signal] </code><span class="type">void</span> Command::<span class="name">activeStateChanged</span>()</h3>
+<p>This signal is emitted when the active state of the command changes.</p>
+<!-- @@@activeStateChanged -->
+<!-- $$$augmentActionWithShortcutToolTip[overload1]$$$augmentActionWithShortcutToolTipQAction* -->
+<h3 class="fn" translate="no" id="augmentActionWithShortcutToolTip"><span class="type">void</span> Command::<span class="name">augmentActionWithShortcutToolTip</span>(<span class="type"><a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a></span> *<i>a</i>) const</h3>
+<p>Appends the main keyboard shortcut that is currently assigned to the action <i translate="no">a</i> to its tool tip.</p>
+<!-- @@@augmentActionWithShortcutToolTip -->
+<!-- $$$context[overload1]$$$context -->
+<h3 class="fn" translate="no" id="context"><span class="type"><a href="core-context.html" translate="no">Core::Context</a></span> Command::<span class="name">context</span>() const</h3>
+<p>Returns the context for this command.</p>
+<!-- @@@context -->
+<!-- $$$defaultKeySequences[overload1]$$$defaultKeySequences -->
+<h3 class="fn" translate="no" id="defaultKeySequences"><span class="type"><a href="https://doc.qt.io/qt/qlist.html" translate="no">QList</a></span>&lt;<span class="type"><a href="https://doc.qt.io/qt/qkeysequence.html" translate="no">QKeySequence</a></span>&gt; Command::<span class="name">defaultKeySequences</span>() const</h3>
+<p>Returns the default keyboard shortcuts that can be used to activate this command.</p>
+<p><b>See also </b><a href="core-command.html#setDefaultKeySequences" translate="no">setDefaultKeySequences</a>().</p>
+<!-- @@@defaultKeySequences -->
+<!-- $$$description[overload1]$$$description -->
+<h3 class="fn" translate="no" id="description"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> Command::<span class="name">description</span>() const</h3>
+<p>Returns the text that is used to present this Command to the user.</p>
+<p><b>See also </b><a href="core-command.html#setDescription" translate="no">setDescription</a>().</p>
+<!-- @@@description -->
+<!-- $$$hasAttribute[overload1]$$$hasAttributeCore::Command::CommandAttribute -->
+<h3 class="fn" translate="no" id="hasAttribute"><span class="type">bool</span> Command::<span class="name">hasAttribute</span>(<span class="type"><a href="core-command.html#CommandAttribute-enum" translate="no">Core::Command::CommandAttribute</a></span> <i>attribute</i>) const</h3>
+<p>Returns whether the Command has the <i translate="no">attribute</i> set.</p>
+<p><b>See also </b><a href="core-command.html#CommandAttribute-enum" translate="no">CommandAttribute</a>, <a href="core-command.html#removeAttribute" translate="no">removeAttribute</a>(), and <a href="core-command.html#setAttribute" translate="no">setAttribute</a>().</p>
+<!-- @@@hasAttribute -->
+<!-- $$$isActive[overload1]$$$isActive -->
+<h3 class="fn" translate="no" id="isActive"><span class="type">bool</span> Command::<span class="name">isActive</span>() const</h3>
+<p>Returns whether the Command has an active action for the current context.</p>
+<!-- @@@isActive -->
+<!-- $$$isScriptable[overload1]$$$isScriptable -->
+<h3 class="fn" translate="no" id="isScriptable"><span class="type">bool</span> Command::<span class="name">isScriptable</span>() const</h3>
+<p>Returns whether the Command is scriptable. A scriptable command can be called from a script without the need for the user to interact with it.</p>
+<!-- @@@isScriptable -->
+<!-- $$$keySequence[overload1]$$$keySequence -->
+<h3 class="fn" translate="no" id="keySequence"><span class="type"><a href="https://doc.qt.io/qt/qkeysequence.html" translate="no">QKeySequence</a></span> Command::<span class="name">keySequence</span>() const</h3>
+<p>Returns the current main keyboard shortcut assigned to this Command.</p>
+<p><b>See also </b><a href="core-command.html#defaultKeySequences" translate="no">defaultKeySequences</a>().</p>
+<!-- @@@keySequence -->
+<!-- $$$keySequenceChanged[overload1]$$$keySequenceChanged -->
+<h3 class="fn" translate="no" id="keySequenceChanged"><code translate="no">[signal] </code><span class="type">void</span> Command::<span class="name">keySequenceChanged</span>()</h3>
+<p>Sent when the keyboard shortcuts assigned to this Command change, e.g. when the user sets them in the keyboard shortcut settings dialog.</p>
+<!-- @@@keySequenceChanged -->
+<!-- $$$keySequences[overload1]$$$keySequences -->
+<h3 class="fn" translate="no" id="keySequences"><span class="type"><a href="https://doc.qt.io/qt/qlist.html" translate="no">QList</a></span>&lt;<span class="type"><a href="https://doc.qt.io/qt/qkeysequence.html" translate="no">QKeySequence</a></span>&gt; Command::<span class="name">keySequences</span>() const</h3>
+<p>Returns the current keyboard shortcuts assigned to this Command.</p>
+<p><b>See also </b><a href="core-command.html#defaultKeySequences" translate="no">defaultKeySequences</a>().</p>
+<!-- @@@keySequences -->
+<!-- $$$removeAttribute[overload1]$$$removeAttributeCore::Command::CommandAttribute -->
+<h3 class="fn" translate="no" id="removeAttribute"><span class="type">void</span> Command::<span class="name">removeAttribute</span>(<span class="type"><a href="core-command.html#CommandAttribute-enum" translate="no">Core::Command::CommandAttribute</a></span> <i>attribute</i>)</h3>
+<p>Removes <i translate="no">attribute</i> from the attributes of this Command.</p>
+<p><b>See also </b><a href="core-command.html#CommandAttribute-enum" translate="no">CommandAttribute</a> and <a href="core-command.html#setAttribute" translate="no">setAttribute</a>().</p>
+<!-- @@@removeAttribute -->
+<!-- $$$setAttribute[overload1]$$$setAttributeCore::Command::CommandAttribute -->
+<h3 class="fn" translate="no" id="setAttribute"><span class="type">void</span> Command::<span class="name">setAttribute</span>(<span class="type"><a href="core-command.html#CommandAttribute-enum" translate="no">Core::Command::CommandAttribute</a></span> <i>attribute</i>)</h3>
+<p>Adds <i translate="no">attribute</i> to the attributes of this Command.</p>
+<p><b>See also </b><a href="core-command.html#CommandAttribute-enum" translate="no">CommandAttribute</a>, <a href="core-command.html#removeAttribute" translate="no">removeAttribute</a>(), and <a href="core-command.html#hasAttribute" translate="no">hasAttribute</a>().</p>
+<!-- @@@setAttribute -->
+<!-- $$$setDefaultKeySequence[overload1]$$$setDefaultKeySequenceconstQKeySequence& -->
+<h3 class="fn" translate="no" id="setDefaultKeySequence"><span class="type">void</span> Command::<span class="name">setDefaultKeySequence</span>(const <span class="type"><a href="https://doc.qt.io/qt/qkeysequence.html" translate="no">QKeySequence</a></span> &amp;<i>key</i>)</h3>
+<p>Sets the default keyboard shortcut that can be used to activate this command to <i translate="no">key</i>. This is used if the user didn't customize the shortcut, or resets the shortcut to the default.</p>
+<!-- @@@setDefaultKeySequence -->
+<!-- $$$setDefaultKeySequences[overload1]$$$setDefaultKeySequencesconstQList<QKeySequence>& -->
+<h3 class="fn" translate="no" id="setDefaultKeySequences"><span class="type">void</span> Command::<span class="name">setDefaultKeySequences</span>(const <span class="type"><a href="https://doc.qt.io/qt/qlist.html" translate="no">QList</a></span>&lt;<span class="type"><a href="https://doc.qt.io/qt/qkeysequence.html" translate="no">QKeySequence</a></span>&gt; &amp;<i>keys</i>)</h3>
+<p>Sets the default keyboard shortcuts that can be used to activate this command to <i translate="no">keys</i>. This is used if the user didn't customize the shortcuts, or resets the shortcuts to the default.</p>
+<p><b>See also </b><a href="core-command.html#defaultKeySequences" translate="no">defaultKeySequences</a>().</p>
+<!-- @@@setDefaultKeySequences -->
+<!-- $$$setDescription[overload1]$$$setDescriptionconstQString& -->
+<h3 class="fn" translate="no" id="setDescription"><span class="type">void</span> Command::<span class="name">setDescription</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>text</i>)</h3>
+<p>Sets the <i translate="no">text</i> that is used to represent the Command in the keyboard shortcut settings dialog. If you do not set this, the current text from the user visible action is taken (which is fine in many cases).</p>
+<p><b>See also </b><a href="core-command.html#description" translate="no">description</a>().</p>
+<!-- @@@setDescription -->
+<!-- $$$setTouchBarIcon[overload1]$$$setTouchBarIconconstQIcon& -->
+<h3 class="fn" translate="no" id="setTouchBarIcon"><span class="type">void</span> Command::<span class="name">setTouchBarIcon</span>(const <span class="type"><a href="https://doc.qt.io/qt/qicon.html" translate="no">QIcon</a></span> &amp;<i>icon</i>)</h3>
+<p>Sets the icon for the action on the touch bar to <i translate="no">icon</i>.</p>
+<p><b>See also </b><a href="core-command.html#touchBarIcon" translate="no">touchBarIcon</a>().</p>
+<!-- @@@setTouchBarIcon -->
+<!-- $$$setTouchBarText[overload1]$$$setTouchBarTextconstQString& -->
+<h3 class="fn" translate="no" id="setTouchBarText"><span class="type">void</span> Command::<span class="name">setTouchBarText</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>text</i>)</h3>
+<p>Sets the text for the action on the touch bar to <i translate="no">text</i>.</p>
+<p><b>See also </b><a href="core-command.html#touchBarText" translate="no">touchBarText</a>().</p>
+<!-- @@@setTouchBarText -->
+<!-- $$$stringWithAppendedShortcut[overload1]$$$stringWithAppendedShortcutconstQString& -->
+<h3 class="fn" translate="no" id="stringWithAppendedShortcut"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> Command::<span class="name">stringWithAppendedShortcut</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>string</i>) const</h3>
+<p>Returns the <i translate="no">string</i> with an appended representation of the main keyboard shortcut that is currently assigned to this Command.</p>
+<!-- @@@stringWithAppendedShortcut -->
+<!-- $$$toolButtonWithAppendedShortcut[overload1]$$$toolButtonWithAppendedShortcutQAction*Core::Command* -->
+<h3 class="fn" translate="no" id="toolButtonWithAppendedShortcut"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qtoolbutton.html" translate="no">QToolButton</a></span> *Command::<span class="name">toolButtonWithAppendedShortcut</span>(<span class="type"><a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a></span> *<i>action</i>, <span class="type"><a href="core-command.html" translate="no">Core::Command</a></span> *<i>cmd</i>)</h3>
+<p>Returns a tool button for <i translate="no">action</i>.</p>
+<p>Appends the main keyboard shortcut <i translate="no">cmd</i> to the tool tip of the action.</p>
+<!-- @@@toolButtonWithAppendedShortcut -->
+<!-- $$$touchBarIcon[overload1]$$$touchBarIcon -->
+<h3 class="fn" translate="no" id="touchBarIcon"><span class="type"><a href="https://doc.qt.io/qt/qicon.html" translate="no">QIcon</a></span> Command::<span class="name">touchBarIcon</span>() const</h3>
+<p>Returns the icon for the action on the touch bar.</p>
+<p><b>See also </b><a href="core-command.html#setTouchBarIcon" translate="no">setTouchBarIcon</a>().</p>
+<!-- @@@touchBarIcon -->
+<!-- $$$touchBarText[overload1]$$$touchBarText -->
+<h3 class="fn" translate="no" id="touchBarText"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> Command::<span class="name">touchBarText</span>() const</h3>
+<p>Returns the text for the action on the touch bar.</p>
+<p><b>See also </b><a href="core-command.html#setTouchBarText" translate="no">setTouchBarText</a>().</p>
+<!-- @@@touchBarText -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

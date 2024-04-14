@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-features-on-mcu-projects.qdoc -->
+  <title>Qt Design Studio Features on MCU Projects | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Qt Design Studio Features on MCU Projects</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-compatibility-with-mcu-sdks.html" />
+  <link rel="next" href="studio-projects-for-mcus.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-compatibility-with-mcu-sdks.html">Qt Design Studio Version Compatibility with Qt for MCUs SDKs</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-projects-for-mcus.html">Creating Projects for MCUs</a>
+</p>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Qt Design Studio Features on MCU Projects</h1>
+<!-- $$$studio-features-on-mcu-projects.html-description -->
+<div class="descr" id="details">
+<p>The table below provides a summary of how the key Qt Design Studio features are supported for developing MCU projects.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >View</th><th >Fully Supported</th><th >Partially Supported</th><th >Not Supported</th><th >Comments</th></tr></thead>
+<tr valign="top" class="odd"><td ><a href="qtquick-form-editor.html" translate="no">2D</a></td><td ><b>X</b></td><td ><b>-</b></td><td ><b>-</b></td><td >A scene in the <b translate="no">2D</b> view is rendered by the regular Qt Quick and QML, and not as Qt Quick Ultralite and Qt for MCUs, so some imperfections or inaccuracies can occur. Note that the default font used in Qt Design Studio preview and Qt Quick Ultralite are different, and the developer must confirm both fonts are the same.</td></tr>
+<tr valign="top" class="even"><td ><a href="studio-3d-editor.html" translate="no">3D</a></td><td ><b>-</b></td><td ><b>-</b></td><td ><b>X</b></td><td >The <b translate="no">3D</b> view is not a part of Qt Quick Ultralite or Qt for MCUs.</td></tr>
+<tr valign="top" class="odd"><td ><a href="studio-material-editor.html" translate="no">Material Editor and Browser</a></td><td ><b>-</b></td><td ><b>-</b></td><td ><b>X</b></td><td >The <b translate="no">Material Editor</b> and <b translate="no">Material Browser</b> views are not a part of Qt Quick Ultralite or Qt for MCUs.</td></tr>
+<tr valign="top" class="even"><td ><a href="quick-components-view.html" translate="no">Components</a></td><td ><b>X</b></td><td ><b>-</b></td><td ><b>-</b></td><td >Shows only the components and modules available for MCU projects.</td></tr>
+<tr valign="top" class="odd"><td ><a href="quick-assets.html" translate="no">Assets</a></td><td ><b>X</b></td><td ><b>-</b></td><td ><b>-</b></td><td >Shows all the listed assets in the <code translate="no">QmlProject</code> file.</td></tr>
+<tr valign="top" class="even"><td ><a href="qtquick-navigator.html" translate="no">Navigator</a></td><td ><b>X</b></td><td ><b>-</b></td><td ><b>-</b></td><td >Displays the composition of the current component file as a tree structure.</td></tr>
+<tr valign="top" class="odd"><td ><a href="qtquick-properties-view.html" translate="no">Properties</a></td><td ><b>X</b></td><td ><b>-</b></td><td ><b>-</b></td><td >Shows only the preset properties available for MCU projects (such as by Qt Quick and its modules).</td></tr>
+<tr valign="top" class="even"><td ><a href="qtquick-connection-view.html" translate="no">Connections</a></td><td ><b>X</b></td><td ><b>-</b></td><td ><b>-</b></td><td >The <b translate="no">Connections</b> view displays all signal handlers in the current file, but it doesn't filter available signals, so you can still see and select signals available in Qt Quick, but not in Qt Quick Ultralite. The same also applies if <b translate="no">Action</b> is set to <b translate="no">Call Function</b> and <b translate="no">Item</b> is set to <b translate="no">Qt</b>. See the component documentation to filter available signal/function.</td></tr>
+<tr valign="top" class="odd"><td ><a href="qtquick-states-view.html" translate="no">States</a></td><td ><b>X</b></td><td ><b>-</b></td><td ><b>-</b></td><td >The feature is fully supported, but there are some limitations listed in <a href="https://doc.qt.io/QtForMCUs/qtul-known-issues.html" translate="no">Qt for MCUs Known Issues or Limitations</a>. In addition, <a href="https://doc.qt.io/qt/qml-qtquick-stategroup.html" translate="no">StateGroup</a> is disabled.</td></tr>
+<tr valign="top" class="even"><td ><a href="qtquick-transition-editor.html" translate="no">Transitions</a></td><td ><b>X</b></td><td ><b>-</b></td><td ><b>-</b></td><td ><b>-</b></td></tr>
+<tr valign="top" class="odd"><td ><a href="studio-translations.html" translate="no">Translations</a></td><td ><b>-</b></td><td ><b>X</b></td><td ><b>-</b></td><td >The <b translate="no">Translations</b> view previews with regular Qt Quick instead of Qt Quick Ultralite, and it can be inaccurate in calculating the text overflow in some translations.</td></tr>
+<tr valign="top" class="even"><td ><a href="qtquick-timeline-view.html" translate="no">Timeline</a></td><td ><b>X</b></td><td ><b>-</b></td><td ><b>-</b></td><td ><b>-</b></td></tr>
+<tr valign="top" class="odd"><td ><a href="qtquick-curve-editor.html" translate="no">Curves</a></td><td ><b>X</b></td><td ><b>-</b></td><td ><b>-</b></td><td >Linear interpolation works, and Qt for MCUs supports the <code translate="no">easing.bezierCurve</code> property of a keyframe in Qt for MCUs 2.6 or higher.</td></tr>
+<tr valign="top" class="even"><td ><a href="qtquick-text-editor.html" translate="no">Code</a></td><td ><b>X</b></td><td ><b>-</b></td><td ><b>-</b></td><td >The <b translate="no">Code</b> view uses regular Qt Quick instead of Qt Quick Ultralite, so it may not show an error if you are using or assigning an unsupported property.</td></tr>
+<tr valign="top" class="odd"><td ><a href="studio-content-library.html" translate="no">Content Library</a></td><td ><b>-</b></td><td ><b>-</b></td><td ><b>X</b></td><td >The <b translate="no">Content Library</b> view is not a part of Qt Quick Ultralite or Qt for MCUs.</td></tr>
+<tr valign="top" class="even"><td ><a href="studio-texture-editor.html" translate="no">Texture Editor</a></td><td ><b>-</b></td><td ><b>-</b></td><td ><b>X</b></td><td >The <b translate="no">Texture Editor</b> view is not a part of Qt Quick Ultralite or Qt for MCUs.</td></tr>
+</table></div>
+</div>
+<!-- @@@studio-features-on-mcu-projects.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-compatibility-with-mcu-sdks.html">Qt Design Studio Version Compatibility with Qt for MCUs SDKs</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-projects-for-mcus.html">Creating Projects for MCUs</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

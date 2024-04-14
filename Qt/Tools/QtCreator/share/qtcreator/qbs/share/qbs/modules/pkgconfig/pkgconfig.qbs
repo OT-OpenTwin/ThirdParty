@@ -37,7 +37,6 @@
 **
 ****************************************************************************/
 
-import qbs
 import qbs.File
 import qbs.Probes
 
@@ -47,6 +46,11 @@ Module {
         names: "pkg-config"
     }
 
+    property path sysroot: {
+        if (qbs.targetOS.includes("macos"))
+            return "";
+        return qbs.sysroot;
+    }
     property string executableFilePath: pkgconfigProbe.filePath
     property stringList libDirs
     property bool staticMode: false

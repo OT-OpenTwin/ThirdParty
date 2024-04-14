@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-particles.qdoc -->
+  <title>Particle Affectors | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Particle Affectors</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-3d-particle-emitters.html" />
+  <link rel="next" href="studio-3d-particle-directions.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-3d-particle-emitters.html">Particle Emitters</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-particle-directions.html">Particle Directions</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#attractor">Attractor</a></li>
+<li class="level1"><a href="#gravity">Gravity</a></li>
+<li class="level1"><a href="#point-rotator">Point Rotator</a></li>
+<li class="level1"><a href="#repeller">Repeller</a></li>
+<li class="level1"><a href="#scale-affector">Scale Affector</a></li>
+<li class="level1"><a href="#wander">Wander</a></li>
+<li class="level2"><a href="#global-wander-properties">Global Wander Properties</a></li>
+<li class="level2"><a href="#unique-wander-properties">Unique Wander Properties</a></li>
+<li class="level1"><a href="#particle-affector">Particle Affector</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Particle Affectors</h1>
+<!-- $$$studio-3d-particle-affectors.html-description -->
+<div class="descr" id="details">
+<p>Affectors are an optional component of a particle system. They can perform a variety of manipulations to the simulation, such as altering the trajectory of particles or prematurely ending their life in the simulation. For performance reasons, it is recommended not to use affectors in high-volume particle systems.</p>
+<p>The following affector components control how the particles are animated during their lifetime:</p>
+<ul>
+<li><a href="studio-3d-particle-affectors.html#attractor" translate="no">Attractor</a> attracts particles towards a specific point.</li>
+<li><a href="studio-3d-particle-affectors.html#gravity" translate="no">Gravity</a> accelerates particles to a vector of the specified magnitude in the specified direction.</li>
+<li><a href="studio-3d-particle-affectors.html#point-rotator" translate="no">Point Rotator</a> rotates particles around a pivot point.</li>
+<li><a href="studio-3d-particle-affectors.html#repeller" translate="no">Repeller</a> repels particles from its location.</li>
+<li><a href="studio-3d-particle-affectors.html#scale-affector" translate="no">Scale Affector</a> scales particles based on its lifetime and other parameters.</li>
+<li><a href="studio-3d-particle-affectors.html#wander" translate="no">Wander</a> applies random wave curves to particles.</li>
+</ul>
+<p>If the system has multiple affectors, the order of affectors may result in different outcome, as affectors are applied one after another.</p>
+<p>By default, affectors affect all particles in the system, but you can limit this to the particles listed in <a href="qtquick-properties-view.html" translate="no">Properties</a> &gt; <a href="studio-3d-particle-affectors.html#particle-affector" translate="no">Particle Affector</a> &gt; <b translate="no">Particles</b>.</p>
+<h2 id="attractor">Attractor</h2>
+<p>The <b translate="no">Attractor</b> component attracts particles towards a position inside the <a href="studio-3d-view.html" translate="no">View 3D</a> component instance. To model the gravity of a massive object whose center of gravity is far away, use an instance of the <a href="studio-3d-particle-affectors.html#gravity" translate="no">Gravity</a> component.</p>
+<p>The attraction position is defined either by using the position of the attractor and the value of <b translate="no">Position variation</b> or by selecting an instance of the <b translate="no">Particle Shape</b> or <b translate="no">Model Shape</b> component in <b translate="no">Shape</b>. If both position and shape are defined, the shape is used.</p>
+<p>Specify settings for <b translate="no">Attractor</b> components in <b translate="no">Properties</b> &gt; <b translate="no">Particle Attractor</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-attractor.png" alt="&quot;Particle Attractor properties&quot;" /></p><p><b translate="no">Position variation</b> specifies the variation on attract position. Instead of attracting particles into a single point, it attracts them randomly towards a wider area. For example, to attract particles into some random point inside a (50, 50, 50) cube at position (100, 0, 0) within 2 to 4 seconds, set <b translate="no">X</b>, <b translate="no">Y</b>, and <b translate="no">Z</b> to 50.00, <b translate="no">Duration</b> to 3000, and <b translate="no">Duration variation</b> to 1000.</p>
+<p>In <b translate="no">Shape</b>, select an instance of the <a href="studio-3d-particle-emitters.html#particle-shape" translate="no">Particle Shape</a> or <a href="studio-3d-particle-emitters.html#model-shape" translate="no">Model Shape</a> component to attract particles into a random position inside the shape. When the shape is defined, it is visualized in the <b translate="no">3D</b> view.</p>
+<p><b translate="no">Duration</b> specifies the duration in milliseconds that it takes for particles to reach the attraction position. When the value is -1, <b translate="no">Particle Emitter</b> &gt; <b translate="no">Life span</b> is used as the duration. If you specify <b translate="no">Duration variation</b>, the actual duration to reach the attractor is between duration minus duration variation and duration plus duration variation.</p>
+<p>Select <b translate="no">Hide at end</b> to make the particle disappear when it reaches the attractor.</p>
+<p>Select <b translate="no">Use cached positions</b> to cache possible positions within the attractor's <b translate="no">Shape</b>. Cached positions give less random results but are better for performance.</p>
+<p><b translate="no">Positions amount</b> specifies the amount of possible positions stored within the attractor's <b translate="no">Shape</b>. By default, the amount equals the particle count, but you can specify a lower amount for a smaller cache. Specify a higher amount for additional randomization.</p>
+<h2 id="gravity">Gravity</h2>
+<p>The <b translate="no">Gravity</b> component models the gravity of a massive object whose center of gravity is far away, and thus the gravitational pull is effectively constant across the scene. To model the gravity of an object near or inside the scene, use an <a href="studio-3d-particle-affectors.html#attractor" translate="no">Attractor</a> component instance.</p>
+<p>Specify settings for <b translate="no">Gravity</b> component instances in <b translate="no">Properties</b> &gt; <b translate="no">Particle Gravity</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-gravity.png" alt="&quot;Particle Gravity properties&quot;" /></p><p><b translate="no">Magnitude</b> defines the magnitude in particle position change in degrees per second. A negative value accelerates in the opposite way from the direction specified in <b translate="no">Direction</b>. Direction <b translate="no">X</b>, <b translate="no">Y</b>, and <b translate="no">Z</b> values are automatically normalized to a unit vector.</p>
+<h2 id="point-rotator">Point Rotator</h2>
+<p>The <b translate="no">Point Rotator</b> component rotates particles around the pivot point specified in <b translate="no">Pivot point</b> towards the direction specified in <b translate="no">Direction</b>. Direction <b translate="no">X</b>, <b translate="no">Y</b>, and <b translate="no">Z</b> values are automatically normalized to a unit vector.</p>
+<p>Specify settings for <b translate="no">Point Rotator</b> component instances in <b translate="no">Properties</b> &gt; <b translate="no">Point Rotator</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-point-rotator.png" alt="&quot;Particle Point Rotator properties&quot;" /></p><p><b translate="no">Magnitude</b> defines the magnitude in particle position change in degrees per second. A negative value accelerates in the opposite way from the direction specified in <b translate="no">Direction</b>.</p>
+<h2 id="repeller">Repeller</h2>
+<p>The <b translate="no">Repeller</b> component repels particles from its location.</p>
+<p>Specify settings for <b translate="no">Repeller</b> component instances in <b translate="no">Properties</b> &gt; <b translate="no">Particle Repeller</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-repeller.png" alt="" /></p><p><b translate="no">Outer Radius</b> defines the outer radius of the repeller. The particle is not affected until it enters this radius and the repel strength grows smoothly until the particle reaches <b translate="no">Radius</b>.</p>
+<p><b translate="no">Radius</b> defines the inner radius of the repeller. Particles located inside <b translate="no">Radius</b> are repelled at full strength.</p>
+<p><b translate="no">Strength</b> defines the strength of the repeller.</p>
+<h2 id="scale-affector">Scale Affector</h2>
+<p><b translate="no">Scale Affector</b> scales particles based on their lifetime and other parameters.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-scale-affector.png" alt="" /></p><p><b translate="no">Minimum Size</b> defines the minimum size that the affector can scale particles to.</p>
+<p><b translate="no">Maximum Size</b> defines the maximum size that the affector can scale particles to.</p>
+<p><b translate="no">Duration</b> defines the duration of the scaling cycle in milliseconds.</p>
+<p><b translate="no">Easing Curve</b> defines the <a href="qtquick-editing-easing-curves.html" translate="no">easing curve</a> for the scaling animation.</p>
+<h2 id="wander">Wander</h2>
+<p>The <b translate="no">Wander</b> component applies random wave curves to particles. Curves can combine <a href="studio-3d-particle-affectors.html#global-wander-properties" translate="no">global</a> values that are the same for all particles and <a href="studio-3d-particle-affectors.html#unique-wander-properties" translate="no">unique</a> values that differ randomly.</p>
+<p>Specify settings for <b translate="no">Wander</b> component instances in <b translate="no">Properties</b> &gt; <b translate="no">Particle Wander</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-wander.png" alt="&quot;Particle Wander properties&quot;" /></p><p><b translate="no">Fade in duration</b> specifies the duration in milliseconds for fading in the affector. After this duration, the wandering will be in full effect. Setting this value can be useful to emit from a specific position or shape, otherwise wander will affect the position also at the beginning.</p>
+<p><b translate="no">Fade out duration</b> specifies the duration in milliseconds for fading out the affector. Setting this value can be useful to reduce the wander when the particle life time ends, for example when combined with an instance of the <a href="studio-3d-particle-affectors.html#attractor" translate="no">Attractor</a> component so that the end positions will match the shape.</p>
+<h3 id="global-wander-properties">Global Wander Properties</h3>
+<p>Specify global settings for <b translate="no">Wander</b> component instances in <b translate="no">Properties</b> &gt; <b translate="no">Global</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-wander-global.png" alt="&quot;Global Particle Wander properties&quot;" /></p><p><b translate="no">Amount</b> specifies the distance that each particle moves at the ends of curves. For example, if you set the value of <b translate="no">X</b> to 100.00, <b translate="no">Y</b> to 10.00, and <b translate="no">Z</b> to 0.00, all particles wander between (100, 10, 0) and (-100, -10, 0).</p>
+<p><b translate="no">Pace</b> defines the frequency at which each particle wanders in curves per second, starting from <b translate="no">Pace start</b>. The meaningful range for pace start is between 0 .. 2 * PI.</p>
+<h3 id="unique-wander-properties">Unique Wander Properties</h3>
+<p>Specify unique settings for the <b translate="no">Wander</b> component instances in <b translate="no">Properties</b> &gt; <b translate="no">Unique</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-wander-unique.png" alt="&quot;Unique Particle Wander properties&quot;" /></p><p><b translate="no">Amount</b> specifies the distance that each particle moves at the ends of curves. Specify amount variation for each particle between 0.00 and 1.00 in <b translate="no">Amount variation</b>. When the amount variation is 0.00, all particles reach the maximum amount. When it is 0.50, every particle reaches between 0.50 and 1.50 of the amount. For example, if you set <b translate="no">Amount</b> <b translate="no">X</b> to 100.00, <b translate="no">Y</b> to 50.00, and <b translate="no">Z</b> to 20.00) and <b translate="no">Amount variation</b> to 0.10, the particles' maximum wave distances are something random between (110, 55, 22) and (90, 45, 18).</p>
+<p><b translate="no">Pace</b> defines the frequency at which each particle wanders in curves per second. Specify unique pace variation for each particle between 0.00 and 1.00 in <b translate="no">Pace variation</b>. When the variation is 0.00, all particles wander at the same frequency. For example, if you set <b translate="no">Pace</b> <b translate="no">X</b> to 1.00, <b translate="no">Y</b> to 2.00, and <b translate="no">Z</b> to 4.00 and <b translate="no">Pace variation</b> to 0.50, the particles' wave paces are something random between (2.00, 4.00, 8.00) and (0.50, 1.00, 2.00).</p>
+<h2 id="particle-affector">Particle Affector</h2>
+<p>Specify common settings for particle affectors in <b translate="no">Properties</b> &gt; <a href="studio-3d-particle-affectors.html#particle-affector" translate="no">Particle Affector</a>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-affector.png" alt="&quot;Affector properties&quot;" /></p><p>If the affector is not a direct child component of the particle system, select the <b translate="no">Particle System</b> component instance to affect in <b translate="no">System</b>.</p>
+<p>To only affect some of the particles in the particle system, select them in <b translate="no">Particles</b>. Select <img src="images/plus.png" alt="" /> to add logical particles to the list.</p>
+<p>Deselect <b translate="no">Enabled</b> to turn the affector off. Usually, this property is used in code to conditionally turn affectors off and on.</p>
+</div>
+<!-- @@@studio-3d-particle-affectors.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-3d-particle-emitters.html">Particle Emitters</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-particle-directions.html">Particle Directions</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

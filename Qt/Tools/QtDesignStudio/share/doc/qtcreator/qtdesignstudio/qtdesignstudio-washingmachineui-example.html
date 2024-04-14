@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- washingMachineUI.qdoc -->
+  <meta name="description" content="Illustrates how to create a UI that can be run both on the desktop and on MCUs.">
+  <title>Washing Machine UI | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="studioexamples.html" translate="no">Examples</a></li>
+<li>Washing Machine UI</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#creating-an-application-for-mcus">Creating an Application for MCUs</a></li>
+<li class="level1"><a href="#creating-screens">Creating Screens</a></li>
+<li class="level1"><a href="#creating-a-progress-indicator">Creating a Progress Indicator</a></li>
+<li class="level1"><a href="#creating-states">Creating States</a></li>
+<li class="level1"><a href="#connecting-buttons-to-state-changes">Connecting Buttons to State Changes</a></li>
+<li class="level1"><a href="#showing-the-current-time">Showing the Current Time</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Washing Machine UI</h1>
+<!-- $$$washingMachineUI-brief -->
+<p>Illustrates how to create a UI that can be run both on the desktop and on MCUs.</p>
+<!-- @@@washingMachineUI -->
+<!-- $$$washingMachineUI-description -->
+<div class="descr" id="details">
+<p class="centerAlign"><img src="images/washingmachineui.png" alt="&quot;Start screen&quot;" /></p><p><i>Washing Machine UI</i> is a control panel application for washing machines. The application contains the following screens:</p>
+<ul>
+<li><i>Start</i> displays a start button</li>
+<li><i>Presets</i> displays recently used wash programs</li>
+<li><i>Quick Start</i> enables users to either specify settings or start the selected wash program</li>
+<li><i>Wash Program</i> displays wash program settings</li>
+<li><i>Running</i> displays the progress of the wash program</li>
+</ul>
+<p>Users select buttons to navigate between the screens. We use <a href="studio-terms.html#glossary-connection" translate="no">connections</a> to determine which screen to open when users select a particular button and <a href="studio-terms.html#glossary-state" translate="no">states</a> to show the screens. We use the <a href="studio-timeline.html" translate="no">timeline</a> to create progress indicators for buttons and the <i>Running</i> screen.</p>
+<p>In addition, all screens contain a small clock component that displays the current time. We implement a <i>TimeDate</i> JavaScript object to support this feature on <a href="https://doc.qt.io/QtForMCUs/qtul-qmltypes.html" translate="no">Qt for MCUs</a>, which does not support the <a href="https://doc.qt.io/qt/qml-qtqml-date.html" translate="no">Date</a> component at the time of writing.</p>
+<h4 id="creating-an-application-for-mcus">Creating an Application for MCUs</h4>
+<p>We use the <b translate="no">Qt for MCUs Application</b> project template to create an application for MCUs, which support only a subset of the preset <a href="studio-terms.html#glossary-component" translate="no">components</a>.</p>
+<p>To create an MCU project:</p>
+<ol class="1" type="1"><li>Select <b translate="no">File</b> &gt; <b translate="no">New Project</b>.</li>
+<li>In the <b translate="no">Presets</b> tab, select the <b translate="no">Qt for MCUs</b> preset.</li>
+<li>In the <b translate="no">Details</b> tab:<ul>
+<li>Select the path for the project files. You can move the project folders later.</li>
+<li>Set the screen size to match the device screen, which also enables previewing on the desktop. You can change the screen size later in <a href="qtquick-properties-view.html" translate="no">Properties</a>.</li>
+</ul>
+</li>
+<li>Select <b translate="no">Create</b> to create the project.</li>
+</ol>
+<p>This way, only the components and properties supported on MCUs are visible in <a href="quick-components-view.html" translate="no">Components</a> and <a href="qtquick-properties-view.html" translate="no">Properties</a>, and we won't accidentally add unsupported components to our UI or specify unsupported properties for supported components. For more information, see <a href="studio-projects.html" translate="no">Creating Projects</a>.</p>
+<p>In addition, the wizard template creates a generic <code translate="no">CMakeLists.txt</code> file that we can use to configure and build our example application for running it on MCUs.</p>
+<div class="admonition note">
+<p><b>Note: </b>This example has been tested to run using Qt for MCUs versions since 1.6. You cannot run it on older versions. Also, at the time of writing, Qt for MCUs only supports Qt 5.</p>
+</div>
+<h4 id="creating-screens">Creating Screens</h4>
+<p>For this example, we used an external tool to design the UI and then exported and imported our design into Qt Design Studio as assets and components using Qt Bridge, as instructed in <a href="qtbridge-overview.html" translate="no">Exporting from Design Tools</a>. While exporting, we only picked components supported by Qt for MCUs to use for our components. For the button components, we mostly use the <a href="quick-images.html#basic-image" translate="no">Image</a>, <a href="quick-text.html" translate="no">Text</a>, and <a href="quick-user-interaction-methods.html#mouse-area" translate="no">Mouse Area</a> components. For the screen background, we use the <a href="quick-shapes.html#basic-rectangle" translate="no">Rectangle</a> component.</p>
+<p>The text might look different on the desktop and MCUs because on the desktop we use dynamic font loading, whereas on MCUs fonts are compiled into application sources. Therefore, the text will always be Maven Pro on MCUs, whereas on the desktop you'd need to have Maven Pro installed for it to be used. Usually, you will see the system default font instead.</p>
+<p>We also created a more complicated component called <i>MultSegmentArc</i> that we use to indicate that a button is pressed.</p>
+<p>Alternatively, you could create the screens from scratch in Qt Design Studio by selecting <b translate="no">File</b> &gt; <b translate="no">New File</b> &gt; <b translate="no">Qt Quick Files</b>. While designing the screens, you can move reusable components into separate files. For more information, see <a href="quick-components.html" translate="no">Using Components</a>.</p>
+<h4 id="creating-a-progress-indicator">Creating a Progress Indicator</h4>
+<p>We create a reusable MultSegmentArc component, and use it in our <i>Bigbutton</i> and <i>Smallbutton</i> components to indicate the button press progress. The component displays an animated arc around a button when it is pressed. On the desktop, users only need to click once to run the animation to the end, whereas on MCUs, they need to keep the button pressed until the animation finishes.</p>
+<p class="centerAlign"><img src="images/washingmachineui-progress-indicator.png" alt="&quot;Button progress indicator&quot;" /></p><p>Our component is composed of four blocks, into which the arc segments will rotate to indicate progress. To build it, we use <a href="quick-images.html#basic-image" translate="no">Image</a> components that have pictures of four segments of an arc as sources and <a href="quick-shapes.html#basic-rectangle" translate="no">Rectangle</a> components that mask the segments of the arc that should be hidden until they have rotated into place. For the <i>Smallbutton</i> component, we override the images with pictures of smaller arc segments that will fit nicely around the small button.</p>
+<p class="centerAlign"><img src="images/washingmachineui-multisegmentarc.png" alt="&quot;MultSegmentArc component&quot;" /></p><p>We animate the rotation properties of the arc segments to rotate each of them into the next block, one after another.</p>
+<p>We use this component instead of the <a href="quick-shapes.html#arc" translate="no">Arc</a> component, which is not supported on MCUs.</p>
+<p>We can now add a timeline animation to make the arc move around the button when the button is pressed. In the <b translate="no">Timeline</b> view, we select the <img src="images/plus.png" alt="" /> button to add a 1000-frame timeline to the <i>root</i> of the component. We'll use the default values for all other fields.</p>
+<p class="centerAlign"><img src="images/washingmachineui-timeline-settings.png" alt="&quot;Timeline settings&quot;" /></p><p>First, we select the initial arc segment, <i>arcSegment1</i>, in <a href="qtquick-navigator.html" translate="no">Navigator</a> to display its properties in <b translate="no">Properties</b>. In <b translate="no">Geometry - 2D</b> &gt; <b translate="no">Rotation</b>, we select <img src="images/action-icon.png" alt="" /> (<b translate="no">Actions</b>), and then select <b translate="no">Insert Keyframe</b> to insert a keyframe that we can animate in the <b translate="no">Timeline</b> view.</p>
+<p class="centerAlign"><img src="images/washingmachineui-insert-keyframe.png" alt="&quot;Inserting keyframe for Rotation property&quot;" /></p><p>To start recording a rotation animation on the timeline, we check that the playhead is at frame 0 and then select the <img src="images/recordfill.png" alt="" /> (<b translate="no">Auto Key (K)</b>) button (or press <b>k</b>).</p>
+<p>First, we set the rotation at frame 0 to -90 in <b translate="no">Properties</b> &gt; <b translate="no">Geometry - 2D</b> &gt; <b translate="no">Rotation</b>. Next, we move the playhead to frame 250 and set the rotation to 0.</p>
+<p>When we deselect the record button to stop recording the timeline, the new timeline appears in the view.</p>
+<p class="centerAlign"><img src="images/washingmachineui-timeline.png" alt="&quot;Rotation animation in Timeline view&quot;" /></p><p>We now repeat the above steps to add keyframes for the other arc segments and to animate their rotation property to move from -90 at frame 0 to 0 at frame 500 (<i>arcSegment2</i>), 750 (<i>arcSegment3</i>), and 1000 (<i>arcSegment4</i>).</p>
+<p>When we move the playhead in <b translate="no">Timeline</b>, we can see the rotation animation in the <a href="qtquick-form-editor.html" translate="no">2D</a> view.</p>
+<p class="centerAlign"><img src="images/washingmachineui-multsegmentarc.gif" alt="&quot;Rotation animation in the 2D view&quot;" /></p><h4 id="creating-states">Creating States</h4>
+<p>In our UI, we use connections and states to move between screens. First, we specify the application workflow in <i>ApplicationFlow.qml</i>. When the file is open in the <b translate="no">2D</b> view, we drag-and-drop the components that define the screens in the application from <b translate="no">Components</b> to <b translate="no">Navigator</b> or the <b translate="no">2D</b> view: <i>StartScreen</i>, <i>SettingsScreen</i>, <i>PresetsScreen</i>, and <i>RunningScreen</i>.</p>
+<p class="centerAlign"><img src="images/washingmachineui-application-flow.png" alt="&quot;startScreen component in different views&quot;" /></p><p>Because we will use states to display one screen at a time, depending on the choices users make, we can place all the screens on top of each other in the top-left corner of the root component.</p>
+<p>Then, we open the <b translate="no">States</b> view to create the <i>start</i>, <i>settings</i>, <i>presets</i>, and <i>running</i> <a href="quick-states.html" translate="no">states</a> for displaying a particular screen by selecting <b translate="no">Create New State</b>.</p>
+<p class="centerAlign"><img src="images/washingmachineui-states.png" alt="&quot;States view&quot;" /></p><p>In Qt for MCUs, states work differently from Qt Quick, and therefore we sometimes use <code translate="no">when</code> conditions to determine the state to apply, and sometimes switch states using signals and JavaScript expressions.</p>
+<h4 id="connecting-buttons-to-state-changes">Connecting Buttons to State Changes</h4>
+<p>In each file that defines a screen, we connect signals to the button components to change to a particular state when users select buttons.</p>
+<p>Some signals are predefined for the <a href="quick-user-interaction-methods.html#mouse-area" translate="no">Mouse Area</a> component, some we have to add ourselves. For example, let's look at the start button that we use in <i>StartScreen.ui.qml</i>. First, we use the <a href="qtquick-text-editor.html" translate="no">Code</a> view to create the <code translate="no">startClicked</code> signal:</p>
+<pre class="cpp" translate="no">
+ <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-item.html" translate="no">Item</a></span> {
+     <span class="name">id</span>: <span class="name">start</span>
+     <span class="name">width</span>: <span class="number">480</span>
+     <span class="name">height</span>: <span class="number">272</span>
+
+     signal <span class="type">startClicked</span>
+</pre>
+<p>Then, we select the mouse area for the start button, <i>startMA</i>, in <b translate="no">Navigator</b>. On the <b translate="no">Connections</b> tab in the <a href="qtquick-connection-view.html" translate="no">Connections</a> view, we select the <img src="images/plus.png" alt="" /> (<b translate="no">Add</b>) button. We set <b translate="no">Signal</b> to <code translate="no">clicked</code>, <b translate="no">Action</b> to <code translate="no">Call Function</code> and <b translate="no">Item</b> to <code translate="no">startClicked</code>. Next, we select the <img src="images/close.png" alt="" /> button to close the connection setup options.</p>
+<p class="centerAlign"><img src="images/washingmachineui-connections.webp" alt="&quot;Connections view&quot;" /></p><p>Then, in <i>ApplicationView.qml</i>, we specify that the <code translate="no">startClicked()</code> signal changes the application state to <i>presets</i>:</p>
+<pre class="cpp" translate="no">
+ <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-item.html" translate="no">Item</a></span> {
+     <span class="name">id</span>: <span class="name">root</span>
+     <span class="name">state</span>: <span class="string">&quot;start&quot;</span>
+
+     <span class="name">width</span>: <span class="number">480</span>
+     <span class="name">height</span>: <span class="number">272</span>
+
+     <span class="type">StartScreen</span> {
+         <span class="name">id</span>: <span class="name">startScreen</span>
+
+         <span class="name">visible</span>: <span class="number">true</span>
+
+         <span class="name">onStartClicked</span>: {
+             <span class="name">root</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;presets&quot;</span>
+         }
+</pre>
+<p>We have to do it this way because we are developing for MCUs. We have to use either <code translate="no">when</code> conditions or set the state directly through code, which overrides <code translate="no">when</code> conditions. Otherwise, we could just select the action to change to the state that we want in the <b translate="no">Action</b> field.</p>
+<p>We create similar connections between button components and signals in the other screens to apply other actions that move users to other screens.</p>
+<p>For more information, see <a href="quick-signals.html" translate="no">Connecting Components to Signals</a>.</p>
+<h4 id="showing-the-current-time">Showing the Current Time</h4>
+<p>The <a href="https://doc.qt.io/qt/qml-qtqml-date.html" translate="no">Date</a> component is not supported on Qt for MCUs, and the <a href="https://doc.qt.io/QtForMCUs/qtul-javascript-environment.html" translate="no">implementation of the JavaScript <code translate="no">Date()</code></a> object returns elapsed time since when the application was started instead of the current date and time, as specified in ECMAScript specification.</p>
+<p>To get around this limitation on the desktop, we create our own component in the <i>Timedate.qml</i> file with some properties that we will need later to get the current time in hours and minutes:</p>
+<pre class="cpp" translate="no">
+ <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-item.html" translate="no">Item</a></span> {
+     <span class="name">id</span>: <span class="name">timedate</span>
+     <span class="name">width</span>: <span class="number">47</span>
+     <span class="name">height</span>: <span class="number">29</span>
+
+     readonly property <span class="type">alias</span> <span class="name">currentHourInt</span>: <span class="name">timeContainer</span>.<span class="name">hrsInt</span>
+     readonly property <span class="type">alias</span> <span class="name">currentMinuteInt</span>: <span class="name">timeContainer</span>.<span class="name">minInt</span>
+</pre>
+<p>On MCUs, we will unfortunately still see the elapsed time since when the application was started. However, this is useful on the <i>Running</i> screen for indicating the progress of the selected wash program.</p>
+<p>We use a <a href="quick-text.html" translate="no">Text</a> component to create a label with formatted text:</p>
+<pre class="cpp" translate="no">
+     <span class="type"><a href="quick-text.html" translate="no">Text</a></span> {
+         <span class="name">id</span>: <span class="name">timelabel</span>
+         <span class="name">x</span>: <span class="number">2</span>
+         <span class="name">y</span>: -<span class="number">1</span>
+         <span class="name">width</span>: <span class="number">43</span>
+         <span class="name">height</span>: <span class="number">16</span>
+         <span class="name">color</span>: <span class="string">&quot;#B8B8B8&quot;</span>
+         <span class="name">font</span>.pixelSize: <span class="number">16</span>
+         <span class="name">horizontalAlignment</span>: <span class="name">Text</span>.<span class="name">AlignHCenter</span>
+         <span class="name">font</span>.family: <span class="string">&quot;Maven Pro&quot;</span>
+
+         <span class="name">text</span>: <span class="name">timeContainer</span>.<span class="name">hrsStr</span> <span class="operator">+</span> <span class="string">&quot;:&quot;</span> <span class="operator">+</span> <span class="name">timeContainer</span>.<span class="name">minStr</span>
+     }
+</pre>
+<p>We use an <a href="https://doc.qt.io/qt/qml-qtquick-item.html" translate="no">Item</a> as a logic module to get and format current time information:</p>
+<pre class="cpp" translate="no">
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-item.html" translate="no">Item</a></span> {
+         <span class="name">id</span>: <span class="name">timeContainer</span>
+         property <span class="type">string</span> <span class="name">hrsStr</span>: <span class="string">&quot;00&quot;</span>
+         property <span class="type">string</span> <span class="name">minStr</span>: <span class="string">&quot;00&quot;</span>
+
+         property <span class="type">int</span> <span class="name">hrsInt</span>: <span class="number">0</span>
+         property <span class="type">int</span> <span class="name">minInt</span>: <span class="number">0</span>
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtqml-timer.html" translate="no">Timer</a></span> {
+             <span class="name">id</span>: <span class="name">timer</span>
+             <span class="name">interval</span>: <span class="number">1000</span>
+             <span class="name">running</span>: <span class="number">true</span>
+             <span class="name">repeat</span>: <span class="number">true</span>
+
+             <span class="name">onTriggered</span>: {
+                 <span class="name">updateTime</span>()
+             }
+</pre>
+<p>We use the <code translate="no">updateTime()</code> function to display the current time in hours and minutes:</p>
+<pre class="cpp" translate="no">
+             <span class="keyword">function </span><span class="name">updateTime</span>() {
+                 var currentDate = new <span class="name">Date</span>()
+                 <span class="name">timeContainer</span>.<span class="name">hrsInt</span> <span class="operator">=</span> <span class="name">currentDate</span>.<span class="name">getHours</span>()
+                 <span class="keyword">if</span> (<span class="name">timeContainer</span>.<span class="name">hrsInt</span> <span class="operator">&lt;</span> <span class="number">10</span>) <span class="name">timeContainer</span>.<span class="name">hrsStr</span> <span class="operator">=</span> <span class="string">&quot;0&quot;</span> <span class="operator">+</span> <span class="name">timeContainer</span>.<span class="name">hrsInt</span>
+                 <span class="keyword">else</span> <span class="name">timeContainer</span>.<span class="name">hrsStr</span> <span class="operator">=</span> <span class="name">timeContainer</span>.<span class="name">hrsInt</span>
+
+                 <span class="name">timeContainer</span>.<span class="name">minInt</span> <span class="operator">=</span> <span class="name">currentDate</span>.<span class="name">getMinutes</span>()
+                 <span class="keyword">if</span> (<span class="name">timeContainer</span>.<span class="name">minInt</span> <span class="operator">&lt;</span> <span class="number">10</span>) <span class="name">timeContainer</span>.<span class="name">minStr</span> <span class="operator">=</span> <span class="string">&quot;0&quot;</span> <span class="operator">+</span> <span class="name">timeContainer</span>.<span class="name">minInt</span>
+                 <span class="keyword">else</span> <span class="name">timeContainer</span>.<span class="name">minStr</span> <span class="operator">=</span> <span class="name">timeContainer</span>.<span class="name">minInt</span>
+             }
+</pre>
+<p>To use two digits for hours and minutes, we use the <code translate="no">hrsStr</code>, <code translate="no">minStr</code>, <code translate="no">hrsInt</code>, and <code translate="no">minInt</code> properties to add extra zeros for values below 10. This way, the clock will display the time as <code translate="no">08:00</code> instead as <code translate="no">8:0</code>, for example.</p>
+<p>Files:</p>
+<ul>
+<li><a href="qtdesignstudio-washingmachineui-applicationflow-qml.html" translate="no">washingMachineUI/ApplicationFlow.qml</a></li>
+<li><a href="qtdesignstudio-washingmachineui-multsegmentarc-ui-qml.html" translate="no">washingMachineUI/MultSegmentArc.ui.qml</a></li>
+<li><a href="qtdesignstudio-washingmachineui-startscreen-ui-qml.html" translate="no">washingMachineUI/StartScreen.ui.qml</a></li>
+<li><a href="qtdesignstudio-washingmachineui-timedate-qml.html" translate="no">washingMachineUI/Timedate.qml</a></li>
+<li><a href="qtdesignstudio-washingmachineui-washingmachineui-qmlproject.html" translate="no">washingMachineUI/washingMachineUI.qmlproject</a></li>
+</ul>
+</div>
+<!-- @@@washingMachineUI -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-quick-fixes.qdoc -->
+  <meta name="description" content="Summary of quick fixes for QML code.">
+  <title>QML Quick Fixes | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>QML Quick Fixes</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-reference.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">QML Quick Fixes</h1>
+<!-- $$$creator-reference-qml-quick-fixes.html-description -->
+<div class="descr" id="details">
+<p>Apply the following types of quick fixes to QML code:</p>
+<ul>
+<li>Rename IDs</li>
+<li>Split initializers</li>
+<li>Move a QML type into a separate file to reuse it in other .qml files</li>
+</ul>
+<p>The following table summarizes the quick fixes for QML code. The action is available when the cursor is in the position described in the Activation column.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Quick Fix</th><th >Description</th><th >Activation</th></tr></thead>
+<tr valign="top" class="odd"><td >Move Component into Separate File</td><td >Moves a QML type into a separate file. Give the new component a name and select whether properties are set for the new component or for the original one.<p class="centerAlign"><img src="images/qtcreator-move-component-into-separate-file.png" alt="" /></p></td><td >QML type name.</td></tr>
+<tr valign="top" class="even"><td >Split Initializer</td><td >Reformats a one-line type into a multi-line type. For example, rewrites<pre class="cpp" translate="no">
+ Item { x: <span class="number">10</span>; y: <span class="number">20</span>; width: <span class="number">10</span> }
+</pre>
+<p>as</p>
+<pre class="cpp" translate="no">
+ Item {
+     x: <span class="number">10</span>;
+     y: <span class="number">20</span>;
+     width: <span class="number">10</span>
+ }
+</pre>
+</td><td >QML type property</td></tr>
+<tr valign="top" class="odd"><td >Wrap Component in Loader</td><td >Wraps the type in a Component type and loads it dynamically in a Loader type. This is usually done to improve startup time.</td><td >QML type name</td></tr>
+<tr valign="top" class="even"><td >Add a message suppression comment</td><td >Prepends the line with an annotation comment that stops the message from being generated.</td><td >Error, warning or hint from static analysis</td></tr>
+</table></div>
+</div>
+<p><b>See also </b><a href="creator-editor-quick-fixes.html" translate="no">Apply quick fixes</a>, <a href="creator-how-to-rename-symbols.html" translate="no">Rename symbols</a>, <a href="creator-how-to-excludes-files-from-to-do-lists.html" translate="no">Exclude files from to-do lists</a>, <a href="creator-editor-how-to-find-symbols.html" translate="no">Find symbols</a>, <a href="creator-how-to-specify-settings-for-quick-fixes.html" translate="no">Specify settings for quick fixes</a>, <a href="creator-reference-preferences-cpp-quick-fixes.html" translate="no">Quick Fixes</a>, and <a href="creator-reference-cpp-quick-fixes.html" translate="no">C++ Quick Fixes</a>.</p>
+<!-- @@@creator-reference-qml-quick-fixes.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

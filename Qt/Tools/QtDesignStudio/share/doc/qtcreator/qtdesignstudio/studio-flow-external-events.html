@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-app-flows.qdoc -->
+  <title>Reacting to External Events | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Reacting to External Events</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-flow-states.html" />
+  <link rel="next" href="quick-components.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-flow-states.html">Applying States in Flows</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-components.html">Using Components</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#flow-wildcard-properties">Flow Wildcard Properties</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Reacting to External Events</h1>
+<!-- $$$studio-flow-external-events.html-description -->
+<div class="descr" id="details">
+<p>On mobile and embedded platforms, applications are usually integrated into the platform and therefore screens might pop-up from anywhere or at any time, based on a conditional event. For example, push notifications appear on mobile devices and incoming call screens on a car's HMI.</p>
+<p>You can use the <b translate="no">Flow Wildcard</b> component to model this type of screens in your <a href="studio-flow-view.html" translate="no">flow view</a> using real or simulated <a href="studio-flow-action-area.html#connecting-and-releasing-signals" translate="no">signals</a> and <a href="studio-flow-conditions.html" translate="no">conditions</a>. You can add <a href="studio-flow-item.html" translate="no">flow items</a> to a positive list to prioritize them or to a negative list to stop some screens from appearing on others. For example, you could block the incoming call screen from appearing on a warning screen for the engine if you consider the warning more important.</p>
+<p>To use wildcards:</p>
+<ol class="1" type="1"><li>Drag a <b translate="no">Flow Wildcard</b> component from <b translate="no">Components</b> &gt; <b translate="no">Flow View</b> to an <a href="studio-flow-action-area.html" translate="no">action area</a> in the <a href="qtquick-navigator.html" translate="no">Navigator</a> or <a href="qtquick-form-editor.html" translate="no">2D</a> view.</li>
+<li>In <a href="qtquick-properties-view.html" translate="no">Properties</a>, select flow items to add them to the positive and negative list of the action area.</li>
+</ol>
+<h2 id="flow-wildcard-properties">Flow Wildcard Properties</h2>
+<p>You can specify basic properties for a <b translate="no">Flow Wildcard</b> component in the <a href="qtquick-properties.html#type" translate="no">Type</a> and <a href="qtquick-properties.html#id" translate="no">ID</a> fields in the <b translate="no">Component</b> section in the <b translate="no">Properties</b> view. Specify properties for flow wildcards in the <b translate="no">Flow Wildcard</b> section.</p>
+<p class="centerAlign"><img src="images/studio-flow-wildcard-properties.png" alt="&quot;Flow Wildcard properties&quot;" /></p><p>In the <b translate="no">Event IDs</b> field, specify the IDs of the events to connect to, such as mouse, touch or keyboard events.</p>
+<p>Select the <b translate="no">Global wildcard</b> check box to enable triggering the wildcard from several flows.</p>
+<p>To give flow items high priority, select them in the <b translate="no">Allow list</b> field. To block flow items, select them in the <b translate="no">Block list</b> field.</p>
+<p>You can specify the following properties to change the appearance of the wildcard icon <img src="images/flow-wildcard-icon.png" alt="" /> :</p>
+<ul>
+<li>In the <b translate="no">Size</b> field, specify the size of the wildcard icon.</li>
+<li>In the <b translate="no">Radius</b> field, specify the radius of the wildcard icon corners.</li>
+</ul>
+<p>You can use the <a href="qtquick-properties.html#picking-colors" translate="no">color picker</a> to set the outline and fill color of the wildcard icon.</p>
+</div>
+<!-- @@@studio-flow-external-events.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-flow-states.html">Applying States in Flows</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-components.html">Using Components</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

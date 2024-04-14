@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-vcs-git.qdoc -->
+  <title>Using Git | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Using Git</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-developer-topics.html" />
+  <link rel="next" href="studio-porting-projects.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-developer-topics.html">Developer Topics</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-porting-projects.html">Converting Qt 5 Projects into Qt 6 Projects</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#initializing-git-repositories">Initializing Git Repositories</a></li>
+<li class="level1"><a href="#working-with-the-current-file">Working with the Current File</a></li>
+<li class="level2"><a href="#viewing-git-diff">Viewing Git Diff</a></li>
+<li class="level2"><a href="#viewing-git-log">Viewing Git Log</a></li>
+<li class="level2"><a href="#viewing-annotations">Viewing Annotations</a></li>
+<li class="level2"><a href="#staging-changes">Staging Changes</a></li>
+<li class="level2"><a href="#resetting-changes">Resetting Changes</a></li>
+<li class="level1"><a href="#working-with-the-current-project">Working with the Current Project</a></li>
+<li class="level2"><a href="#cleaning-projects">Cleaning Projects</a></li>
+<li class="level1"><a href="#working-with-local-repositories">Working with Local Repositories</a></li>
+<li class="level2"><a href="#viewing-reference-log">Viewing Reference Log</a></li>
+<li class="level2"><a href="#viewing-git-status">Viewing Git Status</a></li>
+<li class="level2"><a href="#committing-changes-to-git">Committing Changes to Git</a></li>
+<li class="level2"><a href="#amending-commits">Amending Commits</a></li>
+<li class="level2"><a href="#resetting-local-repository">Resetting Local Repository</a></li>
+<li class="level2"><a href="#working-with-branches">Working with Branches</a></li>
+<li class="level2"><a href="#applying-patches">Applying Patches</a></li>
+<li class="level2"><a href="#using-stashes">Using Stashes</a></li>
+<li class="level1"><a href="#applying-actions-to-commits">Applying Actions to Commits</a></li>
+<li class="level1"><a href="#working-with-remote-repositories">Working with Remote Repositories</a></li>
+<li class="level2"><a href="#managing-remote-repositories">Managing Remote Repositories</a></li>
+<li class="level2"><a href="#using-git-with-subversion">Using Git with Subversion</a></li>
+<li class="level2"><a href="#reviewing-code-with-gerrit">Reviewing Code with Gerrit</a></li>
+<li class="level1"><a href="#working-with-git-tools">Working with Git Tools</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Using Git</h1>
+<!-- $$$creator-vcs-git.html-description -->
+<div class="descr" id="details">
+<p><a href="http://git-scm.com/" translate="no">Git</a> is a fast decentralized version control system. Git is available for Windows, Linux, and macOS.</p>
+<p>You can use the <a href="http://code.google.com/p/gerrit/" translate="no">Gerrit</a> code review tool for projects that use Git.</p>
+<h2 id="initializing-git-repositories">Initializing Git Repositories</h2>
+<p>To start controlling a project directory that is currently not under version control, select <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Create Repository</b>. Qt Design Studio creates a new subdirectory named .git that has all the necessary repository files. However, Git does not track anything in the project yet, so you will need to create an initial commit to start tracking the project files.</p>
+<h2 id="working-with-the-current-file">Working with the Current File</h2>
+<p>To work with the current file, select the commands in <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Current File</b>. Some of the commands are also available for the project or local repository that has the file.</p>
+<h3 id="viewing-git-diff">Viewing Git Diff</h3>
+<p>You can <i>diff</i> the current file or project to compare it with the latest version stored in the repository and to display the differences. To display the diff in a read-only editor, select <b translate="no">Diff of</b>. If the file is accessible, you can double-click on a selected diff chunk and Qt Design Studio opens an editor displaying the file, scrolled to the line in question.</p>
+<p class="centerAlign"><img src="images/qtcreator-vcs-diff.png" alt="" /></p><p>The <a href="creator-diff-editor.html" translate="no">diff editor</a> displays the diff side-by-side. To use the unified diff view instead, select the <b translate="no">Switch to Unified Diff Editor</b> (1) option from the toolbar. In both views, you can use context menu commands to apply, revert, stage, and unstage chunks or selected lines, as well as send chunks to a code pasting service.</p>
+<h3 id="viewing-git-log">Viewing Git Log</h3>
+<p>To display the versioning history of a file, select <b translate="no">Log of</b>. The log output has the date, the commit message, and a commit identifier.</p>
+<p>You can set the maximum number of log entries to show in <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Version Control</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Log count</b>.</p>
+<p>Click on the commit identifier to view commit details.</p>
+<p class="centerAlign"><img src="images/qtcreator-git-log.png" alt="{Commit details in Git log}" /></p><p>Right-clicking on a commit identifier brings up a context menu that lets you apply actions on the commit, such as view annotations or cherry-pick or revert a commit. For more information, see <a href="creator-vcs-git.html#working-with-branches" translate="no">Working with Branches</a>.</p>
+<p>To toggle the diff view, select <b translate="no">Diff</b>. To use the patience algorithm for calculating the differences, select <b translate="no">Patience</b>. To only show text changes, select <b translate="no">Ignore Whitespace</b>.</p>
+<p>To filter log entries by the text in the commit message, by strings that were added or removed, or by author, select <b translate="no">Filter</b>. Enter a search sting in the <b translate="no">Filter by message</b>, <b translate="no">Filter by content</b>, or <b translate="no">Filter by author</b> field. Select <b translate="no">Case Sensitive</b> to make filtering consider case.</p>
+<p>To follow only the first parent on merge commits, select <b translate="no">First Parent</b>.</p>
+<p>To toggle between textual and visual representation of the log, select <b translate="no">Graph</b>.</p>
+<p>To toggle color coding of different parts of the log entries, select <b translate="no">Color</b>.</p>
+<p>To show log also for previous names of the file, select <b translate="no">Follow</b>.</p>
+<p>Select <img src="images/reload_gray.png" alt="" /> (<b translate="no">Reload</b>) to rescan the files.</p>
+<p>To display a description of the change including the diff in the <b translate="no">Git Show</b> view, select <b translate="no">Describe Change</b> in the context menu.</p>
+<p class="centerAlign"><img src="images/qtcreator-vcs-show.png" alt="{Commit description in Git show}" /></p><h3 id="viewing-annotations">Viewing Annotations</h3>
+<p>To view annotations, select <b translate="no">Blame</b>. The <b translate="no">Git Blame</b> view displays the lines of the file prepended by the commit identifier they originate from.</p>
+<p class="centerAlign"><img src="images/qtcreator-git-blame.webp" alt="{Git Blame view}" /></p><p>By default, each line is annotated in the editor when you scroll through the file. To disable this feature, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Version Control</b> &gt; <b translate="no">Git</b>, and deselect <b translate="no">Instant Blame</b>. To find the commit that introduced the last real code change, select <b translate="no">Ignore whitespace changes</b>. To find the commit that introduced a line before it was moved, select <b translate="no">Ignore line moves</b>.</p>
+<p>To view annotations for the current line, select <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Current File</b> &gt; <b translate="no">Instant Blame</b>.</p>
+<p>Click the commit identifier to show a detailed description of the change.</p>
+<p>To show the annotation of a previous version, right-click on the commit identifier and select <b translate="no">Blame Parent Revision</b>. This allows you to navigate through the history of the file and obtain previous versions of it.</p>
+<p>To view moved or copied lines within a file or between files, select <b translate="no">Detect Moves Within File</b>, <b translate="no">Detect Moves Between Files</b>, or <b translate="no">Detect Moves and Copies Between Files</b>.</p>
+<p>To hide the date and time information in the view, select <b translate="no">Omit Date</b>.</p>
+<p>The other actions in the context-menu enable you to apply actions to the commit, such as cherry-pick, checkout, or revert it.</p>
+<p>To rescan the files, select <img src="images/reload_gray.png" alt="" /> (<b translate="no">Reload</b>).</p>
+<h3 id="staging-changes">Staging Changes</h3>
+<p>To mark a new or modified file for committing it to the repository, select <b translate="no">Stage File for Commit</b>. To undo this function, select <b translate="no">Unstage File from Commit</b>.</p>
+<h3 id="resetting-changes">Resetting Changes</h3>
+<p>Git uses an index to stage changes. The index is committed on the next commit. Git allows you to revert back to the state of the last commit as well as to the state staged in the index.</p>
+<p>To revert all changes and reset the current file to the state of the index, select <b translate="no">Undo Unstaged Changes</b>.</p>
+<p>To return the current file to the state it was in right after the last commit, select <b translate="no">Undo Uncommitted Changes</b>. This reverts all changes, discarding the index.</p>
+<h2 id="working-with-the-current-project">Working with the Current Project</h2>
+<p>To work with the current project, select the commands in <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Current Project</b>. The <b translate="no">Diff Project</b> and <b translate="no">Log Project</b> commands, which are also available for the current file, are described above.</p>
+<h3 id="cleaning-projects">Cleaning Projects</h3>
+<p>To clean the working directory, select <b translate="no">Clean Project</b>. All files that are not under version control are displayed in the <b translate="no">Clean Repository</b> dialog. Ignored files are deselected by default. Select the files to delete, and then select <b translate="no">Delete</b>.</p>
+<h2 id="working-with-local-repositories">Working with Local Repositories</h2>
+<p>To work with the local repository, select the commands in <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Local Repository</b>. The commands that are also available for the current file or project are described above.</p>
+<h3 id="viewing-reference-log">Viewing Reference Log</h3>
+<p>Reference logs record when the tips of branches and other references were updated in the local repository. To view the reference log, select <b translate="no">Reflog</b>.</p>
+<h3 id="viewing-git-status">Viewing Git Status</h3>
+<p>To view the status of the repository in <b translate="no">Version Control</b>, select <b translate="no">Status</b>. The context menu has additional actions, such as selecting and clearing all entries, copying text, and opening files.</p>
+<h3 id="committing-changes-to-git">Committing Changes to Git</h3>
+<p>To submit your changes to Git, select <b translate="no">Commit</b>. Qt Design Studio displays a commit page containing a text editor where you can enter your commit message and a checkable list of modified files to include.</p>
+<p class="centerAlign"><img src="images/qtcreator-vcs-commit.png" alt="{Committing changes with Git}" /></p><p><b translate="no">General Information</b> displays the names of the repository and branch for the commit.</p>
+<p>In <b translate="no">Commit Information</b>, you can edit information about the author of the commit. To bypass re-commit and commit message hooks, select <b translate="no">Bypass hooks</b>. If your project uses signoffs, select <b translate="no">Sign off</b> to add a <i>signed-off-by</i> trailer by the author at the end of the commit log message.</p>
+<p>In <b translate="no">Description</b>, edit the commit message.</p>
+<p>In <b translate="no">Files</b>, select the files to include in the commit.</p>
+<p>When you have finished filling out the commit page information, select <b translate="no">Commit</b> to start committing.</p>
+<p>The <b translate="no">Diff Selected Files</b> button opens a <a href="creator-vcs-git.html#viewing-git-diff" translate="no">diff view</a> of the files selected in the file list. Select <b translate="no">Stage Chunk</b> in the context menu to stage a chunk or <b translate="no">Stage Selection</b> to stage the selected lines.</p>
+<p>To unstage chunks or selected lines, select <b translate="no">Unstage Chunk</b> or <b translate="no">Unstage Selection</b> in the context menu. To revert the changes in a chunk, select <b translate="no">Revert Chunk</b>.</p>
+<p>The commit page is just another editor, and therefore you return to it when you close the diff view. You can also switch to an open diff view by selecting it in the <b translate="no">Open Documents</b> view in the sidebar.</p>
+<h3 id="amending-commits">Amending Commits</h3>
+<p>To apply latest changes to the last commit, select <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Local Repository</b> &gt; <b translate="no">Amend Last Commit</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-git-amend.png" alt="{Amending a Git commit}" /></p><p>To view the commit in its current form, before amending, select <b translate="no">Show HEAD</b>.</p>
+<p>To view a diff of the changes in the selected files, select <b translate="no">Diff Selected Files</b>.</p>
+<p>Select <b translate="no">Commit</b> to amend the commit.</p>
+<p>To amend an earlier comment in a series of related commits, select <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Local Repository</b> &gt; <b translate="no">Fixup Previous Commit</b>. This operation uses interactive rebase. In case of conflicts, a merge tool is suggested.</p>
+<h3 id="resetting-local-repository">Resetting Local Repository</h3>
+<p>To reset changes, select <b translate="no">Reset</b>. This opens a dialog where you can select the commit to reset the working directory to. This is useful after applying patches for review, for example. You can choose between a <b translate="no">Soft</b> reset that does not touch the index file nor the working tree at all, a <b translate="no">Hard</b> reset that discards all changes to tracked files in the working tree, and a <b translate="no">Mixed</b> reset that resets HEAD and the index (nothing remains staged) without touching the working directory.</p>
+<p>To recover removed files, select <b translate="no">Recover Deleted Files</b>.</p>
+<p>To change a series of commits in the local repository, select <b translate="no">Interactive Rebase</b>. You can reorder or discard commits, squash them into a single commit, or edit the commit messages.</p>
+<p>If you already pushed the local changes to a remote, Qt Design Studio refuses the interactive rebase because the local commits are missing. To start the interactive rebase from the change log, select <b translate="no">Branches</b> &gt; <b translate="no">Log</b>. Select the change, and then select &gt; <b translate="no">Interactive Rebase from Change</b> in the context menu.</p>
+<h3 id="working-with-branches">Working with Branches</h3>
+<p>To work with Git branches, select <b translate="no">Branches</b>. The <b translate="no">Git Branches</b> sidebar view shows the checked out branch in bold and underlined in the list of branches.</p>
+<p class="centerAlign"><img src="images/qtcreator-vcs-gitbranch.png" alt="{Git Branches sidebar view}" /></p><p>Old entries and tags are filtered out of the list of branches by default. To include them, select <img src="images/filtericon.png" alt="" /> (<b translate="no">Filter Tree</b>), and then select <b translate="no">Include Old Entries</b> and <b translate="no">Include Tags</b>.</p>
+<p>To add a tag to a change in the change log, select <b translate="no">Branches</b> &gt; <b translate="no">Log</b>. Select the change, and then select <b translate="no">Add Tag for Change</b> in the context menu.</p>
+<p>If you checked out a specific commit, the list of branches displays a <i>Detached HEAD</i> entry.</p>
+<p>For local and remote branches, double-click the branch name to view the change log.</p>
+<p>To refresh the list of branches, select <img src="images/reload_gray.png" alt="" /> (<b translate="no">Refresh</b>).</p>
+<p>The context menu for a branch has the following functions:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Menu Item</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Add</b></td><td >Create new tracking and non-tracking branches.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Remove</b></td><td >Remove a local branch. You cannot delete remote branches.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Rename</b></td><td >Rename a local branch or a tag. You cannot rename remote branches.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Checkout</b></td><td >Check out the selected branch and make it current. You can stash changes you have made to tracked files.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Diff</b></td><td >Show the differences between the selected and the current branch.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Log</b></td><td >Show the changes in a branch.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Reset</b></td><td >Reset the active branch to the selected branch. You can choose between a <b translate="no">Hard</b>, <b translate="no">Mixed</b>, and <b translate="no">Soft</b> reset. For more information, see <a href="creator-vcs-git.html#resetting-local-repository" translate="no">Resetting Local Repository</a>.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Merge</b></td><td >Join the development histories in two branches together.<p>If the commit you are merging can be reached by following the first commit's history, there is no divergent work to merge together. To allow Git to move the branch pointer forward, select <b translate="no">Merge (Fast-Forward)</b>. If you do not want to fast-forward the branch, select <b translate="no">Merge (No Fast-Forward)</b>.</p>
+</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Rebase</b></td><td >Copy local commits to the updated upstream head.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Cherry Pick</b></td><td >Cherry pick the top commit from the selected branch.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Track</b></td><td >Set the current branch to track the selected one.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Push</b></td><td >Push the committed changes to the selected remote branch.</td></tr>
+</table></div>
+<p>The context menu for a remote branch has the following additional functions. To open it, select <b translate="no">Remote Branches</b> or a remote repository.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Menu Item</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Fetch</b></td><td >Fetch all the branches and changes information from a specific remote repository, or from all remotes if applied to <b translate="no">Remote Branches</b>.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Manage Remotes</b></td><td >Open the <b translate="no">Remotes</b> dialog.</td></tr>
+</table></div>
+<h4 id="configuring-merge-tools">Configuring Merge Tools</h4>
+<p>Only graphical merge tools are supported. You can configure the merge tool to use on the command line. For example, to use the <a href="http://kdiff3.sourceforge.net/" translate="no">KDiff3</a> merge tool, enter the following command:</p>
+<pre class="cpp plain" translate="no">
+ git config --global merge.tool kdiff3
+</pre>
+<h3 id="applying-patches">Applying Patches</h3>
+<p>Patches are rewriting instructions that Git can apply to a set of files. To apply a patch file that is open in Qt Design Studio, select <b translate="no">Patch</b> &gt; <b translate="no">Apply from Editor</b>.</p>
+<p>To select the patch file to apply from the file system, select <b translate="no">Apply from File</b>.</p>
+<h3 id="using-stashes">Using Stashes</h3>
+<p>With Git, you can put your current set of changes onto a virtual shelf called a <i>stash</i>. Stashes are useful, for example, to put aside a set of changes to work on higher priority tasks or to pull in new changes from another repository.</p>
+<p>To stash all local changes, select <b translate="no">Stash</b> &gt; <b translate="no">Stash</b>. The working copy is reset to the state it had after the last commit. To save the current state of your unstaged files and reset the repository to its staged state, select <b translate="no">Stash Unstaged Files</b>.</p>
+<p>To display a dialog that shows all known stashes with options to restore, display or delete them, select <b translate="no">Stashes</b>.</p>
+<p>To save a snapshot of your current work under a name for later reference, select <b translate="no">Take Snapshot</b>. The working copy is not changed. For example, if you want to try something and find out later that it does not work, you can discard the changes and return to the state of the snapshot.</p>
+<p>To remove a single stashed state from the stash list and apply it on top of the current working tree state, select <b translate="no">Stash Pop</b>.</p>
+<h2 id="applying-actions-to-commits">Applying Actions to Commits</h2>
+<p>To browse a directory or the commit history and to apply actions on the commits, select <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Actions on Commits</b>.</p>
+<p class="centerAlign"><img src="images/creator-git-commit-actions.png" alt="{Select a Git Commit dialog}" /></p><p>You can apply the following actions on commits:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Menu Item</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Archive</b></td><td >Package the commit as a ZIP or tarball.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Checkout</b></td><td >Check out the change in a headless state.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Cherry Pick</b></td><td >Cherry-pick the selected change to the local repository.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Revert</b></td><td >Revert back to the state of the last commit.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Show</b></td><td >Show the commit in the diff editor.</td></tr>
+</table></div>
+<h2 id="working-with-remote-repositories">Working with Remote Repositories</h2>
+<p>To work with remote repositories, select the commands in <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Remote Repository</b>.</p>
+<p>To fetch all the branches and change information from a remote repository, select <b translate="no">Fetch</b>.</p>
+<p>To pull changes from the remote repository, select <b translate="no">Pull</b>. If there are locally modified files, you are prompted to stash the changes. Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Version Control</b> &gt; <b translate="no">Git</b> and then select the <b translate="no">Pull with rebase</b> check box to perform a rebase operation while pulling.</p>
+<p>To push committed changes to the remote repository, select <b translate="no">Push</b>. If the local branch does not have an upstream branch in the remote repository, Qt Design Studio prompts you to create it and set it as upstream.</p>
+<h3 id="managing-remote-repositories">Managing Remote Repositories</h3>
+<p>To manage remote repositories available in Git, select <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Remote Repository</b> &gt; <b translate="no">Manage Remotes</b>. Double-click the names and URLs of the remote repositories to edit them.</p>
+<p>The following operations are supported:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Menu Item</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Refresh</b></td><td >Refresh the list of remote repositories.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Add</b></td><td >Add a new remote repository.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Fetch</b></td><td >Fetch all the branches and change information from a remote repository.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Push</b></td><td >Push committed changes to the remote repository.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Remove</b></td><td >Remove a remote repository.</td></tr>
+</table></div>
+<h3 id="using-git-with-subversion">Using Git with Subversion</h3>
+<p>You can use Git as a client for a Subversion server. To fetch changes from a Subversion repository to a Git repository, select <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Remote Repository</b> &gt; <b translate="no">Subversion</b> &gt; <b translate="no">Fetch</b>.</p>
+<p>To view the Git Subversion log, select <b translate="no">Log</b>.</p>
+<p>To publish the commits from the current branch to the Subversion server, select <b translate="no">DCommit</b>. This will create a revision in Subversion for every local Git commit. Afterwards, the branch is rebased or reset (depending on whether or not there is a diff between Subversion and head).</p>
+<h3 id="reviewing-code-with-gerrit">Reviewing Code with Gerrit</h3>
+<p>If your Git project uses Gerrit for code reviews, you can view your changes in Qt Design Studio.</p>
+<p>To push committed changes to Gerrit, select <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Remote Repository</b> &gt; <b translate="no">Push to Gerrit</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-gerrit-push.png" alt="" /></p><p>Select the <b translate="no">Draft/private</b> check box to push changes that are only visible to you and the reviewers. If you are using Gerrit 2.15 or later, you can select the <b translate="no">Work-in-progress</b> check box to push changes that do not generate email notifications.</p>
+<p>To view the same information about each change as in the Gerrit web interface, select <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Remote Repository</b> &gt; <b translate="no">Gerrit</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-gerrit.png" alt="" /></p><p>To view details of the selected change, select <b translate="no">Show</b>.</p>
+<p>To cherry-pick the selected change to the local repository, select <b translate="no">Cherry Pick</b>. To remove the change after testing it, select <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Local Repository</b> &gt; <b translate="no">Reset</b>. In the <b translate="no">Undo Changes to</b> dialog, select the state to reset the working directory to, and then select <b translate="no">OK</b>.</p>
+<p>To check out the change in a headless state, select <b translate="no">Checkout</b>.</p>
+<p>To refresh the list of changes, select <b translate="no">Refresh</b>.</p>
+<p>The <b translate="no">Remote</b> field lists the remotes of the current repository that are detected as Gerrit servers. Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Version Control</b> &gt; <b translate="no">Gerrit</b> to specify a fallback connection to a Gerrit server over SSH. The Gerrit REST interface and the <a href="https://curl.haxx.se/" translate="no">curl</a> tool are used for HTTP connections.</p>
+<p>Select the <b translate="no">HTTPS</b> check box to prepend <code translate="no">https</code> to the Gerrit URL if Gerrit does not add it.</p>
+<p class="centerAlign"><img src="images/qtcreator-preferences-vcs-gerrit.webp" alt="{Gerrit preferences}" /></p><h2 id="working-with-git-tools">Working with Git Tools</h2>
+<p>To start a graphical interface to Git, select <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Git Tools</b> &gt; <b translate="no">Git Gui</b>.</p>
+<div class="admonition note">
+<p><b>Note: </b>On macOS, the default Git installation does not have Git Gui. To use Git Gui, install it separately. To start Git Gui from Qt Design Studio, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Version Control</b> &gt; <b translate="no">Git</b>, and set the path to the environment that has Git Gui in the <b translate="no">Prepend to PATH</b> field.</p>
+</div>
+<p>To start the commit viewer for Git, select <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Git Tools</b> &gt; <b translate="no">Gitk</b>. You can also start the tool to view commits in the current document or in the folder that has the current document. To specify arguments for running Gitk, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Version Control</b> &gt; <b translate="no">Git</b>.</p>
+<p>To use some other application for viewing Git history, such as GitX or QGit viewer, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Version Control</b> &gt; <b translate="no">Git</b> and specify the path to the application executable in the <b translate="no">Command</b> field. To start the application, select <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Git Tools</b> &gt; <b translate="no">Repository Browser</b>.</p>
+<p>To start <code translate="no">git bash</code>, select <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Git Tools</b> &gt; <b translate="no">Git Bash</b>.</p>
+<p>To resolve merge conflicts, select <b translate="no">Tools</b> &gt; <b translate="no">Git</b> &gt; <b translate="no">Git Tools</b> &gt; <b translate="no">Merge Tool</b>. This menu item is visible only when you have merge conflicts to resolve.</p>
+</div>
+<!-- @@@creator-vcs-git.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-developer-topics.html">Developer Topics</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-porting-projects.html">Converting Qt 5 Projects into Qt 6 Projects</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

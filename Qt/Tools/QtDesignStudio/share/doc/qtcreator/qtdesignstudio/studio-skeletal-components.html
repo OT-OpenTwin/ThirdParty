@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- studio-skeletal-components.qdoc -->
+  <title>Skeletal Animation | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Skeletal Animation</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-3d-instancing.html" />
+  <link rel="next" href="studio-3d-model.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-3d-instancing.html">Instanced Rendering</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-model.html">3D Models</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#skeleton">Skeleton</a></li>
+<li class="level1"><a href="#joint">Joint</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Skeletal Animation</h1>
+<!-- $$$studio-skeletal-components.html-description -->
+<div class="descr" id="details">
+<p>Skeletal animation is a technique used in computer animation. In skeletal animation, a character is represented in the form of a surface representation (skin or mesh), and a skeleton. This portrays how the character can move, inspired by how a physical skeleton works for vertebrates. The &quot;bones&quot; of the skeleton are represented by a hierarchy of joint nodes.</p>
+<p>The normal workflow is to use an external content creation tool to define the skeleton and the skin (this is sometimes also referred to as rigging), and import them to Qt Design Studio. You can then create skeletal animations using <b translate="no">Skeleton</b> and <b translate="no">Joint</b> components available in <b translate="no">Components</b> &gt; <b translate="no">Qt Quick 3D</b> &gt; <b translate="no">Qt Quick 3D</b>.</p>
+<h2 id="skeleton">Skeleton</h2>
+<p>A <b translate="no">Skeleton</b> component determines a skeletal animation hierarchy and defines how a model can be animated using skeletal animation. It contains a hierarchy of <b translate="no">Joint</b> nodes. Each joint can be transformed for a skinning animation.</p>
+<h2 id="joint">Joint</h2>
+<p>A <b translate="no">Joint</b> defines a node in a skeletal animation hierarchy and functions similarly to joints between bones in a human skeleton. It is a transformable node that must be contained inside a <b translate="no">Skeleton</b> component.</p>
+<p>Define properties for <b translate="no">Joint</b> components in <b translate="no">Properties</b> &gt; <b translate="no">Joint</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-joint-properties.png" alt="&quot;Joint properties in the Properties view&quot;" /></p><p>Use the <b translate="no">Index</b> property to define the index of this joint. This index value is used in the <b translate="no">Joint semantic</b> custom geometry attribute.</p>
+<div class="admonition note">
+<p><b>Note: </b>The <b translate="no">Index</b> values must be unique within the same <b translate="no">Skeleton</b>.</p>
+</div>
+<p>Use the <b translate="no">Skeleton root</b> property to define the <b translate="no">Skeleton</b> that contains the <b translate="no">Joint</b>. Do note that all the <b translate="no">Joints</b> in the <b translate="no">Skeleton</b> must have the same <b translate="no">Skeleton root</b> for the animation to work properly.</p>
+</div>
+<!-- @@@studio-skeletal-components.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-3d-instancing.html">Instanced Rendering</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-model.html">3D Models</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- washingMachineUI.qdoc -->
+  <meta name="description" content="Illustrates how to create a UI that can be run both on the desktop and on MCUs.">
+  <title>Washing Machine UI | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="studioexamples.html" translate="no">Examples</a></li>
+<li>Washing Machine UI</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<h1 class="title">Washing Machine UI</h1>
+<pre class="qml" translate="no">
+ <span class="comment">// Copyright (C) 2021 The Qt Company Ltd.</span>
+ <span class="comment">// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause</span>
+
+ import QtQuick 2.8
+
+ <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-item.html" translate="no">Item</a></span> {
+     <span class="name">id</span>: <span class="name">timedate</span>
+     <span class="name">width</span>: <span class="number">47</span>
+     <span class="name">height</span>: <span class="number">29</span>
+
+     readonly property <span class="type">alias</span> <span class="name">currentHourInt</span>: <span class="name">timeContainer</span>.<span class="name">hrsInt</span>
+     readonly property <span class="type">alias</span> <span class="name">currentMinuteInt</span>: <span class="name">timeContainer</span>.<span class="name">minInt</span>
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-text.html" translate="no">Text</a></span> {
+         <span class="name">id</span>: <span class="name">timelabel</span>
+         <span class="name">x</span>: <span class="number">2</span>
+         <span class="name">y</span>: -<span class="number">1</span>
+         <span class="name">width</span>: <span class="number">43</span>
+         <span class="name">height</span>: <span class="number">16</span>
+         <span class="name">color</span>: <span class="string">&quot;#B8B8B8&quot;</span>
+         <span class="name">font</span>.pixelSize: <span class="number">16</span>
+         <span class="name">horizontalAlignment</span>: <span class="name">Text</span>.<span class="name">AlignHCenter</span>
+         <span class="name">font</span>.family: <span class="string">&quot;Maven Pro&quot;</span>
+
+         <span class="name">text</span>: <span class="name">timeContainer</span>.<span class="name">hrsStr</span> <span class="operator">+</span> <span class="string">&quot;:&quot;</span> <span class="operator">+</span> <span class="name">timeContainer</span>.<span class="name">minStr</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-item.html" translate="no">Item</a></span> {
+         <span class="name">id</span>: <span class="name">timeContainer</span>
+         property <span class="type"><a href="https://doc.qt.io/qt/qml-string.html" translate="no">string</a></span> <span class="name">hrsStr</span>: <span class="string">&quot;00&quot;</span>
+         property <span class="type"><a href="https://doc.qt.io/qt/qml-string.html" translate="no">string</a></span> <span class="name">minStr</span>: <span class="string">&quot;00&quot;</span>
+
+         property <span class="type"><a href="https://doc.qt.io/qt/qml-int.html" translate="no">int</a></span> <span class="name">hrsInt</span>: <span class="number">0</span>
+         property <span class="type"><a href="https://doc.qt.io/qt/qml-int.html" translate="no">int</a></span> <span class="name">minInt</span>: <span class="number">0</span>
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtqml-timer.html" translate="no">Timer</a></span> {
+             <span class="name">id</span>: <span class="name">timer</span>
+             <span class="name">interval</span>: <span class="number">1000</span>
+             <span class="name">running</span>: <span class="number">true</span>
+             <span class="name">repeat</span>: <span class="number">true</span>
+
+             <span class="name">onTriggered</span>: {
+                 <span class="name">updateTime</span>()
+             }
+
+             <span class="keyword">function </span><span class="name">updateTime</span>() {
+                 var currentDate = new <span class="name">Date</span>()
+                 <span class="name">timeContainer</span>.<span class="name">hrsInt</span> <span class="operator">=</span> <span class="name">currentDate</span>.<span class="name">getHours</span>()
+                 <span class="keyword">if</span> (<span class="name">timeContainer</span>.<span class="name">hrsInt</span> <span class="operator">&lt;</span> <span class="number">10</span>) <span class="name">timeContainer</span>.<span class="name">hrsStr</span> <span class="operator">=</span> <span class="string">&quot;0&quot;</span> <span class="operator">+</span> <span class="name">timeContainer</span>.<span class="name">hrsInt</span>
+                 <span class="keyword">else</span> <span class="name">timeContainer</span>.<span class="name">hrsStr</span> <span class="operator">=</span> <span class="name">timeContainer</span>.<span class="name">hrsInt</span>
+
+                 <span class="name">timeContainer</span>.<span class="name">minInt</span> <span class="operator">=</span> <span class="name">currentDate</span>.<span class="name">getMinutes</span>()
+                 <span class="keyword">if</span> (<span class="name">timeContainer</span>.<span class="name">minInt</span> <span class="operator">&lt;</span> <span class="number">10</span>) <span class="name">timeContainer</span>.<span class="name">minStr</span> <span class="operator">=</span> <span class="string">&quot;0&quot;</span> <span class="operator">+</span> <span class="name">timeContainer</span>.<span class="name">minInt</span>
+                 <span class="keyword">else</span> <span class="name">timeContainer</span>.<span class="name">minStr</span> <span class="operator">=</span> <span class="name">timeContainer</span>.<span class="name">minInt</span>
+             }
+         }
+     }
+
+     <span class="name">Component</span>.onCompleted: {
+         <span class="name">timer</span>.<span class="name">updateTime</span>()
+     }
+ }
+</pre>

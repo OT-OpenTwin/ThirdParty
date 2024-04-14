@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-instancing.qdoc -->
+  <title>Instanced Rendering | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Instanced Rendering</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-3d-group.html" />
+  <link rel="next" href="studio-skeletal-components.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-3d-group.html">Group</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-skeletal-components.html">Skeletal Animation</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#reading-instance-tables-from-files">Reading Instance Tables from Files</a></li>
+<li class="level2"><a href="#instancing-properties">Instancing Properties</a></li>
+<li class="level1"><a href="#using-instance-lists-to-build-instance-tables">Using Instance Lists to Build Instance Tables</a></li>
+<li class="level2"><a href="#defining-instance-list-entries">Defining Instance List Entries</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Instanced Rendering</h1>
+<!-- $$$studio-3d-instancing.html-description -->
+<div class="descr" id="details">
+<p>Instancing allows duplicating a model with variations. In contrast to using the <b translate="no">Repeater3D</b> component, the model and its graphics resources are only allocated once. The rendering of the duplicated instances is done at a low level by the GPU. Depending on the complexity of the model, this can give a performance improvement of several orders of magnitude.</p>
+<p>In practice, instancing is done by defining a table that specifies how each instance is modified relative to the base model.</p>
+<p>You can add instancing to your scenes by using the instancing components available in <b translate="no">Components</b> &gt; <b translate="no">Qt Quick 3D</b> &gt; <b translate="no">Qt Quick 3D</b>:</p>
+<ul>
+<li><b translate="no">Instancing</b></li>
+<li><b translate="no">Instance List</b></li>
+<li><b translate="no">Instance List Entry</b>.</li>
+</ul>
+<h2 id="reading-instance-tables-from-files">Reading Instance Tables from Files</h2>
+<p>The <b translate="no">Instancing</b> component makes it possible to read instance tables from files in XML or binary format. The binary file format uses the same layout as the table that is uploaded to the GPU, so it can be directly mapped to memory.</p>
+<p>In order to be valid, the XML file must have a top-level instance table element. Each instance is represented by an Instance element inside the InstanceTable. Unknown elements are silently ignored.</p>
+<p>An Instance element can have a number of attributes. Color attributes are specified by using SVG color names, such as &quot;red&quot;, &quot;green&quot;, or &quot;lightsteelblue&quot;, or by using a hexadecimal notation. <code translate="no">Vector3d</code> and <code translate="no">vector4d</code> attributes are specified by a string of space-separated numbers, where missing trailing numbers indicate zeroes. The following attributes are supported: position, scale, eulerRotation, quaternion, custom, and color. For more information about instance tables, see the documentation for the <a href="https://doc.qt.io/qt/qml-qtquick3d-fileinstancing.html" translate="no">FileInstancing</a> QML type.</p>
+<p>To use the <b translate="no">Instancing</b> component, drag-and-drop it from <b translate="no">Components</b> to <b translate="no">Scene</b> in <b translate="no">Navigator</b>.</p>
+<h3 id="instancing-properties">Instancing Properties</h3>
+<p>Define the location of an XML or a binary file containing the instance data in <b translate="no">Properties</b> &gt; <b translate="no">File Instancing</b> &gt; <b translate="no">Source</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-instancing-properties.png" alt="&quot;File Instancing in the Properties View&quot;" /></p><p>If the file name has a <code translate="no">.bin</code> extension, it is assumed to refer to a binary file. Otherwise it is assumed to refer to an XML file. If an XML file <code translate="no">foo.xml</code> is specified, and the file <code translate="no">foo.xml.bin</code> exists, the binary file <code translate="no">foo.xml.bin</code> will be loaded instead.</p>
+<p>After defining the <b translate="no">Source</b> property for the <b translate="no">Instancing</b> component, select a model in <b translate="no">Navigator</b>, and in <b translate="no">Properties</b> &gt; <b translate="no">Model</b> &gt; <b translate="no">Instancing</b>, select the name of the <b translate="no">Instancing</b> component.</p>
+<p class="centerAlign"><img src="images/studio-3d-instancing-model.png" alt="&quot;The Instancing property&quot;" /></p><h2 id="using-instance-lists-to-build-instance-tables">Using Instance Lists to Build Instance Tables</h2>
+<p>Use the <b translate="no">Instance List</b> component to define an instance table in Qt Design Studio. An instance table consists of instances defined as <b translate="no">Instance List Entry</b> components, which can have property bindings and animation. This gives great flexibility but also causes memory overhead. Therefore, it is not recommended to use <b translate="no">Instance List</b> for procedurally generated tables containing a large number of instances. Also, any property change to an entry will cause the entire instance table to be recalculated and uploaded to the GPU.</p>
+<p class="centerAlign"><img src="images/studio-3d-instancing-instance-list.png" alt="&quot;Instance List and Instance Entries in Navigator&quot;" /></p><p>To build an instance table:</p>
+<ol class="1" type="1"><li>Drag-and-drop an <b translate="no">Instance List</b> component from <b translate="no">Components</b> &gt; <b translate="no">Qt Quick 3D</b> &gt; <b translate="no">Qt Quick 3D</b> to <b translate="no">Scene</b> in <b translate="no">Navigator</b>.</li>
+<li>Drag-and-drop <b translate="no">Instance List Entry</b> components to the <b translate="no">Instance List</b> component to create list items.<p class="centerAlign"><img src="images/studio-3d-instancing-instance-list.png" alt="&quot;Instance List and Instance Entries in Navigator&quot;" /></p></li>
+<li>Select the <b translate="no">Instance List</b> in <b translate="no">Navigator</b>, and in <b translate="no">Properties</b> &gt; <b translate="no">Instance List</b> &gt; <b translate="no">Instances</b>, select each <b translate="no">Instance List Entry</b> you wish to include in the <b translate="no">Instance List</b> by using the dropdown menu. You can add more fields for the property by clicking the <img src="images/plus.png" alt="" /> icon.</li>
+<li>To define an <b translate="no">Instance List Entry</b>, select it in <b translate="no">Navigator</b>, and specify its properties in <b translate="no">Properties</b> &gt; <b translate="no">Instance List Entry</b>.</li>
+<li>Select a model component in <b translate="no">Navigator</b>, and in <b translate="no">Properties</b> &gt; <b translate="no">Instancing</b>, select the name of the <b translate="no">Instance List</b> component.</li>
+</ol>
+<h3 id="defining-instance-list-entries">Defining Instance List Entries</h3>
+<p>Use the <b translate="no">Instance List Entry</b> component to specify each instance in an <b translate="no">Instance List</b>.</p>
+<p>Each of the <b translate="no">Instance List Entry</b> properties can have <a href="quick-property-bindings.html" translate="no">bindings</a> and animation. Select an <b translate="no">Instance List Entry</b> in <b translate="no">Navigator</b> to specify the properties in <b translate="no">Properties</b> &gt; <b translate="no">Instance List Entry</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-instancing-instance-list-entry-properties.png" alt="&quot;Instance List Entry Properties&quot;" /></p><p>Use the <b translate="no">Color</b> property to <a href="qtquick-properties.html#picking-colors" translate="no">specify the color</a> for the instance.</p>
+<p>Specify the position for the instance using the <b translate="no">Position</b> property, and the scale by defining the scale factors of the <b translate="no">Scale</b> property along the x, y, and z axes.</p>
+<p>Set the rotation for the instance using the <b translate="no">Rotation</b> property, which specifies the rotation for the instance as an Euler vector containing the rotation in degrees around the x, y, and z axes.</p>
+</div>
+<!-- @@@studio-3d-instancing.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-3d-group.html">Group</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-skeletal-components.html">Skeletal Animation</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

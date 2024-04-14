@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- ieditor.cpp -->
+  <meta name="description" content="The IEditor class provides an interface for editing an open document in Qt Creator.">
+  <title>IEditor Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>IEditor</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">IEditor Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::IEditor</span>
+<!-- $$$IEditor-brief -->
+<p>The IEditor class provides an interface for editing an open document in Qt Creator. <a href="#details">More...</a></p>
+<!-- @@@IEditor -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/editormanager/ieditor.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="core-icontext.html" translate="no">Core::IContext</a></td></tr>
+</table></div>
+<ul>
+<li><a href="core-ieditor-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-ieditor.html#IEditor" translate="no">IEditor</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual int </td><td class="memItemRight bottomAlign"><b><a href="core-ieditor.html#currentColumn" translate="no">currentColumn</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual int </td><td class="memItemRight bottomAlign"><b><a href="core-ieditor.html#currentLine" translate="no">currentLine</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Core::IDocument *</td><td class="memItemRight bottomAlign"><b><a href="core-ieditor.html#document" translate="no">document</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Core::IEditor *</td><td class="memItemRight bottomAlign"><b><a href="core-ieditor.html#duplicate" translate="no">duplicate</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-ieditor.html#duplicateSupported" translate="no">duplicateSupported</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ieditor.html#gotoLine" translate="no">gotoLine</a></b>(int <i>line</i>, int <i>column</i> = 0, bool <i>centerLine</i> = true)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-ieditor.html#isDesignModePreferred" translate="no">isDesignModePreferred</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ieditor.html#restoreState" translate="no">restoreState</a></b>(const QByteArray &amp;<i>state</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QByteArray </td><td class="memItemRight bottomAlign"><b><a href="core-ieditor.html#saveState" translate="no">saveState</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ieditor.html#setDuplicateSupported" translate="no">setDuplicateSupported</a></b>(bool <i>duplicatesSupported</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QWidget *</td><td class="memItemRight bottomAlign"><b><a href="core-ieditor.html#toolBar" translate="no">toolBar</a></b>() = 0</td></tr>
+</table></div>
+<!-- $$$IEditor-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>IEditor instances are usually created by a corresponding <a href="core-ieditorfactory.html" translate="no">IEditorFactory</a>.</p>
+<p>An IEditor instance provides an editor widget for a single <a href="core-idocument.html" translate="no">IDocument</a> via the <a href="core-icontext.html#widget" translate="no">IContext::widget</a>() method. If the editor type supports it, multiple editors can be opened for the same document. Multiple IEditor instances share ownership of the same <a href="core-idocument.html" translate="no">IDocument</a> instance in that case.</p>
+<p>The <a href="core-ieditor.html#toolBar" translate="no">IEditor::toolBar</a>() is integrated into the toolbar above the editor widget, next to the document drop down.</p>
+</div>
+<p><b>See also </b><a href="core-ieditorfactory.html" translate="no">Core::IEditorFactory</a> and <a href="core-editormanager.html" translate="no">Core::EditorManager</a>.</p>
+<!-- @@@IEditor -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$IEditor[overload1]$$$IEditor -->
+<h3 class="fn" translate="no" id="IEditor">IEditor::<span class="name">IEditor</span>()</h3>
+<p>Creates an IEditor.</p>
+<p>Implementations must create a corresponding document, or share an existing document with another IEditor.</p>
+<!-- @@@IEditor -->
+<!-- $$$currentColumn[overload1]$$$currentColumn -->
+<h3 class="fn" translate="no" id="currentColumn"><code translate="no">[virtual] </code><span class="type">int</span> IEditor::<span class="name">currentColumn</span>() const</h3>
+<p>Returns the current column in the document, if appropriate. The default implementation returns <code translate="no">0</code>. Column numbers start at <code translate="no">0</code> for the first column.</p>
+<p><b>See also </b><a href="core-ieditor.html#currentLine" translate="no">currentLine</a>() and <a href="core-ieditor.html#gotoLine" translate="no">gotoLine</a>().</p>
+<!-- @@@currentColumn -->
+<!-- $$$currentLine[overload1]$$$currentLine -->
+<h3 class="fn" translate="no" id="currentLine"><code translate="no">[virtual] </code><span class="type">int</span> IEditor::<span class="name">currentLine</span>() const</h3>
+<p>Returns the current line in the document, if appropriate. The default implementation returns <code translate="no">0</code>. Line numbers start at <code translate="no">1</code> for the first line.</p>
+<p><b>See also </b><a href="core-ieditor.html#currentColumn" translate="no">currentColumn</a>() and <a href="core-ieditor.html#gotoLine" translate="no">gotoLine</a>().</p>
+<!-- @@@currentLine -->
+<!-- $$$document[overload1]$$$document -->
+<h3 class="fn" translate="no" id="document"><code translate="no">[pure virtual] </code><span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *IEditor::<span class="name">document</span>() const</h3>
+<p>Returns the document that is edited by this editor. The editor owns the document. If the editor supports splitting, all editors created with <a href="core-ieditor.html#duplicate" translate="no">duplicate</a>() share ownership of the document.</p>
+<p>This must never return <code translate="no">nullptr</code>.</p>
+<!-- @@@document -->
+<!-- $$$duplicate[overload1]$$$duplicate -->
+<h3 class="fn" translate="no" id="duplicate"><code translate="no">[virtual] </code><span class="type"><a href="core-ieditor.html" translate="no">Core::IEditor</a></span> *IEditor::<span class="name">duplicate</span>()</h3>
+<p>Returns a duplicate of the editor, for example when the user splits the editor view. The default implementation returns <code translate="no">nullptr</code>.</p>
+<p><b>See also </b><a href="core-ieditor.html#duplicateSupported" translate="no">duplicateSupported</a>().</p>
+<!-- @@@duplicate -->
+<!-- $$$duplicateSupported[overload1]$$$duplicateSupported -->
+<h3 class="fn" translate="no" id="duplicateSupported"><span class="type">bool</span> IEditor::<span class="name">duplicateSupported</span>() const</h3>
+<p>Returns whether duplication is supported, for example when the user splits the editor view.</p>
+<p><b>See also </b><a href="core-ieditor.html#duplicate" translate="no">duplicate</a>() and <a href="core-ieditor.html#setDuplicateSupported" translate="no">setDuplicateSupported</a>().</p>
+<!-- @@@duplicateSupported -->
+<!-- $$$gotoLine[overload1]$$$gotoLineintintbool -->
+<h3 class="fn" translate="no" id="gotoLine"><code translate="no">[virtual] </code><span class="type">void</span> IEditor::<span class="name">gotoLine</span>(<span class="type">int</span> <i>line</i>, <span class="type">int</span> <i>column</i> = 0, <span class="type">bool</span> <i>centerLine</i> = true)</h3>
+<p>Goes to <i translate="no">line</i> and <i translate="no">column</i> in the document. If <i translate="no">centerLine</i> is <code translate="no">true</code>, centers the line in the editor.</p>
+<p>Line numbers start at <code translate="no">1</code> for the first line, column numbers start at <code translate="no">0</code> for the first column.</p>
+<p>The default implementation does nothing.</p>
+<p><b>See also </b><a href="core-ieditor.html#currentLine" translate="no">currentLine</a>() and <a href="core-ieditor.html#currentColumn" translate="no">currentColumn</a>().</p>
+<!-- @@@gotoLine -->
+<!-- $$$isDesignModePreferred[overload1]$$$isDesignModePreferred -->
+<h3 class="fn" translate="no" id="isDesignModePreferred"><code translate="no">[virtual] </code><span class="type">bool</span> IEditor::<span class="name">isDesignModePreferred</span>() const</h3>
+<p>Returns whether the document should be opened in the Design mode by default. This requires design mode to support that document type. The default implementation returns <code translate="no">false</code>.</p>
+<!-- @@@isDesignModePreferred -->
+<!-- $$$restoreState[overload1]$$$restoreStateconstQByteArray& -->
+<h3 class="fn" translate="no" id="restoreState"><code translate="no">[virtual] </code><span class="type">void</span> IEditor::<span class="name">restoreState</span>(const <span class="type">QByteArray</span> &amp;<i>state</i>)</h3>
+<p>Restores the <i translate="no">state</i> of the editor. The default implementation does nothing.</p>
+<p><b>See also </b><a href="core-ieditor.html#saveState" translate="no">saveState</a>().</p>
+<!-- @@@restoreState -->
+<!-- $$$saveState[overload1]$$$saveState -->
+<h3 class="fn" translate="no" id="saveState"><code translate="no">[virtual] </code><span class="type">QByteArray</span> IEditor::<span class="name">saveState</span>() const</h3>
+<p>Returns the state of the editor, like scroll and cursor position, as a QByteArray. This is used for restoring the state for example after the document was closed (manually or automatically) and re-opened later. The default implementation returns an empty QByteArray.</p>
+<p><b>See also </b><a href="core-ieditor.html#restoreState" translate="no">restoreState</a>().</p>
+<!-- @@@saveState -->
+<!-- $$$setDuplicateSupported[overload1]$$$setDuplicateSupportedbool -->
+<h3 class="fn" translate="no" id="setDuplicateSupported"><span class="type">void</span> IEditor::<span class="name">setDuplicateSupported</span>(<span class="type">bool</span> <i>duplicatesSupported</i>)</h3>
+<p>Sets whether duplication is supported to <i translate="no">duplicatesSupported</i>.</p>
+<p>The default is <code translate="no">false</code>.</p>
+<p><b>See also </b><a href="core-ieditor.html#duplicate" translate="no">duplicate</a>() and <a href="core-ieditor.html#duplicateSupported" translate="no">duplicateSupported</a>().</p>
+<!-- @@@setDuplicateSupported -->
+<!-- $$$toolBar[overload1]$$$toolBar -->
+<h3 class="fn" translate="no" id="toolBar"><code translate="no">[pure virtual] </code><span class="type">QWidget</span> *IEditor::<span class="name">toolBar</span>()</h3>
+<p>Returns the toolbar for the editor.</p>
+<p>The editor toolbar is located at the top of the editor view. The editor toolbar is context sensitive and shows items relevant to the document currently open in the editor.</p>
+<!-- @@@toolBar -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

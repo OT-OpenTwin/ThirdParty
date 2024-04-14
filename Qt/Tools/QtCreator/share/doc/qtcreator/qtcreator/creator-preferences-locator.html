@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-locator.qdoc -->
+  <meta name="description" content="Add and change locator filters.">
+  <title>Locator | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Locator</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-reference.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#changing-locator-filters">Changing Locator Filters</a></li>
+<li class="level1"><a href="#adding-web-search-engines">Adding Web Search Engines</a></li>
+<li class="level1"><a href="#creating-locator-filters">Creating Locator Filters</a></li>
+<li class="level1"><a href="#configuring-locator-cache">Configuring Locator Cache</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Locator</h1>
+<!-- $$$creator-preferences-locator.html-description -->
+<div class="descr" id="details">
+<p>To set locator preferences, go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Environment</b> &gt; <b translate="no">Locator</b>, or select <img src="images/magnifier.png" alt="" /> &gt; <b translate="no">Configure</b> in the locator field.</p>
+<p class="centerAlign"><img src="images/qtcreator-locator-customize.webp" alt="{Locator preferences}" /></p><h2 id="changing-locator-filters">Changing Locator Filters</h2>
+<p>You can change the preset locator filters to match your use case. For example, change the filter prefix and restrict the search to items that match the filter.</p>
+<p>To configure a locator filter:</p>
+<ol class="1" type="1"><li>Go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Environment</b> &gt; <b translate="no">Locator</b>.</li>
+<li>Select a filter, and then select <b translate="no">Edit</b>.</li>
+<li>Specify the prefix string.<p class="centerAlign"><img src="images/qtcreator-locator-filter-edit-ai.webp" alt="{Filter Configuration dialog}" /></p></li>
+<li>To implicitly include the filter even when not typing a prefix as a part of the search string, select <b translate="no">Include by default</b>.</li>
+</ol>
+<h2 id="adding-web-search-engines">Adding Web Search Engines</h2>
+<p>By default, the <b translate="no">Web Search (r)</b> locator filter includes the URLs and search commands for Bing, Google, Yahoo! Search, cplusplus.com, and Wikipedia.</p>
+<p>To find out the format of the search command to use for your favorite web search engine, perform a search in your browser and copy the resulting URL to the locator filter configuration. Replace the search term with the variable <code translate="no">%1</code>.</p>
+<p>To add URLs and search commands to the list:</p>
+<ol class="1" type="1"><li>Go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Environment</b> &gt; <b translate="no">Locator</b>.</li>
+<li>Select <b translate="no">Web Search</b> &gt; <b translate="no">Edit</b>.</li>
+<li>Select <b translate="no">Add</b> to add a URL filter to the list.<p class="centerAlign"><img src="images/qtcreator-add-online-doc.webp" alt="{List of URLs in Filter Configuration dialog}" /></p></li>
+<li>Double-click the new entry to specify a URL and a search command. For example, <code translate="no">http://www.google.com/search?q=%1</code>.</li>
+<li>Click <b translate="no">OK</b>.</li>
+</ol>
+<p>To add a new separate web search locator filter instead of updating the default filter, select <b translate="no">Add</b> &gt; <b translate="no">URL Template</b>.</p>
+<h2 id="creating-locator-filters">Creating Locator Filters</h2>
+<p>To quickly access files not directly mentioned in your project, create your own directory filters. That way you can locate files in a directory structure you have defined.</p>
+<p>To create custom locator filters:</p>
+<ol class="1" type="1"><li>Go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Environment</b> &gt; <b translate="no">Locator</b>.</li>
+<li>Select <b translate="no">Add</b> &gt; <b translate="no">Files in Directories</b> to add a directory filter.<p class="centerAlign"><img src="images/qtcreator-locator-generic-directory-filter.png" alt="{Filter Configuration dialog}" /></p></li>
+<li>In <b translate="no">Name</b>, enter a name for your filter.</li>
+<li>Select <b translate="no">Add</b> to add directories to <b translate="no">Directories</b>. The locator searches directories recursively.</li>
+<li>In <b translate="no">File pattern</b>, specify file patterns to restrict the search to files that match the pattern. Separate the patterns with commas. For example, to search for all <code translate="no">.qml</code> and <code translate="no">.ui.qml</code> files, enter <code translate="no">*.qml,*.ui.qml</code></li>
+<li>In <b translate="no">Exclusion pattern</b>, specify file patterns to omit files from the search.</li>
+<li>In <b translate="no">Prefix</b>, specify the prefix string.<p>To implicitly include the filter even when not typing a prefix as a part of the search string, select <b translate="no">Include by default</b>.</p>
+</li>
+<li>Select <b translate="no">OK</b>.</li>
+</ol>
+<h2 id="configuring-locator-cache">Configuring Locator Cache</h2>
+<p>The locator searches the files matching your file pattern in the directories you have selected and caches that information. Qt Creator updates the cache for all preset filters as you write code. By default, Qt Creator updates your custom filters once an hour.</p>
+<p>To update the cached information manually, select <img src="images/magnifier.png" alt="" /> &gt; <b translate="no">Refresh</b> in the locator.</p>
+<p>To set a new cache update time:</p>
+<ol class="1" type="1"><li>Go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Environment</b> &gt; <b translate="no">Locator</b>.</li>
+<li>In <b translate="no">Refresh interval</b>, set a new time in minutes.</li>
+</ol>
+</div>
+<p><b>See also </b><a href="creator-editor-locator.html" translate="no">Navigate with locator</a>, <a href="creator-how-tos.html#search" translate="no">How To: Search</a>, <a href="creator-how-to-perform-calculations.html" translate="no">Perform calculations</a>, and <a href="creator-preferences-locator.html" translate="no">Locator</a>.</p>
+<!-- @@@creator-preferences-locator.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

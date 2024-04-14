@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- ieditorfactory.cpp -->
+  <meta name="description" content="The IEditorFactory class creates suitable editors for documents according to their MIME type.">
+  <title>IEditorFactory Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>IEditorFactory</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">IEditorFactory Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::IEditorFactory</span>
+<!-- $$$IEditorFactory-brief -->
+<p>The IEditorFactory class creates suitable editors for documents according to their MIME type. <a href="#details">More...</a></p>
+<!-- @@@IEditorFactory -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/editormanager/ieditorfactory.h&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="core-ieditorfactory-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Core::IEditor *</td><td class="memItemRight bottomAlign"><b><a href="core-ieditorfactory.html#createEditor" translate="no">createEditor</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-ieditorfactory.html#displayName" translate="no">displayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Id </td><td class="memItemRight bottomAlign"><b><a href="core-ieditorfactory.html#id" translate="no">id</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="core-ieditorfactory.html#mimeTypes" translate="no">mimeTypes</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-ieditorfactory.html#startEditor" translate="no">startEditor</a></b>(const Utils::FilePath &amp;<i>filePath</i>, QString *<i>errorMessage</i>)</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> const Core::EditorFactories </td><td class="memItemRight bottomAlign"><b><a href="core-ieditorfactory.html#allEditorFactories" translate="no">allEditorFactories</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Core::EditorFactories </td><td class="memItemRight bottomAlign"><b><a href="core-ieditorfactory.html#defaultEditorFactories" translate="no">defaultEditorFactories</a></b>(const Utils::MimeType &amp;<i>mimeType</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Core::EditorFactories </td><td class="memItemRight bottomAlign"><b><a href="core-ieditorfactory.html#preferredEditorFactories" translate="no">preferredEditorFactories</a></b>(const Utils::FilePath &amp;<i>filePath</i>)</td></tr>
+</table></div>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-ieditorfactory.html#IEditorFactory" translate="no">IEditorFactory</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ieditorfactory.html#addMimeType" translate="no">addMimeType</a></b>(const QString &amp;<i>mimeType</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ieditorfactory.html#setDisplayName" translate="no">setDisplayName</a></b>(const QString &amp;<i>displayName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ieditorfactory.html#setEditorCreator" translate="no">setEditorCreator</a></b>(const std::function&lt;IEditor *()&gt; &amp;<i>creator</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ieditorfactory.html#setId" translate="no">setId</a></b>(Utils::Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ieditorfactory.html#setMimeTypes" translate="no">setMimeTypes</a></b>(const QStringList &amp;<i>mimeTypes</i>)</td></tr>
+</table></div>
+<!-- $$$IEditorFactory-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Whenever a user wants to edit or create a document, the <a href="core-editormanager.html" translate="no">EditorManager</a> scans all IEditorFactory instances for suitable editors. The selected IEditorFactory is then asked to create an editor.</p>
+<p>Implementations should set the properties of the IEditorFactory subclass in their constructor with <a href="core-ieditorfactory.html#setId" translate="no">IEditorFactory::setId</a>(), <a href="core-ieditorfactory.html#setDisplayName" translate="no">IEditorFactory::setDisplayName</a>(), <a href="core-ieditorfactory.html#setMimeTypes" translate="no">IEditorFactory::setMimeTypes</a>(), and <a href="core-ieditorfactory.html#setEditorCreator" translate="no">setEditorCreator</a>()</p>
+<p>IEditorFactory instances automatically register themselves in Qt Creator in their constructor.</p>
+<p>There are two varieties of editors: Internal and external. Internal editors open within the main editing area of Qt Creator. An IEditorFactory defines an internal editor by using the <code translate="no">setEditorCreator</code> function. External editors are external applications and are defined by using the <code translate="no">setEditorStarter</code> function. They are accessible by the user using the <b translate="no">Open With</b> dialog</p>
+</div>
+<p><b>See also </b><a href="core-ieditor.html" translate="no">Core::IEditor</a>, <a href="core-idocument.html" translate="no">Core::IDocument</a>, and <a href="core-editormanager.html" translate="no">Core::EditorManager</a>.</p>
+<!-- @@@IEditorFactory -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$IEditorFactory[overload1]$$$IEditorFactory -->
+<h3 class="fn" translate="no" id="IEditorFactory"><code translate="no">[protected] </code>IEditorFactory::<span class="name">IEditorFactory</span>()</h3>
+<p>Creates an IEditorFactory.</p>
+<p>Registers the IEditorFactory in Qt Creator.</p>
+<!-- @@@IEditorFactory -->
+<!-- $$$addMimeType[overload1]$$$addMimeTypeconstQString& -->
+<h3 class="fn" translate="no" id="addMimeType"><code translate="no">[protected] </code><span class="type">void</span> IEditorFactory::<span class="name">addMimeType</span>(const <span class="type">QString</span> &amp;<i>mimeType</i>)</h3>
+<p>Adds <i translate="no">mimeType</i> to the list of MIME types supported by this editor type.</p>
+<p><b>See also </b><a href="core-ieditorfactory.html#mimeTypes" translate="no">mimeTypes</a>() and <a href="core-ieditorfactory.html#setMimeTypes" translate="no">setMimeTypes</a>().</p>
+<!-- @@@addMimeType -->
+<!-- $$$allEditorFactories[overload1]$$$allEditorFactories -->
+<h3 class="fn" translate="no" id="allEditorFactories"><code translate="no">[static] </code>const <span class="type">Core::EditorFactories</span> IEditorFactory::<span class="name">allEditorFactories</span>()</h3>
+<p>Returns all registered internal and external editors.</p>
+<!-- @@@allEditorFactories -->
+<!-- $$$createEditor[overload1]$$$createEditor -->
+<h3 class="fn" translate="no" id="createEditor"><span class="type"><a href="core-ieditor.html" translate="no">Core::IEditor</a></span> *IEditorFactory::<span class="name">createEditor</span>() const</h3>
+<p>Creates an internal editor.</p>
+<p>Uses the function set with <a href="core-ieditorfactory.html#setEditorCreator" translate="no">setEditorCreator</a>() to create the editor.</p>
+<p><b>See also </b><a href="core-ieditorfactory.html#setEditorCreator" translate="no">setEditorCreator</a>().</p>
+<!-- @@@createEditor -->
+<!-- $$$defaultEditorFactories[overload1]$$$defaultEditorFactoriesconstUtils::MimeType& -->
+<h3 class="fn" translate="no" id="defaultEditorFactories"><code translate="no">[static] </code>const <span class="type">Core::EditorFactories</span> IEditorFactory::<span class="name">defaultEditorFactories</span>(const <span class="type">Utils::MimeType</span> &amp;<i>mimeType</i>)</h3>
+<p>Returns all available internal and external editors for the <i translate="no">mimeType</i> in the default order: Editor types ordered by MIME type hierarchy, internal editors first.</p>
+<!-- @@@defaultEditorFactories -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" translate="no" id="displayName"><span class="type">QString</span> IEditorFactory::<span class="name">displayName</span>() const</h3>
+<p>Returns a user-visible description of the editor type.</p>
+<p><b>See also </b><a href="core-ieditorfactory.html#setDisplayName" translate="no">setDisplayName</a>().</p>
+<!-- @@@displayName -->
+<!-- $$$id[overload1]$$$id -->
+<h3 class="fn" translate="no" id="id"><span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> IEditorFactory::<span class="name">id</span>() const</h3>
+<p>Returns the ID of the editors' document type.</p>
+<p><b>See also </b><a href="core-ieditorfactory.html#setId" translate="no">setId</a>().</p>
+<!-- @@@id -->
+<!-- $$$mimeTypes[overload1]$$$mimeTypes -->
+<h3 class="fn" translate="no" id="mimeTypes"><span class="type">QStringList</span> IEditorFactory::<span class="name">mimeTypes</span>() const</h3>
+<p>Returns the list of supported MIME types of this editor type.</p>
+<p><b>See also </b><a href="core-ieditorfactory.html#addMimeType" translate="no">addMimeType</a>() and <a href="core-ieditorfactory.html#setMimeTypes" translate="no">setMimeTypes</a>().</p>
+<!-- @@@mimeTypes -->
+<!-- $$$preferredEditorFactories[overload1]$$$preferredEditorFactoriesconstUtils::FilePath& -->
+<h3 class="fn" translate="no" id="preferredEditorFactories"><code translate="no">[static] </code>const <span class="type">Core::EditorFactories</span> IEditorFactory::<span class="name">preferredEditorFactories</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>)</h3>
+<p>Returns the available editor factories for <i translate="no">filePath</i> in order of preference. That is the default order for the document's MIME type but with a user overridden default editor first, and the binary editor as the very first item if a text document is too large to be opened as a text file.</p>
+<!-- @@@preferredEditorFactories -->
+<!-- $$$setDisplayName[overload1]$$$setDisplayNameconstQString& -->
+<h3 class="fn" translate="no" id="setDisplayName"><code translate="no">[protected] </code><span class="type">void</span> IEditorFactory::<span class="name">setDisplayName</span>(const <span class="type">QString</span> &amp;<i>displayName</i>)</h3>
+<p>Sets the <i translate="no">displayName</i> of the editor type. This is for example shown in the <b translate="no">Open With</b> menu and the MIME type preferences.</p>
+<p><b>See also </b><a href="core-ieditorfactory.html#displayName" translate="no">displayName</a>().</p>
+<!-- @@@setDisplayName -->
+<!-- $$$setEditorCreator[overload1]$$$setEditorCreatorconststd::function<IEditor*()>& -->
+<h3 class="fn" translate="no" id="setEditorCreator"><code translate="no">[protected] </code><span class="type">void</span> IEditorFactory::<span class="name">setEditorCreator</span>(const <span class="type">std::function</span>&lt;<span class="type"><a href="core-ieditor.html" translate="no">IEditor</a></span> *()&gt; &amp;<i>creator</i>)</h3>
+<p>Sets the function that is used to create an editor instance in <a href="core-ieditorfactory.html#createEditor" translate="no">createEditor</a>() to <i translate="no">creator</i>.</p>
+<p>This is mutually exclusive with the use of setEditorStarter.</p>
+<p><b>See also </b><a href="core-ieditorfactory.html#createEditor" translate="no">createEditor</a>().</p>
+<!-- @@@setEditorCreator -->
+<!-- $$$setId[overload1]$$$setIdUtils::Id -->
+<h3 class="fn" translate="no" id="setId"><code translate="no">[protected] </code><span class="type">void</span> IEditorFactory::<span class="name">setId</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>id</i>)</h3>
+<p>Sets the <i translate="no">id</i> of the editors' document type. This must be the same as the <a href="core-idocument.html#id" translate="no">IDocument::id</a>() of the documents returned by created editors.</p>
+<p><b>See also </b><a href="core-ieditorfactory.html#id" translate="no">id</a>().</p>
+<!-- @@@setId -->
+<!-- $$$setMimeTypes[overload1]$$$setMimeTypesconstQStringList& -->
+<h3 class="fn" translate="no" id="setMimeTypes"><code translate="no">[protected] </code><span class="type">void</span> IEditorFactory::<span class="name">setMimeTypes</span>(const <span class="type">QStringList</span> &amp;<i>mimeTypes</i>)</h3>
+<p>Sets the MIME types supported by the editor type to <i translate="no">mimeTypes</i>.</p>
+<p><b>See also </b><a href="core-ieditorfactory.html#addMimeType" translate="no">addMimeType</a>() and <a href="core-ieditorfactory.html#mimeTypes" translate="no">mimeTypes</a>().</p>
+<!-- @@@setMimeTypes -->
+<!-- $$$startEditor[overload1]$$$startEditorconstUtils::FilePath&QString* -->
+<h3 class="fn" translate="no" id="startEditor"><span class="type">bool</span> IEditorFactory::<span class="name">startEditor</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>, <span class="type">QString</span> *<i>errorMessage</i>)</h3>
+<p>Starts an external editor.</p>
+<p>Uses the function set with setEditorStarter() to start the editor.</p>
+<p><b>See also </b>setEditorStarter().</p>
+<!-- @@@startEditor -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

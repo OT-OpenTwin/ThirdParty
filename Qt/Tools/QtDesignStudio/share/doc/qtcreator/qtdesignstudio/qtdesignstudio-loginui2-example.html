@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- loginui2.qdoc -->
+  <meta name="description" content="Illustrates how to position UI components on pages using anchors and positioners.">
+  <title>Log In UI - Positioning | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="gstutorials.html" translate="no">Tutorials</a></li>
+<li>Log In UI - Positioning</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="qtdesignstudio-loginui1-example.html" />
+  <link rel="next" href="qtdesignstudio-loginui3-example.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="qtdesignstudio-loginui1-example.html">Log In UI - Components</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtdesignstudio-loginui3-example.html">Log In UI - States</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#anchoring-ui-components">Anchoring UI Components</a></li>
+<li class="level1"><a href="#using-column-positioners">Using Column Positioners</a></li>
+<li class="level1"><a href="#learn-more">Learn More</a></li>
+<li class="level2"><a href="#anchors">Anchors</a></li>
+<li class="level2"><a href="#positioners">Positioners</a></li>
+<li class="level1"><a href="#next-steps">Next Steps</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Log In UI - Positioning</h1>
+<!-- $$$Loginui2-brief -->
+<p>Illustrates how to position UI components on pages using anchors and positioners.</p>
+<!-- @@@Loginui2 -->
+<!-- $$$Loginui2-description -->
+<div class="descr" id="details">
+<p class="centerAlign"><img src="images/loginui1.jpg" alt="&quot;Log In UI&quot;" /></p><p><i>Log In UI - Positioning</i> is the second in a series of tutorials that build on each other to illustrate how to use Qt Design Studio to create a simple UI with some basic UI components, such as pages, buttons, and entry fields. The second tutorial in the series describes how to position the UI components on pages to create a scalable UI.</p>
+<p>To ensure that the layout is responsive and all the UI components stay in their proper places when you resize the UI on the desktop or on devices with different screen sizes, you will use anchors and positioners.</p>
+<p>The starting point for this tutorial is the completed <a href="qtdesignstudio-loginui1-example.html" translate="no">Log In UI - Components</a> project. You can download the project from <a href="https://git.qt.io/public-demos/qtdesign-studio/-/tree/master/tutorial%20projects/Loginui1" translate="no">here</a>.</p>
+<p>Additionally, you can download the completed project of this tutorial from <a href="https://git.qt.io/public-demos/qtdesign-studio/-/tree/master/tutorial%20projects/Loginui2" translate="no">here</a>.</p>
+<p>The <i>Learn More</i> sections provide additional information about the task at hand.</p>
+<h4 id="anchoring-ui-components">Anchoring UI Components</h4>
+<p>First, you will <a href="qtquick-positioning.html#setting-anchors-and-margins" translate="no">anchor</a> the static page elements, background image (<i>adventurePage</i>), logo (<i>qt_logo_green_128x128px</i>), and tag line (<i>tagLine</i>), to the page.</p>
+<p>When you created the project using the project wizard template in <a href="qtdesignstudio-loginui1-example.html" translate="no">Log In UI - Components</a>, the wizard template anchored <i>tagLine</i> to the vertical and horizontal center of the page. Therefore, you will only need to replace the vertical anchor of <i>tagLine</i> with a top anchor and adjust the margins to align it with <i>qt_logo_green_128x128px</i> on the page.</p>
+<p>To preview the changes that you make to the UI while you make them, select the <img src="images/live_preview.png" alt="" /> (<b translate="no">Show Live Preview</b>) button on the <a href="qtquick-form-editor.html" translate="no">2D</a> view toolbar or press <b>Alt+P</b>.</p>
+<p>To anchor component instances on a page:</p>
+<ol class="1" type="1"><li>Open <i>Screen01.ui.qml</i> for editing in the <b translate="no">2D</b> view.</li>
+<li>Select <i>adventurePage</i> in the <a href="qtquick-navigator.html" translate="no">Navigator</a> view to display its properties in the <a href="qtquick-properties-view.html" translate="no">Properties</a> view.</li>
+<li>In <b translate="no">Properties</b> &gt; <b translate="no">Layout</b>, select the <img src="images/anchor-fill.png" alt="" /> anchor button to anchor <i>adventurePage</i> to its parent in the <b translate="no">Target</b> field. This attaches the background image to the rectangle on all sides. Note: Selecting the anchor button should automatically select the four buttons on the left side of it. If it doesn't, refresh the <b translate="no">2D</b> view.<p class="centerAlign"><img src="images/loginui2-layout.png" alt="&quot;Layout properties&quot;" /></p></li>
+<li>Select <i>qt_logo_green_128x128px</i> in <a href="qtquick-navigator.html" translate="no">Navigator</a>.</li>
+<li>In <b translate="no">Properties</b> &gt; <b translate="no">Layout</b>, select the <img src="images/anchor-top.png" alt="" /> and <img src="images/anchor-center-horizontal.png" alt="" /> anchor buttons to anchor <i>qt_logo_green_128x128px</i> to the top of its parent in the <b translate="no">Target</b> field with a 40-pixel margin and to center it horizontally. This attaches the logo to the rectangle at the top, while keeping its horizontal center aligned with that of the rectangle.</li>
+<li>Select <i>tagLine</i> in <b translate="no">Navigator</b>.</li>
+<li>In <b translate="no">Properties</b> &gt; <b translate="no">Layout</b>, select the <img src="images/anchor-top.png" alt="" /> button and then select <i>qt_logo_green_128x128px</i> as <b translate="no">Target</b> to anchor <i>tagLine</i> with a 40-pixel margin. This attaches the top of the tag line to the bottom of the logo, while keeping its horizontal center aligned with that of the rectangle.<p class="centerAlign"><img src="images/loginui2-layout-text.png" alt="&quot;Text Layout properties&quot;" /></p><div class="admonition note">
+<p><b>Note: </b>You can anchor component instances to their parent and sibling components. If a component instance is not listed in the <b translate="no">Target</b> field, check that the component instance is located in the correct place in the component hierarchy in <b translate="no">Navigator</b>. For more information, see <a href="qtquick-navigator.html#arranging-components" translate="no">Arranging Components</a>.</p>
+</div>
+</li>
+<li>Select <b translate="no">File</b> &gt; <b translate="no">Save</b> or press <b>Ctrl+S</b> to save your changes.</li>
+</ol>
+<p>Your page now should look something like this in the <b translate="no">Design</b> mode and live preview:</p>
+<p class="centerAlign"><img src="images/loginui2-loginpage.jpg" alt="&quot;Login page in the Design mode and live preview&quot;" /></p><h4 id="using-column-positioners">Using Column Positioners</h4>
+<p>You will now position the entry fields and buttons in columns to learn another method of <a href="qtquick-positioning.html#using-positioners" translate="no">positioning components</a>. Then, you will anchor the columns to the page to enable their positions to change when the screen size changes.</p>
+<p>To position the fields and buttons as columns:</p>
+<ol class="1" type="1"><li>Select <i>username</i> and <i>password</i> in <b translate="no">Navigator</b> (press and hold the <b>Shift</b> or <b>Ctrl</b> key for <a href="qtquick-properties-view.html#multiselection" translate="no">multiple selection</a>), and right-click either of them to open a context menu.</li>
+<li>Select <b translate="no">Position</b> &gt; <b translate="no">Position in Column</b> to position the fields on top of each other in the <b translate="no">2D</b> view.</li>
+<li>Select the column in <b translate="no">Navigator</b> and change its ID to <i>fields</i> in <b translate="no">Properties</b>.</li>
+<li>In <b translate="no">Column</b> &gt; <b translate="no">Spacing</b>, set the spacing between the fields to 20 pixels.<p class="centerAlign"><img src="images/loginui2-column-properties.png" alt="&quot;Column properties&quot;" /></p></li>
+<li>Select <i>login</i> and <i>createAccount</i>, and then select <b translate="no">Position</b> &gt; <b translate="no">Position in Column</b> to position them in a column.</li>
+<li>Select the button column, change its ID to <i>buttons</i>, and set the spacing between the buttons to 20 pixels, as above.</li>
+</ol>
+<p>You will now anchor the field and button columns to the page:</p>
+<ol class="1" type="1"><li>Select <i>fields</i> in <b translate="no">Navigator</b>.</li>
+<li>In <b translate="no">Properties</b> &gt; <b translate="no">Layout</b>, select the <img src="images/anchor-top.png" alt="" /> button to anchor the top of the fields column to the bottom of <i>tagLine</i> with a 170-pixel margin.</li>
+<li>Select the <img src="images/anchor-center-horizontal.png" alt="" /> button to anchor the column horizontally to its parent.</li>
+<li>Select <i>buttons</i> in <b translate="no">Navigator</b>.</li>
+<li>In <b translate="no">Properties</b> &gt; <b translate="no">Layout</b>, select the <img src="images/anchor-bottom.png" alt="" /> button to anchor the button column to the bottom of its parent with a 50-pixel margin.</li>
+<li>Select the <img src="images/anchor-center-horizontal.png" alt="" /> button to anchor the column horizontally to its parent.</li>
+<li>Select <b translate="no">File</b> &gt; <b translate="no">Save</b> or press <b>Ctrl+S</b> to save your changes.</li>
+</ol>
+<p>The second iteration of your UI is now ready and should look something like this in the <b translate="no">Design</b> mode and live preview:</p>
+<p class="centerAlign"><img src="images/loginui2-loginpage-ready.jpg" alt="&quot;Login page in the Design mode and live preview&quot;" /></p><h4 id="learn-more">Learn More</h4>
+<h5 id="anchors">Anchors</h5>
+<p>In an anchor-based layout, each component instance can be thought of as having a set of invisible <i>anchor</i> lines: top, bottom, left, right, fill, horizontal center, vertical center, and baseline.</p>
+<p>Anchors enable placing a component instance either adjacent to or inside of another component instance, by attaching one or more of the instance's anchor lines to the anchor lines of the other component instance. If a component instance changes, the instances that are anchored to it will adjust automatically to maintain the anchoring.</p>
+<p>For more information, see <a href="https://doc.qt.io/qt/qtquick-positioning-anchors.html" translate="no">Positioning with Anchors</a>.</p>
+<h5 id="positioners">Positioners</h5>
+<p>For many use cases, the best positioner to use is a simple grid, row, or column, and Qt Design Studio provides components that will position children in these formations in the most efficient manner possible. For more information about using preset positioners, see <a href="qtquick-positioning.html#using-positioners" translate="no">Using Positioners</a>.</p>
+<p>For more complicated UI designs, you can use components from the <a href="qtquick-positioning.html#using-layouts" translate="no">Qt Quick Layouts module</a>.</p>
+<h4 id="next-steps">Next Steps</h4>
+<p>To learn how to add a second page and move to it from the main page, see the next tutorial in the series, <a href="qtdesignstudio-loginui3-example.html" translate="no">Log In UI - States</a>.</p>
+<p>Files:</p>
+<ul>
+<li><a href="qtdesignstudio-loginui2-loginui2-qmlproject.html" translate="no">Loginui2/Loginui2.qmlproject</a></li>
+<li><a href="qtdesignstudio-loginui2-content-screen01-ui-qml.html" translate="no">Loginui2/content/Screen01.ui.qml</a></li>
+</ul>
+</div>
+<!-- @@@Loginui2 -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="qtdesignstudio-loginui1-example.html">Log In UI - Components</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtdesignstudio-loginui3-example.html">Log In UI - States</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-custom-shaders.qdoc -->
+  <title>Custom Shaders | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Custom Shaders</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-3d-effects.html" />
+  <link rel="next" href="studio-3d-custom-effects-materials.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-3d-effects.html">3D Effects</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-custom-effects-materials.html">Custom Effects and Materials</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#available-custom-shader-utilities">Available Custom Shader Utilities</a></li>
+<li class="level1"><a href="#available-custom-shader-commands">Available Custom Shader Commands</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Custom Shaders</h1>
+<!-- $$$studio-3d-custom-shaders.html-description -->
+<div class="descr" id="details">
+<p>You can use the 3D shader utilities and commands available in &gt; <b translate="no">Components</b> &gt; <b translate="no">Qt Quick 3D</b> &gt; <b translate="no">Qt Quick 3D Custom Shader Utilities</b> to create your own effects and materials.</p>
+<p>If the custom shader utilities are not displayed in <b translate="no">Components</b>, add the <b translate="no">QtQuick3D</b> module to your project, as described in <a href="quick-components-view.html#adding-and-removing-modules" translate="no">Adding and Removing Modules</a>.</p>
+<div class="admonition note">
+<p><b>Note: </b>If you select <b translate="no">Qt 5</b> as the <b translate="no">Target Qt Version</b> when <a href="studio-projects.html" translate="no">creating your project</a>, the available custom shader utilities and their properties will be slightly different, and some of the components can be found in different locations in <b translate="no">Components</b>.</p>
+</div>
+<p class="centerAlign"><img src="images/studio-qtquick-3d-shader-utilities.png" alt="&quot;Custom shader utilities in Components&quot;" /></p><p>You can find additional shader utilities, the <b translate="no">Effect</b> and <b translate="no">Custom Material</b> components, in <b translate="no">Components</b> &gt; <b translate="no">Qt Quick3D</b> &gt; <b translate="no">Qt Quick 3D</b>.</p>
+<p class="centerAlign"><img src="images/studio-qtquick-3d-components.png" alt="&quot;Effect and Custom Material Components in Components&quot;" /></p><div class="admonition note">
+<p><b>Note: </b>In Qt 5 the <b translate="no">Effect</b> component is located in <b translate="no">Qt Quick 3D Effects</b> &gt; <b translate="no">Qt Quick 3D Custom Shader Utilities</b>. To use the <b translate="no">Effect</b> component, add the <b translate="no">QtQuick3D.Effects</b> module to your project.</p>
+</div>
+<div class="admonition note">
+<p><b>Note: </b>In Qt 5 the <b translate="no">Custom Material</b> component can be found in <b translate="no">Qt Quick 3D Materials</b> &gt; <b translate="no">Qt Quick 3D Custom Shader Utilities</b>. To use the <b translate="no">Custom Material</b> component, add the <b translate="no">QtQuick3D.Materials</b> module to your project.</p>
+</div>
+<p>For more information about using the shaders, see <a href="studio-3d-custom-effects-materials.html" translate="no">Custom Effects and Materials</a>.</p>
+<p>See the following tables for available shader utilities and commands.</p>
+<h2 id="available-custom-shader-utilities">Available Custom Shader Utilities</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Custom Shader</th><th >Qt 5 Only</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td ><a href="https://doc.qt.io/qt/qml-qtquick3d-buffer.html" translate="no">Buffer</a></td><td ></td><td >A buffer to be used for a pass of <b translate="no">Custom Material</b> or <b translate="no">Effect</b> instances.<p>The <b translate="no">Name</b> property identifies the <b translate="no">Buffer</b> instance. When the value of this property is empty, the buffer will refer to the default output texture of the render pass instead of allocating a buffer. This can be useful to override certain settings of the output, such as the texture format, without introducing a new, separate intermediate texture.</p>
+<p>The <b translate="no">Format</b> property specifies the format of the buffer.</p>
+<p>The <b translate="no">Filter</b> property specifies the filter operation when a render pass is reading a buffer that differs in size in comparison to the current output buffer.</p>
+<p>The <b translate="no">Coordinate operation</b> property specifies the texture coordinate operation for coordinates outside [0, 1] range. Select the <b translate="no">ClampToEdge</b> operation to clamp coordinates to edges. The <b translate="no">Repeat</b> operation wraps the coordinates at the edges to tile the texture, while <b translate="no">MirroredRepeat</b> also mirrors every other repeat of the texture while tiling it.</p>
+<p>The <b translate="no">Allocation flags</b> property defines allocation flags for the <b translate="no">Buffer</b> instance. Select <b translate="no">SceneLifeTime</b> to allocate the buffer for the whole lifetime of the scene.</p>
+<p><b translate="no">Size multiplier</b> specifies the size of the <b translate="no">Buffer</b> instance. Value of 1.0 creates a buffer with the same size, while 0.5 creates a buffer with width and height halved.</p>
+</td></tr>
+<tr valign="top" class="even"><td ><a href="https://doc.qt.io/qt/qml-qtquick3d-custommaterial.html" translate="no">Custom Material</a></td><td ></td><td >The base component for creating custom materials used to shade model instances.<p>The <b translate="no">Shading mode</b> property specifies whether the material is <b translate="no">Shaded</b> or <b translate="no">Unshaded</b>.</p>
+<p>The <b translate="no">Vertex shader</b> and <b translate="no">Fragment shader</b> properties define the vertex and fragment shader files for the material. Select the shader files from the dropdown menus. You can select <img src="images/add-file-16px.png" alt="" /> to add new shader files to the dropdown menus.</p>
+<p>The <b translate="no">Source blend</b> and <b translate="no">Destination blend</b> properties specify the source and destination blend factors.</p>
+<p>The <b translate="no">Always dirty</b> property determines whether the material is refreshed every time it is used.</p>
+<p>The <b translate="no">Line Width</b> property defines the width of the lines when the geometry is using lines or line strips.</p>
+<p>Specify the attributes of the <b translate="no">Custom Material</b> by defining the <b translate="no">Transparency</b>, <b translate="no">Refraction</b> and <b translate="no">Always dirty</b> properties.</p>
+<p>The <b translate="no">Shader Info</b> specifies the shader info of the material. For more information, see <a href="studio-3d-custom-effects-materials.html" translate="no">Custom Effects and Materials</a>.</p>
+<div class="admonition note">
+<p><b>Note: </b>In Qt 5 you can also define render passes for <b translate="no">Custom Material</b> instances by using the <b translate="no">Passes</b> property, which lists render passes implemented by the material.</p>
+</div>
+</td></tr>
+<tr valign="top" class="odd"><td ><a href="https://doc.qt.io/qt/qml-qtquick3d-effect.html" translate="no">Effect</a></td><td ></td><td >A base component for creating post-processing effects.<p>The <b translate="no">Passes</b> property contains a list of render passes implemented by the effect. You can add more entry fields to the list by selecting <img src="images/plus.png" alt="" /> . For more information, see <a href="studio-3d-custom-effects-materials.html" translate="no">Custom Effects and Materials</a>.</p>
+</td></tr>
+<tr valign="top" class="even"><td ><a href="https://doc.qt.io/qt/qml-qtquick3d-pass.html" translate="no">Pass</a></td><td ></td><td >A render pass of an <b translate="no">Effect</b> instance. In Qt 5 you can also use render passes for <b translate="no">Custom Materials</b>.<p>The <b translate="no">Commands</b> property specifies the list of render commands for the <b translate="no">Pass</b> instance, while the <b translate="no">Shaders</b> property lists the shaders for it. Use the dropdown menus to select the render commands and shader files of your choice.</p>
+<p>The <b translate="no">Buffer</b> property specifies an output buffer for the <b translate="no">Pass</b> instance.</p>
+</td></tr>
+<tr valign="top" class="odd"><td ><a href="https://doc.qt.io/qt/qml-qtquick3d-shader.html" translate="no">Shader</a></td><td ></td><td >A container component for defining shader code used by <b translate="no">Effect</b> instances.<p>The <b translate="no">Source</b> property specifies the shader file to be used by the <b translate="no">Shader</b> instance, and the <b translate="no">Stage</b> property defines a <b translate="no">Vertex</b> or <b translate="no">Fragment</b> stage for it.</p>
+<div class="admonition note">
+<p><b>Note: </b>In Qt 5 you can also set the <b translate="no">Stage</b> property to <b translate="no">Shared</b>, <b translate="no">Geometry</b>, or <b translate="no">Compute</b>.</p>
+</div>
+</td></tr>
+<tr valign="top" class="even"><td >Shader Info</td><td ><img src="images/ok.png" alt="" /></td><td >Basic information about custom shader code for Custom Materials.<p>The <b translate="no">Version</b> property specifies the shader code version, while the <b translate="no">Type</b> property defines the shader code type.</p>
+<p>The <b translate="no">Key</b> property specifies the options used by the shader using the combination of shader key values, such as diffuse or specular lighting, refraction, transparency, displacement, transmissiveness, glossiness, and alpha cutout.</p>
+<p>The <b translate="no">Key</b> property specifies the options used by the shader using the combination of shader key values. Use the dropdown list to select the one of available shader keys:</p>
+<ul>
+<li>The <b translate="no">Diffuse</b> shader key applies diffuse lighting and <b translate="no">Specular</b> applies specular lighting to the shader instance.</li>
+<li>The <b translate="no">Cutout</b> shader key applies alpha cutout to the shader instance.</li>
+<li>The <b translate="no">Refraction</b> shader key applies refraction to the shader instance, while using the <b translate="no">Transparent</b> key applies transparency to the shader instance.</li>
+<li>The <b translate="no">Displace</b> shader key applies displacement mapping to the shader instance.</li>
+<li>The <b translate="no">Transmissive</b> shader key applies transmissiveness to the shader instance.</li>
+<li>The <b translate="no">Glossy</b> shader key applies glossiness to the shader instance by default. This shader key is a combination of <b translate="no">Diffuse</b> and <b translate="no">Specular</b> keys.</li>
+</ul>
+</td></tr>
+<tr valign="top" class="odd"><td ><a href="https://doc.qt.io/qt/qml-qtquick3d-textureinput.html" translate="no">Texture Input</a></td><td ></td><td >A texture channel for <b translate="no">Custom Material</b> and Effect instances.<p>The <b translate="no">Texture</b> property specifies the texture to input, while <b translate="no">Enabled</b> determines whether the texture is enabled. In <b translate="no">Effect</b> instances, setting <b translate="no">Enabled</b> to <b translate="no">false</b> causes the shaders to sample a dummy, opaque black texture instead of the one specified by texture.</p>
+</td></tr>
+</table></div>
+<h2 id="available-custom-shader-commands">Available Custom Shader Commands</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Command</th><th >Qt 5 Only</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td ><a href="https://doc.qt.io/qt/qtquick3d-custom.html#blending" translate="no">Blending</a></td><td ><img src="images/ok.png" alt="" /></td><td >A pass command that specifies the source blending function.<p>The <b translate="no">Source</b> property specifies the source blending function, while the <b translate="no">Destination</b> property specifies the destination for it.</p>
+</td></tr>
+<tr valign="top" class="even"><td >Buffer Blit</td><td ><img src="images/ok.png" alt="" /></td><td >A copy operation between two buffers in a pass of a Custom Material or an Effect.<p>The <b translate="no">Source</b> and <b translate="no">Destination</b> specify the source and the destination buffers for the copy-operation.</p>
+</td></tr>
+<tr valign="top" class="odd"><td ><a href="https://doc.qt.io/qt/qml-qtquick3d-bufferinput.html" translate="no">Buffer Input</a></td><td ></td><td >An input buffer to be used for a pass of a Custom Material or an Effect.<p>The <b translate="no">Buffer</b> property specifies the input buffer for an instance of the <b translate="no">Pass</b> instance. The <b translate="no">Parameter</b> specifies the name of the input parameter in the shader.</p>
+</td></tr>
+<tr valign="top" class="even"><td >Cull Mode</td><td ><img src="images/ok.png" alt="" /></td><td >A culling mode for a render pass.<p>The <b translate="no">Mode</b> property specifies the culling mode in a pass when the <b translate="no">State</b> property of the <b translate="no">Render State</b> is set to <b translate="no">CullFace</b>. Use the dropdown menu to set the culling mode to <b translate="no">BackFaceCulling</b>, <b translate="no">FrontFaceCulling</b>, or <b translate="no">NoCulling</b>.</p>
+</td></tr>
+<tr valign="top" class="odd"><td >Depth Input</td><td ><img src="images/ok.png" alt="" /></td><td >An output texture for the depth buffer.<p>The <b translate="no">Parameter</b> property specifies the name of the texture the depth buffer will bind to.</p>
+</td></tr>
+<tr valign="top" class="even"><td >Render State</td><td ><img src="images/ok.png" alt="" /></td><td >The render state to be enabled or disabled in a pass of a <b translate="no">Custom Material</b> or an <b translate="no">Effect</b> instance.<p>The <b translate="no">State</b> property specifies the render state to enable or disable in a pass. Use the dropdown menu to set the <b translate="no">State</b> to <b translate="no">Blend</b>, <b translate="no">CullFace</b>, <b translate="no">DepthTest</b>, <b translate="no">StencilTest</b>, <b translate="no">ScissorTest</b>, <b translate="no">DepthWrite</b>, or <b translate="no">Multisample</b>.</p>
+<p>The <b translate="no">Enabled</b> property defines the <b translate="no">Enable</b> state for the <b translate="no">Render State</b>.</p>
+</td></tr>
+<tr valign="top" class="odd"><td ><a href="https://doc.qt.io/qt/qml-qtquick3d-setuniformvalue.html" translate="no">Set Uniform Value</a></td><td ></td><td >A value to be set during a single pass.<p>The <b translate="no">Target</b> property specifies the name of the uniform that will have its value changed during the pass, while the <b translate="no">Value</b> specifies the value that will be set on the target uniform.</p>
+</td></tr>
+</table></div>
+</div>
+<!-- @@@studio-3d-custom-shaders.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-3d-effects.html">3D Effects</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-custom-effects-materials.html">Custom Effects and Materials</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

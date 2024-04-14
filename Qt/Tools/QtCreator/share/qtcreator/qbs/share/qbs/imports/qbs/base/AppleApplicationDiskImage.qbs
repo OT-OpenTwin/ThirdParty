@@ -34,7 +34,8 @@ import qbs.ModUtils
 
 AppleDiskImage {
     property string sourceBase: "/Applications"
-    readonly property string absoluteSourceBase: FileInfo.joinPaths(qbs.installRoot, sourceBase)
+    readonly property string absoluteSourceBase:
+        FileInfo.joinPaths(qbs.installRoot, qbs.installPrefix, sourceBase)
     property stringList symlinks: ["/Applications:Applications"]
 
     readonly property string stageDirectory: FileInfo.joinPaths(destinationDirectory, "Volumes", dmg.volumeName)
@@ -56,7 +57,7 @@ AppleDiskImage {
         prepare: Array.prototype.map.call(outputs["dmg.input"], function (symlink) {
             var cmd = new Command("ln", ["-sfn", symlink.dmg.symlinkTarget, symlink.filePath]);
             cmd.workingDirectory = product.stageDirectory;
-            cmd.description = "symlinking " + symlink.fileName + " => " + symlink.dmg.symlinkTarget;
+            cmd.description = "symlinking " + symlink.fileName + " to " + symlink.dmg.symlinkTarget;
             return cmd;
         });
     }

@@ -1,0 +1,11 @@
+QT.saferendererplugin_private.VERSION = 6.5.1
+QT.saferendererplugin_private.name = QtSafeRendererPlugin
+QT.saferendererplugin_private.module =
+QT.saferendererplugin_private.libs = $$QT_MODULE_LIB_BASE
+QT.saferendererplugin_private.includes = $$QT_MODULE_INCLUDE_BASE/QtSafeRendererPlugin/6.5.1 $$QT_MODULE_INCLUDE_BASE/QtSafeRendererPlugin/6.5.1/QtSafeRendererPlugin
+QT.saferendererplugin_private.frameworks = 
+QT.saferendererplugin_private.depends = saferendererplugin
+QT.saferendererplugin_private.uses = 
+QT.saferendererplugin_private.module_config = v2 internal_module
+QT.saferendererplugin_private.enabled_features = 
+QT.saferendererplugin_private.disabled_features = 

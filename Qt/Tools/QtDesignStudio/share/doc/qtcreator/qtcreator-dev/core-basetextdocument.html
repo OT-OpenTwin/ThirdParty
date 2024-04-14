@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- textdocument.cpp -->
+  <meta name="description" content="The BaseTextDocument class is a very general base class for documents that work with text.">
+  <title>BaseTextDocument Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>BaseTextDocument</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">BaseTextDocument Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::BaseTextDocument</span>
+<!-- $$$BaseTextDocument-brief -->
+<p>The BaseTextDocument class is a very general base class for documents that work with text. <a href="#details">More...</a></p>
+<!-- @@@BaseTextDocument -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/textdocument.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="core-idocument.html" translate="no">Core::IDocument</a></td></tr>
+</table></div>
+<ul>
+<li><a href="core-basetextdocument-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::TextFileFormat </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#format" translate="no">format</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::BaseTextDocument::ReadResult </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#read" translate="no">read</a></b>(const Utils::FilePath &amp;<i>filePath</i>, QStringList *<i>plainTextList</i>, QString *<i>errorString</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::BaseTextDocument::ReadResult </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#read-1" translate="no">read</a></b>(const Utils::FilePath &amp;<i>filePath</i>, QString *<i>plainText</i>, QString *<i>errorString</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#write" translate="no">write</a></b>(const Utils::FilePath &amp;<i>filePath</i>, const QString &amp;<i>data</i>, QString *<i>errorMessage</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#write-1" translate="no">write</a></b>(const Utils::FilePath &amp;<i>filePath</i>, const Utils::TextFileFormat &amp;<i>format</i>, const QString &amp;<i>data</i>, QString *<i>errorMessage</i>) const</td></tr>
+</table></div>
+<!-- $$$BaseTextDocument-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>This class contains helper methods for saving and reading text files with encoding and line ending settings.</p>
+</div>
+<p><b>See also </b><a href="utils-textfileformat.html" translate="no">Utils::TextFileFormat</a>.</p>
+<!-- @@@BaseTextDocument -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$format[overload1]$$$format -->
+<h3 class="fn" translate="no" id="format"><span class="type"><a href="utils-textfileformat.html" translate="no">Utils::TextFileFormat</a></span> BaseTextDocument::<span class="name">format</span>() const</h3>
+<p>Returns the format obtained from the last call to <a href="core-basetextdocument.html#read" translate="no">read</a>().</p>
+<!-- @@@format -->
+<!-- $$$read[overload1]$$$readconstUtils::FilePath&QStringList*QString* -->
+<h3 class="fn" translate="no" id="read"><span class="type">Core::BaseTextDocument::ReadResult</span> BaseTextDocument::<span class="name">read</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>, <span class="type"><a href="https://doc.qt.io/qt/qstringlist.html" translate="no">QStringList</a></span> *<i>plainTextList</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> *<i>errorString</i>)</h3>
+<p>Autodetects file format and reads the text file specified by <i translate="no">filePath</i> into a list of strings specified by <i translate="no">plainTextList</i>.</p>
+<p>If an error occurs while writing the file, <i translate="no">errorString</i> is set to the error details.</p>
+<p>Returns whether the operation was successful.</p>
+<!-- @@@read -->
+<!-- $$$read$$$readconstUtils::FilePath&QString*QString* -->
+<h3 class="fn" translate="no" id="read-1"><span class="type">Core::BaseTextDocument::ReadResult</span> BaseTextDocument::<span class="name">read</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> *<i>plainText</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> *<i>errorString</i>)</h3>
+<p>Autodetects file format and reads the text file specified by <i translate="no">filePath</i> into <i translate="no">plainText</i>.</p>
+<p>If an error occurs while writing the file, <i translate="no">errorString</i> is set to the error details.</p>
+<p>Returns whether the operation was successful.</p>
+<!-- @@@read -->
+<!-- $$$write[overload1]$$$writeconstUtils::FilePath&constQString&QString* -->
+<h3 class="fn" translate="no" id="write"><span class="type">bool</span> BaseTextDocument::<span class="name">write</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>, const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>data</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> *<i>errorMessage</i>) const</h3>
+<p>Writes out the contents (<i translate="no">data</i>) of the text file <i translate="no">filePath</i>. Uses the format obtained from the last <a href="core-basetextdocument.html#read" translate="no">read</a>() of the file.</p>
+<p>If an error occurs while writing the file, <i translate="no">errorMessage</i> is set to the error details.</p>
+<p>Returns whether the operation was successful.</p>
+<!-- @@@write -->
+<!-- $$$write$$$writeconstUtils::FilePath&constUtils::TextFileFormat&constQString&QString* -->
+<h3 class="fn" translate="no" id="write-1"><span class="type">bool</span> BaseTextDocument::<span class="name">write</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>, const <span class="type"><a href="utils-textfileformat.html" translate="no">Utils::TextFileFormat</a></span> &amp;<i>format</i>, const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>data</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> *<i>errorMessage</i>) const</h3>
+<p>Writes out the contents (<i translate="no">data</i>) of the text file <i translate="no">filePath</i>. Uses the custom format <i translate="no">format</i>.</p>
+<p>If an error occurs while writing the file, <i translate="no">errorMessage</i> is set to the error details.</p>
+<p>Returns whether the operation was successful.</p>
+<!-- @@@write -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

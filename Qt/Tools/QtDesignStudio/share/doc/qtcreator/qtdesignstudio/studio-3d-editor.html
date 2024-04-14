@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-editor.qdoc -->
+  <title>3D | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>3D</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="qtquick-form-editor.html" />
+  <link rel="next" href="studio-material-editor.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="qtquick-form-editor.html">2D</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-material-editor.html">Material Editor and Browser</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#controlling-the-3d-view-camera">Controlling the 3D View Camera</a></li>
+<li class="level1"><a href="#using-global-and-local-orientation">Using Global and Local Orientation</a></li>
+<li class="level1"><a href="#using-edit-light">Using Edit Light</a></li>
+<li class="level1"><a href="#baking-lights">Baking Lights</a></li>
+<li class="level1"><a href="#selecting-components">Selecting Components</a></li>
+<li class="level1"><a href="#moving-components">Moving Components</a></li>
+<li class="level1"><a href="#rotating-components">Rotating Components</a></li>
+<li class="level1"><a href="#scaling-components">Scaling Components</a></li>
+<li class="level1"><a href="#snapping">Snapping</a></li>
+<li class="level2"><a href="#configuring-snapping">Configuring Snapping</a></li>
+<li class="level1"><a href="#aligning-views-and-cameras">Aligning Views and Cameras</a></li>
+<li class="level1"><a href="#toggling-visibility">Toggling Visibility</a></li>
+<li class="level1"><a href="#changing-colors">Changing Colors</a></li>
+<li class="level1"><a href="#particle-editor">Particle Editor</a></li>
+<li class="level1"><a href="#using-viewport-shading">Using Viewport Shading</a></li>
+<li class="level1"><a href="#summary-of-the-3d-view-toolbar-buttons">Summary of the 3D View Toolbar Buttons</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">3D</h1>
+<!-- $$$studio-3d-editor.html-description -->
+<div class="descr" id="details">
+<p>When editing a 3D scene, you view the scene in the <b translate="no">3D</b> view. You can change the projection of the view by switching between <i>perspective camera</i> and <i>orthographic camera</i> modes. When using the perspective camera mode, components that are far from the camera appear smaller than those nearby. In the orthographic camera mode, all components appear at the same scale irrespective of their distance from the camera. Both of them are free-form camera modes that you can use to orbit around the scene.</p>
+<p>When you import 3D scenes from files that you exported from 3D graphics tools, you also import a <a href="studio-3d-camera.html" translate="no">scene camera</a>, <a href="studio-3d-lights.html" translate="no">light</a>, <a href="studio-3d-model.html" translate="no">model</a>, and <a href="studio-3d-materials.html" translate="no">materials</a>. If your scene did not contain them, you can add the corresponding <a href="quick-preset-components.html#3d-components" translate="no">Qt Quick 3D</a> components from <b translate="no">Components</b> &gt; <img src="images/plus.png" alt="" /> &gt; <b translate="no">Qt Quick 3D</b> &gt; <b translate="no">Qt Quick 3D</b>.</p>
+<p>You can use the <a href="studio-3d-editor.html#summary-of-the-3d-view-toolbar-buttons" translate="no">toolbar buttons</a> to <i>transform</i> 3D components and manipulate the 3D scene. Transformation refers to moving, rotating, or scaling of a component. The <i>pivot</i> of the component is used as the origin for transformations. You can set a <a href="studio-3d-node.html#managing-3d-transformations" translate="no">local pivot offset</a> for a component in <b translate="no">Properties</b> to transform the component around a point other than its local origin. A line is drawn in the <b translate="no">3D</b> view from the pivot point to the center of the component to provide a visual connection between them. Especially when working with complex scenes, it may be useful to use the <a href="qtquick-navigator.html#showing-and-hiding-components" translate="no">showing and hiding</a> or the <a href="qtquick-navigator.html#locking-components" translate="no">locking</a> features in <a href="qtquick-navigator.html" translate="no">Navigator</a> to avoid transforming components by mistake while editing your scene.</p>
+<p>Toggle between local and global orientation to determine whether the gizmos affect only the local transformations of the component or whether they transform with respect to the global space.</p>
+<p>Another helpful feature when editing 3D scenes is the <i>edit light</i>, which is a quick way to light the scene.</p>
+<p>Additionally, you can toggle the visibility of the grid, selection boxes, icon gizmos, and camera frustums in the 3D scene.</p>
+<p>There is a context menu in the <b translate="no">3D</b> view. To open it, right-click in the <b translate="no">3D</b> view. From the context menu you can:</p>
+<ul>
+<li>Create cameras, lights, and models.</li>
+<li>Open <b translate="no">Material Editor</b> and edit materials.</li>
+<li>Delete components</li>
+</ul>
+<p class="centerAlign"><img src="images/3d-view-context-menu.png" alt="" /></p><p>To refresh the contents of the <b translate="no">3D</b> view, press <b>P</b> or select the <img src="images/reset.png" alt="" /> (<b translate="no">Reset View</b>) button.</p>
+<p class="centerAlign"><img src="images/studio-3d-editor.webp" alt="&quot;The 3D view&quot;" /></p><p>The following video illustrates navigating in the <b translate="no">3D</b> view and using the toolbar:</p>
+<div class="video">
+<a href="https://www.youtube.com/watch/?v=SsFWyUeAA_4">
+<img src="images/SsFWyUeAA_4.jpg" title="Click to play in a browser" /></a>
+</div>
+<h2 id="controlling-the-3d-view-camera">Controlling the 3D View Camera</h2>
+<p>To switch to perspective camera mode, select <img src="images/perspective_camera.png" alt="" /> (<b translate="no">Toggle Perspective/Orthographic Edit Camera</b>). To switch to orthographic camera mode, select <img src="images/orthographic_camera.png" alt="" /> . You can also Toggle the camera mode by using the keyboard shortcut <b>T</b>.</p>
+<p>You can navigate the scene by panning, rotating, and zooming the 3D view camera:</p>
+<ul>
+<li>To pan, press <b>Alt</b> (or <b>Option</b> on macOS) and use the middle mouse button to click and drag anywhere in the rendered view to slide the view around.<div class="admonition note">
+<p><b>Note: </b>It is not possible to pan using Magic Mouse.</p>
+</div>
+</li>
+<li>To orbit, press <b>Alt</b> and click and drag anywhere in the rendered view to rotate the view.</li>
+<li>To zoom, use the mouse wheel or press <b>Alt</b> and right-click anywhere in the rendered view to zoom the view in or out as you drag up or down.</li>
+</ul>
+<p>To zoom and focus the 3D view camera on a selected component, select <img src="images/fit_selected.png" alt="" /> (<b translate="no">Fit Selected</b>) or press <b>F</b>.</p>
+<p>The world axis helper (1) shows the direction of the world axes in the view. To point the camera at the currently selected component in the direction of an axis, click the axis. Clicking the dot at the end of the axis will point the camera at the opposite direction of the axis. If no component is selected, the camera is pointed at the world origin. This does not affect the camera zoom level.</p>
+<p>To view the scene in a split view of four different point of views, select <img src="images/split-view.png" alt="" />.</p>
+<p class="centerAlign"><img src="images/studio-3d-split-view.webp" alt="&quot;Split view in the 3D view&quot;" /></p><p>To select one of the four panes, click on it. The selected pane is marked with a blue frame. Use the world axis helper to change the point of view for each pane independently. Navigate each split by panning, rotating, and zooming, as described above.</p>
+<p class="centerAlign"><img src="images/studio-3d-editor-axis-helper.webp" alt="&quot;Axis helper in the 3D view&quot;" /></p><p>You can use scene cameras (2) to view the <b translate="no">View3D</b> component from a specific angle in the <a href="qtquick-form-editor.html" translate="no">2D</a> view while editing scenes. Different types of cameras are available in <b translate="no">Components</b> &gt; <b translate="no">Qt Quick 3D</b> &gt; <b translate="no">Qt Quick 3D</b>. For more information about using cameras in the scene, the available camera types, and their properties, see <a href="studio-3d-camera.html" translate="no">Cameras</a>.</p>
+<h2 id="using-global-and-local-orientation">Using Global and Local Orientation</h2>
+<p>To switch between local and global orientation, select <img src="images/global.png" alt="" /> (<b translate="no">Toggle Local/Global Orientation</b>) or press <b>Y</b>.</p>
+<p>In global orientation mode, transformation of a selected component is presented with respect to the global space. For example, while the move tool is selected, selecting a cube will show its move gizmo aligned with the axes of global space. Dragging on the red arrow of the gizmo moves the component in the global x direction.</p>
+<p>In local orientation mode, the position of a selected component is shown according to local axes specific to the selected component. For example, selecting a rotated cube will show its axes rotated, and not aligned with the axes of global space. Dragging on the red arrow of the gizmo moves the component in the local x direction in relation to the component.</p>
+<h2 id="using-edit-light">Using Edit Light</h2>
+<p>The edit light is an extra point light that can be used to illuminate the scene. To toggle the edit light on and off, select <img src="images/edit_light_on.png" alt="" /> or <img src="images/edit_light_off.png" alt="" /> (<b translate="no">Toggle Edit Light</b>) or press <b>U</b>.</p>
+<p>For more information about the available scene light types and their properties, see <a href="studio-3d-lights.html" translate="no">Lights</a>.</p>
+<h2 id="baking-lights">Baking Lights</h2>
+<p>Bake lights to light static elements in your scene. To bake lights, select <img src="images/bakelights.png" alt="" /> to open the <b translate="no">Lights Baking Setup</b> dialog. For more information, see <a href="studio-3d-lights.html#baking-lightmaps" translate="no">Baking Lightmaps</a>.</p>
+<h2 id="selecting-components">Selecting Components</h2>
+<p>To move, rotate, or scale components in the scene, you need to select them first. The selection mode buttons determine how components are selected when you click them in the <b translate="no">3D</b> view:</p>
+<ul>
+<li>In the <img src="images/select_item.png" alt="" /> (<b translate="no">Single Selection</b>) mode, a single component is selected.</li>
+<li>In the <img src="images/select_group.png" alt="" /> (<b translate="no">Group Selection</b>) mode, the top level parent of the component is selected. This enables you to move, rotate, or scale a group of components.</li>
+</ul>
+<p>To toggle the selection mode, press <b>Q</b>.</p>
+<p>To multiselect, hold <b>Ctrl</b> and click the components you wish to select.</p>
+<p>After selecting a component, you can apply the usual <a href="studio-keyboard-shortcuts.html" translate="no">keyboard shortcuts</a> applicable to your operating system, for example, <b>Ctrl+C</b> and <b>Ctrl+V</b> on Windows to copy-paste components.</p>
+<span id="moving-components-3d-view"></span><h2 id="moving-components">Moving Components</h2>
+<p class="centerAlign"><img src="images/studio-3d-editor-move.webp" alt="&quot;The 3D view in move mode&quot;" /></p><p>You can move components in relation to their coordinate system, along the x, y, or z axis or on the top, bottom, left, and right clip planes of the the <b translate="no">3D</b> view.</p>
+<p>To move components, select <img src="images/move_off.png" alt="" /> or press <b>W</b>:</p>
+<ul>
+<li>To move components along the axes of the move gizmo, click the axis, and drag the component along the axis.</li>
+<li>To move components on a plane, click the plane handle and drag the component on the plane.</li>
+<li>To move components freely in the 3D view, click and drag the gray handle at the center of the move gizmo.</li>
+</ul>
+<h2 id="rotating-components">Rotating Components</h2>
+<p class="centerAlign"><img src="images/studio-3d-editor-rotate.webp" alt="&quot;The 3D view in rotate mode&quot;" /></p><p>To rotate components, select <img src="images/rotate_off.png" alt="" /> or press <b>E</b>:</p>
+<ul>
+<li>To rotate a component around its rotation gizmo, click the axis ring and drag in the direction you want to rotate the component in.</li>
+<li>To freely rotate the component, click and drag the inner center circle of the gizmo.</li>
+</ul>
+<h2 id="scaling-components">Scaling Components</h2>
+<p class="centerAlign"><img src="images/studio-3d-editor-scale.webp" alt="&quot;The 3D view in scale mode&quot;" /></p><p>You can use the scale handles to adjust the local x, y, or z scale of a component. You can adjust the scale across one, two, or three axes, depending on the handle.</p>
+<p>To scale components, select <img src="images/scale_off.png" alt="" /> or press <b>R</b>:</p>
+<ul>
+<li>To adjust the scale across one axis, click and drag the scale handle attached to the axis.</li>
+<li>To adjust the scale across a plane, click the plane handle and drag the component on the plane.</li>
+<li>To uniformly scale a component across all axes, click and drag the gray handle at the center of the component.</li>
+</ul>
+<h2 id="snapping">Snapping</h2>
+<p>With snapping turned on, the objects in the <b translate="no">3D</b> view snap to certain intervals during transformation (move, rotate, scale).</p>
+<p>You can toggle snapping in the following ways:</p>
+<ul>
+<li>Select <img src="images/snapping-3d.png" alt="" /> in the <b translate="no">3D</b> view toolbar.</li>
+<li>Hold down the <b>Ctrl</b> key.</li>
+</ul>
+<p>With snapping turned on, you can press and hold <b>Shift</b> to snap objects to one tenth of the specified snap interval.</p>
+<h3 id="configuring-snapping">Configuring Snapping</h3>
+<p>To edit the snapping settings, select <img src="images/snapping-3d-conf.png" alt="" /> in the <b translate="no">3D</b> view toolbar to open the configure dialog.</p>
+<p>In the configure dialog, you can do the following:</p>
+<ul>
+<li>Turn snapping on and off separately for the different transformations (move, rotate, scale).</li>
+<li>Set snap intervals for the transformations.<div class="admonition note">
+<p><b>Note: </b>Changing the snap interval for the position also changes the grid line intervals.</p>
+</div>
+<div class="admonition note">
+<p><b>Note: </b>All the grid lines might not be visible depending on the zoom level in the 3D view.</p>
+</div>
+</li>
+<li>Select <b translate="no">Absolute Position</b> to snap to absolute values. Clear the checkbox to use relative values.The absolute snapping aligns the object with the grid, while the relative snapping moves the object in fixed intervals without changing its alignment. For example, if you have an object that is slightly off the grid and you want to snap it to the grid, use the absolute snapping. If you want to move the object by a certain distance without affecting its orientation, use the relative snapping.</li>
+</ul>
+<h2 id="aligning-views-and-cameras">Aligning Views and Cameras</h2>
+<p>To align a camera to the <b translate="no">3D</b> view:</p>
+<ol class="1" type="1"><li>Select a camera in the <b translate="no">3D</b> or <b translate="no">Navigator</b> view.<div class="admonition note">
+<p><b>Note: </b>If you don't have a camera selected, the most recently selected camera is aligned to the view.</p>
+</div>
+</li>
+<li>In the <b translate="no">3D</b> view, select <img src="images/align-camera-on.png" alt="" /> .</li>
+</ol>
+<p>This moves and rotates the camera so that the camera shows the same view as the current view in the <b translate="no">3D</b> view.</p>
+<p>To align the <b translate="no">3D</b> view to a camera:</p>
+<ol class="1" type="1"><li>Select a camera in the <b translate="no">3D</b> view or <b translate="no">Navigator</b>.<div class="admonition note">
+<p><b>Note: </b>If you don't have a camera selected, the view is aligned to the most recently selected camera.</p>
+</div>
+</li>
+<li>In the <b translate="no">3D</b> view, select <img src="images/align-view-on.png" alt="" /> .</li>
+</ol>
+<p>This copies the position as well as x and y rotation values from the camera and applies them to the <b translate="no">3D</b> view.</p>
+<h2 id="toggling-visibility">Toggling Visibility</h2>
+<p>To toggle the visibility of objects in the <b translate="no">3D</b> view, select <img src="images/visibilityon.png" alt="" /> in the toolbar. This opens a menu with the following options:</p>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td >Show Grid</td><td >Toggles the visibility of the helper grid.</td></tr>
+<tr valign="top" class="even"><td >Show Selection Boxes</td><td >Toggles the visibility of selection boxes for selected 3D objects.</td></tr>
+<tr valign="top" class="odd"><td >Show Icon Gizmos</td><td >Toggles the visibility of icon gizmos for object such as cameras, lights, and particle systems.</td></tr>
+<tr valign="top" class="even"><td >Always Show Camera Frustums</td><td >Toggles between always showing the camera frustum and showing it only for cameras selected in the <b translate="no">3D</b> view.</td></tr>
+<tr valign="top" class="odd"><td >Always Show Particle Emitters and Attractors</td><td >Toggle between always showing the particle emitter and attractor visualizations and only showing them when the emitter or attractor is selected in the <b translate="no">3D</b> view.</td></tr>
+</table></div>
+<h2 id="changing-colors">Changing Colors</h2>
+<p>To change the <b translate="no">3D</b> view background or grid color, select <img src="images/3d-background-color.png" alt="" /> in the toolbar. This opens a menu with the following options:</p>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td >Select Background Color</td><td >Select a color for the background.</td></tr>
+<tr valign="top" class="even"><td >Select Grid Color</td><td >Select a color for the grid.</td></tr>
+<tr valign="top" class="odd"><td >Use Scene Environment Color</td><td >Sets the 3D view to use the scene environment color as background color.</td></tr>
+<tr valign="top" class="even"><td >Reset Colors</td><td >Resets the background and grid colors to the default colors.</td></tr>
+</table></div>
+<h2 id="particle-editor">Particle Editor</h2>
+<p>The particle editor tools help you preview your particle systems in the <b translate="no">3D</b> view. You can select one particle system to preview at a time.</p>
+<p>To preview a particle system in the <b translate="no">3D</b> view:</p>
+<ol class="1" type="1"><li>Select a particle system in the <b translate="no">Navigator</b> or <b translate="no">3D</b> view.</li>
+<li>In the <b translate="no">3D</b> view, select <img src="images/particle-animation-on.png" alt="" /> to activate particle animation. Now you can see the particle animation in the <b translate="no">3D</b> view.</li>
+</ol>
+<p>You can pause the particle animation by selecting <img src="images/particle-pause.png" alt="" /> . When the animation is paused, you can use <img src="images/particles-seek.png" alt="" /> to manually seek forward or backward in the particle animation.</p>
+<h2 id="using-viewport-shading">Using Viewport Shading</h2>
+<p>Use <b translate="no">Viewport Shading</b> to change the rendering of the materials to only reflect a particular aspect of the overall rendering process. Use shading also as a debugging tool to understand why a material looks the way it does. In split view, view the scene using different shading properties in each split.</p>
+<p>To use the <b translate="no">Viewport Shading</b>, right-click the <b translate="no">3D</b> view to open the context menu, select <b translate="no">Viewport Shading</b> and then select <b translate="no">Wireframe</b>, one of the material properties, or <b translate="no">Reset All Viewports</b>.</p>
+<p>Select <b translate="no">Wireframe</b> to only show the edges of the objects in the scene.</p>
+<p>Select one of the material properties available for shading:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >Base Color</td><td >Shows only the base color of a material passed through without any lighting.</td></tr>
+<tr valign="top" class="even"><td >Roughness</td><td >Shows only the roughness of a material passed through as an unlit greyscale value.</td></tr>
+<tr valign="top" class="odd"><td >Metalness</td><td >Shows only the metalness of a material passed through as an unlit greyscale value.</td></tr>
+<tr valign="top" class="even"><td >Normals</td><td >Shows only the interpolated world space normal value of the material mapped to an RGB color.</td></tr>
+<tr valign="top" class="odd"><td >Ambient Occlusion</td><td >Shows only the ambient occlusion of the material.</td></tr>
+<tr valign="top" class="even"><td >Diffuse</td><td >Shows only the diffuse contribution of the material after all lighting.</td></tr>
+<tr valign="top" class="odd"><td >Specular</td><td >Shows only the specular contribution of the material after all lighting.</td></tr>
+</table></div>
+<p>Select <b translate="no">Reset All Viewports</b> to reset the shading of the scene in all of the splits.</p>
+<h2 id="summary-of-the-3d-view-toolbar-buttons">Summary of the 3D View Toolbar Buttons</h2>
+<p>The <b translate="no">3D</b> view toolbar contains the following buttons:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Button</th><th >Tooltip</th><th >Keyboard Shortcut</th><th >Read More</th></tr></thead>
+<tr valign="top" class="odd"><td ><img src="images/select_group.png" alt="" /> <img src="images/select_item.png" alt="" /></td><td >Toggle Group/Single Selection Mode</td><td ><b>Q</b></td><td ><a href="studio-3d-editor.html#selecting-components" translate="no">Selecting Components</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/move_off.png" alt="" /></td><td >Activate the Move Tool</td><td ><b>W</b></td><td ><a href="studio-3d-editor.html#moving-components-3d-view" translate="no">Moving Components</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/rotate_off.png" alt="" /></td><td >Activate Rotate Tool</td><td ><b>E</b></td><td ><a href="studio-3d-editor.html#rotating-components" translate="no">Rotating Components</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/scale_off.png" alt="" /></td><td >Activate Scale Tool</td><td ><b>R</b></td><td ><a href="studio-3d-editor.html#scaling-components" translate="no">Scaling Components</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/fit_selected.png" alt="" /></td><td >Fit Selected Object to View</td><td ><b>F</b></td><td ><a href="studio-3d-editor.html#controlling-the-3d-view-camera" translate="no">Controlling the 3D View Camera</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/perspective_camera.png" alt="" /> <img src="images/orthographic_camera.png" alt="" /></td><td >Toggle Perspective/Orthographic Edit Camera</td><td ><b>T</b></td><td ><a href="studio-3d-editor.html#controlling-the-3d-view-camera" translate="no">Controlling the 3D View Camera</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/global.png" alt="" /></td><td >Toggle Global/Local Orientation</td><td ><b>Y</b></td><td ><a href="studio-3d-editor.html#using-global-and-local-orientation" translate="no">Using Global and Local Orientation</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/edit_light_off.png" alt="" /> <img src="images/edit_light_on.png" alt="" /></td><td >Toggle Edit Light On/Off</td><td ><b>U</b></td><td ><a href="studio-3d-editor.html#using-edit-light" translate="no">Using Edit Light</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/snapping-3d.png" alt="" /></td><td >Toggle Snapping During Node Drag</td><td ><b>Shift</b> + <b>Tab</b></td><td ><a href="studio-3d-editor.html#snapping" translate="no">Snapping</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/snapping-3d-conf.png" alt="" /></td><td >Open Snap Configuration Dialog</td><td ></td><td ><a href="studio-3d-editor.html#configuring-snapping" translate="no">Configuring Snapping</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/align-camera-on.png" alt="" /></td><td >Align Selected Cameras to View</td><td ></td><td ><a href="studio-3d-editor.html#aligning-views-and-cameras" translate="no">Aligning Views and Cameras</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/align-view-on.png" alt="" /></td><td >Align View to Selected Camera</td><td ></td><td ><a href="studio-3d-editor.html#aligning-views-and-cameras" translate="no">Aligning Views and Cameras</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/visibilityon.png" alt="" /></td><td >Visibility Toggles</td><td ></td><td ><a href="studio-3d-editor.html#toggling-visibility" translate="no">Toggling Visibility</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/3d-background-color.png" alt="" /></td><td >Background Color Actions</td><td ></td><td ><a href="studio-3d-editor.html#changing-colors" translate="no">Changing Colors</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/split-view.png" alt="" /></td><td >Toggle Split View On/Off</td><td ><b>Ctrl</b> + <b>Alt</b> + <b>Q</b></td><td >Using Split View</td></tr>
+<tr valign="top" class="even"><td ><img src="images/particles-seek.png" alt="" /></td><td >Seek Particle System Time</td><td ></td><td ><a href="studio-3d-editor.html#particle-editor" translate="no">Particle Editor</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/particle-animation-on.png" alt="" /></td><td >Toggle Particle Animation</td><td ><b>V</b></td><td ><a href="studio-3d-editor.html#particle-editor" translate="no">Particle Editor</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/particle-play.png" alt="" /> <img src="images/particle-pause.png" alt="" /></td><td >Play/Pause Particles</td><td ><b>,</b></td><td ><a href="studio-3d-editor.html#particle-editor" translate="no">Particle Editor</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/particle-restart.png" alt="" /></td><td >Restart Particles</td><td ><b>/</b></td><td ><a href="studio-3d-editor.html#particle-editor" translate="no">Particle Editor</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/reset.png" alt="" /></td><td >Reset View</td><td ><b>P</b></td><td ></td></tr>
+</table></div>
+</div>
+<!-- @@@studio-3d-editor.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="qtquick-form-editor.html">2D</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-material-editor.html">Material Editor and Browser</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

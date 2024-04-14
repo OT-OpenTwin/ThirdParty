@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-projects-creating.qdoc -->
+  <title>Specify project contents | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Specify project contents</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#cmake-projects">CMake Projects</a></li>
+<li class="level1"><a href="#qmake-projects">qmake Projects</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Specify project contents</h1>
+<!-- $$$creator-how-to-specify-project-contents.html-description -->
+<div class="descr" id="details">
+<p>A project can have files that should be:</p>
+<ul>
+<li>Compiled or otherwise handled by the build</li>
+<li>Installed</li>
+<li>Not installed, but included in a source package created with <code translate="no">make dist</code></li>
+<li>Not installed, nor be part of a source package, but still be known to Qt Creator</li>
+</ul>
+<p>The <a href="creator-projects-view.html" translate="no">Projects</a> view shows all files that you declare to be part of the project in the project files. It sorts the files into categories by file type (.cpp, .h, .qrc, and so on). To display additional files, edit the project file. Alternatively, you can see all the files in a project directory in the <a href="creator-file-system-view.html" translate="no">File System</a> view.</p>
+<p>Declaring files as a part of the project also makes them visible to the <a href="creator-editor-locator.html" translate="no">locator</a> and <a href="creator-how-to-advanced-search.html" translate="no">project-wide search</a>.</p>
+<h2 id="cmake-projects">CMake Projects</h2>
+<p>When using CMake, you can specify additional files for a project by either adding them as sources or installing them.</p>
+<p>In the CMakeLists.txt file, define the files as values of the <a href="https://cmake.org/cmake/help/latest/command/target_sources.html" translate="no">target_sources</a> command using the <code translate="no">PRIVATE</code> property, for example.</p>
+<p>You can prevent CMake from handling some files, such as a .cpp file that should not be compiled. Use the <a href="https://cmake.org/cmake/help/latest/command/set_property.html" translate="no">set_property</a> command and the <a href="https://cmake.org/cmake/help/latest/prop_sf/HEADER_FILE_ONLY.html" translate="no">HEADER_FILE_ONLY</a> property to specify such files. For example:</p>
+<pre class="cpp plain" translate="no">
+ set_property(SOURCE &quot;${files}&quot; PROPERTY HEADER_FILE_ONLY ON)
+</pre>
+<p>Alternatively, to install the files, use the <a href="https://cmake.org/cmake/help/latest/command/install.html" translate="no">install</a> command with the <code translate="no">FILES</code> or <code translate="no">DIRECTORY</code> property.</p>
+<h2 id="qmake-projects">qmake Projects</h2>
+<p>Use the following variables in the .pro file:</p>
+<ul>
+<li><code translate="no">SOURCES</code> and <code translate="no">HEADERS</code> for files to compile</li>
+<li><code translate="no">INSTALLS</code> for files to install</li>
+<li><code translate="no">DISTFILES</code> for files to include in a source package</li>
+<li><code translate="no">OTHER_FILES</code> for files to manage with Qt Creator without installing them or including them in source packages</li>
+</ul>
+<p>For example, the following value includes text files in the source package:</p>
+<pre class="cpp plain" translate="no">
+ DISTFILES += *.txt
+</pre>
+</div>
+<p><b>See also </b><a href="creator-project-creating.html" translate="no">Creating Projects</a>, <a href="creator-how-to-use-project-wizards.html" translate="no">Use project wizards</a>, and <a href="creator-projects-view.html" translate="no">Projects</a>.</p>
+<!-- @@@creator-how-to-specify-project-contents.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

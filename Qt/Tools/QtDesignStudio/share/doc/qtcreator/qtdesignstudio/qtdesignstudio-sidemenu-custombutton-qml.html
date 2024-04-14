@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- sidemenu.qdoc -->
+  <meta name="description" content="Illustrates how to create reusable components and an animated menu for applying 2D visual effects in Qt 5 projects.">
+  <title>Side Menu | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="studioexamples.html" translate="no">Examples</a></li>
+<li>Side Menu</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<h1 class="title">Side Menu</h1>
+<pre class="qml" translate="no">
+ <span class="comment">// Copyright (C) 2019 The Qt Company Ltd.</span>
+ <span class="comment">// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause</span>
+
+ import QtQuick 2.10
+ import QtQuick.Templates 2.1 as T
+ import SideMenu 1.0
+
+ <span class="type">T</span>.Button {
+     <span class="name">id</span>: <span class="name">control</span>
+     <span class="name">width</span>: <span class="number">180</span>
+     <span class="name">height</span>: <span class="number">70</span>
+
+     <span class="name">font</span>: <span class="name">Constants</span>.<span class="name">font</span>
+     <span class="name">implicitWidth</span>: <span class="name">Math</span>.<span class="name">max</span>(<span class="name">background</span> ? <span class="name">background</span>.<span class="name">implicitWidth</span> : <span class="number">0</span>,
+                                          <span class="name">contentItem</span>.<span class="name">implicitWidth</span> <span class="operator">+</span> <span class="name">leftPadding</span> <span class="operator">+</span> <span class="name">rightPadding</span>)
+     <span class="name">implicitHeight</span>: <span class="name">Math</span>.<span class="name">max</span>(<span class="name">background</span> ? <span class="name">background</span>.<span class="name">implicitHeight</span> : <span class="number">0</span>,
+                                           <span class="name">contentItem</span>.<span class="name">implicitHeight</span> <span class="operator">+</span> <span class="name">topPadding</span> <span class="operator">+</span> <span class="name">bottomPadding</span>)
+     <span class="name">leftPadding</span>: <span class="number">4</span>
+     <span class="name">rightPadding</span>: <span class="number">4</span>
+
+     <span class="name">text</span>: <span class="name">control</span>.<span class="name">state</span>
+     property <span class="type">alias</span> <span class="name">text1Text</span>: <span class="name">text1</span>.<span class="name">text</span>
+     <span class="name">autoExclusive</span>: <span class="number">false</span>
+     <span class="name">checkable</span>: <span class="number">true</span>
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-image.html" translate="no">Image</a></span> {
+         <span class="name">id</span>: <span class="name">background</span>
+         <span class="name">x</span>: <span class="number">15</span>
+         <span class="name">y</span>: <span class="number">17</span>
+         <span class="name">source</span>: <span class="string">&quot;assets/inactive_button.png&quot;</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-image.html" translate="no">Image</a></span> {
+         <span class="name">id</span>: <span class="name">contentItem</span>
+         <span class="name">x</span>: -<span class="number">1</span>
+         <span class="name">y</span>: <span class="number">0</span>
+         <span class="name">visible</span>: <span class="number">true</span>
+         <span class="name">source</span>: <span class="string">&quot;assets/hover_button.png&quot;</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-image.html" translate="no">Image</a></span> {
+         <span class="name">id</span>: <span class="name">image2</span>
+         <span class="name">x</span>: <span class="number">0</span>
+         <span class="name">y</span>: -<span class="number">1</span>
+         <span class="name">visible</span>: <span class="number">true</span>
+         <span class="name">source</span>: <span class="string">&quot;assets/active_button.png&quot;</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-text.html" translate="no">Text</a></span> {
+         <span class="name">id</span>: <span class="name">text1</span>
+         <span class="name">x</span>: -<span class="number">1</span>
+         <span class="name">y</span>: <span class="number">16</span>
+         <span class="name">width</span>: <span class="number">163</span>
+         <span class="name">height</span>: <span class="number">16</span>
+         <span class="name">color</span>: <span class="string">&quot;#ffffff&quot;</span>
+         <span class="name">text</span>: <span class="string">&quot;PRESSED&quot;</span>
+         <span class="name">horizontalAlignment</span>: <span class="name">Text</span>.<span class="name">AlignHCenter</span>
+         <span class="name">font</span>.weight: <span class="name">Font</span>.<span class="name">ExtraLight</span>
+         <span class="name">font</span>.family: <span class="string">&quot;IBM Plex Sans&quot;</span>
+         <span class="name">font</span>.pixelSize: <span class="number">12</span>
+     }
+
+     <span class="name">states</span>: [
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;checked&quot;</span>
+             <span class="name">when</span>: <span class="name">control</span>.<span class="name">checked</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">background</span>
+                 <span class="name">x</span>: <span class="number">16</span>
+                 <span class="name">y</span>: <span class="number">16</span>
+                 <span class="name">width</span>: <span class="number">156</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">contentItem</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">image2</span>
+                 <span class="name">x</span>: <span class="number">0</span>
+                 <span class="name">y</span>: <span class="number">0</span>
+                 <span class="name">visible</span>: <span class="number">true</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">text1</span>
+                 <span class="name">x</span>: <span class="number">0</span>
+                 <span class="name">y</span>: <span class="number">16</span>
+                 <span class="name">width</span>: <span class="number">162</span>
+                 <span class="name">height</span>: <span class="number">16</span>
+                 <span class="name">text</span>: <span class="string">&quot;CHECKED&quot;</span>
+                 <span class="name">horizontalAlignment</span>: <span class="name">Text</span>.<span class="name">AlignHCenter</span>
+             }
+
+         },
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;hover&quot;</span>
+             <span class="name">when</span>: <span class="name">control</span>.<span class="name">hovered</span> <span class="operator">&amp;&amp;</span> !<span class="name">control</span>.<span class="name">checked</span> <span class="operator">&amp;&amp;</span> !<span class="name">control</span>.<span class="name">pressed</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">image2</span>
+                 <span class="name">x</span>: <span class="number">0</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">background</span>
+                 <span class="name">x</span>: <span class="number">16</span>
+                 <span class="name">y</span>: <span class="number">16</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">contentItem</span>
+                 <span class="name">visible</span>: <span class="number">true</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">text1</span>
+                 <span class="name">x</span>: -<span class="number">1</span>
+                 <span class="name">y</span>: <span class="number">16</span>
+                 <span class="name">width</span>: <span class="number">162</span>
+                 <span class="name">height</span>: <span class="number">16</span>
+                 <span class="name">color</span>: <span class="string">&quot;#d07533&quot;</span>
+                 <span class="name">text</span>: <span class="string">&quot;HOVER&quot;</span>
+                 <span class="name">horizontalAlignment</span>: <span class="name">Text</span>.<span class="name">AlignHCenter</span>
+             }
+
+         },
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;normal&quot;</span>
+             <span class="name">when</span>: !<span class="name">control</span>.<span class="name">pressed</span> <span class="operator">&amp;&amp;</span> !<span class="name">control</span>.<span class="name">checked</span> <span class="operator">&amp;&amp;</span>!<span class="name">control</span>.<span class="name">hovered</span>
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+             <span class="name">target</span>: <span class="name">image2</span>
+             <span class="name">visible</span>: <span class="number">false</span>
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+             <span class="name">target</span>: <span class="name">contentItem</span>
+             <span class="name">visible</span>: <span class="number">false</span>
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+             <span class="name">target</span>: <span class="name">background</span>
+             <span class="name">visible</span>: <span class="number">true</span>
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+             <span class="name">target</span>: <span class="name">text1</span>
+             <span class="name">x</span>: <span class="number">15</span>
+             <span class="name">y</span>: <span class="number">33</span>
+             <span class="name">width</span>: <span class="number">163</span>
+             <span class="name">height</span>: <span class="number">16</span>
+             <span class="name">color</span>: <span class="string">&quot;#d07533&quot;</span>
+             <span class="name">text</span>: <span class="string">&quot;NORMAL&quot;</span>
+             <span class="name">horizontalAlignment</span>: <span class="name">Text</span>.<span class="name">AlignHCenter</span>
+         }
+         }
+     ]
+ }
+</pre>

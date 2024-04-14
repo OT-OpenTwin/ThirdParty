@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- projectintropage.cpp -->
+  <meta name="description" content="The ProjectIntroPage class is the standard wizard page for a project, letting the user choose its name and path.">
+  <title>ProjectIntroPage Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>ProjectIntroPage</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#public-slots">Public Slots</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">ProjectIntroPage Class</h1>
+<span class="small-subtitle" translate="no">class <a href="utils.html" translate="no">Utils</a>::ProjectIntroPage</span>
+<!-- $$$ProjectIntroPage-brief -->
+<p>The ProjectIntroPage class is the standard wizard page for a project, letting the user choose its name and path. <a href="#details">More...</a></p>
+<!-- @@@ProjectIntroPage -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;ProjectIntroPage&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="utils-wizardpage.html" translate="no">Utils::WizardPage</a></td></tr>
+</table></div>
+<ul>
+<li><a href="utils-projectintropage-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-projectintropage.html#description-prop" translate="no">description</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-projectintropage.html#filePath-prop" translate="no">filePath</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-projectintropage.html#forceSubProject-prop" translate="no">forceSubProject</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-projectintropage.html#projectName-prop" translate="no">projectName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-projectintropage.html#forceSubProject-prop" translate="no">setForceSubProject</a></b>(bool <i>force</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-projectintropage.html#useAsDefaultPath-prop" translate="no">useAsDefaultPath</a></b>() const</td></tr>
+</table></div>
+<h2 id="public-slots">Public Slots</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-projectintropage.html#description-prop" translate="no">setDescription</a></b>(const QString &amp;<i>description</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-projectintropage.html#filePath-prop" translate="no">setFilePath</a></b>(const Utils::FilePath &amp;<i>path</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-projectintropage.html#projectName-prop" translate="no">setProjectName</a></b>(const QString &amp;<i>name</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-projectintropage.html#useAsDefaultPath-prop" translate="no">setUseAsDefaultPath</a></b>(bool <i>u</i>)</td></tr>
+</table></div>
+<!-- $$$ProjectIntroPage-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Looks similar to <a href="utils-filewizardpage.html" translate="no">FileWizardPage</a>, but provides additional functionality:</p>
+<ul>
+<li>Contains a description label at the top for displaying introductory text.</li>
+<li>Does on the fly validation (connected to changed()) and displays warnings and errors in a status label at the bottom (the page is complete when fully validated, validatePage() is thus not implemented).</li>
+</ul>
+<div class="admonition note">
+<p><b>Note: </b>Careful when changing projectintropage.ui. It must have main geometry cleared and QLayout::SetMinimumSize constraint on the main layout, otherwise, QWizard will squeeze it due to its strange expanding hacks.</p>
+</div>
+</div>
+<!-- @@@ProjectIntroPage -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

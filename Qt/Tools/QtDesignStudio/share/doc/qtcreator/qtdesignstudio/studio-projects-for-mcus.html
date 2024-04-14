@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-creating-projects-for-mcus.qdoc -->
+  <title>Creating Projects for MCUs | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Creating Projects for MCUs</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-features-on-mcu-projects.html" />
+  <link rel="next" href="studio-creating-uis-for-mcus.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-features-on-mcu-projects.html">Qt Design Studio Features on MCU Projects</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-creating-uis-for-mcus.html">Creating UIs for MCUs</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#creating-an-mcu-project">Creating an MCU Project</a></li>
+<li class="level1"><a href="#adding-files-to-mcu-projects">Adding Files to MCU Projects</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Creating Projects for MCUs</h1>
+<!-- $$$studio-projects-for-mcus.html-description -->
+<div class="descr" id="details">
+<p>Use the <b translate="no">Qt for MCUs</b> preset in the Qt Design Studio wizard to set up a new Qt for MCUs project. When you create a project with the wizard, all the necessary files are created, you can adjust the project settings, and save custom presets.</p>
+<p class="centerAlign"><img src="images/studio-preset-for-mcus.png" alt="" /></p><p>Using the <b translate="no">Qt for MCUs</b> preset creates an application that uses a subset of the default components that you can deploy, run, and debug on MCU boards.</p>
+<div class="admonition note">
+<p><b>Note: </b>For more information on the default components available for MCU projects, see <a href="studio-features-on-mcu-projects.html" translate="no">Qt Design Studio Features on MCU Projects</a>.</p>
+</div>
+<h2 id="creating-an-mcu-project">Creating an MCU Project</h2>
+<p>To create an MCU project:</p>
+<ol class="1" type="1"><li>Select <b translate="no">File</b> &gt; <b translate="no">New Project</b>.</li>
+<li>In the <b translate="no">Presets</b> tab, select the <b translate="no">Qt for MCUs</b> preset.</li>
+<li>In the <b translate="no">Details</b> tab:<ul>
+<li>Select the path for the project files. You can move the project folders later.</li>
+<li>Set the screen size to match the device screen, which also enables previewing on the desktop. You can change the screen size later in <a href="qtquick-properties-view.html" translate="no">Properties</a>.</li>
+</ul>
+</li>
+<li>Select <b translate="no">Create</b> to create the project.</li>
+</ol>
+<p>Qt Design Studio creates the following files and folders:</p>
+<ul>
+<li>.qmlproject project file defines that all component and image files in the project folder belong to the project. All files are added automatically to their respective Files node based on their type.<div class="admonition note">
+<p><b>Note: </b>Qt for MCUs does not recommend using the directory property to individually list the files in the project.</p>
+</div>
+</li>
+<li>.qml files define the functionality and appearance of application components.</li>
+<li><i>Screen01.ui.qml</i> defines a custom component that you can edit in the <a href="qtquick-form-editor.html" translate="no">2D</a> view. For more information, see <a href="creator-quick-ui-forms.html" translate="no">UI Files</a>.<p>While the custom component is a good starting point for new users, you don't have to use it. Specifically, if you export and import designs using Qt Bridge, your file is most likely called something else. For more information, see <a href="qtbridge-overview.html" translate="no">Exporting from Design Tools</a>.</p>
+<div class="admonition note">
+<p><b>Note: </b>For MCU projects you can only import 2D assets.</p>
+</div>
+</li>
+<li><i>CMakeLists.txt</i> project configuration file allowing you to share your project as a fully working C++ application with developers.</li>
+<li>qtquickcontrols2.conf file specifies the preferred style and some style-specific arguments.</li>
+<li><i>fonts</i> folder contains font files that you have added in <b translate="no">Assets</b>.</li>
+<li><i>imports</i> folder contains a <i>Constants.qml</i> file that specifies a font loader for the Arial font and the screen resolution. The size of the default Screen.ui.qml <a href="quick-shapes.html#basic-rectangle" translate="no">Rectangle</a> should be set as <code translate="no">width: Constants.width</code> &amp; <code translate="no">height: Constants.height</code> so that it inherits the global resolution saved here.</li>
+<li><i>MCUDefaultStyle</i> folder contains the default UI images and components available for the MCU project.</li>
+</ul>
+<p>To use image files in the UI, select <b translate="no">Assets</b> &gt; <img src="images/plus.png" alt="" /> .</p>
+<h2 id="adding-files-to-mcu-projects">Adding Files to MCU Projects</h2>
+<p>You can use wizard templates to add individual files to projects.</p>
+<p>The wizard templates in the <b translate="no">Qt Quick Controls</b> category create stylable versions of the components in the <b translate="no">Qt Quick Controls</b> module. For more information, see <a href="quick-components-creating.html#creating-custom-controls" translate="no">Creating Custom Controls</a>.</p>
+<p>You can create the following types of files:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Category</th><th >Wizard Template</th><th >Purpose</th></tr></thead>
+<tr valign="top" class="odd"><td  rowspan="5">Qt Quick Files</td></tr>
+<tr valign="top" class="even"><td >Qt Quick File</td><td >Generates a component with one of the following default components or <a href="qtquick-positioning.html#using-positioners" translate="no">positioners</a> as the root component: <a href="qtquick-properties.html#basic-item" translate="no">Item</a>, <a href="quick-shapes.html#basic-rectangle" translate="no">Rectangle</a>, <a href="quick-images.html" translate="no">Image</a>, <a href="https://doc.qt.io/qt/stylesheet-reference.html#border-image" translate="no">Border Image</a>, <a href="quick-user-interaction-methods.html#flickable" translate="no">Flickable</a>, Row, Column, Flow, or Grid.</td></tr>
+<tr valign="top" class="odd"><td >Qt Quick UI File</td><td >Generates a UI file with one of the above components as the root component.</td></tr>
+<tr valign="top" class="even"><td >Qt Quick Views</td><td >Generates a List View. For more information, see <a href="quick-data-models.html#list-and-grid-views" translate="no">List and Grid Views</a>.</td></tr>
+<tr valign="top" class="odd"><td >Qt Quick UI Form</td><td >Creates a UI file along with a matching QML file for implementation purposes.</td></tr>
+<tr valign="top" class="even"><td  rowspan="8">Qt Quick Controls</td><td >Custom Button</td><td >Creates a <a href="quick-controls.html#button" translate="no">push button</a> with a text label.</td></tr>
+<tr valign="top" class="odd"><td >Custom CheckBox</td><td >Creates a <a href="quick-controls.html#check-box" translate="no">check box</a>.</td></tr>
+<tr valign="top" class="even"><td >Custom Dial</td><td >Creates a <a href="quick-controls.html#slider-and-dial" translate="no">dial</a>.</td></tr>
+<tr valign="top" class="odd"><td >Custom Slider</td><td >Creates a <a href="quick-controls.html#slider-and-dial" translate="no">slider</a>.</td></tr>
+<tr valign="top" class="even"><td >Custom SpinBox</td><td >Creates a <a href="quick-controls.html#spin-box" translate="no">spin box</a>.</td></tr>
+<tr valign="top" class="odd"><td >Custom Switch</td><td >Creates a <a href="quick-controls.html#switch" translate="no">switch</a> with on and off states.</td></tr>
+<tr valign="top" class="even"><td ><a href="https://doc.qt.io/qt/qml-qtquick-controls-pane.html" translate="no">Pane</a></td><td >Provides a background that matches the UI style and theme.</td></tr>
+<tr valign="top" class="odd"><td ><a href="https://doc.qt.io/qt/qml-qtquick-controls-swipeview.html" translate="no">SwipeView</a></td><td >Enables users to navigate pages by swiping sideways.</td></tr>
+<tr valign="top" class="even"><td >QML Files</td><td ><a href="https://doc.qt.io/qt/qml-qtqml-models-listmodel.html" translate="no">ListModel</a></td><td >Adds a <a href="quick-data-models.html#editing-list-models" translate="no">list model</a> to the project.</td></tr>
+</table></div>
+</div>
+<p><b>See also </b><a href="studio-projects.html#using-custom-presets" translate="no">Using Custom Presets</a>.</p>
+<!-- @@@studio-projects-for-mcus.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-features-on-mcu-projects.html">Qt Design Studio Features on MCU Projects</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-creating-uis-for-mcus.html">Creating UIs for MCUs</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

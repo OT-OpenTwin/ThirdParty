@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- pluginmanager.cpp -->
+  <meta name="description" content="The PluginManager class implements the core plugin system that manages the plugins, their life cycle, and their registered objects.">
+  <title>List of All Members for PluginManager | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>PluginManager</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">List of All Members for PluginManager</h1>
+<p>This is the complete list of members for <a href="extensionsystem-pluginmanager.html">ExtensionSystem::PluginManager</a>, including inherited members.</p>
+<div class="table"><table class="propsummary" translate="no">
+<tr><td class="topAlign"><ul>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#PluginManager" translate="no">PluginManager</a></b></span>()</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#addObject" translate="no">addObject</a></b></span>(QObject *)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#allObjects" translate="no">allObjects</a></b></span>() : QVector&lt;QObject *&gt;</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#arguments" translate="no">arguments</a></b></span>() : QStringList</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#argumentsForRestart" translate="no">argumentsForRestart</a></b></span>() : QStringList</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#formatOptions" translate="no">formatOptions</a></b></span>(QTextStream &amp;, int, int)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#formatPluginOptions" translate="no">formatPluginOptions</a></b></span>(QTextStream &amp;, int, int)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#formatPluginVersions" translate="no">formatPluginVersions</a></b></span>(QTextStream &amp;)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#getObject" translate="no">getObject</a></b></span>() : T *</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#getObject-1" translate="no">getObject</a></b></span>(Predicate) : T *</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#getObjectByName" translate="no">getObjectByName</a></b></span>(const QString &amp;) : QObject *</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#globalSettings" translate="no">globalSettings</a></b></span>() : Utils::QtcSettings *</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#hasError" translate="no">hasError</a></b></span>() : bool</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#instance" translate="no">instance</a></b></span>() : ExtensionSystem::PluginManager *</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#loadPlugins" translate="no">loadPlugins</a></b></span>()</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#loadQueue" translate="no">loadQueue</a></b></span>() : QVector&lt;ExtensionSystem::PluginSpec *&gt;</li>
+</ul></td><td class="topAlign"><ul>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#parseOptions" translate="no">parseOptions</a></b></span>(const QStringList &amp;, const QMap&lt;QString, bool&gt; &amp;, QMap&lt;QString, QString&gt; *, QString *) : bool</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#pluginIID" translate="no">pluginIID</a></b></span>() : QString</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#pluginPaths" translate="no">pluginPaths</a></b></span>() : QStringList</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#plugins" translate="no">plugins</a></b></span>() : const QVector&lt;ExtensionSystem::PluginSpec *&gt;</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#pluginsRequiredByPlugin" translate="no">pluginsRequiredByPlugin</a></b></span>(ExtensionSystem::PluginSpec *) : const QSet&lt;ExtensionSystem::PluginSpec *&gt;</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#pluginsRequiringPlugin" translate="no">pluginsRequiringPlugin</a></b></span>(ExtensionSystem::PluginSpec *) : const QSet&lt;ExtensionSystem::PluginSpec *&gt;</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#remoteArguments" translate="no">remoteArguments</a></b></span>(const QString &amp;, QObject *)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#removeObject" translate="no">removeObject</a></b></span>(QObject *)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#serializedArguments" translate="no">serializedArguments</a></b></span>() : QString</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#setInstallSettings" translate="no">setInstallSettings</a></b></span>(Utils::QtcSettings *)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#setPluginIID" translate="no">setPluginIID</a></b></span>(const QString &amp;)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#setPluginPaths" translate="no">setPluginPaths</a></b></span>(const QStringList &amp;)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#setSettings" translate="no">setSettings</a></b></span>(Utils::QtcSettings *)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#settings" translate="no">settings</a></b></span>() : Utils::QtcSettings *</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#shutdown" translate="no">shutdown</a></b></span>()</li>
+<li class="fn" translate="no"><span class="name"><b><a href="extensionsystem-pluginmanager.html#specForPlugin" translate="no">specForPlugin</a></b></span>(ExtensionSystem::IPlugin *) : ExtensionSystem::PluginSpec *</li>
+</ul>
+</td></tr>
+</table></div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

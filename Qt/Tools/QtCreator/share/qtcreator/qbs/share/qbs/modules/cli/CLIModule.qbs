@@ -1,12 +1,13 @@
 // base for Common Language Infrastructure modules
 import qbs.FileInfo
+import qbs.Host
 import qbs.ModUtils
 import "cli.js" as CLI
 
 Module {
-    Depends { name: "bundle"; condition: qbs.targetOS.contains("darwin") }
+    Depends { name: "bundle"; condition: qbs.targetOS.includes("darwin") }
     Properties {
-        condition: qbs.targetOS.contains("darwin")
+        condition: qbs.targetOS.includes("darwin")
         bundle.isBundle: false
     }
 
@@ -87,8 +88,8 @@ Module {
     }
 
     setupBuildEnvironment: {
-        var v = new ModUtils.EnvironmentVariable("PATH", product.qbs.pathListSeparator,
-                                                 product.qbs.hostOS.contains("windows"));
+        var v = new ModUtils.EnvironmentVariable("PATH", FileInfo.pathListSeparator(),
+                                                 Host.os().includes("windows"));
         v.prepend(product.cli.toolchainInstallPath);
         v.set();
     }
@@ -115,9 +116,7 @@ Module {
                                                                   "debugInfoSuffix"))
         }
 
-        prepare: {
-            return CLI.prepareCompiler(product, inputs, outputs.application[0]);
-        }
+        prepare: CLI.prepareCompiler(product, inputs, outputs.application[0])
     }
 
     Rule {
@@ -142,9 +141,7 @@ Module {
                                                                   "debugInfoSuffix"))
         }
 
-        prepare: {
-            return CLI.prepareCompiler(product, inputs, outputs.dynamiclibrary[0]);
-        }
+        prepare: CLI.prepareCompiler(product, inputs, outputs.dynamiclibrary[0])
     }
 
     Rule {
@@ -169,9 +166,7 @@ Module {
                                                                   "debugInfoSuffix"))
         }
 
-        prepare: {
-            return CLI.prepareCompiler(product, inputs, outputs["cli.netmodule"][0]);
-        }
+        prepare: CLI.prepareCompiler(product, inputs, outputs["cli.netmodule"][0])
     }
 
     Rule {

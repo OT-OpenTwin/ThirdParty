@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-code-completion.qdoc -->
+  <meta name="description" content="Add, change, and remove snippets in the snippet editor.">
+  <title>Snippets | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Snippets</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-reference.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#editing-snippets">Editing Snippets</a></li>
+<li class="level1"><a href="#removing-snippets">Removing Snippets</a></li>
+<li class="level1"><a href="#resetting-snippets">Resetting Snippets</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Snippets</h1>
+<!-- $$$creator-preferences-text-editor-shippets.html-description -->
+<div class="descr" id="details">
+<p>To add, change, and remove snippets in the snippet editor, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Text Editor</b> &gt; <b translate="no">Snippets</b>.</p>
+<p>Qt Creator has built-in snippets in the following categories:</p>
+<ul>
+<li>Text snippets, which can have any text string. For example, code comments</li>
+<li>C++ code snippets, which specify C++ code constructs</li>
+<li>CMake code snippets that you can use when editing <code translate="no">CMakeLists.txt</code> files in the CMake editor</li>
+<li>QML code snippets, which specify QML code constructs</li>
+<li>Nim code snippets, which specify Nim code constructs</li>
+</ul>
+<p class="centerAlign"><img src="images/qtcreator-edit-code-snippets.png" alt="{C++ snippet preferences}" /></p><p class="figCaption">Built-in C++ code snippets.</p>
+<p class="centerAlign"><img src="images/qml-snippet-editor.png" alt="" /></p><p class="figCaption">Built-in QML code snippets.</p>
+<h2 id="editing-snippets">Editing Snippets</h2>
+<p>Select a snippet in the list to edit it in the snippet editor.</p>
+<p>The snippet editor offers:</p>
+<ul>
+<li>Highlighting</li>
+<li>Indentation</li>
+<li>Parentheses matching</li>
+<li>Basic code completion</li>
+</ul>
+<p>Specify the variables for the snippets in the following format:</p>
+<pre class="cpp" translate="no">
+ $variable$
+</pre>
+<p>Specify Qt Creator variables in the following format:</p>
+<pre class="cpp" translate="no">
+ <span class="operator">%</span>{variable}
+</pre>
+<p>For example, the following variable expands to the name of the project containing the file that is currently open in the editor: <code translate="no">%{CurrentDocument:Project:Name}</code>.</p>
+<p>Use unique variable names within a snippet because all instances of a variable are renamed when you specify a value for it.</p>
+<p>To determine the case of values you enter in snippets, use the following modifiers:</p>
+<ul>
+<li><code translate="no">:c</code> converts the initial letter of the string to upper case</li>
+<li><code translate="no">:l</code> converts the string to lower case</li>
+<li><code translate="no">:u</code> converts the string to upper case</li>
+</ul>
+<p>For example, add the following line to the <code translate="no">class</code> snippet to specify that the function name is converted to all lower case characters regardless of how you specify the value of the <code translate="no">$name$</code> variable:</p>
+<pre class="cpp" translate="no">
+ <span class="type">void</span> $name:l$() {}
+</pre>
+<p class="centerAlign"><img src="images/qtcreator-snippet-modifiers.png" alt="" /></p><p>The snippet editor does not check the syntax of the snippets that you edit or add. However, when you use the snippets, the code editor marks any errors by underlining them in red.</p>
+<p>To discard the changes you made to a built-in snippet, select <b translate="no">Revert Built-in</b>.</p>
+<h2 id="removing-snippets">Removing Snippets</h2>
+<p>The list of suggestions might show several similar built-in snippets for different use cases. To make it shorter when you write code, remove the built-in snippets that you do not need. If you need them later, you can restore them.</p>
+<p>To remove snippets, select a snippet in the list, and then select <b translate="no">Remove</b>. To restore the removed snippets, select <b translate="no">Restore Removed Built-ins</b>.</p>
+<h2 id="resetting-snippets">Resetting Snippets</h2>
+<p>To remove all added snippets and to restore all removed snippets, select <b translate="no">Reset All</b>.</p>
+<div class="admonition note">
+<p><b>Note: </b>If you now select <b translate="no">OK</b> or <b translate="no">Apply</b>, you permanently lose all your own snippets.</p>
+</div>
+</div>
+<p><b>See also </b><a href="creator-how-to-complete-cmake-code.html" translate="no">Complete CMake code</a>, <a href="creator-how-to-document-code.html" translate="no">Document code</a>, <a href="creator-how-to-use-qtc-variables.html" translate="no">Use Qt Creator variables</a>, <a href="creator-preferences-nim.html" translate="no">Nim</a>, <a href="creator-how-to-add-code-snippets.html" translate="no">Add code snippets to the auto-complete menu</a>, <a href="creator-completing-code.html" translate="no">Complete code</a>, and <a href="creator-preferences-text-editor-completion.html" translate="no">Completion</a>.</p>
+<!-- @@@creator-preferences-text-editor-shippets.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

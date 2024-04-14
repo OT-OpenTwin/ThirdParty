@@ -47,67 +47,45 @@ Module {
     readonly property string abi: NdkUtils.androidAbi(qbs.architecture)
     PropertyOptions {
         name: "abi"
-        description: "Corresponds to the 'APP_ABI' variable in an Android.mk file."
-        allowedValues: ["arm64-v8a", "armeabi", "armeabi-v7a", "mips", "mips64", "x86", "x86_64"]
+        description: "Supported Android ABIs"
+        allowedValues: ["arm64-v8a", "armeabi-v7a", "x86", "x86_64"]
     }
+    // From https://android.googlesource.com/platform/ndk/+/refs/heads/ndk-release-r21/docs/BuildSystemMaintainers.md
+    // Android Studio‘s LLDB debugger uses a binary’s build ID to locate debug information. To
+    // ensure that LLDB works with a binary, pass an option like -Wl,--build-id=sha1 to Clang when
+    // linking. Other --build-id= modes are OK, but avoid a plain --build-id argument when using
+    // LLD, because Android Studio‘s version of LLDB doesn’t recognize LLD's default 8-byte build
+    // ID. See Issue 885.
 
-    property string appStl: version && Utilities.versionCompare(version, "17") >= 0
-                            ? "c++_shared" : "system"
+    // Plain --build-id option is nevertheless implemented when buildId property is empty.
+
+    // Possible values (from man page of ld.lld — ELF linker from the LLVM project):
+    // one of fast, md5, sha1, tree, uuid, 0xhex-string, and none. tree is an alias for sha1.
+    // Build-IDs of type fast, md5, sha1, and tree are calculated from the object contents. fast is
+    // not intended to be cryptographically secure.
+    property string buildId: "sha1"
+
+    // See https://developer.android.com/ndk/guides/cpp-support.html
+    property string appStl: "c++_shared"
+
     PropertyOptions {
         name: "appStl"
-        description: "Corresponds to the 'APP_STL' variable in an Android.mk file."
-        allowedValues: [
-            "system", "gabi++_static", "gabi++_shared", "stlport_static", "stlport_shared",
-            "gnustl_static", "gnustl_shared", "c++_static", "c++_shared"
-        ]
-    }
-
-    property string toolchainVersion: latestToolchainVersion
-    PropertyOptions {
-        name: "toolchainVersion"
-        description: "Corresponds to the 'NDK_TOOLCHAIN_VERSION' variable in an Android.mk file."
+        description: "C++ Runtime Libraries."
+        allowedValues: ["c++_static", "c++_shared"]
     }
 
     property string hostArch: ndkProbe.hostArch
     property string ndkDir: ndkProbe.path
     property string ndkSamplesDir: ndkProbe.samplesDir
-    property string platform: ndkProbe.ndkPlatform
-
-    property bool useUnifiedHeaders: version && Utilities.versionCompare(version, "15") >= 0
-
-    // Internal properties.
-    property stringList availableToolchains: ndkProbe.toolchains
-
-    property stringList availableToolchainVersions: {
-        var tcs = availableToolchains;
-        var versions = [];
-        for (var i = 0; i < tcs.length; ++i) {
-            if ((qbs.toolchain.contains("clang") && tcs[i].startsWith("llvm-"))
-                    || toolchainDirPrefixAbis.contains(tcs[i].split("-")[0])) {
-                var re = /\-((?:[0-9]+)\.(?:[0-9]+))$/;
-                var m = tcs[i].match(re);
-                if (m)
-                    versions.push(m[1]);
-            }
+    property string platform: {
+        switch (abi) {
+        case "armeabi-v7a":
+        // case "x86": // x86 has broken wstring support
+            return "android-19";
+        default:
+            return "android-21";
         }
-
-        // Sort by version number
-        versions.sort(function (a, b) {
-            var re = /^([0-9]+)\.([0-9]+)$/;
-            a = a.match(re);
-            a = {major: a[1], minor: a[2]};
-            b = b.match(re);
-            b = {major: b[1], minor: b[2]};
-            if (a.major === b.major)
-                return a.minor - b.minor;
-            return a.major - b.major;
-        });
-
-        return versions;
     }
-
-    property string latestToolchainVersion: availableToolchainVersions
-                                            [availableToolchainVersions.length - 1]
 
     property int platformVersion: {
         if (platform) {
@@ -119,28 +97,12 @@ Module {
     }
 
     property stringList abis: {
-        var list = ["armeabi", "armeabi-v7a"];
-        if (platformVersion >= 9)
-            list.push("mips", "x86");
+        var list = ["armeabi-v7a"];
+        if (platformVersion >= 16)
+            list.push("x86");
         if (platformVersion >= 21)
-            list.push("arm64-v8a", "mips64", "x86_64");
+            list.push("arm64-v8a", "x86_64");
         return list;
-    }
-
-    property stringList toolchainDirPrefixAbis: {
-        var list = ["arm"];
-        if (platformVersion >= 9)
-            list.push("mipsel", "x86");
-        if (platformVersion >= 21)
-            list.push("aarch64", "mips64el", "x86_64");
-        return list;
-    }
-
-    property string toolchainVersionNumber: {
-        var prefix = "clang";
-        if (toolchainVersion && toolchainVersion.startsWith(prefix))
-            return toolchainVersion.substr(prefix.length);
-        return toolchainVersion;
     }
 
     property string armMode: abi && abi.startsWith("armeabi")
@@ -152,8 +114,6 @@ Module {
         allowedValues: ["arm", "thumb"]
     }
 
-    property bool haveUnifiedStl: version && Utilities.versionCompare(version, "12") >= 0
-
     validate: {
         if (!ndkDir) {
             throw ModUtils.ModuleError("Could not find an Android NDK at any of the following "
@@ -163,15 +123,19 @@ Module {
                                        + "ANDROID_NDK_ROOT environment variable to a valid "
                                        + "Android NDK location.");
         }
+
+        if (Utilities.versionCompare(version, "19") < 0)
+            throw ModUtils.ModuleError("Unsupported NDK version "
+                                       + Android.ndk.version
+                                       + ", please upgrade your NDK to r19+");
+
         if (product.aggregate && !product.multiplexConfigurationId)
             return;
         var validator = new ModUtils.PropertyValidator("Android.ndk");
         validator.setRequiredProperty("abi", abi);
         validator.setRequiredProperty("appStl", appStl);
-        validator.setRequiredProperty("toolchainVersion", toolchainVersion);
         validator.setRequiredProperty("hostArch", hostArch);
         validator.setRequiredProperty("platform", platform);
-        validator.setRequiredProperty("toolchainVersionNumber", toolchainVersionNumber);
         return validator.validate();
     }
 }

@@ -132,7 +132,7 @@ function outputArtifacts(product, inputs) {
         process.setEnv("NODE_PATH", [
             ModUtils.moduleProperty(product, "toolchainInstallPath"),
             product.moduleProperty("nodejs", "packageManagerRootPath")
-        ].join(product.moduleProperty("qbs", "pathListSeparator")));
+        ].join(FileInfo.pathListSeparator()));
         process.exec(product.moduleProperty("nodejs", "interpreterFilePath"),
                      [FileInfo.joinPaths(product.buildDirectory,
                                          ".io.qt.qbs.internal.typescript",
@@ -146,7 +146,7 @@ function outputArtifacts(product, inputs) {
             var i, appIndex = -1;
             if (product.moduleProperty("typescript", "singleFile")) {
                 for (i = 0; i < artifacts.length; ++i) {
-                    if (artifacts[i].fileTags.contains("compiled_typescript")) {
+                    if (artifacts[i].fileTags.includes("compiled_typescript")) {
                         appIndex = i;
                         break;
                     }
@@ -169,7 +169,7 @@ function outputArtifacts(product, inputs) {
                 }
             }
 
-            if (appIndex === -1 || !artifacts[appIndex].fileTags.contains("compiled_typescript"))
+            if (appIndex === -1 || !artifacts[appIndex].fileTags.includes("compiled_typescript"))
                 throw "nodejs.applicationFile was set, but Qbs couldn't find the compiled " +
                         "JavaScript file corresponding to '" + applicationFile + "'";
 

@@ -29,6 +29,7 @@
 ****************************************************************************/
 
 import qbs.FileInfo
+import qbs.Host
 import qbs.ModUtils
 import qbs.Probes
 import qbs.Process
@@ -71,7 +72,7 @@ Module {
     version: [compilerVersionMajor, compilerVersionMinor, compilerVersionPatch].join(".")
     property string compilerVersion: jdkVersionProbe.version
                                      ? jdkVersionProbe.version[1] : undefined
-    property var compilerVersionParts: compilerVersion ? compilerVersion.split(/[\._]/).map(function(item) { return parseInt(item, 10); }) : []
+    property var compilerVersionParts: JavaUtils.splitVersionString(compilerVersion)
     property int compilerVersionMajor: compilerVersionParts[0]
     property int compilerVersionMinor: compilerVersionParts[1]
     property int compilerVersionPatch: compilerVersionParts[2]
@@ -122,10 +123,10 @@ Module {
         } else {
             paths.push(FileInfo.joinPaths(jdkPath, "include"));
 
-            var hostOS = qbs.hostOS.contains("windows") ? qbs.hostOS.concat(["win32"]) : qbs.hostOS;
+            var hostOS = Host.os().includes("windows") ? Host.os().concat(["win32"]) : Host.os();
             var platforms = ["win32", "darwin", "linux", "bsd", "solaris"];
             for (var i = 0; i < platforms.length; ++i) {
-                if (hostOS.contains(platforms[i])) {
+                if (hostOS.includes(platforms[i])) {
                     // Corresponds to JDK_INCLUDE_SUBDIR in the JDK Makefiles
                     paths.push(FileInfo.joinPaths(jdkPath, "include", platforms[i]));
                     break;
@@ -140,7 +141,7 @@ Module {
     property path classFilesDir: FileInfo.joinPaths(product.buildDirectory, "classes")
     property path internalClassFilesDir: FileInfo.joinPaths(product.buildDirectory, ".classes")
 
-    property bool isAppleJava: qbs.hostOS.contains("darwin")
+    property bool isAppleJava: Host.os().includes("darwin")
                                && (compilerVersionMajor < 1
                                    || (compilerVersionMajor === 1 && compilerVersionMinor < 7))
 
@@ -178,7 +179,7 @@ Module {
         if (Utilities.versionCompare(version, "9") < 0)
             validator.setRequiredProperty("compilerVersionUpdate", compilerVersionUpdate);
         validator.addVersionValidator("compilerVersion", compilerVersion
-                                      ? compilerVersion.replace("_", ".") : undefined, 3, 4);
+                                      ? compilerVersion.replace("_", ".") : undefined, 1, 4);
         validator.addRangeValidator("compilerVersionMajor", compilerVersionMajor, 1);
         validator.addRangeValidator("compilerVersionMinor", compilerVersionMinor, 0);
         validator.addRangeValidator("compilerVersionPatch", compilerVersionPatch, 0);
@@ -234,14 +235,18 @@ Module {
         inputsFromDependencies: ["java.jar"]
         explicitlyDependsOn: ["java.class-internal"]
 
-        outputFileTags: ["java.class"].concat(_tagJniHeaders ? ["hpp"] : []) // Annotations can produce additional java source files. Ignored for now.
+        outputFileTags: ["java.class"].concat(_tagJniHeaders ? ["hpp"] : ["java.jni-hpp"]) // Annotations can produce additional java source files. Ignored for now.
         outputArtifacts: {
             var artifacts = JavaUtils.outputArtifacts(product, inputs);
             if (!product.java._tagJniHeaders) {
                 for (var i = 0; i < artifacts.length; ++i) {
                     var a = artifacts[i];
-                    if (Array.isArray(a.fileTags))
-                        a.fileTags = a.fileTags.filter(function(tag) { return tag != "hpp"; });
+                    if (a.fileTags instanceof Array)
+                        a.fileTags = a.fileTags.map(function(tag) {
+                            if (tag === "hpp")
+                                return "java.jni-hpp";
+                            return tag;
+                        });
                 }
             }
             return artifacts;
@@ -249,7 +254,7 @@ Module {
         prepare: {
             var cmd = new Command(ModUtils.moduleProperty(product, "compilerFilePath"),
                                   JavaUtils.javacArguments(product, inputs));
-            cmd.description = "Compiling Java sources";
+            cmd.description = "compiling Java sources";
             cmd.highlight = "compiler";
             return [cmd];
         }

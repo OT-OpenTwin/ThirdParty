@@ -1,5 +1,3 @@
-import '../QtModule.qbs' as QtModule
-
 QtModule {
     qtModuleName: @name@
     Depends { name: "Qt"; submodules: @dependencies@}
@@ -24,7 +22,7 @@ QtModule {
     pluginTypes: @pluginTypes@
     moduleConfig: @moduleConfig@
     cpp.defines: @defines@
-    cpp.includePaths: @includes@
+    cpp.systemIncludePaths: @includes@
     cpp.libraryPaths: @libraryPaths@
     @additionalContent@
 }

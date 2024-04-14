@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- aspects.cpp -->
+  <meta name="description" content="The BaseAspect class provides a common base for classes implementing aspects.">
+  <title>BaseAspect Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>BaseAspect</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">BaseAspect Class</h1>
+<span class="small-subtitle" translate="no">class <a href="utils.html" translate="no">Utils</a>::BaseAspect</span>
+<!-- $$$BaseAspect-brief -->
+<p>The <code translate="no">BaseAspect</code> class provides a common base for classes implementing aspects. <a href="#details">More...</a></p>
+<!-- @@@BaseAspect -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;BaseAspect&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherited By:</td><td class="memItemRight bottomAlign"> <p><a href="utils-aspectcontainer.html" translate="no">Utils::AspectContainer</a> and <a href="utils-textdisplay.html" translate="no">Utils::TextDisplay</a></p>
+</td></tr>
+</table></div>
+<ul>
+<li><a href="utils-baseaspect-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#BaseAspect" translate="no">BaseAspect</a></b>(Utils::AspectContainer *<i>container</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#dtor.BaseAspect" translate="no">~BaseAspect</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#addToLayout" translate="no">addToLayout</a></b>(Layouting::LayoutItem &amp;<i>parent</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#apply" translate="no">apply</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#cancel" translate="no">cancel</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#displayName" translate="no">displayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#fromMap" translate="no">fromMap</a></b>(const Utils::Store &amp;<i>map</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#labelText" translate="no">labelText</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#setAutoApply" translate="no">setAutoApply</a></b>(bool <i>on</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#setEnabler" translate="no">setEnabler</a></b>(Utils::BoolAspect *<i>checker</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#setLabelPixmap" translate="no">setLabelPixmap</a></b>(const QPixmap &amp;<i>labelPixmap</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#setLabelText" translate="no">setLabelText</a></b>(const QString &amp;<i>labelText</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#setSettingsKey" translate="no">setSettingsKey</a></b>(const Utils::Key &amp;<i>key</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#setSettingsKey-1" translate="no">setSettingsKey</a></b>(const Utils::Key &amp;<i>group</i>, const Utils::Key &amp;<i>key</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#setToolTip" translate="no">setToolTip</a></b>(const QString &amp;<i>tooltip</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#setVariantValue" translate="no">setVariantValue</a></b>(const QVariant &amp;<i>value</i>, Utils::BaseAspect::Announcement <i>howToAnnounce</i> = DoEmit)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#setVisible" translate="no">setVisible</a></b>(bool <i>visible</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Key </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#settingsKey" translate="no">settingsKey</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#toMap" translate="no">toMap</a></b>(Utils::Store &amp;<i>map</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-baseaspect.html#writeToSettingsImmediatly" translate="no">writeToSettingsImmediatly</a></b>() const</td></tr>
+</table></div>
+<!-- $$$BaseAspect-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>An aspect is a hunk of data like a property or collection of related properties of some object, together with a description of its behavior for common operations like visualizing or persisting.</p>
+<p>Simple aspects are for example a boolean property represented by a QCheckBox in the user interface, or a string property represented by a <a href="utils-pathchooser.html" translate="no">PathChooser</a>, selecting directories in the filesystem.</p>
+<p>While aspects implementations usually have the ability to visualize and to persist their data, or use an ID, neither of these is mandatory.</p>
+</div>
+<!-- @@@BaseAspect -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$BaseAspect[overload1]$$$BaseAspectUtils::AspectContainer* -->
+<h3 class="fn" translate="no" id="BaseAspect">BaseAspect::<span class="name">BaseAspect</span>(<span class="type"><a href="utils-aspectcontainer.html" translate="no">Utils::AspectContainer</a></span> *<i>container</i> = nullptr)</h3>
+<p>Constructs a base aspect.</p>
+<p>If <i translate="no">container</i> is non-null, the aspect is made known to the container.</p>
+<!-- @@@BaseAspect -->
+<!-- $$$~BaseAspect[overload1]$$$~BaseAspect -->
+<h3 class="fn" translate="no" id="dtor.BaseAspect"><code translate="no">[override virtual noexcept] </code>BaseAspect::<span class="name">~BaseAspect</span>()</h3>
+<p>Destructs a <a href="utils-baseaspect.html" translate="no">BaseAspect</a>.</p>
+<!-- @@@~BaseAspect -->
+<!-- $$$addToLayout[overload1]$$$addToLayoutLayouting::LayoutItem& -->
+<h3 class="fn" translate="no" id="addToLayout"><code translate="no">[virtual] </code><span class="type">void</span> BaseAspect::<span class="name">addToLayout</span>(<span class="type"><a href="layouting-layoutitem.html" translate="no">Layouting::LayoutItem</a></span> &amp;<i>parent</i>)</h3>
+<p>Adds the visual representation of this aspect to the layout with the specified <i translate="no">parent</i> using a layout builder.</p>
+<!-- @@@addToLayout -->
+<!-- $$$apply[overload1]$$$apply -->
+<h3 class="fn" translate="no" id="apply"><code translate="no">[virtual] </code><span class="type">void</span> BaseAspect::<span class="name">apply</span>()</h3>
+<p>Updates this aspect's value from user-initiated changes in the widget.</p>
+<p>Emits changed() if the value changed.</p>
+<!-- @@@apply -->
+<!-- $$$cancel[overload1]$$$cancel -->
+<h3 class="fn" translate="no" id="cancel"><code translate="no">[virtual] </code><span class="type">void</span> BaseAspect::<span class="name">cancel</span>()</h3>
+<p>Discard user changes in the widget and restore widget contents from aspect's value.</p>
+<p>This has only an effect if <code translate="no">isAutoApply</code> is false.</p>
+<!-- @@@cancel -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" translate="no" id="displayName"><span class="type">QString</span> BaseAspect::<span class="name">displayName</span>() const</h3>
+<p>Returns the string that should be used when this action appears in menus or other places that are typically used with Book style capitalization.</p>
+<p>If no display name is set, the label text will be used as fallback.</p>
+<!-- @@@displayName -->
+<!-- $$$fromMap[overload1]$$$fromMapconstUtils::Store& -->
+<h3 class="fn" translate="no" id="fromMap"><code translate="no">[virtual] </code><span class="type">void</span> BaseAspect::<span class="name">fromMap</span>(const <span class="type">Utils::Store</span> &amp;<i>map</i>)</h3>
+<p>Retrieves the internal value of this <a href="utils-baseaspect.html" translate="no">BaseAspect</a> from the Store <i translate="no">map</i>.</p>
+<!-- @@@fromMap -->
+<!-- $$$labelText[overload1]$$$labelText -->
+<h3 class="fn" translate="no" id="labelText"><span class="type">QString</span> BaseAspect::<span class="name">labelText</span>() const</h3>
+<p>Returns the current text for the separate label in the visual representation of this aspect.</p>
+<p><b>See also </b><a href="utils-baseaspect.html#setLabelText" translate="no">setLabelText</a>().</p>
+<!-- @@@labelText -->
+<!-- $$$setAutoApply[overload1]$$$setAutoApplybool -->
+<h3 class="fn" translate="no" id="setAutoApply"><code translate="no">[virtual] </code><span class="type">void</span> BaseAspect::<span class="name">setAutoApply</span>(<span class="type">bool</span> <i>on</i>)</h3>
+<p>Sets auto-apply mode. When auto-apply mode is <i translate="no">on</i>, user interaction to this aspect's widget will not modify the <code translate="no">value</code> of the aspect until <code translate="no">apply()</code> is called programmatically.</p>
+<p><b>See also </b><a href="utils-baseaspect.html#setSettingsKey" translate="no">setSettingsKey</a>().</p>
+<!-- @@@setAutoApply -->
+<!-- $$$setEnabler[overload1]$$$setEnablerUtils::BoolAspect* -->
+<h3 class="fn" translate="no" id="setEnabler"><span class="type">void</span> BaseAspect::<span class="name">setEnabler</span>(<span class="type"><a href="utils-boolaspect.html" translate="no">Utils::BoolAspect</a></span> *<i>checker</i>)</h3>
+<p>Makes the enabled state of this aspect depend on the checked state of <i translate="no">checker</i>.</p>
+<!-- @@@setEnabler -->
+<!-- $$$setLabelPixmap[overload1]$$$setLabelPixmapconstQPixmap& -->
+<h3 class="fn" translate="no" id="setLabelPixmap"><span class="type">void</span> BaseAspect::<span class="name">setLabelPixmap</span>(const <span class="type">QPixmap</span> &amp;<i>labelPixmap</i>)</h3>
+<p>Sets <i translate="no">labelPixmap</i> as pixmap for the separate label in the visual representation of this aspect.</p>
+<!-- @@@setLabelPixmap -->
+<!-- $$$setLabelText[overload1]$$$setLabelTextconstQString& -->
+<h3 class="fn" translate="no" id="setLabelText"><span class="type">void</span> BaseAspect::<span class="name">setLabelText</span>(const <span class="type">QString</span> &amp;<i>labelText</i>)</h3>
+<p>Sets <i translate="no">labelText</i> as text for the separate label in the visual representation of this aspect.</p>
+<p><b>See also </b><a href="utils-baseaspect.html#labelText" translate="no">labelText</a>().</p>
+<!-- @@@setLabelText -->
+<!-- $$$setSettingsKey[overload1]$$$setSettingsKeyconstUtils::Key& -->
+<h3 class="fn" translate="no" id="setSettingsKey"><span class="type">void</span> BaseAspect::<span class="name">setSettingsKey</span>(const <span class="type">Utils::Key</span> &amp;<i>key</i>)</h3>
+<p>Sets the <i translate="no">key</i> to be used when accessing the settings.</p>
+<p><b>See also </b><a href="utils-baseaspect.html#settingsKey" translate="no">settingsKey</a>().</p>
+<!-- @@@setSettingsKey -->
+<!-- $$$setSettingsKey$$$setSettingsKeyconstUtils::Key&constUtils::Key& -->
+<h3 class="fn" translate="no" id="setSettingsKey-1"><span class="type">void</span> BaseAspect::<span class="name">setSettingsKey</span>(const <span class="type">Utils::Key</span> &amp;<i>group</i>, const <span class="type">Utils::Key</span> &amp;<i>key</i>)</h3>
+<p>Sets the <i translate="no">key</i> and <i translate="no">group</i> to be used when accessing the settings.</p>
+<p><b>See also </b><a href="utils-baseaspect.html#settingsKey" translate="no">settingsKey</a>().</p>
+<!-- @@@setSettingsKey -->
+<!-- $$$setToolTip[overload1]$$$setToolTipconstQString& -->
+<h3 class="fn" translate="no" id="setToolTip"><span class="type">void</span> BaseAspect::<span class="name">setToolTip</span>(const <span class="type">QString</span> &amp;<i>tooltip</i>)</h3>
+<p>Sets <i translate="no">tooltip</i> as tool tip for the visual representation of this aspect.</p>
+<!-- @@@setToolTip -->
+<!-- $$$setVariantValue[overload1]$$$setVariantValueconstQVariant&Utils::BaseAspect::Announcement -->
+<h3 class="fn" translate="no" id="setVariantValue"><code translate="no">[virtual] </code><span class="type">void</span> BaseAspect::<span class="name">setVariantValue</span>(const <span class="type">QVariant</span> &amp;<i>value</i>, <span class="type">Utils::BaseAspect::Announcement</span> <i>howToAnnounce</i> = DoEmit)</h3>
+<p>Sets <i translate="no">value</i>.</p>
+<p>Prefer the typed setValue() of derived classes.</p>
+<!-- @@@setVariantValue -->
+<!-- $$$setVisible[overload1]$$$setVisiblebool -->
+<h3 class="fn" translate="no" id="setVisible"><span class="type">void</span> BaseAspect::<span class="name">setVisible</span>(<span class="type">bool</span> <i>visible</i>)</h3>
+<p>Shows or hides the visual representation of this aspect depending on the value of <i translate="no">visible</i>. By default, it is visible.</p>
+<!-- @@@setVisible -->
+<!-- $$$settingsKey[overload1]$$$settingsKey -->
+<h3 class="fn" translate="no" id="settingsKey"><span class="type">Utils::Key</span> BaseAspect::<span class="name">settingsKey</span>() const</h3>
+<p>Returns the key to be used when accessing the settings.</p>
+<p><b>See also </b><a href="utils-baseaspect.html#setSettingsKey" translate="no">setSettingsKey</a>().</p>
+<!-- @@@settingsKey -->
+<!-- $$$toMap[overload1]$$$toMapUtils::Store& -->
+<h3 class="fn" translate="no" id="toMap"><code translate="no">[virtual] </code><span class="type">void</span> BaseAspect::<span class="name">toMap</span>(<span class="type">Utils::Store</span> &amp;<i>map</i>) const</h3>
+<p>Stores the internal value of this <a href="utils-baseaspect.html" translate="no">BaseAspect</a> into the Store <i translate="no">map</i>.</p>
+<!-- @@@toMap -->
+<!-- $$$writeToSettingsImmediatly[overload1]$$$writeToSettingsImmediatly -->
+<h3 class="fn" translate="no" id="writeToSettingsImmediatly"><span class="type">void</span> BaseAspect::<span class="name">writeToSettingsImmediatly</span>() const</h3>
+<p>Immediately writes the value of this aspect into its specified settings, taking a potential container's settings group specification into account.</p>
+<div class="admonition note">
+<p><b>Note: </b>This is expensive, so it should only be used with good reason.</p>
+</div>
+<!-- @@@writeToSettingsImmediatly -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

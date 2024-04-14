@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-coding-edit-mode.qdoc -->
+  <title>Change text encoding | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Change text encoding</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#set-default-encoding">Set default encoding</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Change text encoding</h1>
+<!-- $$$creator-how-to-change-text-encoding.html-description -->
+<div class="descr" id="details">
+<p class="centerAlign"><img src="images/qtcreator-editor-toolbar.webp" alt="{Edit mode toolbar}" /></p><p>To show the file encoding of the current file on the editor toolbar (4) in the <b translate="no">Edit</b> mode, go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Text Editor</b> &gt; <b translate="no">Display</b> &gt; <b translate="no">Display file encoding</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-options-text-editor-display.png" alt="{Text Editor Display preferences}" /></p><p>To change the text encoding, select it on the toolbar, and then select new encoding in the <b translate="no">Text Encoding</b> dialog:</p>
+<p class="centerAlign"><img src="images/qtcreator-text-encoding.png" alt="{Text Encoding dialog}" /></p><p>To reload the file with the selected encoding, select <b translate="no">Reload with Encoding</b>.</p>
+<p>To save the file with the new encoding, go to <b translate="no">Save with Encoding</b>.</p>
+<h2 id="set-default-encoding">Set default encoding</h2>
+<p>To define the default file encoding, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Text Editor</b> &gt; <b translate="no">Behavior</b>, and then select a suitable option in <b translate="no">Default encoding</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-options-texteditor-behavior-file-encodings.png" alt="{File encoding preferences}" /></p><p>Qt 5 and Qt 6 require UTF-8 encoded source files, and therefore the default encoding is set to <b translate="no">UTF-8</b>. Detecting the correct encoding is tricky, so Qt Creator will not try to do so. Instead, it displays the following error message when you try to edit a file that is not UTF-8 encoded: <b translate="no">Error: Could not decode &quot;filename&quot; with &quot;UTF-8&quot;-encoding. Editing not possible.</b></p>
+<p>To resolve the issue, use a file conversion tool to convert the file encoding to UTF-8 when developing Qt 5 applications. Otherwise, conversion of string constants to QString might not work as expected.</p>
+<p>If you develop only Qt 4 applications or other than Qt applications, you can set other encoding options as the default encoding. Select the <b translate="no">System</b> option to use the file encoding used by your system.</p>
+</div>
+<p><b>See also </b><a href="creator-how-tos.html#edit-code" translate="no">How To: Edit Code</a>, <a href="creator-coding-navigating.html" translate="no">Edit Mode</a>, and <a href="creator-preferences-text-editor-behavior.html" translate="no">Behavior</a>.</p>
+<!-- @@@creator-how-to-change-text-encoding.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

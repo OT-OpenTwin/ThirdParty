@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-autotest.qdoc -->
+  <meta name="description" content="Customize the handling of tests, test frameworks, and test tools.">
+  <title>Testing | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Testing</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-reference.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#qt-tests">Qt Tests</a></li>
+<li class="level1"><a href="#google-tests">Google Tests</a></li>
+<li class="level1"><a href="#boost-tests">Boost Tests</a></li>
+<li class="level1"><a href="#catch2-tests">Catch2 Tests</a></li>
+<li class="level2"><a href="#specifying-settings-for-running-ctest-based-tests">Specifying Settings for Running CTest-Based Tests</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Testing</h1>
+<!-- $$$creator-preferences-testing.html-description -->
+<div class="descr" id="details">
+<p>To set preferences for handling tests, go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Testing</b> &gt; <b translate="no">General</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-preferences-testing-general.webp" alt="{General tab in Testing preferences}" /></p><p>The following table summarizes the general testing preferences.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Setting</th><th >Value</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Scan threads</b></td><td >Set the amount of worker threads used when scanning for tests. By default, Qt Creator uses a quarter of the available logical CPUs.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Omit internal messages</b></td><td >Omit internal messages.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Omit run configuration warnings</b></td><td >Omit run configuration warnings for deduced configurations.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Limit result output</b></td><td >By default, test result output shows a maximum of 100,000 characters.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Limit result description</b></td><td >Set the maximum number of lines in the test result tooltip and description.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Open results when tests start</b></td><td >Show test results automatically when testing starts.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Open results when tests finish</b></td><td >Show test results automatically when testing ends.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Open results only for unsuccesfull test runs</b></td><td >Show test results only if thy contain failed, fatal, or unexpectedly passed tests.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Automatically scroll results</b></td><td >The view automatically scrolls to show the latest results.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Group results by application</b></td><td >Group test results by the executable path that you use to run the tests. This is useful if you have multiple test executables and run them all at once.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Process arguments</b></td><td >Pass arguments to the test executable that you specify in the <a href="creator-run-settings.html" translate="no">run configuration</a>. This is an experimental feature that might cause the execution of the test executable to fail.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Automatically run</b></td><td >Automatically run all or selected tests after successfully building the current project.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Timeout</b></td><td >The maximum time in seconds to execute a test case.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Reset Cached Choices</b></td><td >Sometimes, Qt Creator cannot deduce which executable or run configuration to use. If it repeatedly asks you to select the tests to run when trying to execute tests, you can let it cache your choices and use them where appropriate. Qt Creator clears the cache when you switch to another project, close the current one, or select this setting.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Active Test Frameworks</b></td><td >Select tests for Qt Creator to handle. To improve the performance of full scans for tests, disable test frameworks you do not use.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Group</b></td><td >Group related test cases for an active test framework. By default, Qt Creator groups tests that are in the same directory.</td></tr>
+</table></div>
+<p>To select the testing framework for the current project, go to <b translate="no">Projects</b> &gt; <b translate="no">Project Settings</b> &gt; <b translate="no">Testing</b>.</p>
+<h2 id="qt-tests">Qt Tests</h2>
+<p>To set preference for Qt tests, go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Testing</b> &gt; <b translate="no">Qt Test</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-preferences-testing-qttest.webp" alt="{Qt Tests tab in Testing preferences}" /></p><p>The code inside a benchmark test is measured, and possibly also repeated several times in order to get an accurate measurement. This depends on the measurement back-end that you select in <b translate="no">Benchmark Metrics</b>:</p>
+<ul>
+<li>Walltime</li>
+<li>CPU tick counter</li>
+<li>Event counter</li>
+<li>Valgrind Callgrind</li>
+<li>Linux Perf</li>
+</ul>
+<p>For more information, see Creating a Benchmark.</p>
+<p>The following table summarizes the other Qt test preferences.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Setting</th><th >Value</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Disable crash handler while debugging</b></td><td >Allow the debugger to interrupt Qt tests on assertions.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Use XML output</b></td><td >XML output avoids parsing issues, but plain text is more human readable.<div class="admonition note">
+<p><b>Note: </b>Plain text misses some information, such as duration.</p>
+</div>
+</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Verbose benchmarks</b></td><td >Receive verbose output when running benchmarks.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Log signals and slots</b></td><td >Record information about signals and slots in the test log.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Limit warnings</b></td><td >Explicitly limit the maximum number of warnings in the test log. Set the limit to 0 if you want no limit at all. The default limit is 2000.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Check for derived Qt Quick tests</b></td><td >Check for Qt Quick Tests that are derived from TestCase.<div class="admonition note">
+<p><b>Note: </b>This feature is rather expensive and increases the scan time significantly.</p>
+</div>
+</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Find user-defined locations</b></td><td >Parse messages for the following pattern and use it as location information: <code translate="no">file://filepath:line</code><p>where &quot;:line&quot; is optional.</p>
+<div class="admonition note">
+<p><b>Note: </b>If the patterns are used in code, the location information for debug messages and other messages might improve, at the risk of some incorrect locations and lower performance.</p>
+</div>
+</td></tr>
+</table></div>
+<h2 id="google-tests">Google Tests</h2>
+<p>To specify settings for running Google tests, go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Testing</b> &gt; <b translate="no">Google Test</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-preferences-testing-googletest.webp" alt="{Gooble Test tab in Testing preferences}" /></p><p>The following table summarizes the Google test preferences.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Setting</th><th >Value</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Run disabled tests</b></td><td >Execute disabled tests during a test run.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Throw on failure</b></td><td >Turn assertion failures into C++ exceptions.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Break on failure while debugging</b></td><td >Turn failures into debugger breakpoints.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Repeat tests</b></td><td >Run several iterations of the tests.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Iterations</b></td><td >The number of times to run the tests.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Shuffle tests</b></td><td >Make sure that the tests are independent and repeatable by running them in a different order each time.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Seed</b></td><td >The seed for initializing the randomizer. The value 0 generates a seed based on the current timestamp.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Group mode</b></td><td >Group Google tests by using a <b translate="no">GTest Filter</b>.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Active filter</b></td><td >The GTest filter to use.</td></tr>
+</table></div>
+<p>For more information about GTest filters, see <a href="https://github.com/google/googletest/blob/master/docs/advanced.md#running-a-subset-of-the-tests" translate="no">Running a Subset of the Tests</a>.</p>
+<h2 id="boost-tests">Boost Tests</h2>
+<p>To specify settings for running Boost tests, go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Testing</b> &gt; <b translate="no">Boost Test</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-preferences-testing-boosttest.webp" alt="{Boost Test tab in Testing preferences}" /></p><p>The following table summarizes the Boost test preferences.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Setting</th><th >Value</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Log format</b></td><td >The type of events to record in the test report.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Report level</b></td><td >The verbosity level of the test result report. Select <b translate="no">No</b> if you do not want a report.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Randomize</b></td><td >Execute the tests in a random order.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Seed</b></td><td >The seed for initializing the randomizer. The value 0 means no randomization, the value 1 uses the current time, and any other value generates a random seed.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Catch system errors</b></td><td >Catch or ignore system errors.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Floating point exceptions</b></td><td >Detect floating point exception traps.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Detect memory leaks</b></td><td >Detect memory leaks.</td></tr>
+</table></div>
+<h2 id="catch2-tests">Catch2 Tests</h2>
+<p>To specify settings for running Catch2 tests, go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Testing</b> &gt; <b translate="no">Catch Test</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-preferences-testing-catchtest.webp" alt="{Catch Test tab in Testing preferences}" /></p><p>The following table summarizes the Catch2 test preferences.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Setting</th><th >Value</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Show success</b></td><td >Show succeeding expressions as well. By default Catch2 prints only failed expressions.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Break on failure while debugging</b></td><td >Turn failures into debugger breakpoints.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Skip throwing assertions</b></td><td >Skip assertions that test for thrown exceptions.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Visualize whitespace</b></td><td >Turn whitespace into escape sequences.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Abort after</b></td><td >Abort the test after the number of failures specified inside the box.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Benchmark samples</b></td><td >The number of samples to collect while running benchmarks.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Benchmark resamples</b></td><td >The number of resamples to use for statistical bootstrapping after benchmarking.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Benchmark confidence interval</b></td><td >The confidence interval for statistical bootstrapping.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Benchmark warmup time</b></td><td >The warmup time for each test before benchmarking starts.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Disable analysis</b></td><td >Disable statistical analysis and bootstrapping.</td></tr>
+</table></div>
+<h3 id="specifying-settings-for-running-ctest-based-tests">Specifying Settings for Running CTest-Based Tests</h3>
+<p>To specify settings for running CTest-based tests, go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Testing</b> &gt; <b translate="no">CTest</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-preferences-testing-ctest.webp" alt="{CTest tab in Testing preferences}" /></p><p>The following table summarizes the CTest preferences.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Setting</th><th >Value</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Output on failure</b></td><td >Show test specific output if a test fails. Contrary to the CTest default this setting is on by default.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Schedule random</b></td><td >Execute the tests in random order.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Stop on failure</b></td><td >Automatically stop the test execution on the first failing test.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Output mode</b>,</td><td >The verbosity level of the CTest output.<div class="admonition note">
+<p><b>Note: </b>This setting only influences the output on the text display.</p>
+</div>
+</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Repeat tests</b></td><td >Re-run tests, as determined by <b translate="no">Repetition mode</b>. Set the maximum number of times for repeating a test in <b translate="no">Count</b>.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Run in parallel</b></td><td >Run the tests in parallel using the specified number of <b translate="no">Jobs</b>. In <b translate="no">Test load</b>, limit the parallel execution. CTest will not start a new test if it would cause the CPU load to pass the threshold set in <b translate="no">Threshold</b>.</td></tr>
+</table></div>
+</div>
+<p><b>See also </b><a href="creator-how-tos.html#test" translate="no">How To: Test</a> and <a href="creator-test-results.html" translate="no">Test Results</a>.</p>
+<!-- @@@creator-preferences-testing.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

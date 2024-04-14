@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- progressmanager.cpp -->
+  <meta name="description" content="The ProgressManager class is used to show a user interface for running tasks in Qt Creator.">
+  <title>ProgressManager Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>ProgressManager</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-slots">Public Slots</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+<li class="level2"><a href="#registering-a-task">Registering a task</a></li>
+<li class="level2"><a href="#customizing-progress-appearance">Customizing progress appearance</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">ProgressManager Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::ProgressManager</span>
+<!-- $$$ProgressManager-brief -->
+<p>The ProgressManager class is used to show a user interface for running tasks in Qt Creator. <a href="#details">More...</a></p>
+<!-- @@@ProgressManager -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/progressmanager/progressmanager.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a></td></tr>
+</table></div>
+<ul>
+<li><a href="core-progressmanager-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="core-progressmanager.html#ProgressFlag-enum" translate="no">ProgressFlag</a></b> { KeepOnFinish, ShowInApplicationIcon }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> flags </td><td class="memItemRight bottomAlign"><b><a href="core-progressmanager.html#ProgressFlag-enum" translate="no">ProgressFlags</a></b></td></tr>
+</table></div>
+<h2 id="public-slots">Public Slots</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-progressmanager.html#cancelTasks" translate="no">cancelTasks</a></b>(Utils::Id <i>type</i>)</td></tr>
+</table></div>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-progressmanager.html#allTasksFinished" translate="no">allTasksFinished</a></b>(Utils::Id <i>type</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-progressmanager.html#taskStarted" translate="no">taskStarted</a></b>(Utils::Id <i>type</i>)</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Core::FutureProgress *</td><td class="memItemRight bottomAlign"><b><a href="core-progressmanager.html#addTask-1" translate="no">addTask</a></b>(const QFuture&lt;void&gt; &amp;<i>future</i>, const QString &amp;<i>title</i>, Utils::Id <i>type</i>, Core::ProgressManager::ProgressFlags <i>flags</i> = {})</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::FutureProgress *</td><td class="memItemRight bottomAlign"><b><a href="core-progressmanager.html#addTimedTask" translate="no">addTimedTask</a></b>(const QFutureInterface&lt;void&gt; &amp;<i>futureInterface</i>, const QString &amp;<i>title</i>, Utils::Id <i>type</i>, int <i>expectedSeconds</i>, Core::ProgressManager::ProgressFlags <i>flags</i> = {})</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::ProgressManager *</td><td class="memItemRight bottomAlign"><b><a href="core-progressmanager.html#instance" translate="no">instance</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-progressmanager.html#setApplicationLabel" translate="no">setApplicationLabel</a></b>(const QString &amp;<i>text</i>)</td></tr>
+</table></div>
+<!-- $$$ProgressManager-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The progress manager tracks the progress of a task that it is told about, and shows a progress indicator in the lower right corner of Qt Creator's main window to the user. The progress indicator also allows the user to cancel the task.</p>
+<p>You get the single instance of this class via the <a href="core-progressmanager.html#instance" translate="no">ProgressManager::instance</a>() function.</p>
+<h3 id="registering-a-task">Registering a task</h3>
+<p>The ProgressManager API uses QtConcurrent as the basis for defining tasks. A task consists of the following properties:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >Task abstraction</td><td ><code translate="no">QFuture&lt;void&gt;</code></td><td >A <a href="https://doc.qt.io/qt/qfuture.html" translate="no">QFuture</a> object that represents the task which is responsible for reporting the state of the task. See below for coding patterns how to create this object for your specific task.</td></tr>
+<tr valign="top" class="even"><td >Title</td><td ><code translate="no">QString</code></td><td >A very short title describing your task. This is shown as a title over the progress bar.</td></tr>
+<tr valign="top" class="odd"><td >Type</td><td ><code translate="no">QString</code></td><td >A string identifier that is used to group different tasks that belong together. For example, all the search operations use the same type identifier.</td></tr>
+<tr valign="top" class="even"><td >Flags</td><td ><a href="core-progressmanager.html#ProgressFlag-enum" translate="no">ProgressManager::ProgressFlags</a></td><td >Additional flags that specify how the progress bar should be presented to the user.</td></tr>
+</table></div>
+<p>To register a task you create your <code translate="no">QFuture&lt;void&gt;</code> object, and call <a href="core-progressmanager.html#addTask-1" translate="no">addTask</a>(). This function returns a <a href="core-futureprogress.html" translate="no">FutureProgress</a> object that you can use to further customize the progress bar's appearance. See the <a href="core-futureprogress.html" translate="no">FutureProgress</a> documentation for details.</p>
+<p>In the following you will learn about two common patterns how to create the <code translate="no">QFuture&lt;void&gt;</code> object for your task.</p>
+<h4 id="create-a-threaded-task-with-qtconcurrent">Create a threaded task with QtConcurrent</h4>
+<p>The first option is to directly use QtConcurrent to actually start a task concurrently in a different thread. QtConcurrent has several different functions to run e.g. a class function in a different thread. Qt Creator itself adds a few more in <code translate="no">src/libs/utils/async.h</code>. The QtConcurrent functions to run a concurrent task return a <code translate="no">QFuture</code> object. This is what you want to give the ProgressManager in the <a href="core-progressmanager.html#addTask-1" translate="no">addTask</a>() function.</p>
+<p>Have a look at e.g <a href="core-ilocatorfilter.html" translate="no">Core::ILocatorFilter</a>. Locator filters implement a function <code translate="no">refresh()</code> which takes a <code translate="no">QFutureInterface</code> object as a parameter. These functions look something like:</p>
+<pre class="cpp" translate="no">
+ <span class="type">void</span> Filter<span class="operator">::</span>refresh(<span class="type">QFutureInterface</span><span class="operator">&lt;</span><span class="type">void</span><span class="operator">&gt;</span> <span class="operator">&amp;</span>future) {
+     future<span class="operator">.</span>setProgressRange(<span class="number">0</span><span class="operator">,</span> MAX);
+     <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+     <span class="keyword">while</span> (<span class="operator">!</span>future<span class="operator">.</span>isCanceled()) {
+         <span class="comment">// Do a part of the long stuff</span>
+         <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+         future<span class="operator">.</span>setProgressValue(currentProgress);
+         <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+     }
+ }
+</pre>
+<p>The actual refresh, which calls all the filters' refresh functions in a different thread, looks like this:</p>
+<pre class="cpp" translate="no">
+ <span class="type"><a href="https://doc.qt.io/qt/qfuture.html" translate="no">QFuture</a></span><span class="operator">&lt;</span><span class="type">void</span><span class="operator">&gt;</span> task <span class="operator">=</span> Utils<span class="operator">::</span>map(filters<span class="operator">,</span> <span class="operator">&amp;</span>ILocatorFilter<span class="operator">::</span>refresh);
+ Core<span class="operator">::</span>FutureProgress <span class="operator">*</span>progress <span class="operator">=</span> Core<span class="operator">::</span>ProgressManager<span class="operator">::</span>addTask(task<span class="operator">,</span> <span class="operator">::</span>Core<span class="operator">::</span>Tr<span class="operator">::</span>tr(<span class="string">&quot;Indexing&quot;</span>)<span class="operator">,</span>
+                                                                 Locator<span class="operator">::</span>Constants<span class="operator">::</span>TASK_INDEX);
+</pre>
+<p>First, we to start an asynchronous operation which calls all the filters' refresh function. After that we register the returned <a href="https://doc.qt.io/qt/qfuture.html" translate="no">QFuture</a> object with the ProgressManager.</p>
+<h4 id="manually-create-qtconcurrent-objects-for-your-thread">Manually create QtConcurrent objects for your thread</h4>
+<p>If your task has its own means to create and run a thread, you need to create the necessary objects yourselves, and report the start/stop state.</p>
+<pre class="cpp" translate="no">
+ <span class="comment">// We are already running in a different thread here</span>
+ <span class="type">QFutureInterface</span><span class="operator">&lt;</span><span class="type">void</span><span class="operator">&gt;</span> <span class="operator">*</span>progressObject <span class="operator">=</span> <span class="keyword">new</span> <span class="type">QFutureInterface</span><span class="operator">&lt;</span><span class="type">void</span><span class="operator">&gt;</span>;
+ progressObject<span class="operator">-</span><span class="operator">&gt;</span>setProgressRange(<span class="number">0</span><span class="operator">,</span> MAX);
+ Core<span class="operator">::</span>ProgressManager<span class="operator">::</span>addTask(progressObject<span class="operator">-</span><span class="operator">&gt;</span>future()<span class="operator">,</span> <span class="operator">::</span>Core<span class="operator">::</span>Tr<span class="operator">::</span>tr(<span class="string">&quot;DoIt&quot;</span>)<span class="operator">,</span> MYTASKTYPE);
+ progressObject<span class="operator">-</span><span class="operator">&gt;</span>reportStarted();
+ <span class="comment">// Do something</span>
+ <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+ progressObject<span class="operator">-</span><span class="operator">&gt;</span>setProgressValue(currentProgress);
+ <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+ <span class="comment">// We have done what we needed to do</span>
+ progressObject<span class="operator">-</span><span class="operator">&gt;</span>reportFinished();
+ <span class="keyword">delete</span> progressObject;
+</pre>
+<p>In the first line we create the QFutureInterface object that will be our way for reporting the task's state. The first thing we report is the expected range of the progress values. We register the task with the ProgressManager, using the internal <a href="https://doc.qt.io/qt/qfuture.html" translate="no">QFuture</a> object that has been created for our QFutureInterface object. Next we report that the task has begun and start doing our actual work, regularly reporting the progress via the functions in QFutureInterface. After the long taking operation has finished, we report so through the QFutureInterface object, and delete it afterwards.</p>
+<h3 id="customizing-progress-appearance">Customizing progress appearance</h3>
+<p>You can set a custom widget to show below the progress bar itself, using the <a href="core-futureprogress.html" translate="no">FutureProgress</a> object returned by the <a href="core-progressmanager.html#addTask-1" translate="no">addTask</a>() function. Also use this object to get notified when the user clicks on the progress indicator.</p>
+</div>
+<!-- @@@ProgressManager -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$ProgressFlag$$$KeepOnFinish$$$ShowInApplicationIcon -->
+<h3 class="flags" id="ProgressFlag-enum">enum ProgressManager::<span class="name">ProgressFlag</span><br/>flags ProgressManager::<span class="name">ProgressFlags</span></h3>
+<p>Additional flags that specify details in behavior. The default for a task is to not have any of these flags set.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Core::ProgressManager::KeepOnFinish</code></td><td class="topAlign tblval"><code translate="no">0x01</code></td><td class="topAlign">The progress indicator stays visible after the task has finished.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::ProgressManager::ShowInApplicationIcon</code></td><td class="topAlign tblval"><code translate="no">0x02</code></td><td class="topAlign">The progress indicator for this task is additionally shown in the application icon in the system's task bar or dock, on platforms that support that (at the moment Windows 7 and Mac OS X).</td></tr>
+</table></div>
+<p>The ProgressFlags type is a typedef for <a href="https://doc.qt.io/qt/qflags.html">QFlags</a>&lt;ProgressFlag&gt;. It stores an OR combination of ProgressFlag values.</p>
+<!-- @@@ProgressFlag -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$addTask$$$addTaskconstQFuture<void>&constQString&Utils::IdCore::ProgressManager::ProgressFlags -->
+<h3 class="fn" translate="no" id="addTask-1"><code translate="no">[static] </code><span class="type"><a href="core-futureprogress.html" translate="no">Core::FutureProgress</a></span> *ProgressManager::<span class="name">addTask</span>(const <span class="type"><a href="https://doc.qt.io/qt/qfuture.html" translate="no">QFuture</a></span>&lt;<span class="type">void</span>&gt; &amp;<i>future</i>, const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>title</i>, <span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>type</i>, <span class="type"><a href="core-progressmanager.html#ProgressFlag-enum" translate="no">Core::ProgressManager::ProgressFlags</a></span> <i>flags</i> = {})</h3>
+<p>Shows a progress indicator for the task given by the <a href="https://doc.qt.io/qt/qfuture.html" translate="no">QFuture</a> object <i translate="no">future</i>.</p>
+<p>The progress indicator shows the specified <i translate="no">title</i> along with the progress bar. The <i translate="no">type</i> of a task will specify a logical grouping with other running tasks. Via the <i translate="no">flags</i> parameter you can e.g. let the progress indicator stay visible after the task has finished.</p>
+<p>Returns an object that represents the created progress indicator, which can be used to further customize. The <a href="core-futureprogress.html" translate="no">FutureProgress</a> object's life is managed by the <a href="core-progressmanager.html" translate="no">ProgressManager</a> and is guaranteed to live only until the next event loop cycle, or until the next call of addTask.</p>
+<p>If you want to use the returned <a href="core-futureprogress.html" translate="no">FutureProgress</a> later than directly after calling this function, you will need to use protective functions (like wrapping the returned object in <a href="https://doc.qt.io/qt/qpointer.html" translate="no">QPointer</a> and checking for 0 whenever you use it).</p>
+<!-- @@@addTask -->
+<!-- $$$addTimedTask[overload1]$$$addTimedTaskconstQFutureInterface<void>&constQString&Utils::IdintCore::ProgressManager::ProgressFlags -->
+<h3 class="fn" translate="no" id="addTimedTask"><code translate="no">[static] </code><span class="type"><a href="core-futureprogress.html" translate="no">Core::FutureProgress</a></span> *ProgressManager::<span class="name">addTimedTask</span>(const <span class="type">QFutureInterface</span>&lt;<span class="type">void</span>&gt; &amp;<i>futureInterface</i>, const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>title</i>, <span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>type</i>, <span class="type">int</span> <i>expectedSeconds</i>, <span class="type"><a href="core-progressmanager.html#ProgressFlag-enum" translate="no">Core::ProgressManager::ProgressFlags</a></span> <i>flags</i> = {})</h3>
+<p>Shows a progress indicator for task given by the QFutureInterface object <i translate="no">futureInterface</i>. The progress indicator shows the specified <i translate="no">title</i> along with the progress bar. The progress indicator will increase monotonically with time, at <i translate="no">expectedSeconds</i> it will reach about 80%, and continue to increase with a decreasingly slower rate.</p>
+<p>The <i translate="no">type</i> of a task will specify a logical grouping with other running tasks. Via the <i translate="no">flags</i> parameter you can e.g. let the progress indicator stay visible after the task has finished.</p>
+<p><b>See also </b><a href="core-progressmanager.html#addTask-1" translate="no">addTask</a>.</p>
+<!-- @@@addTimedTask -->
+<!-- $$$allTasksFinished[overload1]$$$allTasksFinishedUtils::Id -->
+<h3 class="fn" translate="no" id="allTasksFinished"><code translate="no">[signal] </code><span class="type">void</span> ProgressManager::<span class="name">allTasksFinished</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>type</i>)</h3>
+<p>Sent when all tasks of a <i translate="no">type</i> have finished.</p>
+<!-- @@@allTasksFinished -->
+<!-- $$$cancelTasks[overload1]$$$cancelTasksUtils::Id -->
+<h3 class="fn" translate="no" id="cancelTasks"><code translate="no">[static slot] </code><span class="type">void</span> ProgressManager::<span class="name">cancelTasks</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>type</i>)</h3>
+<p>Schedules the cancellation of all running tasks of the given <i translate="no">type</i>. The cancellation functionality depends on the running task actually checking the <a href="https://doc.qt.io/qt/qfuture.html#isCanceled" translate="no">QFuture::isCanceled</a> property.</p>
+<!-- @@@cancelTasks -->
+<!-- $$$instance[overload1]$$$instance -->
+<h3 class="fn" translate="no" id="instance"><code translate="no">[static] </code><span class="type"><a href="core-progressmanager.html" translate="no">Core::ProgressManager</a></span> *ProgressManager::<span class="name">instance</span>()</h3>
+<p>Returns a single progress manager instance.</p>
+<!-- @@@instance -->
+<!-- $$$setApplicationLabel[overload1]$$$setApplicationLabelconstQString& -->
+<h3 class="fn" translate="no" id="setApplicationLabel"><code translate="no">[static] </code><span class="type">void</span> ProgressManager::<span class="name">setApplicationLabel</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>text</i>)</h3>
+<p>Shows the given <i translate="no">text</i> in a platform dependent way in the application icon in the system's task bar or dock. This is used to show the number of build errors on Windows 7 and macOS.</p>
+<!-- @@@setApplicationLabel -->
+<!-- $$$taskStarted[overload1]$$$taskStartedUtils::Id -->
+<h3 class="fn" translate="no" id="taskStarted"><code translate="no">[signal] </code><span class="type">void</span> ProgressManager::<span class="name">taskStarted</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>type</i>)</h3>
+<p>Sent whenever a task of a given <i translate="no">type</i> is started.</p>
+<!-- @@@taskStarted -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

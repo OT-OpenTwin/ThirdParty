@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- washingMachineUI.qdoc -->
+  <meta name="description" content="Illustrates how to create a UI that can be run both on the desktop and on MCUs.">
+  <title>Washing Machine UI | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="studioexamples.html" translate="no">Examples</a></li>
+<li>Washing Machine UI</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<h1 class="title">Washing Machine UI</h1>
+<pre class="qml" translate="no">
+ <span class="comment">// Copyright (C) 2021 The Qt Company Ltd.</span>
+ <span class="comment">// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause</span>
+
+ import QtQuick 2.12
+ import QtQuick.Timeline 1.0
+
+ <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-item.html" translate="no">Item</a></span> {
+     <span class="name">id</span>: <span class="name">root</span>
+     <span class="name">width</span>: <span class="name">arcSegment1</span>.<span class="name">width</span> <span class="operator">*</span> <span class="number">2</span> <span class="operator">+</span> <span class="name">root</span>.<span class="name">borderOffest</span>
+     <span class="name">height</span>: <span class="name">arcSegment1</span>.<span class="name">height</span> <span class="operator">*</span> <span class="number">2</span> <span class="operator">+</span> <span class="name">root</span>.<span class="name">borderOffest</span>
+     <span class="name">clip</span>: <span class="number">true</span>
+     property <span class="type"><a href="https://doc.qt.io/qt/qml-int.html" translate="no">int</a></span> <span class="name">borderOffest</span>: <span class="number">0</span> <span class="comment">//was 5</span>
+     property <span class="type">alias</span> <span class="name">arcSegment4Source</span>: <span class="name">arcSegment4</span>.<span class="name">source</span>
+     property <span class="type">alias</span> <span class="name">arcSegment3Source</span>: <span class="name">arcSegment3</span>.<span class="name">source</span>
+     property <span class="type">alias</span> <span class="name">arcSegment2Source</span>: <span class="name">arcSegment2</span>.<span class="name">source</span>
+     property <span class="type">alias</span> <span class="name">arcSegment1Source</span>: <span class="name">arcSegment1</span>.<span class="name">source</span>
+     property <span class="type">alias</span> <span class="name">timelineCurrentFrame</span>: <span class="name">timeline</span>.<span class="name">currentFrame</span>
+     property <span class="type"><a href="https://doc.qt.io/qt/qml-color.html" translate="no">color</a></span> <span class="name">maskColor</span>: <span class="string">&quot;#000000&quot;</span>
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-image.html" translate="no">Image</a></span> {
+         <span class="name">id</span>: <span class="name">arcSegment4</span>
+         <span class="name">anchors</span>.left: <span class="name">parent</span>.<span class="name">left</span>
+         <span class="name">anchors</span>.top: <span class="name">parent</span>.<span class="name">top</span>
+         <span class="name">source</span>: <span class="string">&quot;assets/bigArcSegment4.png&quot;</span>
+         <span class="name">transformOrigin</span>: <span class="name">Item</span>.<span class="name">BottomRight</span>
+         <span class="name">rotation</span>: <span class="number">0</span>
+         <span class="name">fillMode</span>: <span class="name">Image</span>.<span class="name">PreserveAspectFit</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-rectangle.html" translate="no">Rectangle</a></span> {
+         <span class="name">id</span>: <span class="name">mask3</span>
+         <span class="name">width</span>: <span class="name">arcSegment1</span>.<span class="name">width</span> <span class="operator">+</span> <span class="name">root</span>.<span class="name">borderOffest</span>
+         <span class="name">height</span>: <span class="name">arcSegment1</span>.<span class="name">height</span> <span class="operator">+</span> <span class="name">root</span>.<span class="name">borderOffest</span>
+         <span class="name">color</span>: <span class="name">root</span>.<span class="name">maskColor</span>
+         <span class="name">anchors</span>.left: <span class="name">parent</span>.<span class="name">left</span>
+         <span class="name">anchors</span>.bottom: <span class="name">parent</span>.<span class="name">bottom</span>
+         <span class="name">anchors</span>.bottomMargin: <span class="number">0</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-image.html" translate="no">Image</a></span> {
+         <span class="name">id</span>: <span class="name">arcSegment3</span>
+         <span class="name">anchors</span>.left: <span class="name">parent</span>.<span class="name">left</span>
+         <span class="name">anchors</span>.bottom: <span class="name">parent</span>.<span class="name">bottom</span>
+         <span class="name">source</span>: <span class="string">&quot;assets/bigArcSegment3.png&quot;</span>
+         <span class="name">rotation</span>: <span class="number">0</span>
+         <span class="name">transformOrigin</span>: <span class="name">Item</span>.<span class="name">TopRight</span>
+         <span class="name">fillMode</span>: <span class="name">Image</span>.<span class="name">PreserveAspectFit</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-rectangle.html" translate="no">Rectangle</a></span> {
+         <span class="name">id</span>: <span class="name">mask2</span>
+         <span class="name">width</span>: <span class="name">arcSegment1</span>.<span class="name">width</span> <span class="operator">+</span> <span class="name">root</span>.<span class="name">borderOffest</span>
+         <span class="name">height</span>: <span class="name">arcSegment1</span>.<span class="name">height</span> <span class="operator">+</span> <span class="name">root</span>.<span class="name">borderOffest</span>
+         <span class="name">color</span>: <span class="name">root</span>.<span class="name">maskColor</span>
+         <span class="name">anchors</span>.right: <span class="name">parent</span>.<span class="name">right</span>
+         <span class="name">anchors</span>.bottom: <span class="name">parent</span>.<span class="name">bottom</span>
+         <span class="name">anchors</span>.bottomMargin: <span class="number">0</span>
+         <span class="name">anchors</span>.rightMargin: <span class="number">0</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-image.html" translate="no">Image</a></span> {
+         <span class="name">id</span>: <span class="name">arcSegment2</span>
+         <span class="name">anchors</span>.right: <span class="name">parent</span>.<span class="name">right</span>
+         <span class="name">anchors</span>.bottom: <span class="name">parent</span>.<span class="name">bottom</span>
+         <span class="name">source</span>: <span class="string">&quot;assets/bigArcSegment2.png&quot;</span>
+         <span class="name">rotation</span>: <span class="number">0</span>
+         <span class="name">transformOrigin</span>: <span class="name">Item</span>.<span class="name">TopLeft</span>
+         <span class="name">fillMode</span>: <span class="name">Image</span>.<span class="name">PreserveAspectFit</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-rectangle.html" translate="no">Rectangle</a></span> {
+         <span class="name">id</span>: <span class="name">mask1</span>
+         <span class="name">width</span>: <span class="name">arcSegment1</span>.<span class="name">width</span> <span class="operator">+</span> <span class="name">root</span>.<span class="name">borderOffest</span>
+         <span class="name">height</span>: <span class="name">arcSegment1</span>.<span class="name">height</span> <span class="operator">+</span> <span class="name">root</span>.<span class="name">borderOffest</span>
+         <span class="name">color</span>: <span class="name">root</span>.<span class="name">maskColor</span>
+         <span class="name">anchors</span>.right: <span class="name">parent</span>.<span class="name">right</span>
+         <span class="name">anchors</span>.top: <span class="name">parent</span>.<span class="name">top</span>
+         <span class="name">anchors</span>.topMargin: <span class="number">0</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-image.html" translate="no">Image</a></span> {
+         <span class="name">id</span>: <span class="name">arcSegment1</span>
+         <span class="name">anchors</span>.right: <span class="name">parent</span>.<span class="name">right</span>
+         <span class="name">anchors</span>.top: <span class="name">parent</span>.<span class="name">top</span>
+         <span class="name">source</span>: <span class="string">&quot;assets/bigArcSegment1.png&quot;</span>
+         <span class="name">rotation</span>: <span class="number">0</span>
+         <span class="name">transformOrigin</span>: <span class="name">Item</span>.<span class="name">BottomLeft</span>
+         <span class="name">fillMode</span>: <span class="name">Image</span>.<span class="name">PreserveAspectFit</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-rectangle.html" translate="no">Rectangle</a></span> {
+         <span class="name">id</span>: <span class="name">mask4</span>
+         <span class="name">width</span>: <span class="name">arcSegment1</span>.<span class="name">width</span> <span class="operator">+</span> <span class="name">root</span>.<span class="name">borderOffest</span>
+         <span class="name">height</span>: <span class="name">arcSegment1</span>.<span class="name">height</span> <span class="operator">+</span> <span class="name">root</span>.<span class="name">borderOffest</span>
+         <span class="name">opacity</span>: <span class="number">0</span>
+         <span class="name">color</span>: <span class="name">root</span>.<span class="name">maskColor</span>
+         <span class="name">anchors</span>.left: <span class="name">parent</span>.<span class="name">left</span>
+         <span class="name">anchors</span>.top: <span class="name">parent</span>.<span class="name">top</span>
+         <span class="name">anchors</span>.topMargin: <span class="number">0</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-timeline.html" translate="no">Timeline</a></span> {
+         <span class="name">id</span>: <span class="name">timeline</span>
+         <span class="name">endFrame</span>: <span class="number">1000</span>
+         <span class="name">startFrame</span>: <span class="number">0</span>
+         <span class="name">enabled</span>: <span class="number">true</span>
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframegroup.html" translate="no">KeyframeGroup</a></span> {
+             <span class="name">target</span>: <span class="name">arcSegment1</span>
+             <span class="name">property</span>: <span class="string">&quot;rotation&quot;</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: -<span class="number">90</span>
+                 <span class="name">frame</span>: <span class="number">0</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: <span class="number">0</span>
+                 <span class="name">frame</span>: <span class="number">250</span>
+             }
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframegroup.html" translate="no">KeyframeGroup</a></span> {
+             <span class="name">target</span>: <span class="name">arcSegment2</span>
+             <span class="name">property</span>: <span class="string">&quot;rotation&quot;</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: -<span class="number">90</span>
+                 <span class="name">frame</span>: <span class="number">0</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: -<span class="number">90</span>
+                 <span class="name">frame</span>: <span class="number">250</span> <span class="comment">//was 252</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: <span class="number">0</span>
+                 <span class="name">frame</span>: <span class="number">500</span>
+             }
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframegroup.html" translate="no">KeyframeGroup</a></span> {
+             <span class="name">target</span>: <span class="name">arcSegment3</span>
+             <span class="name">property</span>: <span class="string">&quot;rotation&quot;</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: -<span class="number">90</span>
+                 <span class="name">frame</span>: <span class="number">0</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: -<span class="number">90</span>
+                 <span class="name">frame</span>: <span class="number">500</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: <span class="number">0</span>
+                 <span class="name">frame</span>: <span class="number">750</span>
+             }
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframegroup.html" translate="no">KeyframeGroup</a></span> {
+             <span class="name">target</span>: <span class="name">mask4</span>
+             <span class="name">property</span>: <span class="string">&quot;opacity&quot;</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: <span class="number">1</span>
+                 <span class="name">frame</span>: <span class="number">0</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: <span class="number">1</span>
+                 <span class="name">frame</span>: <span class="number">750</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: <span class="number">0</span>
+                 <span class="name">frame</span>: <span class="number">751</span>
+             }
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframegroup.html" translate="no">KeyframeGroup</a></span> {
+             <span class="name">target</span>: <span class="name">arcSegment4</span>
+             <span class="name">property</span>: <span class="string">&quot;rotation&quot;</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: -<span class="number">90</span>
+                 <span class="name">frame</span>: <span class="number">0</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: -<span class="number">90</span>
+                 <span class="name">frame</span>: <span class="number">750</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: <span class="number">0</span>
+                 <span class="name">frame</span>: <span class="number">1000</span>
+             }
+         }
+     }
+ }
+</pre>

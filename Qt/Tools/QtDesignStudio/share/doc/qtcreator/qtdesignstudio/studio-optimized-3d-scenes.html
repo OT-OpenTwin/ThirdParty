@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-optimized-3d-scenes.qdoc -->
+  <title>Creating Optimized 3D Scenes | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Creating Optimized 3D Scenes</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="qtquick-optimizing-designs.html" />
+  <link rel="next" href="studio-implementing-applications.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="qtquick-optimizing-designs.html">Optimizing Designs</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-implementing-applications.html">Implementing Applications</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#the-optimal-3d-scene-example">The Optimal 3D Scene Example</a></li>
+<li class="level2"><a href="#the-high-scene">The High Scene</a></li>
+<li class="level2"><a href="#the-low-scene">The Low Scene</a></li>
+<li class="level2"><a href="#the-combined-scene">The Combined Scene</a></li>
+<li class="level2"><a href="#the-vertex-color-scene">The Vertex Color Scene</a></li>
+<li class="level1"><a href="#optimizing-your-3d-scene">Optimizing Your 3D Scene</a></li>
+<li class="level2"><a href="#scene-graph">Scene Graph</a></li>
+<li class="level2"><a href="#asset-complexity">Asset Complexity</a></li>
+<li class="level2"><a href="#optimizing-cpu-performance">Optimizing CPU Performance</a></li>
+<li class="level2"><a href="#optimizing-model-geometry">Optimizing Model Geometry</a></li>
+<li class="level1"><a href="#best-practices-for-3d-scenes-based-on-use-cases">Best Practices for 3D Scenes Based on Use Cases</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Creating Optimized 3D Scenes</h1>
+<!-- $$$studio-optimized-3d-scenes.html-description -->
+<div class="descr" id="details">
+<p>In Qt Design Studio, you can use various means to create a 3D scene. Your choice of strategy should always depend on the target platform of your scene. The way the content of your scene is authored can have dramatic effects on the runtime performance of your UI. The Optimal 3D Scene described below illustrates four different ways to create a scene. Also see guidelines for <a href="studio-optimized-3d-scenes.html#optimizing-your-3d-scene" translate="no">optimizing the graphics performance of your 3D scene</a> and <a href="studio-optimized-3d-scenes.html#best-practices-for-3d-scenes-based-on-use-cases" translate="no">Best Practices for 3D Scenes Based on Use Cases</a>.</p>
+<h2 id="the-optimal-3d-scene-example">The Optimal 3D Scene Example</h2>
+<p>The <a href="qtdesignstudio-optimal3dscene-example.html" translate="no">Optimal 3D Scene</a> example features four versions of the same kitchen scene that have been created using different strategies: High, Low, Combined, and Vertex Color. The High Scene includes a significantly higher number of objects compared to the other versions of the scene. The Low, Combined and Vertex scenes include less objects since they have been optimized by, for example, combining geometry and baking materials into textures. The following image displays the components in each scene in <a href="qtquick-navigator.html" translate="no">Navigator</a> to illustrate the structural differences between the scenes.</p>
+<p class="centerAlign"><img src="images/studio-kitchen-navigators.png" alt="&quot;Navigators for the four scenes in the Optimal 3D Scene.&quot;" /></p><h3 id="the-high-scene">The High Scene</h3>
+<p class="centerAlign"><img src="images/studio-kitchen-high.png" alt="&quot;The High Scene in the Optimal 3D Scene&quot;" /></p><p>The High scene (1) includes a total of 27 objects. The scene is otherwise similar to the Low scene, but has more details and animated components, such as cabinet doors that can be opened and a latch for the oven.</p>
+<h3 id="the-low-scene">The Low Scene</h3>
+<p class="centerAlign"><img src="images/studio-kitchen-low.png" alt="&quot;The Low Scene in the Optimal 3D Scene&quot;" /></p><p>The Low scene (2) includes a total of 12 objects. Each model, for example cabinets, lamps, plates, and the sink, are separate meshes.</p>
+<h3 id="the-combined-scene">The Combined Scene</h3>
+<p class="centerAlign"><img src="images/studio-kitchen-combined.png" alt="&quot;The Combined Scene in the Optimal 3D Scene&quot;" /></p><p>The Combined scene (3) has all the meshes combined into a single object. All materials are baked into one single texture.</p>
+<h3 id="the-vertex-color-scene">The Vertex Color Scene</h3>
+<p class="centerAlign"><img src="images/studio-kitchen-vertex.png" alt="&quot;The Vertex Color Scene in the Optimal 3D Scene&quot;" /></p><p>The Vertex Color scene (4) has all the meshes combined into a single object, and colors for the mesh are provided from .mesh file's vertex data, which includes one material and no textures.</p>
+<h2 id="optimizing-your-3d-scene">Optimizing Your 3D Scene</h2>
+<p>To optimize the graphics performance of your 3D scene, you should first consider whether you need to animate the 3D objects, lights, camera, or other components in your scene. If not, simplify the scene structure by, for example, combining geometries and baking materials into textures. Ideally, pre-render your 3D image into a 2D image. You should not waste resources by rendering static 3D objects. You should also check if your scene has multiple instances of the same mesh. If so, import only one instance of the mesh, duplicate it in the scene, and use the same material for each duplicate.</p>
+<p>See also the following guidelines related to scene graph, asset complexity, CPU specific optimization, and model geometry.</p>
+<h3 id="scene-graph">Scene Graph</h3>
+<p>The scene graph is the hierarchy of nodes that describe the scene to be rendered.</p>
+<p>In Qt Design Studio, the scene graph is represented by the tree-like view in <b translate="no">Navigator</b>. You can also view the hierarchy of nodes in the <a href="qtquick-text-editor.html" translate="no">Code</a> view. By minimizing the size of the scene graph, you can minimize the effort needed when running the scene. In terms of optimization, you should avoid unnecessary groups and complex hierarchy when possible. Deep hierarchies with complex parenting increase the performance cost.</p>
+<h3 id="asset-complexity">Asset Complexity</h3>
+<p>The performance of your UI or scene may sometimes be bottlenecked at render time. Avoid this by simplifying your assets.</p>
+<p>For 3D models, you should try to use the minimum number of triangles or vertices to achieve the desired result. Also note that smaller images require less memory and render faster.</p>
+<h3 id="optimizing-cpu-performance">Optimizing CPU Performance</h3>
+<p>Rendering objects requires plenty of processing work from the CPU. Processing each component consumes resources, so reducing the visible object count reduces the amount of work required from the CPU.</p>
+<p>To reduce the visible object count:</p>
+<ul>
+<li>Combine objects that are positioned closely and share a texture.<div class="admonition note">
+<p><b>Note: </b>Combining objects that do not share a texture does not increase the CPU performance while running the scene.</p>
+</div>
+</li>
+<li>Use fewer materials by combining separate textures into a single texture atlas (like in the Merged scene in the Kitchen Scene Example).</li>
+<li>Minimize the number of factors that cause objects to be rendered multiple times, for example reflections and shadows.</li>
+</ul>
+<h3 id="optimizing-model-geometry">Optimizing Model Geometry</h3>
+<p>To optimize the geometry of a model:</p>
+<ul>
+<li>Minimize the number of triangles used in the model.</li>
+<li>Minimize the number of UV mapping seams and hard edges created with doubled-up vertices.</li>
+</ul>
+<h2 id="best-practices-for-3d-scenes-based-on-use-cases">Best Practices for 3D Scenes Based on Use Cases</h2>
+<p>The following table summarizes best practices related to optimizing 3D scenes in the form of use cases.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >How to...</th><th >Solution</th></tr></thead>
+<tr valign="top" class="odd"><td >Get best performance from the 3D scene.</td><td >If no animation is required, pre-render your 3D scene into a 2D image.</td></tr>
+<tr valign="top" class="even"><td >Include animation for some of the objects in the scene (for example, to open doors).</td><td >Merge all objects that are static, and export only one of each animated component (for example, each door type).</td></tr>
+<tr valign="top" class="odd"><td >Get best performance with animated camera.</td><td >While using a 2D image is not an option in this case, you should combine all geometry and bake lighting and materials into a single material.</td></tr>
+<tr valign="top" class="even"><td >Get best performance with animated light.</td><td >While using a 2D image is not an option in this case, you should combine all geometry and bake all materials into a single material.</td></tr>
+<tr valign="top" class="odd"><td >Get best performance in a 3D scene where all meshes are separated.</td><td >Use the same material for each instance of the same mesh.</td></tr>
+<tr valign="top" class="even"><td >Disable rendering for one of the meshes during runtime.</td><td >Keep that particular mesh separate but merge the rest of the components.</td></tr>
+<tr valign="top" class="odd"><td >Use baked textures with low memory.</td><td >Bake mesh colors into vertex colors (see the Vertex Color Scene in the example project).</td></tr>
+</table></div>
+</div>
+<!-- @@@studio-optimized-3d-scenes.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="qtquick-optimizing-designs.html">Optimizing Designs</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-implementing-applications.html">Implementing Applications</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

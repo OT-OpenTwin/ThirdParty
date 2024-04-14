@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-debugger.qdoc -->
+  <title>Viewing Modules | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li><a href="creator-overview.html" translate="no">Developing with Qt Creator</a></li>
+<li><a href="creator-debugging.html" translate="no">Debugging</a></li>
+<li><a href="creator-debug-mode.html" translate="no">Debug Mode Views</a></li>
+<li>Viewing Modules</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-threads-view.html" />
+  <link rel="next" href="creator-source-files-view.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-threads-view.html">Viewing Threads</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-source-files-view.html">Viewing Source Files</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#breaking-on-loading-modules-in-cdb">Breaking on Loading Modules in CDB</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Viewing Modules</h1>
+<!-- $$$creator-modules-view.html-description -->
+<div class="descr" id="details">
+<p>The <b translate="no">Modules</b> view displays information that the debugger plugin has about modules included in the application that is being debugged.</p>
+<p>A module is:</p>
+<ul>
+<li>A dynamic link library (<code translate="no">.dll</code>) in Windows</li>
+<li>A shared object (<code translate="no">.so</code>) in Linux</li>
+<li>A dynamic shared library (<code translate="no">.dylib</code>) in macOS</li>
+</ul>
+<p class="centerAlign"><img src="images/qtcreator-debugger-modules.webp" alt="{Modules view}" /></p><p>In addition, the view displays symbols within the modules and indicates where each module was loaded. Right-click column headers to show and hide columns in the view.</p>
+<p>Right-click the view to select the following actions:</p>
+<ul>
+<li>Update the module list</li>
+<li>Show source files for a module</li>
+<li>Show dependencies between modules (Windows only)</li>
+<li>Load symbols for modules</li>
+<li>Examine modules</li>
+<li>Edit module files</li>
+<li>Show symbols in modules</li>
+<li>Show sections in modules</li>
+<li>Set <a href="creator-debugger-preferences.html" translate="no">debugger preferences</a></li>
+</ul>
+<p>By default, the <b translate="no">Modules</b> view is hidden. To show it, select it in <b translate="no">Views</b> on the debugger toolbar.</p>
+<h2 id="breaking-on-loading-modules-in-cdb">Breaking on Loading Modules in CDB</h2>
+<p>When using CDB as debug backend, you can specify that the debugger should break when application modules are loaded or unloaded. To enable breaking for the specified modules, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Debugger</b> &gt; <b translate="no">CDB</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-cdb-options.png" alt="{CDB tab in Debugger preferences}" /></p><p>For more information, see <a href="creator-debugger-preferences.html#specifying-cdb-settings" translate="no">Specifying CDB Settings</a>.</p>
+</div>
+<!-- @@@creator-modules-view.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-threads-view.html">Viewing Threads</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-source-files-view.html">Viewing Source Files</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

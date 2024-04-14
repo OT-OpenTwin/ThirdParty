@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- progressbar.qdoc -->
+  <meta name="description" content="Illustrates how to use timelines to create an animated progress bar.">
+  <title>Progress Bar | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="studioexamples.html" translate="no">Examples</a></li>
+<li>Progress Bar</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<h1 class="title">Progress Bar</h1>
+<pre class="qml" translate="no">
+ <span class="comment">// Copyright (C) 2018 The Qt Company Ltd.</span>
+ <span class="comment">// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause</span>
+
+ import QtQuick 2.9
+ import QtQuick.Timeline 1.0
+
+ <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-item.html" translate="no">Item</a></span> {
+     <span class="name">id</span>: <span class="name">root</span>
+     <span class="name">width</span>: <span class="number">600</span>
+     <span class="name">height</span>: <span class="number">65</span>
+     property <span class="type">alias</span> <span class="name">progress</span>: <span class="name">timeline</span>.<span class="name">currentFrame</span>
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-rectangle.html" translate="no">Rectangle</a></span> {
+         <span class="name">id</span>: <span class="name">pb_back</span>
+         <span class="name">color</span>: <span class="string">&quot;#9f9f9f&quot;</span>
+         <span class="name">radius</span>: <span class="number">4</span>
+         <span class="name">anchors</span>.right: <span class="name">parent</span>.<span class="name">right</span>
+         <span class="name">anchors</span>.rightMargin: <span class="number">0</span>
+         <span class="name">anchors</span>.left: <span class="name">parent</span>.<span class="name">left</span>
+         <span class="name">anchors</span>.leftMargin: <span class="number">0</span>
+         <span class="name">anchors</span>.bottom: <span class="name">parent</span>.<span class="name">bottom</span>
+         <span class="name">anchors</span>.bottomMargin: <span class="number">0</span>
+         <span class="name">anchors</span>.top: <span class="name">parent</span>.<span class="name">top</span>
+         <span class="name">anchors</span>.topMargin: <span class="number">30</span>
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-rectangle.html" translate="no">Rectangle</a></span> {
+             <span class="name">id</span>: <span class="name">pb_front</span>
+             <span class="name">width</span>: <span class="number">200</span>
+             <span class="name">color</span>: <span class="string">&quot;#ffffff&quot;</span>
+             <span class="name">anchors</span>.bottomMargin: <span class="number">5</span>
+             <span class="name">anchors</span>.left: <span class="name">parent</span>.<span class="name">left</span>
+             <span class="name">anchors</span>.leftMargin: <span class="number">5</span>
+             <span class="name">anchors</span>.bottom: <span class="name">parent</span>.<span class="name">bottom</span>
+             <span class="name">anchors</span>.top: <span class="name">parent</span>.<span class="name">top</span>
+             <span class="name">anchors</span>.topMargin: <span class="number">5</span>
+         }
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-text.html" translate="no">Text</a></span> {
+         <span class="name">id</span>: <span class="name">text1</span>
+         <span class="name">color</span>: <span class="string">&quot;#ffffff&quot;</span>
+         <span class="name">text</span>: <span class="name">Math</span>.<span class="name">round</span>(<span class="name">root</span>.<span class="name">progress</span>)
+         <span class="name">font</span>.pixelSize: <span class="number">18</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-timeline.html" translate="no">Timeline</a></span> {
+         <span class="name">id</span>: <span class="name">timeline</span>
+         <span class="name">enabled</span>: <span class="number">true</span>
+         <span class="name">startFrame</span>: <span class="number">0</span>
+         <span class="name">endFrame</span>: <span class="number">100</span>
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframegroup.html" translate="no">KeyframeGroup</a></span> {
+             <span class="name">target</span>: <span class="name">text1</span>
+             <span class="name">property</span>: <span class="string">&quot;color&quot;</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: <span class="string">&quot;#8de98d&quot;</span>
+                 <span class="name">frame</span>: <span class="number">0</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: <span class="string">&quot;#de4f4f&quot;</span>
+                 <span class="name">frame</span>: <span class="number">50</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: <span class="string">&quot;#f0c861&quot;</span>
+                 <span class="name">frame</span>: <span class="number">100</span>
+             }
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframegroup.html" translate="no">KeyframeGroup</a></span> {
+             <span class="name">target</span>: <span class="name">pb_front</span>
+             <span class="name">property</span>: <span class="string">&quot;width&quot;</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: <span class="number">0</span>
+                 <span class="name">frame</span>: <span class="number">0</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: <span class="number">590</span>
+                 <span class="name">frame</span>: <span class="number">100</span>
+             }
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframegroup.html" translate="no">KeyframeGroup</a></span> {
+             <span class="name">target</span>: <span class="name">pb_front</span>
+             <span class="name">property</span>: <span class="string">&quot;color&quot;</span>
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: <span class="string">&quot;#8de98d&quot;</span>
+                 <span class="name">frame</span>: <span class="number">0</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: <span class="string">&quot;#de4f4f&quot;</span>
+                 <span class="name">frame</span>: <span class="number">50</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">value</span>: <span class="string">&quot;#f0c861&quot;</span>
+                 <span class="name">frame</span>: <span class="number">100</span>
+             }
+         }
+     }
+ }
+</pre>

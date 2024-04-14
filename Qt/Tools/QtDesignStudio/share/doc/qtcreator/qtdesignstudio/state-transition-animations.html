@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- StateTransitions.qdoc -->
+  <meta name="description" content="Illustrates how to create animated state transitions.">
+  <title>Animated State Transitions | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="gstutorials.html" translate="no">Tutorials</a></li>
+<li>Animated State Transitions</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#tutorial-assets">Tutorial Assets</a></li>
+<li class="level1"><a href="#running-the-tutorial-project">Running the Tutorial Project</a></li>
+<li class="level1"><a href="#creating-states">Creating States</a></li>
+<li class="level1"><a href="#creating-state-transitions">Creating State Transitions</a></li>
+<li class="level1"><a href="#animating-state-transitions">Animating State Transitions</a></li>
+<li class="level1"><a href="#previewing">Previewing</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Animated State Transitions</h1>
+<!-- $$$state-transition-animations.html-description -->
+<div class="descr" id="details">
+<p class="centerAlign"><img src="images/animated-state-transitions.jpg" alt="" /></p><p>The <i>Animated State Transitions</i> tutorial illustrates how you can animate the transition between <a href="quick-states.html" translate="no">states</a>.</p>
+<p>The starting point of this tutorial is the Car Demo project, you can download it from <a href="https://git.qt.io/public-demos/qtdesign-studio/-/tree/master/tutorial%20projects/animated-state-transition/Start/CarDemo" translate="no">here</a>.</p>
+<p>You can download the completed project from <a href="https://git.qt.io/public-demos/qtdesign-studio/-/tree/master/tutorial%20projects/animated-state-transition/Completed/CarDemo" translate="no">here</a>.</p>
+<p>This tutorial requires that you know the basics of Qt Design Studio, see <a href="studio-getting-started.html" translate="no">Getting Started</a>.</p>
+<h2 id="tutorial-assets">Tutorial Assets</h2>
+<p>All assets you need for this tutorial are included in the Car Demo project.</p>
+<h2 id="running-the-tutorial-project">Running the Tutorial Project</h2>
+<p>To open the tutorial project in Qt Design Studio, open the <i>.qmlproject</i> file located in the root folder of the downloaded project.</p>
+<h2 id="creating-states">Creating States</h2>
+<p>First, you create the different states. In this tutorial, you create four different states with different views of the car in the scene:</p>
+<ul>
+<li>Side view</li>
+<li>Front view</li>
+<li>Back view</li>
+<li>Interior view</li>
+</ul>
+<p>To create the first state:</p>
+<ol class="1" type="1"><li>In the <a href="qtquick-states-view.html" translate="no">States</a> view, select <img src="images/plus.png" alt="" /> .</li>
+<li>Change the name of the new state to <i>side</i>.</li>
+</ol>
+<p>For the <i>side</i> state, you do not need to make any changes to the car model because it is already in side view position.</p>
+<p>Next, create the rest of the states and change the rotation of the car. For the <i>interior</i> state, you also change the position of the camera:</p>
+<ol class="1" type="1"><li>Create a new state and change the name to <i>front</i>.</li>
+<li>In <a href="qtquick-navigator.html" translate="no">Navigator</a>, select <i>car_final</i> and in <a href="qtquick-properties-view.html" translate="no">Properties</a>, set <b translate="no">Transform</b> &gt; <b translate="no">Rotation</b> &gt; <b translate="no">Y</b> to 0.</li>
+<li>Create a new state and change the name to <i>back</i>.</li>
+<li>In <b translate="no">Navigator</b>, select <i>car_final</i> and in <b translate="no">Properties</b>, set <b translate="no">Transform</b> &gt; <b translate="no">Rotation</b> &gt; <b translate="no">Y</b> to 180.</li>
+<li>Create a new state and change the name to <i>interior</i>.</li>
+<li>In <b translate="no">Navigator</b>, select <i>camera1</i> and in <b translate="no">Properties</b>, set <b translate="no">Transform</b> &gt; <b translate="no">Translation</b> &gt; <b translate="no">Z</b> to 20.</li>
+</ol>
+<p class="centerAlign"><img src="images/animated-state-transitions-states.png" alt="" /></p><h2 id="creating-state-transitions">Creating State Transitions</h2>
+<p>With the states created, you need a way to move between the states in the UI. In this tutorial, you create buttons arranged in a column to do this.</p>
+<div class="admonition note">
+<p><b>Note: </b>Ensure that you have the base state selected before you add the buttons.</p>
+</div>
+<p>To add the buttons:</p>
+<ol class="1" type="1"><li>From <a href="quick-components-view.html" translate="no">Components</a>, drag <b translate="no">Column</b> to <i>rectangle</i> in <b translate="no">Navigator</b>.</li>
+<li>In <b translate="no">Navigator</b>, select <i>column</i> and in <b translate="no">Properties</b>, set:<ul>
+<li><b translate="no">Size</b> &gt; <b translate="no">H</b> to 200.</li>
+<li><b translate="no">Spacing</b> to 10.</li>
+</ul>
+</li>
+<li>In <b translate="no">Properties</b>, go to the <b translate="no">Layout</b> tab.</li>
+<li>Select <b translate="no">Anchors</b> &gt; <b translate="no">Bottom</b> and set:<ul>
+<li><b translate="no">Target</b> to parent.</li>
+<li><b translate="no">Margin</b> to 10.</li>
+</ul>
+</li>
+<li>Select <b translate="no">Anchors</b> &gt; <b translate="no">Left</b> and set:<ul>
+<li><b translate="no">Target</b> to parent.</li>
+<li><b translate="no">Margin</b> to 10.</li>
+</ul>
+</li>
+<li>From <b translate="no">Components</b>, drag <b translate="no">Button</b> to <i>column</i> in <b translate="no">Navigator</b>.</li>
+<li>In <b translate="no">Navigator</b>, select <i>button</i> and set <b translate="no">ID</b> to <i>button_side</i>.</li>
+<li>On the <b translate="no">Button</b> tab, set <b translate="no">Text</b> to <i>Side</i>.</li>
+<li>Repeat step 6 to 8 three times to create a total of four buttons. Set the ID for the three last buttons to <i>button_front</i>, <i>button_back</i>, and <i>button_interior</i>. Change the text on the buttons accordingly.</li>
+</ol>
+<p class="centerAlign"><img src="images/state-transition-navigator-buttons.png" alt="" /></p><p>Now, you add the actions to the buttons. Actions determine what happens when you select a button in the application. In this tutorial, you use the buttons to switch between the different states.</p>
+<p>To add actions:</p>
+<ol class="1" type="1"><li>Go to the <b translate="no">Connections</b> view.</li>
+<li>In <b translate="no">Navigator</b>, select <i>button_side</i> and in <b translate="no">Connections</b>, select the <img src="images/plus.png" alt="" /> button to open the connection setup options.</li>
+<li>Set <b translate="no">Signal</b> to <code translate="no">clicked</code>, <b translate="no">Action</b> to <code translate="no">Change State</code>, <b translate="no">State Group</b> to <code translate="no">rectangle</code> and <b translate="no">State</b> to <code translate="no">side</code> in the respective drop-down menus.</li>
+<li>Select the <img src="images/close.png" alt="" /> button to close the connection setup options.</li>
+<li>Repeat steps 2 to 4 for the next three buttons and set them to go to their corresponding states.</li>
+</ol>
+<p class="centerAlign"><img src="images/state-transition-connections.webp" alt="" /></p><p>Now you can preview and try the transitions to see how the UI moves between the states when you select the buttons.</p>
+<p>To preview, select <b>Alt</b> + <b>P</b>.</p>
+<h2 id="animating-state-transitions">Animating State Transitions</h2>
+<p>The final step of this tutorial is to create animations between the states:</p>
+<ol class="1" type="1"><li>Go to <a href="qtquick-transition-editor.html" translate="no">Transitions</a>.</li>
+<li>Select <img src="images/plus.png" alt="" /> .</li>
+<li>In the upper right corner of <b translate="no">Transitions</b>, change the number 2000 to 1000. This sets the length of the animation in milliseconds.</li>
+<li>Drag the left end of the timebar for <i>car_final</i> to the 0 mark in the timeline, and then drag the right end to the 1000 mark.</li>
+<li>Repeat the above step for <i>camera1</i>.</li>
+</ol>
+<p class="centerAlign"><img src="images/state-transition-transitions.png" alt="" /></p><p>This adds the transition and sets the animation durations to 1 second (1000 ms). By default, all properties that have changed between the states are added to the transition and therefor animated. In this case, the properties are Y rotation for the car model and Z position for the camera.</p>
+<h2 id="previewing">Previewing</h2>
+<p>Now you are done. To preview and try the transitions animations, select <b>Alt</b> + <b>P</b>.</p>
+</div>
+<p><b>See also </b><a href="qtquick-states-view.html" translate="no">States</a>, <a href="qtquick-transition-editor.html" translate="no">Transitions</a>, and <a href="quick-states.html" translate="no">Working with States</a>.</p>
+<!-- @@@state-transition-animations.html -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

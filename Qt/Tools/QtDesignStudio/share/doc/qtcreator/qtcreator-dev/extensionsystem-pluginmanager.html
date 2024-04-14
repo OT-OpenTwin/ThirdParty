@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- pluginmanager.cpp -->
+  <meta name="description" content="The PluginManager class implements the core plugin system that manages the plugins, their life cycle, and their registered objects.">
+  <title>PluginManager Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>PluginManager</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+<li class="level2"><a href="#plugins">Plugins</a></li>
+<li class="level2"><a href="#object-pool">Object Pool</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">PluginManager Class</h1>
+<span class="small-subtitle" translate="no">class <a href="extensionsystem.html" translate="no">ExtensionSystem</a>::PluginManager</span>
+<!-- $$$PluginManager-brief -->
+<p>The PluginManager class implements the core plugin system that manages the plugins, their life cycle, and their registered objects. <a href="#details">More...</a></p>
+<!-- @@@PluginManager -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;extensionsystem/pluginmanager.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a></td></tr>
+</table></div>
+<ul>
+<li><a href="extensionsystem-pluginmanager-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#PluginManager" translate="no">PluginManager</a></b>()</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#addObject" translate="no">addObject</a></b>(QObject *<i>obj</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QVector&lt;QObject *&gt; </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#allObjects" translate="no">allObjects</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#arguments" translate="no">arguments</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#argumentsForRestart" translate="no">argumentsForRestart</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#formatOptions" translate="no">formatOptions</a></b>(QTextStream &amp;<i>str</i>, int <i>optionIndentation</i>, int <i>descriptionIndentation</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#formatPluginOptions" translate="no">formatPluginOptions</a></b>(QTextStream &amp;<i>str</i>, int <i>optionIndentation</i>, int <i>descriptionIndentation</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#formatPluginVersions" translate="no">formatPluginVersions</a></b>(QTextStream &amp;<i>str</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> T *</td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#getObject" translate="no">getObject</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> T *</td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#getObject-1" translate="no">getObject</a></b>(Predicate <i>predicate</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QObject *</td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#getObjectByName" translate="no">getObjectByName</a></b>(const QString &amp;<i>name</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::QtcSettings *</td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#globalSettings" translate="no">globalSettings</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#hasError" translate="no">hasError</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ExtensionSystem::PluginManager *</td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#instance" translate="no">instance</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#loadPlugins" translate="no">loadPlugins</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QVector&lt;ExtensionSystem::PluginSpec *&gt; </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#loadQueue" translate="no">loadQueue</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#parseOptions" translate="no">parseOptions</a></b>(const QStringList &amp;<i>args</i>, const QMap&lt;QString, bool&gt; &amp;<i>appOptions</i>, QMap&lt;QString, QString&gt; *<i>foundAppOptions</i>, QString *<i>errorString</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#pluginIID" translate="no">pluginIID</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#pluginPaths" translate="no">pluginPaths</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const QVector&lt;ExtensionSystem::PluginSpec *&gt; </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#plugins" translate="no">plugins</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const QSet&lt;ExtensionSystem::PluginSpec *&gt; </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#pluginsRequiredByPlugin" translate="no">pluginsRequiredByPlugin</a></b>(ExtensionSystem::PluginSpec *<i>spec</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const QSet&lt;ExtensionSystem::PluginSpec *&gt; </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#pluginsRequiringPlugin" translate="no">pluginsRequiringPlugin</a></b>(ExtensionSystem::PluginSpec *<i>spec</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#remoteArguments" translate="no">remoteArguments</a></b>(const QString &amp;<i>serializedArgument</i>, QObject *<i>socket</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#removeObject" translate="no">removeObject</a></b>(QObject *<i>obj</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#serializedArguments" translate="no">serializedArguments</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#setInstallSettings" translate="no">setInstallSettings</a></b>(Utils::QtcSettings *<i>settings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#setPluginIID" translate="no">setPluginIID</a></b>(const QString &amp;<i>iid</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#setPluginPaths" translate="no">setPluginPaths</a></b>(const QStringList &amp;<i>paths</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#setSettings" translate="no">setSettings</a></b>(Utils::QtcSettings *<i>settings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::QtcSettings *</td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#settings" translate="no">settings</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#shutdown" translate="no">shutdown</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ExtensionSystem::PluginSpec *</td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginmanager.html#specForPlugin" translate="no">specForPlugin</a></b>(ExtensionSystem::IPlugin *<i>plugin</i>)</td></tr>
+</table></div>
+<!-- $$$PluginManager-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The plugin manager is used for the following tasks:</p>
+<ul>
+<li>Manage plugins and their state</li>
+<li>Manipulate a <i>common object pool</i></li>
+</ul>
+<h3 id="plugins">Plugins</h3>
+<p>Plugins must derive from the <a href="extensionsystem-iplugin.html" translate="no">IPlugin</a> class and have the IID <code translate="no">&quot;org.qt-project.Qt.QtCreatorPlugin&quot;</code>.</p>
+<p>The plugin manager is used to set a list of file system directories to search for plugins, retrieve information about the state of these plugins, and to load them.</p>
+<p>Usually, the application creates a PluginManager instance and initiates the loading.</p>
+<pre class="cpp" translate="no">
+ <span class="comment">// 'plugins' and subdirs will be searched for plugins</span>
+ PluginManager<span class="operator">::</span>setPluginPaths(<span class="type"><a href="https://doc.qt.io/qt/qstringlist.html" translate="no">QStringList</a></span>(<span class="string">&quot;plugins&quot;</span>));
+ PluginManager<span class="operator">::</span>loadPlugins(); <span class="comment">// try to load all the plugins</span>
+</pre>
+<p>Additionally, it is possible to directly access plugin meta data, instances, and state.</p>
+<h3 id="object-pool">Object Pool</h3>
+<p>Plugins (and everybody else) can add objects to a common <i>pool</i> that is located in the plugin manager. Objects in the pool must derive from <a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a>, there are no other prerequisites. Objects can be retrieved from the object pool via the <a href="extensionsystem-pluginmanager.html#getObject" translate="no">getObject</a>() and <a href="extensionsystem-pluginmanager.html#getObjectByName" translate="no">getObjectByName</a>() functions.</p>
+<p>Whenever the state of the object pool changes, a corresponding signal is emitted by the plugin manager.</p>
+<p>A common usecase for the object pool is that a plugin (or the application) provides an <i>extension point</i> for other plugins, which is a class or interface that can be implemented and added to the object pool. The plugin that provides the extension point looks for implementations of the class or interface in the object pool.</p>
+<pre class="cpp" translate="no">
+ <span class="comment">// Plugin A provides a &quot;MimeTypeHandler&quot; extension point</span>
+ <span class="comment">// in plugin B:</span>
+ MyMimeTypeHandler <span class="operator">*</span>handler <span class="operator">=</span> <span class="keyword">new</span> MyMimeTypeHandler();
+ PluginManager<span class="operator">::</span>instance()<span class="operator">-</span><span class="operator">&gt;</span>addObject(handler);
+ <span class="comment">// In plugin A:</span>
+ MimeTypeHandler <span class="operator">*</span>mimeHandler <span class="operator">=</span>
+     PluginManager<span class="operator">::</span>getObject<span class="operator">&lt;</span>MimeTypeHandler<span class="operator">&gt;</span>();
+</pre>
+<p>The ExtensionSystem::Invoker class template provides <i>syntactic sugar</i> for using <i>soft</i> extension points that may or may not be provided by an object in the pool. This approach neither requires the <i>user</i> plugin being linked against the <i>provider</i> plugin nor a common shared header file. The exposed interface is implicitly given by the invokable functions of the provider object in the object pool.</p>
+<p>The <a href="extensionsystem.html#invoke" translate="no">ExtensionSystem::invoke</a>() function template encapsulates ExtensionSystem::Invoker construction for the common case where the success of the call is not checked.</p>
+<pre class="cpp" translate="no">
+ <span class="comment">// In the &quot;provide&quot; plugin A:</span>
+ <span class="keyword">namespace</span> PluginA {
+ <span class="keyword">class</span> SomeProvider : <span class="keyword">public</span> <span class="type"><a href="https://doc.qt.io/qt/qobject.html#QObject" translate="no">QObject</a></span>
+ {
+     Q_OBJECT
+
+ <span class="keyword">public</span>:
+     Q_INVOKABLE <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> doit(<span class="keyword">const</span> <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> <span class="operator">&amp;</span>msg<span class="operator">,</span> <span class="type">int</span> n) {
+     {
+         <a href="https://doc.qt.io/qt/qtlogging.html#qDebug" translate="no">qDebug</a>() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;I AM DOING IT &quot;</span> <span class="operator">&lt;</span><span class="operator">&lt;</span> msg;
+         <span class="keyword">return</span> <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span><span class="operator">::</span>number(n);
+     }
+ };
+ } <span class="comment">// namespace PluginA</span>
+
+
+ <span class="comment">// In the &quot;user&quot; plugin B:</span>
+ <span class="type">int</span> someFuntionUsingPluginA()
+ {
+     <span class="keyword">using</span> <span class="keyword">namespace</span> ExtensionSystem;
+
+     <span class="type"><a href="https://doc.qt.io/qt/qobject.html#QObject" translate="no">QObject</a></span> <span class="operator">*</span>target <span class="operator">=</span> PluginManager<span class="operator">::</span>getObjectByClassName(<span class="string">&quot;PluginA::SomeProvider&quot;</span>);
+
+     <span class="keyword">if</span> (target) {
+         <span class="comment">// Some random argument.</span>
+         <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> msg <span class="operator">=</span> <span class="string">&quot;REALLY.&quot;</span>;
+
+         <span class="comment">// Plain function call, no return value.</span>
+         invoke<span class="operator">&lt;</span><span class="type">void</span><span class="operator">&gt;</span>(target<span class="operator">,</span> <span class="string">&quot;doit&quot;</span><span class="operator">,</span> msg<span class="operator">,</span> <span class="number">2</span>);
+
+         <span class="comment">// Plain function with no return value.</span>
+         <a href="https://doc.qt.io/qt/qtlogging.html#qDebug" translate="no">qDebug</a>() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;Result: &quot;</span> <span class="operator">&lt;</span><span class="operator">&lt;</span> invoke<span class="operator">&lt;</span><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span><span class="operator">&gt;</span>(target<span class="operator">,</span> <span class="string">&quot;doit&quot;</span><span class="operator">,</span> msg<span class="operator">,</span> <span class="number">21</span>);
+
+         <span class="comment">// Record success of function call with return value.</span>
+         Invoker<span class="operator">&lt;</span><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span><span class="operator">&gt;</span> in1(target<span class="operator">,</span> <span class="string">&quot;doit&quot;</span><span class="operator">,</span> msg<span class="operator">,</span> <span class="number">21</span>);
+         <a href="https://doc.qt.io/qt/qtlogging.html#qDebug" translate="no">qDebug</a>() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;Success: (expected)&quot;</span> <span class="operator">&lt;</span><span class="operator">&lt;</span> in1<span class="operator">.</span>wasSuccessful();
+
+         <span class="comment">// Try to invoke a non-existing function.</span>
+         Invoker<span class="operator">&lt;</span><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span><span class="operator">&gt;</span> in2(target<span class="operator">,</span> <span class="string">&quot;doitWrong&quot;</span><span class="operator">,</span> msg<span class="operator">,</span> <span class="number">22</span>);
+         <a href="https://doc.qt.io/qt/qtlogging.html#qDebug" translate="no">qDebug</a>() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;Success (not expected):&quot;</span> <span class="operator">&lt;</span><span class="operator">&lt;</span> in2<span class="operator">.</span>wasSuccessful();
+
+     } <span class="keyword">else</span> {
+
+         <span class="comment">// We have to cope with plugin A's absence.</span>
+     }
+ };
+</pre>
+<div class="admonition note">
+<p><b>Note: </b>The type of the parameters passed to the <code translate="no">invoke()</code> calls is deduced from the parameters themselves and must match the type of the arguments of the called functions <i>exactly</i>. No conversion or even integer promotions are applicable, so to invoke a function with a <code translate="no">long</code> parameter explicitly, use <code translate="no">long(43)</code> or such.</p>
+</div>
+<div class="admonition note">
+<p><b>Note: </b>The object pool manipulating functions are thread-safe.</p>
+</div>
+</div>
+<!-- @@@PluginManager -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$PluginManager[overload1]$$$PluginManager -->
+<h3 class="fn" translate="no" id="PluginManager">PluginManager::<span class="name">PluginManager</span>()</h3>
+<p>Creates a plugin manager. Should be done only once per application.</p>
+<!-- @@@PluginManager -->
+<!-- $$$addObject[overload1]$$$addObjectQObject* -->
+<h3 class="fn" translate="no" id="addObject"><code translate="no">[static] </code><span class="type">void</span> PluginManager::<span class="name">addObject</span>(<span class="type"><a href="https://doc.qt.io/qt/qobject.html#QObject" translate="no">QObject</a></span> *<i>obj</i>)</h3>
+<p>Adds the object <i translate="no">obj</i> to the object pool, so it can be retrieved again from the pool by type.</p>
+<p>The plugin manager does not do any memory management. Added objects must be removed from the pool and deleted manually by whoever is responsible for the object.</p>
+<p>Emits the <code translate="no">objectAdded()</code> signal.</p>
+<p><b>See also </b><a href="extensionsystem-pluginmanager.html#removeObject" translate="no">PluginManager::removeObject</a>(), <a href="extensionsystem-pluginmanager.html#getObject" translate="no">PluginManager::getObject</a>(), and <a href="extensionsystem-pluginmanager.html#getObjectByName" translate="no">PluginManager::getObjectByName</a>().</p>
+<!-- @@@addObject -->
+<!-- $$$allObjects[overload1]$$$allObjects -->
+<h3 class="fn" translate="no" id="allObjects"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qvector.html" translate="no">QVector</a></span>&lt;<span class="type"><a href="https://doc.qt.io/qt/qobject.html#QObject" translate="no">QObject</a></span> *&gt; PluginManager::<span class="name">allObjects</span>()</h3>
+<p>Retrieves the list of all objects in the pool, unfiltered.</p>
+<p>Usually, clients do not need to call this function.</p>
+<p><b>See also </b><a href="extensionsystem-pluginmanager.html#getObject" translate="no">PluginManager::getObject</a>().</p>
+<!-- @@@allObjects -->
+<!-- $$$arguments[overload1]$$$arguments -->
+<h3 class="fn" translate="no" id="arguments"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qstringlist.html" translate="no">QStringList</a></span> PluginManager::<span class="name">arguments</span>()</h3>
+<p>The arguments left over after parsing (that were neither startup nor plugin arguments). Typically, this will be the list of files to open.</p>
+<!-- @@@arguments -->
+<!-- $$$argumentsForRestart[overload1]$$$argumentsForRestart -->
+<h3 class="fn" translate="no" id="argumentsForRestart"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qstringlist.html" translate="no">QStringList</a></span> PluginManager::<span class="name">argumentsForRestart</span>()</h3>
+<p>The arguments that should be used when automatically restarting the application. This includes plugin manager related options for enabling or disabling plugins, but excludes others, like the arguments returned by <a href="extensionsystem-pluginmanager.html#arguments" translate="no">arguments</a>() and the appOptions passed to the <a href="extensionsystem-pluginmanager.html#parseOptions" translate="no">parseOptions</a>() method.</p>
+<!-- @@@argumentsForRestart -->
+<!-- $$$formatOptions[overload1]$$$formatOptionsQTextStream&intint -->
+<h3 class="fn" translate="no" id="formatOptions"><code translate="no">[static] </code><span class="type">void</span> PluginManager::<span class="name">formatOptions</span>(<span class="type"><a href="https://doc.qt.io/qt/qtextstream.html" translate="no">QTextStream</a></span> &amp;<i>str</i>, <span class="type">int</span> <i>optionIndentation</i>, <span class="type">int</span> <i>descriptionIndentation</i>)</h3>
+<p>Formats the startup options of the plugin manager for command line help with the specified <i translate="no">optionIndentation</i> and <i translate="no">descriptionIndentation</i>. Adds the result to <i translate="no">str</i>.</p>
+<!-- @@@formatOptions -->
+<!-- $$$formatPluginOptions[overload1]$$$formatPluginOptionsQTextStream&intint -->
+<h3 class="fn" translate="no" id="formatPluginOptions"><code translate="no">[static] </code><span class="type">void</span> PluginManager::<span class="name">formatPluginOptions</span>(<span class="type"><a href="https://doc.qt.io/qt/qtextstream.html" translate="no">QTextStream</a></span> &amp;<i>str</i>, <span class="type">int</span> <i>optionIndentation</i>, <span class="type">int</span> <i>descriptionIndentation</i>)</h3>
+<p>Formats the plugin options of the plugin specs for command line help with the specified <i translate="no">optionIndentation</i> and <i translate="no">descriptionIndentation</i>. Adds the result to <i translate="no">str</i>.</p>
+<!-- @@@formatPluginOptions -->
+<!-- $$$formatPluginVersions[overload1]$$$formatPluginVersionsQTextStream& -->
+<h3 class="fn" translate="no" id="formatPluginVersions"><code translate="no">[static] </code><span class="type">void</span> PluginManager::<span class="name">formatPluginVersions</span>(<span class="type"><a href="https://doc.qt.io/qt/qtextstream.html" translate="no">QTextStream</a></span> &amp;<i>str</i>)</h3>
+<p>Formats the version of the plugin specs for command line help and adds it to <i translate="no">str</i>.</p>
+<!-- @@@formatPluginVersions -->
+<!-- $$$getObject[overload1]$$$getObject -->
+<h3 class="fn" translate="no" id="getObject"><code translate="no">[static] </code>template &lt;typename T&gt; <span class="type">T</span> *PluginManager::<span class="name">getObject</span>()</h3>
+<p>Retrieves the object of a given type from the object pool.</p>
+<p>This function uses <code translate="no">qobject_cast</code> to determine the type of an object. If there are more than one objects of the given type in the object pool, this function will arbitrarily choose one of them.</p>
+<p><b>See also </b><a href="extensionsystem-pluginmanager.html#addObject" translate="no">addObject</a>().</p>
+<!-- @@@getObject -->
+<!-- $$$getObject$$$getObjectPredicate -->
+<h3 class="fn" translate="no" id="getObject-1"><code translate="no">[static] </code>template &lt;typename T, typename Predicate&gt; <span class="type">T</span> *PluginManager::<span class="name">getObject</span>(<span class="type">Predicate</span> <i>predicate</i>)</h3>
+<p>Retrieves the object of a given type from the object pool that matches the <i translate="no">predicate</i>.</p>
+<p>This function uses <code translate="no">qobject_cast</code> to determine the type of an object. The predicate must be a function taking T * and returning a bool. If there is more than one object matching the type and predicate, this function will arbitrarily choose one of them.</p>
+<p><b>See also </b><a href="extensionsystem-pluginmanager.html#addObject" translate="no">addObject</a>().</p>
+<!-- @@@getObject -->
+<!-- $$$getObjectByName[overload1]$$$getObjectByNameconstQString& -->
+<h3 class="fn" translate="no" id="getObjectByName"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qobject.html#QObject" translate="no">QObject</a></span> *PluginManager::<span class="name">getObjectByName</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>name</i>)</h3>
+<p>Retrieves one object with <i translate="no">name</i> from the object pool.</p>
+<p><b>See also </b><a href="extensionsystem-pluginmanager.html#addObject" translate="no">addObject</a>().</p>
+<!-- @@@getObjectByName -->
+<!-- $$$globalSettings[overload1]$$$globalSettings -->
+<h3 class="fn" translate="no" id="globalSettings"><code translate="no">[static] </code><span class="type"><a href="utils-qtcsettings.html" translate="no">Utils::QtcSettings</a></span> *PluginManager::<span class="name">globalSettings</span>()</h3>
+<p>Returns the global (user-independent) settings used for information about default disabled plugins.</p>
+<!-- @@@globalSettings -->
+<!-- $$$hasError[overload1]$$$hasError -->
+<h3 class="fn" translate="no" id="hasError"><code translate="no">[static] </code><span class="type">bool</span> PluginManager::<span class="name">hasError</span>()</h3>
+<p>Returns <code translate="no">true</code> if any plugin has errors even though it is enabled. Most useful to call after <a href="extensionsystem-pluginmanager.html#loadPlugins" translate="no">loadPlugins</a>().</p>
+<!-- @@@hasError -->
+<!-- $$$instance[overload1]$$$instance -->
+<h3 class="fn" translate="no" id="instance"><code translate="no">[static] </code><span class="type"><a href="extensionsystem-pluginmanager.html" translate="no">ExtensionSystem::PluginManager</a></span> *PluginManager::<span class="name">instance</span>()</h3>
+<p>Gets the unique plugin manager instance.</p>
+<!-- @@@instance -->
+<!-- $$$loadPlugins[overload1]$$$loadPlugins -->
+<h3 class="fn" translate="no" id="loadPlugins"><code translate="no">[static] </code><span class="type">void</span> PluginManager::<span class="name">loadPlugins</span>()</h3>
+<p>Tries to load all the plugins that were previously found when setting the plugin search paths. The plugin specs of the plugins can be used to retrieve error and state information about individual plugins.</p>
+<p><b>See also </b><a href="extensionsystem-pluginmanager.html#setPluginPaths" translate="no">setPluginPaths</a>() and <a href="extensionsystem-pluginmanager.html#plugins" translate="no">plugins</a>().</p>
+<!-- @@@loadPlugins -->
+<!-- $$$loadQueue[overload1]$$$loadQueue -->
+<h3 class="fn" translate="no" id="loadQueue"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qvector.html" translate="no">QVector</a></span>&lt;<span class="type"><a href="extensionsystem-pluginspec.html" translate="no">ExtensionSystem::PluginSpec</a></span> *&gt; PluginManager::<span class="name">loadQueue</span>()</h3>
+<p>Returns a list of plugins in load order.</p>
+<!-- @@@loadQueue -->
+<!-- $$$parseOptions[overload1]$$$parseOptionsconstQStringList&constQMap<QString,bool>&QMap<QString,QString>*QString* -->
+<h3 class="fn" translate="no" id="parseOptions"><code translate="no">[static] </code><span class="type">bool</span> PluginManager::<span class="name">parseOptions</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstringlist.html" translate="no">QStringList</a></span> &amp;<i>args</i>, const <span class="type"><a href="https://doc.qt.io/qt/qmap.html" translate="no">QMap</a></span>&lt;<span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span>, <span class="type">bool</span>&gt; &amp;<i>appOptions</i>, <span class="type"><a href="https://doc.qt.io/qt/qmap.html" translate="no">QMap</a></span>&lt;<span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span>&gt; *<i>foundAppOptions</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> *<i>errorString</i>)</h3>
+<p>Takes the list of command line options in <i translate="no">args</i> and parses them. The plugin manager itself might process some options itself directly (<code translate="no">-noload &lt;plugin&gt;</code>), and adds options that are registered by plugins to their plugin specs.</p>
+<p>The caller (the application) may register itself for options via the <i translate="no">appOptions</i> list, containing pairs of <i>option string</i> and a bool that indicates whether the option requires an argument. Application options always override any plugin's options.</p>
+<p><i translate="no">foundAppOptions</i> is set to pairs of (<i>option string</i>, <i>argument</i>) for any application options that were found. The command line options that were not processed can be retrieved via the <a href="extensionsystem-pluginmanager.html#arguments" translate="no">arguments</a>() function. If an error occurred (like missing argument for an option that requires one), <i translate="no">errorString</i> contains a descriptive message of the error.</p>
+<p>Returns if there was an error.</p>
+<!-- @@@parseOptions -->
+<!-- $$$pluginIID[overload1]$$$pluginIID -->
+<h3 class="fn" translate="no" id="pluginIID"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> PluginManager::<span class="name">pluginIID</span>()</h3>
+<p>The IID that valid plugins must have.</p>
+<p><b>See also </b><a href="extensionsystem-pluginmanager.html#setPluginIID" translate="no">setPluginIID</a>().</p>
+<!-- @@@pluginIID -->
+<!-- $$$pluginPaths[overload1]$$$pluginPaths -->
+<h3 class="fn" translate="no" id="pluginPaths"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qstringlist.html" translate="no">QStringList</a></span> PluginManager::<span class="name">pluginPaths</span>()</h3>
+<p>The list of paths were the plugin manager searches for plugins.</p>
+<p><b>See also </b><a href="extensionsystem-pluginmanager.html#setPluginPaths" translate="no">setPluginPaths</a>().</p>
+<!-- @@@pluginPaths -->
+<!-- $$$plugins[overload1]$$$plugins -->
+<h3 class="fn" translate="no" id="plugins"><code translate="no">[static] </code>const <span class="type"><a href="https://doc.qt.io/qt/qvector.html" translate="no">QVector</a></span>&lt;<span class="type"><a href="extensionsystem-pluginspec.html" translate="no">ExtensionSystem::PluginSpec</a></span> *&gt; PluginManager::<span class="name">plugins</span>()</h3>
+<p>List of all plugins that have been found in the plugin search paths. This list is valid directly after the <a href="extensionsystem-pluginmanager.html#setPluginPaths" translate="no">setPluginPaths</a>() call. The plugin specifications contain plugin metadata and the current state of the plugins. If a plugin's library has been already successfully loaded, the plugin specification has a reference to the created plugin instance as well.</p>
+<p><b>See also </b><a href="extensionsystem-pluginmanager.html#setPluginPaths" translate="no">setPluginPaths</a>().</p>
+<!-- @@@plugins -->
+<!-- $$$pluginsRequiredByPlugin[overload1]$$$pluginsRequiredByPluginExtensionSystem::PluginSpec* -->
+<h3 class="fn" translate="no" id="pluginsRequiredByPlugin"><code translate="no">[static] </code>const <span class="type"><a href="https://doc.qt.io/qt/qset.html" translate="no">QSet</a></span>&lt;<span class="type"><a href="extensionsystem-pluginspec.html" translate="no">ExtensionSystem::PluginSpec</a></span> *&gt; PluginManager::<span class="name">pluginsRequiredByPlugin</span>(<span class="type"><a href="extensionsystem-pluginspec.html" translate="no">ExtensionSystem::PluginSpec</a></span> *<i>spec</i>)</h3>
+<p>Returns all plugins that <i translate="no">spec</i> requires to be loaded. Recurses into dependencies.</p>
+<!-- @@@pluginsRequiredByPlugin -->
+<!-- $$$pluginsRequiringPlugin[overload1]$$$pluginsRequiringPluginExtensionSystem::PluginSpec* -->
+<h3 class="fn" translate="no" id="pluginsRequiringPlugin"><code translate="no">[static] </code>const <span class="type"><a href="https://doc.qt.io/qt/qset.html" translate="no">QSet</a></span>&lt;<span class="type"><a href="extensionsystem-pluginspec.html" translate="no">ExtensionSystem::PluginSpec</a></span> *&gt; PluginManager::<span class="name">pluginsRequiringPlugin</span>(<span class="type"><a href="extensionsystem-pluginspec.html" translate="no">ExtensionSystem::PluginSpec</a></span> *<i>spec</i>)</h3>
+<p>Returns all plugins that require <i translate="no">spec</i> to be loaded. Recurses into dependencies.</p>
+<!-- @@@pluginsRequiringPlugin -->
+<!-- $$$remoteArguments[overload1]$$$remoteArgumentsconstQString&QObject* -->
+<h3 class="fn" translate="no" id="remoteArguments"><code translate="no">[static] </code><span class="type">void</span> PluginManager::<span class="name">remoteArguments</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>serializedArgument</i>, <span class="type"><a href="https://doc.qt.io/qt/qobject.html#QObject" translate="no">QObject</a></span> *<i>socket</i>)</h3>
+<p>Parses the options encoded in <i translate="no">serializedArgument</i> and passes them on to the respective plugins along with the arguments.</p>
+<p><i translate="no">socket</i> is passed for disconnecting the peer when the operation is done (for example, document is closed) for supporting the <code translate="no">-block</code> flag.</p>
+<!-- @@@remoteArguments -->
+<!-- $$$removeObject[overload1]$$$removeObjectQObject* -->
+<h3 class="fn" translate="no" id="removeObject"><code translate="no">[static] </code><span class="type">void</span> PluginManager::<span class="name">removeObject</span>(<span class="type"><a href="https://doc.qt.io/qt/qobject.html#QObject" translate="no">QObject</a></span> *<i>obj</i>)</h3>
+<p>Emits the <code translate="no">aboutToRemoveObject()</code> signal and removes the object <i translate="no">obj</i> from the object pool.</p>
+<p><b>See also </b><a href="extensionsystem-pluginmanager.html#addObject" translate="no">PluginManager::addObject</a>().</p>
+<!-- @@@removeObject -->
+<!-- $$$serializedArguments[overload1]$$$serializedArguments -->
+<h3 class="fn" translate="no" id="serializedArguments"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> PluginManager::<span class="name">serializedArguments</span>()</h3>
+<p>Serializes plugin options and arguments for sending in a single string via QtSingleApplication: &quot;:myplugin|-option1|-option2|:arguments|argument1|argument2&quot;, as a list of lists started by a keyword with a colon. Arguments are last.</p>
+<p><b>See also </b><a href="extensionsystem-pluginmanager.html#setPluginPaths" translate="no">setPluginPaths</a>().</p>
+<!-- @@@serializedArguments -->
+<!-- $$$setInstallSettings[overload1]$$$setInstallSettingsUtils::QtcSettings* -->
+<h3 class="fn" translate="no" id="setInstallSettings"><code translate="no">[static] </code><span class="type">void</span> PluginManager::<span class="name">setInstallSettings</span>(<span class="type"><a href="utils-qtcsettings.html" translate="no">Utils::QtcSettings</a></span> *<i>settings</i>)</h3>
+<p>Defines the global (user-independent) <i translate="no">settings</i> to use for information about default disabled plugins. Needs to be set before the plugin search path is set with <a href="extensionsystem-pluginmanager.html#setPluginPaths" translate="no">setPluginPaths</a>().</p>
+<!-- @@@setInstallSettings -->
+<!-- $$$setPluginIID[overload1]$$$setPluginIIDconstQString& -->
+<h3 class="fn" translate="no" id="setPluginIID"><code translate="no">[static] </code><span class="type">void</span> PluginManager::<span class="name">setPluginIID</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>iid</i>)</h3>
+<p>Sets the IID that valid plugins must have to <i translate="no">iid</i>. Only plugins with this IID are loaded, others are silently ignored.</p>
+<p>At the moment this must be called before <a href="extensionsystem-pluginmanager.html#setPluginPaths" translate="no">setPluginPaths</a>() is called.</p>
+<p><b>See also </b><a href="extensionsystem-pluginmanager.html#pluginIID" translate="no">pluginIID</a>().</p>
+<!-- @@@setPluginIID -->
+<!-- $$$setPluginPaths[overload1]$$$setPluginPathsconstQStringList& -->
+<h3 class="fn" translate="no" id="setPluginPaths"><code translate="no">[static] </code><span class="type">void</span> PluginManager::<span class="name">setPluginPaths</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstringlist.html" translate="no">QStringList</a></span> &amp;<i>paths</i>)</h3>
+<p>Sets the plugin paths. All the specified <i translate="no">paths</i> and their subdirectory trees are searched for plugins.</p>
+<p><b>See also </b><a href="extensionsystem-pluginmanager.html#pluginPaths" translate="no">pluginPaths</a>() and <a href="extensionsystem-pluginmanager.html#loadPlugins" translate="no">loadPlugins</a>().</p>
+<!-- @@@setPluginPaths -->
+<!-- $$$setSettings[overload1]$$$setSettingsUtils::QtcSettings* -->
+<h3 class="fn" translate="no" id="setSettings"><code translate="no">[static] </code><span class="type">void</span> PluginManager::<span class="name">setSettings</span>(<span class="type"><a href="utils-qtcsettings.html" translate="no">Utils::QtcSettings</a></span> *<i>settings</i>)</h3>
+<p>Defines the user specific <i translate="no">settings</i> to use for information about enabled and disabled plugins. Needs to be set before the plugin search path is set with <a href="extensionsystem-pluginmanager.html#setPluginPaths" translate="no">setPluginPaths</a>().</p>
+<p><b>See also </b><a href="extensionsystem-pluginmanager.html#settings" translate="no">settings</a>().</p>
+<!-- @@@setSettings -->
+<!-- $$$settings[overload1]$$$settings -->
+<h3 class="fn" translate="no" id="settings"><code translate="no">[static] </code><span class="type"><a href="utils-qtcsettings.html" translate="no">Utils::QtcSettings</a></span> *PluginManager::<span class="name">settings</span>()</h3>
+<p>Returns the user specific settings used for information about enabled and disabled plugins.</p>
+<!-- @@@settings -->
+<!-- $$$shutdown[overload1]$$$shutdown -->
+<h3 class="fn" translate="no" id="shutdown"><code translate="no">[static] </code><span class="type">void</span> PluginManager::<span class="name">shutdown</span>()</h3>
+<p>Shuts down and deletes all plugins.</p>
+<!-- @@@shutdown -->
+<!-- $$$specForPlugin[overload1]$$$specForPluginExtensionSystem::IPlugin* -->
+<h3 class="fn" translate="no" id="specForPlugin"><code translate="no">[static] </code><span class="type"><a href="extensionsystem-pluginspec.html" translate="no">ExtensionSystem::PluginSpec</a></span> *PluginManager::<span class="name">specForPlugin</span>(<span class="type"><a href="extensionsystem-iplugin.html" translate="no">ExtensionSystem::IPlugin</a></span> *<i>plugin</i>)</h3>
+<p>Returns the <a href="extensionsystem-pluginspec.html" translate="no">PluginSpec</a> corresponding to <i translate="no">plugin</i>.</p>
+<!-- @@@specForPlugin -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

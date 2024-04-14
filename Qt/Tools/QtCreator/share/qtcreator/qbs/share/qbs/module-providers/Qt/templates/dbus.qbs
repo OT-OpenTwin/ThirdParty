@@ -1,6 +1,5 @@
 import qbs.FileInfo
 import qbs.ModUtils
-import "../QtModule.qbs" as QtModule
 import "dbus.js" as DBus
 
 QtModule {
@@ -23,9 +22,7 @@ QtModule {
             fileTags: ["cpp"]
         }
 
-        prepare: {
-            return DBus.createCommands(product, input, outputs, "-a");
-        }
+        prepare: DBus.createCommands(product, input, outputs, "-a")
     }
 
     Rule {
@@ -41,9 +38,7 @@ QtModule {
             fileTags: ["cpp"]
         }
 
-        prepare: {
-            return DBus.createCommands(product, input, outputs, "-p");
-        }
+        prepare: DBus.createCommands(product, input, outputs, "-p")
     }
 
     architectures: @archs@
@@ -66,7 +61,7 @@ QtModule {
     moduleConfig: @moduleConfig@
 
     cpp.defines: @defines@
-    cpp.includePaths: @includes@
+    cpp.systemIncludePaths: @includes@
     cpp.libraryPaths: @libraryPaths@
 
     @additionalContent@

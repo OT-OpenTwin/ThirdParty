@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtbridge-ps-setup.qdoc -->
+  <title>Setting Up Qt Bridge for Adobe Photoshop | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Setting Up Qt Bridge for Adobe Photoshop</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="psqtbridge.html" />
+  <link rel="next" href="qtbridge-ps-using.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="psqtbridge.html">Exporting Designs from Adobe Photoshop</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtbridge-ps-using.html">Using Qt Bridge for Adobe Photoshop</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#installing-on-windows">Installing on Windows</a></li>
+<li class="level1"><a href="#installing-on-macos">Installing on macOS</a></li>
+<li class="level1"><a href="#enabling-remote-connections">Enabling Remote Connections</a></li>
+<li class="level1"><a href="#running-qt-bridge-for-adobe-photoshop-on-apple-silicon">Running Qt Bridge for Adobe Photoshop on Apple Silicon</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Setting Up Qt Bridge for Adobe Photoshop</h1>
+<!-- $$$qtbridge-ps-setup.html-description -->
+<div class="descr" id="details">
+<p>Qt Bridge for Adobe Photoshop is included in the <a href="https://www.qt.io/pricing" translate="no">Qt Design Studio Enterprise license</a>. You can use Qt Online Installer to have the Qt Bridge for Adobe Photoshop plugin package copied to the following path in your Qt installation folder:</p>
+<ul>
+<li>On Windows: <code translate="no">Tools\QtDesignStudio\photoshop_bridge</code></li>
+<li>On macOS: <code translate="no">QtDesignStudio/photoshop_bridge</code>.</li>
+</ul>
+<p>Qt Bridge for Adobe Photoshop is delivered as an Adobe extension (ZXP) package and requires Adobe Photoshop version 20.0.0, or later to be installed. The Qt Bridge for Adobe Photoshop installation process differs depending on whether you are installing on Windows or macOS.</p>
+<h2 id="installing-on-windows">Installing on Windows</h2>
+<p>To install Qt Bridge for Adobe Photoshop on Windows:</p>
+<ol class="1" type="1"><li>Copy the Qt Bridge for Adobe Photoshop ZXP package from <code translate="no">Qt\Tools\QtDesignStudio\photoshop_bridge</code> to the <code translate="no">Documents</code> directory in your user directory. The <code translate="no">file-name</code> should look similar to: <code translate="no">qt.QtBridge</code>.</li>
+<li>Open Windows PowerShell.</li>
+<li>Enter the following commands, replacing <code translate="no">&lt;bridge-installation-file-name&gt;</code> with the <code translate="no">file-name</code>:<pre class="cpp plain" translate="no">
+ cd &quot;$env:UserProfile\Documents&quot;
+ mv .\&lt;bridge-installation-file-name&gt;.zxp .\&lt;bridge-installation-file-name&gt;.zip
+ expand-archive .\&lt;bridge-installation-file-name&gt;.zip
+ xcopy /E /I .\&lt;bridge-installation-file-name&gt; &quot;$env:APPDATA\Adobe\CEP\extensions\&lt;bridge-installation-file-name&gt;&quot;
+</pre>
+</li>
+</ol>
+<h2 id="installing-on-macos">Installing on macOS</h2>
+<p>To install Qt Bridge for Adobe Photoshop on macOS:</p>
+<ol class="1" type="1"><li>Copy the Qt Bridge for Adobe Photoshop ZXP package from <code translate="no">Qt/QtDesignStudio/photoshop_bridge</code> to your <code translate="no">Documents</code> directory. The <code translate="no">file-name</code> should look similar to: <code translate="no">qt.QtBridge</code>.</li>
+<li>Open Terminal.</li>
+<li>Enter the following commands, replacing <code translate="no">&lt;bridge-installation-file-name&gt;</code> with the <code translate="no">file-name</code>:<pre class="cpp plain" translate="no">
+ cd ~/Documents
+ unzip &lt;bridge-installation-file-name&gt;.zxp -d &lt;bridge-installation-file-name&gt;
+ sudo mkdir -p /Library/Application\ Support/Adobe/CEP/extensions
+ sudo cp -R ./&lt;bridge-installation-file-name&gt; /Library/Application\ Support/Adobe/CEP/extensions
+</pre>
+</li>
+</ol>
+<div class="admonition note">
+<p><b>Note: </b>On macOS Qt Bridge for Adobe Photoshop fails to load when Adobe Photoshop runs natively on an ARM processor (Apple silicon). For more information, see <a href="qtbridge-ps-setup.html#running-qt-bridge-for-adobe-photoshop-on-apple-silicon" translate="no">Running Qt Bridge for Adobe Photoshop on Apple Silicon</a>.</p>
+</div>
+<h2 id="enabling-remote-connections">Enabling Remote Connections</h2>
+<p>To set up Qt Bridge for Adobe Photoshop:</p>
+<ol class="1" type="1"><li>Once the installation is completed, restart Adobe Photoshop to make Qt Bridge for Adobe Photoshop appear in <b translate="no">Window</b> &gt; <b translate="no">Extensions (Legacy)</b>.</li>
+<li>Select <b translate="no">Edit</b> &gt; <b translate="no">Preferences</b> &gt; <b translate="no">General</b> &gt; <b translate="no">Plug-ins</b> to enable a remote connection.</li>
+<li>Select the <b translate="no">Enable Remote Connections</b> check box and enter a password in the <b translate="no">Password</b> field.</li>
+<li>To test that the connection is working properly, start Qt Bridge for Adobe Photoshop and select the settings icon in the top right corner.<p class="centerAlign"><img src="images/qt-bridge-settings.png" alt="" /></p></li>
+<li>In the <b translate="no">Password</b> field, enter the password you entered in Adobe Photoshop and select <b translate="no">Connect</b>.</li>
+<li>In the <b translate="no">Export Path</b> group, select the folder button to specify the location where Qt Bridge for Adobe Photoshop copies the exported files.</li>
+<li>In the <b translate="no">Asset format &amp; scale</b> group, select the default asset format (JPG, PNG, or SVG) and DPI to use for each layer.</li>
+</ol>
+<p>Once the connection is successfully created, Qt Bridge for Adobe Photoshop is ready to use.</p>
+<h2 id="running-qt-bridge-for-adobe-photoshop-on-apple-silicon">Running Qt Bridge for Adobe Photoshop on Apple Silicon</h2>
+<p>If you are using macOS on an ARM processor (Apple silicon), Qt Bridge for Adobe Photoshop may not be listed in Adobe Photoshop under <b translate="no">Window</b> &gt; <b translate="no">Extensions (Legacy)</b>. Run the Adobe Photoshop app in the Rosetta emulation mode. Right click the Adobe Photoshop.app and select <b translate="no">Get info</b> &gt; <b translate="no">Open using Rosetta</b>. Once the app is running in the Rosetta emulation mode, make sure <b translate="no">Preferences</b> &gt; <b translate="no">Plug-ins</b> &gt; <b translate="no">Legacy Extensions</b> is selected.</p>
+</div>
+<!-- @@@qtbridge-ps-setup.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="psqtbridge.html">Exporting Designs from Adobe Photoshop</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtbridge-ps-using.html">Using Qt Bridge for Adobe Photoshop</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

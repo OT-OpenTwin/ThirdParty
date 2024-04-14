@@ -59,10 +59,9 @@ Module {
         }
         prepare: {
             var cmd = new JavaScriptCommand();
-            cmd.description = "Creating " + output.fileName;
+            cmd.description = "creating " + output.fileName;
             cmd.sourceCode = function() {
                 var f = new TextFile(output.filePath, TextFile.WriteOnly);
-                f.writeLine("import qbs");
                 HelperFunctions.writeImportStatements(product, f);
                 f.writeLine("\nModule {");
                 HelperFunctions.writeModuleProperties(project, product, output, f);

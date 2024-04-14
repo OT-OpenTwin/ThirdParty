@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-attributions.qdoc -->
+  <meta name="description" content="BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License">
+  <title>CMake Lexer | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>CMake Lexer</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">CMake Lexer</h1>
+<!-- $$$qtcreator-attribution-cmake-lexer.html-description -->
+<div class="descr" id="details">
+<span id="cmake-lexer"></span><p>The lexer from CMake - Cross Platform Makefile Generator.</p>
+<p>Used by the CMake project manager for parsing CMake files.</p>
+<p>The sources can be found in src/plugins/cmakeprojectmanager/3rdparty/cmake.</p>
+<p><a href="https://gitlab.kitware.com/cmake/cmake.git" translate="no">Project Homepage</a></p>
+<pre class="cpp plain" translate="no">
+ Copyright 2000-2023 Kitware, Inc. and Contributors
+</pre>
+<p>BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License.</p>
+<pre class="cpp plain" translate="no">
+ CMake - Cross Platform Makefile Generator
+ Copyright 2000-2023 Kitware, Inc. and Contributors
+ All rights reserved.
+
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+
+ * Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+
+ * Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+
+ * Neither the name of Kitware, Inc. nor the names of Contributors
+   may be used to endorse or promote products derived from this
+   software without specific prior written permission.
+
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+ ------------------------------------------------------------------------------
+
+ The following individuals and institutions are among the Contributors:
+
+ * Aaron C. Meadows &lt;cmake@shadowguarddev.com&gt;
+ * Adriaan de Groot &lt;groot@kde.org&gt;
+ * Aleksey Avdeev &lt;solo@altlinux.ru&gt;
+ * Alexander Neundorf &lt;neundorf@kde.org&gt;
+ * Alexander Smorkalov &lt;alexander.smorkalov@itseez.com&gt;
+ * Alexey Sokolov &lt;sokolov@google.com&gt;
+ * Alex Merry &lt;alex.merry@kde.org&gt;
+ * Alex Turbov &lt;i.zaufi@gmail.com&gt;
+ * Andreas Pakulat &lt;apaku@gmx.de&gt;
+ * Andreas Schneider &lt;asn@cryptomilk.org&gt;
+ * André Rigland Brodtkorb &lt;Andre.Brodtkorb@ifi.uio.no&gt;
+ * Axel Huebl, Helmholtz-Zentrum Dresden - Rossendorf
+ * Benjamin Eikel
+ * Bjoern Ricks &lt;bjoern.ricks@gmail.com&gt;
+ * Brad Hards &lt;bradh@kde.org&gt;
+ * Christopher Harvey
+ * Christoph Grüninger &lt;foss@grueninger.de&gt;
+ * Clement Creusot &lt;creusot@cs.york.ac.uk&gt;
+ * Daniel Blezek &lt;blezek@gmail.com&gt;
+ * Daniel Pfeifer &lt;daniel@pfeifer-mail.de&gt;
+ * Dawid Wróbel &lt;me@dawidwrobel.com&gt;
+ * Enrico Scholz &lt;enrico.scholz@informatik.tu-chemnitz.de&gt;
+ * Eran Ifrah &lt;eran.ifrah@gmail.com&gt;
+ * Esben Mose Hansen, Ange Optimization ApS
+ * Geoffrey Viola &lt;geoffrey.viola@asirobots.com&gt;
+ * Google Inc
+ * Gregor Jasny
+ * Helio Chissini de Castro &lt;helio@kde.org&gt;
+ * Ilya Lavrenov &lt;ilya.lavrenov@itseez.com&gt;
+ * Insight Software Consortium &lt;insightsoftwareconsortium.org&gt;
+ * Intel Corporation &lt;www.intel.com&gt;
+ * Jan Woetzel
+ * Jordan Williams &lt;jordan@jwillikers.com&gt;
+ * Julien Schueller
+ * Kelly Thompson &lt;kgt@lanl.gov&gt;
+ * Konstantin Podsvirov &lt;konstantin@podsvirov.pro&gt;
+ * Laurent Montel &lt;montel@kde.org&gt;
+ * Mario Bensi &lt;mbensi@ipsquad.net&gt;
+ * Martin Gräßlin &lt;mgraesslin@kde.org&gt;
+ * Mathieu Malaterre &lt;mathieu.malaterre@gmail.com&gt;
+ * Matthaeus G. Chajdas
+ * Matthias Kretz &lt;kretz@kde.org&gt;
+ * Matthias Maennich &lt;matthias@maennich.net&gt;
+ * Michael Hirsch, Ph.D&#x2e; &lt;www.scivision.co&gt;
+ * Michael Stürmer
+ * Miguel A. Figueroa-Villanueva
+ * Mike Durso &lt;rbprogrammer@gmail.com&gt;
+ * Mike Jackson
+ * Mike McQuaid &lt;mike@mikemcquaid.com&gt;
+ * Nicolas Bock &lt;nicolasbock@gmail.com&gt;
+ * Nicolas Despres &lt;nicolas.despres@gmail.com&gt;
+ * Nikita Krupen'ko &lt;krnekit@gmail.com&gt;
+ * NVIDIA Corporation &lt;www.nvidia.com&gt;
+ * OpenGamma Ltd. &lt;opengamma.com&gt;
+ * Patrick Stotko &lt;stotko@cs.uni-bonn.de&gt;
+ * Per Øyvind Karlsen &lt;peroyvind@mandriva.org&gt;
+ * Peter Collingbourne &lt;peter@pcc.me.uk&gt;
+ * Petr Gotthard &lt;gotthard@honeywell.com&gt;
+ * Philip Lowman &lt;philip@yhbt.com&gt;
+ * Philippe Proulx &lt;pproulx@efficios.com&gt;
+ * Raffi Enficiaud, Max Planck Society
+ * Raumfeld &lt;raumfeld.com&gt;
+ * Roger Leigh &lt;rleigh@codelibre.net&gt;
+ * Rolf Eike Beer &lt;eike@sf-mail.de&gt;
+ * Roman Donchenko &lt;roman.donchenko@itseez.com&gt;
+ * Roman Kharitonov &lt;roman.kharitonov@itseez.com&gt;
+ * Ruslan Baratov
+ * Sebastian Holtermann &lt;sebholt@xwmw.org&gt;
+ * Stephen Kelly &lt;steveire@gmail.com&gt;
+ * Sylvain Joubert &lt;joubert.sy@gmail.com&gt;
+ * The Qt Company Ltd.
+ * Thomas Sondergaard &lt;ts@medical-insight.com&gt;
+ * Tobias Hunger &lt;tobias.hunger@qt.io&gt;
+ * Todd Gamblin &lt;tgamblin@llnl.gov&gt;
+ * Tristan Carel
+ * University of Dundee
+ * Vadim Zhukov
+ * Will Dicharry &lt;wdicharry@stellarscience.com&gt;
+
+ See version control history for details of individual contributions.
+
+ The above copyright and license notice applies to distributions of
+ CMake in source and binary form.  Third-party software packages supplied
+ with CMake under compatible licenses provide their own copyright notices
+ documented in corresponding subdirectories or source files.
+
+ ------------------------------------------------------------------------------
+
+ CMake was initially developed by Kitware with the following sponsorship:
+
+  * National Library of Medicine at the National Institutes of Health
+    as part of the Insight Segmentation and Registration Toolkit (ITK).
+
+  * US National Labs (Los Alamos, Livermore, Sandia) ASC Parallel
+    Visualization Initiative.
+
+  * National Alliance for Medical Image Computing (NAMIC) is funded by the
+    National Institutes of Health through the NIH Roadmap for Medical Research,
+    Grant U54 EB005149.
+
+  * Kitware, Inc.
+</pre>
+</div>
+<!-- @@@qtcreator-attribution-cmake-lexer.html -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- coffeemachine.qdoc -->
+  <meta name="description" content="Illustrates how to use the timeline and states to animate transitions in a UI.">
+  <title>Coffee Machine | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="studioexamples.html" translate="no">Examples</a></li>
+<li>Coffee Machine</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#application-flow">Application Flow</a></li>
+<li class="level1"><a href="#using-timelines-to-animate-transitions">Using Timelines to Animate Transitions</a></li>
+<li class="level1"><a href="#using-states-to-move-between-screens">Using States to Move Between Screens</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Coffee Machine</h1>
+<!-- $$$CoffeeMachine-brief -->
+<p>Illustrates how to use the timeline and states to animate transitions in a UI.</p>
+<!-- @@@CoffeeMachine -->
+<!-- $$$CoffeeMachine-description -->
+<div class="descr" id="details">
+<p class="centerAlign"><img src="images/coffee-machine-overview.png" alt="" /></p><p><i>Coffee Machine</i> lets users choose the type of coffee to brew. They can determine the ratio of coffee, hot milk, and milk foam by using sliders. The progress of the brewing process is displayed as an animation. When the coffee is ready, the startup screen appears again.</p>
+<p>The <i>ApplicationFlowForm.ui.qml</i> file contains all the screens in the UI. We use <a href="studio-terms.html#glossary-state" translate="no">states</a> to display the appropriate screen in the viewport and the timeline to animate the <a href="studio-terms.html#glossary-transition" translate="no">transitions</a> between and on the screens.</p>
+<h4 id="application-flow">Application Flow</h4>
+<p>On the startup screen, <i>AnimationFlowForm.ui.qml</i>, users can select from several types of coffee to fill the empty cup. The selection triggers <code translate="no">animation1</code> and <code translate="no">animation2</code> in <i>CoffeeButton.qml</i>.</p>
+<pre class="cpp" translate="no">
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertyanimation.html" translate="no">PropertyAnimation</a></span> {
+         <span class="name">target</span>: <span class="name">glow</span>
+         <span class="name">id</span>: <span class="name">animation1</span>
+         <span class="name">duration</span>: <span class="name">root</span>.<span class="name">duration</span>
+         <span class="name">loops</span>: <span class="number">1</span>
+         <span class="name">from</span>: <span class="number">1.05</span>
+         <span class="name">to</span>: <span class="number">1.2</span>
+         <span class="name">property</span>: <span class="string">&quot;scale&quot;</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-parallelanimation.html" translate="no">ParallelAnimation</a></span> {
+         <span class="name">id</span>: <span class="name">animation2</span>
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-sequentialanimation.html" translate="no">SequentialAnimation</a></span> {
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertyanimation.html" translate="no">PropertyAnimation</a></span> {
+                 <span class="name">target</span>: <span class="name">glow</span>
+                 <span class="name">duration</span>: <span class="name">root</span>.<span class="name">duration</span>
+                 <span class="name">loops</span>: <span class="number">1</span>
+                 <span class="name">from</span>: <span class="number">0.2</span>
+                 <span class="name">to</span>: <span class="number">1.0</span>
+                 <span class="name">property</span>: <span class="string">&quot;opacity&quot;</span>
+             }
+     ...
+</pre>
+<p>Selecting the coffee type triggers the respective <a href="studio-terms.html#glossary-signal" translate="no">signal handler</a> in <i>SideBar.qml</i>, which sets the default mix for the selected coffee type. The following code snippet displays the <code translate="no">cappuccinoButton.onClicked()</code> signal handler:</p>
+<pre class="cpp" translate="no">
+     <span class="name">cappuccinoButton</span>.onClicked: {
+         <span class="name">sideBar</span>.<span class="name">currentCoffee</span> <span class="operator">=</span> <span class="name">qsTr</span>(<span class="string">&quot;Cappuccino&quot;</span>)
+         <span class="name">sideBar</span>.<span class="name">currentFoam</span> <span class="operator">=</span> <span class="number">1</span>
+         <span class="name">sideBar</span>.<span class="name">currentMilk</span> <span class="operator">=</span> <span class="number">7</span>
+         <span class="name">sideBar</span>.<span class="name">currentCoffeeAmount</span> <span class="operator">=</span> <span class="number">3.5</span>
+         <span class="name">sideBar</span>.<span class="name">coffeeSelected</span>()
+     }
+</pre>
+<p>The <code translate="no">sideBar.coffeeSelected()</code> signal sets <code translate="no">applicationFlow.state</code> in <i>ApplicationFlow.qml</i> to <code translate="no">&quot;selection&quot;</code>. We will specify the states later.</p>
+<pre class="cpp" translate="no">
+     <span class="name">choosingCoffee</span>.sideBar.onCoffeeSelected: {
+         <span class="name">applicationFlow</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;selection&quot;</span>
+     }
+</pre>
+<p class="centerAlign"><img src="images/coffee-machine-selection.png" alt="" /></p><p>Clicking <b translate="no">Brew me a cup</b> triggers the <code translate="no">choosingCoffee.brewButtonSelection.onClicked</code> signal handler, which changes the application flow state to <code translate="no">&quot;to settings&quot;</code>:</p>
+<pre class="cpp" translate="no">
+     <span class="name">choosingCoffee</span>.brewButtonSelection.onClicked: {
+         <span class="name">applicationFlow</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;to settings&quot;</span>
+         <span class="name">applicationFlow</span>.<span class="name">choosingCoffee</span>.<span class="name">milkSlider</span>.<span class="name">value</span> <span class="operator">=</span> <span class="name">applicationFlow</span>.<span class="name">choosingCoffee</span>.<span class="name">sideBar</span>.<span class="name">currentMilk</span>
+         <span class="name">applicationFlow</span>.<span class="name">choosingCoffee</span>.<span class="name">sugarSlider</span>.<span class="name">value</span> <span class="operator">=</span> <span class="number">2</span>
+     }
+</pre>
+<p>Users can use the sliders for the amount of milk and sugar to change the default values.</p>
+<p class="centerAlign"><img src="images/coffee-machine-modify.png" alt="" /></p><p>Clicking <b translate="no">Brew</b> triggers the <code translate="no">choosingCoffee.brewButton.onClicked()</code> signal handler, which sets the application flow state to <code translate="no">&quot;to empty cup&quot;</code>.</p>
+<pre class="cpp" translate="no">
+     <span class="name">choosingCoffee</span>.brewButton.onClicked: {
+         <span class="name">applicationFlow</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;to empty cup&quot;</span>
+     }
+</pre>
+<p class="centerAlign"><img src="images/coffee-machine-emptycup.png" alt="" /></p><p>Clicking on <b translate="no">Continue</b> triggers the <code translate="no">emptyCup.continueButton.onClicked</code> signal handler, which sets the application flow status to <code translate="no">&quot;to brewing&quot;</code>.</p>
+<pre class="cpp" translate="no">
+     <span class="name">emptyCup</span>.continueButton.onClicked: {
+         <span class="name">applicationFlow</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;to brewing&quot;</span>
+         <span class="name">brewing</span>.<span class="name">coffeeName</span> <span class="operator">=</span> <span class="name">choosingCoffee</span>.<span class="name">sideBar</span>.<span class="name">currentCoffee</span>
+         <span class="name">brewing</span>.<span class="name">foamAmount</span> <span class="operator">=</span> <span class="name">choosingCoffee</span>.<span class="name">sideBar</span>.<span class="name">currentFoam</span>
+         <span class="name">brewing</span>.<span class="name">milkAmount</span> <span class="operator">=</span> <span class="name">applicationFlow</span>.<span class="name">choosingCoffee</span>.<span class="name">milkSlider</span>.<span class="name">value</span>
+         <span class="name">brewing</span>.<span class="name">coffeeAmount</span> <span class="operator">=</span> <span class="name">choosingCoffee</span>.<span class="name">sideBar</span>.<span class="name">currentCoffeeAmount</span>
+         <span class="name">brewing</span>.<span class="name">start</span>()
+     }
+</pre>
+<p>When the coffee is ready, the <code translate="no">brewing.onFinished</code> signal handler is triggered. It sets the application flow status to <code translate="no">&quot;reset&quot;</code>, so that the application returns to the startup screen.</p>
+<h4 id="using-timelines-to-animate-transitions">Using Timelines to Animate Transitions</h4>
+<p>The Coffee Machine application screens for choosing coffee, empty cup, and brewing each use custom components specified in separate <a href="creator-quick-ui-forms.html" translate="no">UI files</a> (ui.qml).</p>
+<p>We use the <a href="qtquick-timeline-view.html" translate="no">Timeline</a> view to animate the transitions between the screens during the application flow in <i>ApplicationFlowForm.ui.qml</i>.</p>
+<p class="centerAlign"><img src="images/coffee-machine-timeline.png" alt="" /></p><p>Our viewport contains 200 frames, so we select the <img src="images/plus.png" alt="" /> &quot;Plus button&quot; button to add a 1200-frame timeline to the root component. We use the default values for all other fields.</p>
+<p>To start recording the transition from the startup screen to the coffee selection screen on the timeline, we select <i>choosingCoffee</i> in <a href="qtquick-navigator.html" translate="no">Navigator</a>. We check that the playhead is at frame 0, and then select the <img src="images/recordfill.png" alt="" /> (<b translate="no">Auto Key (K)</b>) button (or press <b>k</b>).</p>
+<p>At frame 0, we set the X coordinate to 0 in <a href="qtquick-properties-view.html" translate="no">Properties</a> &gt; <b translate="no">Geometry - 2D</b> &gt; <b translate="no">Position</b>. We then move the playhead to 400 frames and set the X coordinate to a negative value.</p>
+<p class="centerAlign"><img src="images/coffee-machine-properties.png" alt="" /></p><p>When we deselect the record button to stop recording the timeline, the new timeline appears in the view.</p>
+<p>For more information about using the timeline, see <a href="studio-timeline.html" translate="no">Creating Timeline Animations</a>.</p>
+<h4 id="using-states-to-move-between-screens">Using States to Move Between Screens</h4>
+<p>We use the <a href="qtquick-states-view.html" translate="no">States</a> view to determine the contents of the viewport. The animations are run when moving from one state to another.</p>
+<p class="centerAlign"><img src="images/coffee-machine-states.png" alt="" /></p><p>We create the states by moving from viewport to viewport in <i>ApplicationFlowForm.ui.qml</i> and selecting <b translate="no">Create New State</b> in the <b translate="no">States</b> view.</p>
+<p>We also create states for animations that are run when moving to the <code translate="no">&quot;settings&quot;</code> and <code translate="no">&quot;selection&quot;</code> states.</p>
+<p>We then return to the <b translate="no">Timeline</b> view and select <img src="images/animation.png" alt="" /> &quot;Timeline Settings button&quot; to open the <b translate="no">Timeline Settings</b> dialog. We select the <b translate="no">Add</b> button to create animations for each part of the timeline. Therefore, the start and end frame of each animation are important, whereas their duration is not.</p>
+<p class="centerAlign"><img src="images/coffee-machine-timeline-settings.png" alt="" /></p><p>We set the start frame for the <code translate="no">&quot;selection&quot;</code> state to 400 and the end frame to 200 because we are moving back on the timeline to display the selection sidebar.</p>
+<p>In the <b translate="no">Transition to state</b> field, we select the state to switch to when the animation ends. In the lower part of the dialog, we bind the states that don't have animations to fixed frames.</p>
+<p>Files:</p>
+<ul>
+<li><a href="qtdesignstudio-coffeemachine-applicationflow-qml.html" translate="no">CoffeeMachine/ApplicationFlow.qml</a></li>
+<li><a href="qtdesignstudio-coffeemachine-coffeebutton-qml.html" translate="no">CoffeeMachine/CoffeeButton.qml</a></li>
+<li><a href="qtdesignstudio-coffeemachine-coffeemachine-qmlproject.html" translate="no">CoffeeMachine/CoffeeMachine.qmlproject</a></li>
+<li><a href="qtdesignstudio-coffeemachine-sidebar-qml.html" translate="no">CoffeeMachine/SideBar.qml</a></li>
+</ul>
+</div>
+<!-- @@@CoffeeMachine -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

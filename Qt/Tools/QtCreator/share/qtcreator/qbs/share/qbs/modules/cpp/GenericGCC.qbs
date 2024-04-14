@@ -30,6 +30,7 @@
 
 import qbs.File
 import qbs.FileInfo
+import qbs.Host
 import qbs.ModUtils
 import qbs.PathTools
 import qbs.Probes
@@ -38,11 +39,14 @@ import qbs.TextFile
 import qbs.Utilities
 import qbs.UnixUtils
 import qbs.WindowsUtils
+import 'cpp.js' as Cpp
 import 'gcc.js' as Gcc
 
 CppModule {
-    condition: qbs.toolchain && qbs.toolchain.contains("gcc")
+    condition: qbs.toolchain && qbs.toolchain.includes("gcc")
     priority: -100
+
+    Depends { name: "codesign" }
 
     Probes.GccBinaryProbe {
         id: compilerPathProbe
@@ -114,9 +118,14 @@ CppModule {
     compilerFrameworkPaths: gccProbe.frameworkPaths
     compilerLibraryPaths: gccProbe.libraryPaths
 
-    property bool compilerHasTargetOption: qbs.toolchain.contains("clang")
+    staticLibraryPrefix: "lib"
+    staticLibrarySuffix: ".a"
+
+    precompiledHeaderSuffix: ".gch"
+
+    property bool compilerHasTargetOption: qbs.toolchain.includes("clang")
                                            && Utilities.versionCompare(compilerVersion, "3.1") >= 0
-    property bool assemblerHasTargetOption: qbs.toolchain.contains("xcode")
+    property bool assemblerHasTargetOption: qbs.toolchain.includes("xcode")
                                             && Utilities.versionCompare(compilerVersion, "7") >= 0
     property string target: targetArch
                             ? [targetArch, targetVendor, targetSystem, targetAbi].join("-")
@@ -131,37 +140,21 @@ CppModule {
     property string toolchainPrefix: compilerPathProbe.found
                                      ? compilerPathProbe.tcPrefix
                                      : undefined
-    property string toolchainInstallPath: compilerPathProbe.found ? compilerPathProbe.path
-                                                                  : undefined
+    toolchainInstallPath: compilerPathProbe.found ? compilerPathProbe.path : undefined
     property string binutilsPath: binutilsProbe.found ? binutilsProbe.path : toolchainInstallPath
 
-    assemblerName: 'as'
+    assemblerName: 'as' + compilerExtension
     compilerName: cxxCompilerName
-    linkerName: 'ld'
-    property string archiverName: 'ar'
-    property string nmName: 'nm'
-    property string objcopyName: "objcopy"
-    property string stripName: "strip"
-    property string dsymutilName: "dsymutil"
+    linkerName: 'ld' + compilerExtension
+    property string archiverName: 'ar' + compilerExtension
+    property string nmName: 'nm' + compilerExtension
+    property string objcopyName: "objcopy" + compilerExtension
+    property string stripName: "strip" + compilerExtension
+    property string dsymutilName: "dsymutil" + compilerExtension
     property string lipoName
     property string sysroot: qbs.sysroot
     property string syslibroot: sysroot
     property stringList sysrootFlags: sysroot ? ["--sysroot=" + sysroot] : []
-
-    property string linkerMode: "automatic"
-    PropertyOptions {
-        name: "linkerMode"
-        allowedValues: ["automatic", "manual"]
-        description: "Controls whether to automatically use an appropriate compiler frontend "
-            + "in place of the system linker when linking binaries. The default is \"automatic\", "
-            + "which chooses either the C++ compiler, C compiler, or system linker specified by "
-            + "the linkerName/linkerPath properties, depending on the type of object files "
-            + "present on the linker command line. \"manual\" allows you to explicitly specify "
-            + "the linker using the linkerName/linkerPath properties, and allows linker flags "
-            + "passed to the linkerFlags and platformLinkerFlags properties to be escaped "
-            + "manually (using -Wl or -Xlinker) instead of automatically based on the selected "
-            + "linker."
-    }
 
     property string exportedSymbolsCheckMode: "ignore-undefined"
     PropertyOptions {
@@ -177,7 +170,7 @@ CppModule {
     property string linkerVariant
     PropertyOptions {
         name: "linkerVariant"
-        allowedValues: ["bfd", "gold", "lld"]
+        allowedValues: ["bfd", "gold", "lld", "mold"]
         description: "Allows to specify the linker variant. Maps to gcc's and clang's -fuse-ld "
                      + "option."
     }
@@ -189,10 +182,9 @@ CppModule {
     property string toolchainPathPrefix: Gcc.pathPrefix(toolchainInstallPath, toolchainPrefix)
     property string binutilsPathPrefix: Gcc.pathPrefix(binutilsPath, toolchainPrefix)
 
-    property string compilerExtension: qbs.hostOS.contains("windows") ? ".exe" : ""
-    property string cCompilerName: (qbs.toolchain.contains("clang") ? "clang" : "gcc")
+    property string cCompilerName: (qbs.toolchain.includes("clang") ? "clang" : "gcc")
                                    + compilerExtension
-    property string cxxCompilerName: (qbs.toolchain.contains("clang") ? "clang++" : "g++")
+    property string cxxCompilerName: (qbs.toolchain.includes("clang") ? "clang++" : "g++")
                                      + compilerExtension
 
     compilerPathByLanguage: ({
@@ -216,29 +208,32 @@ CppModule {
     property stringList dsymutilFlags
 
     property bool alwaysUseLipo: false
-    property string includeFlag: "-I"
-    property string systemIncludeFlag: "-isystem"
+    defineFlag: "-D"
+    includeFlag: "-I"
+    systemIncludeFlag: "-isystem"
+    preincludeFlag: "-include"
+    libraryPathFlag: "-L"
+    linkerScriptFlag: "-T"
 
     readonly property bool shouldCreateSymlinks: {
-        return createSymlinks && internalVersion && ["macho", "elf"].contains(cpp.imageFormat);
+        return createSymlinks && internalVersion && ["macho", "elf"].includes(imageFormat);
     }
+
+    readonly property bool shouldSignArtifacts: codesign._canSignArtifacts
+                                                && codesign.enableCodeSigning
+                                                // codesigning is done during the lipo step
+                                                && !product.multiplexed
 
     property string internalVersion: {
         if (product.version === undefined)
             return undefined;
 
-        if (!Gcc.isNumericProductVersion(product.version)) {
-            // Dynamic library version numbers like "A" or "B" are common on Apple platforms, so
-            // don't restrict the product version to a componentized version number here.
-            if (cpp.imageFormat === "macho")
-                return product.version;
-
-            throw("product.version must be a string in the format x[.y[.z[.w]] "
-                  + "where each component is an integer");
-        }
+        var coreVersion = product.version.match("^([0-9]+\.){0,3}[0-9]+");
+        if (!coreVersion)
+            return undefined;
 
         var maxVersionParts = 3;
-        var versionParts = product.version.split('.').slice(0, maxVersionParts);
+        var versionParts = coreVersion[0].split('.').slice(0, maxVersionParts);
 
         // pad if necessary
         for (var i = versionParts.length; i < maxVersionParts; ++i)
@@ -246,27 +241,28 @@ CppModule {
 
         return versionParts.join('.');
     }
+
     property string soVersion: {
-        var v = internalVersion;
-        if (!Gcc.isNumericProductVersion(v))
+        if (!internalVersion)
             return "";
-        return v.split('.')[0];
+
+        return internalVersion.split('.')[0];
     }
 
     property var buildEnv: {
         var env = {};
-        if (qbs.toolchain.contains("mingw"))
-            env.PATH = [toolchainInstallPath]; // For libwinpthread etc
+        if (qbs.toolchain.includes("mingw"))
+            env.PATH = toolchainInstallPath; // For libwinpthread etc
         return env;
     }
 
     exceptionHandlingModel: {
-        if (qbs.toolchain.contains("mingw")) {
+        if (qbs.toolchain.includes("mingw")) {
             // https://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html claims
             // __USING_SJLJ_EXCEPTIONS__ is defined as 1 when using SJLJ exceptions, but there don't
             // seem to be defines for the other models, so use the presence of the DLLs for now.
             var prefix = toolchainInstallPath;
-            if (!qbs.hostOS.contains("windows"))
+            if (!Host.os().includes("windows"))
                 prefix = FileInfo.joinPaths(toolchainInstallPath, "..", "lib", "gcc",
                                             toolchainPrefix,
                                             [compilerVersionMajor, compilerVersionMinor].join("."));
@@ -318,7 +314,7 @@ CppModule {
         if (gccProbe.targetPlatform) {
             // Can't differentiate Darwin OSes at the compiler level alone
             if (gccProbe.targetPlatform === "darwin"
-                    ? !qbs.targetOS.contains("darwin")
+                    ? !qbs.targetOS.includes("darwin")
                     : qbs.targetPlatform !== gccProbe.targetPlatform)
                 isWrongTriple = true;
         } else if (qbs.targetPlatform) {
@@ -355,7 +351,7 @@ CppModule {
         var validateFlagsFunction = function (value) {
             if (value) {
                 for (var i = 0; i < value.length; ++i) {
-                    if (["-target", "-triple", "-arch"].contains(value[i]))
+                    if (["-target", "-triple", "-arch"].includes(value[i]))
                         return false;
                 }
             }
@@ -405,31 +401,36 @@ CppModule {
         condition: product.cpp.shouldLink
         multiplex: true
         inputs: {
-            var tags = ["obj", "linkerscript", "versionscript"];
+            var tags = ["obj", "res", "linkerscript", "versionscript"];
             if (product.bundle && product.bundle.embedInfoPlist
-                    && product.qbs.targetOS.contains("darwin")) {
+                    && product.qbs.targetOS.includes("darwin")) {
                 tags.push("aggregate_infoplist");
             }
             return tags;
         }
         inputsFromDependencies: ["dynamiclibrary_symbols", "staticlibrary", "dynamiclibrary_import"]
 
-        outputFileTags: [
-            "bundle.input",
-            "dynamiclibrary", "dynamiclibrary_symlink", "dynamiclibrary_symbols", "debuginfo_dll",
-            "debuginfo_bundle","dynamiclibrary_import", "debuginfo_plist",
-        ]
+        outputFileTags: {
+            var tags = ["bundle.input", "dynamiclibrary", "dynamiclibrary_symlink",
+                        "dynamiclibrary_symbols", "debuginfo_dll", "debuginfo_bundle",
+                        "dynamiclibrary_import", "debuginfo_plist"];
+            if (shouldSignArtifacts)
+                tags.push("codesign.signed_artifact");
+            return tags;
+        }
         outputArtifacts: {
             var artifacts = [{
-                filePath: product.destinationDirectory + "/"
-                          + PathTools.dynamicLibraryFilePath(product),
-                fileTags: ["bundle.input", "dynamiclibrary"],
+                filePath: FileInfo.joinPaths(product.destinationDirectory,
+                                             PathTools.dynamicLibraryFilePath(product)),
+                fileTags: ["bundle.input", "dynamiclibrary"]
+                        .concat(product.cpp.shouldSignArtifacts
+                                ? ["codesign.signed_artifact"] : []),
                 bundle: {
-                    _bundleFilePath: product.destinationDirectory + "/"
-                                     + PathTools.bundleExecutableFilePath(product)
+                    _bundleFilePath: FileInfo.joinPaths(product.destinationDirectory,
+                                                        PathTools.bundleExecutableFilePath(product))
                 }
             }];
-            if (product.qbs.toolchain.contains("mingw")) {
+            if (product.cpp.imageFormat === "pe") {
                 artifacts.push({
                     fileTags: ["dynamiclibrary_import"],
                     filePath: FileInfo.joinPaths(product.destinationDirectory,
@@ -447,12 +448,12 @@ CppModule {
             }
 
             if (product.cpp.shouldCreateSymlinks && (!product.bundle || !product.bundle.isBundle)) {
-                var maxVersionParts = Gcc.isNumericProductVersion(product.version) ? 3 : 1;
+                var maxVersionParts = product.cpp.internalVersion ? 3 : 1;
                 for (var i = 0; i < maxVersionParts; ++i) {
                     var symlink = {
-                        filePath: product.destinationDirectory + "/"
-                                  + PathTools.dynamicLibraryFilePath(product, undefined, undefined,
-                                                                     i),
+                        filePath: FileInfo.joinPaths(product.destinationDirectory,
+                                                     PathTools.dynamicLibraryFilePath(
+                                                         product, undefined, undefined, i)),
                         fileTags: ["dynamiclibrary_symlink"]
                     };
                     if (i > 0 && artifacts[i-1].filePath == symlink.filePath)
@@ -465,16 +466,14 @@ CppModule {
             return artifacts;
         }
 
-        prepare: {
-            return Gcc.prepareLinker.apply(Gcc, arguments);
-        }
+        prepare: Gcc.prepareLinker.apply(Gcc, arguments)
     }
 
     Rule {
         name: "staticLibraryLinker"
         condition: product.cpp.shouldLink
         multiplex: true
-        inputs: ["obj", "linkerscript"]
+        inputs: ["obj", "res", "linkerscript"]
         inputsFromDependencies: ["dynamiclibrary_symbols", "dynamiclibrary_import", "staticlibrary"]
 
         outputFileTags: ["bundle.input", "staticlibrary", "c_staticlibrary", "cpp_staticlibrary"]
@@ -484,9 +483,9 @@ CppModule {
             var objCount = objs ? objs.length : 0;
             for (var i = 0; i < objCount; ++i) {
                 var ft = objs[i].fileTags;
-                if (ft.contains("c_obj"))
+                if (ft.includes("c_obj"))
                     tags.push("c_staticlibrary");
-                if (ft.contains("cpp_obj"))
+                if (ft.includes("cpp_obj"))
                     tags.push("cpp_staticlibrary");
             }
             return [{
@@ -504,6 +503,8 @@ CppModule {
             var args = ['rcs', output.filePath];
             for (var i in inputs.obj)
                 args.push(inputs.obj[i].filePath);
+            for (var i in inputs.res)
+                args.push(inputs.res[i].filePath);
             var cmd = new Command(product.cpp.archiverPath, args);
             cmd.description = 'creating ' + output.fileName;
             cmd.highlight = 'linker'
@@ -518,22 +519,29 @@ CppModule {
         condition: product.cpp.shouldLink
         multiplex: true
         inputs: {
-            var tags = ["obj", "linkerscript"];
+            var tags = ["obj", "res", "linkerscript"];
             if (product.bundle && product.bundle.embedInfoPlist
-                    && product.qbs.targetOS.contains("darwin")) {
+                    && product.qbs.targetOS.includes("darwin")) {
                 tags.push("aggregate_infoplist");
             }
             return tags;
         }
         inputsFromDependencies: ["dynamiclibrary_symbols", "dynamiclibrary_import", "staticlibrary"]
 
-        outputFileTags: ["bundle.input", "loadablemodule", "debuginfo_loadablemodule",
-                         "debuginfo_bundle","debuginfo_plist"]
+        outputFileTags: {
+            var tags = ["bundle.input", "loadablemodule", "debuginfo_loadablemodule",
+                        "debuginfo_bundle", "debuginfo_plist"];
+            if (shouldSignArtifacts)
+                tags.push("codesign.signed_artifact");
+            return tags;
+        }
         outputArtifacts: {
             var app = {
                 filePath: FileInfo.joinPaths(product.destinationDirectory,
                                              PathTools.loadableModuleFilePath(product)),
-                fileTags: ["bundle.input", "loadablemodule"],
+                fileTags: ["bundle.input", "loadablemodule"]
+                        .concat(product.cpp.shouldSignArtifacts
+                                ? ["codesign.signed_artifact"] : []),
                 bundle: {
                     _bundleFilePath: FileInfo.joinPaths(product.destinationDirectory,
                                                         PathTools.bundleExecutableFilePath(product))
@@ -546,9 +554,7 @@ CppModule {
             return artifacts;
         }
 
-        prepare: {
-            return Gcc.prepareLinker.apply(Gcc, arguments);
-        }
+        prepare: Gcc.prepareLinker.apply(Gcc, arguments)
     }
 
     Rule {
@@ -556,22 +562,30 @@ CppModule {
         condition: product.cpp.shouldLink
         multiplex: true
         inputs: {
-            var tags = ["obj", "linkerscript"];
+            var tags = ["obj", "res", "linkerscript"];
             if (product.bundle && product.bundle.embedInfoPlist
-                    && product.qbs.targetOS.contains("darwin")) {
+                    && product.qbs.targetOS.includes("darwin")) {
                 tags.push("aggregate_infoplist");
             }
             return tags;
         }
         inputsFromDependencies: ["dynamiclibrary_symbols", "dynamiclibrary_import", "staticlibrary"]
 
-        outputFileTags: ["bundle.input", "application", "debuginfo_app","debuginfo_bundle",
-                         "debuginfo_plist"]
+        outputFileTags: {
+            var tags = ["bundle.input", "application", "debuginfo_app", "debuginfo_bundle",
+                        "debuginfo_plist"];
+            if (shouldSignArtifacts)
+                tags.push("codesign.signed_artifact");
+            if (generateLinkerMapFile)
+                tags.push("mem_map");
+            return tags;
+        }
         outputArtifacts: {
             var app = {
                 filePath: FileInfo.joinPaths(product.destinationDirectory,
                                              PathTools.applicationFilePath(product)),
-                fileTags: ["bundle.input", "application"],
+                fileTags: ["bundle.input", "application"].concat(
+                    product.cpp.shouldSignArtifacts ? ["codesign.signed_artifact"] : []),
                 bundle: {
                     _bundleFilePath: FileInfo.joinPaths(product.destinationDirectory,
                                                         PathTools.bundleExecutableFilePath(product))
@@ -580,12 +594,17 @@ CppModule {
             var artifacts = [app];
             if (!product.aggregate)
                 artifacts = artifacts.concat(Gcc.debugInfoArtifacts(product, undefined, "app"));
+            if (product.cpp.generateLinkerMapFile) {
+                artifacts.push({
+                    filePath: FileInfo.joinPaths(product.destinationDirectory,
+                                                 product.targetName + product.cpp.linkerMapSuffix),
+                    fileTags: ["mem_map"]
+                });
+            }
             return artifacts;
         }
 
-        prepare: {
-            return Gcc.prepareLinker.apply(Gcc, arguments);
-        }
+        prepare: Gcc.prepareLinker.apply(Gcc, arguments)
     }
 
     Rule {
@@ -593,94 +612,53 @@ CppModule {
         inputs: ["cpp", "c", "objcpp", "objc", "asm_cpp"]
         auxiliaryInputs: ["hpp"]
         explicitlyDependsOn: ["c_pch", "cpp_pch", "objc_pch", "objcpp_pch"]
-
-        outputFileTags: ["obj", "c_obj", "cpp_obj", "intermediate_obj"]
-        outputArtifacts: {
-            var tags;
-            if (input.fileTags.contains("cpp_intermediate_object"))
-                tags = ["intermediate_obj"];
-            else
-                tags = ["obj"];
-            if (inputs.c || inputs.objc)
-                tags.push("c_obj");
-            if (inputs.cpp || inputs.objcpp)
-                tags.push("cpp_obj");
-            return [{
-                fileTags: tags,
-                filePath: FileInfo.joinPaths(Utilities.getHash(input.baseDir),
-                                             input.fileName + ".o")
-            }];
-        }
-
-        prepare: {
-            return Gcc.prepareCompiler.apply(Gcc, arguments);
-        }
+        outputFileTags: Cpp.compilerOutputTags(false).concat(["c_obj", "cpp_obj"])
+        outputArtifacts: Cpp.compilerOutputArtifacts(input, inputs)
+        prepare: Gcc.prepareCompiler.apply(Gcc, arguments)
     }
 
     Rule {
         name: "assembler"
         inputs: ["asm"]
-
-        Artifact {
-            fileTags: ["obj"]
-            filePath: FileInfo.joinPaths(Utilities.getHash(input.baseDir), input.fileName + ".o")
-        }
-
-        prepare: {
-            return Gcc.prepareAssembler.apply(Gcc, arguments);
-        }
+        outputFileTags: Cpp.assemblerOutputTags(false)
+        outputArtifacts: Cpp.assemblerOutputArtifacts(input)
+        prepare: Gcc.prepareAssembler.apply(Gcc, arguments)
     }
 
     Rule {
         condition: useCPrecompiledHeader
         inputs: ["c_pch_src"]
         auxiliaryInputs: ["hpp"]
-        Artifact {
-            filePath: product.name + "_c.gch"
-            fileTags: ["c_pch"]
-        }
-        prepare: {
-            return Gcc.prepareCompiler.apply(Gcc, arguments);
-        }
+        outputFileTags: Cpp.precompiledHeaderOutputTags("c", false)
+        outputArtifacts: Cpp.precompiledHeaderOutputArtifacts(input, product, "c", false)
+        prepare: Gcc.prepareCompiler.apply(Gcc, arguments)
     }
 
     Rule {
         condition: useCxxPrecompiledHeader
         inputs: ["cpp_pch_src"]
         auxiliaryInputs: ["hpp"]
-        Artifact {
-            filePath: product.name + "_cpp.gch"
-            fileTags: ["cpp_pch"]
-        }
-        prepare: {
-            return Gcc.prepareCompiler.apply(Gcc, arguments);
-        }
+        outputFileTags: Cpp.precompiledHeaderOutputTags("cpp", false)
+        outputArtifacts: Cpp.precompiledHeaderOutputArtifacts(input, product, "cpp", false)
+        prepare: Gcc.prepareCompiler.apply(Gcc, arguments)
     }
 
     Rule {
         condition: useObjcPrecompiledHeader
         inputs: ["objc_pch_src"]
         auxiliaryInputs: ["hpp"]
-        Artifact {
-            filePath: product.name + "_objc.gch"
-            fileTags: ["objc_pch"]
-        }
-        prepare: {
-            return Gcc.prepareCompiler.apply(Gcc, arguments);
-        }
+        outputFileTags: Cpp.precompiledHeaderOutputTags("objc", false)
+        outputArtifacts: Cpp.precompiledHeaderOutputArtifacts(input, product, "objc", false)
+        prepare: Gcc.prepareCompiler.apply(Gcc, arguments)
     }
 
     Rule {
         condition: useObjcxxPrecompiledHeader
         inputs: ["objcpp_pch_src"]
         auxiliaryInputs: ["hpp"]
-        Artifact {
-            filePath: product.name + "_objcpp.gch"
-            fileTags: ["objcpp_pch"]
-        }
-        prepare: {
-            return Gcc.prepareCompiler.apply(Gcc, arguments);
-        }
+        outputFileTags: Cpp.precompiledHeaderOutputTags("objcpp", false)
+        outputArtifacts: Cpp.precompiledHeaderOutputArtifacts(input, product, "objcpp", false)
+        prepare: Gcc.prepareCompiler.apply(Gcc, arguments)
     }
 
     FileTagger {
@@ -729,6 +707,9 @@ CppModule {
                 match = regexp.exec(linkerScript.readLine());
                 if(match) {
                     var additionalPath = match[1];
+                    // path can be quoted to use non-latin letters, remove quotes if present
+                    if (additionalPath.startsWith("\"") && additionalPath.endsWith("\""))
+                        additionalPath = additionalPath.slice(1, additionalPath.length - 1);
                     retval.push(additionalPath);
                 }
             }

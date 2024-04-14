@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-live-preview-android.qdoc -->
+  <title>Previewing Android Applications | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Previewing Android Applications</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-live-preview-devices.html" />
+  <link rel="next" href="qt-design-viewer.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-live-preview-devices.html">Previewing on Devices</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qt-design-viewer.html">Sharing Applications Online</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#prerequisites">Prerequisites</a></li>
+<li class="level2"><a href="#install-openjdk-11">Install OpenJDK 11</a></li>
+<li class="level2"><a href="#install-android-studio-and-sdk-tools">Install Android Studio and SDK Tools</a></li>
+<li class="level2"><a href="#install-android-sdk-packages-in-qt-design-studio">Install Android SDK Packages in Qt Design Studio</a></li>
+<li class="level2"><a href="#create-android-virtual-devices">Create Android Virtual Devices</a></li>
+<li class="level2"><a href="#set-the-avd-as-the-device-in-the-android-kit">Set the AVD as the Device in the Android Kit</a></li>
+<li class="level1"><a href="#create-a-project-and-run-the-emulator">Create a Project and Run the Emulator</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Previewing Android Applications</h1>
+<!-- $$$creator-live-preview-android.html-description -->
+<div class="descr" id="details">
+<p>In Qt Design Studio, you can preview Android applications live using an Android emulator.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<h3 id="install-openjdk-11">Install OpenJDK 11</h3>
+<p>You need to install OpenJDK 11 as described in <a href="https://doc.qt.io/qt/android-getting-started.html" translate="no">Getting Started with Qt for Android</a>, to do this:</p>
+<ul>
+<li>On Linux:<ol class="1" type="1"><li>In the command line, run:<pre class="cpp" translate="no">
+ sudo apt<span class="operator">-</span>get install openjdk<span class="operator">-</span><span class="number">11</span><span class="operator">-</span>jdk
+</pre>
+</li>
+</ol>
+</li>
+<li>On macOS:<ol class="1" type="1"><li>Download OpenJDK 11 from <a href="https://docs.microsoft.com/en-us/java/openjdk/download" translate="no">Download OpenJDK</a>.</li>
+<li>In the command line, run:<pre class="cpp" translate="no">
+ cd <span class="operator">~</span><span class="operator">/</span>Downloads
+ tar xf microsoft<span class="operator">-</span>jdk<span class="operator">-</span><span class="number">11.0.13.8.1</span><span class="operator">-</span>macos<span class="operator">-</span>x64<span class="operator">.</span>tar<span class="operator">.</span>gz
+</pre>
+</li>
+<li>Copy the unzipped folder to a location where macOS searches for Java by default:<pre class="cpp" translate="no">
+ sudo cp <span class="operator">-</span>Rv jdk<span class="operator">-</span><span class="number">11.0.13</span><span class="operator">+</span><span class="number">8</span> <span class="operator">/</span>Library<span class="operator">/</span>Java<span class="operator">/</span>JavaVirtualMachines<span class="operator">/</span>
+</pre>
+</li>
+<li>Check if Java was correctly installed:<pre class="cpp" translate="no">
+ java <span class="operator">-</span>version
+</pre>
+<p>The Java installation is correct if the command returns something like:</p>
+<pre class="cpp" translate="no">
+ openjdk version <span class="string">&quot;11.0.13&quot;</span> <span class="number">2021</span><span class="operator">-</span><span class="number">10</span><span class="operator">-</span><span class="number">19</span> LTS
+ OpenJDK Runtime Environment Microsoft<span class="operator">-</span><span class="number">27990</span> (build <span class="number">11.0.13</span><span class="operator">+</span><span class="number">8</span><span class="operator">-</span>LTS)
+ OpenJDK <span class="number">64</span><span class="operator">-</span>Bit Server VM Microsoft<span class="operator">-</span><span class="number">27990</span> (build <span class="number">11.0.13</span><span class="operator">+</span><span class="number">8</span><span class="operator">-</span>LTS<span class="operator">,</span> mixed mode)
+</pre>
+</li>
+</ol>
+</li>
+<li>On Windows:<ul>
+<li>OpenJDK 11 is automatically installed with Android Studio.</li>
+</ul>
+</li>
+</ul>
+<h3 id="install-android-studio-and-sdk-tools">Install Android Studio and SDK Tools</h3>
+<p>You need to install Android Studio:</p>
+<ol class="1" type="1"><li>Download Android Studio from <a href="https://developer.android.com/studio" translate="no">Download Android Studio</a>.</li>
+<li>Install Android Studio according to the <a href="https://developer.android.com/studio/install" translate="no">Android Studio Installation Guide</a>.</li>
+</ol>
+<p>Next, you need to install Android SDK command-line tools:</p>
+<ol class="1" type="1"><li>Run Android Studio and on the welcome page, select <b translate="no">More Actions</b> &gt; <b translate="no">SDK Manager</b>.<p class="centerAlign"><img src="images/android-studio-sdk-manager.png" alt="" /></p></li>
+<li>Select <b translate="no">Android SDK Build-Tools 32-rc1</b>, <b translate="no">NDK (Side by side)</b>, and <b translate="no">Android SDK Command-line Tools (latest)</b>.<p class="centerAlign"><img src="images/android-studio-sdk-tools.png" alt="" /></p></li>
+<li>Select <b translate="no">Apply</b> and follow the instructions in the wizard to finalize the installation.</li>
+</ol>
+<h3 id="install-android-sdk-packages-in-qt-design-studio">Install Android SDK Packages in Qt Design Studio</h3>
+<p>You need to install Android SDK packages in Qt Design Studio:</p>
+<ol class="1" type="1"><li>Run Qt Design Studio.</li>
+<li>Go to <b translate="no">Edit</b> &gt; <b translate="no">Preferences</b> &gt; <b translate="no">Devices</b>.</li>
+<li>Select <b translate="no">Yes</b> on the <b translate="no">Missing Android SDK Packages</b> dialog.<p class="centerAlign"><img src="images/qtds-options-dialog-missing-packages.png" alt="" /></p></li>
+<li>Select <b translate="no">OK</b> on the <b translate="no">Android SDK Changes</b> dialog.<p class="centerAlign"><img src="images/qtds-android-sdk-changes-dialog.png" alt="" /></p></li>
+<li>Select <b translate="no">Yes</b> on the <b translate="no">Android SDK Licenses</b> dialog.<p class="centerAlign"><img src="images/qtds-android-sdk-licenses-dialog.png" alt="" /></p></li>
+</ol>
+<div class="admonition note">
+<p><b>Note: </b>The installation can take a while. If the installation process seems to have stopped working, try to restart Qt Design Studio and run the installation again.</p>
+</div>
+<p>After completing these steps, you should no longer have any errors on the <b translate="no">Edit</b> &gt; <b translate="no">Preferences</b> &gt; <b translate="no">Devices</b> page.</p>
+<p class="centerAlign"><img src="images/qtds-options-accept-licenses.png" alt="" /></p><h3 id="create-android-virtual-devices">Create Android Virtual Devices</h3>
+<p>Next, you need to create an Android Virtual Device (AVD):</p>
+<div class="admonition note">
+<p><b>Note: </b>You might need to download a system image depending on your setup.</p>
+</div>
+<ol class="1" type="1"><li>Run Android Studio and on the welcome page, select <b translate="no">More Actions</b> &gt; <b translate="no">AVD Manager</b>.<p class="centerAlign"><img src="images/android-studio-avd-manager.png" alt="" /></p></li>
+<li>Select <b translate="no">Create Virtual Device</b> and follow the instructions in the wizard to finalize the creation.</li>
+</ol>
+<p>Qt Design Studio has a AVD manager where you can create AVDs as well but it is recommended to use Android Studio because then you can directly install the needed system package for the selected device configuration.</p>
+<p>To create an AVD in Qt Design Studio:</p>
+<ol class="1" type="1"><li>Go to <b translate="no">Edit</b> &gt; <b translate="no">Preferences</b>.</li>
+<li>On the <b translate="no">Devices</b> tab, select <b translate="no">Add</b> and follow the wizard to finalize the creation. If there is no entry for <i>Android Device</i> in the <b translate="no">Available device types</b> list, try restarting Qt Design Studio.</li>
+</ol>
+<div class="admonition note">
+<p><b>Note: </b>Many device images require Intel HAXM to work on Windows 10 and later, you can download and install the drivers from <a href="https://github.com/intel/haxm/wiki/Installation-Instructions-on-Windows" translate="no">here</a>.</p>
+</div>
+<p class="centerAlign"><img src="images/qtds-options-devices.png" alt="" /></p><h3 id="set-the-avd-as-the-device-in-the-android-kit">Set the AVD as the Device in the Android Kit</h3>
+<p>Next, you need to set the AVD as the Android device kit. You do this under the <b translate="no">Kits</b> tab. If the <b translate="no">Kits</b> list is empty, restart Qt Design Studio.</p>
+<p class="centerAlign"><img src="images/qtds-options-kits.png" alt="" /></p><h2 id="create-a-project-and-run-the-emulator">Create a Project and Run the Emulator</h2>
+<p>Now, you are set up and can create a project in Qt Design Studio. In the project, configure it to run on the Android device:</p>
+<ol class="1" type="1"><li>Select the <b translate="no">Projects</b> mode tab.</li>
+<li>Under <b translate="no">Build &amp; Run</b>, select the Android device.</li>
+</ol>
+<p class="centerAlign"><img src="images/qtds-run-settings.png" alt="" /></p><p>Next, to run the emulator, do one of the following:</p>
+<ul>
+<li>Select <b translate="no">Live Preview</b> in the top toolbar.<p class="centerAlign"><img src="images/toolbar-show-live-preview.png" alt="" /></p></li>
+<li>Select <b translate="no">Build</b> &gt; <b translate="no">QML Preview</b>.<div class="admonition note">
+<p><b>Note: </b>The <b translate="no">Build</b> menu option is not visible by default. To show it, go to <b translate="no">Edit</b> &gt; <b translate="no">Preferences</b> &gt; <b translate="no">Environment</b> &gt; <b translate="no">Qt Design Studio Configuration</b>.</p>
+</div>
+<p class="centerAlign"><img src="images/menu-build-qml-preview.png" alt="" /></p></li>
+<li>Select <b>Alt</b> + <b>P</b>.</li>
+</ul>
+<p>Now the emulator runs, the qtdesignviewer APK delivered with the Qt Design Studio installation is uploaded, and the project is uploaded and shown in the emulator.</p>
+<p class="centerAlign"><img src="images/qtds-running-emulator.webp" alt="" /></p><p>Note the following:</p>
+<ul>
+<li>The qtdesignviewer for Android currently has no live preview. You have to restart the preview to see updates.</li>
+<li>Android typically has very high DPI and it is good to familiarize yourself with how <a href="https://doc-snapshots.qt.io/qt6-dev/highdpi.html" translate="no">high DPI works in Qt 6</a>. You can, for example, use QT_SCALE_FACTOR or QT_USE_PHYSICAL_DPI. You can define those in the <i>.qmlproject</i> file.</li>
+<li>The qtdesignviewer for Android is currently built with Qt 6.2 and comes with all QML modules shipped with Qt Design Studio 2.3.</li>
+</ul>
+</div>
+<!-- @@@creator-live-preview-android.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-live-preview-devices.html">Previewing on Devices</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qt-design-viewer.html">Sharing Applications Online</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

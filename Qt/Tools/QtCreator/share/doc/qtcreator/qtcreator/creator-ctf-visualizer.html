@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-ctf-visualizer.qdoc -->
+  <title>Visualizing Chrome Trace Events | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li><a href="creator-overview.html" translate="no">Developing with Qt Creator</a></li>
+<li><a href="creator-analyze-mode.html" translate="no">Analyzing Code</a></li>
+<li>Visualizing Chrome Trace Events</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-cppcheck.html" />
+  <link rel="next" href="creator-squish.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-cppcheck.html">Analyzing Code with Cppcheck</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-squish.html">Using Squish</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#opening-json-files">Opening JSON Files</a></li>
+<li class="level1"><a href="#visualizing-events">Visualizing Events</a></li>
+<li class="level2"><a href="#selecting-event-ranges">Selecting Event Ranges</a></li>
+<li class="level1"><a href="#viewing-statistics">Viewing Statistics</a></li>
+<li class="level1"><a href="#collecting-lttng-data">Collecting LTTng Data</a></li>
+<li class="level2"><a href="#configuring-the-kernel">Configuring the Kernel</a></li>
+<li class="level2"><a href="#installing-lttng">Installing LTTng</a></li>
+<li class="level2"><a href="#building-qt-with-tracepoints">Building Qt with Tracepoints</a></li>
+<li class="level2"><a href="#recording-events">Recording Events</a></li>
+<li class="level2"><a href="#enabling-trace-points">Enabling Trace Points</a></li>
+<li class="level1"><a href="#converting-lttng-data-to-ctf">Converting LTTng Data to CTF</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Visualizing Chrome Trace Events</h1>
+<!-- $$$creator-ctf-visualizer.html-description -->
+<div class="descr" id="details">
+<p>You can use <i>full stack tracing</i> to trace from the top level QML or JavaScript down to the C++ and all the way to the kernel space. This enables you to measure the performance of an application and to check whether it is CPU or I/O bound or influenced by other applications running on the same system. Tracing gives insight into what a system is doing and why an application is performing in a particular way. It indicates how the hardware is utilized and what the kernel and application are doing.</p>
+<p>Tracing information can tell you more about the data that <a href="creator-qml-performance-monitor.html" translate="no">QML Profiler</a> collects. For example, you can check why a trivial binding evaluation is taking so long. This might be caused by C++ being executed or the disk I/O being slow.</p>
+<p>Several tracing tools (such as <code translate="no">chrome://about</code>) can generate information about Chrome trace events in Chrome Trace Format (CTF). You can open CTF files in Qt Creator for viewing. This is especially useful when viewing trace files larger than 100 MB, which are difficult to view with the built-in trace-viewer (<code translate="no">chrome://tracing</code>) due to its high memory usage.</p>
+<p>The visualizer supports all event types used in data that the <a href="https://lttng.org/" translate="no">LTTng</a> tracing framework generates, converted to CTF. However, some of the more advanced event types used, for example, in Android system traces, are not supported. The visualizer silently ignores unsupported event types.</p>
+<p>The visualizer supports the following event types:</p>
+<ul>
+<li>Begin, end, duration, and instant events</li>
+<li>Counter events (graphs)</li>
+<li>Metadata events (process and thread name)</li>
+</ul>
+<h2 id="opening-json-files">Opening JSON Files</h2>
+<p>To open JSON files for viewing, select <b translate="no">Analyze</b> &gt; <b translate="no">Chrome Trace Format Viewer</b> &gt; <b translate="no">Load JSON File</b>.</p>
+<h2 id="visualizing-events">Visualizing Events</h2>
+<p>The <b translate="no">Timeline</b> view displays a graphical representation of trace events and a condensed view of all recorded events.</p>
+<p class="centerAlign"><img src="images/qtcreator-ctf-visualizer-timeline.png" alt="&quot;Chrome Trace Format Visualizer&quot;" /></p><p>Each category in the timeline describes a thread in the application. Move the cursor on an event (1) on a row to view its duration and event category. To display the information only when an event is selected, disable the <b translate="no">View Event Information on Mouseover</b> button (2).</p>
+<p>The outline (3) summarizes the period for which data was collected. Drag the zoom range (4) or click the outline to move on the outline. To move between events, select the <b translate="no">Jump to Previous Event</b> and <b translate="no">Jump to Next Event</b> buttons (5).</p>
+<p>Select the <b translate="no">Show Zoom Slider</b> button (6) to open a slider that you can use to set the zoom level. You can also drag the zoom handles (7). To reset the default zoom level, right-click the timeline to open the context menu, and select <b translate="no">Reset Zoom</b>.</p>
+<p>Select the <img src="images/filtericon.png" alt="" /> (<b translate="no">Restrict to Threads</b>) button (10) to select the threads to show.</p>
+<h3 id="selecting-event-ranges">Selecting Event Ranges</h3>
+<p>You can select an event range (8) to view the time it represents or to zoom into a specific region of the trace. Select the <b translate="no">Select Range</b> button (9) to activate the selection tool. Then click in the timeline to specify the beginning of the event range. Drag the selection handle to define the end of the range.</p>
+<p>You can use event ranges also to measure delays between two subsequent events. Place a range between the end of the first event and the beginning of the second event. The <b translate="no">Duration</b> field displays the delay between the events in milliseconds.</p>
+<p>To zoom into an event range, double-click it.</p>
+<p>To remove an event range, close the <b translate="no">Selection</b> dialog.</p>
+<h2 id="viewing-statistics">Viewing Statistics</h2>
+<p class="centerAlign"><img src="images/qtcreator-ctf-visualizer-statistics.png" alt="" /></p><p>The <b translate="no">Statistics</b> view displays the number of samples each function in the timeline was contained in, in total and when on the top of the stack (called <code translate="no">self</code>). This allows you to examine which functions you need to optimize. A high number of occurrences might indicate that a function is triggered unnecessarily or takes very long to execute.</p>
+<h2 id="collecting-lttng-data">Collecting LTTng Data</h2>
+<p>LTTng is a tracing toolkit for Linux that you can apply on embedded Linux systems to find out how to optimize the startup time of an application.</p>
+<p>Since Qt 5.13, Qt has a set of kernel trace points and a tracing subsystem for custom user space trace points.</p>
+<h3 id="configuring-the-kernel">Configuring the Kernel</h3>
+<p>To use LTTng, you have to set the following configuration options for the kernel before building it:</p>
+<ul>
+<li><code translate="no">CONFIG_HIGH_RES_TIMERS</code></li>
+<li><code translate="no">CONFIG_KALLSYMS</code></li>
+<li><code translate="no">CONFIG_MODULES</code></li>
+<li><code translate="no">CONFIG_TRACEPOINTS</code></li>
+</ul>
+<p>We recommend that you set the following additional options:</p>
+<ul>
+<li><code translate="no">CONFIG_EVENT_TRACING</code></li>
+<li><code translate="no">CONFIG_HAVE_SYSCALL_TRACEPOINTS</code></li>
+<li><code translate="no">CONFIG_KALLSYMS_ALL</code></li>
+</ul>
+<p>In Yocto, you can activate the above options in <b translate="no">Menu</b> &gt; <b translate="no">Config</b> &gt; <b translate="no">Kernel Hacking</b> &gt; <b translate="no">Tracers</b>.</p>
+<h3 id="installing-lttng">Installing LTTng</h3>
+<p>After you build the kernel and deploy it on your device, you'll need to install the following LTTng packages on your device:</p>
+<ul>
+<li><code translate="no">lttng-tools</code> to control the tracing session</li>
+<li><code translate="no">lttng-modules</code> for kernel trace points</li>
+<li><code translate="no">lttng-ust</code> for user space trace points</li>
+</ul>
+<p>In Yocto, you just need to enable <code translate="no">EXTRA_IMAGE_FEATURES += &quot;tools profile&quot;</code>.</p>
+<h3 id="building-qt-with-tracepoints">Building Qt with Tracepoints</h3>
+<p>Trace points are continuously being added to Qt versions. To use them, you need to build Qt yourself with the <code translate="no">configure -trace lttng</code> option.</p>
+<h3 id="recording-events">Recording Events</h3>
+<p>To create a session, you call the <code translate="no">lttng create</code> command. Then you call <code translate="no">lttng enable-channel kernel -k</code> to enable the kernel channel. Within the kernel channel, you specify the appropriate trace points as <code translate="no">kernel_events</code> and call <code translate="no">lttng enable-event</code> to enable them. Finally, you call <code translate="no">lttng start</code> to start tracing.</p>
+<p>You call <code translate="no">lttng stop</code> to stop tracing. You can use <code translate="no">sleep</code> to set the length of the session. After stopping, you can call <code translate="no">lttng destroy</code> to destroy the session.</p>
+<p>You can write and run scripts that contain the above commands to start and stop full-stack tracing. You can use <code translate="no">systemd</code> to execute the scripts.</p>
+<h3 id="enabling-trace-points">Enabling Trace Points</h3>
+<p>Data is recorded according to the trace points that you enable in the LTTng session. Usually, it is useful to enable scheduler switch, syscall, and Qt trace points.</p>
+<h4 id="scheduler-switch-trace-points">Scheduler Switch Trace Points</h4>
+<p>Scheduler switch trace points are reached when an application is switched out due to predemption, for example, when another process gets the chance to run on the CPU core. Enable scheduler switch trace points to record the thread that is currently running and the process it belongs to, as well as the time when the process started and stopped.</p>
+<h4 id="syscall-trace-points">Syscall Trace Points</h4>
+<p>Syscall trace points help you to understand why a scheduler switch happened. The following are examples of syscalls to trace:</p>
+<ul>
+<li><code translate="no">openat</code> and <code translate="no">close</code> map file descriptors to file names</li>
+<li><code translate="no">mmap</code> maps page faults to files</li>
+<li><code translate="no">read</code> and <code translate="no">write</code> are triggered by I/O operations</li>
+<li><code translate="no">nanosleep</code>, <code translate="no">futex</code>, and <code translate="no">poll</code> explain scheduler switches</li>
+<li><code translate="no">ioctl</code> controls the GPU and display</li>
+</ul>
+<h2 id="converting-lttng-data-to-ctf">Converting LTTng Data to CTF</h2>
+<p>The <a href="https://github.com/KDAB/ctf2ctf" translate="no">ctf2ctf</a> tool uses <code translate="no">babeltrace</code> to parse binary Common Trace Format (CTF) and converts it to Chrome Trace Format (CTF). It performs the following custom tasks to make the recording more human-readable:</p>
+<ul>
+<li>Map file descriptors to file names</li>
+<li>Map page faults to file names</li>
+<li>Annotate interrupts and block devices with names</li>
+<li>Convert UTF-16 QString data to UTF-8 strings</li>
+<li>Count memory page allocations</li>
+</ul>
+<p>To generate JSON files that have the trace data in Chrome Trace Format, enter the following command on the command line:</p>
+<pre class="cpp" translate="no">
+ ctf2ctf <span class="operator">-</span>o trace<span class="operator">.</span>json path<span class="operator">/</span>to<span class="operator">/</span>lttng trace<span class="operator">/</span>
+</pre>
+</div>
+<!-- @@@creator-ctf-visualizer.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-cppcheck.html">Analyzing Code with Cppcheck</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-squish.html">Using Squish</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

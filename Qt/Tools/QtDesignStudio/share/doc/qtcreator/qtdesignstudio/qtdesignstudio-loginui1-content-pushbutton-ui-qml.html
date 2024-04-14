@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- loginui1.qdoc -->
+  <meta name="description" content="Illustrates how to use wizard templates to create a simple UI that contains a text label, images, and push buttons.">
+  <title>Log In UI - Components | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="gstutorials.html" translate="no">Tutorials</a></li>
+<li>Log In UI - Components</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="next" href="qtdesignstudio-loginui2-example.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="nextPage" href="qtdesignstudio-loginui2-example.html">Log In UI - Positioning</a>
+</p>
+<h1 class="title">Log In UI - Components</h1>
+<pre class="qml" translate="no">
+ <span class="comment">// Copyright (C) 2022 The Qt Company Ltd.</span>
+ <span class="comment">// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause</span>
+
+ import QtQuick 2.15
+ import QtQuick.Controls 2.12
+
+ <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-controls-button.html" translate="no">Button</a></span> {
+     <span class="name">id</span>: <span class="name">control</span>
+     <span class="name">width</span>: <span class="number">500</span>
+     <span class="name">height</span>: <span class="number">100</span>
+
+     <span class="name">implicitWidth</span>: <span class="name">Math</span>.<span class="name">max</span>(
+                        <span class="name">buttonBackground</span> ? <span class="name">buttonBackground</span>.<span class="name">implicitWidth</span> : <span class="number">0</span>,
+                        <span class="name">textItem</span>.<span class="name">implicitWidth</span> <span class="operator">+</span> <span class="name">leftPadding</span> <span class="operator">+</span> <span class="name">rightPadding</span>)
+     <span class="name">implicitHeight</span>: <span class="name">Math</span>.<span class="name">max</span>(
+                         <span class="name">buttonBackground</span> ? <span class="name">buttonBackground</span>.<span class="name">implicitHeight</span> : <span class="number">0</span>,
+                         <span class="name">textItem</span>.<span class="name">implicitHeight</span> <span class="operator">+</span> <span class="name">topPadding</span> <span class="operator">+</span> <span class="name">bottomPadding</span>)
+     <span class="name">leftPadding</span>: <span class="number">4</span>
+     <span class="name">rightPadding</span>: <span class="number">4</span>
+
+     <span class="name">text</span>: <span class="string">&quot;My Button&quot;</span>
+     <span class="name">hoverEnabled</span>: <span class="number">false</span>
+     <span class="name">enabled</span>: <span class="number">true</span>
+
+     <span class="name">background</span>: <span class="name">buttonBackground</span>
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-rectangle.html" translate="no">Rectangle</a></span> {
+         <span class="name">id</span>: <span class="name">buttonBackground</span>
+         <span class="name">color</span>: <span class="string">&quot;#00000000&quot;</span>
+         <span class="name">implicitWidth</span>: <span class="number">100</span>
+         <span class="name">implicitHeight</span>: <span class="number">40</span>
+         <span class="name">opacity</span>: <span class="name">enabled</span> ? <span class="number">1</span> : <span class="number">0.3</span>
+         <span class="name">radius</span>: <span class="number">50</span>
+         <span class="name">border</span>.color: <span class="string">&quot;#41cd52&quot;</span>
+     }
+
+     <span class="name">contentItem</span>: <span class="name">textItem</span>
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-text.html" translate="no">Text</a></span> {
+         <span class="name">id</span>: <span class="name">textItem</span>
+         <span class="name">width</span>: <span class="number">500</span>
+         <span class="name">height</span>: <span class="number">100</span>
+         <span class="name">text</span>: <span class="name">control</span>.<span class="name">text</span>
+         <span class="name">font</span>.pixelSize: <span class="number">34</span>
+
+         <span class="name">opacity</span>: <span class="name">enabled</span> ? <span class="number">1.0</span> : <span class="number">0.3</span>
+         <span class="name">color</span>: <span class="string">&quot;#41cd52&quot;</span>
+         <span class="name">horizontalAlignment</span>: <span class="name">Text</span>.<span class="name">AlignHCenter</span>
+         <span class="name">verticalAlignment</span>: <span class="name">Text</span>.<span class="name">AlignVCenter</span>
+         <span class="name">font</span>.family: <span class="string">&quot;Titillium Web ExtraLight&quot;</span>
+     }
+
+     <span class="name">states</span>: [
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;normal&quot;</span>
+             <span class="name">when</span>: !<span class="name">control</span>.<span class="name">down</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">buttonBackground</span>
+                 <span class="name">color</span>: <span class="string">&quot;#00000000&quot;</span>
+                 <span class="name">border</span>.color: <span class="string">&quot;#41cd52&quot;</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">textItem</span>
+                 <span class="name">color</span>: <span class="string">&quot;#41cd52&quot;</span>
+                 <span class="name">font</span>.pixelSize: <span class="number">34</span>
+                 <span class="name">font</span>.family: <span class="string">&quot;Titillium Web ExtraLight&quot;</span>
+             }
+         },
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;down&quot;</span>
+             <span class="name">when</span>: <span class="name">control</span>.<span class="name">down</span>
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">textItem</span>
+                 <span class="name">color</span>: <span class="string">&quot;#41cd52&quot;</span>
+                 <span class="name">border</span>.color: <span class="string">&quot;#41cd52&quot;</span>
+                 <span class="name">font</span>.pixelSize: <span class="number">34</span>
+                 <span class="name">font</span>.family: <span class="string">&quot;Titillium Web ExtraLight&quot;</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">buttonBackground</span>
+                 <span class="name">color</span>: <span class="string">&quot;#41cd52&quot;</span>
+                 <span class="name">border</span>.color: <span class="string">&quot;#41cd52&quot;</span>
+             }
+         }
+     ]
+ }
+</pre>

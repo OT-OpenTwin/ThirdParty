@@ -1,0 +1,11 @@
+QT.quickstudioutils_private.VERSION = 6.2.4
+QT.quickstudioutils_private.name = QtQuickStudioUtils
+QT.quickstudioutils_private.module =
+QT.quickstudioutils_private.libs = $$QT_MODULE_LIB_BASE
+QT.quickstudioutils_private.includes = $$QT_MODULE_INCLUDE_BASE/QtQuickStudioUtils/6.2.4 $$QT_MODULE_INCLUDE_BASE/QtQuickStudioUtils/6.2.4/QtQuickStudioUtils
+QT.quickstudioutils_private.frameworks = 
+QT.quickstudioutils_private.depends = quickstudioutils
+QT.quickstudioutils_private.uses = 
+QT.quickstudioutils_private.module_config = v2 internal_module
+QT.quickstudioutils_private.enabled_features = 
+QT.quickstudioutils_private.disabled_features = 

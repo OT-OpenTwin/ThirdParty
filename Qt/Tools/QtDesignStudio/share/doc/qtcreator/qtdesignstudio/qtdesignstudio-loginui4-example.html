@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- loginui4.qdoc -->
+  <meta name="description" content="Illustrates how to use the timeline and states to animate UI components.">
+  <title>Log In UI - Timeline | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="gstutorials.html" translate="no">Tutorials</a></li>
+<li>Log In UI - Timeline</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="qtdesignstudio-loginui3-example.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="qtdesignstudio-loginui3-example.html">Log In UI - States</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#animating-ui-components">Animating UI Components</a></li>
+<li class="level2"><a href="#replacing-columns-with-anchors">Replacing Columns with Anchors</a></li>
+<li class="level2"><a href="#adding-a-timeline-and-animation-settings">Adding a Timeline and Animation Settings</a></li>
+<li class="level2"><a href="#inserting-keyframes">Inserting Keyframes</a></li>
+<li class="level2"><a href="#animating-anchors">Animating Anchors</a></li>
+<li class="level2"><a href="#adding-easing-curves">Adding Easing Curves</a></li>
+<li class="level1"><a href="#binding-animation-to-states">Binding Animation to States</a></li>
+<li class="level2"><a href="#learn-more-timeline">Learn More - Timeline</a></li>
+<li class="level1"><a href="#next-steps">Next Steps</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Log In UI - Timeline</h1>
+<!-- $$$Loginui4-brief -->
+<p>Illustrates how to use the timeline and states to animate UI components.</p>
+<!-- @@@Loginui4 -->
+<!-- $$$Loginui4-description -->
+<div class="descr" id="details">
+<p class="centerAlign"><img src="images/loginui4.gif" alt="&quot;Log In UI&quot;" /></p><p><i>Log In UI - Timeline</i> is the fourth in a series of tutorials that build on each other to illustrate how to use Qt Design Studio to create a simple UI with some basic UI components, such as pages, buttons, and entry fields. The fourth part of the tutorial describes how to use the timeline and states to animate UI components.</p>
+<p>In <a href="qtdesignstudio-loginui3-example.html" translate="no">Log In UI - States</a>, you learned how to use states to simulate page changes in a UI and connections to provide user interaction with it. In this part, you will now learn another way of animating the UI by creating <a href="studio-timeline.html" translate="no">timeline animations</a> that you bind to states.</p>
+<p>The starting point for this tutorial is the completed <a href="qtdesignstudio-loginui3-example.html" translate="no">Log In UI - States</a> project. You can download the project from <a href="https://git.qt.io/public-demos/qtdesign-studio/-/tree/master/tutorial%20projects/Loginui3" translate="no">here</a>.</p>
+<p>Additionally, you can download the completed project of this tutorial from <a href="https://git.qt.io/public-demos/qtdesign-studio/-/tree/master/tutorial%20projects/Loginui4" translate="no">here</a>.</p>
+<p>The <i>Learn More</i> sections provide additional information relevant to the task at hand.</p>
+<h4 id="animating-ui-components">Animating UI Components</h4>
+<p>In <a href="qtdesignstudio-loginui3-example.html" translate="no">Log In UI - States</a>, you changed the visibility property in different states to simulate changing pages. To make sure that those changes won't interfere with the changes to the opacity property you will make next, you will first remove the states.</p>
+<p>Then, you will add a timeline and insert keyframes for the opacity property to hide the <i>Retype Password</i> field on the login page and the <i>Create Account</i> button on the account creation page. Because we want the retype password field to appear to slide down from the password field, you will also need to insert a keyframe for its anchor margin property. To be able to animate the anchor, you also need to pull out the fields from the column component and anchor them to the rectangle and to each other instead.</p>
+<p>To preview the changes that you make to the UI while you make them, select the <img src="images/live_preview.png" alt="" /> (<b translate="no">Show Live Preview</b>) button on the <b translate="no">Design</b> mode <a href="creator-using-qt-quick-designer.html#summary-of-main-toolbar-actions" translate="no">toolbar</a> or press <b>Alt+P</b>.</p>
+<h5 id="replacing-columns-with-anchors">Replacing Columns with Anchors</h5>
+<p>First, you will prepare the <i>Screen01</i> component for adding animation:</p>
+<ol class="1" type="1"><li>Double-click <i>Screen01.ui.qml</i> in <a href="creator-projects-view.html" translate="no">Projects</a> to open it in the <a href="qtquick-form-editor.html" translate="no">2D</a> view.</li>
+<li>In the <a href="qtquick-states-view.html" translate="no">States</a> view, select <i>login</i>, and then select <img src="images/close.png" alt="" /> to remove the state. Repeat for the <i>createAccount</i> state.</li>
+<li>Select <i>username</i> in <a href="qtquick-navigator.html" translate="no">Navigator</a>, and then select <img src="images/arrowleft.png" alt="" /> to move it into the parent rectangle to prepare for deleting the <i>fields</i> column component instance.</li>
+<li>Select <img src="images/navigator-arrowup.png" alt="" /> to move <i>username</i> below <i>tagLine</i> in <b translate="no">Navigator</b> to preserve the <a href="qtquick-navigator.html#arranging-components" translate="no">component hierarchy</a>.</li>
+<li>Repeat step 3 and 4 for <i>password</i> and <i>repeatPassword</i>.</li>
+<li>Select <i>fields</i> in <b translate="no">Navigator</b> and press <b>Delete</b> to delete it.</li>
+<li>Select <i>username</i> in <b translate="no">Navigator</b> to display its properties in <a href="qtquick-properties-view.html" translate="no">Properties</a>.</li>
+<li>Select <b translate="no">Layout</b> &gt; <img src="images/anchor-top.png" alt="" /> to anchor the top of <i>username</i> to the bottom of <i>tagLine</i> in the <b translate="no">Target</b> field. Qt Design Studio will suggest an appropriate margin based on the current position of the field on the y axis, 170 pixels.</li>
+<li>Select <img src="images/anchor-center-horizontal.png" alt="" /> to anchor <i>username</i> horizontally to its parent in the <b translate="no">Target</b> field.</li>
+<li>Select <i>password</i> in <b translate="no">Navigator</b> to display its properties in <b translate="no">Properties</b>.</li>
+<li>Select <b translate="no">Layout</b> &gt; <img src="images/anchor-top.png" alt="" /> to anchor the top of <i>password</i> to the bottom of <i>username</i> in the <b translate="no">Target</b> field with a 20-pixel margin.</li>
+<li>Select <img src="images/anchor-center-horizontal.png" alt="" /> to anchor <i>password</i> horizontally to its parent in the <b translate="no">Target</b> field.</li>
+<li>Repeat the above steps to anchor the top of <i>repeatPassword</i> to the bottom of <i>password</i> with a 20-pixel margin and to anchor it horizontally to its parent.</li>
+<li>Select <b translate="no">File</b> &gt; <b translate="no">Save</b> or press <b>Ctrl+S</b> to save your changes.</li>
+</ol>
+<p>You could also animate the y-position property of the repeat password field for a similar effect. In that case, you would need to use absolute positioning for the field. This is less flexible if you export your design from a design tool, such as Adobe Photoshop, and decide to change your design and export it again at some point. In that case, the margins would probably stay the same, even if the positions of the fields on the page would change.</p>
+<p><i>Screen01</i> should not display visible changes in the <b translate="no">2D</b> view:</p>
+<p class="centerAlign"><img src="images/loginui3-base-state.jpg" alt="&quot;UI with all the buttons and fields in the Design mode&quot;" /></p><h5 id="adding-a-timeline-and-animation-settings">Adding a Timeline and Animation Settings</h5>
+<p>You are now ready to add the <a href="studio-timeline.html" translate="no">timeline</a>.</p>
+<p>To add a timeline with settings for running the animation:</p>
+<ol class="1" type="1"><li>Select <b translate="no">View</b> &gt; <b translate="no">Views</b> &gt; <b translate="no">Timeline</b> to open the <a href="qtquick-timeline-view.html" translate="no">Timeline</a> view.</li>
+<li>In <b translate="no">Timeline</b>, select <img src="images/plus.png" alt="" /> to add a 1000-frame timeline and settings for running the animation.<p class="centerAlign"><img src="images/loginui4-timeline-settings.png" alt="" /></p></li>
+<li>In the <b translate="no">Animation ID</b> field, enter <i>toCreateAccountState</i>.</li>
+<li>Deselect the <b translate="no">Running in base state</b> check box because you want the animation to run only after the user clicks the <b translate="no">Create Account</b> button. You can use the default settings for the other fields.</li>
+<li>Select <b translate="no">Close</b> in the <b translate="no">Timeline Settings</b> view to save the timeline and the animation settings.</li>
+</ol>
+<p>Next, you will record the animation in <b translate="no">Timeline</b>.</p>
+<h5 id="inserting-keyframes">Inserting Keyframes</h5>
+<p>You will now insert keyframes and record property changes in <b translate="no">Timeline</b>:</p>
+<ol class="1" type="1"><li>Select <i>repeatPassword</i> in <b translate="no">Navigator</b> to display its properties in <b translate="no">Properties</b>.</li>
+<li>In <b translate="no">Visibility</b> &gt; <b translate="no">Opacity</b>, select <img src="images/action-icon.png" alt="" /> &gt; <b translate="no">Insert Keyframe</b> to insert a keyframe for the opacity property of the component.<p class="centerAlign"><img src="images/loginui4-keyframe-opacity.png" alt="&quot;Inserting keyframe for opacity property&quot;" /></p></li>
+<li>In <b translate="no">Timeline</b>, check that the playhead is in frame 0, and select the <img src="images/recordfill.png" alt="" /> (<b translate="no">Per Property Recording</b>) button for the <b translate="no">opacity</b> property of <i>repeatPassword</i> to start recording property changes.<p class="centerAlign"><img src="images/loginui4-timeline-opacity.png" alt="&quot;Record button for the opacity property&quot;" /></p></li>
+<li>In the field next to the opacity property name on that same line, type 0 to hide the button, and press <b>Enter</b> to save the value.</li>
+<li>Move the playhead to frame 1000 and change the opacity value to 1 to show the button.<p>To fine-tune the value of a keyframe, you can also right-click the keyframe marker <img src="images/keyframe_linear_active.png" alt="" /> , and select <b translate="no">Edit Keyframe</b>.</p>
+</li>
+<li>Select the record button again to stop recording property changes. If you forget this, all the following changes will be recorded, and the results will be unpredictable.</li>
+<li>Select <i>createAccount</i> in <b translate="no">Navigator</b>, and repeat the above steps to insert a keyframe for the <b translate="no">Opacity</b> property of the button and to record changes for it. However, this time the opacity value needs to be 1 in frame 0 and 0 in frame 1000.</li>
+<li>Select <b translate="no">File</b> &gt; <b translate="no">Save</b> or press <b>Ctrl+S</b> to save your changes.</li>
+</ol>
+<p>When you move the playhead along the timeline, you can see how the create account button fades out while the repeat password field fades in.</p>
+<p>You will now animate the top anchor margin of the repeat password field to make it appear to slide down from the password field.</p>
+<h5 id="animating-anchors">Animating Anchors</h5>
+<p>To animate the top anchor margin of the repeat password field:</p>
+<ol class="1" type="1"><li>Select <i>repeatPassword</i> in <b translate="no">Navigator</b> to display its properties in <b translate="no">Properties</b>.</li>
+<li>In <b translate="no">Layout</b> &gt; <b translate="no">Margin</b> (under <img src="images/anchor-top.png" alt="" /> ), select <img src="images/action-icon.png" alt="" /> &gt; <b translate="no">Insert Keyframe</b> to insert a keyframe for the top anchor margin of <i>repeatPassword</i>.<p class="centerAlign"><img src="images/loginui4-keyframe-top-anchor-margin.png" alt="&quot;Inserting keyframe for top anchor margin&quot;" /></p></li>
+<li>In <b translate="no">Timeline</b>, check that the playhead is in frame 0, and select the record button for the <i>anchors.topMargin</i> property of <i>repeatPassword</i>.</li>
+<li>In the field next to the property, set a negative value for the top anchor margin, -100, to place <i>repeatPassword</i> on top of <i>password</i>.</li>
+<li>Move the playhead to frame 1000 and change the top anchor margin to 20, so that, combined with the change in the <b translate="no">Opacity</b> value, <i>repeatPassword</i> appears to slide down and settle below <i>password</i>.</li>
+<li>Select the record button again to stop recording property changes.</li>
+<li>Select <b translate="no">File</b> &gt; <b translate="no">Save</b> or press <b>Ctrl+S</b> to save your changes.</li>
+</ol>
+<h5 id="adding-easing-curves">Adding Easing Curves</h5>
+<p>You will now add an <a href="qtquick-editing-easing-curves.html" translate="no">easing curve</a> to the anchor margin animation that will make the transition seem smoother:</p>
+<ol class="1" type="1"><li>Click the keyframe marker <img src="images/keyframe_linear_active.png" alt="" /> for the <i>anchors.topMargin</i> property at frame 1000 on the timeline to select it.<p class="centerAlign"><img src="images/loginui4-easing-curve-top-anchor-margin.png" alt="&quot;Top anchor margin keyframe marker&quot;" /></p></li>
+<li>Right-click the keyframe marker to open a context menu, and select <b translate="no">Edit Easing Curve</b> to add an easing curve to the animation.</li>
+<li>In <b translate="no">Easing Curve Editor</b>, select <i>easeOutSine</i>.<p class="centerAlign"><img src="images/loginui4-easing-curve.png" alt="" /></p></li>
+<li>Select <b translate="no">OK</b> to close the editor.</li>
+</ol>
+<p>When you attach easing curves to keyframes, the shape of the keyframe marker changes from <img src="images/keyframe_linear_active.png" alt="" /> to <img src="images/keyframe_manualbezier_active.png" alt="" /> .</p>
+<p>Your timeline should now look something like this:</p>
+<p class="centerAlign"><img src="images/loginui4-timeline.png" alt="&quot;Timeline view with the recorded property changes&quot;" /></p><p>Next, you'll create states for the login and account creation pages and bind them to the animation settings.</p>
+<h4 id="binding-animation-to-states">Binding Animation to States</h4>
+<p>You will now bring back the <a href="quick-states.html" translate="no">states</a> in the <b translate="no">States</b> view and bind them to the animation settings in <b translate="no">Timeline</b>:</p>
+<ol class="1" type="1"><li>In <b translate="no">States</b>, select <img src="images/plus.png" alt="" /> twice to add two states called <i>login</i> and <i>createAccount</i>. You don't need to make any property changes this time because you'll bind the states to property animations.</li>
+<li>In <b translate="no">States</b>, select <img src="images/action-icon.png" alt="" /> for <i>login</i> to open the <b translate="no">Actions</b> menu, and then select <b translate="no">Set as Default</b> to determine that the <i>login</i> state is applied when the application starts.</li>
+<li>In <b translate="no">Timeline</b>, select the <img src="images/animation.png" alt="" /> (<b translate="no">Timeline Settings (S)</b>) button on the toolbar (or press <b>S</b>) to open the <b translate="no">Timeline Settings</b> dialog.<p class="centerAlign"><img src="images/loginui4-timeline-settings-states.png" alt="" /></p></li>
+<li>Double-click the cell in the <b translate="no">Timeline</b> column on the <i>createAccount</i> row, and select <i>timeline</i> in the list.</li>
+<li>Double-click the cell in the <b translate="no">Animation</b> column on the <i>createAccount</i> row, and select <i>toCreateAccountState</i>.</li>
+<li>Click <b translate="no">Close</b> to save the timeline settings.</li>
+<li>Select <b translate="no">File</b> &gt; <b translate="no">Save</b> or press <b>Ctrl+S</b> to save your changes.</li>
+</ol>
+<p>In the live preview, you can now click the <b translate="no">Create Account</b> button to go to the account creation page.</p>
+<p class="centerAlign"><img src="images/loginui4.gif" alt="&quot;Moving between login page and account creation page&quot;" /></p><h5 id="learn-more-timeline">Learn More - Timeline</h5>
+<p>The Qt Quick Timeline module provides components to use timelines and keyframes to animate component properties in UIs. Animating properties enables their values to move through intermediate values instead of immediately changing to the target value.</p>
+<p>The Keyframe component specifies the value of a keyframe on a timeline. Qt Design Studio automatically adds keyframes between two keyframes, and sets their values evenly to create an appearance of movement or transformation.</p>
+<p>An easing curve can be attached to the keyframe to change the appearance of the animation. For more information about easing curve types, see the documentation for <a href="https://doc.qt.io/qt/qml-qtquick-propertyanimation.html" translate="no">easing curves</a>.</p>
+<p>To be able to use the functionality of Timeline components, Qt Design Studio adds the following <i>import</i> statement to the UI files where it uses the components:</p>
+<pre class="cpp" translate="no">
+ import QtQuick.Timeline 1.0
+</pre>
+<p>All the properties and functions of the components from this module are available in the <b translate="no">Design</b> mode, and therefore it is enough to learn how to use <b translate="no">Timeline</b>, as described in <a href="studio-timeline.html" translate="no">Creating Timeline Animations</a>.</p>
+<h4 id="next-steps">Next Steps</h4>
+<p>For more examples about using timelines, see <a href="studioexamples.html" translate="no">Examples</a>.</p>
+<p>Files:</p>
+<ul>
+<li><a href="qtdesignstudio-loginui4-loginui4-qmlproject.html" translate="no">Loginui4/Loginui4.qmlproject</a></li>
+<li><a href="qtdesignstudio-loginui4-content-screen01-ui-qml.html" translate="no">Loginui4/content/Screen01.ui.qml</a></li>
+</ul>
+</div>
+<!-- @@@Loginui4 -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="qtdesignstudio-loginui3-example.html">Log In UI - States</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

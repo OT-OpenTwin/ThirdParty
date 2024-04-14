@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- optionpushbutton.cpp -->
+  <meta name="description" content="The OptionPushButton class implements a QPushButton for which the menu is only opened if the user presses the menu indicator.">
+  <title>OptionPushButton Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>OptionPushButton</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">OptionPushButton Class</h1>
+<span class="small-subtitle" translate="no">class <a href="utils.html" translate="no">Utils</a>::OptionPushButton</span>
+<!-- $$$OptionPushButton-brief -->
+<p>The OptionPushButton class implements a QPushButton for which the menu is only opened if the user presses the menu indicator. <a href="#details">More...</a></p>
+<!-- @@@OptionPushButton -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;OptionPushButton&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="utils-optionpushbutton-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="utils-optionpushbutton.html#OptionPushButton" translate="no">OptionPushButton</a></b>(QWidget *<i>parent</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="utils-optionpushbutton.html#OptionPushButton-1" translate="no">OptionPushButton</a></b>(const QString &amp;<i>text</i>, QWidget *<i>parent</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-optionpushbutton.html#setOptionalMenu" translate="no">setOptionalMenu</a></b>(QMenu *<i>menu</i>)</td></tr>
+</table></div>
+<!-- $$$OptionPushButton-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Use <a href="utils-optionpushbutton.html#setOptionalMenu" translate="no">OptionPushButton::setOptionalMenu</a>() to set the menu and its actions. If the users clicks on the menu indicator of the push button, this menu is opened, and its actions are triggered when the user selects them.</p>
+<p>If the user clicks anywhere else on the button, the QAbstractButton::clicked() signal is sent, as if the button didn't have a menu.</p>
+<p>Note: You may not call QPushButton::setMenu(). Use <a href="utils-optionpushbutton.html#setOptionalMenu" translate="no">OptionPushButton::setOptionalMenu</a>() instead.</p>
+</div>
+<!-- @@@OptionPushButton -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$OptionPushButton[overload1]$$$OptionPushButtonQWidget* -->
+<h3 class="fn" translate="no" id="OptionPushButton">OptionPushButton::<span class="name">OptionPushButton</span>(<span class="type">QWidget</span> *<i>parent</i> = nullptr)</h3>
+<p>Constructs an option push button with parent <i translate="no">parent</i>.</p>
+<!-- @@@OptionPushButton -->
+<!-- $$$OptionPushButton$$$OptionPushButtonconstQString&QWidget* -->
+<h3 class="fn" translate="no" id="OptionPushButton-1">OptionPushButton::<span class="name">OptionPushButton</span>(const <span class="type">QString</span> &amp;<i>text</i>, <span class="type">QWidget</span> *<i>parent</i> = nullptr)</h3>
+<p>Constructs an option push button with text <i translate="no">text</i> and parent <i translate="no">parent</i>.</p>
+<!-- @@@OptionPushButton -->
+<!-- $$$setOptionalMenu[overload1]$$$setOptionalMenuQMenu* -->
+<h3 class="fn" translate="no" id="setOptionalMenu"><span class="type">void</span> OptionPushButton::<span class="name">setOptionalMenu</span>(<span class="type">QMenu</span> *<i>menu</i>)</h3>
+<p>Associates the popup menu <i translate="no">menu</i> with this push button. This menu is shown if the user clicks on the menu indicator that is shown. If the user clicks anywhere else on the button, QAbstractButton::clicked() is sent instead.</p>
+<div class="admonition note">
+<p><b>Note: </b>Calling this method removes all connections to the QAbstractButton::pressed() signal.</p>
+</div>
+<p>Ownership of the menu is not transferred to the push button.</p>
+<!-- @@@setOptionalMenu -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

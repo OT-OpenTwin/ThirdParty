@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-from-qt5-to-qt6.qdoc -->
+  <title>Converting Qt 5 Projects into Qt 6 Projects | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Converting Qt 5 Projects into Qt 6 Projects</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-vcs-git.html" />
+  <link rel="next" href="quick-converting-ui-projects.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-vcs-git.html">Using Git</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-converting-ui-projects.html">Converting UI Projects to Applications</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#font-loader">Font Loader</a></li>
+<li class="level1"><a href="#qt-quick-studio-components">Qt Quick Studio Components</a></li>
+<li class="level1"><a href="#qt-quick-studio-effects">Qt Quick Studio Effects</a></li>
+<li class="level1"><a href="#qt-quick-3d">Qt Quick 3D</a></li>
+<li class="level1"><a href="#qml">QML</a></li>
+<li class="level1"><a href="#qt-design-studio">Qt Design Studio</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Converting Qt 5 Projects into Qt 6 Projects</h1>
+<!-- $$$studio-porting-projects.html-description -->
+<div class="descr" id="details">
+<p>Qt Design Studio supports creating UIs with Qt 6 in addition to Qt 5. However, to make a project that uses Qt 5 use Qt 6, you have to be aware of a few differences and issues that are discussed in this topic.</p>
+<h2 id="font-loader">Font Loader</h2>
+<p>Projects that were <a href="studio-projects.html" translate="no">created</a> with Qt Design Studio 2.1 use <code translate="no">FontLoader</code> in a way that is not supported in Qt 6. Specifically, the <code translate="no">name</code> property is read-only in Qt 6. Therefore, you must modify the <code translate="no">Constants.qml</code> file to have fonts loaded correctly. You can either remove the <code translate="no">FontLoader</code> or switch to using the <code translate="no">source</code> property instead of the <code translate="no">name</code> property.</p>
+<p>To remove the <code translate="no">FontLoader</code>, delete the following line from the <code translate="no">Constants.qml</code> file:</p>
+<pre class="cpp" translate="no">
+ readonly property FontLoader mySystemFont: FontLoader { name: <span class="string">&quot;Arial&quot;</span> }
+</pre>
+<p>Then, remove the following lines that contain references to mySystemFont:</p>
+<pre class="cpp" translate="no">
+ readonly property font font: <span class="type"><a href="https://doc.qt.io/qt/qt.html" translate="no">Qt</a></span><span class="operator">.</span>font({
+                                         family: mySystemFont<span class="operator">.</span>name<span class="operator">,</span>
+                                         pixelSize: <span class="type"><a href="https://doc.qt.io/qt/qt.html" translate="no">Qt</a></span><span class="operator">.</span>application<span class="operator">.</span>font<span class="operator">.</span>pixelSize
+                                      })
+
+ readonly property font largeFont: <span class="type"><a href="https://doc.qt.io/qt/qt.html" translate="no">Qt</a></span><span class="operator">.</span>font({
+                                              family: mySystemFont<span class="operator">.</span>name<span class="operator">,</span>
+                                              pixelSize: <span class="type"><a href="https://doc.qt.io/qt/qt.html" translate="no">Qt</a></span><span class="operator">.</span>application<span class="operator">.</span>font<span class="operator">.</span>pixelSize <span class="operator">*</span> <span class="number">1.6</span>
+                                          })
+</pre>
+<p>Alternatively, you can keep the <code translate="no">FontLoader</code> and use the <code translate="no">source</code> property instead of the <code translate="no">name</code> property. If you are unsure about how to do this, you can replace the <code translate="no">Constants.qml</code> file with a new one that you create by using Qt Design Studio 2.2.</p>
+<h2 id="qt-quick-studio-components">Qt Quick Studio Components</h2>
+<p><a href="quick-shapes.html#summary-of-shapes" translate="no">Qt Quick Studio Components</a> are available in Qt 6, except for the <a href="quick-images.html#iso-icon" translate="no">Iso Icon</a> component. It specifies an icon from an ISO 7000 icon library as a <a href="https://doc.qt.io/qt/qframe.html#picture" translate="no">Picture</a> component, which is not supported in Qt 6. Therefore, Iso Icon is also not supported in Qt 6.</p>
+<h2 id="qt-quick-studio-effects">Qt Quick Studio Effects</h2>
+<p><a href="quick-2d-effects.html" translate="no">2D Effects</a> are only partially supported. The following 2D effects are not available in Qt 6:</p>
+<ul>
+<li>Blend</li>
+<li>Inner Shadow</li>
+<li>Blur effects except:<ul>
+<li>DirectionalBlur</li>
+<li>FastBlur</li>
+<li>GaussianBlur</li>
+<li>MaskedBlur</li>
+<li>RecursiveBlur</li>
+<li>RadialBlur</li>
+<li>ZoomBlur</li>
+</ul>
+</li>
+</ul>
+<p>Substitutes are provided for the obsolete effects to keep Qt 5 based applications working, but the effects will not be rendered as expected.</p>
+<h2 id="qt-quick-3d">Qt Quick 3D</h2>
+<p>In Qt 6, you cannot use the import <code translate="no">import QtQuick3D 1.15</code>, which imports a Qt 5 based Qt Quick 3D module. Qt 6 does not require a version for imports, and therefore it is not used by default. To turn a Qt 5 based project into a Qt 6 based project, you have to adjust the imports in all <code translate="no">.qml</code> files that use Qt Quick 3D by removing the version numbers.</p>
+<p>For more information about changes in Qt Quick 3D, see the <a href="https://doc-snapshots.qt.io/qt6-dev/qtquick3d-changes-qt6.html" translate="no">changes file</a>.</p>
+<h2 id="qml">QML</h2>
+<p>For general information about changes in QML between Qt 5 and Qt 6, see:</p>
+<ul>
+<li><a href="https://doc.qt.io/qt-6/obsoleteqmltypes.html" translate="no">Obsolete types</a></li>
+<li><a href="https://doc.qt.io/qt-6/quick-changes-qt6.html" translate="no">Changes in Qt Quick</a></li>
+</ul>
+<p>The most notable change is that Qt 6 does not require a version for imports anymore.</p>
+<h2 id="qt-design-studio">Qt Design Studio</h2>
+<p>Projects that support only Qt 6 are marked with <code translate="no">qt6Project: true</code> in the <code translate="no">.qmlproject</code> file. This line is added if you choose <b translate="no">Qt 6</b> in the wizard when creating the project. If the project file does not contain this line, the project will use Qt 5 and a Qt 5 kit by default. You can change this in the project <b translate="no">Run Settings</b>, where you can select <b translate="no">Qt 6</b> instead.</p>
+<p>Projects that use Qt 6 specific features will not work with Qt 5. This means that projects that are supposed to work with both Qt 5 and Qt 6 require versions for their imports.</p>
+<p>Therefore, if you want to use Qt Quick 3D, using the same project with Qt 5 and Qt 6 is not possible.</p>
+</div>
+<!-- @@@studio-porting-projects.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-vcs-git.html">Using Git</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-converting-ui-projects.html">Converting UI Projects to Applications</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

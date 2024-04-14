@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-simulink.qdoc -->
+  <title>Simulating Dynamic Systems | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Simulating Dynamic Systems</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-javascript.html" />
+  <link rel="next" href="creator-qml-modules-with-plugins.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-javascript.html">Simulating Application Logic</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-qml-modules-with-plugins.html">Using QML Modules with Plugins</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#the-qt-blockset-for-simulink">The Qt Blockset for Simulink</a></li>
+<li class="level2"><a href="#simulink-qt-client">Simulink-Qt Client</a></li>
+<li class="level2"><a href="#address-and-port">Address and Port</a></li>
+<li class="level2"><a href="#qt-qml-send">Qt/QML Send</a></li>
+<li class="level2"><a href="#qt-qml-receive">Qt/QML Receive</a></li>
+<li class="level2"><a href="#specifying-property-names-in-simulink">Specifying Property Names in Simulink</a></li>
+<li class="level1"><a href="#integrating-the-simulink-model-to-qt-design-studio">Integrating the Simulink Model to Qt Design Studio</a></li>
+<li class="level2"><a href="#importing-the-simulink-connector">Importing the Simulink Connector</a></li>
+<li class="level2"><a href="#creating-bindings">Creating Bindings</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Simulating Dynamic Systems</h1>
+<!-- $$$studio-simulink.html-description -->
+<div class="descr" id="details">
+<p>Use the Simulink connector to connect simulation to your UI. Simulink is a MATLAB-based graphical programming environment for modeling, simulating, and analyzing multi-domain dynamic systems. On Windows, Qt Design Studio provides built-in support for connectivity to Simulink models, which allows them to send and receive data with applications developed using Qt Design Studio. Install Simulink on your computer and run it simultaneously with Qt Design Studio to enable communication between the applications.</p>
+<p>The information given here is mainly focused on the integration of the Simulink connector in Qt Design Studio. For information on how to use the Simulink environment, see the <a href="https://se.mathworks.com/help/simulink/" translate="no">documentation</a> provided by MathWorks.</p>
+<h2 id="the-qt-blockset-for-simulink">The Qt Blockset for Simulink</h2>
+<p>Install the Simulink <a href="https://git.qt.io/design-studio/simulink/simulink-plugin-dependencies" translate="no">Qt Blockset</a> to your computer in order to connect a Simulink model to your application. The Qt Blockset installer adds the Simulink blocks needed to establish connectivity to your application. After installation, the <b translate="no">SLQTLibrary</b> blockset will be added to the Simulink blocks library. The blocks allow sending and receiving of <b translate="no">Property</b>, <b translate="no">Signal</b>, and <b translate="no">Slot</b> updates with your application. The Qt Blockset includes the <b translate="no">Simulink-Qt Client</b>, <b translate="no">Address</b>, <b translate="no">Qt/QML Send</b>, and <b translate="no">Qt/QML Receive</b> blocks.</p>
+<p class="centerAlign"><img src="images/simulink-qt-blockset-receive.png" alt="&quot;The Qt Blockset in a Simulink Model&quot;" /></p><h3 id="simulink-qt-client">Simulink-Qt Client</h3>
+<p>A <b translate="no">Simulink-Qt Client</b> block establishes the TCP/IP Client connection with your application. The block has two inputs and two outputs:</p>
+<ul>
+<li>The <b translate="no">Address</b> input specifies the machine IP address of the server to the client block. To ensure the address is formatted correctly, use the <b translate="no">Address</b> block.</li>
+<li>The <b translate="no">Port</b> input specifies the port value for the IP address, which can be determined by using the <b translate="no">Port</b> block or a valid Simulink integer value.</li>
+<li>The <b translate="no">IsConnected</b> output is a Boolean signal. When true, specifies the connection to the server has been established.</li>
+<li>The <b translate="no">Socket</b> output sends a signal that presents the socket ID of the connection. This signal needs to be delivered to corresponding <b translate="no">Qt/QML Receive</b> and <b translate="no">Qt/QML Send</b> blocks.</li>
+</ul>
+<h3 id="address-and-port">Address and Port</h3>
+<p>An <b translate="no">Address</b> block delivers the IP address of a server to the <b translate="no">Simulink-Qt Client</b> block as a typical IP address string. A <b translate="no">Port</b> block determines the port value for the IP address. For simulations where the Simulink model and your application are run on the same machine, use the IP address 127.0.0.1 and any port available.</p>
+<h3 id="qt-qml-send">Qt/QML Send</h3>
+<p class="centerAlign"><img src="images/simulink-qt-send-block.png" alt="&quot;A Qt/QML Send Block&quot;" /></p><p>A <b translate="no">Qt/QML Send</b> block sends a <b translate="no">Signal</b> or <b translate="no">Property</b> value change from Simulink. It is used for each property that Simulink needs to send to your application. The property name of the block needs to correspond to the name of the property or slot in your application.</p>
+<p>The block has two inputs and one output:</p>
+<ul>
+<li>The <b translate="no">Socket</b> input receives the socket signal from the <b translate="no">Simulink-Qt Client</b> block.</li>
+<li>The <b translate="no">Data</b> input receives the data to be sent as a <b translate="no">Signal</b> or <b translate="no">Property</b> update.</li>
+<li>The <b translate="no">Data Out</b> output outputs the passed-through data to connect it to other Simulink blocks if needed.</li>
+</ul>
+<h3 id="qt-qml-receive">Qt/QML Receive</h3>
+<p class="centerAlign"><img src="images/simulink-qt-receive-block.png" alt="&quot;A Qt/QML Receive Block&quot;" /></p><p>A <b translate="no">Qt/QML Receive</b> block receives <b translate="no">Signal</b> or <b translate="no">Property</b> value changes from your application. It is used for each property that Simulink needs to receive from your application. The property name of the block needs to correspond to the name of the property or slot in your application.</p>
+<p>The block has one input and two outputs:</p>
+<ul>
+<li>The <b translate="no">Socket</b> input receives the socket signal from the <b translate="no">Simulink-Qt Client</b> block.</li>
+<li>The <b translate="no">Fcn_Call</b> output sends the function-call, which can either be terminated if idle, or connected to a valid function call subsystem.</li>
+<li>The <b translate="no">isReceived</b> output emits a scalar Boolean signal suggesting that a valid <b translate="no">Signal</b> or <b translate="no">Property</b> update was acquired from the connection.</li>
+<li>The <b translate="no">Data</b> output signals data payload from a <b translate="no">Signal</b> or <b translate="no">Property</b> value.</li>
+</ul>
+<h3 id="specifying-property-names-in-simulink">Specifying Property Names in Simulink</h3>
+<p>Double-click the <b translate="no">Qt/SML Send</b> or <b translate="no">Qt/QML Receive</b> block in Simulink to specify a property name. A pop-up for <b translate="no">Block Parameters</b> appears. Type the name of the property in the <b translate="no">Qt Signal/Property Name</b> field and click <b translate="no">OK</b>. The name, for example speedProp, needs to match a <b translate="no">signal</b> or a <b translate="no">property</b> in Qt Design Studio.</p>
+<p class="centerAlign"><img src="images/simulink-qt-send-example-property.png" alt="&quot;Example property of the Qt Send block&quot;" /></p><h2 id="integrating-the-simulink-model-to-qt-design-studio">Integrating the Simulink Model to Qt Design Studio</h2>
+<h3 id="importing-the-simulink-connector">Importing the Simulink Connector</h3>
+<p>To integrate the Simulink model into Qt Design Studio, you first need to add the Simulink connector module to your project. In the <b translate="no">Components</b> view, select <img src="images/plus.png" alt="" /> &gt; <b translate="no">SimulinkConnector</b>. Qt Design Studio is now ready to communicate with the Simulink model.</p>
+<p class="centerAlign"><img src="images/studio-qml-imports-slconnector.png" alt="&quot;Simulink Connector in the list of available modules.&quot;" /></p><p>If you need to change the IP address and/or port, you need to select the <b translate="no">SimulinkConnector</b> item in <a href="qtquick-navigator.html" translate="no">Navigator</a> and set the IP address and/or port in the <a href="qtquick-properties-view.html" translate="no">Properties</a> view. If you cannot see <b translate="no">SimulinkConnector</b> in <b translate="no">Navigator</b>, you need to click <img src="images/filtericon.png" alt="" /> (<b translate="no">Filter Tree</b>) and unselect <b translate="no">Show only visible items</b>.</p>
+<p>To communicate with a specific model in Simulink, you need to create properties matching the send and receive properties in the root of the application you are building. Select the root item in <b translate="no">Navigator</b> to add the properties on the <b translate="no">Properties</b> tab in the <a href="qtquick-connection-view.html" translate="no">Connections</a> view.</p>
+<p>See <a href="quick-dynamic-properties.html" translate="no">Specifying Custom Properties</a> for a detailed description of how to add a custom property. The name of the property and the data type need to match those of the send or receive property of the Simulink model.</p>
+<p class="centerAlign"><img src="images/studio-connection-view-properties.png" alt="&quot;The Properties tab in the Connections view&quot;" /></p><h3 id="creating-bindings">Creating Bindings</h3>
+<p>Next, you need to bind the value of the property you just created to the desired properties of UI components.</p>
+<p>By binding the root item property to a component property you can use it, for example, to rotate an component. Binding a root item property of speed to a component property of rotation would result in the item rotating in the screen when the simulation is run.</p>
+<p>To bind the root item property to a component property, select the component either by clicking on it on the canvas or in <b translate="no">Navigator</b>. In the <b translate="no">Properties</b> view, find the component property to which you want to bind the root item property. Select the <img src="images/action-icon.png" alt="" /> (<b translate="no">Actions</b>) menu next to a property, and then select <b translate="no">Set Binding</b>. In the <b translate="no">Binding Editor</b>, select the text field and type in <code translate="no">&lt;id&gt;.&lt;property name&gt;</code>, for example <code translate="no">rectangle.speedProp</code>. For more information, see <a href="qtquick-positioning.html#setting-bindings" translate="no">Setting Bindings</a>.</p>
+<p class="centerAlign"><img src="images/studio-binding-editor.png" alt="&quot;The Binding Editor window&quot;" /></p><p>Run the simulation by first clicking the <b translate="no">Run</b> icon in Qt Design Studio and then the <b translate="no">Run</b> icon in Simulink.</p>
+</div>
+<!-- @@@studio-simulink.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-javascript.html">Simulating Application Logic</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-qml-modules-with-plugins.html">Using QML Modules with Plugins</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

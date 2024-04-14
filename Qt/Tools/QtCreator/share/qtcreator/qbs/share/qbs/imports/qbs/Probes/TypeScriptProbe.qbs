@@ -30,6 +30,7 @@
 
 import qbs.File
 import qbs.FileInfo
+import qbs.Host
 import qbs.ModUtils
 import "path-probe.js" as PathProbeConfigure
 import "../../../modules/typescript/typescript.js" as TypeScript
@@ -57,24 +58,32 @@ BinaryProbe {
         if (!packageManagerRootPath)
             throw '"packageManagerRootPath" must be specified';
 
-        var result = PathProbeConfigure.configure(names, nameSuffixes, nameFilter, searchPaths,
-                                                  pathSuffixes, platformSearchPaths,
-                                                  environmentPaths, platformEnvironmentPaths,
-                                                  pathListSeparator);
+        var selectors;
+        var results = PathProbeConfigure.configure(
+                    selectors, names, nameSuffixes, nameFilter, candidateFilter, searchPaths,
+                    pathSuffixes, platformSearchPaths, environmentPaths, platformEnvironmentPaths);
 
-        var v = new ModUtils.EnvironmentVariable("PATH", pathListSeparator,
-                                                 hostOS.contains("windows"));
+        var v = new ModUtils.EnvironmentVariable("PATH", FileInfo.pathListSeparator(),
+                                                 Host.os().contains("windows"));
         v.prepend(interpreterPath);
 
-        result.version = result.found
-                ? TypeScript.findTscVersion(result.filePath, v.value)
-                : undefined;
-        if (FileInfo.fromNativeSeparators(packageManagerBinPath) !== result.path ||
-                !File.exists(FileInfo.fromNativeSeparators(packageManagerRootPath, "typescript"))) {
-            result = { found: false };
-        }
+        var resultsMapper = function(result) {
+            result.version = result.found
+                    ? TypeScript.findTscVersion(result.filePath, v.value)
+                    : undefined;
+            if (FileInfo.fromNativeSeparators(packageManagerBinPath) !== result.path ||
+                    !File.exists(
+                        FileInfo.fromNativeSeparators(packageManagerRootPath, "typescript"))) {
+                result = { found: false };
+            }
+            return result;
+        };
+        results.files = results.files.map(resultsMapper);
 
-        found = result.found;
+        found = results.found;
+        allResults = results.files;
+
+        var result = results.files[0];
         candidatePaths = result.candidatePaths;
         path = result.path;
         filePath = result.filePath;

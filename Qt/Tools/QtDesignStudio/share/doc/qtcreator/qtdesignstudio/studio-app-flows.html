@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-app-flows.qdoc -->
+  <title>Designing Application Flows | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Designing Application Flows</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="quick-uis.html" />
+  <link rel="next" href="studio-flow-view.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="quick-uis.html">Wireframing</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-flow-view.html">Adding Flow Views</a>
+</p>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Designing Application Flows</h1>
+<!-- $$$studio-app-flows.html-description -->
+<div class="descr" id="details">
+<p class="centerAlign"><img src="images/studio-flow-view.png" alt="&quot;Application flow in the 2D view&quot;" /></p><p>In Qt Design Studio, a <i>flow view</i> represents a schematic diagram. It consists of <i>flow items</i> that represent the screens in the UI and <i>transition lines</i> that connect them, thus illustrating the possible user pathways through the UI. You use <i>action areas</i> as starting points for transition lines. You can attach effects to transition lines, such as fade or push, to determine what users see when one flow item changes into another.</p>
+<p>You can use <i>flow decisions</i> to set up alternative pathways between flow items in the UI. For example, if user input determines which flow item should open next, you can test the different scenarios in the prototype by having a dialog pop up where you can select which flow item to show next.</p>
+<p>Especially on mobile and embedded platforms, the application might need to react to external events from the platform, such as notifications or other applications requiring the users' attention. You can use <i>flow wildcards</i> to determine the priority of flow items by adding them to positive and negative lists.</p>
+<p>To design application flows:</p>
+<p class="centerAlign"><img src="images/studio-flow-steps.png" alt="&quot;Designing application flows&quot;" /></p><ol class="1" type="1"><li>Use a project wizard template to add a <b translate="no">Flow View</b> component, as described in <a href="studio-flow-view.html" translate="no">Adding Flow Views</a>.</li>
+<li>Use a project wizard template to add a <b translate="no">Flow Item</b> component for each screen in the UI, as described in <a href="studio-flow-item.html" translate="no">Adding Flow Items</a>.</li>
+<li>Use context menu commands to add action areas and transitions, as described in <a href="studio-flow-action-area.html" translate="no">Adding Action Areas and Transitions</a>.</li>
+<li>Use context menu commands to apply effects to transitions, as described in <a href="studio-flow-effects.html" translate="no">Applying Effects to Transitions</a>.</li>
+<li>When you are ready for production, use the event list simulator to replace transition lines with connections to real signals from UI controls, as described in <a href="studio-flow-events.html" translate="no">Simulating Events</a>.</li>
+<li>To set up alternative pathways between flow items, use <b translate="no">Flow Decision</b> components from <b translate="no">Components</b> &gt; <b translate="no">Flow View</b>, as described in <a href="studio-flow-conditions.html" translate="no">Simulating Conditions</a>.</li>
+<li>Use <a href="quick-states.html" translate="no">states</a> in flows to modify the appearance of components on screens in response to user interaction, as described in <a href="studio-flow-states.html" translate="no">Applying States in Flows</a>.</li>
+<li>Use <b translate="no">Flow Wildcard</b> components from <b translate="no">Components</b> &gt; <b translate="no">Flow View</b> to prioritize events from other applications and to stop some screens from appearing on others, as described in <a href="studio-flow-external-events.html" translate="no">Reacting to External Events</a>.</li>
+</ol>
+</div>
+<!-- @@@studio-app-flows.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="quick-uis.html">Wireframing</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-flow-view.html">Adding Flow Views</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

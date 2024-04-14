@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-particles.qdoc -->
+  <title>Particle Emitters | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Particle Emitters</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-3d-logical-particles.html" />
+  <link rel="next" href="studio-3d-particle-affectors.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-3d-logical-particles.html">Logical Particles</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-particle-affectors.html">Particle Affectors</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#emitter">Emitter</a></li>
+<li class="level1"><a href="#trail-emitter">Trail Emitter</a></li>
+<li class="level1"><a href="#particle-rotation">Particle Rotation</a></li>
+<li class="level1"><a href="#emit-burst">Emit Burst</a></li>
+<li class="level1"><a href="#dynamic-burst">Dynamic Burst</a></li>
+<li class="level1"><a href="#particle-shape">Particle Shape</a></li>
+<li class="level1"><a href="#model-shape">Model Shape</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Particle Emitters</h1>
+<!-- $$$studio-3d-particle-emitters.html-description -->
+<div class="descr" id="details">
+<p>The <b translate="no">Particle Emitter</b> component emits logical particles into the system. You can determine how individual particles will look like and how they are emitted. Many of the properties have <i>variation</i> counterparts, such as <b translate="no">Color variation</b>, for adding variation to the particles.</p>
+<p>The <b translate="no">Trail Emitter</b> component emits particles from the location of other logicial particles. Any logical particle of the followed component within the bounds of a trail emitter will cause particle emission from its location, as if there were an emitter on it with the same properties as the trail emitter.</p>
+<p>Emitter components can use instances of the <a href="studio-3d-particle-emitters.html#particle-shape" translate="no">Particle Shape</a> or <a href="studio-3d-particle-emitters.html#model-shape" translate="no">Model Shape</a> component to emit particles from the surface of the selected shape.</p>
+<p>You always need one emitter. If the <b translate="no">Particle System</b> component instance is the direct parent of the emitter component instance, you don't need to specify the particle system separately. However, you always need to select the logical particle to emit, or nothing is emitted.</p>
+<p>The following components are available for emitting particles:</p>
+<ul>
+<li><a href="studio-3d-particle-emitters.html#emitter" translate="no">Emitter</a></li>
+<li><a href="studio-3d-particle-emitters.html#trail-emitter" translate="no">Trail Emitter</a></li>
+<li><a href="studio-3d-particle-emitters.html#emit-burst" translate="no">Emit Burst</a></li>
+<li><a href="studio-3d-particle-emitters.html#dynamic-burst" translate="no">Dynamic Burst</a></li>
+<li><a href="studio-3d-particle-emitters.html#model-shape" translate="no">Model Shape</a></li>
+<li><a href="studio-3d-particle-emitters.html#particle-shape" translate="no">Particle Shape</a></li>
+</ul>
+<h2 id="emitter">Emitter</h2>
+<p>Specify properties for particle emitters in <b translate="no">Properties</b> &gt; <b translate="no">Particle Emitter</b>. You need at least one emitter.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-emitter.png" alt="&quot;Particle Emitter properties&quot;" /></p><p><b translate="no">Emitter</b> emits <a href="studio-3d-logical-particles.html" translate="no">logical particles</a> that you select in <b translate="no">Particle</b>, as defined by the other properties. If the <b translate="no">Particle System</b> component instance is not the direct parent of the emitter component instance, you need to select it in <b translate="no">System</b>.</p>
+<p>You can control the amount of particles emitted per second by setting the value of <b translate="no">Emit rate</b> or add <b translate="no">Emit Burst</b> component instances in <b translate="no">Emit bursts</b> to emit bursts of specified amounts of particles at the specified point in time for the specified duration.</p>
+<p>In <b translate="no">Velocity</b>, set a starting velocity for emitted particles. If velocity is not set, particles start motionless, and velocity is determined by <a href="studio-3d-particle-affectors.html" translate="no">particle affectors</a>.</p>
+<p>Use <b translate="no">Enabled</b> to turn an emitter on or off. Usually, this property is used in code to conditionally turn emitters on and off. To continue emitting bursts, set <b translate="no">Emit rate</b> to 0 instead of disabling <b translate="no">Enabled</b>.</p>
+<p>In <b translate="no">Shape</b>, select the instance of the <a href="studio-3d-particle-emitters.html#particle-shape" translate="no">Particle Shape</a> or <a href="studio-3d-particle-emitters.html#model-shape" translate="no">Model Shape</a> component to use. The shape is scaled, positioned, and rotated based on the emitter node properties. When the shape <b translate="no">Fill</b> property is set to false, particles are emitted only from the surface of the shape. When the shape is defined, it is visualized in the <b translate="no">3D</b> view. When the shape is not defined, particles are emitted from the center point of the emitter.</p>
+<p>In <b translate="no">Life span</b>, specify the lifespan of a single particle in milliseconds. Specify variation in the particle lifespan in <b translate="no">Life span variation</b>. For example, to emit particles that will exist from three to four seconds, set <b translate="no">Life span</b> to 3500 ms and <b translate="no">Life span variation</b> to 500 ms.</p>
+<p><b translate="no">Particle scale</b> and <b translate="no">Particle end scale</b> specify the scale multiplier of the particles at the beginning and end. For variation in particle size, specify values for <b translate="no">Particle scale variation</b> and <b translate="no">Particle end scale variation</b>.</p>
+<p><b translate="no">Depth bias</b> specifies the depth bias of the emitter. Depth bias is added to the object's distance from camera when sorting objects. This can be used to force the rendering order of objects that are located close to each other if it might otherwise change between frames. Negative values cause the sorting value to move closer to the camera while positive values move it further from the camera.</p>
+<h2 id="trail-emitter">Trail Emitter</h2>
+<p>Specify additional properties for particle trail emitters in <b translate="no">Properties</b> &gt; <b translate="no">Particle Trail Emitter</b>.</p>
+<p>Select the logical particle component to follow in <b translate="no">Follow</b>.</p>
+<h2 id="particle-rotation">Particle Rotation</h2>
+<p>Specify properties for the rotation of particles in <b translate="no">Properties</b> &gt; <b translate="no">Particle Rotation</b></p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-rotation.png" alt="&quot;Particle Rotation properties&quot;" /></p><p><b translate="no">Rotation</b> specifies the rotation of the particles in the beginning. Rotation is defined as degrees in euler angles. For variation in rotation, specify values for <b translate="no">Variation</b>.</p>
+<p><b translate="no">Velocity</b> specifies the rotation velocity of the particles in the beginning. Rotation velocity is defined as degrees per second in euler angles. For variation in velocity, specify values in <b translate="no">Velocity variation</b>.</p>
+<h2 id="emit-burst">Emit Burst</h2>
+<p>Specify properties for emit bursts in <b translate="no">Properties</b> &gt; <b translate="no">Emit Burst</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-emit-burst.png" alt="&quot;Particle Emit Burst properties&quot;" /></p><p><b translate="no">Time</b> specifies the time in milliseconds when emitting the burst starts, and <b translate="no">Amount</b> specifies the amount of particles emitted during the time specified in milliseconds in <b translate="no">Duration</b>.</p>
+<p>For example, you could use two <b translate="no">Emit Burst</b> instances to emit 100 particles at the beginning and 50 particles at 2 seconds, so that both bursts take 200 milliseconds. For one instance, set <b translate="no">Time</b> to 0, <b translate="no">Amount</b> to 100, and <b translate="no">Duration</b> to 200. For the other instance, set <b translate="no">Time</b> to 2000, <b translate="no">Amount</b> to 50, and <b translate="no">Duration</b> to 200.</p>
+<h2 id="dynamic-burst">Dynamic Burst</h2>
+<p>Specify properties for emit bursts in <b translate="no">Properties</b> &gt; <b translate="no">Dynamic Burst</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-dynamic-burst.png" alt="" /></p><p><b translate="no">Trigger Mode</b> defines when the burst is triggered:</p>
+<ul>
+<li>Select <b translate="no">TriggerTime</b> to emit the burst when the burst time is due.</li>
+<li>Select <b translate="no">TriggerStart</b> to emit the burst when the followed particle is emitted.<div class="admonition note">
+<p><b>Note: </b>This mode only works with trail emitters.</p>
+</div>
+<div class="admonition note">
+<p><b>Note: </b>In this mode, <b translate="no">Time</b> and <b translate="no">Duration</b> don't have an effect.</p>
+</div>
+</li>
+<li>Select <b translate="no">TriggerEnd</b> to emit the burst when the followed particle life span ends.</li>
+</ul>
+<p><b translate="no">Amount Variation</b> defines the random variation in the number of emitted particles.</p>
+<h2 id="particle-shape">Particle Shape</h2>
+<p>The <b translate="no">Particle Shape</b> component supports shapes, such as cube, sphere, and cylinder, for emitting particles from their area.</p>
+<p>Specify properties for particle shape in <b translate="no">Properties</b> &gt; <b translate="no">Particle Shape</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-shape.png" alt="&quot;Particle Shape properties&quot;" /></p><p>In <b translate="no">Type</b>, select the shape to use.</p>
+<p>Select <b translate="no">Fill</b> to fill the shape instead of just displaying its outline.</p>
+<p><b translate="no">Extents</b> determines the extent coordinates of the shape geometry.</p>
+<h2 id="model-shape">Model Shape</h2>
+<p>The <b translate="no">Model Shape</b> component specifies a template for defining the model.</p>
+<p>Specify properties for model shape in <b translate="no">Properties</b> &gt; <b translate="no">Particle Model Shape</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-model-shape.png" alt="&quot;Particle Model Shape properties&quot;" /></p><p>In <b translate="no">Delegate</b>, select the <b translate="no">3D Model</b> component that defines each object instantiated by the particle.</p>
+<p>Select <b translate="no">Fill</b> to fill the shape instead of just displaying its outline.</p>
+</div>
+<!-- @@@studio-3d-particle-emitters.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-3d-logical-particles.html">Logical Particles</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-particle-affectors.html">Particle Affectors</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-buttons.qdoc -->
+  <title>Creating Scalable Buttons and Borders | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Creating Scalable Buttons and Borders</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="quick-buttons.html" />
+  <link rel="next" href="qtquick-properties.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="quick-buttons.html">Creating Buttons</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtquick-properties.html">Specifying Component Properties</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#creating-the-button-component">Creating the Button Component</a></li>
+<li class="level1"><a href="#constructing-the-button-component">Constructing the Button Component</a></li>
+<li class="level1"><a href="#using-states-to-change-component-property-values">Using States to Change Component Property Values</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Creating Scalable Buttons and Borders</h1>
+<!-- $$$quick-scalable-image.html-description -->
+<div class="descr" id="details">
+<p>You can use the <a href="https://doc.qt.io/qt/stylesheet-reference.html#border-image" translate="no">Border Image</a> component to display an image, such as a PNG file, as a border and a background.</p>
+<p>Use two border images and suitable graphics to change the appearance of a button when it is clicked. You can use use <a href="quick-states.html" translate="no">states</a> to determine which image is visible depending on whether the mouse button is pressed down. You could add more images and states to change the appearance of the button depending on other mouse events, such as hovered.</p>
+<p>Use a <a href="quick-text.html" translate="no">Text</a> component to add button text. You can use states also to change the button text color and font size. For example, you can scale the button text up or down.</p>
+<p>Add a <a href="quick-user-interaction-methods.html#mouse-area" translate="no">Mouse Area</a> component that covers the whole area and reacts to mouse events.</p>
+<p class="centerAlign"><img src="images/qmldesigner-borderimage-type.png" alt="&quot;Button component in the 2D and States views&quot;" /></p><h2 id="creating-the-button-component">Creating the Button Component</h2>
+<p>To create a button component, select <b translate="no">File</b> &gt; <b translate="no">New File</b> &gt; <b translate="no">Qt Quick Files</b> &gt; <b translate="no">Qt Quick UI File</b> &gt;</p>
+<p><b translate="no">Choose</b> to create a <a href="creator-quick-ui-forms.html" translate="no">UI file</a> called Button.ui.qml (for example).</p>
+<div class="admonition note">
+<p><b>Note: </b>Components are listed in <b translate="no">Components</b> &gt; <b translate="no">My Components</b> only if the filename begins with a capital letter.</p>
+</div>
+<h2 id="constructing-the-button-component">Constructing the Button Component</h2>
+<p>To construct the button component:</p>
+<ol class="1" type="1"><li>Click <b translate="no">Design</b> to edit the UI file in the <a href="qtquick-form-editor.html" translate="no">2D</a> view.</li>
+<li>Select <b translate="no">Assets</b> &gt; <img src="images/plus.png" alt="" /> to copy the image files you want to use to the project folder.</li>
+<li>In <a href="qtquick-navigator.html" translate="no">Navigator</a>, select the root component and set the width (<b translate="no">W</b>) and height (<b translate="no">H</b>) of the button in the <a href="qtquick-properties-view.html" translate="no">Properties</a> view to match the size of the images you plan to use. This specifies the initial size of the button component.</li>
+<li>Drag-and-drop two <b translate="no">Border Image</b> components from <b translate="no">Components</b> &gt; <b translate="no">Default Components</b> &gt; <b translate="no">Basic</b> to the root component in <b translate="no">Navigator</b>.</li>
+<li>Drag-and-drop a <b translate="no">Text</b> component to the root component.</li>
+<li>Drag-and-drop a <b translate="no">Mouse Area</b> to the root component.</li>
+<li>Select a border image to edit the values of its properties:<ol class="a" type="a"><li>In the <b translate="no">Id</b> field, enter an ID for the border image. In this example, we use the ID <i>inactiveButton</i>.</li>
+<li>In the <b translate="no">Source</b> field, select the image file for the border image. For example, inactive_button.png.</li>
+<li>In the <b translate="no">Layout</b> tab, select the <img src="images/anchor-fill.png" alt="" /> (<b translate="no">Fill to Parent</b>) button to always make the image the same size as its parent. This makes the button component scalable because the image size is bound to the component size.</li>
+</ol>
+</li>
+<li>Select the other border image to edit the values of its properties similarly:<ol class="a" type="a"><li>In the <b translate="no">Id</b> field, enter <i>activeButton</i>.</li>
+<li>In the <b translate="no">Source</b> field, select the image file for the button when it is clicked. For example, active_button.png.</li>
+<li>In the <b translate="no">Layout</b> tab, select the <img src="images/anchor-fill.png" alt="" /> (<b translate="no">Fill to Parent</b>) button.</li>
+</ol>
+</li>
+<li>Select the text component to specify font size and color in <b translate="no">Properties</b>:<ol class="a" type="a"><li>In the <b translate="no">Color</b> field, use the <a href="qtquick-properties.html#picking-colors" translate="no">color picker</a> to select the font color, or enter a value in the field.</li>
+<li>In <b translate="no">Font</b> group, <b translate="no">Size</b> field, enter the font size.</li>
+<li>In the <b translate="no">Layout</b> tab, select <img src="images/anchor-center-vertical.png" alt="" /> (<b translate="no">Vertical Center</b>) and <img src="images/anchor-center-horizontal.png" alt="" /> (<b translate="no">Horizontal Center</b>) buttons to inherit the vertical and horizontal centering from the parent. This ensures that the button label is centered when the component is resized.</li>
+</ol>
+</li>
+</ol>
+<h2 id="using-states-to-change-component-property-values">Using States to Change Component Property Values</h2>
+<ol class="1" type="1"><li>In the <a href="qtquick-states-view.html" translate="no">States</a> view, select <img src="images/plus.png" alt="" /> twice to create two new states.<p class="centerAlign"><img src="images/qmldesigner-borderimage-states.png" alt="&quot;Active and inactive states&quot;" /></p></li>
+<li>Select <b translate="no">State1</b>.</li>
+<li>Change the state name to <i>active</i>.</li>
+<li>Select <img src="images/action-icon.png" alt="" /> , and then select <b translate="no">Set when Condition</b> to determine when the state should be applied.</li>
+<li>In the <b translate="no">Binding Editor</b>, select the <code translate="no">mouseArea</code> component and the <code translate="no">pressed</code> signal to specify that the state is applied when the mouse button is pressed down.<p class="centerAlign"><img src="images/qmldesigner-borderimage-bindings.png" alt="&quot;Active state when condition&quot;" /></p></li>
+<li>Select the text component in <b translate="no">Navigator</b> to specify that the text size is scaled up when the button is pressed down.</li>
+<li>In <b translate="no">Properties</b>, select the <b translate="no">Advanced</b> section, and increase the value of the <b translate="no">Scale</b> property.</li>
+<li>Select <i>inactiveButton</i> in <b translate="no">Navigator</b> to hide it in the <i>active</i> state by changing the value of its <b translate="no">Visibility</b> property in <b translate="no">Properties</b>.</li>
+<li>Select <b translate="no">State2</b>.</li>
+<li>Change the state name to <i>inactive</i>.</li>
+<li>Set the when condition for the state to <code translate="no">!mouseArea.pressed</code> to specify that the state is applied when the mouse button is not pressed down.<p class="centerAlign"><img src="images/qmldesigner-borderimage-bindings1.png" alt="&quot;Inactive state when condition&quot;" /></p></li>
+<li>Press <b>Ctrl+S</b> to save the button.</li>
+<li>Select the <b translate="no">Live Preview</b> button on the top toolbar to see how the button behaves when you select it. Drag the preview window borders to see what happens when you resize the component.</li>
+</ol>
+<p>To be useful, the button component has to be created in a project. When you work on other files in the project to create screens or other components for the UI, the button component appears in <b translate="no">Components</b> &gt; <b translate="no">My Components</b>. You can drag-and-drop it to the <b translate="no">2D</b> or <b translate="no">Navigator</b> view to create button instances and modify the values of their properties to assign them useful IDs, change their appearance, and set the button text for each button instance, for example.</p>
+<p>For more information about positioning buttons on screens, see <a href="qtquick-positioning.html" translate="no">Scalable Layouts</a>.</p>
+<p class="centerAlign"><img src="images/qmldesigner-borderimage.png" alt="&quot;Button preview as part of a screen&quot;" /></p></div>
+<!-- @@@quick-scalable-image.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="quick-buttons.html">Creating Buttons</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtquick-properties.html">Specifying Component Properties</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

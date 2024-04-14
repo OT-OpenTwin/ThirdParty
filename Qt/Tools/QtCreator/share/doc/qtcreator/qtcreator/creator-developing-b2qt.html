@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- b2qtdev.qdoc -->
+  <title>Connecting Boot2Qt Devices | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li><a href="creator-overview.html" translate="no">Developing with Qt Creator</a></li>
+<li><a href="creator-connecting-mobile.html" translate="no">Connecting Devices</a></li>
+<li>Connecting Boot2Qt Devices</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-developing-baremetal.html" />
+  <link rel="next" href="creator-adding-docker-devices.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-developing-baremetal.html">Connecting Bare Metal Devices</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-adding-docker-devices.html">Adding Docker Devices</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#enabling-the-boot2qt-plugin">Enabling the Boot2Qt Plugin</a></li>
+<li class="level1"><a href="#adding-boot2qt-devices">Adding Boot2Qt Devices</a></li>
+<li class="level2"><a href="#protecting-connections">Protecting Connections</a></li>
+<li class="level1"><a href="#flashing-boot2qt-devices">Flashing Boot2Qt Devices</a></li>
+<li class="level1"><a href="#configuring-connections">Configuring Connections</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Connecting Boot2Qt Devices</h1>
+<!-- $$$creator-developing-b2qt.html-description -->
+<div class="descr" id="details">
+<p>You can connect <a href="creator-embedded-platforms.html#boot2qt" translate="no">Boot2Qt</a> devices to the development PC to run, debug, and analyze applications built for them from Qt Creator. For this, you need the appropriate <a href="http://qt.io/licensing/" translate="no">Qt license</a>.</p>
+<p>If you have a tool chain for building applications for Boot2Qt devices installed on the development PC, you can add it to Qt Creator. You can then select a <a href="creator-glossary.html#glossary-buildandrun-kit" translate="no">kit</a> with the <b translate="no">Boot2Qt</b> device type to build applications for and run them on the devices.</p>
+<p>To be able to run and debug applications on Boot2Qt devices, you must add devices and select them in the Qt Creator <a href="creator-preferences-kits.html#kits-tab" translate="no">kit</a>.</p>
+<h2 id="enabling-the-boot2qt-plugin">Enabling the Boot2Qt Plugin</h2>
+<p>To enable the Boot2Qt plugin:</p>
+<ol class="1" type="1"><li>Select <b translate="no">Help</b> &gt; <b translate="no">About Plugins</b> &gt; <b translate="no">Device Support</b> &gt; <b translate="no">Boot2Qt</b> to enable the plugin.</li>
+<li>Select <b translate="no">Restart Now</b> to restart Qt Creator and load the plugin.</li>
+</ol>
+<h2 id="adding-boot2qt-devices">Adding Boot2Qt Devices</h2>
+<p>If Qt Creator does not automatically detect a device you connected with USB, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Devices</b> &gt; <b translate="no">Devices</b> &gt; <b translate="no">Add</b> &gt; <b translate="no">Boot2Qt Device</b> to create either a network connection or a USB connection to it.</p>
+<p class="centerAlign"><img src="images/qtcreator-boot2qt-device-configurations.webp" alt="{Devices tab in Preferences}" /></p><p>To add a device without using a wizard, select <b translate="no">Boot2Qt Device</b> in the pull-down menu of the <b translate="no">Add</b> button.</p>
+<div class="admonition note">
+<p><b>Note: </b>On Ubuntu Linux, the development user account must have access to the plugged-in devices. To grant them access to the device via USB, create a new <code translate="no">udev</code> rule, as described in <a href="https://doc.qt.io/Boot2Qt/b2qt-requirements-x11.html#setting-up-usb-access-to-embedded-devices" translate="no">Boot2Qt: Setting Up USB Access to Embedded Devices</a>.</p>
+</div>
+<p>You can edit the settings later in <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Devices</b> &gt; <b translate="no">Devices</b>.</p>
+<p>To reboot the selected device, select <b translate="no">Reboot Device</b>.</p>
+<p>To restore the default application to the device, select <b translate="no">Restore Default App</b>.</p>
+<h3 id="protecting-connections">Protecting Connections</h3>
+<p>You can protect the connections between Qt Creator and a device by using an <a href="https://www.openssh.com/" translate="no">OpenSSH</a> connection. OpenSSH is a connectivity tool for remote login using the SSH protocol. The OpenSSH suite is not delivered with Qt Creator, so you must download it and install it on the development PC. Then, you must configure the paths to the tools in Qt Creator. For more information, see <a href="creator-developing-generic-linux.html#configuring-ssh-connections" translate="no">Configuring SSH Connections</a>.</p>
+<p>You need either a password or an SSH public and private key pair for authentication. If you do not have an SSH key, you can use the <code translate="no">ssh-keygen</code> tool to create it in Qt Creator. For more information, see <a href="creator-developing-generic-linux.html#generating-ssh-keys" translate="no">Generating SSH Keys</a>.</p>
+<p>Qt Creator does not store passwords. If you use password authentication, you may need to enter the password upon every connection to the device, or if caching is enabled, at every Qt Creator restart. If you frequently run into the timeout, consider using key-based authentication. On macOS and Linux, you can also select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Devices</b> &gt; <b translate="no">SSH</b> and increase the time (in minutes) to use the same SSH connection in the <b translate="no">Connection sharing timeout</b> field. Windows does not support shared connections.</p>
+<p class="centerAlign"><img src="images/qtcreator-ssh-options.png" alt="{SSH preferences}" /></p><h2 id="flashing-boot2qt-devices">Flashing Boot2Qt Devices</h2>
+<p>To flash the Boot2Qt image to an SD card with Flashing Wizard, select <b translate="no">Tools</b> &gt; <b translate="no">Flash Boot to Qt Device</b> and follow the instructions of the wizard.</p>
+<p class="centerAlign"><img src="images/qtcreator-boot2qt-flashing-wizard.png" alt="{Boot2Qt Flashing Wizard}" /></p><h2 id="configuring-connections">Configuring Connections</h2>
+<p>To configure connections between Qt Creator and a Boot2Qt device and to specify build and run settings for the device:</p>
+<ol class="1" type="1"><li>Check that you can reach the IP address of the device, or use USB to connect it.</li>
+<li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Kits</b> &gt; <b translate="no">Qt Versions</b> &gt; <b translate="no">Add</b> to add the Qt version for Boot2Qt.</li>
+<li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Kits</b> &gt; <b translate="no">Compilers</b> &gt; <b translate="no">Add</b> to add the compiler for building the applications.</li>
+<li>Select <b translate="no">Tools</b> &gt; <b translate="no">Flash Boot to Qt Device</b> to flash the Boot2Qt image to an SD card with Flashing Wizard.</li>
+<li>To deploy applications and run them remotely on devices, specify parameters for connecting to the devices over the network (Qt Creator automatically detects devices connected with USB):<ol class="1" type="1"><li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Devices</b> &gt; <b translate="no">Devices</b> &gt; <b translate="no">Add</b> &gt; <b translate="no">Boot2Qt</b>.<p class="centerAlign"><img src="images/qtcreator-devices-boot2qt.png" alt="{Boot2Qt Network Device Setup wizard}" /></p></li>
+<li>In the <b translate="no">Device name</b> field, enter a name for the connection.</li>
+<li>In the <b translate="no">Device address</b> field, enter the host name or IP address of the device. This value will be available in the <code translate="no">%{Device:HostAddress}</code> variable.</li>
+<li>Click <b translate="no">Finish</b> to test the connection and add the device.<p>You can edit the connection parameters in the <b translate="no">Devices</b> tab. The wizard does not show parameters that have sensible default values. One of these is the SSH port number, which is available in the variable <code translate="no">%{Device:SshPort}</code>.</p>
+<p>To add a device without using the wizard, select <b translate="no">Boot2Qt Device</b> in the pull-down menu of the <b translate="no">Add</b> button.</p>
+</li>
+</ol>
+</li>
+<li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Kits</b> &gt; <b translate="no">Add</b> to add a kit for building applications for the device. Select the Qt version, compiler, and device that you added above, and choose <b translate="no">Boot2Qt</b> as the device type.</li>
+<li>To specify build settings:<ol class="1" type="1"><li>Open a project for an application you want to develop for the device.</li>
+<li>Select <b translate="no">Projects</b> &gt; <b translate="no">Build &amp; Run</b> to enable the kit that you specified above.</li>
+</ol>
+</li>
+<li>Select <b translate="no">Run</b> to specify run settings. Usually, you can use the default settings.<p>When you run the project, Qt Creator deploys the application as specified by the deploy steps. By default, Qt Creator copies the application files to the device. For more information, see <a href="creator-run-settings-boot2qt.html" translate="no">Boot2Qt Run Settings</a>.</p>
+</li>
+</ol>
+</div>
+<!-- @@@creator-developing-b2qt.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-developing-baremetal.html">Connecting Bare Metal Devices</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-adding-docker-devices.html">Adding Docker Devices</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

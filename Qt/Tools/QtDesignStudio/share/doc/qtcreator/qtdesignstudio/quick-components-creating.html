@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-components-custom.qdoc -->
+  <title>Creating Custom Components | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Creating Custom Components</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="quick-component-instances.html" />
+  <link rel="next" href="quick-buttons.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="quick-component-instances.html">Creating Component Instances</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-buttons.html">Creating Buttons</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#creating-components-from-scratch">Creating Components from Scratch</a></li>
+<li class="level1"><a href="#naming-conventions">Naming Conventions</a></li>
+<li class="level1"><a href="#creating-custom-controls">Creating Custom Controls</a></li>
+<li class="level1"><a href="#turning-component-instances-into-custom-components">Turning Component Instances into Custom Components</a></li>
+<li class="level1"><a href="#merging-files-with-templates">Merging Files with Templates</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Creating Custom Components</h1>
+<!-- $$$quick-components-creating.html-description -->
+<div class="descr" id="details">
+<p>You can either use project wizard templates to create custom components and controls or move component instances into separate files to turn them into new components that you can create instances of. You can then use the instances of the new components in other components.</p>
+<p class="centerAlign"><img src="images/qtquick-components-custom.png" alt="&quot;Custom components in My Components&quot;" /></p><p>Custom components are stored in <b translate="no">Components</b> &gt; <b translate="no">My Components</b>. You can create instances of custom components by dragging-and-dropping them from <b translate="no">Components</b> to the <a href="qtquick-form-editor.html" translate="no">2D</a>, <a href="studio-3d-editor.html" translate="no">3D</a>, or <a href="qtquick-navigator.html" translate="no">Navigator</a> view.</p>
+<h2 id="creating-components-from-scratch">Creating Components from Scratch</h2>
+<p>To use wizard templates to create custom components:</p>
+<ol class="1" type="1"><li>Select <b translate="no">File</b> &gt; <b translate="no">New File</b> &gt; <b translate="no">Qt Quick Files</b> &gt; <b translate="no">Qt Quick UI File</b> &gt; <b translate="no">Choose</b> to create a new <code translate="no">.ui.qml</code> file.<div class="admonition note">
+<p><b>Note: </b>Components are listed in <b translate="no">Components</b> &gt; <b translate="no">My Components</b> only if the filename begins with a capital letter.</p>
+</div>
+</li>
+<li>Click <b translate="no">Design</b> to open the file in the <b translate="no">2D</b> view.</li>
+<li>Drag-and-drop a component from <b translate="no">Components</b> to <b translate="no">Navigator</b> or the <b translate="no">2D</b> view.</li>
+<li>Edit component properties in the <b translate="no">Properties</b> view. The available properties depend on the component type. You can <a href="quick-dynamic-properties.html" translate="no">add properties for components</a> on the <b translate="no">Properties</b> tab in the <b translate="no">Connections</b> view.</li>
+<li>To change the appearance and behavior of the component instances in ways that are not supported in Qt Design Studio by default, you can define custom properties on the <b translate="no">Properties</b> tab in the <b translate="no">Connections</b> view.</li>
+</ol>
+<p>The following sections contain more information about how to use the <b translate="no">2D</b> view to edit 2D content and the <b translate="no">3D</b> view to edit 3D scenes, as well as examples of how to create UI controls using instances of basic components:</p>
+<ul>
+<li>The <a href="qtquick-form-editor.html" translate="no">2D</a> View</li>
+<li>The <a href="studio-3d-editor.html" translate="no">3D</a> View</li>
+<li><a href="quick-buttons.html" translate="no">Creating Buttons</a></li>
+<li><a href="quick-scalable-image.html" translate="no">Creating Scalable Buttons and Borders</a></li>
+</ul>
+<h2 id="naming-conventions">Naming Conventions</h2>
+<p>Establish naming conventions to keep the components in your UI organized. Name your components accurately and give them suitable IDs. Particularly, check and modify the default names of the components you export from design tools to create reliable and self-explanatory names that follow the naming conventions you have established.</p>
+<p>For example, a button symbol might have the ID <i>myButton_symbol</i> and the different layers might have it as a prefix with the states appended, thus producing IDs such as <i>myButton_symbol_default</i>. To prepare for additional mouse areas later in the project, you could use similar IDs for them, such as <i>myButton_symbol_hotspot</i>. When you use the button as instances in a screen, you would give each of these instances a unique ID that relates to that screen. For example, <i>myButton_myMenu_home</i>, <i>myButton_myMenu_profile</i>, and <i>myButton_myMenu_settings</i></p>
+<h2 id="creating-custom-controls">Creating Custom Controls</h2>
+<p>You can use project wizard templates to create stylable UI controls based on the components in the Qt Quick Controls module:</p>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><a href="quick-controls.html#button" translate="no">Button</a></td><td ><a href="quick-controls.html#check-box" translate="no">Check Box</a></td><td ><a href="quick-controls.html#slider-and-dial" translate="no">Dial</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/studio-custom-button.gif" alt="" /></td><td ><img src="images/studio-custom-check-box.gif" alt="" /></td><td ><img src="images/studio-custom-dial.gif" alt="" /></td></tr>
+<tr valign="top" class="odd"><td ><a href="quick-controls.html#slider-and-dial" translate="no">Slider</a></td><td ><a href="quick-controls.html#spin-box" translate="no">Spin Box</a></td><td ><a href="quick-controls.html#switch" translate="no">Switch</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/studio-custom-slider.gif" alt="" /></td><td ><img src="images/studio-custom-spinbox.gif" alt="" /></td><td ><img src="images/studio-custom-switch.gif" alt="" /></td></tr>
+</table></div>
+<p>You can edit the properties of the controls in all the preset <a href="quick-states.html" translate="no">states</a> to apply your own style to them.</p>
+<div class="admonition note">
+<p><b>Note: </b>For buttons and check boxes, you can disable the misbehaving hover effects by selecting <a href="qtquick-properties-view.html" translate="no">Properties</a> &gt; <b translate="no">Control</b>, and then disabling the <b translate="no">Hover</b> check box.</p>
+</div>
+<p class="centerAlign"><img src="images/studio-dial.png" alt="&quot;A stylable Dial component in the 2D view&quot;" /></p><p>To create stylable UI controls:</p>
+<ol class="1" type="1"><li>Select <b translate="no">File</b> &gt; <b translate="no">New File</b> &gt; <b translate="no">Files and Classes</b> &gt; <b translate="no">Qt Quick Controls</b>.</li>
+<li>Select the control to create, and then select <b translate="no">Choose</b>.<div class="admonition note">
+<p><b>Note: </b>Components are listed in <a href="quick-components-view.html" translate="no">Components</a> &gt; <b translate="no">My Components</b> only if the filename begins with a capital letter.</p>
+</div>
+</li>
+<li>Edit component properties in the <a href="qtquick-properties-view.html" translate="no">Properties</a> view.<p>The available properties depend on the component type. You can <a href="quick-dynamic-properties.html" translate="no">add properties for components</a> on the <b translate="no">Properties</b> tab in the {Connections} view.</p>
+</li>
+</ol>
+<p>For an example of using the <b translate="no">Button</b> template to create a button and styling it, see <a href="qtdesignstudio-loginui1-example.html#creating-a-push-button" translate="no">Creating a Push Button</a> in the <a href="qtdesignstudio-loginui1-example.html" translate="no">Log In UI - Components</a> tutorial.</p>
+<p>In addition, you can create starting points for different types of screens:</p>
+<ul>
+<li><a href="https://doc.qt.io/qt/qml-qtquick-controls-pane.html" translate="no">Pane</a></li>
+<li><a href="qtquick-positioning.html#stack-layout" translate="no">Stack Layout</a></li>
+<li><a href="https://doc.qt.io/qt/qml-qtquick-controls-swipeview.html" translate="no">Swipe View</a></li>
+</ul>
+<h2 id="turning-component-instances-into-custom-components">Turning Component Instances into Custom Components</h2>
+<p>An alternative way of creating reusable components is to turn component instances into custom components by moving them into separate component files (.ui.qml). Right-click a component instance in <b translate="no">Navigator</b> or the <b translate="no">2D</b> view, and select <b translate="no">Create Component</b> in the context menu.</p>
+<p class="centerAlign"><img src="images/qtcreator-move-component-into-separate-file.png" alt="" /></p><p>Give the new component a name, and select whether properties are set for the new component or for the original one.</p>
+<p>When you select <b translate="no">OK</b>, a new component file is created and an instance of the component is added to the code in the current component file. The look of your UI in the <b translate="no">2D</b> view does not change.</p>
+<p>To open the new component file for editing the properties that you want to change for all instances of the component, right-click the component, and then select <b translate="no">Go into Component</b> in the context menu. For additional ways of opening base components, see <a href="qtquick-navigator.html#moving-within-components" translate="no">Moving Within Components</a>.</p>
+<p>For an example of creating a reusable custom component, see <a href="qtdesignstudio-progressbar-example.html" translate="no">Progress Bar</a>.</p>
+<p>Custom components are listed in <b translate="no">Components</b> &gt; <b translate="no">My Components</b>, and you can use instances of them to build more components.</p>
+<h2 id="merging-files-with-templates">Merging Files with Templates</h2>
+<p>You can merge the current component file against an existing second component file using the second file in a way similar to using a CSS stylesheet.</p>
+<p>To use this experimental feature, right-click a component in the <b translate="no">Navigator</b> or <b translate="no">2D</b> view and select <b translate="no">Merge File with Template</b> in the context menu.</p>
+<p class="centerAlign"><img src="images/qmldesigner-merge-with-template.png" alt="&quot;Merge with Template dialog&quot;" /></p><p>In the <b translate="no">Template</b> field, select the file to use as a template.</p>
+</div>
+<!-- @@@quick-components-creating.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="quick-component-instances.html">Creating Component Instances</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-buttons.html">Creating Buttons</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

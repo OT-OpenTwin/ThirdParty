@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- coffeemachine.qdoc -->
+  <meta name="description" content="Illustrates how to use the timeline and states to animate transitions in a UI.">
+  <title>Coffee Machine | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="studioexamples.html" translate="no">Examples</a></li>
+<li>Coffee Machine</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<h1 class="title">Coffee Machine</h1>
+<pre class="qml" translate="no">
+ <span class="comment">// Copyright (C) 2019 The Qt Company Ltd.</span>
+ <span class="comment">// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause</span>
+
+ import QtQuick 2.4
+ import CoffeeMachine 1.0
+
+ <span class="type">ApplicationFlowForm</span> {
+     <span class="name">id</span>: <span class="name">applicationFlow</span>
+     <span class="name">state</span>: <span class="string">&quot;initial&quot;</span>
+
+     property <span class="type"><a href="https://doc.qt.io/qt/qml-int.html" translate="no">int</a></span> <span class="name">animationDuration</span>: <span class="number">400</span>
+
+     <span class="name">choosingCoffee</span>.brewButtonSelection.onClicked: {
+         <span class="name">applicationFlow</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;to settings&quot;</span>
+         <span class="name">applicationFlow</span>.<span class="name">choosingCoffee</span>.<span class="name">milkSlider</span>.<span class="name">value</span> <span class="operator">=</span> <span class="name">applicationFlow</span>.<span class="name">choosingCoffee</span>.<span class="name">sideBar</span>.<span class="name">currentMilk</span>
+         <span class="name">applicationFlow</span>.<span class="name">choosingCoffee</span>.<span class="name">sugarSlider</span>.<span class="name">value</span> <span class="operator">=</span> <span class="number">2</span>
+     }
+
+     <span class="name">choosingCoffee</span>.sideBar.onCoffeeSelected: {
+         <span class="name">applicationFlow</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;selection&quot;</span>
+     }
+
+     <span class="name">choosingCoffee</span>.backButton.onClicked: {
+         <span class="name">applicationFlow</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;back to selection&quot;</span>
+     }
+
+     <span class="name">choosingCoffee</span>.brewButton.onClicked: {
+         <span class="name">applicationFlow</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;to empty cup&quot;</span>
+     }
+
+     <span class="name">emptyCup</span>.continueButton.onClicked: {
+         <span class="name">applicationFlow</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;to brewing&quot;</span>
+         <span class="name">brewing</span>.<span class="name">coffeeName</span> <span class="operator">=</span> <span class="name">choosingCoffee</span>.<span class="name">sideBar</span>.<span class="name">currentCoffee</span>
+         <span class="name">brewing</span>.<span class="name">foamAmount</span> <span class="operator">=</span> <span class="name">choosingCoffee</span>.<span class="name">sideBar</span>.<span class="name">currentFoam</span>
+         <span class="name">brewing</span>.<span class="name">milkAmount</span> <span class="operator">=</span> <span class="name">applicationFlow</span>.<span class="name">choosingCoffee</span>.<span class="name">milkSlider</span>.<span class="name">value</span>
+         <span class="name">brewing</span>.<span class="name">coffeeAmount</span> <span class="operator">=</span> <span class="name">choosingCoffee</span>.<span class="name">sideBar</span>.<span class="name">currentCoffeeAmount</span>
+         <span class="name">brewing</span>.<span class="name">start</span>()
+     }
+
+     <span class="name">brewing</span>.onFinished: {
+         <span class="name">applicationFlow</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;reset&quot;</span>
+     }
+
+ }
+</pre>

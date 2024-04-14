@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- robotarm.qdoc -->
+  <meta name="description" content="Illustrates how to create an application in Qt Design Studio and add a backend in Qt Creator.">
+  <title>Creating a C++ Backend for a Qt Design Studio Application | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="gstutorials.html" translate="no">Tutorials</a></li>
+<li>Creating a C++ Backend for a Qt Design Studio Application</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#the-designer-developer-workflow">The Designer-Developer Workflow</a></li>
+<li class="level2"><a href="#creating-the-user-interface">Creating the User Interface</a></li>
+<li class="level2"><a href="#creating-the-c-backend">Creating the C++ Backend</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Creating a C++ Backend for a Qt Design Studio Application</h1>
+<!-- $$$robotarm-example.html-description -->
+<div class="descr" id="details">
+<p class="centerAlign"><img src="images/robotarm-example.webp" alt="" /></p><p>The <i>Robotarm</i> example demonstrates adding a C++ backend to a 3D project created in Qt Design Studio.</p>
+<p>The example itself consists of an interactive industrial robot arm in a Qt Quick 3D scene. The 2D UI to control the robot arm is implemented using Qt Quick Controls.</p>
+<p>You can open the example from the <b translate="no">Examples</b> tab on the <b translate="no">Welcome</b> page in Qt Design Studio.</p>
+<p>To complete this tutorial, you need experience in using Qt Design Studio and Qt Creator as well as knowledge in C++ programming.</p>
+<h2 id="the-designer-developer-workflow">The Designer-Developer Workflow</h2>
+<p>This section describes the high-level steps for creating the robot arm example.</p>
+<h3 id="creating-the-user-interface">Creating the User Interface</h3>
+<p>First, the designer creates the user interface in Qt Design Studio.</p>
+<ol class="1" type="1"><li>Create a new 3D project.</li>
+<li>Import the 3D asset (RoboticArm).</li>
+<li>Create the following custom components:<ul>
+<li>NodeIndicator: This component consists of a rounded rectangle and a label. It is used to indicate which joint in the robotic arm is currently active. Located in the 3D scene, it follows the movement of the 3D model.</li>
+<li>LabeledSlider: This component is a slider with a label. It is connected to the rotation of the different robot arm parts so that you can use it to control the rotation of those parts.</li>
+<li>Toggle: This component consists of a switch and a label. It is used in two places; to toggle dark mode and to toggle the claw of the robotic arm.</li>
+<li>Backend: This serves as a mock backend for the Qt Design Studio application. Once you open, compile, and run the application in Qt Creator, it uses the C++ backend.</li>
+</ul>
+</li>
+<li>Add the 3D model and lights to the <b translate="no">View3D</b> scene.<p class="centerAlign"><img src="images/robotarm-3d-view.png" alt="" /></p></li>
+<li>Create the 2D UI controls:<ul>
+<li>Four buttons for preset positions. As you can see from the <b translate="no">Connections</b> tab in the <b translate="no">Connections</b> view, each button changes the rotation of the robot arm parts.<p class="centerAlign"><img src="images/robotarm-button-connections.png" alt="" /></p></li>
+<li>Four sliders for controlling the robot arm parts individually. The <b translate="no">Backend</b> component uses these sliders to control the robot arm position.</li>
+<li>A switch to control the robot arm claw. This is also done through the <b translate="no">Backend</b> component.</li>
+<li>A switch to toggle dark mode of the application.</li>
+<li>A label to display the status of the robot arm through the <b translate="no">Backend</b> component.</li>
+</ul>
+</li>
+</ol>
+<h3 id="creating-the-c-backend">Creating the C++ Backend</h3>
+<p>With the frontend and user interface created, it is time to create the C++ backend.</p>
+<p>To open the project in Qt Creator:</p>
+<ol class="1" type="1"><li>Open <code translate="no">CMakeLists.txt</code> located in the root folder of the robot arm example. This is the CMake project file.</li>
+<li>In Qt Creator, add the empty C++ backend classes in the <code translate="no">backend</code> folder.</li>
+<li>Ensure that the <code translate="no">CMakeLists.txt</code> file in the <code translate="no">backend</code> folder has the classes in it. It should look something like this:<pre class="cpp" translate="no">
+ find_package(Qt6 REQUIRED COMPONENTS Gui)
+
+ qt_add_qml_module(backend
+     URI Backend
+     VERSION <span class="number">1.0</span>
+     SOURCES
+         animatedparam<span class="operator">.</span>cpp
+         animatedparam<span class="operator">.</span>h
+         backend<span class="operator">.</span>cpp
+         backend<span class="operator">.</span>h
+ )
+
+ target_link_libraries(backend PRIVATE Qt6<span class="operator">::</span>Gui)
+</pre>
+</li>
+<li>Add the backend logic to the created backend classes.</li>
+</ol>
+</div>
+<!-- @@@robotarm-example.html -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- sidemenu.qdoc -->
+  <meta name="description" content="Illustrates how to create reusable components and an animated menu for applying 2D visual effects in Qt 5 projects.">
+  <title>Side Menu | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="studioexamples.html" translate="no">Examples</a></li>
+<li>Side Menu</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<h1 class="title">Side Menu</h1>
+<pre class="qml" translate="no">
+ <span class="comment">// Copyright (C) 2019 The Qt Company Ltd.</span>
+ <span class="comment">// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause</span>
+
+ import QtQuick 2.8
+ import QtQuick.Timeline 1.0
+ import QtQuick.Controls 2.3
+
+ <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-item.html" translate="no">Item</a></span> {
+     <span class="name">id</span>: <span class="name">root</span>
+     <span class="name">width</span>: <span class="number">350</span>
+     <span class="name">height</span>: <span class="number">1080</span>
+     property <span class="type">alias</span> <span class="name">slidermenuSlider_4BValue</span>: <span class="name">slidermenu</span>.<span class="name">slider_4BValue</span>
+     property <span class="type">alias</span> <span class="name">slidermenuSlider_4AValue</span>: <span class="name">slidermenu</span>.<span class="name">slider_4AValue</span>
+     property <span class="type">alias</span> <span class="name">slidermenuSlider_3CValue</span>: <span class="name">slidermenu</span>.<span class="name">slider_3CValue</span>
+     property <span class="type">alias</span> <span class="name">slidermenuSlider_3BValue</span>: <span class="name">slidermenu</span>.<span class="name">slider_3BValue</span>
+     property <span class="type">alias</span> <span class="name">slidermenuSlider_3AValue</span>: <span class="name">slidermenu</span>.<span class="name">slider_3AValue</span>
+     property <span class="type">alias</span> <span class="name">slidermenuSlider_1BValue</span>: <span class="name">slidermenu</span>.<span class="name">slider_1BValue</span>
+     property <span class="type">alias</span> <span class="name">slidermenuSlider_1CValue</span>: <span class="name">slidermenu</span>.<span class="name">slider_1CValue</span>
+     property <span class="type">alias</span> <span class="name">slidermenuSlider_2BValue</span>: <span class="name">slidermenu</span>.<span class="name">slider_2BValue</span>
+     property <span class="type">alias</span> <span class="name">slidermenuSlider_2AValue</span>: <span class="name">slidermenu</span>.<span class="name">slider_2AValue</span>
+     property <span class="type">alias</span> <span class="name">slidermenuSlider_1AValue</span>: <span class="name">slidermenu</span>.<span class="name">slider_1AValue</span>
+
+     <span class="name">state</span>: <span class="string">&quot;closed&quot;</span>
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-image.html" translate="no">Image</a></span> {
+         <span class="name">id</span>: <span class="name">sideMenuAsset</span>
+         <span class="name">x</span>: <span class="number">0</span>
+         <span class="name">y</span>: <span class="number">0</span>
+         <span class="name">visible</span>: <span class="number">false</span>
+         <span class="name">source</span>: <span class="string">&quot;assets/rectangle_3_195_205.png&quot;</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-image.html" translate="no">Image</a></span> {
+         <span class="name">id</span>: <span class="name">imageOutline</span>
+         <span class="name">x</span>: -<span class="number">423</span>
+         <span class="name">y</span>: <span class="number">0</span>
+         <span class="name">height</span>: <span class="number">1079</span>
+         <span class="name">source</span>: <span class="string">&quot;assets/empty_rect.png&quot;</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-image.html" translate="no">Image</a></span> {
+         <span class="name">id</span>: <span class="name">imageBackground</span>
+         <span class="name">x</span>: <span class="number">0</span>
+         <span class="name">y</span>: <span class="number">0</span>
+         <span class="name">source</span>: <span class="string">&quot;assets/rectangle_3_195_205.png&quot;</span>
+
+         <span class="type">SliderMenu</span> {
+             <span class="name">id</span>: <span class="name">slidermenu</span>
+             <span class="name">width</span>: <span class="number">349</span>
+             <span class="name">height</span>: <span class="number">1079</span>
+             <span class="name">slider_1AValue</span>: -<span class="number">0.3</span>
+         }
+     }
+
+     <span class="type">BurgerMenu</span> {
+         <span class="name">id</span>: <span class="name">burger_menu</span>
+         <span class="name">x</span>: <span class="number">22</span>
+         <span class="name">y</span>: <span class="number">20</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-timeline.html" translate="no">Timeline</a></span> {
+         <span class="name">id</span>: <span class="name">timeline</span>
+         <span class="name">enabled</span>: <span class="number">true</span>
+         <span class="name">animations</span>: [
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-timelineanimation.html" translate="no">TimelineAnimation</a></span> {
+                 <span class="name">id</span>: <span class="name">timelineAnimation</span>
+                 <span class="name">property</span>: <span class="string">&quot;currentFrame&quot;</span>
+                 <span class="name">pingPong</span>: <span class="number">false</span>
+                 <span class="name">duration</span>: <span class="number">300</span>
+                 <span class="name">from</span>: <span class="number">0</span>
+                 <span class="name">loops</span>: <span class="number">1</span>
+                 <span class="name">to</span>: <span class="number">1000</span>
+                 <span class="comment">//alwaysRunToEnd: true</span>
+                 <span class="name">running</span>: <span class="number">false</span>
+                 <span class="name">onFinished</span>: <span class="name">root</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;open&quot;</span>
+             },
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-timelineanimation.html" translate="no">TimelineAnimation</a></span> {
+                 <span class="name">id</span>: <span class="name">timelineAnimation2</span>
+                 <span class="name">property</span>: <span class="string">&quot;currentFrame&quot;</span>
+                 <span class="name">pingPong</span>: <span class="number">false</span>
+                 <span class="name">duration</span>: <span class="number">700</span>
+                 <span class="name">from</span>: <span class="number">1000</span>
+                 <span class="name">loops</span>: <span class="number">1</span>
+                 <span class="name">to</span>: <span class="number">0</span>
+                 <span class="comment">//alwaysRunToEnd: true</span>
+                 <span class="name">running</span>: <span class="number">false</span>
+                 <span class="name">onFinished</span>: <span class="name">root</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;closed&quot;</span>
+             }
+         ]
+         <span class="name">endFrame</span>: <span class="number">1000</span>
+         <span class="name">startFrame</span>: <span class="number">0</span>
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframegroup.html" translate="no">KeyframeGroup</a></span> {
+             <span class="name">target</span>: <span class="name">imageOutline</span>
+             <span class="name">property</span>: <span class="string">&quot;x&quot;</span>
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">easing</span>.bezierCurve: [<span class="number">0.337</span>, <span class="number">0.229</span>, <span class="number">0.758</span>, <span class="number">0.282</span>, <span class="number">1</span>, <span class="number">1</span>]
+                 <span class="name">frame</span>: <span class="number">1000</span>
+                 <span class="name">value</span>: <span class="number">0</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">frame</span>: <span class="number">1</span>
+                 <span class="name">value</span>: -<span class="number">348</span>
+             }
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframegroup.html" translate="no">KeyframeGroup</a></span> {
+             <span class="name">target</span>: <span class="name">imageBackground</span>
+             <span class="name">property</span>: <span class="string">&quot;x&quot;</span>
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">frame</span>: <span class="number">402</span>
+                 <span class="name">value</span>: -<span class="number">423</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">frame</span>: <span class="number">0</span>
+                 <span class="name">value</span>: -<span class="number">424</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-timeline-keyframe.html" translate="no">Keyframe</a></span> {
+                 <span class="name">easing</span>.bezierCurve: [<span class="number">0.337</span>, <span class="number">0.229</span>, <span class="number">0.758</span>, <span class="number">0.282</span>, <span class="number">1</span>, <span class="number">1</span>]
+                 <span class="name">frame</span>: <span class="number">1000</span>
+                 <span class="name">value</span>: <span class="number">0</span>
+             }
+         }
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtqml-connections.html" translate="no">Connections</a></span> {
+         <span class="name">target</span>: <span class="name">burger_menu</span>
+         <span class="name">onClicked</span>: {
+             <span class="name">root</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;opening&quot;</span>
+         }
+         <span class="name">enabled</span>: <span class="name">root</span>.<span class="name">state</span> <span class="operator">===</span> <span class="string">&quot;closed&quot;</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtqml-connections.html" translate="no">Connections</a></span> {
+         <span class="name">target</span>: <span class="name">burger_menu</span>
+         <span class="name">onClicked</span>: {
+             <span class="name">root</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;closing&quot;</span>
+         }
+         <span class="name">enabled</span>: <span class="name">root</span>.<span class="name">state</span> <span class="operator">===</span> <span class="string">&quot;open&quot;</span>
+     }
+
+     <span class="name">states</span>: [
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;opening&quot;</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">timelineAnimation</span>
+                 <span class="name">running</span>: <span class="number">true</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">burger_menu</span>
+                 <span class="name">enabled</span>: <span class="number">false</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">slidermenu</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+             }
+         },
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;open&quot;</span>
+         },
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;closing&quot;</span>
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">timelineAnimation2</span>
+                 <span class="name">running</span>: <span class="number">true</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">burger_menu</span>
+                 <span class="name">enabled</span>: <span class="number">false</span>
+             }
+         },
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;closed&quot;</span>
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">slidermenu</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+             }
+         }
+     ]
+ }
+</pre>

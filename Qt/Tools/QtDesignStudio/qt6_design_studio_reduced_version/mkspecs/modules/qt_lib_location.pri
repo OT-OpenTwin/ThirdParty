@@ -1,0 +1,19 @@
+QT.location.VERSION = 6.6.2
+QT.location.name = QtLocation
+QT.location.module = Qt6Location
+QT.location.libs = $$QT_MODULE_LIB_BASE
+QT.location.ldflags = 
+QT.location.includes = $$QT_MODULE_INCLUDE_BASE $$QT_MODULE_INCLUDE_BASE/QtLocation
+QT.location.frameworks = 
+QT.location.bins = $$QT_MODULE_BIN_BASE
+QT.location.plugin_types = geoservices
+QT.location.depends =  core positioning positioningquick quickshapes_private
+QT.location.run_depends = gui quick_private qml quick qml_private
+QT.location.uses = 
+QT.location.module_config = v2
+QT.location.DEFINES = QT_LOCATION_LIB
+QT.location.enabled_features = 
+QT.location.disabled_features = 
+QT_CONFIG += 
+QT_MODULES += location
+

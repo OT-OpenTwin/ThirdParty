@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- iwizardfactory.cpp -->
+  <meta name="description" content="The IWizardFactory class is the base class for all wizard factories.">
+  <title>IWizardFactory Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>IWizardFactory</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">IWizardFactory Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::IWizardFactory</span>
+<!-- $$$IWizardFactory-brief -->
+<p>The IWizardFactory class is the base class for all wizard factories. <a href="#details">More...</a></p>
+<!-- @@@IWizardFactory -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/iwizardfactory.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherited By:</td><td class="memItemRight bottomAlign"> <p><a href="core-basefilewizardfactory.html" translate="no">Core::BaseFileWizardFactory</a></p>
+</td></tr>
+</table></div>
+<ul>
+<li><a href="core-iwizardfactory-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#WizardFlag-enum" translate="no">WizardFlag</a></b> { PlatformIndependent, ForceCapitalLetterForFileName }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> flags </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#WizardFlag-enum" translate="no">WizardFlags</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#WizardKind-enum" translate="no">WizardKind</a></b> { FileWizard, ProjectWizard }</td></tr>
+</table></div>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#category" translate="no">category</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#description" translate="no">description</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#displayCategory" translate="no">displayCategory</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#displayName" translate="no">displayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QIcon </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#icon" translate="no">icon</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Id </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#id" translate="no">id</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::IWizardFactory::WizardKind </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#kind" translate="no">kind</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Wizard *</td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#runWizard" translate="no">runWizard</a></b>(const Utils::FilePath &amp;<i>path</i>, QWidget *<i>parent</i>, Utils::Id <i>platform</i>, const QVariantMap &amp;<i>variables</i>, bool <i>showWizard</i> = true)</td></tr>
+</table></div>
+<!-- $$$IWizardFactory-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<div class="admonition note">
+<p><b>Note: </b>Instead of using this class, we recommend that you create JSON-based wizards, as instructed in <a href="https://doc.qt.io/qtcreator/creator-project-wizards.html" translate="no">Adding New Custom Wizards</a>.</p>
+</div>
+<p>The wizard interface is a very thin abstraction for the wizards in <b translate="no">File</b> &gt; <b translate="no">New File</b> and <b translate="no">New Project</b>. Basically, it defines what to show to the user in the wizard selection dialogs, and a hook that is called if the user selects the wizard.</p>
+<p>Wizards can then perform any operations they like, including showing dialogs and creating files. Often it is not necessary to create your own wizard from scratch. Use one of the predefined wizards and adapt it to your needs.</p>
+<p>To make your wizard known to the system, add your IWizardFactory instance to the plugin manager's object pool in your plugin's initialize function:</p>
+<pre class="cpp" translate="no">
+ <span class="type">void</span> MyPlugin<span class="operator">::</span>initialize()
+ {
+     <span class="comment">// ... do setup</span>
+     addAutoReleasedObject(<span class="keyword">new</span> MyWizardFactory);
+     <span class="comment">// ... do more setup</span>
+ }
+</pre>
+</div>
+<p><b>See also </b><a href="core-basefilewizardfactory.html" translate="no">Core::BaseFileWizardFactory</a> and <a href="core-basefilewizard.html" translate="no">Core::BaseFileWizard</a>.</p>
+<!-- @@@IWizardFactory -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$WizardFlag$$$PlatformIndependent$$$ForceCapitalLetterForFileName -->
+<h3 class="flags" id="WizardFlag-enum">enum IWizardFactory::<span class="name">WizardFlag</span><br/>flags IWizardFactory::<span class="name">WizardFlags</span></h3>
+<p>Holds information about the created projects and files.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Core::IWizardFactory::PlatformIndependent</code></td><td class="topAlign tblval"><code translate="no">0x01</code></td><td class="topAlign">The wizard creates projects that run on all platforms.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::IWizardFactory::ForceCapitalLetterForFileName</code></td><td class="topAlign tblval"><code translate="no">0x02</code></td><td class="topAlign">The wizard uses an initial capital letter for the names of new files.</td></tr>
+</table></div>
+<p>The WizardFlags type is a typedef for <a href="">QFlags</a>&lt;WizardFlag&gt;. It stores an OR combination of WizardFlag values.</p>
+<!-- @@@WizardFlag -->
+<!-- $$$WizardKind$$$FileWizard$$$ProjectWizard -->
+<h3 class="fn" translate="no" id="WizardKind-enum">enum IWizardFactory::<span class="name">WizardKind</span></h3>
+<p>Used to specify what kind of objects the wizard creates. This information is used to show e.g&#x2e; only wizards that create projects when selecting a <b translate="no">New Project</b> menu item.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Core::IWizardFactory::FileWizard</code></td><td class="topAlign tblval"><code translate="no">0x01</code></td><td class="topAlign">The wizard creates one or more files.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::IWizardFactory::ProjectWizard</code></td><td class="topAlign tblval"><code translate="no">0x02</code></td><td class="topAlign">The wizard creates a new project.</td></tr>
+</table></div>
+<!-- @@@WizardKind -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$category[overload1]$$$category -->
+<h3 class="fn" translate="no" id="category"><span class="type">QString</span> IWizardFactory::<span class="name">category</span>() const</h3>
+<p>Returns a category ID to add the wizard to.</p>
+<!-- @@@category -->
+<!-- $$$description[overload1]$$$description -->
+<h3 class="fn" translate="no" id="description"><span class="type">QString</span> IWizardFactory::<span class="name">description</span>() const</h3>
+<p>Returns a translated description to show when this wizard is selected in the dialog.</p>
+<!-- @@@description -->
+<!-- $$$displayCategory[overload1]$$$displayCategory -->
+<h3 class="fn" translate="no" id="displayCategory"><span class="type">QString</span> IWizardFactory::<span class="name">displayCategory</span>() const</h3>
+<p>Returns the translated string of the category, how it should appear in the dialog.</p>
+<!-- @@@displayCategory -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" translate="no" id="displayName"><span class="type">QString</span> IWizardFactory::<span class="name">displayName</span>() const</h3>
+<p>Returns the translated name of the wizard, how it should appear in the dialog.</p>
+<!-- @@@displayName -->
+<!-- $$$icon[overload1]$$$icon -->
+<h3 class="fn" translate="no" id="icon"><span class="type">QIcon</span> IWizardFactory::<span class="name">icon</span>() const</h3>
+<p>Returns an icon to show in the wizard selection dialog.</p>
+<!-- @@@icon -->
+<!-- $$$id[overload1]$$$id -->
+<h3 class="fn" translate="no" id="id"><span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> IWizardFactory::<span class="name">id</span>() const</h3>
+<p>Returns an arbitrary id that is used for sorting within the category.</p>
+<!-- @@@id -->
+<!-- $$$kind[overload1]$$$kind -->
+<h3 class="fn" translate="no" id="kind"><span class="type"><a href="core-iwizardfactory.html#WizardKind-enum" translate="no">Core::IWizardFactory::WizardKind</a></span> IWizardFactory::<span class="name">kind</span>() const</h3>
+<p>Returns what kind of objects are created by the wizard.</p>
+<!-- @@@kind -->
+<!-- $$$runWizard[overload1]$$$runWizardconstUtils::FilePath&QWidget*Utils::IdconstQVariantMap&bool -->
+<h3 class="fn" translate="no" id="runWizard"><span class="type"><a href="utils-wizard.html" translate="no">Utils::Wizard</a></span> *IWizardFactory::<span class="name">runWizard</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>path</i>, <span class="type">QWidget</span> *<i>parent</i>, <span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>platform</i>, const <span class="type">QVariantMap</span> &amp;<i>variables</i>, <span class="type">bool</span> <i>showWizard</i> = true)</h3>
+<p>Creates the wizard that the user selected for execution on the operating system <i translate="no">platform</i> with <i translate="no">variables</i>.</p>
+<p>Any dialogs the wizard opens should use the given <i translate="no">parent</i>. The <i translate="no">path</i> argument is a suggestion for the location where files should be created. The wizard should fill this in its path selection elements as a default path.</p>
+<p>When <i translate="no">showWizard</i> is <code translate="no">false</code>, the wizard instance is created and set up but not actually shown.</p>
+<!-- @@@runWizard -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

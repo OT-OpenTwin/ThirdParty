@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- editormanager.cpp -->
+  <meta name="description" content="The EditorManager class manages the editors created for files according to their MIME type.">
+  <title>EditorManager Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>EditorManager</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-slots">Public Slots</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">EditorManager Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::EditorManager</span>
+<!-- $$$EditorManager-brief -->
+<p>The EditorManager class manages the editors created for files according to their MIME type. <a href="#details">More...</a></p>
+<!-- @@@EditorManager -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/editormanager/editormanager.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a></td></tr>
+</table></div>
+<ul>
+<li><a href="core-editormanager-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#OpenEditorFlag-enum" translate="no">OpenEditorFlag</a></b> { NoFlags, DoNotChangeCurrentEditor, IgnoreNavigationHistory, DoNotMakeVisible, OpenInOtherSplit, &hellip;, AllowExternalEditor }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> flags </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#OpenEditorFlag-enum" translate="no">OpenEditorFlags</a></b></td></tr>
+</table></div>
+<h2 id="public-slots">Public Slots</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#closeAllEditors" translate="no">closeAllEditors</a></b>(bool <i>askAboutModifiedEditors</i> = true)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#closeOtherDocuments-1" translate="no">closeOtherDocuments</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#goBackInNavigationHistory" translate="no">goBackInNavigationHistory</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#goForwardInNavigationHistory" translate="no">goForwardInNavigationHistory</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#gotoOtherSplit" translate="no">gotoOtherSplit</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#revertToSaved" translate="no">revertToSaved</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#saveDocument-1" translate="no">saveDocument</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#saveDocumentAs" translate="no">saveDocumentAs</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#splitSideBySide" translate="no">splitSideBySide</a></b>()</td></tr>
+</table></div>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#aboutToSave" translate="no">aboutToSave</a></b>(Core::IDocument *<i>document</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#autoSaved" translate="no">autoSaved</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#currentDocumentStateChanged" translate="no">currentDocumentStateChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#currentEditorAboutToChange" translate="no">currentEditorAboutToChange</a></b>(Core::IEditor *<i>editor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#currentEditorChanged" translate="no">currentEditorChanged</a></b>(Core::IEditor *<i>editor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#documentClosed" translate="no">documentClosed</a></b>(Core::IDocument *<i>document</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#documentOpened" translate="no">documentOpened</a></b>(Core::IDocument *<i>document</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#documentStateChanged" translate="no">documentStateChanged</a></b>(Core::IDocument *<i>document</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#editorAboutToClose" translate="no">editorAboutToClose</a></b>(Core::IEditor *<i>editor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#editorOpened" translate="no">editorOpened</a></b>(Core::IEditor *<i>editor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#editorsClosed" translate="no">editorsClosed</a></b>(QList&lt;Core::IEditor *&gt; <i>editors</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#saved" translate="no">saved</a></b>(Core::IDocument *<i>document</i>)</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#activateEditor" translate="no">activateEditor</a></b>(Core::IEditor *<i>editor</i>, Core::EditorManager::OpenEditorFlags <i>flags</i> = NoFlags)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::IEditor *</td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#activateEditorForDocument" translate="no">activateEditorForDocument</a></b>(Core::IDocument *<i>document</i>, Core::EditorManager::OpenEditorFlags <i>flags</i> = NoFlags)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#activateEditorForEntry" translate="no">activateEditorForEntry</a></b>(DocumentModel::Entry *<i>entry</i>, Core::EditorManager::OpenEditorFlags <i>flags</i> = NoFlags)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#addCloseEditorListener" translate="no">addCloseEditorListener</a></b>(const std::function&lt;bool (IEditor *)&gt; &amp;<i>listener</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#addCurrentPositionToNavigationHistory" translate="no">addCurrentPositionToNavigationHistory</a></b>(const QByteArray &amp;<i>saveState</i> = QByteArray())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#addNativeDirAndOpenWithActions" translate="no">addNativeDirAndOpenWithActions</a></b>(QMenu *<i>contextMenu</i>, DocumentModel::Entry *<i>entry</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#addPinEditorActions" translate="no">addPinEditorActions</a></b>(QMenu *<i>contextMenu</i>, DocumentModel::Entry *<i>entry</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#addSaveAndCloseEditorActions" translate="no">addSaveAndCloseEditorActions</a></b>(QMenu *<i>contextMenu</i>, DocumentModel::Entry *<i>entry</i>, Core::IEditor *<i>editor</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#clearUniqueId" translate="no">clearUniqueId</a></b>(Core::IDocument *<i>document</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#closeAllDocuments" translate="no">closeAllDocuments</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#closeDocuments" translate="no">closeDocuments</a></b>(const QList&lt;Core::IDocument *&gt; &amp;<i>documents</i>, bool <i>askAboutModifiedEditors</i> = true)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#closeDocuments-1" translate="no">closeDocuments</a></b>(const QList&lt;DocumentModel::Entry *&gt; &amp;<i>entries</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#closeEditors" translate="no">closeEditors</a></b>(const QList&lt;Core::IEditor *&gt; &amp;<i>editorsToClose</i>, bool <i>askAboutModifiedEditors</i> = true)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#closeOtherDocuments" translate="no">closeOtherDocuments</a></b>(Core::IDocument *<i>document</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::IDocument *</td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#currentDocument" translate="no">currentDocument</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::IEditor *</td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#currentEditor" translate="no">currentEditor</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#cutForwardNavigationHistory" translate="no">cutForwardNavigationHistory</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::TextFileFormat::LineTerminationMode </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#defaultLineEnding" translate="no">defaultLineEnding</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QTextCodec *</td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#defaultTextCodec" translate="no">defaultTextCodec</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePaths </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#getOpenFilePaths" translate="no">getOpenFilePaths</a></b>(QFileDialog::Options <i>options</i> = {})</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::EditorManager *</td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#instance" translate="no">instance</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#isAutoSaveFile" translate="no">isAutoSaveFile</a></b>(const QString &amp;<i>filePath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> qint64 </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#maxTextFileSize" translate="no">maxTextFileSize</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::IEditor *</td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#openEditor" translate="no">openEditor</a></b>(const Utils::FilePath &amp;<i>filePath</i>, Utils::Id <i>editorId</i> = {}, Core::EditorManager::OpenEditorFlags <i>flags</i> = NoFlags, bool *<i>newEditor</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::IEditor *</td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#openEditorAt" translate="no">openEditorAt</a></b>(const Utils::Link &amp;<i>link</i>, Utils::Id <i>editorId</i> = {}, Core::EditorManager::OpenEditorFlags <i>flags</i> = NoFlags, bool *<i>newEditor</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#openEditorAtSearchResult" translate="no">openEditorAtSearchResult</a></b>(const Utils::SearchResultItem &amp;<i>item</i>, Utils::Id <i>editorId</i> = {}, Core::EditorManager::OpenEditorFlags <i>flags</i> = NoFlags, bool *<i>newEditor</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::IEditor *</td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#openEditorWithContents" translate="no">openEditorWithContents</a></b>(Utils::Id <i>editorId</i>, QString *<i>titlePattern</i> = nullptr, const QByteArray &amp;<i>contents</i> = QByteArray(), const QString &amp;<i>uniqueId</i> = QString(), Core::EditorManager::OpenEditorFlags <i>flags</i> = NoFlags)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#openExternalEditor" translate="no">openExternalEditor</a></b>(const Utils::FilePath &amp;<i>filePath</i>, Utils::Id <i>editorId</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#populateOpenWithMenu" translate="no">populateOpenWithMenu</a></b>(QMenu *<i>menu</i>, const Utils::FilePath &amp;<i>filePath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> IDocument::ReloadSetting </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#reloadSetting" translate="no">reloadSetting</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#saveDocument" translate="no">saveDocument</a></b>(Core::IDocument *<i>document</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#setLastEditLocation" translate="no">setLastEditLocation</a></b>(const Core::IEditor *<i>editor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#skipOpeningBigTextFile" translate="no">skipOpeningBigTextFile</a></b>(const Utils::FilePath &amp;<i>filePath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;Core::IEditor *&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-editormanager.html#visibleEditors" translate="no">visibleEditors</a></b>()</td></tr>
+</table></div>
+<!-- $$$EditorManager-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Whenever a user wants to edit or create a file, the EditorManager scans all <a href="core-ieditorfactory.html" translate="no">IEditorFactory</a> interfaces for suitable editors. The selected <a href="core-ieditorfactory.html" translate="no">IEditorFactory</a> is then asked to create an editor, as determined by the MIME type of the file.</p>
+<p>Users can split the editor view or open the editor in a new window when to work on and view multiple files on the same screen or on multiple screens. For more information, see <a href="https://doc.qt.io/qtcreator/creator-coding-navigating.html#splitting-the-editor-view" translate="no">Splitting the Editor View</a>.</p>
+<p>Plugins use the EditorManager to open documents in editors or close them, and to get notified when documents are opened, closed or saved.</p>
+</div>
+<!-- @@@EditorManager -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$OpenEditorFlag$$$NoFlags$$$DoNotChangeCurrentEditor$$$IgnoreNavigationHistory$$$DoNotMakeVisible$$$OpenInOtherSplit$$$DoNotSwitchToDesignMode$$$DoNotSwitchToEditMode$$$SwitchSplitIfAlreadyVisible$$$DoNotRaise$$$AllowExternalEditor -->
+<h3 class="flags" id="OpenEditorFlag-enum">enum EditorManager::<span class="name">OpenEditorFlag</span><br/>flags EditorManager::<span class="name">OpenEditorFlags</span></h3>
+<p>This enum specifies settings for opening a file in an editor.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Core::EditorManager::NoFlags</code></td><td class="topAlign tblval"><code translate="no">0</code></td><td class="topAlign">Does not use any settings.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::EditorManager::DoNotChangeCurrentEditor</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">Does not switch focus to the newly opened editor.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::EditorManager::IgnoreNavigationHistory</code></td><td class="topAlign tblval"><code translate="no">2</code></td><td class="topAlign">Does not add an entry to the navigation history for the opened editor.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::EditorManager::DoNotMakeVisible</code></td><td class="topAlign tblval"><code translate="no">4</code></td><td class="topAlign">Does not force the editor to become visible.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::EditorManager::OpenInOtherSplit</code></td><td class="topAlign tblval"><code translate="no">8</code></td><td class="topAlign">Opens the document in another split of the window.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::EditorManager::DoNotSwitchToDesignMode</code></td><td class="topAlign tblval"><code translate="no">16</code></td><td class="topAlign">Opens the document in the current mode.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::EditorManager::DoNotSwitchToEditMode</code></td><td class="topAlign tblval"><code translate="no">32</code></td><td class="topAlign">Opens the document in the current mode.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::EditorManager::SwitchSplitIfAlreadyVisible</code></td><td class="topAlign tblval"><code translate="no">64</code></td><td class="topAlign">Switches to another split if the document is already visible there.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::EditorManager::DoNotRaise</code></td><td class="topAlign tblval"><code translate="no">128</code></td><td class="topAlign">Prevents raising the Qt Design Studio window to the foreground.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::EditorManager::AllowExternalEditor</code></td><td class="topAlign tblval"><code translate="no">256</code></td><td class="topAlign">Allows opening the file in an external editor.</td></tr>
+</table></div>
+<p>The OpenEditorFlags type is a typedef for <a href="https://doc.qt.io/qt/qflags.html">QFlags</a>&lt;OpenEditorFlag&gt;. It stores an OR combination of OpenEditorFlag values.</p>
+<!-- @@@OpenEditorFlag -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$aboutToSave[overload1]$$$aboutToSaveCore::IDocument* -->
+<h3 class="fn" translate="no" id="aboutToSave"><code translate="no">[signal] </code><span class="type">void</span> EditorManager::<span class="name">aboutToSave</span>(<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *<i>document</i>)</h3>
+<p>This signal is emitted before the <i translate="no">document</i> is saved.</p>
+<!-- @@@aboutToSave -->
+<!-- $$$activateEditor[overload1]$$$activateEditorCore::IEditor*Core::EditorManager::OpenEditorFlags -->
+<h3 class="fn" translate="no" id="activateEditor"><code translate="no">[static] </code><span class="type">void</span> EditorManager::<span class="name">activateEditor</span>(<span class="type"><a href="core-ieditor.html" translate="no">Core::IEditor</a></span> *<i>editor</i>, <span class="type"><a href="core-editormanager.html#OpenEditorFlag-enum" translate="no">Core::EditorManager::OpenEditorFlags</a></span> <i>flags</i> = NoFlags)</h3>
+<p>Activates the <i translate="no">editor</i> in the active split using the specified <i translate="no">flags</i>.</p>
+<p><b>See also </b><a href="core-editormanager.html#currentEditor" translate="no">currentEditor</a>().</p>
+<!-- @@@activateEditor -->
+<!-- $$$activateEditorForDocument[overload1]$$$activateEditorForDocumentCore::IDocument*Core::EditorManager::OpenEditorFlags -->
+<h3 class="fn" translate="no" id="activateEditorForDocument"><code translate="no">[static] </code><span class="type"><a href="core-ieditor.html" translate="no">Core::IEditor</a></span> *EditorManager::<span class="name">activateEditorForDocument</span>(<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *<i>document</i>, <span class="type"><a href="core-editormanager.html#OpenEditorFlag-enum" translate="no">Core::EditorManager::OpenEditorFlags</a></span> <i>flags</i> = NoFlags)</h3>
+<p>Activates an editor for the <i translate="no">document</i> in the active split using the specified <i translate="no">flags</i>.</p>
+<!-- @@@activateEditorForDocument -->
+<!-- $$$activateEditorForEntry[overload1]$$$activateEditorForEntryDocumentModel::Entry*Core::EditorManager::OpenEditorFlags -->
+<h3 class="fn" translate="no" id="activateEditorForEntry"><code translate="no">[static] </code><span class="type">void</span> EditorManager::<span class="name">activateEditorForEntry</span>(<span class="type">DocumentModel::Entry</span> *<i>entry</i>, <span class="type"><a href="core-editormanager.html#OpenEditorFlag-enum" translate="no">Core::EditorManager::OpenEditorFlags</a></span> <i>flags</i> = NoFlags)</h3>
+<p>Activates an editor for the document specified by <i translate="no">entry</i> in the active split using the specified <i translate="no">flags</i>.</p>
+<!-- @@@activateEditorForEntry -->
+<!-- $$$addCloseEditorListener[overload1]$$$addCloseEditorListenerconststd::function<bool(IEditor*)>& -->
+<h3 class="fn" translate="no" id="addCloseEditorListener"><code translate="no">[static] </code><span class="type">void</span> EditorManager::<span class="name">addCloseEditorListener</span>(const <span class="type">std::function</span>&lt;<span class="type">bool</span> (<span class="type"><a href="core-ieditor.html" translate="no">IEditor</a></span> *)&gt; &amp;<i>listener</i>)</h3>
+<p>Adds <i translate="no">listener</i> to the hooks that are asked if editors may be closed.</p>
+<p>When an editor requests to close, all listeners are called. If one of the calls returns <code translate="no">false</code>, the process is aborted and the event is ignored. If all calls return <code translate="no">true</code>, <a href="core-editormanager.html#editorAboutToClose" translate="no">editorAboutToClose</a>() is emitted and the event is accepted.</p>
+<!-- @@@addCloseEditorListener -->
+<!-- $$$addCurrentPositionToNavigationHistory[overload1]$$$addCurrentPositionToNavigationHistoryconstQByteArray& -->
+<h3 class="fn" translate="no" id="addCurrentPositionToNavigationHistory"><code translate="no">[static] </code><span class="type">void</span> EditorManager::<span class="name">addCurrentPositionToNavigationHistory</span>(const <span class="type"><a href="https://doc.qt.io/qt/qbytearray.html" translate="no">QByteArray</a></span> &amp;<i>saveState</i> = QByteArray())</h3>
+<p>Adds the current cursor position specified by <i translate="no">saveState</i> to the navigation history. If <i translate="no">saveState</i> is <a href="https://doc.qt.io/qt/qbytearray.html#isNull" translate="no">null</a> (the default), the current state of the active editor is used. Otherwise <i translate="no">saveState</i> must be a valid state of the active editor.</p>
+<p><b>See also </b><a href="core-ieditor.html#saveState" translate="no">IEditor::saveState</a>().</p>
+<!-- @@@addCurrentPositionToNavigationHistory -->
+<!-- $$$addNativeDirAndOpenWithActions[overload1]$$$addNativeDirAndOpenWithActionsQMenu*DocumentModel::Entry* -->
+<h3 class="fn" translate="no" id="addNativeDirAndOpenWithActions"><code translate="no">[static] </code><span class="type">void</span> EditorManager::<span class="name">addNativeDirAndOpenWithActions</span>(<span class="type"><a href="https://doc.qt.io/qt/qmenu.html" translate="no">QMenu</a></span> *<i>contextMenu</i>, <span class="type">DocumentModel::Entry</span> *<i>entry</i>)</h3>
+<p>Adds the native directory handling and open with menu items for the document <i translate="no">entry</i> to the context menu <i translate="no">contextMenu</i>.</p>
+<!-- @@@addNativeDirAndOpenWithActions -->
+<!-- $$$addPinEditorActions[overload1]$$$addPinEditorActionsQMenu*DocumentModel::Entry* -->
+<h3 class="fn" translate="no" id="addPinEditorActions"><code translate="no">[static] </code><span class="type">void</span> EditorManager::<span class="name">addPinEditorActions</span>(<span class="type"><a href="https://doc.qt.io/qt/qmenu.html" translate="no">QMenu</a></span> *<i>contextMenu</i>, <span class="type">DocumentModel::Entry</span> *<i>entry</i>)</h3>
+<p>Adds the pin editor menu items for the document <i translate="no">entry</i> to the context menu <i translate="no">contextMenu</i>.</p>
+<!-- @@@addPinEditorActions -->
+<!-- $$$addSaveAndCloseEditorActions[overload1]$$$addSaveAndCloseEditorActionsQMenu*DocumentModel::Entry*Core::IEditor* -->
+<h3 class="fn" translate="no" id="addSaveAndCloseEditorActions"><code translate="no">[static] </code><span class="type">void</span> EditorManager::<span class="name">addSaveAndCloseEditorActions</span>(<span class="type"><a href="https://doc.qt.io/qt/qmenu.html" translate="no">QMenu</a></span> *<i>contextMenu</i>, <span class="type">DocumentModel::Entry</span> *<i>entry</i>, <span class="type"><a href="core-ieditor.html" translate="no">Core::IEditor</a></span> *<i>editor</i> = nullptr)</h3>
+<p>Adds save, close and other editor context menu items for the document <i translate="no">entry</i> and editor <i translate="no">editor</i> to the context menu <i translate="no">contextMenu</i>.</p>
+<!-- @@@addSaveAndCloseEditorActions -->
+<!-- $$$autoSaved[overload1]$$$autoSaved -->
+<h3 class="fn" translate="no" id="autoSaved"><code translate="no">[signal] </code><span class="type">void</span> EditorManager::<span class="name">autoSaved</span>()</h3>
+<p>This signal is emitted after auto-save was triggered.</p>
+<!-- @@@autoSaved -->
+<!-- $$$clearUniqueId[overload1]$$$clearUniqueIdCore::IDocument* -->
+<h3 class="fn" translate="no" id="clearUniqueId"><code translate="no">[static] </code><span class="type">void</span> EditorManager::<span class="name">clearUniqueId</span>(<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *<i>document</i>)</h3>
+<p>Clears the unique ID of <i translate="no">document</i>.</p>
+<p><b>See also </b><a href="core-editormanager.html#openEditorWithContents" translate="no">openEditorWithContents</a>().</p>
+<!-- @@@clearUniqueId -->
+<!-- $$$closeAllDocuments[overload1]$$$closeAllDocuments -->
+<h3 class="fn" translate="no" id="closeAllDocuments"><code translate="no">[static] </code><span class="type">bool</span> EditorManager::<span class="name">closeAllDocuments</span>()</h3>
+<p>Closes all open documents except pinned files.</p>
+<p>Returns whether all editors were closed.</p>
+<!-- @@@closeAllDocuments -->
+<!-- $$$closeAllEditors[overload1]$$$closeAllEditorsbool -->
+<h3 class="fn" translate="no" id="closeAllEditors"><code translate="no">[static slot] </code><span class="type">bool</span> EditorManager::<span class="name">closeAllEditors</span>(<span class="type">bool</span> <i>askAboutModifiedEditors</i> = true)</h3>
+<p>Closes all open editors. If <i translate="no">askAboutModifiedEditors</i> is <code translate="no">true</code>, prompts users to save their changes before closing the editors.</p>
+<p>Returns whether all editors were closed.</p>
+<!-- @@@closeAllEditors -->
+<!-- $$$closeDocuments[overload1]$$$closeDocumentsconstQList<Core::IDocument*>&bool -->
+<h3 class="fn" translate="no" id="closeDocuments"><code translate="no">[static] </code><span class="type">bool</span> EditorManager::<span class="name">closeDocuments</span>(const <span class="type"><a href="https://doc.qt.io/qt/qlist.html" translate="no">QList</a></span>&lt;<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *&gt; &amp;<i>documents</i>, <span class="type">bool</span> <i>askAboutModifiedEditors</i> = true)</h3>
+<p>Closes <i translate="no">documents</i>. If <i translate="no">askAboutModifiedEditors</i> is <code translate="no">true</code>, prompts users to save their changes before closing the documents.</p>
+<p>Returns whether the documents were closed.</p>
+<!-- @@@closeDocuments -->
+<!-- $$$closeDocuments$$$closeDocumentsconstQList<DocumentModel::Entry*>& -->
+<h3 class="fn" translate="no" id="closeDocuments-1"><code translate="no">[static] </code><span class="type">bool</span> EditorManager::<span class="name">closeDocuments</span>(const <span class="type"><a href="https://doc.qt.io/qt/qlist.html" translate="no">QList</a></span>&lt;<span class="type">DocumentModel::Entry</span> *&gt; &amp;<i>entries</i>)</h3>
+<p>Closes the documents specified by <i translate="no">entries</i>.</p>
+<p>Returns whether all documents were closed.</p>
+<!-- @@@closeDocuments -->
+<!-- $$$closeEditors[overload1]$$$closeEditorsconstQList<Core::IEditor*>&bool -->
+<h3 class="fn" translate="no" id="closeEditors"><code translate="no">[static] </code><span class="type">bool</span> EditorManager::<span class="name">closeEditors</span>(const <span class="type"><a href="https://doc.qt.io/qt/qlist.html" translate="no">QList</a></span>&lt;<span class="type"><a href="core-ieditor.html" translate="no">Core::IEditor</a></span> *&gt; &amp;<i>editorsToClose</i>, <span class="type">bool</span> <i>askAboutModifiedEditors</i> = true)</h3>
+<p>Closes the editors specified by <i translate="no">editorsToClose</i>. If <i translate="no">askAboutModifiedEditors</i> is <code translate="no">true</code>, prompts users to save their changes before closing the editor.</p>
+<p>Returns whether all editors were closed.</p>
+<p>Usually <a href="core-editormanager.html#closeDocuments" translate="no">closeDocuments</a>() is the better alternative.</p>
+<p><b>See also </b><a href="core-editormanager.html#closeDocuments" translate="no">closeDocuments</a>().</p>
+<!-- @@@closeEditors -->
+<!-- $$$closeOtherDocuments[overload1]$$$closeOtherDocumentsCore::IDocument* -->
+<h3 class="fn" translate="no" id="closeOtherDocuments"><code translate="no">[static] </code><span class="type">void</span> EditorManager::<span class="name">closeOtherDocuments</span>(<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *<i>document</i>)</h3>
+<p>Closes all open documents except <i translate="no">document</i> and pinned files.</p>
+<!-- @@@closeOtherDocuments -->
+<!-- $$$closeOtherDocuments$$$closeOtherDocuments -->
+<h3 class="fn" translate="no" id="closeOtherDocuments-1"><code translate="no">[static slot] </code><span class="type">void</span> EditorManager::<span class="name">closeOtherDocuments</span>()</h3>
+<p>Closes all open documents except the current document.</p>
+<!-- @@@closeOtherDocuments -->
+<!-- $$$currentDocument[overload1]$$$currentDocument -->
+<h3 class="fn" translate="no" id="currentDocument"><code translate="no">[static] </code><span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *EditorManager::<span class="name">currentDocument</span>()</h3>
+<p>Returns the document of the currently active editor.</p>
+<p><b>See also </b><a href="core-editormanager.html#currentEditor" translate="no">currentEditor</a>().</p>
+<!-- @@@currentDocument -->
+<!-- $$$currentDocumentStateChanged[overload1]$$$currentDocumentStateChanged -->
+<h3 class="fn" translate="no" id="currentDocumentStateChanged"><code translate="no">[signal] </code><span class="type">void</span> EditorManager::<span class="name">currentDocumentStateChanged</span>()</h3>
+<p>This signal is emitted when the meta data of the current document, for example file name or modified state, changed.</p>
+<p><b>See also </b><a href="core-idocument.html#changed" translate="no">IDocument::changed</a>().</p>
+<!-- @@@currentDocumentStateChanged -->
+<!-- $$$currentEditor[overload1]$$$currentEditor -->
+<h3 class="fn" translate="no" id="currentEditor"><code translate="no">[static] </code><span class="type"><a href="core-ieditor.html" translate="no">Core::IEditor</a></span> *EditorManager::<span class="name">currentEditor</span>()</h3>
+<p>Returns the currently active editor.</p>
+<p><b>See also </b><a href="core-editormanager.html#currentDocument" translate="no">currentDocument</a>().</p>
+<!-- @@@currentEditor -->
+<!-- $$$currentEditorAboutToChange[overload1]$$$currentEditorAboutToChangeCore::IEditor* -->
+<h3 class="fn" translate="no" id="currentEditorAboutToChange"><code translate="no">[signal] </code><span class="type">void</span> EditorManager::<span class="name">currentEditorAboutToChange</span>(<span class="type"><a href="core-ieditor.html" translate="no">Core::IEditor</a></span> *<i>editor</i>)</h3>
+<p>This signal is emitted before the current editor changes to <i translate="no">editor</i>.</p>
+<!-- @@@currentEditorAboutToChange -->
+<!-- $$$currentEditorChanged[overload1]$$$currentEditorChangedCore::IEditor* -->
+<h3 class="fn" translate="no" id="currentEditorChanged"><code translate="no">[signal] </code><span class="type">void</span> EditorManager::<span class="name">currentEditorChanged</span>(<span class="type"><a href="core-ieditor.html" translate="no">Core::IEditor</a></span> *<i>editor</i>)</h3>
+<p>This signal is emitted after the current editor changed to <i translate="no">editor</i>.</p>
+<!-- @@@currentEditorChanged -->
+<!-- $$$cutForwardNavigationHistory[overload1]$$$cutForwardNavigationHistory -->
+<h3 class="fn" translate="no" id="cutForwardNavigationHistory"><code translate="no">[static] </code><span class="type">void</span> EditorManager::<span class="name">cutForwardNavigationHistory</span>()</h3>
+<p>Cuts the forward part of the navigation history, so the user cannot <b translate="no">Go Forward</b> anymore (until the user goes backward again).</p>
+<p><b>See also </b><a href="core-editormanager.html#goForwardInNavigationHistory" translate="no">goForwardInNavigationHistory</a>() and <a href="core-editormanager.html#addCurrentPositionToNavigationHistory" translate="no">addCurrentPositionToNavigationHistory</a>().</p>
+<!-- @@@cutForwardNavigationHistory -->
+<!-- $$$defaultLineEnding[overload1]$$$defaultLineEnding -->
+<h3 class="fn" translate="no" id="defaultLineEnding"><code translate="no">[static] </code><span class="type">Utils::TextFileFormat::LineTerminationMode</span> EditorManager::<span class="name">defaultLineEnding</span>()</h3>
+<p>Returns the default line ending as the user specified in the settings.</p>
+<!-- @@@defaultLineEnding -->
+<!-- $$$defaultTextCodec[overload1]$$$defaultTextCodec -->
+<h3 class="fn" translate="no" id="defaultTextCodec"><code translate="no">[static] </code><span class="type">QTextCodec</span> *EditorManager::<span class="name">defaultTextCodec</span>()</h3>
+<p>Returns the default text codec as the user specified in the settings.</p>
+<!-- @@@defaultTextCodec -->
+<!-- $$$documentClosed[overload1]$$$documentClosedCore::IDocument* -->
+<h3 class="fn" translate="no" id="documentClosed"><code translate="no">[signal] </code><span class="type">void</span> EditorManager::<span class="name">documentClosed</span>(<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *<i>document</i>)</h3>
+<p>This signal is emitted after the <i translate="no">document</i> closed, but before it is deleted.</p>
+<!-- @@@documentClosed -->
+<!-- $$$documentOpened[overload1]$$$documentOpenedCore::IDocument* -->
+<h3 class="fn" translate="no" id="documentOpened"><code translate="no">[signal] </code><span class="type">void</span> EditorManager::<span class="name">documentOpened</span>(<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *<i>document</i>)</h3>
+<p>This signal is emitted after the first editor for <i translate="no">document</i> opened in an editor view.</p>
+<!-- @@@documentOpened -->
+<!-- $$$documentStateChanged[overload1]$$$documentStateChangedCore::IDocument* -->
+<h3 class="fn" translate="no" id="documentStateChanged"><code translate="no">[signal] </code><span class="type">void</span> EditorManager::<span class="name">documentStateChanged</span>(<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *<i>document</i>)</h3>
+<p>This signal is emitted when the meta data of the <i translate="no">document</i>, for example file name or modified state, changed.</p>
+<p><b>See also </b><a href="core-idocument.html#changed" translate="no">IDocument::changed</a>().</p>
+<!-- @@@documentStateChanged -->
+<!-- $$$editorAboutToClose[overload1]$$$editorAboutToCloseCore::IEditor* -->
+<h3 class="fn" translate="no" id="editorAboutToClose"><code translate="no">[signal] </code><span class="type">void</span> EditorManager::<span class="name">editorAboutToClose</span>(<span class="type"><a href="core-ieditor.html" translate="no">Core::IEditor</a></span> *<i>editor</i>)</h3>
+<p>This signal is emitted before <i translate="no">editor</i> is closed. This can be used to free resources that were allocated for the editor separately from the editor itself. It cannot be used to prevent the editor from closing. See <a href="core-editormanager.html#addCloseEditorListener" translate="no">addCloseEditorListener</a>() for that.</p>
+<p>Usually the more appropriate signal to listen to is <a href="core-editormanager.html#documentClosed" translate="no">documentClosed</a>().</p>
+<p><b>See also </b><a href="core-editormanager.html#addCloseEditorListener" translate="no">addCloseEditorListener</a>().</p>
+<!-- @@@editorAboutToClose -->
+<!-- $$$editorOpened[overload1]$$$editorOpenedCore::IEditor* -->
+<h3 class="fn" translate="no" id="editorOpened"><code translate="no">[signal] </code><span class="type">void</span> EditorManager::<span class="name">editorOpened</span>(<span class="type"><a href="core-ieditor.html" translate="no">Core::IEditor</a></span> *<i>editor</i>)</h3>
+<p>This signal is emitted after a new <i translate="no">editor</i> was opened in an editor view.</p>
+<p>Usually the more appropriate signal to listen to is <a href="core-editormanager.html#documentOpened" translate="no">documentOpened</a>().</p>
+<!-- @@@editorOpened -->
+<!-- $$$editorsClosed[overload1]$$$editorsClosedQList<Core::IEditor*> -->
+<h3 class="fn" translate="no" id="editorsClosed"><code translate="no">[signal] </code><span class="type">void</span> EditorManager::<span class="name">editorsClosed</span>(<span class="type"><a href="https://doc.qt.io/qt/qlist.html" translate="no">QList</a></span>&lt;<span class="type"><a href="core-ieditor.html" translate="no">Core::IEditor</a></span> *&gt; <i>editors</i>)</h3>
+<p>This signal is emitted after the <i translate="no">editors</i> closed, but before they are deleted.</p>
+<p>Usually the more appropriate signal to listen to is <a href="core-editormanager.html#documentClosed" translate="no">documentClosed</a>().</p>
+<!-- @@@editorsClosed -->
+<!-- $$$getOpenFilePaths[overload1]$$$getOpenFilePathsQFileDialog::Options -->
+<h3 class="fn" translate="no" id="getOpenFilePaths"><code translate="no">[static] </code><span class="type">Utils::FilePaths</span> EditorManager::<span class="name">getOpenFilePaths</span>(<span class="type"><a href="https://doc.qt.io/qt/qfiledialog.html#Option-enum" translate="no">QFileDialog::Options</a></span> <i>options</i> = {})</h3>
+<p>Asks the user for a list of files to open and returns the choice.</p>
+<p>The <i translate="no">options</i> argument holds various options about how to run the dialog. See the <a href="https://doc.qt.io/qt/qfiledialog.html#Option-enum" translate="no">QFileDialog::Options</a> enum for more information about the flags you can pass.</p>
+<p><b>See also </b><a href="core-documentmanager.html#getOpenFileNames" translate="no">DocumentManager::getOpenFileNames</a>() and <a href="https://doc.qt.io/qt/qfiledialog.html#Option-enum" translate="no">QFileDialog::Options</a>.</p>
+<!-- @@@getOpenFilePaths -->
+<!-- $$$goBackInNavigationHistory[overload1]$$$goBackInNavigationHistory -->
+<h3 class="fn" translate="no" id="goBackInNavigationHistory"><code translate="no">[static slot] </code><span class="type">void</span> EditorManager::<span class="name">goBackInNavigationHistory</span>()</h3>
+<p>Goes back in the navigation history.</p>
+<p><b>See also </b><a href="core-editormanager.html#goForwardInNavigationHistory" translate="no">goForwardInNavigationHistory</a>() and <a href="core-editormanager.html#addCurrentPositionToNavigationHistory" translate="no">addCurrentPositionToNavigationHistory</a>().</p>
+<!-- @@@goBackInNavigationHistory -->
+<!-- $$$goForwardInNavigationHistory[overload1]$$$goForwardInNavigationHistory -->
+<h3 class="fn" translate="no" id="goForwardInNavigationHistory"><code translate="no">[static slot] </code><span class="type">void</span> EditorManager::<span class="name">goForwardInNavigationHistory</span>()</h3>
+<p>Goes forward in the navigation history.</p>
+<p><b>See also </b><a href="core-editormanager.html#goBackInNavigationHistory" translate="no">goBackInNavigationHistory</a>() and <a href="core-editormanager.html#addCurrentPositionToNavigationHistory" translate="no">addCurrentPositionToNavigationHistory</a>().</p>
+<!-- @@@goForwardInNavigationHistory -->
+<!-- $$$gotoOtherSplit[overload1]$$$gotoOtherSplit -->
+<h3 class="fn" translate="no" id="gotoOtherSplit"><code translate="no">[static slot] </code><span class="type">void</span> EditorManager::<span class="name">gotoOtherSplit</span>()</h3>
+<p>Moves focus to another split, creating it if necessary. If there's no split and no other window, a side-by-side split is created. If the current window is split, focus is moved to the next split within this window, cycling. If the current window is not split, focus is moved to the next window.</p>
+<!-- @@@gotoOtherSplit -->
+<!-- $$$instance[overload1]$$$instance -->
+<h3 class="fn" translate="no" id="instance"><code translate="no">[static] </code><span class="type"><a href="core-editormanager.html" translate="no">Core::EditorManager</a></span> *EditorManager::<span class="name">instance</span>()</h3>
+<p>Returns the pointer to the instance. Only use for connecting to signals.</p>
+<!-- @@@instance -->
+<!-- $$$isAutoSaveFile[overload1]$$$isAutoSaveFileconstQString& -->
+<h3 class="fn" translate="no" id="isAutoSaveFile"><code translate="no">[static] </code><span class="type">bool</span> EditorManager::<span class="name">isAutoSaveFile</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>filePath</i>)</h3>
+<p>Returns whether <i translate="no">filePath</i> is an auto-save file created by Qt Design Studio.</p>
+<!-- @@@isAutoSaveFile -->
+<!-- $$$maxTextFileSize[overload1]$$$maxTextFileSize -->
+<h3 class="fn" translate="no" id="maxTextFileSize"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qttypes.html#qint64-typedef" translate="no">qint64</a></span> EditorManager::<span class="name">maxTextFileSize</span>()</h3>
+<p>Returns the maximum file size that should be opened in a text editor.</p>
+<!-- @@@maxTextFileSize -->
+<!-- $$$openEditor[overload1]$$$openEditorconstUtils::FilePath&Utils::IdCore::EditorManager::OpenEditorFlagsbool* -->
+<h3 class="fn" translate="no" id="openEditor"><code translate="no">[static] </code><span class="type"><a href="core-ieditor.html" translate="no">Core::IEditor</a></span> *EditorManager::<span class="name">openEditor</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>, <span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>editorId</i> = {}, <span class="type"><a href="core-editormanager.html#OpenEditorFlag-enum" translate="no">Core::EditorManager::OpenEditorFlags</a></span> <i>flags</i> = NoFlags, <span class="type">bool</span> *<i>newEditor</i> = nullptr)</h3>
+<p>Opens the document specified by <i translate="no">filePath</i> using the editor type <i translate="no">editorId</i> and the specified <i translate="no">flags</i>.</p>
+<p>If <i translate="no">editorId</i> is <code translate="no">Id()</code>, the editor type is derived from the file's MIME type.</p>
+<p>If <i translate="no">newEditor</i> is not <code translate="no">nullptr</code>, and a new editor instance was created, it is set to <code translate="no">true</code>. If an existing editor instance was used, it is set to <code translate="no">false</code>.</p>
+<p><b>See also </b><a href="core-editormanager.html#openEditorAt" translate="no">openEditorAt</a>(), <a href="core-editormanager.html#openEditorWithContents" translate="no">openEditorWithContents</a>(), and <a href="core-editormanager.html#openExternalEditor" translate="no">openExternalEditor</a>().</p>
+<!-- @@@openEditor -->
+<!-- $$$openEditorAt[overload1]$$$openEditorAtconstUtils::Link&Utils::IdCore::EditorManager::OpenEditorFlagsbool* -->
+<h3 class="fn" translate="no" id="openEditorAt"><code translate="no">[static] </code><span class="type"><a href="core-ieditor.html" translate="no">Core::IEditor</a></span> *EditorManager::<span class="name">openEditorAt</span>(const <span class="type">Utils::Link</span> &amp;<i>link</i>, <span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>editorId</i> = {}, <span class="type"><a href="core-editormanager.html#OpenEditorFlag-enum" translate="no">Core::EditorManager::OpenEditorFlags</a></span> <i>flags</i> = NoFlags, <span class="type">bool</span> *<i>newEditor</i> = nullptr)</h3>
+<p>Opens the document specified by <i translate="no">link</i> using the editor type <i translate="no">editorId</i> and the specified <i translate="no">flags</i>.</p>
+<p>Moves the text cursor to the <i>line</i> and <i>column</i> specified in <i translate="no">link</i>.</p>
+<p>If <i translate="no">editorId</i> is <code translate="no">Id()</code>, the editor type is derived from the file's MIME type.</p>
+<p>If <i translate="no">newEditor</i> is not <code translate="no">nullptr</code>, and a new editor instance was created, it is set to <code translate="no">true</code>. If an existing editor instance was used, it is set to <code translate="no">false</code>.</p>
+<p><b>See also </b><a href="core-editormanager.html#openEditor" translate="no">openEditor</a>(), <a href="core-editormanager.html#openEditorAtSearchResult" translate="no">openEditorAtSearchResult</a>(), <a href="core-editormanager.html#openEditorWithContents" translate="no">openEditorWithContents</a>(), <a href="core-editormanager.html#openExternalEditor" translate="no">openExternalEditor</a>(), and <a href="core-ieditor.html#gotoLine" translate="no">IEditor::gotoLine</a>().</p>
+<!-- @@@openEditorAt -->
+<!-- $$$openEditorAtSearchResult[overload1]$$$openEditorAtSearchResultconstUtils::SearchResultItem&Utils::IdCore::EditorManager::OpenEditorFlagsbool* -->
+<h3 class="fn" translate="no" id="openEditorAtSearchResult"><code translate="no">[static] </code><span class="type">void</span> EditorManager::<span class="name">openEditorAtSearchResult</span>(const <span class="type">Utils::SearchResultItem</span> &amp;<i>item</i>, <span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>editorId</i> = {}, <span class="type"><a href="core-editormanager.html#OpenEditorFlag-enum" translate="no">Core::EditorManager::OpenEditorFlags</a></span> <i>flags</i> = NoFlags, <span class="type">bool</span> *<i>newEditor</i> = nullptr)</h3>
+<p>Opens the document at the position of the search result <i translate="no">item</i> using the editor type <i translate="no">editorId</i> and the specified <i translate="no">flags</i>.</p>
+<p>If <i translate="no">editorId</i> is <code translate="no">Id()</code>, the editor type is derived from the file's MIME type.</p>
+<p>If <i translate="no">newEditor</i> is not <code translate="no">nullptr</code>, and a new editor instance was created, it is set to <code translate="no">true</code>. If an existing editor instance was used, it is set to <code translate="no">false</code>.</p>
+<p><b>See also </b><a href="core-editormanager.html#openEditorAt" translate="no">openEditorAt</a>().</p>
+<!-- @@@openEditorAtSearchResult -->
+<!-- $$$openEditorWithContents[overload1]$$$openEditorWithContentsUtils::IdQString*constQByteArray&constQString&Core::EditorManager::OpenEditorFlags -->
+<h3 class="fn" translate="no" id="openEditorWithContents"><code translate="no">[static] </code><span class="type"><a href="core-ieditor.html" translate="no">Core::IEditor</a></span> *EditorManager::<span class="name">openEditorWithContents</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>editorId</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> *<i>titlePattern</i> = nullptr, const <span class="type"><a href="https://doc.qt.io/qt/qbytearray.html" translate="no">QByteArray</a></span> &amp;<i>contents</i> = QByteArray(), const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>uniqueId</i> = QString(), <span class="type"><a href="core-editormanager.html#OpenEditorFlag-enum" translate="no">Core::EditorManager::OpenEditorFlags</a></span> <i>flags</i> = NoFlags)</h3>
+<p>Opens <i translate="no">contents</i> in an editor of the type <i translate="no">editorId</i> using the specified <i translate="no">flags</i>.</p>
+<p>The editor is given a display name based on <i translate="no">titlePattern</i>. If a non-empty <i translate="no">uniqueId</i> is specified and an editor with that unique ID is found, it is re-used. Otherwise, a new editor with that unique ID is created.</p>
+<p>Returns the new or re-used editor.</p>
+<p><b>See also </b><a href="core-editormanager.html#clearUniqueId" translate="no">clearUniqueId</a>().</p>
+<!-- @@@openEditorWithContents -->
+<!-- $$$openExternalEditor[overload1]$$$openExternalEditorconstUtils::FilePath&Utils::Id -->
+<h3 class="fn" translate="no" id="openExternalEditor"><code translate="no">[static] </code><span class="type">bool</span> EditorManager::<span class="name">openExternalEditor</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>, <span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>editorId</i>)</h3>
+<p>Opens the document specified by <i translate="no">filePath</i> in the external editor specified by <i translate="no">editorId</i>.</p>
+<p>Returns <code translate="no">false</code> and displays an error message if <i translate="no">editorId</i> is not the ID of an external editor or the external editor cannot be opened.</p>
+<p><b>See also </b><a href="core-editormanager.html#openEditor" translate="no">openEditor</a>().</p>
+<!-- @@@openExternalEditor -->
+<!-- $$$populateOpenWithMenu[overload1]$$$populateOpenWithMenuQMenu*constUtils::FilePath& -->
+<h3 class="fn" translate="no" id="populateOpenWithMenu"><code translate="no">[static] </code><span class="type">void</span> EditorManager::<span class="name">populateOpenWithMenu</span>(<span class="type"><a href="https://doc.qt.io/qt/qmenu.html" translate="no">QMenu</a></span> *<i>menu</i>, const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>)</h3>
+<p>Populates the <b translate="no">Open With</b> menu <i translate="no">menu</i> with editors that are suitable for opening the document <i translate="no">filePath</i>.</p>
+<!-- @@@populateOpenWithMenu -->
+<!-- $$$reloadSetting[overload1]$$$reloadSetting -->
+<h3 class="fn" translate="no" id="reloadSetting"><code translate="no">[static] </code><span class="type">IDocument::ReloadSetting</span> EditorManager::<span class="name">reloadSetting</span>()</h3>
+<p>Returns reload behavior settings.</p>
+<!-- @@@reloadSetting -->
+<!-- $$$revertToSaved[overload1]$$$revertToSaved -->
+<h3 class="fn" translate="no" id="revertToSaved"><code translate="no">[static slot] </code><span class="type">void</span> EditorManager::<span class="name">revertToSaved</span>()</h3>
+<p>Reverts the current document to its last saved state.</p>
+<!-- @@@revertToSaved -->
+<!-- $$$saveDocument[overload1]$$$saveDocumentCore::IDocument* -->
+<h3 class="fn" translate="no" id="saveDocument"><code translate="no">[static] </code><span class="type">bool</span> EditorManager::<span class="name">saveDocument</span>(<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *<i>document</i>)</h3>
+<p>Saves the changes in <i translate="no">document</i>.</p>
+<p>Returns whether the operation was successful.</p>
+<!-- @@@saveDocument -->
+<!-- $$$saveDocument$$$saveDocument -->
+<h3 class="fn" translate="no" id="saveDocument-1"><code translate="no">[static slot] </code><span class="type">void</span> EditorManager::<span class="name">saveDocument</span>()</h3>
+<p>Saves the current document.</p>
+<!-- @@@saveDocument -->
+<!-- $$$saveDocumentAs[overload1]$$$saveDocumentAs -->
+<h3 class="fn" translate="no" id="saveDocumentAs"><code translate="no">[static slot] </code><span class="type">void</span> EditorManager::<span class="name">saveDocumentAs</span>()</h3>
+<p>Saves the current document under a different file name.</p>
+<!-- @@@saveDocumentAs -->
+<!-- $$$saved[overload1]$$$savedCore::IDocument* -->
+<h3 class="fn" translate="no" id="saved"><code translate="no">[signal] </code><span class="type">void</span> EditorManager::<span class="name">saved</span>(<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *<i>document</i>)</h3>
+<p>This signal is emitted after the <i translate="no">document</i> was saved.</p>
+<!-- @@@saved -->
+<!-- $$$setLastEditLocation[overload1]$$$setLastEditLocationconstCore::IEditor* -->
+<h3 class="fn" translate="no" id="setLastEditLocation"><code translate="no">[static] </code><span class="type">void</span> EditorManager::<span class="name">setLastEditLocation</span>(const <span class="type"><a href="core-ieditor.html" translate="no">Core::IEditor</a></span> *<i>editor</i>)</h3>
+<p>Sets the location that was last modified to <i translate="no">editor</i>. Used for <b translate="no">Window</b> &gt; <b translate="no">Go to Last Edit</b>.</p>
+<!-- @@@setLastEditLocation -->
+<!-- $$$skipOpeningBigTextFile[overload1]$$$skipOpeningBigTextFileconstUtils::FilePath& -->
+<h3 class="fn" translate="no" id="skipOpeningBigTextFile"><code translate="no">[static] </code><span class="type">bool</span> EditorManager::<span class="name">skipOpeningBigTextFile</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>)</h3>
+<p>Returns whether the document specified by <i translate="no">filePath</i> should be opened even though it is big. Depending on the settings this might ask the user to decide whether the file should be opened.</p>
+<!-- @@@skipOpeningBigTextFile -->
+<!-- $$$splitSideBySide[overload1]$$$splitSideBySide -->
+<h3 class="fn" translate="no" id="splitSideBySide"><code translate="no">[static slot] </code><span class="type">void</span> EditorManager::<span class="name">splitSideBySide</span>()</h3>
+<p>Splits the editor view horizontally into adjacent views.</p>
+<!-- @@@splitSideBySide -->
+<!-- $$$visibleEditors[overload1]$$$visibleEditors -->
+<h3 class="fn" translate="no" id="visibleEditors"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qlist.html" translate="no">QList</a></span>&lt;<span class="type"><a href="core-ieditor.html" translate="no">Core::IEditor</a></span> *&gt; EditorManager::<span class="name">visibleEditors</span>()</h3>
+<p>Returns the list of visible editors.</p>
+<!-- @@@visibleEditors -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

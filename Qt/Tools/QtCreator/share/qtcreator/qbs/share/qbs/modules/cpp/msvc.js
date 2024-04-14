@@ -28,12 +28,29 @@
 **
 ****************************************************************************/
 
+var Codesign = require("../codesign/codesign.js");
 var Cpp = require("cpp.js");
 var File = require("qbs.File");
 var FileInfo = require("qbs.FileInfo");
 var ModUtils = require("qbs.ModUtils");
 var Utilities = require("qbs.Utilities");
 var WindowsUtils = require("qbs.WindowsUtils");
+
+function effectiveLinkerPath(product, inputs) {
+    if (product.cpp.linkerMode === "automatic") {
+        var compiler = product.cpp.compilerPath;
+        if (compiler) {
+            if (inputs.obj || inputs.staticlibrary) {
+                console.log("Found C/C++ objects, using compiler as a linker for " + product.name);
+                return compiler;
+            }
+        }
+
+        console.log("Found no C-language objects, choosing system linker for " + product.name);
+    }
+
+    return product.cpp.linkerPath;
+}
 
 function handleCpuFeatures(input, flags) {
     if (!input.qbs.architecture)
@@ -62,17 +79,54 @@ function hasCxx17Option(input)
 {
     // Probably this is not the earliest version to support the flag, but we have tested this one
     // and it's a pain to find out the exact minimum.
-    return Utilities.versionCompare(input.cpp.compilerVersion, "19.12.25831") >= 0;
+    return (input.qbs.toolchain.includes("clang-cl") && input.cpp.compilerVersionMajor >= 7)
+        || Utilities.versionCompare(input.cpp.compilerVersion, "19.12.25831") >= 0;
 }
 
-function addLanguageVersionFlag(input, args) {
+function hasZCplusPlusOption(input)
+{
+    // /Zc:__cplusplus is supported starting from Visual Studio 15.7
+    // Looks like closest MSVC version is 14.14.26428 (cl ver 19.14.26433)
+    // At least, this version is tested
+    // https://docs.microsoft.com/en-us/cpp/build/reference/zc-cplusplus
+    // clang-cl supports this option starting around-ish versions 8/9, but it
+    // ignores this option, so this doesn't really matter
+    // https://reviews.llvm.org/D45877
+    return (input.qbs.toolchain.includes("clang-cl") && input.cpp.compilerVersionMajor >= 9)
+        || Utilities.versionCompare(input.cpp.compilerVersion, "19.14.26433") >= 0;
+}
+
+function hasCxx20Option(input)
+{
+    return (input.qbs.toolchain.includes("clang-cl") && input.cpp.compilerVersionMajor >= 13)
+        || Utilities.versionCompare(input.cpp.compilerVersion, "19.29.30133.0") >= 0;
+}
+
+function hasCVerOption(input)
+{
+    return (input.qbs.toolchain.includes("clang-cl") && input.cpp.compilerVersionMajor >= 13)
+        || Utilities.versionCompare(input.cpp.compilerVersion, "19.29.30138.0") >= 0;
+}
+
+function supportsExternalIncludesOption(input) {
+    if (input.qbs.toolchain.includes("clang-cl"))
+        return false; // Exclude clang-cl.
+    // This option was introcuded since MSVC 2017 v15.6 (aka _MSC_VER 19.13).
+    // But due to some MSVC bugs:
+    // * https://developercommunity.visualstudio.com/content/problem/181006/externali-include-paths-not-working.html
+    // this option has been fixed since MSVC 2017 update 9, v15.9 (aka _MSC_VER 19.16).
+    return Utilities.versionCompare(input.cpp.compilerVersion, "19.16") >= 0;
+}
+
+function addCxxLanguageVersionFlag(input, args) {
     var cxxVersion = Cpp.languageVersion(input.cpp.cxxLanguageVersion,
-                                         ["c++17", "c++14", "c++11", "c++98"], "C++");
+            ["c++23", "c++20", "c++17", "c++14", "c++11", "c++98"], "C++");
     if (!cxxVersion)
         return;
 
-    // Visual C++ 2013, Update 3
-    var hasStdOption = Utilities.versionCompare(input.cpp.compilerVersion, "18.00.30723") >= 0;
+    // Visual C++ 2013, Update 3 or clang-cl
+    var hasStdOption = input.qbs.toolchain.includes("clang-cl")
+        || Utilities.versionCompare(input.cpp.compilerVersion, "18.00.30723") >= 0;
     if (!hasStdOption)
         return;
 
@@ -81,10 +135,40 @@ function addLanguageVersionFlag(input, args) {
         flag = "/std:c++14";
     else if (cxxVersion === "c++17" && hasCxx17Option(input))
         flag = "/std:c++17";
+    else if (cxxVersion === "c++20" && hasCxx20Option(input))
+        flag = "/std:c++20";
     else if (cxxVersion !== "c++11" && cxxVersion !== "c++98")
         flag = "/std:c++latest";
     if (flag)
         args.push(flag);
+}
+
+function addCLanguageVersionFlag(input, args) {
+    var cVersion = Cpp.languageVersion(input.cpp.cLanguageVersion,
+            ["c17", "c11"], "C");
+    if (!cVersion)
+        return;
+
+    var hasStdOption = hasCVerOption(input);
+    if (!hasStdOption)
+        return;
+
+    var flag;
+    if (cVersion === "c17")
+        flag = "/std:c17";
+    else if (cVersion === "c11")
+        flag = "/std:c11";
+    if (flag)
+        args.push(flag);
+}
+
+function handleClangClArchitectureFlags(product, architecture, flags) {
+    if (product.qbs.toolchain.includes("clang-cl")) {
+        if (architecture === "x86")
+            flags.push("-m32");
+        else if (architecture === "x86_64")
+            flags.push("-m64");
+    }
 }
 
 function prepareCompiler(project, product, inputs, outputs, input, output, explicitlyDependsOn) {
@@ -96,7 +180,7 @@ function prepareCompiler(project, product, inputs, outputs, input, output, expli
 
     // Determine which C-language we're compiling
     var tag = ModUtils.fileTagForTargetLanguage(input.fileTags.concat(Object.keys(outputs)));
-    if (!["c", "cpp"].contains(tag))
+    if (!["c", "cpp"].includes(tag))
         throw ("unsupported source language");
 
     var enableExceptions = input.cpp.enableExceptions;
@@ -132,6 +216,8 @@ function prepareCompiler(project, product, inputs, outputs, input, output, expli
         break;
     }
 
+    handleClangClArchitectureFlags(product, input.cpp.architecture, args);
+
     if (debugInformation) {
         if (product.cpp.separateDebugInformation)
             args.push('/Zi');
@@ -147,6 +233,8 @@ function prepareCompiler(project, product, inputs, outputs, input, output, expli
         args.push(rtl);
     }
 
+    args = args.concat(Cpp.collectMiscDriverArguments(product));
+
     // warnings:
     var warningLevel = input.cpp.warningLevel;
     if (warningLevel === 'none')
@@ -155,24 +243,33 @@ function prepareCompiler(project, product, inputs, outputs, input, output, expli
         args.push('/Wall')
     if (input.cpp.treatWarningsAsErrors)
         args.push('/WX')
-    var allIncludePaths = [];
-    var includePaths = input.cpp.includePaths;
-    if (includePaths)
-        allIncludePaths = allIncludePaths.uniqueConcat(includePaths);
-    var systemIncludePaths = input.cpp.systemIncludePaths;
-    if (systemIncludePaths)
-        allIncludePaths = allIncludePaths.uniqueConcat(systemIncludePaths);
-    for (i in allIncludePaths)
-        args.push('/I' + FileInfo.toWindowsSeparators(allIncludePaths[i]))
-    var allDefines = [];
-    var platformDefines = input.cpp.platformDefines;
-    if (platformDefines)
-        allDefines = allDefines.uniqueConcat(platformDefines);
-    var defines = input.cpp.defines;
-    if (defines)
-        allDefines = allDefines.uniqueConcat(defines);
-    for (i in allDefines)
-        args.push('/D' + allDefines[i].replace(/%/g, "%%"));
+
+    var includePaths = Cpp.collectIncludePaths(input);
+    args = args.concat([].uniqueConcat(includePaths).map(function(path) {
+        return input.cpp.includeFlag + FileInfo.toWindowsSeparators(path);
+    }));
+
+    var includeFlag = input.qbs.toolchain.includes("clang-cl")
+        ? input.cpp.systemIncludeFlag : input.cpp.includeFlag;
+    if (!input.qbs.toolchain.includes("clang-cl")) {
+        if (supportsExternalIncludesOption(input)) {
+            args.push("/experimental:external");
+            var enforcesSlashW =
+                    Utilities.versionCompare(input.cpp.compilerVersion, "19.29.30037") >= 0
+            if (enforcesSlashW)
+                args.push("/external:W0")
+            includeFlag = input.cpp.systemIncludeFlag;
+        }
+    }
+    var systemIncludePaths = Cpp.collectSystemIncludePaths(input);
+    args = args.concat([].uniqueConcat(systemIncludePaths).map(function(path) {
+        return includeFlag + FileInfo.toWindowsSeparators(path);
+    }));
+
+    var defines = Cpp.collectDefines(input);
+    args = args.concat([].uniqueConcat(defines).map(function(define) {
+        return input.cpp.defineFlag + define.replace(/%/g, "%%");
+    }));
 
     var minimumWindowsVersion = product.cpp.minimumWindowsVersion;
     if (minimumWindowsVersion) {
@@ -180,7 +277,7 @@ function prepareCompiler(project, product, inputs, outputs, input, output, expli
         if (hexVersion) {
             var versionDefs = [ 'WINVER', '_WIN32_WINNT', '_WIN32_WINDOWS' ];
             for (i in versionDefs) {
-                args.push('/D' + versionDefs[i] + '=' + hexVersion);
+                args.push(input.cpp.defineFlag + versionDefs[i] + '=' + hexVersion);
             }
         }
     }
@@ -188,21 +285,29 @@ function prepareCompiler(project, product, inputs, outputs, input, output, expli
     if (product.cpp.debugInformation && product.cpp.separateDebugInformation)
         args.push("/Fd" + product.targetName + ".cl" + product.cpp.debugInfoSuffix);
 
+    if (input.cpp.generateCompilerListingFiles)
+        args.push("/Fa" + FileInfo.toWindowsSeparators(outputs.lst[0].filePath));
+
+    if (input.cpp.enableCxxLanguageMacro && hasZCplusPlusOption(input))
+        args.push("/Zc:__cplusplus");
+
     var objectMap = outputs.obj || outputs.intermediate_obj
     var objOutput = objectMap ? objectMap[0] : undefined
     args.push('/Fo' + FileInfo.toWindowsSeparators(objOutput.filePath))
     args.push(FileInfo.toWindowsSeparators(input.filePath))
 
-    var prefixHeaders = product.cpp.prefixHeaders;
-    for (i in prefixHeaders)
-        args.push("/FI" + FileInfo.toWindowsSeparators(prefixHeaders[i]));
+    var preincludePaths = Cpp.collectPreincludePaths(input);
+    args = args.concat([].uniqueConcat(preincludePaths).map(function(path) {
+        return input.cpp.preincludeFlag + FileInfo.toWindowsSeparators(path);
+    }));
 
     // Language
     if (tag === "cpp") {
         args.push("/TP");
-        addLanguageVersionFlag(input, args);
+        addCxxLanguageVersionFlag(input, args);
     } else if (tag === "c") {
         args.push("/TC");
+        addCLanguageVersionFlag(input, args);
     }
 
     // Whether we're compiling a precompiled header or normal source file
@@ -210,10 +315,20 @@ function prepareCompiler(project, product, inputs, outputs, input, output, expli
     var pchInputs = explicitlyDependsOn[tag + "_pch"];
     if (pchOutput) {
         // create PCH
-        args.push("/Yc");
-        args.push("/Fp" + FileInfo.toWindowsSeparators(pchOutput.filePath));
-        args.push("/Fo" + FileInfo.toWindowsSeparators(objOutput.filePath));
-        args.push(FileInfo.toWindowsSeparators(input.filePath));
+        if (input.qbs.toolchain.includes("clang-cl")) {
+            // clang-cl does not support /Yc flag without filename
+            args.push("/Yc" + FileInfo.toWindowsSeparators(input.filePath));
+            // clang-cl complains when pch file is not included
+            args.push("/FI" + FileInfo.toWindowsSeparators(input.filePath));
+            args.push("/Fp" + FileInfo.toWindowsSeparators(pchOutput.filePath));
+            args.push("/Fo" + FileInfo.toWindowsSeparators(objOutput.filePath));
+        } else { // real msvc
+            args.push("/Yc");
+            args.push("/Fp" + FileInfo.toWindowsSeparators(pchOutput.filePath));
+            args.push("/Fo" + FileInfo.toWindowsSeparators(objOutput.filePath));
+            args.push(FileInfo.toWindowsSeparators(input.filePath));
+        }
+
     } else if (pchInputs && pchInputs.length === 1
                && ModUtils.moduleProperty(input, "usePrecompiledHeader", tag)) {
         // use PCH
@@ -230,10 +345,7 @@ function prepareCompiler(project, product, inputs, outputs, input, output, expli
         }
     }
 
-    args = args.concat(ModUtils.moduleProperty(input, 'platformFlags'),
-                       ModUtils.moduleProperty(input, 'flags'),
-                       ModUtils.moduleProperty(input, 'platformFlags', tag),
-                       ModUtils.moduleProperty(input, 'flags', tag));
+    args = args.concat(Cpp.collectMiscCompilerArguments(input, tag));
 
     var compilerPath = product.cpp.compilerPath;
     var wrapperArgs = product.cpp.compilerWrapper;
@@ -259,74 +371,10 @@ function prepareCompiler(project, product, inputs, outputs, input, output, expli
     return [cmd];
 }
 
-function collectLibraryDependencies(product) {
-    var seen = {};
-    var result = [];
-
-    function addFilePath(filePath, wholeArchive, productName) {
-        result.push({ filePath: filePath, wholeArchive: wholeArchive, productName: productName });
-    }
-
-    function addArtifactFilePaths(dep, artifacts) {
-        if (!artifacts)
-            return;
-        var artifactFilePaths = artifacts.map(function(a) { return a.filePath; });
-        var wholeArchive = dep.parameters.cpp && dep.parameters.cpp.linkWholeArchive;
-        var artifactsAreImportLibs = artifacts.length > 0
-                && artifacts[0].fileTags.contains("dynamiclibrary_import");
-        for (var i = 0; i < artifactFilePaths.length; ++i) {
-            addFilePath(artifactFilePaths[i], wholeArchive,
-                        artifactsAreImportLibs ? dep.name : undefined);
-        }
-    }
-
-    function addExternalLibs(obj) {
-        if (!obj.cpp)
-            return;
-        function ensureArray(a) {
-            return Array.isArray(a) ? a : [];
-        }
-        function sanitizedModuleListProperty(obj, moduleName, propertyName) {
-            return ensureArray(ModUtils.sanitizedModuleProperty(obj, moduleName, propertyName));
-        }
-        var externalLibs = [].concat(
-                    sanitizedModuleListProperty(obj, "cpp", "staticLibraries"),
-                    sanitizedModuleListProperty(obj, "cpp", "dynamicLibraries"));
-        externalLibs.forEach(function (libName) {
-            if (!libName.match(/\.lib$/i) && !libName.startsWith('@'))
-                libName += ".lib";
-            addFilePath(libName, false);
-        });
-    }
-
-    function traverse(dep) {
-        if (seen.hasOwnProperty(dep.name))
-            return;
-        seen[dep.name] = true;
-
-        if (dep.parameters.cpp && dep.parameters.cpp.link === false)
-            return;
-
-        var staticLibraryArtifacts = dep.artifacts["staticlibrary"];
-        var dynamicLibraryArtifacts = staticLibraryArtifacts
-                ? null : dep.artifacts["dynamiclibrary_import"];
-        if (staticLibraryArtifacts) {
-            dep.dependencies.forEach(traverse);
-            addArtifactFilePaths(dep, staticLibraryArtifacts);
-            addExternalLibs(dep);
-        } else if (dynamicLibraryArtifacts) {
-            addArtifactFilePaths(dep, dynamicLibraryArtifacts);
-        }
-    }
-
-    product.dependencies.forEach(traverse);
-    addExternalLibs(product);
-    return result;
-}
-
 function linkerSupportsWholeArchive(product)
 {
-    return Utilities.versionCompare(product.cpp.compilerVersion, "19.0.24215.1") >= 0
+    return product.qbs.toolchainType.includes("clang-cl") ||
+        Utilities.versionCompare(product.cpp.compilerVersion, "19.0.24215.1") >= 0
 }
 
 function handleDiscardProperty(product, flags) {
@@ -342,49 +390,76 @@ function prepareLinker(project, product, inputs, outputs, input, output) {
     var linkDLL = (outputs.dynamiclibrary ? true : false)
     var primaryOutput = (linkDLL ? outputs.dynamiclibrary[0] : outputs.application[0])
     var debugInformation = product.cpp.debugInformation;
-    var additionalManifestInputs = Array.prototype.map.call(inputs["native.pe.manifest"],
+    var additionalManifestInputs = Array.prototype.map.call(inputs["native.pe.manifest"] || [],
+        function (a) {
+            return a.filePath;
+        });
+    var moduleDefinitionInputs = Array.prototype.map.call(inputs["def"] || [],
         function (a) {
             return a.filePath;
         });
     var generateManifestFiles = !linkDLL && product.cpp.generateManifestFile;
-    var canEmbedManifest = (product.cpp.compilerVersionMajor >= 17);    // VS 2012
+    var useClangCl = product.qbs.toolchain.includes("clang-cl");
+    var canEmbedManifest = useClangCl || product.cpp.compilerVersionMajor >= 17 // VS 2012
 
-    var args = ['/nologo']
+    var linkerPath = effectiveLinkerPath(product, inputs);
+    var useCompilerDriver = linkerPath === product.cpp.compilerPath;
+    // args variable is built as follows:
+    // [linkerWrapper] linkerPath /nologo [driverFlags driverLinkerFlags]
+    //      allInputs libDeps [/link] linkerArgs
+    var args = []
+
+    if (useCompilerDriver) {
+        args.push('/nologo');
+        args = args.concat(Cpp.collectMiscDriverArguments(product),
+                           Cpp.collectMiscLinkerArguments(product));
+    }
+
+    var allInputs = [].concat(Cpp.collectLinkerObjectPaths(inputs),
+                              Cpp.collectResourceObjectPaths(inputs));
+    args = args.concat([].uniqueConcat(allInputs).map(function(path) {
+        return FileInfo.toWindowsSeparators(path);
+    }));
+
+    var linkerArgs = ['/nologo']
     if (linkDLL) {
-        args.push('/DLL');
-        args.push('/IMPLIB:' + FileInfo.toWindowsSeparators(outputs.dynamiclibrary_import[0].filePath));
+        linkerArgs.push('/DLL');
+        linkerArgs.push('/IMPLIB:' + FileInfo.toWindowsSeparators(outputs.dynamiclibrary_import[0].filePath));
     }
 
     if (debugInformation) {
-        args.push("/DEBUG");
+        linkerArgs.push("/DEBUG");
         var debugInfo = outputs.debuginfo_app || outputs.debuginfo_dll;
         if (debugInfo)
-            args.push("/PDB:" + debugInfo[0].fileName);
+            linkerArgs.push("/PDB:" + debugInfo[0].fileName);
     } else {
-        args.push('/INCREMENTAL:NO')
+        linkerArgs.push('/INCREMENTAL:NO')
     }
 
     switch (product.qbs.architecture) {
     case "x86":
-        args.push("/MACHINE:X86");
+        linkerArgs.push("/MACHINE:X86");
         break;
     case "x86_64":
-        args.push("/MACHINE:X64");
+        linkerArgs.push("/MACHINE:X64");
         break;
     case "ia64":
-        args.push("/MACHINE:IA64");
+        linkerArgs.push("/MACHINE:IA64");
         break;
     case "armv7":
-        args.push("/MACHINE:ARM");
+        linkerArgs.push("/MACHINE:ARM");
         break;
     case "arm64":
-        args.push("/MACHINE:ARM64");
+        linkerArgs.push("/MACHINE:ARM64");
         break;
     }
 
+    if (useCompilerDriver)
+        handleClangClArchitectureFlags(product, product.qbs.architecture, args);
+
     var requireAppContainer = product.cpp.requireAppContainer;
     if (requireAppContainer !== undefined)
-        args.push("/APPCONTAINER" + (requireAppContainer ? "" : ":NO"));
+        linkerArgs.push("/APPCONTAINER" + (requireAppContainer ? "" : ":NO"));
 
     var minimumWindowsVersion = product.cpp.minimumWindowsVersion;
     var subsystemSwitch = undefined;
@@ -394,25 +469,29 @@ function prepareLinker(project, product, inputs, outputs, input, output) {
         subsystemSwitch = product.consoleApplication === false ? '/SUBSYSTEM:WINDOWS' : '/SUBSYSTEM:CONSOLE';
     }
 
+    var useLldLink = useCompilerDriver && product.cpp.linkerVariant === "lld"
+            || !useCompilerDriver && product.cpp.linkerName === "lld-link.exe";
     if (minimumWindowsVersion) {
         var subsystemVersion = WindowsUtils.getWindowsVersionInFormat(minimumWindowsVersion,
                                                                       'subsystem');
         if (subsystemVersion) {
             subsystemSwitch += ',' + subsystemVersion;
-            args.push('/OSVERSION:' + subsystemVersion);
+            // llvm linker does not support /OSVERSION
+            if (!useLldLink)
+                linkerArgs.push('/OSVERSION:' + subsystemVersion);
         }
     }
 
     if (subsystemSwitch)
-        args.push(subsystemSwitch);
+        linkerArgs.push(subsystemSwitch);
 
     var linkerOutputNativeFilePath = FileInfo.toWindowsSeparators(primaryOutput.filePath);
     var manifestFileNames = [];
     if (generateManifestFiles) {
         if (canEmbedManifest) {
-            args.push("/MANIFEST:embed");
+            linkerArgs.push("/MANIFEST:embed");
             additionalManifestInputs.forEach(function (manifestFileName) {
-                args.push("/MANIFESTINPUT:" + manifestFileName);
+                linkerArgs.push("/MANIFESTINPUT:" + manifestFileName);
             });
         } else {
             linkerOutputNativeFilePath
@@ -421,24 +500,36 @@ function prepareLinker(project, product, inputs, outputs, input, output) {
                             + primaryOutput.fileName);
 
             var manifestFileName = linkerOutputNativeFilePath + ".manifest";
-            args.push('/MANIFEST', '/MANIFESTFILE:' + manifestFileName);
+            linkerArgs.push('/MANIFEST', '/MANIFESTFILE:' + manifestFileName);
             manifestFileNames = [manifestFileName].concat(additionalManifestInputs);
         }
     }
 
-    var allInputs = inputs.obj || [];
-    for (i in allInputs) {
-        var fileName = FileInfo.toWindowsSeparators(allInputs[i].filePath)
-        args.push(fileName)
-    }
+    if (moduleDefinitionInputs.length === 1)
+        linkerArgs.push("/DEF:" + moduleDefinitionInputs[0]);
+    else if (moduleDefinitionInputs.length > 1)
+        throw new Error("Only one '.def' file can be specified for linking");
 
     var wholeArchiveSupported = linkerSupportsWholeArchive(product);
     var wholeArchiveRequested = false;
-    var libDeps = collectLibraryDependencies(product);
+    var libDeps = Cpp.collectLibraryDependencies(product);
+    var prevLib;
     for (i = 0; i < libDeps.length; ++i) {
         var dep = libDeps[i];
-        args.push((wholeArchiveSupported && dep.wholeArchive ? "/WHOLEARCHIVE:" : "")
-                  + FileInfo.toWindowsSeparators(dep.filePath));
+        var lib = dep.filePath;
+        if (lib === prevLib)
+            continue;
+        prevLib = lib;
+
+        if (wholeArchiveSupported && dep.wholeArchive) {
+            // need to pass libraries to the driver to avoid "no input files" error if no object
+            // files are specified; thus libraries are duplicated when using "WHOLEARCHIVE"
+            if (useCompilerDriver && allInputs.length === 0)
+                args.push(FileInfo.toWindowsSeparators(lib));
+            linkerArgs.push("/WHOLEARCHIVE:" + FileInfo.toWindowsSeparators(lib));
+        } else {
+            args.push(FileInfo.toWindowsSeparators(lib));
+        }
         if (dep.wholeArchive)
             wholeArchiveRequested = true;
     }
@@ -449,22 +540,31 @@ function prepareLinker(project, product, inputs, outputs, input, output) {
     }
 
     if (product.cpp.entryPoint)
-        args.push("/ENTRY:" + product.cpp.entryPoint);
+        linkerArgs.push("/ENTRY:" + product.cpp.entryPoint);
 
-    args.push('/OUT:' + linkerOutputNativeFilePath)
-    var libraryPaths = product.cpp.libraryPaths;
-    if (libraryPaths)
-        libraryPaths = [].uniqueConcat(libraryPaths);
-    for (i in libraryPaths) {
-        args.push('/LIBPATH:' + FileInfo.toWindowsSeparators(libraryPaths[i]))
+    if (outputs.application && product.cpp.generateLinkerMapFile) {
+        if (useLldLink)
+            linkerArgs.push("/lldmap:" + outputs.mem_map[0].filePath);
+        else
+            linkerArgs.push("/MAP:" + outputs.mem_map[0].filePath);
     }
-    handleDiscardProperty(product, args);
-    var linkerFlags = product.cpp.platformLinkerFlags.concat(product.cpp.linkerFlags);
-    args = args.concat(linkerFlags);
-    if (product.cpp.allowUnresolvedSymbols)
-        args.push("/FORCE:UNRESOLVED");
 
-    var linkerPath = product.cpp.linkerPath;
+    if (useCompilerDriver)
+        args.push('/Fe' + linkerOutputNativeFilePath);
+    else
+        linkerArgs.push('/OUT:' + linkerOutputNativeFilePath);
+
+    var libraryPaths = Cpp.collectLibraryPaths(product);
+    linkerArgs = linkerArgs.concat([].uniqueConcat(libraryPaths).map(function(path) {
+        return product.cpp.libraryPathFlag + FileInfo.toWindowsSeparators(path);
+    }));
+
+    handleDiscardProperty(product, linkerArgs);
+    var linkerFlags = product.cpp.platformLinkerFlags.concat(product.cpp.linkerFlags);
+    linkerArgs = linkerArgs.concat(linkerFlags);
+    if (product.cpp.allowUnresolvedSymbols)
+        linkerArgs.push("/FORCE:UNRESOLVED");
+
     var wrapperArgs = product.cpp.linkerWrapper;
     if (wrapperArgs && wrapperArgs.length > 0) {
         args.unshift(linkerPath);
@@ -487,6 +587,10 @@ function prepareLinker(project, product, inputs, outputs, input, output) {
         }
     };
     commands.push(warningCmd);
+
+    if (linkerArgs.length !== 0)
+        args = args.concat(useCompilerDriver ? ['/link'] : []).concat(linkerArgs);
+
     var cmd = new Command(linkerPath, args)
     cmd.description = 'linking ' + primaryOutput.fileName;
     cmd.highlight = 'linker';
@@ -494,9 +598,13 @@ function prepareLinker(project, product, inputs, outputs, input, output) {
     cmd.relevantEnvironmentVariables = ["LINK", "_LINK_", "LIB", "TMP"];
     cmd.workingDirectory = FileInfo.path(primaryOutput.filePath)
     cmd.responseFileUsagePrefix = '@';
+    cmd.responseFileSeparator = useCompilerDriver ? ' ' : '\n';
     cmd.stdoutFilterFunction = function(output) {
         res = output.replace(/^.*performing full link.*\s*/, "");
-        return res.replace(/^ *Creating library.*\r\n$/, "");
+        res = res.replace(/^ *Creating library.*\s*/, "");
+        res = res.replace(/^\s*Generating code\s*/, "");
+        res = res.replace(/^\s*Finished generating code\s*/, "");
+        return res;
     };
     commands.push(cmd);
 
@@ -520,6 +628,55 @@ function prepareLinker(project, product, inputs, outputs, input, output) {
         commands.push(cmd);
     }
 
+    if (product.cpp.shouldSignArtifacts) {
+        Array.prototype.push.apply(
+                    commands, Codesign.prepareSigntool(
+                        project, product, inputs, outputs, input, output));
+    }
+
     return commands;
 }
 
+function createRcCommand(binary, input, output, logo) {
+    var platformDefines = input.cpp.platformDefines;
+    var defines = input.cpp.defines;
+    var includePaths = input.cpp.includePaths;
+    var systemIncludePaths = input.cpp.systemIncludePaths;
+
+    var args = [];
+    if (logo === "can-suppress-logo")
+        args.push("/nologo");
+    for (i in platformDefines) {
+        args.push("/d");
+        args.push(platformDefines[i]);
+    }
+    for (i in defines) {
+        args.push("/d");
+        args.push(defines[i]);
+    }
+    for (i in includePaths) {
+        args.push("/I");
+        args.push(includePaths[i]);
+    }
+    for (i in systemIncludePaths) {
+        args.push("/I");
+        args.push(systemIncludePaths[i]);
+    }
+    args = args.concat(["/FO", output.filePath, input.filePath]);
+    var cmd = new Command(binary, args);
+    cmd.description = 'compiling ' + input.fileName;
+    cmd.highlight = 'compiler';
+    cmd.jobPool = "compiler";
+
+    if (logo === "always-shows-logo") {
+        // Remove the first two lines of stdout. That's the logo.
+        cmd.stdoutFilterFunction = function(output) {
+            var idx = 0;
+            for (var i = 0; i < 3; ++i)
+                idx = output.indexOf('\n', idx + 1);
+            return output.substr(idx + 1);
+        }
+    }
+
+    return cmd;
+}

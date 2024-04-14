@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- loginui3.qdoc -->
+  <meta name="description" content="Illustrates how to use states to create a second UI page.">
+  <title>Log In UI - States | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="gstutorials.html" translate="no">Tutorials</a></li>
+<li>Log In UI - States</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="qtdesignstudio-loginui2-example.html" />
+  <link rel="next" href="qtdesignstudio-loginui4-example.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="qtdesignstudio-loginui2-example.html">Log In UI - Positioning</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtdesignstudio-loginui4-example.html">Log In UI - Timeline</a>
+</p>
+<h1 class="title">Log In UI - States</h1>
+<pre class="qml" translate="no">
+ <span class="comment">// Copyright (C) 2022 The Qt Company Ltd.</span>
+ <span class="comment">// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause</span>
+
+ import QtQuick
+ import QtQuick.Controls
+ import Loginui1
+
+ <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-rectangle.html" translate="no">Rectangle</a></span> {
+     <span class="name">id</span>: <span class="name">rectangle</span>
+     <span class="name">width</span>: <span class="name">Constants</span>.<span class="name">width</span>
+     <span class="name">height</span>: <span class="name">Constants</span>.<span class="name">height</span>
+
+     <span class="name">color</span>: <span class="name">Constants</span>.<span class="name">backgroundColor</span>
+     <span class="name">state</span>: <span class="string">&quot;login&quot;</span>
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-image.html" translate="no">Image</a></span> {
+         <span class="name">id</span>: <span class="name">adventurePage</span>
+         <span class="name">anchors</span>.fill: <span class="name">parent</span>
+         <span class="name">source</span>: <span class="string">&quot;images/adventurePage.jpg&quot;</span>
+         <span class="name">fillMode</span>: <span class="name">Image</span>.<span class="name">PreserveAspectFit</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-image.html" translate="no">Image</a></span> {
+         <span class="name">id</span>: <span class="name">qt_logo_green_128x128px</span>
+         <span class="name">anchors</span>.top: <span class="name">parent</span>.<span class="name">top</span>
+         <span class="name">source</span>: <span class="string">&quot;images/qt_logo_green_128x128px.png&quot;</span>
+         <span class="name">anchors</span>.horizontalCenter: <span class="name">parent</span>.<span class="name">horizontalCenter</span>
+         <span class="name">anchors</span>.topMargin: <span class="number">40</span>
+         <span class="name">fillMode</span>: <span class="name">Image</span>.<span class="name">PreserveAspectFit</span>
+     }
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-text.html" translate="no">Text</a></span> {
+         <span class="name">id</span>: <span class="name">tagLine</span>
+         <span class="name">color</span>: <span class="string">&quot;#ffffff&quot;</span>
+         <span class="name">text</span>: <span class="name">qsTr</span>(<span class="string">&quot;Are you ready to explore?&quot;</span>)
+         <span class="name">anchors</span>.top: <span class="name">qt_logo_green_128x128px</span>.<span class="name">bottom</span>
+         <span class="name">font</span>.pixelSize: <span class="number">50</span>
+         <span class="name">anchors</span>.topMargin: <span class="number">40</span>
+         <span class="name">anchors</span>.horizontalCenter: <span class="name">parent</span>.<span class="name">horizontalCenter</span>
+         <span class="name">font</span>.family: <span class="string">&quot;Titillium Web ExtraLight&quot;</span>
+         <span class="name">anchors</span>.horizontalCenterOffset: <span class="number">0</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-column.html" translate="no">Column</a></span> {
+         <span class="name">id</span>: <span class="name">fields</span>
+         <span class="name">anchors</span>.top: <span class="name">tagLine</span>.<span class="name">bottom</span>
+         <span class="name">anchors</span>.horizontalCenter: <span class="name">parent</span>.<span class="name">horizontalCenter</span>
+         <span class="name">anchors</span>.topMargin: <span class="number">170</span>
+         <span class="name">spacing</span>: <span class="number">20</span>
+
+         <span class="type">EntryField</span> {
+             <span class="name">id</span>: <span class="name">username</span>
+             <span class="name">text</span>: <span class="name">qsTr</span>(<span class="string">&quot;Username or Email&quot;</span>)
+         }
+
+         <span class="type">EntryField</span> {
+             <span class="name">id</span>: <span class="name">password</span>
+             <span class="name">text</span>: <span class="name">qsTr</span>(<span class="string">&quot;Password&quot;</span>)
+         }
+
+         <span class="type">EntryField</span> {
+             <span class="name">id</span>: <span class="name">repeatPassword</span>
+             <span class="name">text</span>: <span class="name">qsTr</span>(<span class="string">&quot;Repeat Password&quot;</span>)
+         }
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-column.html" translate="no">Column</a></span> {
+         <span class="name">id</span>: <span class="name">buttons</span>
+         <span class="name">y</span>: <span class="number">944</span>
+         <span class="name">anchors</span>.bottom: <span class="name">parent</span>.<span class="name">bottom</span>
+         <span class="name">anchors</span>.horizontalCenter: <span class="name">parent</span>.<span class="name">horizontalCenter</span>
+         <span class="name">anchors</span>.bottomMargin: <span class="number">50</span>
+         <span class="name">spacing</span>: <span class="number">20</span>
+
+         <span class="type">PushButton</span> {
+             <span class="name">id</span>: <span class="name">login</span>
+             <span class="name">text</span>: <span class="name">qsTr</span>(<span class="string">&quot;Continue&quot;</span>)
+         }
+
+         <span class="type">PushButton</span> {
+             <span class="name">id</span>: <span class="name">createAccount</span>
+             <span class="name">text</span>: <span class="name">qsTr</span>(<span class="string">&quot;Create Account&quot;</span>)
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtqml-connections.html" translate="no">Connections</a></span> {
+                 <span class="name">target</span>: <span class="name">createAccount</span>
+                 <span class="name">onClicked</span>: <span class="name">rectangle</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;createAccount&quot;</span>
+             }
+         }
+     }
+     <span class="name">states</span>: [
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;login&quot;</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">repeatPassword</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+             }
+         },
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;createAccount&quot;</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">createAccount</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+             }
+         }
+     ]
+ }
+
+ <span class="comment">/*##^##
+ Designer {
+     D{i:0;formeditorZoom:0.5}D{i:1}D{i:2}D{i:3}D{i:5}D{i:6}D{i:7}D{i:4}D{i:9}D{i:11}D{i:10}
+ D{i:8}
+ }
+ ##^##*/</span>
+</pre>

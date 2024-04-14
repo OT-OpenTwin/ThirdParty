@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- commandbutton.cpp -->
+  <meta name="description" content="The CommandAction class is an action associated with one of the registered Command objects.">
+  <title>CommandAction Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>CommandAction</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">CommandAction Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::CommandAction</span>
+<!-- $$$CommandAction-brief -->
+<p>The CommandAction class is an action associated with one of the registered Command objects. <a href="#details">More...</a></p>
+<!-- @@@CommandAction -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/actionmanager/commandbutton.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a></td></tr>
+</table></div>
+<ul>
+<li><a href="core-commandaction-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-commandaction.html#setCommandId" translate="no">setCommandId</a></b>(Utils::Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-commandaction.html#setToolTipBase" translate="no">setToolTipBase</a></b>(const QString &amp;<i>toolTipBase</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-commandaction.html#toolTipBase" translate="no">toolTipBase</a></b>() const</td></tr>
+</table></div>
+<!-- $$$CommandAction-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>It shares the icon and text of the command. The tooltip of the action consists of <a href="core-commandaction.html#toolTipBase" translate="no">toolTipBase</a> property value and Command's key sequence which is automatically updated when user changes it.</p>
+</div>
+<!-- @@@CommandAction -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$setCommandId[overload1]$$$setCommandIdUtils::Id -->
+<h3 class="fn" translate="no" id="setCommandId"><span class="type">void</span> CommandAction::<span class="name">setCommandId</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>id</i>)</h3>
+<p>Sets the ID of the command associated with this tool button to <i translate="no">id</i>.</p>
+<!-- @@@setCommandId -->
+<!-- $$$setToolTipBase[overload1]$$$setToolTipBaseconstQString& -->
+<h3 class="fn" translate="no" id="setToolTipBase"><span class="type">void</span> CommandAction::<span class="name">setToolTipBase</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>toolTipBase</i>)</h3>
+<p>Sets the base tool tip that is extended with the command's shortcut to <i translate="no">toolTipBase</i>.</p>
+<p><b>See also </b><a href="core-commandaction.html#toolTipBase" translate="no">toolTipBase</a>().</p>
+<!-- @@@setToolTipBase -->
+<!-- $$$toolTipBase[overload1]$$$toolTipBase -->
+<h3 class="fn" translate="no" id="toolTipBase"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> CommandAction::<span class="name">toolTipBase</span>() const</h3>
+<p>The base tool tip that is extended with the command's shortcut. Defaults to the command's description.</p>
+<p><b>See also </b><a href="core-commandaction.html#setToolTipBase" translate="no">setToolTipBase</a>() and <a href="core-command.html#description" translate="no">Command::description</a>().</p>
+<!-- @@@toolTipBase -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

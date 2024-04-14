@@ -28,6 +28,8 @@
 **
 ****************************************************************************/
 
+import qbs.FileInfo
+import qbs.Host
 import qbs.ModUtils
 import "path-probe.js" as PathProbeConfigure
 import "../../../modules/nodejs/nodejs.js" as NodeJs
@@ -47,26 +49,33 @@ NodeJsProbe {
         if (!interpreterPath)
             throw '"interpreterPath" must be specified';
 
-        var result = PathProbeConfigure.configure(names, nameSuffixes, nameFilter, searchPaths,
-                                                  pathSuffixes, platformSearchPaths,
-                                                  environmentPaths, platformEnvironmentPaths,
-                                                  pathListSeparator);
+        var selectors;
+        var results = PathProbeConfigure.configure(
+                    selectors, names, nameSuffixes, nameFilter, candidateFilter, searchPaths,
+                    pathSuffixes, platformSearchPaths, environmentPaths, platformEnvironmentPaths);
 
-        var v = new ModUtils.EnvironmentVariable("PATH", pathListSeparator,
-                                                 hostOS.contains("windows"));
+        var v = new ModUtils.EnvironmentVariable("PATH", FileInfo.pathListSeparator(),
+                                                 Host.os().contains("windows"));
         v.prepend(interpreterPath);
 
-        result.npmBin = result.found
-                ? NodeJs.findLocation(result.filePath, "bin", v.value)
-                : undefined;
-        result.npmRoot = result.found
-                ? NodeJs.findLocation(result.filePath, "root", v.value)
-                : undefined;
-        result.npmPrefix = result.found
-                ? NodeJs.findLocation(result.filePath, "prefix", v.value)
-                : undefined;
+        var resultsMapper = function(result) {
+            result.npmBin = result.found
+                    ? NodeJs.findLocation(result.filePath, "bin", v.value)
+                    : undefined;
+            result.npmRoot = result.found
+                    ? NodeJs.findLocation(result.filePath, "root", v.value)
+                    : undefined;
+            result.npmPrefix = result.found
+                    ? NodeJs.findLocation(result.filePath, "prefix", v.value)
+                    : undefined;
+            return result;
+        };
+        results.files = results.files.map(resultsMapper);
 
-        found = result.found;
+        found = results.found;
+        allResults = results.files;
+
+        var result = results.files[0];
         candidatePaths = result.candidatePaths;
         path = result.path;
         filePath = result.filePath;

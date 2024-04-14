@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- distributing-plugins.qdoc -->
+  <title>Distributing Plugins | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li>Distributing Plugins</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#creating-binaries">Creating Binaries</a></li>
+<li class="level1"><a href="#packaging">Packaging</a></li>
+<li class="level2"><a href="#single-library">Single Library</a></li>
+<li class="level2"><a href="#multiple-files-following-qt-creator-s-filesystem-layout">Multiple Files Following Qt Creator's Filesystem Layout</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Distributing Plugins</h1>
+<!-- $$$distributing-plugins.html-description -->
+<div class="descr" id="details">
+<p>To make your plugin available to a wider range of users, you should look into distributing binary builds of it.</p>
+<h2 id="creating-binaries">Creating Binaries</h2>
+<p>If your plugin runs and works on multiple platforms, you should provide binary builds for all of the supported platforms.</p>
+<p>Qt Creator currently supports:</p>
+<ul>
+<li>Windows</li>
+<li>Linux</li>
+<li>macOS</li>
+</ul>
+<p>See the toplevel <a href="https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/README.md" translate="no">README.md</a> file in Qt Creator's sources for a more detailed list.</p>
+<p>The <b translate="no">Qt Creator Plugin</b> wizard already creates a template for <a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/about-github-actions" translate="no">GitHub Actions</a> which can be used to create binaries if you host your plugin sources on GitHub. See the <a href="https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/share/qtcreator/templates/wizards/qtcreatorplugin/github_workflow_README.md" translate="no">README.md</a> that is created at the same location for details.</p>
+<p>You can also use the provided GitHub Actions recipe as inspiration for another build service of your choice.</p>
+<h2 id="packaging">Packaging</h2>
+<p>The easiest way to package your plugin is to simply provide a zip file that the user can unpack to the correct location for Qt Creator to find it. Qt Creator makes that easy for the user by providing an <b translate="no">Install Plugin</b> button in the <b translate="no">Help</b> &gt; <b translate="no">About Plugins</b> dialog (or <b translate="no">Qt Creator</b> &gt; <b translate="no">About Plugins</b> on macOS). The user chooses a zip file with the plugin, and Qt Creator unpacks that to the appropriate location.</p>
+<p>The following sections describe the options you have for the plugin's contents layout.</p>
+<h3 id="single-library">Single Library</h3>
+<p>Using a single library is the preferred and simplest option. You provide a single plugin library file that has all required resources compiled into it with <a href="https://doc.qt.io/qt/resources.html" translate="no">The Qt Resource System</a>. This imposes some limitations because you cannot depend on additional binaries, nor extend some parts of Qt Creator that rely on external files, like the generic highlighter. You can still add <a href="https://doc.qt.io/qtcreator/creator-project-wizards.html" translate="no">wizard templates</a> this way, by adding the <a href="https://doc.qt.io/qt/resources.html#using-resources-in-the-application" translate="no">path to the resource directory</a> into your QRC file with ProjectExplorer::JsonWizardFactory::addWizardPath(). Registering documentation and translations can be done in similar ways.</p>
+<h4 id="summary">Summary</h4>
+<ul>
+<li>Single library as single item in a zip file.</li>
+<li>Resources compiled into the library with <a href="https://doc.qt.io/qt/resources.html" translate="no">The Qt Resource System</a>.</li>
+<li>Can be installed locally for a single user for all compatible Qt Creator installations.</li>
+<li>Can be installed into a Qt Creator installation for all users.</li>
+</ul>
+<h3 id="multiple-files-following-qt-creator-s-filesystem-layout">Multiple Files Following Qt Creator's Filesystem Layout</h3>
+<p>This is a more flexible solution with regards to what the plugin can do, but more complicated to set up. This allows the plugin to ship additional binaries and arbitrary resources.</p>
+<p>Since the filesystem layout varies heavily between platforms, the build system of Qt Creator provides variables like <code translate="no">IDE_DATA_PATH</code> and <code translate="no">IDE_LIBEXEC_PATH</code>. If you build your plugin with CMake, you should use the provided <code translate="no">add_qtc_library</code>, <code translate="no">add_qtc_executable</code> and similar functions as well.</p>
+<p>At runtime you can access these platform dependent locations with <a href="core-icore.html#resourcePath" translate="no">Core::ICore::resourcePath</a>() and <a href="core-icore.html#libexecPath" translate="no">Core::ICore::libexecPath</a>().</p>
+<p>Plugins that are distributed this way cannot be installed locally for a single user. They must be installed into the Qt Creator installation directly.</p>
+<h4 id="summary">Summary</h4>
+<ul>
+<li>Multiple files following standard filesystem layout.</li>
+<li>Use Qt Creator specific variables and functions in build system.</li>
+<li>Use <a href="core-icore.html" translate="no">Core::ICore</a> to find the locations at runtime.</li>
+<li>Can only be installed into a Qt Creator installation for all users.</li>
+</ul>
+</div>
+<!-- @@@distributing-plugins.html -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

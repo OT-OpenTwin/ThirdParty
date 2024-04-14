@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
 <!-- creator-projects-settings-overview.qdoc -->
   <title>Configuring Projects | Qt Creator Manual</title>
   <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
@@ -22,69 +21,85 @@
 </head>
 <body>
 <div class="header" id="qtdocheader">
-  <div class="main">
+    <div class="main">
     <div class="main-rounded">
-      <div class="navigationbar">
-        <table><tr>
-<td ><a href="index.html">Qt Creator Manual</a></td><td >Configuring Projects</td></tr></table><table class="buildversion"><tr>
-<td id="buildversion" width="100%" align="right"><a href="index.html">Qt Creator Manual 4.9&#x2e;1</a></td>
-        </tr></table>
-      </div>
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li><a href="creator-overview.html" translate="no">Developing with Qt Creator</a></li>
+<li>Configuring Projects</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
     </div>
+</div>
 <div class="content">
 <div class="line">
 <div class="content mainContent">
-  <link rel="prev" href="creator-vcs-subversion.html" />
-  <link rel="next" href="creator-targets.html" />
+  <link rel="prev" href="creator-project-creating.html" />
+  <link rel="next" href="creator-live-preview.html" />
 <p class="naviNextPrevious headerNavi">
-<a class="prevPage" href="creator-vcs-subversion.html">Using Subversion</a>
+<a class="prevPage" href="creator-project-creating.html">Creating Projects</a>
 <span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-targets.html">Adding Kits</a>
-</p><p/>
+<a class="nextPage" href="creator-live-preview.html">Validating with Target Hardware</a>
+</p>
 <div class="sidebar">
 <div class="toc">
-<h3><a name="toc">Contents</a></h3>
+<h3 id="toc">Contents</h3>
 <ul>
-<li class="level1"><a href="#activating-kits-for-a-project">Activating Kits for a Project</a></li>
-<li class="level1"><a href="#specifying-settings">Specifying Settings</a></li>
+<li class="level1"><a href="#specifying-build-settings">Specifying Build Settings</a></li>
+<li class="level1"><a href="#specifying-run-settings">Specifying Run Settings</a></li>
+<li class="level1"><a href="#overriding-global-preferences">Overriding Global Preferences</a></li>
 </ul>
 </div>
 <div class="sidebar-content" id="sidebar-content"></div></div>
 <h1 class="title">Configuring Projects</h1>
-<span class="subtitle"></span>
 <!-- $$$creator-configuring-projects.html-description -->
-<div class="descr"> <a name="details"></a>
-<p>When you install Qt for a target platform, such as Android or QNX, the build and run settings for the development targets might be set up automatically in Qt Creator.</p>
-<p>When you open a project for the first time, the <b>Configure Projects</b> view is displayed to let you select a set of <a href="creator-glossary.html#glossary-buildandrun-kit">kits</a> that you want to use to build and run your project. At least one kit must be active for you to be able to build and run the project. For more information about selecting the initial kit, see <a href="creator-project-opening.html">Opening Projects</a>.</p>
-<p>To maintain the list of active kits for a currently open project, switch to the <b>Projects</b> mode by pressing <b>Ctrl+5</b>.</p>
-<a name="activating-kits-for-a-project"></a>
-<h2 id="activating-kits-for-a-project">Activating Kits for a Project</h2>
-<p>All kits compatible with your project are listed in the <b>Build &amp; Run</b> section of the sidebar. To activate one or more disabled kits, click them.</p>
-<p class="centerAlign"><img src="images/qtcreator-project-kits.png" alt="" /></p><p>The list displays kits that are configured in <b>Tools</b> &gt; <b>Options</b> &gt; <b>Kits</b>. If the kit configuration is not suitable for the project type, warning and error icons are displayed. To view the warning and error messages, move the mouse pointer over the kit name.</p>
-<p>To modify kit configuration or to add kits to the list, select <b>Manage Kits</b>. For more information about managing kits, see <a href="creator-targets.html">Adding Kits</a>.</p>
-<p>Each kit consists of a set of values that define one environment, such as a <a href="creator-glossary.html#glossary-device">device</a>, compiler, and Qt version. For more information, see <a href="creator-project-qmake.html">Adding Qt Versions</a>, <a href="creator-tool-chains.html">Adding Compilers</a>, and <a href="creator-debuggers.html">Adding Debuggers</a>.</p>
-<p>To copy the build and run settings for a kit to another kit, select <b>Copy Steps from Other Kit</b> in the context menu.</p>
-<p>To deactivate a kit, select <b>Disable Kit for Project</b> in the context menu.</p>
-<p><b>Note: </b>Deactivating a kit removes all custom build and run settings for the kit.</p><p>To import an existing build for the project, select <b>Import Existing Build</b>.</p>
-<a name="specifying-settings"></a>
-<h2 id="specifying-settings">Specifying Settings</h2>
-<p>To specify build or run settings for a kit, select <b>Build</b> or <b>Run</b> below the kit. For more information, see <a href="creator-build-settings.html">Specifying Build Settings</a> and <a href="creator-run-settings.html">Specifying Run Settings</a>.</p>
-<p>In addition, you can modify the following global settings for each project:</p>
+<div class="descr" id="details">
+<p>When you install Qt for a development or target platform, such as Linux, macOS, Windows, Android or QNX, <a href="https://www.qt.io/download-qt-installer" translate="no">Qt Online Installer</a> creates <a href="creator-glossary.html#glossary-buildandrun-kit" translate="no">kits</a> for the development targets.</p>
+<p>Select the kits to use for a project in the <b translate="no">Configure Projects</b> view when you open the project for the first time. At least one kit must be active.</p>
+<p>To maintain the list of active kits for a currently open project, switch to the <b translate="no">Projects</b> mode by pressing <b>Ctrl+5</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-projects-kits.webp" alt="{Sidebar in the Projects mode}" /></p><p>To specify build or run settings for a kit, select <b translate="no">Build</b> or <b translate="no">Run</b> below the kit name.</p>
+<h2 id="specifying-build-settings">Specifying Build Settings</h2>
+<p class="centerAlign"><img src="images/qtcreator-build-configurations.png" alt="{Build configurations}" /></p><p>Different build configurations allow you to quickly switch between different build settings. Qt Creator creates some configurations by default, depending on the build system used. They usually include at least the following:</p>
 <ul>
-<li><a href="creator-editor-settings.html">Editor</a></li>
-<li><a href="creator-code-style-settings.html">Code Style</a></li>
-<li><a href="creator-build-dependencies.html">Dependencies</a></li>
-<li><a href="creator-clang-codemodel.html">Clang Code Model</a></li>
-<li><a href="creator-clang-tools.html">Clang Tools</a></li>
-<li><a href="creator-output-panes.html#to-do-entries">To-Do</a> (experimental)</li>
+<li>Debug</li>
+<li>Release</li>
+<li>Profile</li>
 </ul>
-<p>If you have multiple projects open in Qt Creator, select the project to configure in the list of projects.</p>
+<p>A <i>Debug</i> build has debug symbols that you need for debugging the application but that you should leave out from the release version. Generally, you use the debug configuration for testing and the <i>Release</i> configuration for creating the final installation binary package.</p>
+<p>A <i>Profile</i> build is an optimized release build with debug information. It is best suited for analyzing applications.</p>
+<p>If you selected CMake as the build system for the project, a <i>Release with Debug Information</i> build configuration is also available. It is similar to a <i>profile</i> configuration, but with <a href="creator-debugging-qml.html" translate="no">QML debugging and profiling</a> explicitly turned off. You can also use a <i>Minimum Size Release</i> build configuration to create the final installation binary package. It is a release build that makes the size of the binary package as small as possible, even if this makes the application slower.</p>
+<h2 id="specifying-run-settings">Specifying Run Settings</h2>
+<p>The run settings to specify depend on the type of the project and on the <a href="creator-preferences-kits.html#kits-tab" translate="no">Run device</a> that you select for the kit.</p>
+<p>Qt Creator automatically creates deploy and run configurations for your project.</p>
+<p class="centerAlign"><img src="images/qtcreator-settings-run-desktop.webp" alt="{Run Settings}" /></p><p>To prevent Qt Creator from automatically creating run configurations, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Build &amp; Run</b>, and then deselect the <b translate="no">Create suitable run configurations automatically</b> check box.</p>
+<h2 id="overriding-global-preferences">Overriding Global Preferences</h2>
+<p>In <b translate="no">Project Settings</b>, you can override global preferences for the project:</p>
+<ul>
+<li><a href="creator-link-axivion-dashboards.html" translate="no">Axivion</a></li>
+<li><a href="creator-how-to-override-clangd-preferences.html" translate="no">Clangd</a></li>
+<li><a href="creator-how-to-override-clang-tools-preferences.html" translate="no">Clang Tools</a></li>
+<li><a href="creator-copilot.html#set-copilot-preferences" translate="no">Copilot</a></li>
+<li><a href="creator-code-style-settings.html" translate="no">C++ Code Style</a></li>
+<li><a href="creator-how-to-set-cpp-file-naming.html" translate="no">C++ File Naming</a></li>
+<li><a href="creator-build-dependencies.html" translate="no">Dependencies</a></li>
+<li><a href="creator-how-to-document-code.html" translate="no">Documentation Comments</a></li>
+<li><a href="creator-editor-settings.html" translate="no">Editor</a></li>
+<li><a href="creator-how-set-project-environment.html" translate="no">Environment</a></li>
+<li><a href="creator-how-to-link-with-gitlab.html" translate="no">GitLab</a></li>
+<li><a href="creator-how-to-configure-lsp-workspace.html" translate="no">Language Server</a></li>
+<li><a href="creator-how-to-specify-settings-for-quick-fixes.html" translate="no">Quick Fixes</a></li>
+<li><a href="creator-preferences-testing.html" translate="no">Testing</a></li>
+<li><a href="creator-how-to-excludes-files-from-to-do-lists.html" translate="no">To-Do</a> (experimental)</li>
+</ul>
+<p>If you have multiple projects open in Qt Creator, select the project to configure in <b translate="no">Active Project</b>.</p>
 </div>
+<p><b>See also </b><a href="creator-how-to-activate-kits.html" translate="no">Activate kits for a project</a>, <a href="creator-build-settings.html" translate="no">Configure projects for building</a>, <a href="creator-run-settings.html" translate="no">Configure projects for running</a>, <a href="creator-project-opening.html" translate="no">Open projects</a>, and <a href="creator-how-to-activate-custom-output-parsers.html" translate="no">Activate custom output parsers</a>.</p>
 <!-- @@@creator-configuring-projects.html -->
 <p class="naviNextPrevious footerNavi">
-<a class="prevPage" href="creator-vcs-subversion.html">Using Subversion</a>
+<a class="prevPage" href="creator-project-creating.html">Creating Projects</a>
 <span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-targets.html">Adding Kits</a>
+<a class="nextPage" href="creator-live-preview.html">Validating with Target Hardware</a>
 </p>
         </div>
        </div>
@@ -93,7 +108,7 @@
 </div>
 <div class="footer">
    <p>
-   <acronym title="Copyright">&copy;</acronym> 2019 The Qt Company Ltd.
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
    Documentation contributions included herein are the copyrights of
    their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
    of their respective owners. </p>

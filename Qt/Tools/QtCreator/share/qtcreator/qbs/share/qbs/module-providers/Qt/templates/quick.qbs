@@ -33,12 +33,11 @@ import qbs.FileInfo
 import qbs.Process
 import qbs.TextFile
 import qbs.Utilities
-import '../QtModule.qbs' as QtModule
 import 'quick.js' as QC
 
 QtModule {
     qtModuleName: @name@
-    Depends { name: "Qt"; submodules: @dependencies@.concat("qml-private") }
+    Depends { name: "Qt"; submodules: @dependencies@ }
 
     hasLibrary: @has_library@
     architectures: @archs@
@@ -60,18 +59,23 @@ QtModule {
     pluginTypes: @pluginTypes@
     moduleConfig: @moduleConfig@
     cpp.defines: @defines@
-    cpp.includePaths: @includes@
+    cpp.systemIncludePaths: @includes@
     cpp.libraryPaths: @libraryPaths@
     @additionalContent@
 
     readonly property bool _compilerIsQmlCacheGen: Utilities.versionCompare(Qt.core.version,
                                                                             "5.11") >= 0
+    readonly property bool _supportsQmlJsFiltering: Utilities.versionCompare(Qt.core.version,
+                                                                             "5.15") < 0
     readonly property string _generatedLoaderFileName: _compilerIsQmlCacheGen
                                                        ? "qmlcache_loader.cpp"
                                                        : "qtquickcompiler_loader.cpp"
+    property string _compilerBaseDir: _compilerIsQmlCacheGen ? Qt.core.qmlLibExecPath
+                                                             : Qt.core.binPath
     property string compilerBaseName: (_compilerIsQmlCacheGen ? "qmlcachegen" : "qtquickcompiler")
-    property string compilerFilePath: FileInfo.joinPaths(Qt.core.binPath,
-                                        compilerBaseName + product.cpp.executableSuffix)
+    property string compilerFilePath: FileInfo.joinPaths(_compilerBaseDir,
+                                        compilerBaseName + FileInfo.executableSuffix())
+
     property bool compilerAvailable: File.exists(compilerFilePath);
     property bool useCompiler: compilerAvailable && !_compilerIsQmlCacheGen
 
@@ -79,7 +83,7 @@ QtModule {
         condition: useCompiler
         inputs: 'qt.quick.qrc'
         searchPaths: [FileInfo.path(input.filePath)]
-        scan: QC.scanQrc(input.filePath)
+        scan: QC.scanQrc(product, input.filePath)
     }
 
     FileTagger {
@@ -100,7 +104,7 @@ QtModule {
             var cmd = new JavaScriptCommand();
             cmd.silent = true;
             cmd.sourceCode = function() {
-                var content = QC.contentFromQrc(input.filePath);
+                var content = QC.contentFromQrc(product, input.filePath);
                 content.qrcFilePath = input.filePath;
 
                 var tf = new TextFile(output.filePath, TextFile.WriteOnly);
@@ -174,7 +178,9 @@ QtModule {
                 if (info.newQrcFileName) {
                     loaderFlags.push("--resource-file-mapping="
                                      + FileInfo.fileName(info.qrcFilePath)
-                                     + ":" + info.newQrcFileName);
+                                     + '=' + info.newQrcFileName);
+                    // Qt 5.15 doesn't really filter anyting but merely copies the qrc
+                    // content to the new location
                     var args = ["--filter-resource-file",
                                 info.qrcFilePath];
                     if (useCacheGen)

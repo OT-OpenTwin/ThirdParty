@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-projects-settings-run-android.qdoc -->
+  <meta name="description" content="Settings for running applications on Android devices.">
+  <title>Android Run Settings | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Android Run Settings</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-reference.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#am-start-options">am Start Options</a></li>
+<li class="level1"><a href="#shell-commands">Shell Commands</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Android Run Settings</h1>
+<!-- $$$creator-run-settings-android.html-description -->
+<div class="descr" id="details">
+<p>Specify settings for running applications on the <a href="creator-preferences-kits.html#kits-tab" translate="no">Run device</a> that you select for a kit in <b translate="no">Projects</b> &gt; <b translate="no">Build &amp; Run</b> &gt; <b translate="no">Run</b> &gt; <b translate="no">Run Settings</b>.</p>
+<p>To run and debug an application on an Android device, you must create connections from the development host to the device, as instructed in <a href="creator-developing-android.html" translate="no">Connecting Android Devices</a>.</p>
+<h2 id="am-start-options">am Start Options</h2>
+<p>Qt Creator applies a default set of Android Activity manager (am) start options when starting applications. You can specify additional start options in the <b translate="no">Activity manager start arguments</b> field. However, if the default options conflict with the added options, the application might not start.</p>
+<p>The default arguments for the Activity manager for a normal run:</p>
+<pre class="cpp plain" translate="no">
+ am start -n &lt;package_name&gt;/&lt;QtActivity_name&gt;
+</pre>
+<p>The default arguments for the Activity manager for the debugger mode:</p>
+<pre class="cpp plain" translate="no">
+ am start -n &lt;package_name&gt;/&lt;QtActivity_name&gt; -D
+</pre>
+<p>For example, to run the application as a particular user, enter the start option <code translate="no">--user 10</code>, where <code translate="no">10</code> is the user ID of the user account.</p>
+<p class="centerAlign"><img src="images/qtcreator-android-run-settings.png" alt="{Run Settings for an Android device}" /></p><h2 id="shell-commands">Shell Commands</h2>
+<p>You can specify shell commands to run before the application starts and after it quits. For example, enter the following commands into <b translate="no">Pre-launch on-device shell commands</b> to unlock the screen and to switch to the user account <code translate="no">10</code> on the device before running the application:</p>
+<pre class="cpp" translate="no">
+ input keyevent <span class="number">82</span>
+ am <span class="keyword">switch</span><span class="operator">-</span>user <span class="number">10</span>
+</pre>
+<p>Enter the following commands into <b translate="no">Post-quit on-device shell commands</b> to switch back to the default user, <code translate="no">0</code>, and to unlock the screen after the application is quit:</p>
+<pre class="cpp" translate="no">
+ am <span class="keyword">switch</span><span class="operator">-</span>user <span class="number">0</span>
+ input keyevent <span class="number">82</span>
+</pre>
+</div>
+<p><b>See also </b><a href="creator-how-to-activate-kits.html" translate="no">Activate kits for a project</a>, <a href="creator-run-settings.html" translate="no">Configure projects for running</a>, and <a href="creator-developing-android.html" translate="no">Connecting Android Devices</a>.</p>
+<!-- @@@creator-run-settings-android.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

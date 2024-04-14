@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- external-tool-spec.qdoc -->
+  <title>External Tool Specification Files | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li>External Tool Specification Files</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="next" href="coding-style.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="nextPage" href="coding-style.html">Qt Creator Coding Rules</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#file-name">File Name</a></li>
+<li class="level1"><a href="#location">Location</a></li>
+<li class="level1"><a href="#file-format">File Format</a></li>
+<li class="level2"><a href="#main-tag">Main Tag</a></li>
+<li class="level2"><a href="#description-tags">Description Tags</a></li>
+<li class="level2"><a href="#executable-specification-tag">Executable Specification Tag</a></li>
+<li class="level1"><a href="#example">Example</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">External Tool Specification Files</h1>
+<!-- $$$external-tool-spec.html-description -->
+<div class="descr" id="details">
+<p>An external tool specification file describes a tool that can be run from the <b translate="no">Tools</b> &gt; <b translate="no">External</b> menu. It specifies the name of the tool, the executable to run, optional arguments, and how to handle the output from the tool.</p>
+<h2 id="file-name">File Name</h2>
+<p><code translate="no">&lt;yourtoolname&gt;.xml</code></p>
+<h2 id="location">Location</h2>
+<p>User specific tools are located in <code translate="no">$HOME/.config/QtProject/qtcreator/externaltools</code> on Mac and Linux, and in <code translate="no">%APPDATA%\QtProject\qtcreator\externaltools</code> on Windows.</p>
+<p>System wide tools are located in <code translate="no">&lt;Qt Creator install&gt;/share/qtcreator/externaltools</code> on Windows and Linux, and in <code translate="no">Qt Creator.app/Contents/Resources/externaltools</code> on Mac.</p>
+<h2 id="file-format">File Format</h2>
+<p>External tool specifications are XML files with the following structure.</p>
+<h3 id="main-tag">Main Tag</h3>
+<p>The root tag is <code translate="no">externaltool</code>. It has the mandatory attribute <code translate="no">id</code>.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Tag</th><th >Meaning</th></tr></thead>
+<tr valign="top" class="odd"><td >externaltool</td><td >Root element in the XML file that specifies an external tool.</td></tr>
+</table></div>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Attribute</th><th >Meaning</th></tr></thead>
+<tr valign="top" class="odd"><td >id</td><td >A string that identifies the external tool. Two tools cannot have the same id. Required.</td></tr>
+</table></div>
+<h3 id="description-tags">Description Tags</h3>
+<p>You must specify a description, display name, and category for the tool. You can translate their values into different languages by adding multiple <code translate="no">description</code>, <code translate="no">displayname</code>, and <code translate="no">category</code> tags that contain language codes.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Tag</th><th >Meaning</th></tr></thead>
+<tr valign="top" class="odd"><td >description</td><td >Short, one-line description of what the tool is for. Required.</td></tr>
+<tr valign="top" class="even"><td >displayname</td><td >Name to show in the menu item for the tool. Required.</td></tr>
+<tr valign="top" class="odd"><td >category</td><td >Name of the category to show the tool in. This is the name of the sub menu of the <code translate="no">Tools &gt; External</code> menu where the tool is placed. For example, specify the value <code translate="no">&quot;Text&quot;</code> to display the tool in the <code translate="no">Tools &gt; External &gt; Text</code> menu. Required.</td></tr>
+</table></div>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Attribute</th><th >Meaning</th></tr></thead>
+<tr valign="top" class="odd"><td >xml:lang</td><td >Language code (such as, <code translate="no">&quot;en&quot;</code> or <code translate="no">&quot;de&quot;</code>) of the language that is used for the description, display name, or category. Optional.</td></tr>
+</table></div>
+<h3 id="executable-specification-tag">Executable Specification Tag</h3>
+<p>You must add an <code translate="no">executable</code> tag under the root tag, that specifies the executable to run, optional arguments, and how to handle the output.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Tag</th><th >Meaning</th></tr></thead>
+<tr valign="top" class="odd"><td >executable</td><td >Encloses subtags that specify what to run and which parameters to use. Required.</td></tr>
+</table></div>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Attribute</th><th >Meaning</th></tr></thead>
+<tr valign="top" class="odd"><td >output</td><td >Specifies how to handle the tool's standard output stream. Defaults to <code translate="no">ShowInPane</code>. Optional.</td></tr>
+<tr valign="top" class="even"><td >error</td><td >Specifies how to handle the tool's standard error stream. Defaults to <code translate="no">ShowInPane</code>. Optional.</td></tr>
+<tr valign="top" class="odd"><td >modifiesdocument</td><td >Specifies whether Qt Creator should expect changes to the current document. If this flag is set, Qt Creator prompts users to save changes to the current document before running the tool, and silently reloads the current document after the tool has finished. Possible values are: <code translate="no">&quot;yes&quot;</code> or <code translate="no">&quot;no&quot;</code> (defaults to <code translate="no">&quot;no&quot;</code>). Optional.</td></tr>
+</table></div>
+<p>The <code translate="no">executable</code> tag allows the following subtags. You must specify at least one <code translate="no">path</code>. All subtags can contain special <a href="https://doc.qt.io/qtcreator/creator-build-settings.html#using-qt-creator-variables" translate="no">Qt Creator variables</a>.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Subtag</th><th >Meaning</th></tr></thead>
+<tr valign="top" class="odd"><td >path</td><td >File path to the executable to run, including filename. If you specify the executable name without a path, Qt creator checks the system PATH environment variable for a path to the executable. You can specify the path multiple times. Qt Creator tries to resolve the references in the given order and runs the first executable that it finds. Required.</td></tr>
+<tr valign="top" class="even"><td >arguments</td><td >Command-line arguments for the executable. Specify the string in the same format (with respect to quoting and argument splitting, for example) as you would specify it on the command line of the platform the tool runs on. Optional.</td></tr>
+<tr valign="top" class="odd"><td >workingdirectory</td><td >The working directory for the executable. Optional.</td></tr>
+<tr valign="top" class="even"><td >input</td><td >A potentially multiline string that is passed to the tool via standard input stream.</td></tr>
+</table></div>
+<h2 id="example">Example</h2>
+<pre class="cpp" translate="no">
+ <span class="operator">&lt;</span><span class="operator">?</span>xml version<span class="operator">=</span><span class="string">&quot;1.0&quot;</span> encoding<span class="operator">=</span><span class="string">&quot;UTF-8&quot;</span><span class="operator">?</span><span class="operator">&gt;</span>
+ <span class="operator">&lt;</span>externaltool id<span class="operator">=</span><span class="string">&quot;sort&quot;</span><span class="operator">&gt;</span>
+     <span class="operator">&lt;</span>description<span class="operator">&gt;</span>Sorts the selected text<span class="operator">&lt;</span><span class="operator">/</span>description<span class="operator">&gt;</span>
+     <span class="operator">&lt;</span>description xml:lang<span class="operator">=</span><span class="string">&quot;de&quot;</span><span class="operator">&gt;</span>Sortiert den ausgewaehlten Text<span class="operator">&lt;</span><span class="operator">/</span>description<span class="operator">&gt;</span>
+     <span class="operator">&lt;</span>displayname<span class="operator">&gt;</span>Sort Selection<span class="operator">&lt;</span><span class="operator">/</span>displayname<span class="operator">&gt;</span>
+     <span class="operator">&lt;</span>displayname xml:lang<span class="operator">=</span><span class="string">&quot;de&quot;</span><span class="operator">&gt;</span>Auswahl Sortieren<span class="operator">&lt;</span><span class="operator">/</span>displayname<span class="operator">&gt;</span>
+     <span class="operator">&lt;</span>category<span class="operator">&gt;</span>Text<span class="operator">&lt;</span><span class="operator">/</span>category<span class="operator">&gt;</span>
+     <span class="operator">&lt;</span>category xml:lang<span class="operator">=</span><span class="string">&quot;de&quot;</span><span class="operator">&gt;</span>Text<span class="operator">&lt;</span><span class="operator">/</span>category<span class="operator">&gt;</span>
+     <span class="operator">&lt;</span>executable output<span class="operator">=</span><span class="string">&quot;replaceselection&quot;</span> error<span class="operator">=</span><span class="string">&quot;ignore&quot;</span><span class="operator">&gt;</span>
+         <span class="operator">&lt;</span>path<span class="operator">&gt;</span>sort<span class="operator">&lt;</span><span class="operator">/</span>path<span class="operator">&gt;</span>
+         <span class="operator">&lt;</span>input<span class="operator">&gt;</span><span class="operator">%</span>{CurrentDocument:Selection}<span class="operator">&lt;</span><span class="operator">/</span>input<span class="operator">&gt;</span>
+         <span class="operator">&lt;</span>workingdirectory<span class="operator">&gt;</span><span class="operator">%</span>{CurrentDocument:Path}<span class="operator">&lt;</span><span class="operator">/</span>workingdirectory<span class="operator">&gt;</span>
+     <span class="operator">&lt;</span><span class="operator">/</span>executable<span class="operator">&gt;</span>
+ <span class="operator">&lt;</span><span class="operator">/</span>externaltool<span class="operator">&gt;</span>
+</pre>
+</div>
+<!-- @@@external-tool-spec.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="nextPage" href="coding-style.html">Qt Creator Coding Rules</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

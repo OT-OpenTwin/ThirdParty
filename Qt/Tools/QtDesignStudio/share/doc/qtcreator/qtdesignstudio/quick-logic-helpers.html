@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-logic-helpers.qdoc -->
+  <title>Logic Helpers | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Logic Helpers</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="quick-2d-effects.html" />
+  <link rel="next" href="quick-animations.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="quick-2d-effects.html">2D Effects</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-animations.html">Animations</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#boolean-helpers">Boolean Helpers</a></li>
+<li class="level2"><a href="#and-operator">AND Operator</a></li>
+<li class="level2"><a href="#or-operator">OR Operator</a></li>
+<li class="level2"><a href="#not-operator">NOT Operator</a></li>
+<li class="level1"><a href="#bi-directional-binding">Bi-directional Binding</a></li>
+<li class="level1"><a href="#string-mapper">String Mapper</a></li>
+<li class="level1"><a href="#minimum-maximum-mapper">Minimum-Maximum Mapper</a></li>
+<li class="level1"><a href="#range-mapper">Range Mapper</a></li>
+<li class="level1"><a href="#combining-several-logic-helpers">Combining Several Logic Helpers</a></li>
+<li class="level1"><a href="#summary-of-logic-helpers">Summary of Logic Helpers</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Logic Helpers</h1>
+<!-- $$$quick-logic-helpers.html-description -->
+<div class="descr" id="details">
+<p>To have your UI perform certain operations, you might need to write JavaScript expressions for conditions or convert numbers to strings. To make this easier, Qt Design Studio provides a set of components called <i>logic helpers</i>.</p>
+<p class="centerAlign"><img src="images/studio-logic-helpers.png" alt="&quot;Logic Helper component in Components&quot;" /></p><p>Logic helpers are available for binding property values using the boolean AND, NOT, and OR operators, as well as for mapping numbers and numerical ranges. In addition, you can synchronize the property values of two components bi-directionally.</p>
+<p>Logic helpers are invisible components that you can use in connection with controls, such as a <a href="quick-controls.html#slider-control" translate="no">Slider</a> or <a href="quick-controls.html#check-box" translate="no">Check Box</a>. To use a logic helper, drag-and-drop it from <b translate="no">Components</b> &gt; <b translate="no">Qt Quick Studio Logic Helper</b> to <a href="qtquick-navigator.html" translate="no">Navigator</a>. If you cannot find the logic helpers in <b translate="no">Components</b>, you need to add the <b translate="no">Qt Quick Studio Logic Helper</b> module to your project, as described in <a href="quick-components-view.html#adding-and-removing-modules" translate="no">Adding and Removing Modules</a>.</p>
+<p>The following sections describe the different types of logic helpers in more detail.</p>
+<h2 id="boolean-helpers">Boolean Helpers</h2>
+<p>You can use logic helpers to bind property values using the boolean AND, OR, and NOT operators.</p>
+<h3 id="and-operator">AND Operator</h3>
+<p>The <b translate="no">And Operator</b> component evaluates two boolean inputs. The output is evaluated as <code translate="no">true</code> if both inputs are <code translate="no">true</code>.</p>
+<p>For example, we could use the checked state of two check boxes to determine the checked state of a third one. First, we drag-and-drop three instances of the <b translate="no">Check Box</b> components and one instance of the <b translate="no">And Operator</b> component to <b translate="no">Navigator</b> (1). Then, we select the <b translate="no">And Operator</b> component instance (2) and set its properties in <a href="qtquick-properties-view.html" translate="no">Properties</a> (3).</p>
+<p>We select <img src="images/action-icon.png" alt="" /> next to the <b translate="no">Input 01</b> field to display the <b translate="no">Actions</b> menu, and then <b translate="no">Set Binding</b> (4) to open the <b translate="no">Binding Editor</b> (5). There we bind the value of the <code translate="no">input01</code> property of the AND operator to the value of the <code translate="no">checked</code> property of the first check box. Then, we do the same in the <b translate="no">Input 02</b> field, where we bind the <code translate="no">input02</code> property to the <code translate="no">checked</code> property of the second check box.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-and.png" alt="&quot;AND operator properties&quot;" /></p><p>Finally, we select the third check box and bind its <b translate="no">Checked</b> property to the <b translate="no">Output</b> property of the AND operator.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-and-checkbox3.png" alt="&quot;Binding Checked property to Output property.&quot;" /></p><p>When we <a href="creator-live-preview-desktop.html" translate="no">preview</a> our UI, all the check boxes are initially unchecked. However, when we select the first and second check box, the third one also becomes checked.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-and-operator.gif" alt="&quot;Previewing AND operator&quot;" /></p><h3 id="or-operator">OR Operator</h3>
+<p>The <b translate="no">Or Operator</b> component does the same as the AND operator, but the output is <code translate="no">true</code> if one or both inputs are <code translate="no">true</code>.</p>
+<h3 id="not-operator">NOT Operator</h3>
+<p>The <b translate="no">Not Operator</b> component is evaluated to <code translate="no">true</code> if the condition is not met.</p>
+<p>For example, we could specify that if one check box is checked, another one cannot be checked. First, we drag-and-drop two instances of the <b translate="no">Check Box</b> component and one instance of the <b translate="no">Not Operator</b> component to <b translate="no">Navigator</b>. Then, we select the <b translate="no">Not Operator</b> component instance and set its properties in <b translate="no">Properties</b>. In the <b translate="no">Binding Editor</b>, we bind the value of the <code translate="no">input</code> property of the NOT operator to the value of the <code translate="no">checked</code> property of one check box instance.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-not.png" alt="&quot;NOT operator properties&quot;" /></p><p>We then select the other check box instance and bind the value of its <b translate="no">Checked</b> field to the value of <b translate="no">Output</b> field of the <b translate="no">Not Operator</b> component.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-not-check-box.png" alt="&quot;Check box checked property bound to NOT operator output&quot;" /></p><p>When we preview our UI, the second check box is initially checked. However, when we select the first check box, the second one is automatically cleared.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-not-operator.gif" alt="&quot;Previewing two check boxes bound with a NOT operator&quot;" /></p><h2 id="bi-directional-binding">Bi-directional Binding</h2>
+<p>The <b translate="no">Bi Direct. Binding</b> component binds the values of two controls together, so that when one value is changed, the other one follows it. This component could be used to synchronize two sliders or a slider and checkbox. Typically, it is used to bind a backend value to a control, such as a slider.</p>
+<p>For example, to synchronize the values of two sliders, we drag-and-drop two instances of the <b translate="no">Slider</b> component and one instance of the <b translate="no">Bi Direct. Binding</b> component to the same parent component in <b translate="no">Navigator</b>. Then, we select the bi-directional binding instance and set its properties in <b translate="no">Properties</b>.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-bidirectional-binding.png" alt="&quot;Bi-directional binding properties&quot;" /></p><p>In the <b translate="no">Target 01</b> and <b translate="no">Target 02</b> fields, enter the IDs of the components that you want to bind together. In the <b translate="no">Property 01</b> and <b translate="no">Property 02</b> fields, enter the names of the properties to synchronize. In our example, we bind the <code translate="no">value</code> property of two slider components together, so that when we move one slider handle in the preview, the other one moves along with it.</p>
+<p class="centerAlign"><img src="images/studio-bidirectional-binding.gif" alt="&quot;Previewing a bi-directional binding of two sliders&quot;" /></p><p>If you want to add a text field that displays the value of the slider, you can use a <a href="quick-logic-helpers.html#string-mapper" translate="no">String Mapper</a> component.</p>
+<h2 id="string-mapper">String Mapper</h2>
+<p>The <b translate="no">String Mapper</b> component maps numbers to strings. First, you <a href="quick-property-bindings.html" translate="no">add a binding</a> between the string mapper <code translate="no">input</code> property and the <code translate="no">value</code> property of the control that you want to fetch the values from. Then, you add a binding between the <code translate="no">text</code> property of the string mapper and that of the component that will display the string.</p>
+<p>For example, to use a <a href="quick-text.html" translate="no">Text</a> component to display the value of a slider, we drag-and-drop <b translate="no">Text</b>, <b translate="no">Slider</b>, and <b translate="no">String Mapper</b> components to the same parent component. Then, we select the <b translate="no">String Mapper</b> instance in <b translate="no">Navigator</b> to display its properties in <b translate="no">Properties</b>. There we bind the value of the <b translate="no">Input</b> field to the value of the <code translate="no">value</code> property of the <b translate="no">Slider</b> instance.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-string-mapper-input.png" alt="&quot;Binding slider value property to string mapper&quot;" /></p><p>Next, we select the <b translate="no">Text</b> instance and bind the value of the <b translate="no">Text</b> field to the value of the <b translate="no">Output text</b> field (<code translate="no">text</code> property) of the <b translate="no">String Mapper</b> component.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-string-mapper-text.png" alt="&quot;Binding text property value to string mapper&quot;" /></p><p>When we move the slider handle in the preview, the value displayed in the text component changes accordingly.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-string-mapper.gif" alt="&quot;Previewing text property binding to string mapper&quot;" /></p><p>The value of the <b translate="no">Decimal places</b> field determines the number of digits after the decimal separator.</p>
+<h2 id="minimum-maximum-mapper">Minimum-Maximum Mapper</h2>
+<p>The <b translate="no">Min Max Mapper</b> component has output values even if the input value is out of range. This enables you to apply actions to values, such as changing a color in a state, even if they are below the minimum value or above the maximum value.</p>
+<p>To access the values of a control, bind the <b translate="no">Input</b> property of the minimum-maximum mapper to that of the <code translate="no">value</code> property of the control.</p>
+<p>For example, to restrict the maximum value of a slider to 0.60, regardless of the maximum value set in the slider properties, we drag-and-drop a <b translate="no">Min Max Mapper</b> to our example above. We select it to display its properties in <b translate="no">Properties</b>. Then, we bind the value of the <b translate="no">Input</b> property of the mapper to the value of the <code translate="no">value</code> property of the slider and set the value of the <b translate="no">Max</b> field to 0.60.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-minmax-mapper-input.png" alt="&quot;Binding slider value property to string mapper&quot;" /></p><p>To have the maximum value displayed by the <a href="quick-text.html" translate="no">Text</a> component, we select the <b translate="no">String Mapper</b> component and change the binding we set as the value of the <b translate="no">Input</b> field from <code translate="no">slider.value</code> to <code translate="no">minMaxMapper.output</code>.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-minmax-mapper-string-mapper-input.png" alt="&quot;Binding string mapper input to min max mapper&quot;" /></p><p>When we move the slider handle in the preview, it only moves up to the value 0.60.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-minmax-mapper.gif" alt="&quot;Previewing a minimum-maximum mapper&quot;" /></p><p>The <b translate="no">Out of range</b>, <b translate="no">Above max</b> and <b translate="no">Below min</b> check boxes are set to <code translate="no">true</code> if the value of the <b translate="no">Input</b> field is out of range.</p>
+<p>For example, in the context of speed, <b translate="no">Above max</b> being <code translate="no">true</code> would mean <i>too fast</i>, whereas <b translate="no">Below min</b> being <code translate="no">true</code>, would mean <i>too slow</i>, and <b translate="no">Out of range</b> being <code translate="no">true</code> would mean <i>either too fast or too slow</i>.</p>
+<h2 id="range-mapper">Range Mapper</h2>
+<p>The <b translate="no">Range Mapper</b> component maps a numerical range to another range, so that the output value of the second range follows the input value of the original range. This is useful when remapping the current frame on the timeline, for example.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-range-mapper-properties.png" alt="&quot;Range Mapper properties&quot;" /></p><p>Specify the minimum and maximum input and output values in the <b translate="no">Input min</b>, <b translate="no">Input max</b>, <b translate="no">Output min</b>, and <b translate="no">Output max</b> fields and the original value in the <b translate="no">Output</b> field.</p>
+<p>For example, we can specify that the values of a slider range from 0 to 1. If we want to display values from 10 to 100, instead, we can bind the values of the <b translate="no">From</b> and <b translate="no">To</b> fields of the <a href="https://doc.qt.io/qt/qml-qtquick-controls-slider.html" translate="no">Slider</a> component to the values of the <b translate="no">Input min</b> and <b translate="no">Input max</b> fields of a <b translate="no">Range Mapper</b> component. We then set the value of the <b translate="no">Output min</b> field to 10 and the value of the <b translate="no">Output max</b> field to 100.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-range-mapper-inputmin.png" alt="&quot;Binding range mapper minimum input to slider.from property&quot;" /></p><p>When we move the slider handle in the preview, so that the input value from the <a href="https://doc.qt.io/qt/qml-qtquick-controls-slider.html" translate="no">Slider</a> component changes from 0 to 1, the output value changes from 10 to 100.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-range-mapper.gif" alt="&quot;Previewing a range mapper&quot;" /></p><h2 id="combining-several-logic-helpers">Combining Several Logic Helpers</h2>
+<p>You can combine several logic helpers of the same type or different types to define the application logic.</p>
+<p>For example, we create a small application for selling a commodity. We use a <b translate="no">Range Mapper</b> component to set the price range and <b translate="no">Min Max Mapper</b> components to create a <code translate="no">blockedRange</code> where the price is either too low or too high and a <i>badValueRange</i> where the price is under or over the going value. We then use <b translate="no">And Operator</b> components to determine whether the value is below minimum or above maximum.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-combining-example.gif" alt="" /></p><p>We use one <b translate="no">String Mapper</b> component to map the slider value to a <b translate="no">Text</b> component that displays the price, as instructed in <a href="quick-logic-helpers.html#string-mapper" translate="no">String Mapper</a>.</p>
+<p>To define a price range from 0 to 1000, we bind the <b translate="no">Input</b> property of the <b translate="no">Range Mapper</b> component to the slider value and set the maximum input value for the price range in the <b translate="no">Input max</b> field to 1000. The minimum input value is 0 by default, so we don't need to change it.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-combining-example-rm.png" alt="&quot;Range Mapper properties&quot;" /></p><p>Next, we use two <b translate="no">Min Max Mapper</b> components to create a <i>blocked range</i> where the sell button will be hidden and a <i>bad value range</i> where selling is discouraged by changing the text and color of the sell hint.</p>
+<p>For the blocked range, we bind the <b translate="no">Input</b> property of the minimum-maximum mapper to the <b translate="no">Output</b> value of the <b translate="no">Range Mapper</b> component and specify the maximum input value in the <b translate="no">Max</b> field.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-combining-example-mmm-blocked.png" alt="&quot;Blocked range mapper properties&quot;" /></p><p>We use two <b translate="no">And Operator</b> components to determine that the sell button should be hidden when the value is in the blocked range. We do this by binding the value of the <b translate="no">Input 02</b> field to an evaluation of the value of <b translate="no">Out of range</b> field of the minimum-maximum mapper. We specify that when the value is not out of range, it evaluates to <i>true</i>.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-combining-example-ao1.png" alt="&quot;Under value minimum-maximum mapper Input 02&quot;" /></p><p>For the <i>underValueAnd</i> operator, we additionally bind the value of the <b translate="no">Input 01</b> field to the value of the <b translate="no">Below min</b> field of the minimum-maximum mapper for the bad value range. For the <i>overValueAnd</i> operator, we bind it to the value of the <b translate="no">Above max</b> field of the same mapper.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-combining-example-ao2.png" alt="&quot;Under value minimum-maximum mapper Input 01&quot;" /></p><p>We can now evaluate values of the <b translate="no">Min Max Mapper</b> and <b translate="no">And Operator</b> components to apply different <a href="quick-states.html#applying-states" translate="no">states</a> that display different button text and sell hints. For this purpose, we create the states and set <code translate="no">when</code> conditions for them.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-combining-example.png" alt="" /></p><p>First, we create a <i>tooLow</i> state and set a <code translate="no">when</code> condition to apply it when the value of the <b translate="no">Below min</b> field of the <b translate="no">Min Max Mapper</b> component for the blocked range evaluates to <code translate="no">true</code>.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-combining-example-states-toolow.png" alt="&quot;Setting when condition of tooLow state&quot;" /></p><p>For the <i>tooHigh</i> state at the other end of the scale, we set the <code translate="no">when</code> condition to apply it when the value of the <b translate="no">Above max</b> field of the <b translate="no">Min Max Mapper</b> component for the blocked range evaluates to <code translate="no">true</code>.</p>
+<p>Next, we specify that the <i>underValue</i> state is applied when the value of the <b translate="no">Output</b> field of the <i>underValueAnd</i> <b translate="no">And Operator</b> component evaluates to <code translate="no">true</code>.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-combining-example-states-undervalue.png" alt="&quot;Setting when condition of underValue state&quot;" /></p><p>For the <i>overValue</i> state, we set the <code translate="no">when</code> condition to apply it when the value of the <b translate="no">Output</b> field of the <i>overValueAnd</i> component evaluates to <code translate="no">true</code>.</p>
+<p>When we preview our application, we can see the states applied when the slider value changes.</p>
+<h2 id="summary-of-logic-helpers">Summary of Logic Helpers</h2>
+<p>The following table summarizes the available logic helpers.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Icon</th><th >Logic Helper</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td ><img src="images/lc-and-operator-16px.png" alt="" /></td><td >And Operator</td><td >Boolean AND.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/lc-bidirectional-binding-16px.png" alt="" /></td><td >Bi Direct. Binding</td><td >A bi-directional binding that binds two values in both directions and keeps them in sync.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/lc-min-max-16px.png" alt="" /></td><td >Min Max Mapper</td><td >Maps a number to another number with a minimum and maximum value.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/lc-not-operator-16px.png" alt="" /></td><td >Not Operator</td><td >Boolean NOT.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/lc-or-operator-16px.png" alt="" /></td><td >Or Operator</td><td >Boolean OR.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/lc-range-mapper-16px.png" alt="" /></td><td >Range Mapper</td><td >Maps a numerical range to another range, so that the output value of the second range follows the input value of the original range.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/lc-string-mapper-16px.png" alt="" /></td><td >String Mapper</td><td >Maps a number to a string with the defined precision.</td></tr>
+</table></div>
+</div>
+<!-- @@@quick-logic-helpers.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="quick-2d-effects.html">2D Effects</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-animations.html">Animations</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -48,7 +48,7 @@ function mergeCFiles(inputs, outputFilePath)
 }
 
 function sanitizedList(list, product, fullPropertyName) {
-    if (!Array.isArray(list))
+    if (!(list instanceof Array))
         return list;
     var filterFunc = function(elem) {
         if (typeof elem === "string" && elem.length === 0) {
@@ -87,7 +87,7 @@ function artifactInstalledFilePath(artifact) {
             throw "installSourceBase is not an absolute path";
         if (!artifact.filePath.startsWith(installSourceBase))
             throw "artifact file path doesn't start with the value of qbs.installSourceBase";
-        return FileInfo.joinPaths(targetDir, artifact.filePath.substr(installSourceBase.length + 1));
+        return FileInfo.joinPaths(targetDir, artifact.filePath.substr(installSourceBase.length));
     }
     return FileInfo.joinPaths(targetDir, artifact.fileName);
 }
@@ -331,7 +331,8 @@ var PropertyValidator = (function () {
             if (max !== undefined && value > max)
                 return false;
             return true;
-        }, "must be " + (!allowFloats ? "an integer " : "") + message.join(" and "));
+        }, "must be " + (!allowFloats ? "an integer " : "") + message.join(" and ")
+                + ", actual value: " + propertyValue);
     };
 
     PropertyValidator.prototype.addVersionValidator = function (propertyName, propertyValue, minComponents, maxComponents, allowSuffixes) {
@@ -347,7 +348,7 @@ var PropertyValidator = (function () {
         }, "must be a version number with " + (minComponents === maxComponents
                 ? minComponents : (minComponents + " to " + maxComponents))
                   + (minComponents === maxComponents && minComponents === 1
-                     ? " component" : " components"));
+                     ? " component" : " components") + ", actual value: " + propertyValue);
     };
 
     PropertyValidator.prototype.addFileNameValidator = function (propertyName, propertyValue) {
@@ -407,7 +408,7 @@ var PropertyValidator = (function () {
             errorMessage += "The following properties have invalid values:\n";
             lines = [];
             for (i in invalidProperties) {
-                for (j in invalidProperties[i]) {
+                for (j = 0; j < invalidProperties[i].length; ++j) {
                     lines.push(this.moduleName + "." + i + ": " + invalidProperties[i][j]);
                 }
             }
@@ -537,8 +538,13 @@ function guessArchitecture(m) {
                         break;
                 }
             }
-        } else if (hasAnyOf(m, ["__i386", "__i386__", "_M_IX86"])) {
+        } else if (hasAnyOf(m, ["__i386", "__i386__", "__386__"])) {
             architecture = "x86";
+        } else if (hasAnyOf(m, ["_M_IX86"])) {
+            var code = parseInt(m["_M_IX86"]);
+            architecture = (code < 300) ? "x86_16" : "x86";
+        } else if (hasAnyOf(m, ["_M_I86"])) {
+            architecture = "x86_16";
         } else if (hasAnyOf(m, ["__x86_64", "__x86_64__", "__amd64", "_M_X64", "_M_AMD64"])) {
             architecture = "x86_64";
             if (hasAnyOf(m, ["__x86_64h", "__x86_64h__"]))
@@ -565,6 +571,34 @@ function guessArchitecture(m) {
             architecture = "avr";
         } else if (hasAnyOf(m, ["__AVR32__"])) {
             architecture = "avr32";
+        } else if (hasAnyOf(m, ["__MSP430__"])) {
+            architecture = "msp430";
+        } else if (hasAnyOf(m, ["__RL78__"])) {
+            architecture = "rl78";
+        } else if (hasAnyOf(m, ["__RX__"])) {
+            architecture = "rx";
+        } else if (hasAnyOf(m, ["__v850__"])) {
+            architecture = "v850";
+        } else if (hasAnyOf(m, ["__riscv"])) {
+            architecture = "riscv";
+        } else if (hasAnyOf(m, ["__xtensa__", "__XTENSA__"])) {
+            architecture = "xtensa";
+        } else if (hasAnyOf(m, ["__m68k__"])) {
+            architecture = "m68k";
+        } else if (hasAnyOf(m, ["__m32c__"])) {
+            architecture = "m32c";
+        } else if (hasAnyOf(m, ["__m32r__", "__M32R__"])) {
+            architecture = "m32r";
+        } else if (hasAnyOf(m, ["__sh__", "__SH__"])) {
+            architecture = "sh";
+        } else if (hasAnyOf(m, ["__CR16__"])) {
+            architecture = "cr16";
+        } else if (hasAnyOf(m, ["__mc68hc1x__", "__mc68hc1x"])) {
+            architecture = "hcs12";
+        } else if (hasAnyOf(m, ["__e2k__"])) {
+            architecture = "e2k";
+        } else if (hasAnyOf(m, ["__hppa__"])) {
+            architecture = "hppa";
         }
     }
 
@@ -583,15 +617,19 @@ function guessTargetPlatform(m) {
             return "vxworks";
         if (hasAnyOf(m, ["__APPLE__"]))
             return "darwin";
-        if (hasAnyOf(m, ["WIN32", "_WIN32", "__WIN32__", "__NT__"]))
+        if (hasAnyOf(m, ["WIN32", "_WIN32", "__WIN32__", "__NT__", "__WINDOWS__", "_WINDOWS"]))
             return "windows";
+        if (hasAnyOf(m, ["MSDOS", "__DOS__", "DOS386"]))
+            return "dos";
+        if (hasAnyOf(m, ["__OS2__"]))
+            return "os2";
         if (hasAnyOf(m, ["_AIX"]))
             return "aix";
         if (hasAnyOf(m, ["hpux", "__hpux"]))
             return "hpux";
         if (hasAnyOf(m, ["__sun", "sun"]))
             return "solaris";
-        if (hasAnyOf(m, ["__linux__", "__linux"]))
+        if (hasAnyOf(m, ["__linux__", "__linux", "__LINUX__"]))
             return "linux";
         if (hasAnyOf(m, ["__FreeBSD__", "__DragonFly__", "__FreeBSD_kernel__"]))
             return "freebsd";
@@ -604,4 +642,10 @@ function guessTargetPlatform(m) {
         if (hasAnyOf(m, ["__HAIKU__"]))
             return "haiku";
     }
+}
+
+function toJSLiteral(v) {
+    if (v === undefined)
+        return "undefined";
+    return JSON.stringify(v);
 }

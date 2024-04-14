@@ -1,0 +1,11 @@
+QT.quickultralitestudioprofiling_private.VERSION = 6.2.4
+QT.quickultralitestudioprofiling_private.name = QtQuickUltraLiteStudioProfiling
+QT.quickultralitestudioprofiling_private.module =
+QT.quickultralitestudioprofiling_private.libs = $$QT_MODULE_LIB_BASE
+QT.quickultralitestudioprofiling_private.includes = 
+QT.quickultralitestudioprofiling_private.frameworks = 
+QT.quickultralitestudioprofiling_private.depends = quickultralitestudioprofiling
+QT.quickultralitestudioprofiling_private.uses = 
+QT.quickultralitestudioprofiling_private.module_config = v2 internal_module
+QT.quickultralitestudioprofiling_private.enabled_features = 
+QT.quickultralitestudioprofiling_private.disabled_features = 

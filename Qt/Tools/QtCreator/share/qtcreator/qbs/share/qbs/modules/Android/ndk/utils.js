@@ -28,6 +28,8 @@
 **
 ****************************************************************************/
 
+var Utilities = require("qbs.Utilities")
+
 function abiNameToDirName(abiName) {
     switch (abiName) {
     case "armeabi":
@@ -50,21 +52,16 @@ function androidAbi(arch) {
     case "armv7":
     case "armv7a":
         return "armeabi-v7a";
-    case "mips":
-    case "mipsel":
-        return "mips";
-    case "mips64":
-    case "mips64el":
-        return "mips64";
     default:
         return arch;
     }
 }
 
-function commonCompilerFlags(toolchain, buildVariant, abi, armMode) {
-    var flags = ["-ffunction-sections", "-funwind-tables",
-                 "-Werror=format-security", "-fstack-protector-strong"];
+function commonCompilerFlags(toolchain, buildVariant, ndk) {
+    var flags = ["-Werror=format-security"];
 
+    var abi = ndk.abi;
+    var armMode = ndk.armMode;
     if (abi === "arm64-v8a")
         flags.push("-fpic");
 
@@ -80,27 +77,30 @@ function commonCompilerFlags(toolchain, buildVariant, abi, armMode) {
         }
     }
 
-    if (abi === "mips" || abi === "mips64") {
-        flags.push("-fpic", "-finline-functions", "-fmessage-length=0",
-                   "-fno-inline-functions-called-once", "-fgcse-after-reload",
-                   "-frerun-cse-after-loop", "-frename-registers");
-    }
-
-    if ((abi === "x86" || abi === "x86_64") && toolchain.contains("clang"))
+    if (abi === "x86" || abi === "x86_64")
         flags.push("-fPIC");
+
+    flags.push("-fno-limit-debug-info");
 
     if (armMode)
         flags.push("-m" + armMode);
 
+    // https://github.com/android-ndk/ndk/issues/884 is fixed in r21
+    if (ndk.version < 21)
+        flags.push("-fno-addrsig");
+
+    // https://github.com/android/ndk/issues/635 is fixed in api 24
+    if (abi === "x86" && ndk.platformVersion < 24)
+        flags.push("-mstackrealign");
+
     return flags;
 }
 
-function commonLinkerFlags(abi) {
-    return ["-z", "noexecstack", "-z", "relro", "-z", "now"];
+function commonLinkerFlags(ndk) {
+    var buildId = (ndk.buildId) ? "--build-id=" + ndk.buildId : "--build-id";
+    return ["-z", "noexecstack", "-z", "relro", "-z", "now", buildId, "--gc-sections"];
 }
 
-function getBinutilsPath(ndk, toolchainPrefix) {
-    if (["x86", "x86_64"].contains(ndk.abi))
-        return ndk.abi + "-" + ndk.toolchainVersionNumber;
-    return toolchainPrefix + ndk.toolchainVersionNumber;
+function stlFileName(prefix, ndk, suffix) {
+    return prefix + ndk.appStl.slice(0, ndk.appStl.indexOf('_')) + suffix;
 }

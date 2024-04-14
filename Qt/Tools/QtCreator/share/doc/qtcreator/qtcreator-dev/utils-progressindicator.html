@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- progressindicator.cpp -->
+  <meta name="description" content="The ProgressIndicator class shows an circular, endlessly animated progress indicator.">
+  <title>ProgressIndicator Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li>ProgressIndicator</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">ProgressIndicator Class</h1>
+<span class="small-subtitle" translate="no">class <a href="utils.html" translate="no">Utils</a>::ProgressIndicator</span>
+<!-- $$$ProgressIndicator-brief -->
+<p>The ProgressIndicator class shows an circular, endlessly animated progress indicator. <a href="#details">More...</a></p>
+<!-- @@@ProgressIndicator -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;ProgressIndicator&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> Utils::OverlayWidget</td></tr>
+</table></div>
+<ul>
+<li><a href="utils-progressindicator-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="utils-progressindicator.html#ProgressIndicator" translate="no">ProgressIndicator</a></b>(Utils::ProgressIndicatorSize <i>size</i>, QWidget *<i>parent</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-progressindicator.html#setIndicatorSize" translate="no">setIndicatorSize</a></b>(Utils::ProgressIndicatorSize <i>size</i>)</td></tr>
+</table></div>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QSize </td><td class="memItemRight bottomAlign"><b><a href="utils-progressindicator.html#sizeHint" translate="no">sizeHint</a></b>() const override</td></tr>
+</table></div>
+<!-- $$$ProgressIndicator-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Use it if you want to indicate that some work is being done, but you do not have the detailed progress information needed for a progress bar. You can either create the widget on demand, or create the widget once and only show it on demand. The animation only runs while the widget is visible.</p>
+</div>
+<!-- @@@ProgressIndicator -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$ProgressIndicator[overload1]$$$ProgressIndicatorUtils::ProgressIndicatorSizeQWidget* -->
+<h3 class="fn" translate="no" id="ProgressIndicator"><code translate="no">[explicit] </code>ProgressIndicator::<span class="name">ProgressIndicator</span>(<span class="type"><a href="utils.html#ProgressIndicatorSize-enum" translate="no">Utils::ProgressIndicatorSize</a></span> <i>size</i>, <span class="type">QWidget</span> *<i>parent</i> = nullptr)</h3>
+<p>Constructs a ProgressIndicator of the size <i translate="no">size</i> and with the parent <i translate="no">parent</i>.</p>
+<p><b>See also </b><a href="utils-progressindicator.html#setIndicatorSize" translate="no">setIndicatorSize</a>().</p>
+<!-- @@@ProgressIndicator -->
+<!-- $$$setIndicatorSize[overload1]$$$setIndicatorSizeUtils::ProgressIndicatorSize -->
+<h3 class="fn" translate="no" id="setIndicatorSize"><span class="type">void</span> ProgressIndicator::<span class="name">setIndicatorSize</span>(<span class="type"><a href="utils.html#ProgressIndicatorSize-enum" translate="no">Utils::ProgressIndicatorSize</a></span> <i>size</i>)</h3>
+<p>Changes the size of the progress indicator to <i translate="no">size</i>.</p>
+<p><b>See also </b><a href="utils-progressindicatorpainter.html#indicatorSize" translate="no">ProgressIndicatorPainter::indicatorSize</a>().</p>
+<!-- @@@setIndicatorSize -->
+<!-- $$$sizeHint[overload1]$$$sizeHint -->
+<h3 class="fn" translate="no" id="sizeHint"><code translate="no">[override virtual] </code><span class="type">QSize</span> ProgressIndicator::<span class="name">sizeHint</span>() const</h3>
+<p>Returns the size of the indicator in device independent pixels.</p>
+<p><b>See also </b><a href="utils-progressindicatorpainter.html#indicatorSize" translate="no">ProgressIndicatorPainter::indicatorSize</a>().</p>
+<!-- @@@sizeHint -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

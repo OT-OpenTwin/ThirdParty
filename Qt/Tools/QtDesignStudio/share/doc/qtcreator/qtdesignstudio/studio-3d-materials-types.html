@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-materials.qdoc -->
+  <title>3D Materials | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>3D Materials</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-3d-texture.html" />
+  <link rel="next" href="studio-3d-effects.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-3d-texture.html">Textures</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-effects.html">3D Effects</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#custom-material">Custom Material</a></li>
+<li class="level1"><a href="#metal-materials">Metal Materials</a></li>
+<li class="level2"><a href="#color">Color</a></li>
+<li class="level2"><a href="#reflection">Reflection</a></li>
+<li class="level2"><a href="#roughness">Roughness</a></li>
+<li class="level2"><a href="#emission">Emission</a></li>
+<li class="level2"><a href="#bump">Bump</a></li>
+<li class="level2"><a href="#properties-of-the-steel-milled-concentric-material">Properties of the Steel Milled Concentric Material</a></li>
+<li class="level1"><a href="#glass-materials">Glass Materials</a></li>
+<li class="level2"><a href="#color">Color</a></li>
+<li class="level2"><a href="#general">General</a></li>
+<li class="level2"><a href="#bump">Bump</a></li>
+<li class="level2"><a href="#random-gradient-mapping">Random Gradient Mapping</a></li>
+<li class="level2"><a href="#band-light">Band Light</a></li>
+<li class="level2"><a href="#noise">Noise</a></li>
+<li class="level1"><a href="#plastic">Plastic</a></li>
+<li class="level2"><a href="#color">Color</a></li>
+<li class="level2"><a href="#general">General</a></li>
+<li class="level2"><a href="#random-gradient-mapping">Random Gradient Mapping</a></li>
+<li class="level2"><a href="#emission">Emission</a></li>
+<li class="level1"><a href="#paper-materials">Paper Materials</a></li>
+<li class="level2"><a href="#color">Color</a></li>
+<li class="level2"><a href="#transmission">Transmission</a></li>
+<li class="level2"><a href="#general">General</a></li>
+<li class="level2"><a href="#diffuse-map">Diffuse Map</a></li>
+<li class="level2"><a href="#bump">Bump</a></li>
+<li class="level1"><a href="#available-materials">Available Materials</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">3D Materials</h1>
+<!-- $$$studio-3d-materials-types.html-description -->
+<div class="descr" id="details">
+<p>Qt Design Studio provides a set of pregenerated <b translate="no">Qt Quick 3D</b> materials. If the 3D materials are not displayed in <b translate="no">Components</b>, you can add the <b translate="no">QtQuick3D.Materials</b> module to your project, as described in <a href="quick-components-view.html#adding-and-removing-modules" translate="no">Adding and Removing Modules</a>. However, since using the pregenerated 3D materials may cause performance issues, we advice you to use <b translate="no">Principled Material</b>, <b translate="no">Default Material</b>, or <b translate="no">Custom Material</b> instead. For more information, see <a href="studio-3d-materials.html" translate="no">Materials and Shaders</a> and <a href="studio-3d-custom-effects-materials.html#creating-custom-materials" translate="no">Creating Custom Materials</a>.</p>
+<div class="admonition note">
+<p><b>Note: </b>The <b translate="no">QtQuick3D.Materials</b> module is not available in <b translate="no">Qt 6</b>. To use the pregenerated <b translate="no">Qt Quick 3D</b> materials, you need to select <b translate="no">Qt 5</b> as the <b translate="no">Target Qt Version</b> when <a href="studio-projects.html" translate="no">creating your project</a>.</p>
+</div>
+<p>To apply a 3D material to a component, you should first delete the default material and then drag-and-drop a new material from <b translate="no">Components</b> &gt; <b translate="no">Qt Quick 3D Materials</b> &gt; <b translate="no">Qt Quick 3D Materials</b> to a model component in <a href="qtquick-navigator.html" translate="no">Navigator</a>. The materials you add to the model are listed in the model component's <a href="qtquick-properties-view.html" translate="no">Properties</a> view. You can apply the same material to another component as well. Again, delete the default material first. You should then select the component and go to the <b translate="no">Properties</b> view. Find the <b translate="no">Materials</b> property, select the <img src="images/plus.png" alt="" /> icon, and choose the new material in the dropdown menu.</p>
+<p>Each material has its own set of properties that can be used to further define the appearance of the material. For each material the <b translate="no">Environment Map</b> property specifies whether or not <a href="studio-3d-texture.html#selecting-the-mapping-method" translate="no">environment mapping</a> is used for specular reflection. Use the <b translate="no">Texture</b> property to select a texture for the environment map. The <b translate="no">Shadow Map</b> property determine whether or not shadow mapping is used for generating realistic shadows. You can also select a <b translate="no">Texture</b> for shadow mapping.</p>
+<h2 id="custom-material">Custom Material</h2>
+<p>You can use the <a href="https://doc.qt.io/qt/qml-qtquick3d-custommaterial.html" translate="no">Custom Material</a> component available in <b translate="no">Qt Quick 3D Effects</b> &gt; <b translate="no">Custom Shader Utils</b> as the base component for creating custom materials used to shade models. For more information, see <a href="studio-3d-custom-effects-materials.html" translate="no">Custom Effects and Materials</a> and <a href="studio-3d-custom-shaders.html" translate="no">Custom Shaders</a>.</p>
+<h2 id="metal-materials">Metal Materials</h2>
+<p>The following describes properties of the metal-based materials, which include <b translate="no">Aluminum</b>, <b translate="no">Aluminum Anod Emis</b>, <b translate="no">Aluminum Anodized</b>, <b translate="no">Aluminum Brushed</b>, <b translate="no">Aluminum Emissive</b>, <b translate="no">Copper</b>, and <b translate="no">Steel Milled Concentric</b>.</p>
+<h3 id="color">Color</h3>
+<p>Set the surface tint of the material by specifying the <b translate="no">Metal Color</b> and <b translate="no">Base Color</b> properties. Use the <b translate="no">Emission Color</b> property to set the color of the glow for emissive materials. You can either use the color picker or specify an RBG value.</p>
+<h3 id="reflection">Reflection</h3>
+<p>Use the properties under the <b translate="no">Reflection</b> tab to specify the reflective qualities of the material. For more information on the various material properties related to reflection, see <a href="studio-material-editor.html#using-highlights-and-reflections" translate="no">Using Highlights and Reflections</a>.</p>
+<span id="tiling-metal"></span><ul>
+<li>Use the <b translate="no">Map Offset</b> and <b translate="no">Map Scale</b> properties to define offset and scale for the reflection map. You can also define a texture for the reflection map by using the <b translate="no">Texture</b> property, and set a the tiling repeat for it by using the <b translate="no">Tiling</b> property.</li>
+<li>To further define the reflective qualities of the material, you can also set the <b translate="no">Stretch</b> and <b translate="no">Texture</b> properties of <b translate="no">Reflection</b>, or define a numerical value for <b translate="no">Reflectivity</b>.</li>
+<li>Set the <b translate="no">Fresnel Power</b> property to decrease head-on reflections (looking directly at the surface) while maintaining reflections seen at grazing angles.</li>
+</ul>
+<h3 id="roughness">Roughness</h3>
+<p>Use the <b translate="no">Roughness</b> properties to determine how light behaves when it comes in contact with material. With zero roughness, light bounces off a material, which makes it appear glossy. Increased roughness causes the light reflected off the material to scatter, which results in a matte appearance.</p>
+<ul>
+<li>The <b translate="no">Map Offset</b> <b translate="no">Map Scale</b> and <b translate="no">Texture</b> specify the quality of roughness applied to the material.</li>
+<li>Use the numerical <b translate="no">Roughness</b> property to define how glossy or matte the material appears.</li>
+</ul>
+<span id="emission-metal"></span><h3 id="emission">Emission</h3>
+<p>Use the properties under the <b translate="no">Emission</b> tab to specify the emissive qualities of the material. For more information on properties related to emission, see <a href="studio-material-editor.html#self-illuminating-materials" translate="no">Self-Illuminating Materials</a>.</p>
+<ul>
+<li>The <b translate="no">Intensity</b> property determines the quantity of light the surface of material emits.</li>
+<li>The <b translate="no">Map Texture</b> property defines a texture for emissive map, while the <b translate="no">Mask Texture</b> defines a texture for emissive mask. Use the <b translate="no">Mask Offset</b> to set the mask offset for the emissive map.</li>
+</ul>
+<span id="bump-metal"></span><h3 id="bump">Bump</h3>
+<p>Specify the properties under the <b translate="no">Bump</b> tab to simulate fine geometry displacement across the surface of the material. Use the <b translate="no">Amount</b> property to set the quantity of displacement, and the <b translate="no">Texture</b> property to define a texture for the bump map. For more information, see <a href="studio-material-editor.html#simulating-geometry-displacement" translate="no">Simulating Geometry Displacement</a>.</p>
+<h3 id="properties-of-the-steel-milled-concentric-material">Properties of the Steel Milled Concentric Material</h3>
+<p>Another metal, the <b translate="no">Steel Milled Concentric</b> Material has certain properties that the other materials do not possess:</p>
+<ul>
+<li>The <b translate="no">Anisotropy</b> property stretches the highlight, which simulates minuscule scratches. You can also use a <b translate="no">Texture</b> property to define a texture for the anisotropy map.</li>
+<li>The <b translate="no">Index of Refraction</b> defines how much a ray of transmitted light is bent when it reaches the surface of the material.</li>
+</ul>
+<p>Under the <b translate="no">Textures</b> tab:</p>
+<ul>
+<li>The <b translate="no">Tiling</b> property to set the tiling repeat of the texture maps.</li>
+<li>Use the <b translate="no">Diffuse</b> property to set a texture for the diffuse map, and the <b translate="no">Anisotropy</b> property to set a texture for the anisotropy map.</li>
+</ul>
+<h2 id="glass-materials">Glass Materials</h2>
+<p>The following describes properties related to glass-based materials, which include <b translate="no">Glass</b>, <b translate="no">Frosted Glass</b>, <b translate="no">Frosted Glass Single Pass</b>, and <b translate="no">Glass Refractive</b>.</p>
+<h3 id="color">Color</h3>
+<p>Set the surface tint of the material by specifying the <b translate="no">Glass Color</b> property. You can also specify the <b translate="no">Band Light Color</b> for the <b translate="no">Frosted Glass</b> material.</p>
+<p>Use the <b translate="no">Glass Color</b> and <b translate="no">Band Light Color</b> properties to set the color properties for glass-based materials.</p>
+<span id="general-glass"></span><h3 id="general">General</h3>
+<ul>
+<li>Set the <b translate="no">Fresnel Power</b> property to decrease head-on reflections (looking directly at the surface) while maintaining reflections seen at grazing angles.</li>
+<li>Use the <b translate="no">Roughness</b> property to determine how light behaves when it comes in contact with material. With zero roughness, light bounces off a material, which makes it appear glossy. Increased roughness causes the light reflected off the material to scatter, which results in a matte appearance.</li>
+<li>The <b translate="no">Reflectivity</b> property specifies how much light is reflected from the material.</li>
+<li>The <b translate="no">Index of Refraction</b> defines reflectivity by determinining how much a ray of transmitted light is bent when it reaches the surface of the material.</li>
+<li>The <b translate="no">Refract Depth</b> property sets the refraction depth for the material.</li>
+<li>Use the <b translate="no">Minimum Opacity</b> property to determine the minimum level of opaqueness for the material.</li>
+<li>The <b translate="no">Blur size</b> property sets the amount of blurring behind the glass.</li>
+</ul>
+<h3 id="bump">Bump</h3>
+<p>For frosted glass materials, specify the properties under the <b translate="no">Bump</b> tab to simulate fine geometry displacement across the surface of the material:</p>
+<ul>
+<li>Use the <b translate="no">Scale</b> and <b translate="no">Bands</b> properties to define the scale and number of the Bump Bands.</li>
+<li>The <b translate="no">Strength</b> property sets the glass bump map strength.</li>
+<li>Use the <b translate="no">Internal</b> property to specify whether the bump map should only be used for internal lighting.</li>
+<li>The <b translate="no">Texture</b> property to define a texture for the bump map.</li>
+<li>The <b translate="no">Coordinates</b> property sets the bump coordinates of the refraction.</li>
+</ul>
+<p>For more information, see <a href="studio-material-editor.html#simulating-geometry-displacement" translate="no">Simulating Geometry Displacement</a>.</p>
+<span id="rgm-glass"></span><h3 id="random-gradient-mapping">Random Gradient Mapping</h3>
+<p>For frosted glass materials, you can also specify <b translate="no">Random Gradient Maps</b> by using properties <b translate="no">1D</b>, <b translate="no">2D</b>, <b translate="no">3D</b> and <b translate="no">4D</b>. Each of the properties defines a texture map used to create the random bumpiness of the material.</p>
+<h3 id="band-light">Band Light</h3>
+<p>The outlook of the <b translate="no">Frosted Glass</b> material can be further defined by specifying the <b translate="no">Band Light</b> properties:</p>
+<ul>
+<li>The <b translate="no">Fallof</b> property sets the light intensity falloff rate.</li>
+<li>The <b translate="no">Angle</b> property sets the angle of the light source to which the band is perpendicular.</li>
+<li>You can also set the <b translate="no">Brightness</b> of the band light.</li>
+<li>Use the <b translate="no">Position</b> property to set the coordinates for the band light in the UV space.</li>
+</ul>
+<h3 id="noise">Noise</h3>
+<p>For the <b translate="no">Frosted Glass Single Pass</b> material you can specify the noise quality by defining the noise <b translate="no">Scale</b> property and setting the noise <b translate="no">Coordinates</b>.</p>
+<h2 id="plastic">Plastic</h2>
+<p>The following describes properties for the available plastic materials, which include <b translate="no">Plastic Structured</b> and <b translate="no">Plastic Struct Emissive</b>.</p>
+<h3 id="color">Color</h3>
+<p>Use the <b translate="no">Diffuse Color</b> to set the color that the material reflects when illuminated by direct light.</p>
+<p>The <b translate="no">Emission Color</b> defines the color of emission for the <b translate="no">Plastic Struct Emissive</b> material.</p>
+<h3 id="general">General</h3>
+<p>Plastic materials share some of the properties with glass materials. For descriptions of <b translate="no">Roughness</b> and <b translate="no">Index of Refraction</b> properties, see <a href="studio-3d-materials-types.html#general-glass" translate="no">general properties for glass materials</a>.</p>
+<ul>
+<li>The <b translate="no">Texture scaling</b> property determines how fast a material is repeated on a surface.</li>
+<li>The <b translate="no">Bump Factor</b> property sets the strength of bumpiness for glass materials.</li>
+</ul>
+<h3 id="random-gradient-mapping">Random Gradient Mapping</h3>
+<p>See <a href="studio-3d-materials-types.html#rgm-glass" translate="no">Random Gradient Mapping for Glass Materials</a>.</p>
+<h3 id="emission">Emission</h3>
+<p>The properties of emission for glass materials are similar to those of metal materials. For decription of emission properties, see <a href="studio-3d-materials-types.html#emission-metal" translate="no">emission properties for metal materials</a>.</p>
+<h2 id="paper-materials">Paper Materials</h2>
+<p>The following describes properties for the available paper materials, which include <b translate="no">Paper Artistic</b> and <b translate="no">Paper Office</b>.</p>
+<h3 id="color">Color</h3>
+<p>Set the surface tint for the <b translate="no">Paper Office</b> material by specifying the <b translate="no">Paper Color</b> property.</p>
+<h3 id="transmission">Transmission</h3>
+<p>Specify the <b translate="no">Transmission</b> settings to define the outlook of light passing through the material. The <b translate="no">Transmission Weight</b> property specifies how much light scatters through the surface of the material, while the <b translate="no">Reflection Weight</b> sets the luminance of highlights and reflections.</p>
+<h3 id="general">General</h3>
+<ul>
+<li>The <b translate="no">Translucency Falloff</b> sets the point of decline for translucency of the material.</li>
+<li>The <b translate="no">Opacity</b> property sets the material's level of opaqueness.</li>
+<li>For the description of <b translate="no">Texture Tiling</b> properties, see <a href="studio-3d-materials-types.html#tiling-metal" translate="no">tiling for metal materials</a>.</li>
+</ul>
+<h3 id="diffuse-map">Diffuse Map</h3>
+<p>Use the <b translate="no">Light Wrap</b> property to set the diffuse light bend of the material. The <b translate="no">Texture</b> property defines a texture for the diffuse map.</p>
+<h3 id="bump">Bump</h3>
+<p>For the description of <b translate="no">Bump</b> properties, see <a href="studio-3d-materials-types.html#bump-metal" translate="no">properties for metal materials</a>.</p>
+<h2 id="available-materials">Available Materials</h2>
+<p>See the following table for available materials.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Material</th><th >Example Image</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >Aluminum</td><td ><p class="centerAlign"><img src="images/material-aluminum.png" alt="&quot;The Aluminum material&quot;" /></p></td><td >A material with the appearance of aluminum.</td></tr>
+<tr valign="top" class="even"><td >Aluminum Anod Emis</td><td ><p class="centerAlign"><img src="images/material-aluminum-anodized-emissive.png" alt="&quot;The Aluminum Anodized Emissive material&quot;" /></p></td><td >Anodized aluminum with emissive properties.</td></tr>
+<tr valign="top" class="odd"><td >Aluminum Anodized</td><td ><p class="centerAlign"><img src="images/material-aluminum-anodized.png" alt="&quot;The Anodized Aluminum material&quot;" /></p></td><td >Anodized aluminum.</td></tr>
+<tr valign="top" class="even"><td >Aluminum Brushed</td><td ><p class="centerAlign"><img src="images/material-aluminum-brushed.png" alt="&quot;The Brushed Aluminum material&quot;" /></p></td><td >Brushed aluminum.</td></tr>
+<tr valign="top" class="odd"><td >Aluminum Emissive</td><td ><p class="centerAlign"><img src="images/material-aluminum-emissive.png" alt="&quot;The Aluminum Emissive material&quot;" /></p></td><td >Aluminum with emissive properties.</td></tr>
+<tr valign="top" class="even"><td >Copper</td><td ><p class="centerAlign"><img src="images/material-copper.png" alt="&quot;The Copper material&quot;" /></p></td><td >A material with the appearance of copper.</td></tr>
+<tr valign="top" class="odd"><td >Glass</td><td ><p class="centerAlign"><img src="images/material-glass.png" alt="&quot;The Glass material&quot;" /></p></td><td >A material with the appearance of glass.</td></tr>
+<tr valign="top" class="even"><td >Frosted glass</td><td ><p class="centerAlign"><img src="images/material-frosted-glass.png" alt="&quot;The Frosted Glass material&quot;" /></p></td><td >Frosted glass.</td></tr>
+<tr valign="top" class="odd"><td >Frosted Glass Single Pass</td><td ><p class="centerAlign"><img src="images/material-frosted-glass-single-pass.png" alt="&quot;The Frosted Glass Single Pass material&quot;" /></p></td><td >A single-pass frosted glass.</td></tr>
+<tr valign="top" class="even"><td >Glass Refractive</td><td ><p class="centerAlign"><img src="images/material-refractive-glass.png" alt="&quot;The Glass Refractive material&quot;" /></p></td><td >Refractive glass.</td></tr>
+<tr valign="top" class="odd"><td >Paper Artistic</td><td ><p class="centerAlign"><img src="images/material-artistic-paper.png" alt="&quot;The Paper Artistic material&quot;" /></p></td><td >A paper material with an artistic finishing.</td></tr>
+<tr valign="top" class="even"><td >Paper Office</td><td ><p class="centerAlign"><img src="images/material-office-paper.png" alt="&quot;The Paper Office material&quot;" /></p></td><td >A paper material with an office-style finishing.</td></tr>
+<tr valign="top" class="odd"><td >Plastic Struct Emissive</td><td ><p class="centerAlign"><img src="images/material-red-plastic-structured-emissive.png" alt="The Plastic Structured Emissive material&quot;" /></p></td><td >A red structured plastic material with emissive properties.</td></tr>
+<tr valign="top" class="even"><td >Plastic Structured</td><td ><p class="centerAlign"><img src="images/material-red-plastic-structured.png" alt="&quot;The Plastic Structured material&quot;" /></p></td><td >A red structured plastic material.</td></tr>
+<tr valign="top" class="odd"><td >Steel Milled Concentric</td><td ><p class="centerAlign"><img src="images/material-steel-milled-concentric.png" alt="&quot;The Steel Milled Concentric material&quot;" /></p></td><td >A milled concentric steel material.</td></tr>
+</table></div>
+</div>
+<!-- @@@studio-3d-materials-types.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-3d-texture.html">Textures</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-effects.html">3D Effects</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

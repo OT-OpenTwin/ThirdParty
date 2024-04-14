@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qrcparser.cpp -->
+  <meta name="description" content="The QrcParser class parses one or more QRC files and keeps their content cached.">
+  <title>QrcParser Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>QrcParser</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">QrcParser Class</h1>
+<span class="small-subtitle" translate="no">class <a href="utils.html" translate="no">Utils</a>::QrcParser</span>
+<!-- $$$QrcParser-brief -->
+<p>The QrcParser class parses one or more QRC files and keeps their content cached. <a href="#details">More...</a></p>
+<!-- @@@QrcParser -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;QrcParser&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="utils-qrcparser-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="utils-qrcparser.html#ConstPtr-typedef" translate="no">ConstPtr</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="utils-qrcparser.html#Ptr-typedef" translate="no">Ptr</a></b></td></tr>
+</table></div>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-qrcparser.html#collectFilesAtPath" translate="no">collectFilesAtPath</a></b>(const QString &amp;<i>path</i>, QStringList *<i>res</i>, const QLocale *<i>locale</i> = nullptr) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-qrcparser.html#collectFilesInPath" translate="no">collectFilesInPath</a></b>(const QString &amp;<i>path</i>, QMap&lt;QString, QStringList&gt; *<i>res</i>, bool <i>addDirs</i> = false, const QLocale *<i>locale</i> = nullptr) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-qrcparser.html#collectResourceFilesForSourceFile" translate="no">collectResourceFilesForSourceFile</a></b>(const QString &amp;<i>sourceFile</i>, QStringList *<i>res</i>, const QLocale *<i>locale</i> = nullptr) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="utils-qrcparser.html#errorMessages" translate="no">errorMessages</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-qrcparser.html#firstFileAtPath" translate="no">firstFileAtPath</a></b>(const QString &amp;<i>path</i>, const QLocale &amp;<i>locale</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-qrcparser.html#hasDirAtPath" translate="no">hasDirAtPath</a></b>(const QString &amp;<i>path</i>, const QLocale *<i>locale</i> = nullptr) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-qrcparser.html#isValid" translate="no">isValid</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="utils-qrcparser.html#languages" translate="no">languages</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-qrcparser.html#parseFile" translate="no">parseFile</a></b>(const QString &amp;<i>path</i>, const QString &amp;<i>contents</i>)</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-qrcparser.html#normalizedQrcDirectoryPath" translate="no">normalizedQrcDirectoryPath</a></b>(const QString &amp;<i>path</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-qrcparser.html#normalizedQrcFilePath" translate="no">normalizedQrcFilePath</a></b>(const QString &amp;<i>path</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::QrcParser::Ptr </td><td class="memItemRight bottomAlign"><b><a href="utils-qrcparser.html#parseQrcFile" translate="no">parseQrcFile</a></b>(const QString &amp;<i>path</i>, const QString &amp;<i>contents</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-qrcparser.html#qrcDirectoryPathForQrcFilePath" translate="no">qrcDirectoryPathForQrcFilePath</a></b>(const QString &amp;<i>file</i>)</td></tr>
+</table></div>
+<!-- $$$QrcParser-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>A Qt resource collection (QRC) contains files read from the file system but organized in a possibly different way. To easily describe that with a simple structure, we use a map from QRC paths to the paths in the filesystem. By using a map, we can easily find all QRC paths that start with a given prefix, and thus loop on a QRC directory.</p>
+<p>QRC files also support languages, which are mapped to a prefix of the QRC path. For example, the French /image/bla.png (lang=fr) will have the path <code translate="no">fr/image/bla.png</code>. The empty language represents the default resource. Languages are looked up using the locale uiLanguages() property</p>
+<p>For a single QRC, a given path maps to a single file, but when one has multiple (platform-specific and mutually exclusive) QRC files, multiple files match, so QStringList are used.</p>
+<p>Especially, the <code translate="no">collect*</code> functions are thought of as low level interface.</p>
+</div>
+<!-- @@@QrcParser -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$ConstPtr -->
+<h3 class="fn" translate="no" id="ConstPtr-typedef"><code translate="no">[alias] </code>QrcParser::<span class="name">ConstPtr</span></h3>
+<p>Represents constant pointers.</p>
+<!-- @@@ConstPtr -->
+<!-- $$$Ptr -->
+<h3 class="fn" translate="no" id="Ptr-typedef"><code translate="no">[alias] </code>QrcParser::<span class="name">Ptr</span></h3>
+<p>Represents pointers.</p>
+<!-- @@@Ptr -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$collectFilesAtPath[overload1]$$$collectFilesAtPathconstQString&QStringList*constQLocale* -->
+<h3 class="fn" translate="no" id="collectFilesAtPath"><span class="type">void</span> QrcParser::<span class="name">collectFilesAtPath</span>(const <span class="type">QString</span> &amp;<i>path</i>, <span class="type">QStringList</span> *<i>res</i>, const <span class="type">QLocale</span> *<i>locale</i> = nullptr) const</h3>
+<p>Adds the file system paths for the given QRC <i translate="no">path</i> to <i translate="no">res</i>.</p>
+<p>If <i translate="no">locale</i> is null, all possible files are added. Otherwise, just the first one that matches the locale is added.</p>
+<!-- @@@collectFilesAtPath -->
+<!-- $$$collectFilesInPath[overload1]$$$collectFilesInPathconstQString&QMap<QString,QStringList>*boolconstQLocale* -->
+<h3 class="fn" translate="no" id="collectFilesInPath"><span class="type">void</span> QrcParser::<span class="name">collectFilesInPath</span>(const <span class="type">QString</span> &amp;<i>path</i>, <span class="type">QMap</span>&lt;<span class="type">QString</span>, <span class="type">QStringList</span>&gt; *<i>res</i>, <span class="type">bool</span> <i>addDirs</i> = false, const <span class="type">QLocale</span> *<i>locale</i> = nullptr) const</h3>
+<p>Adds the directory contents of the given QRC <i translate="no">path</i> to <i translate="no">res</i> if <i translate="no">addDirs</i> is set to <code translate="no">true</code>.</p>
+<p>Adds the QRC filename to file system path associations contained in the given <i translate="no">path</i> to <i translate="no">res</i>. If addDirs() is <code translate="no">true</code>, directories are also added.</p>
+<p>If <i translate="no">locale</i> is null, all possible files are added. Otherwise, just the first file with a matching the locale is added.</p>
+<!-- @@@collectFilesInPath -->
+<!-- $$$collectResourceFilesForSourceFile[overload1]$$$collectResourceFilesForSourceFileconstQString&QStringList*constQLocale* -->
+<h3 class="fn" translate="no" id="collectResourceFilesForSourceFile"><span class="type">void</span> QrcParser::<span class="name">collectResourceFilesForSourceFile</span>(const <span class="type">QString</span> &amp;<i>sourceFile</i>, <span class="type">QStringList</span> *<i>res</i>, const <span class="type">QLocale</span> *<i>locale</i> = nullptr) const</h3>
+<p>Adds the resource files from the QRC file <i translate="no">sourceFile</i> to <i translate="no">res</i>.</p>
+<p>If <i translate="no">locale</i> is null, all possible files are added. Otherwise, just the first file with a matching the locale is added.</p>
+<!-- @@@collectResourceFilesForSourceFile -->
+<!-- $$$errorMessages[overload1]$$$errorMessages -->
+<h3 class="fn" translate="no" id="errorMessages"><span class="type">QStringList</span> QrcParser::<span class="name">errorMessages</span>() const</h3>
+<p>Returns the errors found while parsing.</p>
+<!-- @@@errorMessages -->
+<!-- $$$firstFileAtPath[overload1]$$$firstFileAtPathconstQString&constQLocale& -->
+<h3 class="fn" translate="no" id="firstFileAtPath"><span class="type">QString</span> QrcParser::<span class="name">firstFileAtPath</span>(const <span class="type">QString</span> &amp;<i>path</i>, const <span class="type">QLocale</span> &amp;<i>locale</i>) const</h3>
+<p>Returns the file system path of the first (active) file at the given QRC <i translate="no">path</i> and <i translate="no">locale</i>.</p>
+<!-- @@@firstFileAtPath -->
+<!-- $$$hasDirAtPath[overload1]$$$hasDirAtPathconstQString&constQLocale* -->
+<h3 class="fn" translate="no" id="hasDirAtPath"><span class="type">bool</span> QrcParser::<span class="name">hasDirAtPath</span>(const <span class="type">QString</span> &amp;<i>path</i>, const <span class="type">QLocale</span> *<i>locale</i> = nullptr) const</h3>
+<p>Returns <code translate="no">true</code> if <i translate="no">path</i> is a non-empty directory and matches <i translate="no">locale</i>.</p>
+<!-- @@@hasDirAtPath -->
+<!-- $$$isValid[overload1]$$$isValid -->
+<h3 class="fn" translate="no" id="isValid"><span class="type">bool</span> QrcParser::<span class="name">isValid</span>() const</h3>
+<p>Indicates whether the QRC contents are valid.</p>
+<p>Returns an error if the QRC is empty.</p>
+<!-- @@@isValid -->
+<!-- $$$languages[overload1]$$$languages -->
+<h3 class="fn" translate="no" id="languages"><span class="type">QStringList</span> QrcParser::<span class="name">languages</span>() const</h3>
+<p>Returns all languages used in this QRC.</p>
+<!-- @@@languages -->
+<!-- $$$normalizedQrcDirectoryPath[overload1]$$$normalizedQrcDirectoryPathconstQString& -->
+<h3 class="fn" translate="no" id="normalizedQrcDirectoryPath"><code translate="no">[static] </code><span class="type">QString</span> QrcParser::<span class="name">normalizedQrcDirectoryPath</span>(const <span class="type">QString</span> &amp;<i>path</i>)</h3>
+<p>Returns the path to a directory normalized to <i translate="no">path</i> in a QRC resource by dropping the <code translate="no">qrc:/</code> or <code translate="no">:</code> and any extra slashes at the beginning, and by ensuring that the path ends with a slash</p>
+<!-- @@@normalizedQrcDirectoryPath -->
+<!-- $$$normalizedQrcFilePath[overload1]$$$normalizedQrcFilePathconstQString& -->
+<h3 class="fn" translate="no" id="normalizedQrcFilePath"><code translate="no">[static] </code><span class="type">QString</span> QrcParser::<span class="name">normalizedQrcFilePath</span>(const <span class="type">QString</span> &amp;<i>path</i>)</h3>
+<p>Normalizes the <i translate="no">path</i> to a file in a QRC resource by dropping the <code translate="no">qrc:/</code> or <code translate="no">:</code> and any extra slashes in the beginning.</p>
+<!-- @@@normalizedQrcFilePath -->
+<!-- $$$parseFile[overload1]$$$parseFileconstQString&constQString& -->
+<h3 class="fn" translate="no" id="parseFile"><span class="type">bool</span> QrcParser::<span class="name">parseFile</span>(const <span class="type">QString</span> &amp;<i>path</i>, const <span class="type">QString</span> &amp;<i>contents</i>)</h3>
+<p>Parses the QRC file at <i translate="no">path</i>. If <i translate="no">contents</i> is not empty, it is used as the file contents instead of reading it from the file system.</p>
+<p>Returns whether the parsing succeeded.</p>
+<p><b>See also </b><a href="utils-qrcparser.html#errorMessages" translate="no">errorMessages</a>() and <a href="utils-qrcparser.html#parseQrcFile" translate="no">parseQrcFile</a>().</p>
+<!-- @@@parseFile -->
+<!-- $$$parseQrcFile[overload1]$$$parseQrcFileconstQString&constQString& -->
+<h3 class="fn" translate="no" id="parseQrcFile"><code translate="no">[static] </code><span class="type"><a href="utils-qrcparser.html#Ptr-typedef" translate="no">Utils::QrcParser::Ptr</a></span> QrcParser::<span class="name">parseQrcFile</span>(const <span class="type">QString</span> &amp;<i>path</i>, const <span class="type">QString</span> &amp;<i>contents</i>)</h3>
+<p>Returns the <i translate="no">contents</i> of the QRC file at <i translate="no">path</i>.</p>
+<!-- @@@parseQrcFile -->
+<!-- $$$qrcDirectoryPathForQrcFilePath[overload1]$$$qrcDirectoryPathForQrcFilePathconstQString& -->
+<h3 class="fn" translate="no" id="qrcDirectoryPathForQrcFilePath"><code translate="no">[static] </code><span class="type">QString</span> QrcParser::<span class="name">qrcDirectoryPathForQrcFilePath</span>(const <span class="type">QString</span> &amp;<i>file</i>)</h3>
+<p>Returns the QRC directory path for <i translate="no">file</i>.</p>
+<!-- @@@qrcDirectoryPathForQrcFilePath -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

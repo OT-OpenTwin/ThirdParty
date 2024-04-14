@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-connection-editor-bindings.qdoc -->
+  <title>Adding Bindings Between Properties | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Adding Bindings Between Properties</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="quick-signals.html" />
+  <link rel="next" href="quick-dynamic-properties.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="quick-signals.html">Connecting Components to Signals</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-dynamic-properties.html">Specifying Custom Properties</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#creating-bindings-between-component-properties">Creating Bindings Between Component Properties</a></li>
+<li class="level2"><a href="#summary-of-logical-operators">Summary of Logical Operators</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Adding Bindings Between Properties</h1>
+<!-- $$$quick-property-bindings.html-description -->
+<div class="descr" id="details">
+<p>To dynamically change the behavior of a component, you can create a <i>binding</i> between the properties of two components. To create a property binding, a property is assigned a JavaScript expression that evaluates to the desired value. Behind the scenes, the variables in the binding expression are monitored. When a change is detected, the binding expression is re-evaluated and the new result is applied to the property.</p>
+<p>At its simplest, a binding may be a reference to another property. For example, the height of a component can be bound to the height of its parent, so that when the parent height changes, the component height is adjusted automatically.</p>
+<p>For more information about the use of property bindings, see <a href="https://doc.qt.io/qt/qtqml-syntax-propertybinding.html" translate="no">Property Binding</a>.</p>
+<p>You can create bindings between components in <b translate="no">Bindings</b>.</p>
+<p class="centerAlign"><img src="images/qmldesigner-bindings.webp" alt="" /></p><h2 id="creating-bindings-between-component-properties">Creating Bindings Between Component Properties</h2>
+<p>To bind a property of a component to the property of another component:</p>
+<ol class="1" type="1"><li>Place two components in the <b translate="no">2D</b> view.<p class="centerAlign"><img src="images/qmldesigner-components-before-binding.webp" alt="" /></p></li>
+<li>Name the first component as <i>viewBox</i>.</li>
+<li>Name the second component as <i>connectBox</i>.</li>
+<li>Apply a thick <i>black</i> <b translate="no">Border</b> and a <i>blue</i> <b translate="no">Color</b> to the <i>viewBox</i> component.</li>
+<li>Select the <i>connectBox</i> component.</li>
+<li>Select <b translate="no">Bindings</b> from the <b translate="no">Connections</b> view.</li>
+<li>Select the <img src="images/plus.png" alt="" /> (<b translate="no">Add</b>) button to add a binding to the currently selected component.<p class="centerAlign"><img src="images/qmldesigner-updated-bindings-editor.webp" alt="" /></p></li>
+<li>From the pop-up <b translate="no">Bindings editor</b>, in the <b translate="no">From</b> section, select <i>viewBox</i> as the parent component, then select its <b translate="no">border.color</b> property.</li>
+<li>In the <b translate="no">To</b> section you find the <i>connectBox</i> component already selected as the target component. Select <b translate="no">color</b> from the <b translate="no">drop-down</b> below to set its affected property.</li>
+<li>You see the <b translate="no">border.color</b> of the <i>viewBox</i> component instantly getting applied to the <b translate="no">color</b> of the <i>connectBox</i> component.<p class="centerAlign"><img src="images/qmldesigner-components-after-binding.webp" alt="" /></p></li>
+</ol>
+<p>All the <b translate="no">Bindings</b> connections have automated JavaScript expression in the <b translate="no">Code view</b>. For more information, see <a href="qtquick-positioning.html#setting-bindings" translate="no">Setting Bindings</a>.</p>
+<p>For examples of creating property bindings, see:</p>
+<ul>
+<li><a href="quick-scalable-image.html#using-states-to-change-component-property-values" translate="no">Using States to Change Component Property Values</a></li>
+<li><a href="qtdesignstudio-progressbar-example.html#exporting-properties" translate="no">Exporting Properties</a></li>
+</ul>
+<h3 id="summary-of-logical-operators">Summary of Logical Operators</h3>
+<p>You can use the following <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators" translate="no">logical operators</a> in the expressions to combine several conditions in one expression:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Operator</th><th >Meaning</th><th >Evaluates to <code translate="no">true</code> if</th></tr></thead>
+<tr valign="top" class="odd"><td >!</td><td >NOT</td><td >The condition is not met.</td></tr>
+<tr valign="top" class="even"><td >&amp;&amp;</td><td >AND</td><td >Both conditions are met.</td></tr>
+<tr valign="top" class="odd"><td >||</td><td >OR</td><td >Either of the conditions is met.</td></tr>
+<tr valign="top" class="even"><td >&lt;</td><td >Less than</td><td >The left operand is less than the right operand.</td></tr>
+<tr valign="top" class="odd"><td >&gt;</td><td >Greater than</td><td >The left operand is greater than the right operand.</td></tr>
+<tr valign="top" class="even"><td >&gt;=</td><td >Greater than or equal</td><td >The left operand is greater than or equal to the right operand.</td></tr>
+<tr valign="top" class="odd"><td >&lt;=</td><td >Less than or equal</td><td >The left operand is less than or equal to the right operand.</td></tr>
+<tr valign="top" class="even"><td >==</td><td >Equal</td><td >The operands are equal.</td></tr>
+<tr valign="top" class="odd"><td >===</td><td >Strict equal</td><td >The operands are equal and of the same type.</td></tr>
+<tr valign="top" class="even"><td >!=</td><td >Not equal</td><td >The operands are not equal.</td></tr>
+<tr valign="top" class="odd"><td >!==</td><td >Strict not equal</td><td >The operands are of the same type but not equal, or are of different type.</td></tr>
+</table></div>
+<p>Alternatively, you can use <b translate="no">And Operator</b>, <b translate="no">Or Operator</b>, and <b translate="no">Not Operator</b> components to bind property values using the boolean AND, OR, and NOT operator. For more information, see <a href="quick-logic-helpers.html" translate="no">Logic Helpers</a>.</p>
+<p>In addition, you can use arithmetic operators to compare numbers before checks. However, we recommend that you create separate properties for this purpose whenever possible.</p>
+</div>
+<!-- @@@quick-property-bindings.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="quick-signals.html">Connecting Components to Signals</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-dynamic-properties.html">Specifying Custom Properties</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

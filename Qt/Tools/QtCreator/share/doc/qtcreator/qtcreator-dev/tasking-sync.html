@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- tasktree.cpp -->
+  <meta name="description" content="Synchronously executes a custom handler between other tasks.">
+  <title>Sync Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="taskingsolution-module.html" translate="no">TaskingSolution</a></li>
+<li>Sync</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">Sync Class</h1>
+<span class="small-subtitle" translate="no">class <a href="tasking.html" translate="no">Tasking</a>::Sync</span>
+<!-- $$$Sync-brief -->
+<p>Synchronously executes a custom handler between other tasks. <a href="#details">More...</a></p>
+<!-- @@@Sync -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;solutions/tasking/tasktree.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="tasking-executableitem.html" translate="no">Tasking::ExecutableItem</a></td></tr>
+</table></div>
+<ul>
+<li><a href="tasking-sync-members.html">List of all members, including inherited members</a></li>
+</ul>
+<p><b>Note:</b> All functions in this class are reentrant.</p>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="tasking-sync.html#Sync" translate="no">Sync</a></b>(Handler &amp;&amp;<i>handler</i>)</td></tr>
+</table></div>
+<!-- $$$Sync-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p><code translate="no">Sync</code> is useful when you want to execute an additional handler between other tasks. <code translate="no">Sync</code> is seen by its parent <a href="tasking-group.html" translate="no">Group</a> as any other task. Avoid long-running execution of the <code translate="no">Sync</code>'s handler body, since it is executed synchronously from the caller thread. If that is unavoidable, consider using <code translate="no">ConcurrentCallTask</code> instead.</p>
+</div>
+<!-- @@@Sync -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Sync[overload1]$$$SyncHandler&& -->
+<h3 class="fn" translate="no" id="Sync">template &lt;typename Handler&gt; Sync::<span class="name">Sync</span>(<span class="type">Handler</span> &amp;&amp;<i>handler</i>)</h3>
+<p>Constructs an element that executes a passed <i translate="no">handler</i> synchronously. The <code translate="no">Handler</code> is of the <code translate="no">std::function&lt;DoneResult()&gt;</code> type. The <a href="tasking.html#DoneResult-enum" translate="no">DoneResult</a> value, returned by the <i translate="no">handler</i>, is considered during parent group's <a href="tasking.html#workflowPolicy" translate="no">workflow policy</a> resolution. Optionally, the shortened form of <code translate="no">std::function&lt;void()&gt;</code> is also accepted. In this case, it's assumed that the return value is <a href="tasking.html#DoneResult-enum" translate="no">DoneResult::Success</a>.</p>
+<p>The passed <i translate="no">handler</i> executes synchronously from the caller thread, so avoid a long-running execution of the handler body. Otherwise, consider using <code translate="no">ConcurrentCallTask</code>.</p>
+<div class="admonition note">
+<p><b>Note: </b>The <code translate="no">Sync</code> element is not counted as a task when reporting task tree progress, and is not included in <a href="tasking-tasktree.html#taskCount" translate="no">TaskTree::taskCount</a>() or <a href="tasking-tasktree.html#progressMaximum" translate="no">TaskTree::progressMaximum</a>().</p>
+</div>
+<!-- @@@Sync -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

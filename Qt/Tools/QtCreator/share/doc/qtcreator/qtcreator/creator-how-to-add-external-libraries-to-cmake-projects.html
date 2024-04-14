@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-projects-cmake.qdoc -->
+  <title>Add libraries to CMake projects | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Add libraries to CMake projects</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#add-your-own-libraries">Add your own libraries</a></li>
+<li class="level1"><a href="#add-external-libraries">Add external libraries</a></li>
+<li class="level1"><a href="#use-local-cmake-find-packages">Use local CMake Find packages</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Add libraries to CMake projects</h1>
+<!-- $$$creator-how-to-add-external-libraries-to-cmake-projects.html-description -->
+<div class="descr" id="details">
+<p>In addition to Qt libraries, you can add other libraries to your projects. The process depends on the type and location of the library:</p>
+<ul>
+<li>A system library</li>
+<li>Your own library</li>
+<li>A 3rd party library</li>
+</ul>
+<p>Qt Creator supports code completion and syntax highlighting for the added libraries once your project successfully builds and links to them.</p>
+<h2 id="add-your-own-libraries">Add your own libraries</h2>
+<p>Use the qt_add_library command to create a library and link against it in the CMakeLists.txt file, as instructed in Structuring projects.</p>
+<p>Specify whether the library is statically or dynamically linked. For a statically linked internal library, add the <a href="https://cmake.org/cmake/help/latest/command/target_link_libraries.html" translate="no">CMake: target_link_libraries command</a> to the CMakeLists.txt project file to specify dependencies.</p>
+<h2 id="add-external-libraries">Add external libraries</h2>
+<p>Through external libraries, Qt Creator can support code completion and syntax highlighting as if the code were a part of the current project or the Qt library.</p>
+<p>Qt Creator detects the external libraries using the <a href="https://cmake.org/cmake/help/latest/command/find_package.html" translate="no">CMake: find_package command</a> command. Some libraries come with the CMake installation. You can find those in the <code translate="no">Modules</code> directory of your CMake installation. For more information, see <a href="https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html" translate="no">CMake: cmake-packages(7)</a>.</p>
+<h2 id="use-local-cmake-find-packages">Use local CMake Find packages</h2>
+<p>For CMake projects that have external dependencies, use <a href="https://cmake.org/cmake/help/latest/manual/cmake-developer.7.html#find-modules" translate="no">Find&lt;package&gt;.cmake</a> modules that expose imported targets. You can use the pre-defined <code translate="no">sample_find_module</code> <a href="creator-preferences-text-editor-shippets.html" translate="no">code snippet</a> to add sample commands to a <code translate="no">.cmake</code> file. You can then change the commands as necessary.</p>
+<p>Place Find modules in the <code translate="no">${CMAKE_CURRENT_SOURCE_DIR}/cmake</code> directory, and append the directory name to the CMAKE_MODULE_PATH list variable. For example:</p>
+<pre class="cpp" translate="no">
+ list(APPEND CMAKE_MODULE_PATH <span class="string">&quot;${CMAKE_CURRENT_SOURCE_DIR}/cmake&quot;</span>)
+</pre>
+</div>
+<p><b>See also </b><a href="creator-how-tos.html#build-with-cmake" translate="no">How To: Build with CMake</a>, <a href="creator-project-cmake.html" translate="no">CMake</a>, <a href="creator-preferences-text-editor-completion.html" translate="no">Completion</a>, and <a href="creator-preferences-text-editor-shippets.html" translate="no">Snippets</a>.</p>
+<!-- @@@creator-how-to-add-external-libraries-to-cmake-projects.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

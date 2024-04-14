@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtbridge-figma-using.qdoc -->
+  <title>Using Qt Bridge for Figma | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Using Qt Bridge for Figma</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="qtbridge-figma-setup.html" />
+  <link rel="next" href="qtbridge-figma-template.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="qtbridge-figma-setup.html">Setting Up Qt Bridge for Figma</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtbridge-figma-template.html">Using Figma Quick Control Template Components in Qt Design Studio</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#organizing-designs">Organizing Designs</a></li>
+<li class="level2"><a href="#items-you-can-export">Items You Can Export</a></li>
+<li class="level2"><a href="#using-frames">Using Frames</a></li>
+<li class="level2"><a href="#using-variants">Using Variants</a></li>
+<li class="level1"><a href="#exporting-designs">Exporting Designs</a></li>
+<li class="level1"><a href="#export-settings">Export Settings</a></li>
+<li class="level2"><a href="#home">Home</a></li>
+<li class="level2"><a href="#settings">Settings</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Using Qt Bridge for Figma</h1>
+<!-- $$$qtbridge-figma-using.html-description -->
+<div class="descr" id="details">
+<h2 id="organizing-designs">Organizing Designs</h2>
+<p>To get the best results during export and import, follow these guidelines when working with Figma:</p>
+<ul>
+<li>Use pages for different purposes, such as <i>sketching</i> for trying out ideas, <i>components</i> for creating UI components, <i>assets</i> for images that you use in the components, and <i>screens</i> for building the UI screens using components and assets.</li>
+<li>Arrange each page into frames. When you are happy with a design, move it from the sketching page to the components page and use it in screens. When you export your assets, you can skip all frames that you don't want to be part of the final UI, to avoid cluttering the Qt Design Studio project. The code generated in Qt Design Studio corresponds to the structure of your Figma document.</li>
+<li>Qt Bridge for Figma supports <i>Figma components</i>. Each Figma component is exported as a <i>Qt Design Studio component</i>, and each Figma component instance is generated as a respective component instance in the component files generated when you <a href="studio-importing-2d.html" translate="no">import</a> the design into Qt Design Studio.</li>
+<li>Create components in Figma and export them to Qt Design Studio before you start making instances of them. In Qt Design Studio, add functionality to the components, such as button states and then bring them back to Figma as assets. If you use functional Qt Design Studio components in Figma, you will find it easier to merge new iterations of the design to Qt Design Studio and continue to build the screens there.</li>
+<li>Qt Bridge for Figma does not support exporting changes in component instances. If you make changes to component instances in Figma, you must detach the instances before exporting them. Similarly, if your Figma components contain nested components, Figma allows you to hot swap the nested instance inside the component instance. However, Qt Bridge for Figma doesn't support this so you get the original component unless you detach the component instance before exporting it.</li>
+<li>Use descriptive and unique IDs to avoid duplicate IDs after exporting designs and importing them to Qt Design Studio.</li>
+</ul>
+<p>To use the fonts that you use in Figma also in Qt Design Studio, you need to add them to Qt Design Studio as assets. Qt Design Studio deploys them to devices when you preview the UI. For more information, see <a href="qtquick-fonts.html" translate="no">Using Custom Fonts</a>.</p>
+<h3 id="items-you-can-export">Items You Can Export</h3>
+<p>You can export the following parts of your design using Qt Bridge for Figma:</p>
+<ul>
+<li>Images</li>
+<li>Vector images</li>
+<li>Layers<ul>
+<li>Text layers</li>
+<li>Shape layers</li>
+</ul>
+</li>
+<li>Components</li>
+<li>Component instances</li>
+<li>Frames</li>
+<li>Groups</li>
+</ul>
+<h3 id="using-frames">Using Frames</h3>
+<p>Frames are exported as components of the <a href="quick-shapes.html#rectangle" translate="no">Rectangle</a> type by default. However, if you have applied effects to the frames that Qt Bridge for Figma cannot handle, such as gradient fill colors or a mixed radius, the frames are exported as images.</p>
+<h3 id="using-variants">Using Variants</h3>
+<p>Figma variants are exported as a component with states. All variants inside a <i>component-set</i> are merged together and the differences across the variants are translated into states.</p>
+<p>For an optimal output, follow these guidelines:</p>
+<ul>
+<li>Qt Bridge for Figma panel is disabled for variants. Before adding a variant to a component, the Qt Bridge for Figma settings for the component should be complete.</li>
+<li>Do not change the layer names across the variants. The <a href="qtquick-properties.html#id" translate="no">ID</a> of a layer is derived from the layer name which in turn is used to identify the property differences for the state generation, so it is essential to keep the layer names same across variants.</li>
+<li>Adding and removing layers across the variants is fine and encouraged to create the variant differences.</li>
+</ul>
+<h2 id="exporting-designs">Exporting Designs</h2>
+<p class="centerAlign"><img src="images/qt-figma-bridge.png" alt="&quot;Qt Bridge for Figma&quot;" /></p><p>To export your design using Qt Bridge for Figma:</p>
+<ol class="1" type="1"><li>Specify settings for exporting each group and layer.</li>
+<li>Select <b translate="no">Export</b> to export your design.</li>
+<li>When the exporting is done, select <b translate="no">OK</b>.</li>
+</ol>
+<p>Qt Bridge for Figma exports everything into a .qtbridge archive. You can import the archive into a project in Qt Design Studio, as described in <a href="studio-importing-2d.html" translate="no">Importing 2D Assets</a>.</p>
+<h2 id="export-settings">Export Settings</h2>
+<p>You can specify export settings in the <b translate="no">Home</b> tab and in the <b translate="no">Settings</b> tab.</p>
+<h3 id="home">Home</h3>
+<p>You can specify settings for exporting each group and layer.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Name</th><th >Purpose</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">ID</b></td><td >Qt Bridge for Figma automatically derives identifiers for all groups and layers from layer name. You can change them in this field. Use unique and descriptive IDs to avoid duplicate IDs when the layer and the respective artwork are imported into Qt Design Studio.<div class="admonition note">
+<p><b>Note: </b>Once the ID is edited, the automatic assignment of ID from layer name stops for this layer. Use <img src="images/figma-binding-reset.png" alt="" /> button next to <b translate="no">ID</b> to reset the ID back to automatic assignment.</p>
+</div>
+</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Export as</b></td><td >Determines how to export the group or layer:<ul>
+<li><b translate="no">Child</b> exports each asset of the selected group or layer as a separate component file. Images are exported as separate files nested in <a href="quick-images.html" translate="no">Image</a> components. You select the image file format in <b translate="no">Settings</b> &gt; <b translate="no">Asset settings</b>.<p>Figma rectangles are exported as <a href="quick-shapes.html#basic-rectangle" translate="no">Rectangle</a> components. Figma vectors are exported as <a href="quick-data-models.html#svg-path-item" translate="no">SVG Path Item</a> components from the <a href="quick-shapes.html" translate="no">Qt Quick Studio Components</a> module.</p>
+</li>
+<li><b translate="no">Merged</b> merges the selected groups and layers into one component.</li>
+<li><b translate="no">Skipped</b> completely skips the selected layer.</li>
+</ul>
+<div class="admonition note">
+<p><b>Note: </b>Use <img src="images/figma-binding-reset.png" alt="" /> button next to <b translate="no">Export as</b> to reset to default value.</p>
+</div>
+</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Custom Component Type</b></td><td >Determines the <a href="quick-components-view.html#component-types" translate="no">component type</a> to morph this layer into. The component that is generated during import will be of this type. For example, if you drew a button, you can export it as a <a href="quick-controls.html#button" translate="no">Button</a> component from the Qt Quick Controls module. You can provide the import statement of the <a href="quick-components-view.html#adding-and-removing-modules" translate="no">module</a> where the component is defined in the <b translate="no">Imports</b> field.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Properties</b></td><td >Sets values of properties for the component. You can add properties and modify their values in Qt Design Studio.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Imports</b></td><td >If you want to make additional components available in the component file, you can enter the import statements of the modules that contain the components in this field. For example, to use components from version 2.3 of the Qt Quick Controls module, you need the import statement <code translate="no">QtQuick.Controls 2.3</code> and to use version 1.0 Qt Quick Studio Components, you need the import statement <code translate="no">QtQuick.Studio.Components 1.0</code>. You can add components from all the available modules in Qt Design Studio later. You can also import a module as an <i>alias</i>.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Properties</b></td><td >Specify new properties or assign values to the existing properties of the component. You can also add and modify properties in Qt Design Studio. The following are a few examples of the properties:<pre class="cpp" translate="no">
+ property <span class="type">int</span> counter: <span class="number">5</span>
+ property string label: <span class="string">&quot;ok&quot;</span>
+ antialiasing : <span class="keyword">true</span>
+ width: parent<span class="operator">.</span>width <span class="operator">/</span> <span class="number">2</span>
+</pre>
+<p>To remove a property, write a &quot;dash&quot; (-) followed by the &quot;property name&quot;. For example:</p>
+<pre class="cpp" translate="no">
+ <span class="operator">-</span> width
+</pre>
+<p>will remove the property <i>width</i> from the generated code.</p>
+</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Snippet</b></td><td >Specify component to be added as child under this component. Following example adds a Connection component:<pre class="cpp" translate="no">
+ Connections {
+     target: myItem
+     onVisibleChanged: console<span class="operator">.</span>log(original_Text<span class="operator">.</span>visible)
+ }
+</pre>
+<div class="admonition note">
+<p><b>Note: </b>The code must have a scope of a component(e.g. Item, <a href="https://doc.qt.io/qt/qml-qtquick-mousearea.html" translate="no">MouseArea</a>, Connections etc.) with a valid syntax for <a href="creator-quick-ui-forms.html" translate="no">UI Files</a>.</p>
+</div>
+<div class="admonition note">
+<p><b>Note: </b>Add respective imports for your snippet in <b translate="no">Imports</b>.</p>
+</div>
+</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Alias</b></td><td >Exports the component generated from this layer as an alias in the parent component.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Start Screen</b></td><td >Sets the component to be the starting component in Qt Design Studio project.</td></tr>
+</table></div>
+<h3 id="settings">Settings</h3>
+<p class="centerAlign"><img src="images/qt-figma-bridge-settings.png" alt="" /></p><p>You can export assets in the selected format (JPG, PNG, or SVG).</p>
+<p>By default, vectors are exported as <a href="quick-data-models.html#svg-path-item" translate="no">SVG Path Item</a> components from the Qt Quick Studio Components module. This might not work for layers that have particular effects applied to them. In that case, the layers are exported as images.</p>
+<p>Because MCUs only support simple images, disable the <b translate="no">Export as shapes</b> check box when designing for MCUs.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Name</th><th >Purpose</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Asset settings</b></td><td >Exports assets in the selected format (JPG, PNG, or SVG).</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Export as shapes</b></td><td >Exports vectors as components of the type <a href="quick-data-models.html#svg-path-item" translate="no">SVG Path Item</a> from the Qt Quick Studio Components module.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Create page hierarchy</b></td><td >Organize the generated UI in Qt Design Studio under the directory named after the parent page of the respective component.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Reset plugin data</b></td><td >Resets all settings for all layers and groups (also in the <b translate="no">Home</b> tab) to default values. This means that you will lose all your changes to the settings.</td></tr>
+</table></div>
+</div>
+<!-- @@@qtbridge-figma-using.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="qtbridge-figma-setup.html">Setting Up Qt Bridge for Figma</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtbridge-figma-template.html">Using Figma Quick Control Template Components in Qt Design Studio</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

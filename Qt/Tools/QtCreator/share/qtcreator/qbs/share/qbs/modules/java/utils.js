@@ -74,13 +74,12 @@ function jdkRootRegistryKey(wow64) {
 
 function findJdkPath(hostOS, arch, environmentPaths, searchPaths) {
     var i;
-    for (var key in environmentPaths) {
-        if (environmentPaths[key]) {
-            return environmentPaths[key];
-        }
+    for (i = 0; i < environmentPaths.length; ++i) {
+        if (environmentPaths[i])
+            return environmentPaths[i];
     }
 
-    if (hostOS.contains("windows")) {
+    if (hostOS.includes("windows")) {
         var rootKey = jdkRootRegistryKey(useWow64Key(arch));
         if (rootKey) {
             var current = Utilities.getNativeSetting(rootKey, "CurrentVersion"); // 1.8 etc.
@@ -95,27 +94,55 @@ function findJdkPath(hostOS, arch, environmentPaths, searchPaths) {
         return undefined;
     }
 
-    if (hostOS.contains("macos")) {
+    if (hostOS.includes("macos")) {
         var p = new Process();
         try {
             // We filter by architecture here so that we'll get a compatible JVM for JNI use.
             var args = [];
+            var canonicalArch;
             if (arch) {
                 // Hardcoding apple/macosx/macho here is fine because we know we're on macOS
-                args.push("--arch",
-                          Utilities.canonicalTargetArchitecture(arch, undefined,
-                                                                "apple", "macosx", "macho"));
+                canonicalArch = Utilities.canonicalTargetArchitecture(arch, undefined, "apple",
+                                                                      "macosx", "macho");
+                args.push("--arch", canonicalArch);
             }
 
             // --failfast doesn't print the default JVM if nothing matches the filter(s).
             var status = p.exec("/usr/libexec/java_home", args.concat(["--failfast"]));
-            return status === 0 ? p.readStdOut().trim() : undefined;
+            if (status === 0)
+                return p.readStdOut().trim();
+
+            // It has been obvserved that java_home fails for any architecture that is passed,
+            // so try without the filter and look up the JDK architecture manually.
+            if (!canonicalArch)
+                return undefined;
+
+            if (p.exec("/usr/libexec/java_home", ["--failfast"]) !== 0)
+                return undefined;
+            var jdkPath = p.readStdOut().trim();
+            var releaseFile = new TextFile(jdkPath + "/release", TextFile.ReadOnly);
+            var line;
+            while ((line = releaseFile.readLine())) {
+                if (!line.startsWith("OS_ARCH="))
+                    continue;
+                var firstQuote = line.indexOf('"');
+                if (firstQuote === -1)
+                    break;
+                var secondQuote = line.indexOf('"', firstQuote + 1);
+                if (secondQuote === -1)
+                    break;
+                var archFromFile = line.substring(firstQuote + 1, secondQuote);
+                if (archFromFile !== canonicalArch)
+                    break;
+                return jdkPath;
+            }
+            return undefined;
         } finally {
             p.close();
         }
     }
 
-    if (hostOS.contains("unix")) {
+    if (hostOS.includes("unix")) {
         var requiredTools = ["javac", "java", "jar"];
         for (i = 0; i < searchPaths.length; ++i) {
             function fullToolPath(tool) {
@@ -136,7 +163,7 @@ function findJdkVersion(compilerFilePath) {
     var p = new Process();
     try {
         p.exec(compilerFilePath, ["-version"]);
-        var re = /^javac (([0-9]+(?:\.[0-9]+){2,2})(_([0-9]+))?)$/m;
+        var re = /^javac (([0-9]+(?:\.[0-9]+){0,2})(_([0-9]+))?)(.*)?$/m;
         var match = p.readStdErr().trim().match(re);
         if (!match)
             match = p.readStdOut().trim().match(re);
@@ -145,6 +172,19 @@ function findJdkVersion(compilerFilePath) {
     } finally {
         p.close();
     }
+}
+
+function splitVersionString(compilerVersion) {
+    if (!compilerVersion)
+        return [];
+
+    var result = compilerVersion.split(/[\._]/).map(function(item) {
+        return parseInt(item, 10);
+    });
+    // special case, if javac -version returned "12" instead of "12.0.0"
+    if (result.length === 1)
+        result.push(0, 0);
+    return result;
 }
 
 function supportsGeneratedNativeHeaderFiles(product) {
@@ -181,7 +221,7 @@ function javacArguments(product, inputs, overrides) {
         classPaths.push(inputs["java.jar"][i].filePath);
     var debugArg = product.moduleProperty("qbs", "buildVariant") === "debug"
             ? "-g" : "-g:none";
-    var pathListSeparator = product.moduleProperty("qbs", "pathListSeparator");
+    var pathListSeparator = FileInfo.pathListSeparator();
     var args = [
             "-classpath", classPaths.join(pathListSeparator),
             "-s", product.buildDirectory,
@@ -234,7 +274,7 @@ function helperFullyQualifiedNames(type) {
     ];
     if (type === "java") {
         return names.filter(function (name) {
-            return !name.contains("$");
+            return !name.includes("$");
         });
     } else if (type === "class") {
         return names;
@@ -300,7 +340,7 @@ function outputArtifacts(product, inputs) {
         process.setWorkingDirectory(
                     FileInfo.joinPaths(ModUtils.moduleProperty(product, "internalClassFilesDir")));
 
-        var sep = product.moduleProperty("qbs", "pathListSeparator");
+        var sep = FileInfo.pathListSeparator();
         var toolsJarPath = ModUtils.moduleProperty(product, "toolsJarPath");
         var javaArgs = [
             "-classpath", process.workingDirectory() + (toolsJarPath ? (sep + toolsJarPath) : ""),
@@ -334,7 +374,7 @@ function manifestContents(filePath) {
     if (contents) {
         var dict = {};
         var lines = contents.split(/\r?\n/g).filter(function (line) { return line.length > 0; });
-        for (var i in lines) {
+        for (var i = 0; i < lines.length; ++i) {
             var kv = lines[i].split(":");
             if (kv.length !== 2)
                 throw new Error("Syntax error in manifest file '"

@@ -33,44 +33,56 @@ import "../../../modules/cpp/iar.js" as IAR
 
 PathProbe {
     // Inputs
-    property string compilerFilePath;
-
-    property string _nullDevice: qbs.nullDevice
+    property string compilerFilePath
+    property stringList enableDefinesByLanguage
 
     // Outputs
-    property string architecture;
-    property string endianness;
-    property int versionMajor;
-    property int versionMinor;
-    property int versionPatch;
+    property string architecture
+    property string endianness
+    property int versionMajor
+    property int versionMinor
+    property int versionPatch
+    property stringList includePaths
+    property var compilerDefinesByLanguage
 
     configure: {
+        compilerDefinesByLanguage = {};
+
         if (!File.exists(compilerFilePath)) {
             found = false;
             return;
         }
 
-        var macros = IAR.dumpMacros(compilerFilePath, qbs, _nullDevice);
+        var languages = enableDefinesByLanguage;
+        if (!languages || languages.length === 0)
+            languages = ["c"];
+
+        var defaultPathsByLanguage = {};
+        for (var i = 0; i < languages.length; ++i) {
+            var tag = languages[i];
+            compilerDefinesByLanguage[tag] = IAR.dumpMacros(
+                compilerFilePath, tag);
+            var paths = IAR.dumpDefaultPaths(compilerFilePath, tag);
+            defaultPathsByLanguage[tag] = paths;
+        }
+
+        var macros = compilerDefinesByLanguage["c"]
+            || compilerDefinesByLanguage["cpp"];
 
         architecture = IAR.guessArchitecture(macros);
         endianness = IAR.guessEndianness(macros);
 
-        var version = parseInt(macros["__VER__"], 10);
+        var defaultPaths = defaultPathsByLanguage["cpp"]
+            || defaultPathsByLanguage["c"];
 
-        if (architecture === "arm") {
-            versionMajor = parseInt(version / 1000000);
-            versionMinor = parseInt(version / 1000) % 1000;
-            versionPatch = parseInt(version) % 1000;
-        } else if (architecture === "mcs51") {
-            versionMajor = parseInt(version / 100);
-            versionMinor = parseInt(version % 100);
-            versionPatch = 0;
-        } else if (architecture === "avr") {
-            versionMajor = parseInt(version / 100);
-            versionMinor = parseInt(version % 100);
-            versionPatch = 0;
+        includePaths = defaultPaths.includePaths;
+
+        var version = IAR.guessVersion(macros, architecture);
+        if (version) {
+            versionMajor = version.major;
+            versionMinor = version.minor;
+            versionPatch = version.patch;
+            found = !!architecture && !!endianness;
         }
-
-        found = version && architecture && endianness;
    }
 }

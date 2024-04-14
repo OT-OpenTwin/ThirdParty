@@ -48,13 +48,12 @@
 **
 ****************************************************************************/
 
-import qbs
-
 AppleApplicationDiskImage {
     condition: qbs.targetOS.contains("macos")
     name: "Cocoa Application DMG"
     targetName: "cocoa-application-" + version
     version: "1.0"
+    builtByDefault: false
 
     Depends { name: "Cocoa Application" }
     Depends { name: "ib" }

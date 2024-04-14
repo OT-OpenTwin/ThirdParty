@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
 <!-- creator-projects-custom-wizards.qdoc -->
-  <title>Adding New Custom Wizards | Qt Creator Manual</title>
+  <meta name="description" content="Wizard types and JSON wizard format.">
+  <title>Custom Wizards | Qt Creator Manual</title>
   <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
   <script type="text/javascript">
     document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
@@ -22,97 +22,617 @@
 </head>
 <body>
 <div class="header" id="qtdocheader">
-  <div class="main">
+    <div class="main">
     <div class="main-rounded">
-      <div class="navigationbar">
-        <table><tr>
-<td ><a href="index.html">Qt Creator Manual</a></td><td >Adding New Custom Wizards</td></tr></table><table class="buildversion"><tr>
-<td id="buildversion" width="100%" align="right"><a href="index.html">Qt Creator Manual 4.9&#x2e;1</a></td>
-        </tr></table>
-      </div>
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Custom Wizards</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
     </div>
+</div>
 <div class="content">
 <div class="line">
 <div class="content mainContent">
-  <link rel="prev" href="creator-project-qmake-libraries.html" />
-  <link rel="next" href="creator-project-wizards-json.html" />
+  <link rel="prev" href="creator-reference.html" />
 <p class="naviNextPrevious headerNavi">
-<a class="prevPage" href="creator-project-qmake-libraries.html">Adding Libraries to Projects</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-project-wizards-json.html">Adding JSON-Based Wizards</a>
-</p><p/>
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
 <div class="sidebar">
 <div class="toc">
-<h3><a name="toc">Contents</a></h3>
+<h3 id="toc">Contents</h3>
 <ul>
 <li class="level1"><a href="#wizard-types">Wizard Types</a></li>
 <li class="level1"><a href="#locating-wizards">Locating Wizards</a></li>
 <li class="level1"><a href="#tips-for-wizard-development">Tips for Wizard Development</a></li>
+<li class="level2"><a href="#mapping-actions-to-keyboard-shortcuts">Mapping Actions to Keyboard Shortcuts</a></li>
 <li class="level2"><a href="#verbose-output">Verbose Output</a></li>
+<li class="level1"><a href="#integrating-wizards-into-builds">Integrating Wizards into Builds</a></li>
+<li class="level1"><a href="#using-variables-in-wizards">Using Variables in Wizards</a></li>
+<li class="level1"><a href="#localizing-wizards">Localizing Wizards</a></li>
+<li class="level1"><a href="#creating-wizards">Creating Wizards</a></li>
+<li class="level1"><a href="#values-available-to-the-wizard">Values Available to the Wizard</a></li>
+<li class="level1"><a href="#available-pages">Available Pages</a></li>
+<li class="level2"><a href="#field-page">Field Page</a></li>
+<li class="level2"><a href="#file-page">File Page</a></li>
+<li class="level2"><a href="#form-page">Form Page</a></li>
+<li class="level2"><a href="#kits">Kits</a></li>
+<li class="level2"><a href="#project">Project</a></li>
+<li class="level2"><a href="#summary">Summary</a></li>
+<li class="level2"><a href="#vcscommand">VcsCommand</a></li>
+<li class="level2"><a href="#vcsconfiguration">VcsConfiguration</a></li>
+<li class="level1"><a href="#available-widgets">Available Widgets</a></li>
+<li class="level2"><a href="#check-box">Check Box</a></li>
+<li class="level2"><a href="#list">List</a></li>
+<li class="level2"><a href="#label">Label</a></li>
+<li class="level2"><a href="#line-edit">Line Edit</a></li>
+<li class="level2"><a href="#path-chooser">Path Chooser</a></li>
+<li class="level2"><a href="#spacer">Spacer</a></li>
+<li class="level2"><a href="#text-edit">Text Edit</a></li>
+<li class="level1"><a href="#available-generators">Available Generators</a></li>
+<li class="level2"><a href="#file-generator">File Generator</a></li>
+<li class="level2"><a href="#scanner-generator">Scanner Generator</a></li>
 </ul>
 </div>
 <div class="sidebar-content" id="sidebar-content"></div></div>
-<h1 class="title">Adding New Custom Wizards</h1>
-<span class="subtitle"></span>
+<h1 class="title">Custom Wizards</h1>
 <!-- $$$creator-project-wizards.html-description -->
-<div class="descr"> <a name="details"></a>
+<div class="descr" id="details">
 <p>If you have a team working on a large application or several applications, you might want to standardize the way the team members create projects and files.</p>
-<p>You can copy the wizard templates in the template folders to create your own project and file wizards. They are displayed in the <b>New</b> dialog that opens when you choose <b>File</b> &gt; <b>New File or Project</b>.</p>
-<p>A custom wizard defines the user interface of a set of wizard pages. The values the user enters in the wizard are assigned field names. Field name and value pairs are then passed to the file creation process.</p>
-<a name="wizard-types"></a>
-<h2 id="wizard-types">Wizard Types</h2>
+<p>You can create custom wizards in JSON format. They are stored in wizard template directories that have a JSON configuration file called <code translate="no">wizard.json</code> and any template files needed. The configuration file has sections that specify information about the wizard, variables that you can use, wizard pages, and generators for creating files.</p>
+<p>To create a customized wizard, copy a template directory to the <code translate="no">templates/wizards/</code> directory in the local user's settings directory under a new name. Then change the wizard id in the <code translate="no">wizard.json</code> file.</p>
+<p>You can create a subdirectory for the templates in the settings directory. Qt Creator organizes the standard wizards into subdirectories by type, but you can add your wizard directory to any directory you like. The folder hierarchy does not affect the order in which Qt Creator displays wizards.</p>
+<p>To share the wizard with other users, you can create an archive of the wizard directory and instruct the recipients to extract it into one of the directories Qt Creator searches wizards from.</p>
+<p>Qt Creator displays the wizards that it finds in the <b translate="no">New Project</b> and <b translate="no">New File</b> dialogs. For each wizard, it shows an icon (1), a display name (2), and a description (3).</p>
+<p class="centerAlign"><img src="images/qtcreator-custom-wizard.webp" alt="{New File wizard}" /></p><h2 id="wizard-types">Wizard Types</h2>
 <p>In a project wizard, you can specify the files needed in a project. You can add wizard pages to allow developers to specify settings for the project.</p>
-<p>A file wizard is similar, but does not contain any project file.</p>
-<p>You are encouraged to create JSON-based wizards. They provide a super-set of the functionality available in the XML based wizards used before. For more information, see:</p>
-<ul>
-<li><a href="creator-project-wizards-json.html">Adding JSON-Based Wizards</a></li>
-<li><a href="creator-project-wizards-xml.html">Adding XML-Based Wizards</a> (deprecated)</li>
-</ul>
-<a name="locating-wizards"></a>
+<p>A file wizard is similar, but does not have any project file.</p>
 <h2 id="locating-wizards">Locating Wizards</h2>
-<p>Wizards are located in subdirectories of the following directories:</p>
+<p>Qt Creator searches the following locations for wizards:</p>
 <ul>
-<li><code>share/qtcreator/templates/wizards</code></li>
-<li>the local user's configuration folder, <code>$HOME/.config/QtProject/qtcreator/templates/wizards</code> on Linux and macOS or <code>%APPDATA%\QtProject\qtcreator\templates\wizards</code> on Windows</li>
+<li>Predefined wizards in the shared directory:<ul>
+<li>On Windows: <code translate="no">share\qtcreator\templates\wizards</code></li>
+<li>On Linux: <code translate="no">share/qtcreator/templates/wizards</code></li>
+<li>On macOS: <code translate="no">Qt Creator.app/Contents/Resources/templates/wizards</code></li>
 </ul>
-<p><b>Note: </b>If you installed Qt Creator on macOS, you can find the wizards in <code>Qt Creator.app/Contents/Resources/templates/wizards</code>.</p><a name="tips-for-wizard-development"></a>
+</li>
+<li>Your custom wizards in the local user's settings directory:<ul>
+<li>On Windows: <code translate="no">%APPDATA%\QtProject\qtcreator\templates\wizards</code></li>
+<li>On Linux and macOS: <code translate="no">$HOME/.config/QtProject/qtcreator/templates/wizards</code></li>
+</ul>
+</li>
+</ul>
 <h2 id="tips-for-wizard-development">Tips for Wizard Development</h2>
-<p>Qt Creator has some actions that can improve the wizard development process. These are by default not bound to any keyboard shortcuts and can thus not be triggered. To enable them, assign keyboard shortcuts in <b>Tools</b> &gt; <b>Options</b> &gt; <b>Environment</b> &gt; <b>Keyboard</b> &gt; <b>Wizard</b>.</p>
+<p>Assign keyboard shortcuts to some helper actions and turn on verbose output.</p>
+<h3 id="mapping-actions-to-keyboard-shortcuts">Mapping Actions to Keyboard Shortcuts</h3>
+<p>Qt Creator has some actions that can improve the wizard development process. They don't have keyboard shortcuts by default, so you cannot trigger them. To enable them, assign keyboard shortcuts in <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Environment</b> &gt; <b translate="no">Keyboard</b> &gt; <b translate="no">Wizard</b>.</p>
 <p>The following actions can help with wizard development:</p>
 <div class="table"><table class="generic">
  <thead><tr class="qt-style"><th >Action Id</th><th >Description</th></tr></thead>
-<tr valign="top" class="odd"><td ><b>Inspect</b></td><td >Triggering this action opens a window that lists all the defined fields and variables in the wizard at the time the action was triggered. Each activation of this action opens a new non-modal window, so you can compare state at different pages of the wizard for example.</td></tr>
-<tr valign="top" class="even"><td ><b>Factory.Reset</b></td><td >Triggering this action makes Qt Creator forget all wizard factories, causing it to reload all wizard definitions when for example opening <b>File</b> &gt; <b>New File or Project</b>. This way you can avoid having to restart Qt Creator for your changes to a wizard definition to become visible.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Inspect</b></td><td >Triggering this action opens a window that lists all the defined fields and variables in the wizard at the time the action was triggered. Each activation of this action opens a new non-modal window, so you can compare state at different pages of the wizard for example.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Factory.Reset</b></td><td >Triggering this action makes Qt Creator forget all wizard factories, causing it to reload all wizard definitions when for example opening <b translate="no">File</b> &gt; <b translate="no">New Project</b>. This way you can avoid having to restart Qt Creator for your changes to a wizard definition to become visible.</td></tr>
 </table></div>
-<a name="verbose-output"></a>
-<h3 >Verbose Output</h3>
-<p>When developing custom wizards (both JSON as well as XML based), it is recommended to start Qt Creator with the <code>-customwizard-verbose</code> argument. It causes each correctly set up wizard to produce output along the following lines:</p>
-<pre class="cpp">
-
-  Checking <span class="string">&quot;/home/jsmith/.config/QtProject/qtcreator/templates/wizards/mywizard&quot;</span>
-  <span class="keyword">for</span> wizard<span class="operator">.</span>json<span class="operator">.</span>
-  <span class="operator">*</span> Configuration found and parsed<span class="operator">.</span>
-
+<h3 id="verbose-output">Verbose Output</h3>
+<p>For wizard development, we recommend that you start Qt Creator with the <code translate="no">-customwizard-verbose</code> argument to receive confirmation that Qt Creator finds and parses the <code translate="no">wizard.json</code> file. The verbose mode displays information about syntax errors, which are the most typical errors you might run into while editing wizards.</p>
+<p>In verbose mode, each correctly set up wizard produces output along the following lines:</p>
+<pre class="cpp" translate="no">
+ Checking <span class="string">&quot;/home/jsmith/.config/QtProject/qtcreator/templates/wizards/mywizard&quot;</span>
+ <span class="keyword">for</span> wizard<span class="operator">.</span>json<span class="operator">.</span>
+ <span class="operator">*</span> Configuration found <span class="keyword">and</span> parsed<span class="operator">.</span>
 </pre>
-<p>The output includes the name of the directory that was checked for a <code>wizard.json</code> file. If the file is not found, the message is not displayed.</p>
-<p>If the file contains errors, such as an invalid icon path, the following types of messages are displayed:</p>
-<pre class="cpp">
-
-  Checking <span class="string">&quot;/home/jsmith/.config/QtProject/qtcreator/templates/wizards/mywizard&quot;</span>
-  <span class="keyword">for</span> wizard<span class="operator">.</span>json<span class="operator">.</span>
-  <span class="operator">*</span> Configuration found and parsed<span class="operator">.</span>
-  <span class="operator">*</span> Failed to create: Icon file
-  <span class="string">&quot;/home/jsmith/.config/QtProject/qtcreator/templates/wizards/mywizard/../..
-  /global/genericfilewizard.png&quot;</span> <span class="keyword">not</span> found<span class="operator">.</span>
-
+<p>The output includes the name of the directory that Qt Creator checks for a <code translate="no">wizard.json</code> file. If it does not find the file, it does not show the message.</p>
+<p>If the file has errors, such as an invalid icon path, you receive the following types of messages:</p>
+<pre class="cpp" translate="no">
+ Checking <span class="string">&quot;/home/jsmith/.config/QtProject/qtcreator/templates/wizards/mywizard&quot;</span>
+ <span class="keyword">for</span> wizard<span class="operator">.</span>json<span class="operator">.</span>
+ <span class="operator">*</span> Configuration found <span class="keyword">and</span> parsed<span class="operator">.</span>
+ <span class="operator">*</span> Failed to create: Icon file
+ <span class="string">&quot;/home/jsmith/.config/QtProject/qtcreator/templates/wizards/mywizard/../..
+ /global/genericfilewizard.png&quot;</span> <span class="keyword">not</span> found<span class="operator">.</span>
 </pre>
-<p>See <a href="creator-cli.html">Using Command Line Options</a> for more information about command line arguments.</p>
+<p>See <a href="creator-cli.html" translate="no">Command-Line Options</a> for more information about command-line arguments.</p>
+<h2 id="integrating-wizards-into-builds">Integrating Wizards into Builds</h2>
+<p>If you are a Qt Creator developer or build your own Qt Creator version for delivery to others, you can integrate the wizard into Qt Creator. To deliver the wizard as part of the Qt Creator build, place the wizard files in the shared directory in the Qt Creator sources. Then select <b translate="no">Build</b> &gt; <b translate="no">Run CMake</b>. This ensures that the new files you added for your wizard are actually copied from the Qt Creator source directory into the Qt Creator build directory as part of the next Qt Creator build.</p>
+<p>If you do not run CMake, your new wizard will not show up because it does not exist in the build directory you run your newly built Qt Creator from. It never got copied there because CMake did not inform the build tool, such as make or Ninja, about the new files in the source tree.</p>
+<p>Basically, CMake generates a fixed list of files to copy from the source directory to the subdirectory of the build directory that is checked for wizards at runtime. Therefore, you need to run CMake or execute the <b translate="no">Factory.Reset</b> function each time the names or locations of the files change.</p>
+<h2 id="using-variables-in-wizards">Using Variables in Wizards</h2>
+<p>You can use variables (<code translate="no">%\{&lt;variableName&gt;\}</code>) in strings in the JSON configuration file and in template source files. A set of variables is predefined by the wizards and their pages. You can introduce new variables as shortcuts for later use by defining the variable key names and values in the <code translate="no">options</code> section in the <code translate="no">wizard.json</code> file.</p>
+<p>There is a special variable <code translate="no">%\{JS:&lt;JavaScript expression&gt;\}</code> which evaluates the given JavaScript expression and converts the resulting JavaScript value to a string. In the JavaScript expression you can refer to variables defined by the wizard with <code translate="no">value('&lt;variableName&gt;')</code>. The returned JavaScript object has the type that the value of the variable has, which can be a string, list, dictionary, or boolean.</p>
+<p>In places where a boolean value is expected and a string is given, an empty string as well as the string <code translate="no">&quot;false&quot;</code> is treated as <code translate="no">false</code> and anything else as <code translate="no">true</code>.</p>
+<h2 id="localizing-wizards">Localizing Wizards</h2>
+<p>If a setting name starts with the <code translate="no">tr</code> prefix, the value is visible to users and should be translated. If the new wizard is included in the Qt Creator sources, the translatable strings appear in the Qt Creator translation files and can be translated as a part of Qt Creator. Alternatively, you can place the translations in the .json file using the following syntax:</p>
+<pre class="cpp" translate="no">
+ <span class="string">&quot;trDisplayName&quot;</span>: { <span class="string">&quot;C&quot;</span>: <span class="string">&quot;default&quot;</span><span class="operator">,</span> <span class="string">&quot;en_US&quot;</span>: <span class="string">&quot;english&quot;</span><span class="operator">,</span> <span class="string">&quot;de_DE&quot;</span>: <span class="string">&quot;deutsch&quot;</span> }
+</pre>
+<p>For example:</p>
+<pre class="cpp" translate="no">
+ <span class="string">&quot;trDisplayName&quot;</span>: { <span class="string">&quot;C&quot;</span>: <span class="string">&quot;Project Location&quot;</span><span class="operator">,</span> <span class="string">&quot;en_US&quot;</span>: <span class="string">&quot;Project Location&quot;</span><span class="operator">,</span> <span class="string">&quot;de_DE&quot;</span>: <span class="string">&quot;Projekt Verzeichnis&quot;</span> }
+</pre>
+<h2 id="creating-wizards">Creating Wizards</h2>
+<p>Qt Creator has wizards for adding classes, files, and projects. You can use them as basis for adding your own wizards. We use the C++ wizard to explain the process and the sections and settings in the .json file.</p>
+<p>In this example, we create the wizard directory in the shared directory and integrate it in the Qt Creator build system, so that it can deployed along with the Qt Creator binaries as part of the build.</p>
+<p class="centerAlign"><img src="images/qtcreator-cpp-class-wizard.png" alt="" /></p><p>For more information about the pages and widgets that you can add and their supported properties, see <a href="creator-project-wizards.html#available-pages" translate="no">Available Pages</a> and <a href="creator-project-wizards.html#available-widgets" translate="no">Available Widgets</a>.</p>
+<p>To create a JSON-based C++ class wizard:</p>
+<ol class="1" type="1"><li>Start Qt Creator with the <code translate="no">-customwizard-verbose</code> argument to receive feedback during wizard development. For more information, see <a href="creator-project-wizards.html#verbose-output" translate="no">Verbose Output</a>.</li>
+<li>Set keyboard shortcuts for the <b translate="no">Inspect</b> and <b translate="no">Factory.Reset</b> actions, as described in <a href="creator-project-wizards.html#tips-for-wizard-development" translate="no">Tips for Wizard Development</a>.</li>
+<li>Make a copy of <code translate="no">share/qtcreator/templates/wizards/classes/cpp</code> and rename it. For example, <code translate="no">$HOME/.config/QtProject/qtcreator/templates/wizards/classes/mycpp</code>.</li>
+<li>Use the <b translate="no">Factory.Reset</b> action to make the wizard appear in <b translate="no">File</b> &gt; <b translate="no">New File</b> without restarting Qt Creator.</li>
+<li>Open the wizard configuration file, <code translate="no">wizard.json</code> for editing:<ul>
+<li>The following settings determine the type of the wizard and its place in the <b translate="no">New File</b> dialog:<pre class="cpp" translate="no">
+ <span class="string">&quot;version&quot;</span>: <span class="number">1</span><span class="operator">,</span>
+ <span class="string">&quot;supportedProjectTypes&quot;</span>: <span class="operator">[</span> <span class="operator">]</span><span class="operator">,</span>
+ <span class="string">&quot;id&quot;</span>: <span class="string">&quot;A.Class&quot;</span><span class="operator">,</span>
+ <span class="string">&quot;category&quot;</span>: <span class="string">&quot;O.C++&quot;</span><span class="operator">,</span>
+</pre>
+<ul>
+<li><code translate="no">version</code> is the version of the file contents. Do not modify this value.</li>
+<li><code translate="no">supportedProjectTypes</code> is an optional setting that can be used to filter wizards when adding a new build target to an existing project. For example, show only wizards that produce qmake projects when adding a new target to an existing qmake project.<p>Possible values are the build systems supported by Qt Creator or <code translate="no">UNKNOWN_PROJECT</code> if the build system is not specified: <code translate="no">AutotoolsProjectManager.AutotoolsProject</code>, <code translate="no">CMakeProjectManager.CMakeProject</code>, <code translate="no">GenericProjectManager.GenericProject</code>, <code translate="no">PythonProject</code>, <code translate="no">Qbs.QbsProject</code>, <code translate="no">Qt4ProjectManager.Qt4Project</code> (qmake project), <code translate="no">QmlProjectManager.QmlProject</code></p>
+</li>
+<li><code translate="no">id</code> is the unique identifier for your wizard. Wizards are sorted by the ID in alphabetic order within the <code translate="no">category</code>. You can use a leading letter to specify the position of the wizard. You must always change this value. For example, <code translate="no">B.MyClass</code>.<p>This information is available in the wizard as <code translate="no">%\{id\}</code>.</p>
+</li>
+<li><code translate="no">category</code> is the category in which to place the wizard in the list. You can use a leading letter to specify the position of the category in the list in the <b translate="no">New File</b> dialog.<p>This information is available in the wizard as <code translate="no">%\{category\}</code>.</p>
+</li>
+</ul>
+</li>
+<li>The following settings specify the icon and text that appear in the <b translate="no">New File</b> dialog:<pre class="cpp" translate="no">
+ <span class="string">&quot;trDescription&quot;</span>: <span class="string">&quot;Creates a C++ header and a source file for a new class that you can add to a C++ project.&quot;</span><span class="operator">,</span>
+ <span class="string">&quot;trDisplayName&quot;</span>: <span class="string">&quot;C++ Class&quot;</span><span class="operator">,</span>
+ <span class="string">&quot;trDisplayCategory&quot;</span>: <span class="string">&quot;C++&quot;</span><span class="operator">,</span>
+ <span class="string">&quot;iconText&quot;</span>: <span class="string">&quot;h/cpp&quot;</span><span class="operator">,</span>
+ <span class="string">&quot;enabled&quot;</span>: <span class="string">&quot;%{JS: value('Plugins').indexOf('CppEditor') &gt;= 0}&quot;</span><span class="operator">,</span>
+</pre>
+<ul>
+<li><code translate="no">trDescription</code> appears in the right-most panel when <code translate="no">trDisplayCategory</code> is selected.<p>This information is available in the wizard as <code translate="no">%\{trDescription\}</code>.</p>
+</li>
+<li><code translate="no">trDisplayName</code> appears in the middle panel when <code translate="no">trDisplayCategory</code> is selected.<p>This information is available in the wizard as <code translate="no">%\{trDisplayName\}</code>.</p>
+</li>
+<li><code translate="no">trDisplayCategory</code> appears in the <b translate="no">New File</b> dialog, under <b translate="no">Files and Classes</b>.<p>This information is available in the wizard as <code translate="no">%\{trDisplayCategory\}</code>.</p>
+</li>
+<li><code translate="no">icon</code> appears next to the <code translate="no">trDisplayName</code> in the middle panel when <code translate="no">trDisplayCategory</code> is selected. We recommend that you specify the path relative to the wizard.json file, but you can also use an absolute path. Omit this value to use the default icon for the wizard type.</li>
+<li><code translate="no">iconText</code> determines the text overlay for the default file icon.</li>
+<li><code translate="no">iconKind</code> determines whether the icon is themed.</li>
+<li><code translate="no">image</code> specifies a path to an image (for example a screenshot) that appears below the <code translate="no">trDescription</code>.</li>
+<li><code translate="no">featuresRequired</code> specifies the Qt Creator features that the wizard depends on. If a required feature is missing, the wizard is hidden. For example, if no kit has a Qt version set, then the qmake-based wizards are hidden.<p>Use <code translate="no">enabled</code> if you need to express more complex logic to decide whether or not your wizard will be available.</p>
+<p>This information is available in the wizard as <code translate="no">%\{RequiredFeatures\}</code>.</p>
+</li>
+<li><code translate="no">featuresPreferred</code> specifies the build and run kits to preselect.<p>This information is available in the wizard as <code translate="no">%\{PreferredFeatures\}</code>.</p>
+</li>
+<li><code translate="no">platformIndependent</code> is set to <code translate="no">true</code> if the wizard is supported by all target platforms. By default, it is set to <code translate="no">false</code>.</li>
+<li><code translate="no">enabled</code> is evaluated to determine whether a wizard is listed in <b translate="no">File</b> &gt; <b translate="no">New Project</b> or <b translate="no">New File</b>, after <code translate="no">featuresRequired</code> has been checked.<p>The default value is <code translate="no">true</code>.</p>
+</li>
+</ul>
+</li>
+<li>The <code translate="no">options</code> section has an array of objects with <i>key</i> and <i>value</i> attributes. You can define your own variables to use in the configuration and template source files, in addition to the predefined variables. For example, the C++ class creation wizard uses the following variables:<pre class="cpp" translate="no">
+ <span class="string">&quot;options&quot;</span>:
+ <span class="operator">[</span>
+     { <span class="string">&quot;key&quot;</span>: <span class="string">&quot;TargetPath&quot;</span><span class="operator">,</span> <span class="string">&quot;value&quot;</span>: <span class="string">&quot;%{Path}&quot;</span> }<span class="operator">,</span>
+     { <span class="string">&quot;key&quot;</span>: <span class="string">&quot;HdrPath&quot;</span><span class="operator">,</span> <span class="string">&quot;value&quot;</span>: <span class="string">&quot;%{Path}/%{HdrFileName}&quot;</span> }<span class="operator">,</span>
+     { <span class="string">&quot;key&quot;</span>: <span class="string">&quot;SrcPath&quot;</span><span class="operator">,</span> <span class="string">&quot;value&quot;</span>: <span class="string">&quot;%{Path}/%{SrcFileName}&quot;</span> }<span class="operator">,</span>
+     { <span class="string">&quot;key&quot;</span>: <span class="string">&quot;CN&quot;</span><span class="operator">,</span> <span class="string">&quot;value&quot;</span>: <span class="string">&quot;%{JS: Cpp.className(value('Class'))}&quot;</span> }<span class="operator">,</span>
+     { <span class="string">&quot;key&quot;</span>: <span class="string">&quot;Base&quot;</span><span class="operator">,</span> <span class="string">&quot;value&quot;</span>: <span class="string">&quot;%{JS: value('BaseCB') === '' ? value('BaseEdit') : value('BaseCB')}&quot;</span> }<span class="operator">,</span>
+     { <span class="string">&quot;key&quot;</span>: <span class="string">&quot;isQObject&quot;</span><span class="operator">,</span> <span class="string">&quot;value&quot;</span>: <span class="string">&quot;%{JS: (value('Base') === 'QObject' || value('Base') === 'QWidget' || value('Base') === 'QMainWindow' || value('Base') === 'QQuickItem' ) ? 'true' : 'false'}&quot;</span> }<span class="operator">,</span>
+     { <span class="string">&quot;key&quot;</span>: <span class="string">&quot;GUARD&quot;</span><span class="operator">,</span> <span class="string">&quot;value&quot;</span>: <span class="string">&quot;%{JS: Cpp.classToHeaderGuard(value('Class'), Util.suffix(value('HdrFileName'))}&quot;</span> }<span class="operator">,</span>
+     { <span class="string">&quot;key&quot;</span>: <span class="string">&quot;SharedDataInit&quot;</span><span class="operator">,</span> <span class="string">&quot;value&quot;</span>: <span class="string">&quot;%{JS: value('IncludeQSharedData') ? 'data(new %{CN}Data)' : '' }&quot;</span> }
+ <span class="operator">]</span><span class="operator">,</span>
+</pre>
+<p>This section is optional. For more examples of variables, see the <code translate="no">wizard.json</code> files for other wizards.</p>
+</li>
+<li>The <code translate="no">pages</code> section specifies the wizard pages. The pages used depend on the wizard type. You can add standard pages to wizards or create new pages using the available widgets. The following settings specify the display name, title, and type of the page:<pre class="cpp" translate="no">
+ <span class="string">&quot;pages&quot;</span>:
+ <span class="operator">[</span>
+     {
+         <span class="string">&quot;trDisplayName&quot;</span>: <span class="string">&quot;Define Class&quot;</span><span class="operator">,</span>
+         <span class="string">&quot;trShortTitle&quot;</span>: <span class="string">&quot;Details&quot;</span><span class="operator">,</span>
+         <span class="string">&quot;typeId&quot;</span>: <span class="string">&quot;Fields&quot;</span><span class="operator">,</span>
+         <span class="string">&quot;data&quot;</span> :
+         <span class="operator">[</span>
+             {
+                 <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Class&quot;</span><span class="operator">,</span>
+                 <span class="string">&quot;trDisplayName&quot;</span>: <span class="string">&quot;Class name:&quot;</span><span class="operator">,</span>
+                 <span class="string">&quot;mandatory&quot;</span>: <span class="keyword">true</span><span class="operator">,</span>
+                 <span class="string">&quot;type&quot;</span>: <span class="string">&quot;LineEdit&quot;</span><span class="operator">,</span>
+                 <span class="string">&quot;data&quot;</span>: {
+                     <span class="string">&quot;trPlaceholder&quot;</span>: <span class="string">&quot;Fully qualified name, including namespaces&quot;</span><span class="operator">,</span>
+                     <span class="string">&quot;validator&quot;</span>: <span class="string">&quot;(?:(?:[a-zA-Z_][a-zA-Z_0-9]*::)*[a-zA-Z_][a-zA-Z_0-9]*|)&quot;</span><span class="operator">,</span>
+                     <span class="string">&quot;completion&quot;</span>: <span class="string">&quot;namespaces&quot;</span>
+                     }
+     }<span class="operator">,</span>
+             <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+ <span class="operator">]</span>
+</pre>
+<ul>
+<li><code translate="no">typeId</code> specifies the page to use: <code translate="no">Fields</code>, <code translate="no">File</code>, <code translate="no">Form</code>, <code translate="no">Kits</code>, <code translate="no">Project</code>, <code translate="no">VcsConfiguration</code>, <code translate="no">VcsCommand</code> or <code translate="no">Summary</code>.<p>Full page ID, as used in the code, consists of the <code translate="no">typeId</code> prefixed with <code translate="no">&quot;PE.Wizard.Page.&quot;</code>. For more information, about the pages, see <a href="creator-project-wizards.html#available-pages" translate="no">Available Pages</a>.</p>
+</li>
+<li><code translate="no">trDisplayName</code> specifies the title of the page. By default, the page title is used.</li>
+<li><code translate="no">trShortTitle</code> specifies the title used in the sidebar of the Wizard. By default, the page title is used.</li>
+<li><code translate="no">trSubTitle</code> specifies the subtitle of the page. By default, the page title is used.</li>
+<li><code translate="no">index</code> is an integer value that specifies the page ID. It is automatically assigned if you do not set it.</li>
+<li><code translate="no">enabled</code> is set to <code translate="no">true</code> to show the page and to <code translate="no">false</code> to hide it.</li>
+<li><code translate="no">data</code> specifies the wizard pages. In the C++ wizard, it specifies a <code translate="no">Fields</code> page and a <code translate="no">Summary</code> page. The <code translate="no">Fields</code> page has the <code translate="no">CheckBox</code>, <code translate="no">ComboBox</code>, <code translate="no">LineEdit</code>, <code translate="no">PathChooser</code>, and <code translate="no">Spacer</code> widgets. For more information about the widgets, see <a href="creator-project-wizards.html#available-widgets" translate="no">Available Widgets</a>.</li>
+</ul>
+</li>
+<li>The <code translate="no">generators</code> section specifies the files to be added to the project:<pre class="cpp" translate="no">
+ <span class="string">&quot;generators&quot;</span>:
+ <span class="operator">[</span>
+     {
+         <span class="string">&quot;typeId&quot;</span>: <span class="string">&quot;File&quot;</span><span class="operator">,</span>
+         <span class="string">&quot;data&quot;</span>:
+         <span class="operator">[</span>
+             {
+                 <span class="string">&quot;source&quot;</span>: <span class="string">&quot;file.h&quot;</span><span class="operator">,</span>
+                 <span class="string">&quot;target&quot;</span>: <span class="string">&quot;%{HdrPath}&quot;</span><span class="operator">,</span>
+                 <span class="string">&quot;openInEditor&quot;</span>: <span class="keyword">true</span>
+                 <span class="string">&quot;options&quot;</span>: <span class="operator">[</span>
+                     { <span class="string">&quot;key&quot;</span>: <span class="string">&quot;Cpp:License:FileName&quot;</span><span class="operator">,</span> <span class="string">&quot;value&quot;</span>: <span class="string">&quot;%{HdrFileName}&quot;</span> }<span class="operator">,</span>
+                     { <span class="string">&quot;key&quot;</span>: <span class="string">&quot;Cpp:License:ClassName&quot;</span><span class="operator">,</span> <span class="string">&quot;value&quot;</span>: <span class="string">&quot;%{CN}&quot;</span> }
+                 <span class="operator">]</span>
+             }<span class="operator">,</span>
+             {
+                 <span class="string">&quot;source&quot;</span>: <span class="string">&quot;file.cpp&quot;</span><span class="operator">,</span>
+                 <span class="string">&quot;target&quot;</span>: <span class="string">&quot;%{SrcPath}&quot;</span><span class="operator">,</span>
+                 <span class="string">&quot;openInEditor&quot;</span>: <span class="keyword">true</span>
+                 <span class="string">&quot;options&quot;</span>: <span class="operator">[</span>
+                     { <span class="string">&quot;key&quot;</span>: <span class="string">&quot;Cpp:License:FileName&quot;</span><span class="operator">,</span> <span class="string">&quot;value&quot;</span>: <span class="string">&quot;%{SrcFileName}&quot;</span> }<span class="operator">,</span>
+                     { <span class="string">&quot;key&quot;</span>: <span class="string">&quot;Cpp:License:ClassName&quot;</span><span class="operator">,</span> <span class="string">&quot;value&quot;</span>: <span class="string">&quot;%{CN}&quot;</span> }
+                 <span class="operator">]</span>
+             }
+ <span class="operator">]</span>
+</pre>
+<ul>
+<li><code translate="no">typeId</code> specifies the type of the generator. Currently, only <code translate="no">File</code> or <code translate="no">Scanner</code> is supported.</li>
+<li><code translate="no">data</code> allows to configure the generator further.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="values-available-to-the-wizard">Values Available to the Wizard</h2>
+<p>In addition to properties taken from the <code translate="no">wizard.json</code> file itself (see <a href="creator-project-wizards.html#creating-wizards" translate="no">Creating Wizards</a>), Qt Creator makes some information available to all JSON based wizards:</p>
+<ul>
+<li><code translate="no">WizardDir</code> is the absolute path to the <code translate="no">wizard.json</code> file.</li>
+<li><code translate="no">Features</code> lists all features available via any of the kits configured in Qt Creator.</li>
+<li><code translate="no">Plugins</code> has a list of all plugins running in the current instance of Qt Creator.</li>
+<li><code translate="no">Platform</code> has the platform selected in the <b translate="no">File</b> &gt; <b translate="no">New Project</b> or <b translate="no">New File</b> dialog. This value may be empty.</li>
+</ul>
+<p>The following information is only available when users trigger the wizard via the context menu of a node in the <b translate="no">Projects</b> view:</p>
+<ul>
+<li><code translate="no">InitialPath</code> with the path to the selected node.</li>
+<li><code translate="no">ProjectExplorer.Profile.Ids</code> has a list of Kits configured for the project of the selected node.</li>
+</ul>
+<h2 id="available-pages">Available Pages</h2>
+<p>You can add predefined pages to wizards by specifying them in the <code translate="no">pages</code> section of a wizard.json file.</p>
+<h3 id="field-page">Field Page</h3>
+<p>A Field page has the <code translate="no">typeId</code> value <code translate="no">Field</code> and has widgets. For more information about widget definitions, see <a href="creator-project-wizards.html#available-widgets" translate="no">Available Widgets</a>.</p>
+<pre class="cpp" translate="no">
+ <span class="string">&quot;pages&quot;</span>:
+ <span class="operator">[</span>
+     {
+         <span class="string">&quot;trDisplayName&quot;</span>: <span class="string">&quot;Define Class&quot;</span><span class="operator">,</span>
+         <span class="string">&quot;trShortTitle&quot;</span>: <span class="string">&quot;Details&quot;</span><span class="operator">,</span>
+         <span class="string">&quot;typeId&quot;</span>: <span class="string">&quot;Fields&quot;</span><span class="operator">,</span>
+         <span class="string">&quot;data&quot;</span> :
+         <span class="operator">[</span>
+             {
+                 <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Class&quot;</span><span class="operator">,</span>
+                 <span class="string">&quot;trDisplayName&quot;</span>: <span class="string">&quot;Class name:&quot;</span><span class="operator">,</span>
+                 <span class="string">&quot;mandatory&quot;</span>: <span class="keyword">true</span><span class="operator">,</span>
+                 <span class="string">&quot;type&quot;</span>: <span class="string">&quot;LineEdit&quot;</span><span class="operator">,</span>
+                 <span class="string">&quot;data&quot;</span>: {
+                     <span class="string">&quot;trPlaceholder&quot;</span>: <span class="string">&quot;Fully qualified name, including namespaces&quot;</span><span class="operator">,</span>
+                     <span class="string">&quot;validator&quot;</span>: <span class="string">&quot;(?:(?:[a-zA-Z_][a-zA-Z_0-9]*::)*[a-zA-Z_][a-zA-Z_0-9]*|)&quot;</span><span class="operator">,</span>
+                     <span class="string">&quot;completion&quot;</span>: <span class="string">&quot;namespaces&quot;</span>
+                     }
+             }<span class="operator">,</span>
+             <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+ <span class="operator">]</span><span class="operator">,</span>
+</pre>
+<h3 id="file-page">File Page</h3>
+<p>A File page has the <code translate="no">typeId</code> value <code translate="no">File</code>. You can leave out the <code translate="no">data</code> key or assign an empty object to it.</p>
+<pre class="cpp" translate="no">
+ {
+     <span class="string">&quot;trDisplayName&quot;</span>: <span class="string">&quot;Location&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;trShortTitle&quot;</span>: <span class="string">&quot;Location&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;typeId&quot;</span>: <span class="string">&quot;File&quot;</span>
+ }<span class="operator">,</span>
+</pre>
+<p>The page evaluates <code translate="no">InitialFileName</code> and <code translate="no">InitialPath</code> from the wizard to set the initial path and filename. The page sets <code translate="no">TargetPath</code> to the full path of the file to be created.</p>
+<h3 id="form-page">Form Page</h3>
+<p>A Form page has the <code translate="no">typeId</code> value <code translate="no">Form</code>. You can leave out the <code translate="no">data</code> key or assign an empty object to it.</p>
+<pre class="cpp" translate="no">
+ {
+     <span class="string">&quot;trDisplayName&quot;</span>: <span class="string">&quot;Choose a Form Template&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;trShortTitle&quot;</span>: <span class="string">&quot;Form Template&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;typeId&quot;</span>: <span class="string">&quot;Form&quot;</span>
+ }<span class="operator">,</span>
+</pre>
+<p>The page sets <code translate="no">FormContents</code> to an array of strings with the form contents.</p>
+<h3 id="kits">Kits</h3>
+<p>A Kits page has the <code translate="no">typeId</code> value <code translate="no">Kits</code>. The <code translate="no">data</code> section of a Kits page has an object with the following settings:</p>
+<ul>
+<li><code translate="no">projectFilePath</code> with the path to the project file.</li>
+<li><code translate="no">requiredFeatures</code> with a list of strings or objects that describe the features that a kit must have to appear on the page.<p>When a string is found, this feature must be set. When using an object instead, the following settings are checked:</p>
+<ul>
+<li><code translate="no">feature</code>, which must be a string (that will have all <code translate="no">%\{&lt;VariableName\}</code> expanded).</li>
+<li><code translate="no">condition</code>, which must evaluate to <code translate="no">true</code> or <code translate="no">false</code> and can be used to discount the feature from the list.</li>
+</ul>
+</li>
+<li><code translate="no">preferredFeatures</code> with a list in the same format as <code translate="no">requiredFeatures</code>. Any kit matching all features listed in <code translate="no">preferredFeatures</code> (in addition to <code translate="no">requiredFeatures</code>) will be pre-selected on this page.</li>
+</ul>
+<pre class="cpp" translate="no">
+ {
+     <span class="string">&quot;trDisplayName&quot;</span>: <span class="string">&quot;Kit Selection&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;trShortTitle&quot;</span>: <span class="string">&quot;Kits&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;typeId&quot;</span>: <span class="string">&quot;Kits&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;enabled&quot;</span>: <span class="string">&quot;%{IsTopLevelProject}&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;data&quot;</span>: { <span class="string">&quot;projectFilePath&quot;</span>: <span class="string">&quot;%{ProFileName}&quot;</span> }
+ }<span class="operator">,</span>
+</pre>
+<p>The page evaluates <code translate="no">%\{Platform\}</code> to set the platform selected in <b translate="no">File</b> &gt; <b translate="no">New Project</b> or <b translate="no">New File</b>.</p>
+<h3 id="project">Project</h3>
+<p>A Project page has the <code translate="no">typeId</code> value <code translate="no">Project</code>. It has no data or an object with the <code translate="no">trDescription</code> property which will be shown on the generated page. <code translate="no">trDescription</code> defaults to <code translate="no">%\{trDescription\}</code>, which is filled in with the information taken from the <code translate="no">trDescription</code> field of the <code translate="no">wizard.json</code> file.</p>
+<pre class="cpp" translate="no">
+ {
+     <span class="string">&quot;trDisplayName&quot;</span>: <span class="string">&quot;Project Location&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;trShortTitle&quot;</span>: <span class="string">&quot;Location&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;typeId&quot;</span>: <span class="string">&quot;Project&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;data&quot;</span>: { <span class="string">&quot;trDescription&quot;</span>: <span class="string">&quot;A description of the wizard&quot;</span> }
+ }<span class="operator">,</span>
+</pre>
+<p>The page evaluates <code translate="no">InitialPath</code> to set the initial project path. The page sets <code translate="no">ProjectDirectory</code> and <code translate="no">TargetPath</code> to the project directory.</p>
+<h3 id="summary">Summary</h3>
+<p>A Summary page has the <code translate="no">typeId</code> value <code translate="no">Summary</code>. It has no data or an empty object.</p>
+<pre class="cpp" translate="no">
+ {
+     <span class="string">&quot;trDisplayName&quot;</span>: <span class="string">&quot;Project Management&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;trShortTitle&quot;</span>: <span class="string">&quot;Summary&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;typeId&quot;</span>: <span class="string">&quot;Summary&quot;</span>
+ }
+</pre>
+<p>The page sets <code translate="no">IsSubproject</code> to an empty string if this is a top-level project and to <code translate="no">yes</code> otherwise. It sets <code translate="no">VersionControl</code> to the ID of the version control system in use.</p>
+<h3 id="vcscommand">VcsCommand</h3>
+<p>The VcsCommand page runs a set of version control operations and displays the results.</p>
+<p>The <code translate="no">data</code> section of this page takes an object with the following keys:</p>
+<ul>
+<li><code translate="no">vcsId</code> with the id of the version control system to be used.</li>
+<li><code translate="no">trRunMessage</code> with the message to be shown while the version control is running.</li>
+<li><code translate="no">extraArguments</code> with a string or a list of strings defining extra arguments passed to the version control checkout command.</li>
+<li><code translate="no">repository</code> with the URL to check out from the version control system.</li>
+<li><code translate="no">baseDirectory</code> with the directory to run the checkout operation in.</li>
+<li><code translate="no">checkoutName</code> with the subdirectory that will be created to hold the checked out data.</li>
+<li><code translate="no">extraJobs</code> with a list of objects defining additional commands to run after the initial checkout. This can be used to customize the repository further by for example adding additional remote repositories or setting configuration variables of the version control system.<p>Each <code translate="no">extraJob</code> is defined by an object with the following settings:</p>
+<ul>
+<li><code translate="no">skipIfEmpty</code> silently removes empty arguments from the command to run if you set it to <code translate="no">true</code>. Defaults to <code translate="no">true</code>.</li>
+<li><code translate="no">directory</code> with the working directory of the command to run. This defaults to the value of <code translate="no">baseDirectory</code>.</li>
+<li><code translate="no">command</code> with the command to be run.</li>
+<li><code translate="no">arguments</code> with the arguments to pass to <code translate="no">command</code>.</li>
+<li><code translate="no">timeOutFactor</code> extends default timeouts for long-running commands.</li>
+<li><code translate="no">enabled</code> which will be evaluated to decide whether or not to actually execute this job.</li>
+</ul>
+</li>
+</ul>
+<h3 id="vcsconfiguration">VcsConfiguration</h3>
+<p>The VcsConfiguration page asks the user to configure a version control system and only enables the <b translate="no">Next</b> button once the configuration is successful.</p>
+<p>The <code translate="no">data</code> section of this page takes an object with the <code translate="no">vcsId</code> key. This setting defines the version control system that will be configured.</p>
+<h2 id="available-widgets">Available Widgets</h2>
+<p>You can add the following widgets on a Field page:</p>
+<ul>
+<li>Check Box</li>
+<li>Combo Box</li>
+<li>Label</li>
+<li>Line Edit</li>
+<li>Path Chooser</li>
+<li>Spacer</li>
+<li>Text Edit</li>
+</ul>
+<div class="admonition note">
+<p><b>Note: </b>Wizards support only the settings documented in the following sections.</p>
+</div>
+<p>Specify the following settings for each widget:</p>
+<ul>
+<li><code translate="no">name</code> specifies the widget name. This name is used as the variable name to access the value again.</li>
+<li><code translate="no">trDisplayName</code> specifies the label text visible in the UI (if <code translate="no">span</code> is not <code translate="no">true</code>).</li>
+<li><code translate="no">type</code> specifies the type of the widget: <code translate="no">CheckBox</code>, <code translate="no">ComboBox</code>, <code translate="no">Label</code>, <code translate="no">LineEdit</code>, <code translate="no">PathChooser</code>, <code translate="no">Spacer</code>, and <code translate="no">TextEdit</code>.</li>
+<li><code translate="no">trToolTip</code> specifies a tooltip to show when hovering the field with the mouse.</li>
+<li><code translate="no">isComplete</code> is evaluated for all fields to decide whether the <b translate="no">Next</b> button of the wizard is available or not. All fields must have their <code translate="no">isComplete</code> evaluate to <code translate="no">true</code> for this to happen. This setting defaults to <code translate="no">true</code>.</li>
+<li><code translate="no">trIncompleteMessage</code> is shown when the field's <code translate="no">isComplete</code> evaluates to <code translate="no">false</code>.</li>
+<li><code translate="no">persistenceKey</code> makes the user choice persistent. The value is taken to be a settings key. If the user changes the default value of the widget, the user's value is stored and will become the new default value the next time the wizard is run.</li>
+<li><code translate="no">visible</code> is set to <code translate="no">true</code> if the widget is visible, otherwise it is set to <code translate="no">false</code>. By default, it is set to <code translate="no">true</code>.</li>
+<li><code translate="no">enabled</code> is set to <code translate="no">true</code> if the widget is enabled, otherwise it is set to <code translate="no">false</code>. By default, it is set to <code translate="no">true</code>.</li>
+<li><code translate="no">mandatory</code> is set to <code translate="no">true</code> if this widget must have a value for the <b translate="no">Next</b> button to become enabled. By default, it is set to <code translate="no">true</code>.</li>
+<li><code translate="no">span</code> is set to hide the label and to span the form. By default, it is set to <code translate="no">false</code>. For more information, see <a href="creator-project-wizards.html#using-variables-in-wizards" translate="no">Using Variables in Wizards</a>.</li>
+<li><code translate="no">data</code> specifies additional settings for the particular widget type, as described in the following sections.</li>
+</ul>
+<h3 id="check-box">Check Box</h3>
+<pre class="cpp" translate="no">
+ {
+     <span class="string">&quot;name&quot;</span>: <span class="string">&quot;IncludeQObject&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;trDisplayName&quot;</span>: <span class="string">&quot;Include QObject&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;type&quot;</span>: <span class="string">&quot;CheckBox&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;data&quot;</span>:
+     {
+         <span class="string">&quot;checkedValue&quot;</span>: <span class="string">&quot;QObject&quot;</span><span class="operator">,</span>
+         <span class="string">&quot;uncheckedValue&quot;</span>: <span class="string">&quot;&quot;</span><span class="operator">,</span>
+         <span class="string">&quot;checked&quot;</span>: <span class="string">&quot;%{JS: value('BaseCB') === 'QObject' ? 'true' : 'false'}&quot;</span>
+     }
+ }<span class="operator">,</span>
+</pre>
+<ul>
+<li><code translate="no">checkedValue</code> specifies the value to set when the check box is enabled. By default, set to <code translate="no">true</code>.</li>
+<li><code translate="no">uncheckedValue</code> specifies the value to set when the check box is disabled. By default, set to <code translate="no">false</code>.</li>
+<li><code translate="no">checked</code> is set to <code translate="no">true</code> if the check box is enabled, otherwise <code translate="no">false</code>.</li>
+</ul>
+<h3 id="list">List</h3>
+<div class="admonition note">
+<p><b>Note: </b>The Combo Box and Icon List types are both variations of the List type, and therefore they can have the same properties.</p>
+</div>
+<pre class="cpp" translate="no">
+ {
+     <span class="string">&quot;name&quot;</span>: <span class="string">&quot;BaseCB&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;trDisplayName&quot;</span>: <span class="string">&quot;Base class:&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;type&quot;</span>: <span class="string">&quot;ComboBox&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;data&quot;</span>:
+     {
+         <span class="string">&quot;items&quot;</span>: <span class="operator">[</span> { <span class="string">&quot;trKey&quot;</span>: <span class="string">&quot;&lt;Custom&gt;&quot;</span><span class="operator">,</span> <span class="string">&quot;value&quot;</span>: <span class="string">&quot;&quot;</span> }<span class="operator">,</span>
+                    <span class="string">&quot;QObject&quot;</span><span class="operator">,</span> <span class="string">&quot;QWidget&quot;</span><span class="operator">,</span> <span class="string">&quot;QMainWindow&quot;</span><span class="operator">,</span> <span class="string">&quot;QQuickItem&quot;</span> <span class="operator">]</span>
+     }
+ }<span class="operator">,</span>
+</pre>
+<p>or</p>
+<pre class="cpp" translate="no">
+ {
+     <span class="string">&quot;name&quot;</span>: <span class="string">&quot;ChosenBuildSystem&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;trDisplayName&quot;</span>: <span class="string">&quot;Choose your build system:&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;type&quot;</span>: <span class="string">&quot;IconList&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;data&quot;</span>:
+     {
+         <span class="string">&quot;items&quot;</span>: <span class="operator">[</span>
+             { <span class="string">&quot;trKey&quot;</span>: <span class="string">&quot;CMake&quot;</span><span class="operator">,</span> <span class="string">&quot;value&quot;</span>: <span class="string">&quot;cmake&quot;</span><span class="operator">,</span> <span class="string">&quot;icon&quot;</span>: <span class="string">&quot;cmake_icon.png&quot;</span><span class="operator">,</span> <span class="string">&quot;trToolTip&quot;</span>: <span class="string">&quot;Building with CMake.&quot;</span> }<span class="operator">,</span>
+             { <span class="string">&quot;trKey&quot;</span>: <span class="string">&quot;Qbs&quot;</span><span class="operator">,</span> <span class="string">&quot;value&quot;</span>: <span class="string">&quot;qbs&quot;</span><span class="operator">,</span> <span class="string">&quot;icon&quot;</span>: <span class="string">&quot;qbs_icon.png&quot;</span><span class="operator">,</span> <span class="string">&quot;trToolTip&quot;</span>: <span class="string">&quot;Building with Qbs.&quot;</span> }<span class="operator">,</span>
+             { <span class="string">&quot;trKey&quot;</span>: <span class="string">&quot;QMake&quot;</span><span class="operator">,</span> <span class="string">&quot;value&quot;</span>: <span class="string">&quot;qmake&quot;</span><span class="operator">,</span> <span class="string">&quot;icon&quot;</span>: <span class="string">&quot;qmake_icon.png&quot;</span><span class="operator">,</span> <span class="string">&quot;trToolTip&quot;</span>: <span class="string">&quot;Building with QMake.&quot;</span> }
+         <span class="operator">]</span>
+     }
+ }<span class="operator">,</span>
+</pre>
+<ul>
+<li><code translate="no">items</code> specifies a list of items to put into the list type. The list can have both JSON objects and plain strings. For JSON objects, define <code translate="no">trKey</code> and <code translate="no">value</code> pairs, where the <code translate="no">trKey</code> is the list item visible to users and <code translate="no">value</code> has the data associated with the item. In addition, you can use <code translate="no">icon</code> to specify an icon for the list item and <code translate="no">trToolTip</code> to specify a tooltip for it.</li>
+<li><code translate="no">index</code> specifies the index to select when the list type is enabled. By default, it is set to <code translate="no">0</code>.</li>
+<li><code translate="no">disabledIndex</code> specifies the index to show if the list type is disabled.</li>
+</ul>
+<h3 id="label">Label</h3>
+<pre class="cpp" translate="no">
+ {
+     <span class="string">&quot;name&quot;</span>: <span class="string">&quot;LabelQQC_2_0&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;type&quot;</span>: <span class="string">&quot;Label&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;span&quot;</span>: <span class="keyword">true</span><span class="operator">,</span>
+     <span class="string">&quot;visible&quot;</span>: <span class="string">&quot;%{JS: value('CS') === 'QQC_2_0'}&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;data&quot;</span>:
+     {
+         <span class="string">&quot;wordWrap&quot;</span>: <span class="keyword">true</span><span class="operator">,</span>
+         <span class="string">&quot;trText&quot;</span>: <span class="string">&quot;Creates a deployable Qt Quick 2 application using Qt Quick Controls.&quot;</span><span class="operator">,</span>
+     }
+ }<span class="operator">,</span>
+</pre>
+<ul>
+<li><code translate="no">wordWrap</code> is set to <code translate="no">true</code> to enable word wrap. By default, it is set to <code translate="no">false</code>.</li>
+<li><code translate="no">trText</code> has the label text to display.</li>
+</ul>
+<h3 id="line-edit">Line Edit</h3>
+<pre class="cpp" translate="no">
+ {
+     <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Class&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;trDisplayName&quot;</span>: <span class="string">&quot;Class name:&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;mandatory&quot;</span>: <span class="keyword">true</span><span class="operator">,</span>
+     <span class="string">&quot;type&quot;</span>: <span class="string">&quot;LineEdit&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;data&quot;</span>: {
+         <span class="string">&quot;trPlaceholder&quot;</span>: <span class="string">&quot;Fully qualified name, including namespaces&quot;</span><span class="operator">,</span>
+         <span class="string">&quot;validator&quot;</span>: <span class="string">&quot;(?:(?:[a-zA-Z_][a-zA-Z_0-9]*::)*[a-zA-Z_][a-zA-Z_0-9]*|)&quot;</span><span class="operator">,</span>
+         <span class="string">&quot;completion&quot;</span>: <span class="string">&quot;namespaces&quot;</span>
+     }
+ }<span class="operator">,</span>
+ {
+     <span class="string">&quot;name&quot;</span>: <span class="string">&quot;BaseEdit&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;type&quot;</span>: <span class="string">&quot;LineEdit&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;enabled&quot;</span>: <span class="string">&quot;%{JS: value('BaseCB') === '' ? 'true' : 'false'}&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;mandatory&quot;</span>: <span class="keyword">false</span><span class="operator">,</span>
+     <span class="string">&quot;data&quot;</span>:
+     {
+         <span class="string">&quot;trText&quot;</span>: <span class="string">&quot;%{BaseCB}&quot;</span><span class="operator">,</span>
+         <span class="string">&quot;trDisabledText&quot;</span>: <span class="string">&quot;%{BaseCB}&quot;</span><span class="operator">,</span>
+         <span class="string">&quot;completion&quot;</span>: <span class="string">&quot;classes&quot;</span>
+     }
+ }<span class="operator">,</span>
+</pre>
+<ul>
+<li><code translate="no">trText</code> specifies the translatable default text to display.</li>
+<li><code translate="no">text</code> specifies the non-translatable default text to display.</li>
+<li><code translate="no">trDisabledText</code> specifies the translatable text to display in a disabled field.</li>
+<li><code translate="no">disabledText</code> specifies the non-translatable text to display in a disabled field.</li>
+<li><code translate="no">completion</code> lists existing <code translate="no">namespaces</code> for the class name line edit and existing <code translate="no">classes</code> for the base class line edit. This value replaces the history completer that is usually available for such fields.</li>
+<li><code translate="no">trPlaceholder</code> specifies the translatable placeholder text.</li>
+<li><code translate="no">placeholder</code> specifies the non-translatable placeholder text.</li>
+<li><code translate="no">validator</code> specifies a QRegularExpression to validate the line edit against.</li>
+<li><code translate="no">fixup</code> specifies a variable that is used to fix up the string. For example, to turn the first character in the line edit to upper case.</li>
+<li><code translate="no">isPassword</code> is a boolean value that specifies that the line edit has a password, which will be masked.</li>
+<li><code translate="no">historyId</code> is a key that specifies the name for a list of items for the history completer. This value and <code translate="no">completion</code> are mutually exclusive, so do not set both of them at the same time.</li>
+<li><code translate="no">restoreLastHistoryItem</code> is a boolean that specifies that the last history item is automatically set as the default text in the line edit. This key can only be set to true if <code translate="no">historyId</code> is also set.</li>
+</ul>
+<h3 id="path-chooser">Path Chooser</h3>
+<pre class="cpp" translate="no">
+ {
+     <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Path&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;type&quot;</span>: <span class="string">&quot;PathChooser&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;trDisplayName&quot;</span>: <span class="string">&quot;Path:&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;mandatory&quot;</span>: <span class="keyword">true</span><span class="operator">,</span>
+     <span class="string">&quot;data&quot;</span>:
+     {
+         <span class="string">&quot;kind&quot;</span>: <span class="string">&quot;existingDirectory&quot;</span><span class="operator">,</span>
+         <span class="string">&quot;basePath&quot;</span>: <span class="string">&quot;%{InitialPath}&quot;</span><span class="operator">,</span>
+         <span class="string">&quot;path&quot;</span>: <span class="string">&quot;%{InitialPath}&quot;</span>
+     }
+ }<span class="operator">,</span>
+</pre>
+<ul>
+<li><code translate="no">path</code> specifies the selected path.</li>
+<li><code translate="no">basePath</code> specifies a base path that lookups are relative to.</li>
+<li><code translate="no">kind</code> defines what to look for: <code translate="no">existingDirectory</code>, <code translate="no">directory</code>, <code translate="no">file</code>, <code translate="no">saveFile</code>, <code translate="no">existingCommand</code>, <code translate="no">command</code>, or <code translate="no">any</code>.</li>
+</ul>
+<h3 id="spacer">Spacer</h3>
+<pre class="cpp" translate="no">
+ {
+     <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Sp1&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;type&quot;</span>: <span class="string">&quot;Spacer&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;data&quot;</span>:
+     {
+         <span class="string">&quot;factor&quot;</span>: <span class="number">2</span>
+     }
+ }<span class="operator">,</span>
+</pre>
+<p>The <code translate="no">factor</code> setting specifies the factor (an integer) to multiply the layout spacing for this spacer.</p>
+<h3 id="text-edit">Text Edit</h3>
+<pre class="cpp" translate="no">
+ {
+     <span class="string">&quot;name&quot;</span>: <span class="string">&quot;TextField&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;type&quot;</span>: <span class="string">&quot;TextEdit&quot;</span><span class="operator">,</span>
+     <span class="string">&quot;data&quot;</span> :
+     {
+         <span class="string">&quot;trText&quot;</span>: <span class="string">&quot;This is some text&quot;</span><span class="operator">,</span>
+         <span class="string">&quot;richText&quot;</span>: <span class="keyword">true</span>
+     }
+ }
+</pre>
+<ul>
+<li><code translate="no">trText</code> specifies the translatable text to display.</li>
+<li><code translate="no">text</code> specifies the non-translatable text to display.</li>
+<li><code translate="no">trDisabledText</code> specifies the translatable text to display when the text edit is disabled.</li>
+<li><code translate="no">disabledText</code> specifies the non-translatable text to display when the text edit is disabled.</li>
+<li><code translate="no">richText</code> is set to <code translate="no">true</code> for rich text, otherwise <code translate="no">false</code>.</li>
+</ul>
+<h2 id="available-generators">Available Generators</h2>
+<p>Qt Creator supports two different generators for JSON wizards.</p>
+<h3 id="file-generator">File Generator</h3>
+<p>A <code translate="no">File</code> generator expects a list of objects in its <code translate="no">data</code> section. Each object defines one file to be processed and copied into the <code translate="no">%\{TargetPath\}</code> (or any other location).</p>
+<p>Each file object can take the following settings:</p>
+<ul>
+<li><code translate="no">source</code> specifies the path and filename of the template file relative to the directory that has the <code translate="no">wizard.json</code> file.<p>If <code translate="no">source</code> is unset, it is assumed that the file with the name given in <code translate="no">target</code> is generated by some other means. This is useful to for example specify the correct file to open as a project after checking out data from a version control system.</p>
+</li>
+<li><code translate="no">target</code> specifies the location of the generated file, either absolute or relative to <code translate="no">%{TargetPath}</code>, which is usually set by one of the wizard pages.</li>
+<li><code translate="no">openInEditor</code> opens the file in the appropriate editor if it is set to <code translate="no">true</code>. This setting defaults to <code translate="no">false</code>.</li>
+<li><code translate="no">openAsProject</code> opens the project file in Qt Creator if it is set to <code translate="no">true</code>. This setting defaults to <code translate="no">false</code>.</li>
+<li><code translate="no">isBinary</code> treats the file as a binary and prevents replacements from being done in the file if set to <code translate="no">true</code>. This setting defaults to <code translate="no">false</code>.</li>
+<li><code translate="no">condition</code> generates the file if the condition returns <code translate="no">true</code>. This setting defaults to <code translate="no">true</code>. For more information, see <a href="creator-project-wizards.html#using-variables-in-wizards" translate="no">Using Variables in Wizards</a>.</li>
+</ul>
+<h3 id="scanner-generator">Scanner Generator</h3>
+<p>A <code translate="no">Scanner</code> generator scans the <code translate="no">%\{TargetPath\}</code> and produces a list of all files found there.</p>
+<p>The <code translate="no">Scanner</code> generator takes one object in its <code translate="no">data</code> section with the following settings:</p>
+<ul>
+<li><code translate="no">binaryPattern</code> is a regular expression that will be matched against all file names found. Any match will be marked as a binary file and template substitution will be skipped for this file. This setting defaults to an empty pattern, so no files will be marked as binary.</li>
+<li><code translate="no">subdirectoryPatterns</code> is a list of regular expression patterns. Any directory matching one of these patterns will be scanned as well as the top level directory. This setting defaults to an empty list and no subdirectories will be scanned.</li>
+</ul>
 </div>
 <!-- @@@creator-project-wizards.html -->
 <p class="naviNextPrevious footerNavi">
-<a class="prevPage" href="creator-project-qmake-libraries.html">Adding Libraries to Projects</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-project-wizards-json.html">Adding JSON-Based Wizards</a>
+<a class="prevPage" href="creator-reference.html">Reference</a>
 </p>
         </div>
        </div>
@@ -121,7 +641,7 @@
 </div>
 <div class="footer">
    <p>
-   <acronym title="Copyright">&copy;</acronym> 2019 The Qt Company Ltd.
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
    Documentation contributions included herein are the copyrights of
    their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
    of their respective owners. </p>

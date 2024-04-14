@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-repeater-3d.qdoc -->
+  <title>Repeater3D | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Repeater3D</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-3d-morph-target.html" />
+  <link rel="next" href="studio-3d-loader-3d.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-3d-morph-target.html">Morph Target</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-loader-3d.html">Loader3D</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level2"><a href="#repeater3d-properties">Repeater3D Properties</a></li>
+<li class="level1"><a href="#adding-a-repeater3d-component-with-a-numeric-model">Adding a Repeater3D Component with a Numeric Model</a></li>
+<li class="level1"><a href="#adding-a-repeater3d-component-with-a-list-model">Adding a Repeater3D Component with a List Model</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Repeater3D</h1>
+<!-- $$$studio-3d-repeater-3d.html-description -->
+<div class="descr" id="details">
+<div class="admonition note">
+<p><b>Note: </b>The <b translate="no">Repeater3D</b> component is released as a tech preview feature in Qt Design Studio 2.2, and its functionality will be improved in future releases.</p>
+</div>
+<p>The <b translate="no">Repeater3D</b> component is used to create multiple similar items. Like other view types, <b translate="no">Repeater3D</b> needs a model and a delegate. The delegate sets the item to use and the model sets the structure of the items in the <b translate="no">Repeater3D</b> component.</p>
+<p>The model can be any of the supported <a href="https://doc.qt.io/qt/qtqml-models-qmlmodule.html" translate="no">data models</a>. Additionally, like delegates for other views, a delegate for the <b translate="no">Repeater3D</b> can access its index within the repeater, as well as the model data relevant to the delegate.</p>
+<div class="admonition note">
+<p><b>Note: </b><b translate="no">Repeater3D</b> owns all items it instantiates. Removing or dynamically destroying an item created by <b translate="no">Repeater3D</b> results in unpredictable behavior.</p>
+</div>
+<div class="admonition note">
+<p><b>Note: </b><b translate="no">Repeater3D</b> can only repeat objects derived from <b translate="no">Nodes</b>.</p>
+</div>
+<p>For more information, see <a href="https://doc.qt.io/qt/qml-qtquick3d-repeater3d.html" translate="no">Repeater3D</a> in the <b translate="no">Qt Quick 3D</b> documentation.</p>
+<h3 id="repeater3d-properties">Repeater3D Properties</h3>
+<h4 id="model">Model</h4>
+<p>The <b translate="no">Model</b> property specifies the model providing data for the repeater. You can only use the <b translate="no">Model</b> property in the <b translate="no">Properties</b> view to set a numeric model or to bind to QML based models. You can use the <a href="qtquick-text-editor.html" translate="no">Code</a> view to define any of the supported data models as the value of the <b translate="no">Model</b> property:</p>
+<ul>
+<li>A number that indicates the number of delegates to be created by the repeater.</li>
+<li>A model, such as a <b translate="no">ListModel</b> component, or a <a href="https://doc.qt.io/qt/qabstractitemmodel.html" translate="no">QAbstractItemModel</a> subclass.</li>
+<li>A string list.</li>
+<li>An object list.</li>
+</ul>
+<p>The type of model affects the properties that are exposed to the delegate.</p>
+<h4 id="delegate">Delegate</h4>
+<p>The <b translate="no">Delegate</b> property specifies a template defining each object instantiated by the repeater. Currently, the <b translate="no">Delegate</b> property needs to be defined in code using the <b translate="no">Edit</b> mode or the <b translate="no">Code</b> view. Delegates are exposed to a read-only index property that indicates the index of the delegate within the repeater. For more information, see <a href="https://doc.qt.io/qt/qml-qtquick3d-repeater3d.html#delegate-prop" translate="no">Delegate</a> in the <b translate="no">Qt Quick 3D</b> documentation.</p>
+<p>If the model is a model object, such as a <a href="https://doc.qt.io/qt/qml-qtqml-models-listmodel.html" translate="no">ListModel</a>, the delegate can access all model roles as named properties, in the same way that delegates do for view classes like <b translate="no">ListView</b>.</p>
+<h2 id="adding-a-repeater3d-component-with-a-numeric-model">Adding a Repeater3D Component with a Numeric Model</h2>
+<p>This section explains how to add a <b translate="no">Repeater3D</b> component with a numeric model to your Qt Design Studio project.</p>
+<p>To add a <b translate="no">Repeater3D</b> component:</p>
+<ol class="1" type="1"><li>Drag a <b translate="no">Repeater3D</b> component from <b translate="no">Components</b> to <i>scene</i> in <b translate="no">Navigator</b>.</li>
+<li>Select <i>repeater3D</i> in <b translate="no">Navigator</b> and in <b translate="no">Properties</b>, set <b translate="no">Model</b> to 4.<p class="centerAlign"><img src="images/repeater3d-model-property.png" alt="" /></p></li>
+</ol>
+<p>Now, you have set up the <b translate="no">Repeater3D</b> component to use a numeric model that draws four instances of the same item. Next, you need to add the item to draw. In this example we are using a <b translate="no">Cube</b>.</p>
+<ol class="1" type="1"><li>From <b translate="no">Components</b>, drag a <b translate="no">Cube</b> to <i>repeater3D</i> in <b translate="no">Navigator</b>. Now, four cubes are drawn to the scene, but they are drawn to the exact same place.</li>
+<li>Select <i>cube</i> in <b translate="no">Navigator</b> and in <b translate="no">Properties</b> select <img src="images/action-icon.png" alt="" /> next to <b translate="no">Translation</b> &gt; <b translate="no">X</b>.</li>
+<li>Select <b translate="no">Set binding</b> to open <b translate="no">Binding Editor</b>.</li>
+<li>In the binding editor, enter <code translate="no">index * 150</code>. This sets the X location to increase by 150 for each of the cube instances.<p class="centerAlign"><img src="images/repeater3d-index-binding.png" alt="" /></p></li>
+<li>Select <b translate="no">OK</b> and go to the <b translate="no">3D</b> view to see the result.</li>
+</ol>
+<p class="centerAlign"><img src="images/repeater3d-numeric-model.webp" alt="" /></p><h2 id="adding-a-repeater3d-component-with-a-list-model">Adding a Repeater3D Component with a List Model</h2>
+<p>This section explains how to add a <b translate="no">Repeater3D</b> component with a <a href="https://doc.qt.io/qt/qml-qtqml-models-listmodel.html" translate="no">ListModel</a> to your Qt Design Studio project:</p>
+<p>To add a <b translate="no">Repeater3D</b> component:</p>
+<ol class="1" type="1"><li>Drag a <b translate="no">Repeater3D</b> component from <b translate="no">Components</b> to <i>scene</i> in <b translate="no">Navigator</b>.</li>
+<li>You need to enter the QML code for the <b translate="no">ListModel</b> manually. Go to the <b translate="no">Code</b> view and enter the following code somewhere inside the root object:<pre class="cpp" translate="no">
+ ListModel {
+     id: planetModel
+     ListElement {
+         name: <span class="string">&quot;Mars&quot;</span>
+         radius: <span class="number">3.39</span>
+     }
+     ListElement {
+         name: <span class="string">&quot;Earth&quot;</span>
+         radius: <span class="number">6.37</span>
+     }
+     ListElement {
+         name: <span class="string">&quot;Venus&quot;</span>
+         radius: <span class="number">6.05</span>
+     }
+ }
+</pre>
+<p>The default root object for a Qt Design Studio project is <b translate="no">Rectangle</b>, so you can paste the <b translate="no">ListModel</b> code, for example, like this:</p>
+<pre class="cpp" translate="no">
+ Rectangle {
+   width: Constants<span class="operator">.</span>width
+   height: Constants<span class="operator">.</span>height
+   color: Constants<span class="operator">.</span>backgroundColor
+
+   ListModel {
+       id: planetModel
+       ListElement {
+           name: <span class="string">&quot;Mars&quot;</span>
+           radius: <span class="number">3.39</span>
+       }
+       ListElement {
+           name: <span class="string">&quot;Earth&quot;</span>
+           radius: <span class="number">6.37</span>
+       }
+       ListElement {
+           name: <span class="string">&quot;Venus&quot;</span>
+           radius: <span class="number">6.05</span>
+       }
+   }
+
+   View3D {
+       id: view3D
+       anchors<span class="operator">.</span>fill: parent
+       <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+</pre>
+</li>
+<li>In the <b translate="no">Code</b> view, add <code translate="no">model: planetModel</code> to the <b translate="no">Repeater3D</b> object to tell that you want to use your <b translate="no">ListModel</b> as the model for the <b translate="no">Repeater3D</b> object.<pre class="cpp" translate="no">
+ Repeater3D {
+     id: repeater3D
+     model: planetModel
+ }
+</pre>
+</li>
+</ol>
+<p>Now, you have set up the <b translate="no">Repeater3D</b> component to use a <b translate="no">ListModel</b> to draw the items. Next, you need to add the item to draw. In this example we are using a <b translate="no">Sphere</b>.</p>
+<ol class="1" type="1"><li>From <b translate="no">Components</b>, drag a <b translate="no">Sphere</b> to <i>repeater3D</i> in <b translate="no">Navigator</b>.<p class="centerAlign"><img src="images/repeater3d-listmodel-navigator.png" alt="" /></p></li>
+<li>Select <i>sphere</i> in <b translate="no">Navigator</b> and select <img src="images/action-icon.png" alt="" /> next to <b translate="no">Scale</b> &gt; <b translate="no">X</b>.</li>
+<li>Select <b translate="no">Set binding</b> to open <b translate="no">Binding Editor</b>.</li>
+<li>In the binding editor, enter <code translate="no">radius</code>. This sets the X scale to the radius value defined in the <a href="https://doc.qt.io/qt/qml-qtqml-models-listmodel.html" translate="no">ListModel</a> for each of the sphere instances.<p class="centerAlign"><img src="images/repeater3d-radius-binding.png" alt="" /></p></li>
+<li>Select <b translate="no">OK</b>.</li>
+<li>Repeat steps 2 to 5 for <b translate="no">Scale</b> &gt; <b translate="no">Y</b> and <b translate="no">Scale</b> &gt; <b translate="no">Z</b>.</li>
+</ol>
+<p>Now, three spheres of different size are drawn but they are drawn in the same position so you need to change the position to see all spheres.</p>
+<ol class="1" type="1"><li>Select <i>sphere</i> in <b translate="no">Navigator</b> and select <img src="images/action-icon.png" alt="" /> next to <b translate="no">Translation</b> &gt; <b translate="no">X</b>.</li>
+<li>Select <b translate="no">Set binding</b> to open <b translate="no">Binding Editor</b>.</li>
+<li>In the binding editor, enter <code translate="no">index * 1000</code>. This sets the X location to increase by 1000 for each of the sphere instances.<p class="centerAlign"><img src="images/repeater3d-location-binding.png" alt="" /></p></li>
+<li>Select <b translate="no">OK</b> and go to the <b translate="no">3D</b> view to see the result. You need to zoom out to see all the spheres.</li>
+</ol>
+<p class="centerAlign"><img src="images/repeater3d-list-model.webp" alt="" /></p></div>
+<!-- @@@studio-3d-repeater-3d.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-3d-morph-target.html">Morph Target</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-loader-3d.html">Loader3D</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

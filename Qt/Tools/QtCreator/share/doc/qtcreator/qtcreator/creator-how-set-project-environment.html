@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-projects-settings-environment.qdoc -->
+  <title>Specify the environment for projects | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Specify the environment for projects</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#globally-change-the-environment">Globally change the environment</a></li>
+<li class="level1"><a href="#change-the-environment-for-a-project">Change the environment for a project</a></li>
+<li class="level1"><a href="#specify-the-build-environment">Specify the build environment</a></li>
+<li class="level2"><a href="#clear-the-build-environment">Clear the build environment</a></li>
+<li class="level1"><a href="#specify-the-run-environment">Specify the run environment</a></li>
+<li class="level2"><a href="#clean-the-run-environment">Clean the run environment</a></li>
+<li class="level2"><a href="#set-the-environment-for-all-run-configurations">Set the environment for all run configurations</a></li>
+<li class="level2"><a href="#use-device-environment">Use device environment</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Specify the environment for projects</h1>
+<!-- $$$creator-how-set-project-environment.html-description -->
+<div class="descr" id="details">
+<p>The environment for a project is determined according to a settings hierarchy:</p>
+<p class="centerAlign"><img src="images/qtcreator-environment-settings-hierarchy.webp" alt="{Environment settings hierarchy}" /></p><p>By default, the environment in which Qt Creator was started is used and modified to include the Qt version. Depending on the selected Qt version, Qt Creator automatically sets the necessary environment variables. You can edit existing environment variables or add, reset, and unset variables based on your project requirements.</p>
+<p>The final environment is specified separately for each kit. With project-specific environment settings you can change the environment for all kits that you use to build, deploy, and run the project simultaneously, rather than having to change it separately for each kit.</p>
+<p>The changes are stored in the local project-specific <code translate="no">CMakeLists.txt.user</code> or <code translate="no">.pro.user</code> file, depending on the build system you use, such as CMake or qmake. Therefore, they are not suitable for sharing between developers or development PCs. To share settings, incorporate them into the build system. For example, if you use CMake, make the changes in the <code translate="no">CMakeLists.txt</code> file, and if you use qmake, make the changes in the <code translate="no">.pro</code> file.</p>
+<h2 id="globally-change-the-environment">Globally change the environment</h2>
+<p>To globally change the environment from the one in which Qt Creator is started, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Environment</b> &gt; <b translate="no">System</b>, and then select <b translate="no">Change</b> in <b translate="no">Environment</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-preferences-environment-system.webp" alt="&quot;Environment preferences System tab&quot;" /></p><h2 id="change-the-environment-for-a-project">Change the environment for a project</h2>
+<p>To change the system environment for a project from the one in which Qt Creator is started, select <b translate="no">Projects</b> &gt; <b translate="no">Project Settings</b> &gt; <b translate="no">Environment</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-projects-environment.webp" alt="{Environment tab in Project Settings}" /></p><p>You can edit existing environment variables or add, reset, unset, or temporarily disable variables.</p>
+<h2 id="specify-the-build-environment">Specify the build environment</h2>
+<p>To specify the build environment to use for a kit, go to <b translate="no">Projects</b> &gt; <b translate="no">Build Settings</b> and select <b translate="no">Build Environment</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-build-environment.webp" alt="{Build Environment section in Build Settings}" /></p><p>To change the values of environment variables for the build environment, select the variable and then select <b translate="no">Edit</b>. Enter the new value in the editor on the righ side.</p>
+<p>To add new variables, select <b translate="no">Add</b>.</p>
+<h3 id="clear-the-build-environment">Clear the build environment</h3>
+<p>To build with a clean system environment, select <b translate="no">Clear system environment</b>. Qt Creator discards the current environment, and populates a clean system environment with the environment variables that the compilers and tools need. Therefore, the environment is never totally empty, even after you clear it.</p>
+<h2 id="specify-the-run-environment">Specify the run environment</h2>
+<p>Qt Creator automatically selects the environment used for running the application based on the <a href="creator-glossary.html#glossary-device" translate="no">device</a> type. To edit the environment or select another environment, go to <b translate="no">Projects</b> &gt; <b translate="no">Run Settings</b> and select <b translate="no">Environment</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-run-environment.webp" alt="{Environment section in Run Settings}" /></p><p>When running on the desktop, the <b translate="no">Build Environment</b> is used by default, but you can also use the <b translate="no">System Environment</b> without the additions made to the build environment.</p>
+<h3 id="clean-the-run-environment">Clean the run environment</h3>
+<p>To run in a clean system environment, select <b translate="no">Clean Environment</b>.</p>
+<h3 id="set-the-environment-for-all-run-configurations">Set the environment for all run configurations</h3>
+<p>To set environment variables for running and debugging applications, so that they don't affect Qt Creator itself, set environment variables for run configurations of all projects:</p>
+<ol class="1" type="1"><li>Go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Build &amp; Run</b> &gt; <b translate="no">General</b>.</li>
+<li>Select <b translate="no">Change</b> in <b translate="no">Application environment</b>.</li>
+<li>Set environment variables in <b translate="no">Edit Environment</b>.<p class="centerAlign"><img src="images/qtcreator-edit-environment.webp" alt="{Edit Environment dialog}" /></p></li>
+</ol>
+<p>For example, set <code translate="no">QT_FORCE_STDERR_LOGGING=1</code> to see application output in <a href="creator-reference-application-output-view.html" translate="no">Application Output</a> instead of a journal or system log.</p>
+<p>Or, set <code translate="no">QT_MESSAGE_PATTERN</code> to add information to debugging messages.</p>
+<h3 id="use-device-environment">Use device environment</h3>
+<p>When you run applications on a mobile device connected to the computer, Qt Creator fetches information about the <b translate="no">Device Environment</b> from the device. Usually, it does not make sense to edit the device environment.</p>
+</div>
+<p><b>See also </b><a href="creator-how-to-edit-environment-settings.html" translate="no">Edit environment settings</a>, <a href="creator-build-settings.html" translate="no">Configure projects for building</a>, <a href="creator-run-settings.html" translate="no">Configure projects for running</a>, and <a href="creator-how-to-use-qtc-variables.html" translate="no">Use Qt Creator variables</a>.</p>
+<!-- @@@creator-how-set-project-environment.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

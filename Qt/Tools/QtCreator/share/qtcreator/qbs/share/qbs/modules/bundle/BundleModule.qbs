@@ -33,25 +33,29 @@ import qbs.DarwinTools
 import qbs.Environment
 import qbs.File
 import qbs.FileInfo
+import qbs.Host
 import qbs.ModUtils
 import qbs.PropertyList
 import qbs.TextFile
 import qbs.Utilities
 import "bundle.js" as Bundle
+import "../codesign/codesign.js" as Codesign
 
 Module {
     Depends { name: "xcode"; required: false; }
+    Depends { name: "codesign"; required: false; }
 
     Probe {
         id: bundleSettingsProbe
-        condition: qbs.targetOS.contains("darwin")
+        condition: qbs.targetOS.includes("darwin")
 
         property string xcodeDeveloperPath: xcode.developerPath
         property var xcodeArchSettings: xcode._architectureSettings
         property string productTypeIdentifier: _productTypeIdentifier
-        property bool useXcodeBuildSpecs: _useXcodeBuildSpecs
-        property bool isMacOs: qbs.targetOS.contains("macos")
+        property bool useXcodeBuildSpecs: !useBuiltinXcodeBuildSpecs
+        property bool isMacOs: qbs.targetOS.includes("macos")
         property bool xcodePresent: xcode.present
+        property string xcodeVersion: xcode.version
 
         // Note that we include several settings pointing to properties which reference the output
         // of this probe (WRAPPER_NAME, WRAPPER_EXTENSION, etc.). This is to ensure that derived
@@ -63,9 +67,16 @@ Module {
             "GENERATE_PKGINFO_FILE": generatePackageInfo !== undefined
                                      ? (generatePackageInfo ? "YES" : "NO")
                                      : undefined,
+            "IS_MACCATALYST": "NO",
+            "LD_RUNPATH_SEARCH_PATHS_NO": [],
             "PRODUCT_NAME": product.targetName,
             "LOCAL_APPS_DIR": Environment.getEnv("HOME") + "/Applications",
             "LOCAL_LIBRARY_DIR": Environment.getEnv("HOME") + "/Library",
+            // actually, this is cpp.targetAbi, but XCode does not set it for non-simulator builds
+            // while Qbs set it to "macho".
+            "LLVM_TARGET_TRIPLE_SUFFIX": qbs.targetOS.includes("simulator") ? "-simulator" : "",
+            "SWIFT_PLATFORM_TARGET_PREFIX": isMacOs ? "macos"
+                                                    : qbs.targetOS.includes("ios") ? "ios" : "",
             "TARGET_BUILD_DIR": product.buildDirectory,
             "WRAPPER_NAME": bundleName,
             "WRAPPER_EXTENSION": extension
@@ -76,15 +87,14 @@ Module {
         property var productTypeIdentifierChain: []
 
         configure: {
-            var specsPath = path;
+            var specsPaths = [path];
             var specsSeparator = "-";
             if (xcodeDeveloperPath && useXcodeBuildSpecs) {
-                specsPath = xcodeDeveloperPath
-                        + "/Platforms/MacOSX.platform/Developer/Library/Xcode/Specifications";
+                specsPaths = Bundle.macOSSpecsPaths(xcodeVersion, xcodeDeveloperPath);
                 specsSeparator = " ";
             }
 
-            var reader = new Bundle.XcodeBuildSpecsReader(specsPath,
+            var reader = new Bundle.XcodeBuildSpecsReader(specsPaths,
                                                           specsSeparator,
                                                           additionalSettings,
                                                           !isMacOs);
@@ -108,7 +118,7 @@ Module {
     additionalProductTypes: !(product.multiplexed || product.aggregate)
                             || !product.multiplexConfigurationId ? ["bundle.content"] : []
 
-    property bool isBundle: !product.consoleApplication && qbs.targetOS.contains("darwin")
+    property bool isBundle: !product.consoleApplication && qbs.targetOS.includes("darwin")
 
     readonly property bool isShallow: bundleSettingsProbe.xcodeSettings["SHALLOW_BUNDLE"] === "YES"
 
@@ -142,7 +152,7 @@ Module {
     property var infoPlist
     property bool processInfoPlist: true
     property bool embedInfoPlist: product.consoleApplication && !isBundle
-    property string infoPlistFormat: qbs.targetOS.contains("macos") ? "same-as-input" : "binary1"
+    property string infoPlistFormat: qbs.targetOS.includes("macos") ? "same-as-input" : "binary1"
 
     property string localizedResourcesFolderSuffix: ".lproj"
 
@@ -177,13 +187,20 @@ Module {
     readonly property string unlocalizedResourcesFolderPath: bundleSettingsProbe.xcodeSettings["UNLOCALIZED_RESOURCES_FOLDER_PATH"]
     readonly property string versionsFolderPath: bundleSettingsProbe.xcodeSettings["VERSIONS_FOLDER_PATH"]
 
+    property bool useBuiltinXcodeBuildSpecs: !_useXcodeBuildSpecs // true to use ONLY the qbs build specs
+
     // private properties
     property string _productTypeIdentifier: Bundle.productTypeIdentifier(product.type)
     property stringList _productTypeIdentifierChain: bundleSettingsProbe.productTypeIdentifierChain
 
-    property bool _useXcodeBuildSpecs: true // false to use ONLY the qbs build specs
+    readonly property path _developerPath: xcode.developerPath
+    readonly property path _platformInfoPlist: xcode.platformInfoPlist
+    readonly property path _sdkSettingsPlist: xcode.sdkSettingsPlist
+    readonly property path _toolchainInfoPlist: xcode.toolchainInfoPlist
 
-    readonly property var extraEnv: ({
+    property bool _useXcodeBuildSpecs: true // TODO: remove in 1.25
+
+    property var extraEnv: ({
         "PRODUCT_BUNDLE_IDENTIFIER": identifier
     })
 
@@ -215,7 +232,7 @@ Module {
     }
 
     validate: {
-        if (!qbs.targetOS.contains("darwin"))
+        if (!qbs.targetOS.includes("darwin"))
             return;
         if (!bundleSettingsProbe.found) {
             var error = "Bundle product type " + _productTypeIdentifier + " is not supported.";
@@ -261,7 +278,7 @@ Module {
     }
 
     Rule {
-        condition: qbs.targetOS.contains("darwin")
+        condition: qbs.targetOS.includes("darwin")
         multiplex: true
         requiresInputs: false // TODO: The resources property should probably be a tag instead.
         inputs: ["infoplist", "partial_infoplist"]
@@ -269,8 +286,8 @@ Module {
         outputFileTags: ["bundle.input", "aggregate_infoplist"]
         outputArtifacts: {
             var artifacts = [];
-            var embed = ModUtils.moduleProperty(product, "embedInfoPlist");
-            if (ModUtils.moduleProperty(product, "isBundle") || embed) {
+            var embed = product.bundle.embedInfoPlist;
+            if (product.bundle.isBundle || embed) {
                 artifacts.push({
                     filePath: FileInfo.joinPaths(
                                   product.destinationDirectory, product.name + "-Info.plist"),
@@ -278,7 +295,7 @@ Module {
                     bundle: {
                         _bundleFilePath: FileInfo.joinPaths(
                                              product.destinationDirectory,
-                                             ModUtils.moduleProperty(product, "infoPlistPath")),
+                                             product.bundle.infoPlistPath),
                     }
                 });
             }
@@ -289,20 +306,21 @@ Module {
             var cmd = new JavaScriptCommand();
             cmd.description = "generating Info.plist for " + product.name;
             cmd.highlight = "codegen";
-            cmd.infoPlist = ModUtils.moduleProperty(product, "infoPlist") || {};
-            cmd.processInfoPlist = ModUtils.moduleProperty(product, "processInfoPlist");
-            cmd.infoPlistFormat = ModUtils.moduleProperty(product, "infoPlistFormat");
-            cmd.extraEnv = ModUtils.moduleProperty(product, "extraEnv");
-            cmd.qmakeEnv = ModUtils.moduleProperty(product, "qmakeEnv");
+            cmd.infoPlist = product.bundle.infoPlist || {};
+            cmd.processInfoPlist = product.bundle.processInfoPlist;
+            cmd.infoPlistFormat = product.bundle.infoPlistFormat;
+            cmd.extraEnv = product.bundle.extraEnv;
+            cmd.qmakeEnv = product.bundle.qmakeEnv;
 
+            // TODO: bundle module should know nothing about cpp module
             cmd.buildEnv = product.moduleProperty("cpp", "buildEnv");
 
-            cmd.developerPath = product.moduleProperty("xcode", "developerPath");
-            cmd.platformInfoPlist = product.moduleProperty("xcode", "platformInfoPlist");
-            cmd.sdkSettingsPlist = product.moduleProperty("xcode", "sdkSettingsPlist");
-            cmd.toolchainInfoPlist = product.moduleProperty("xcode", "toolchainInfoPlist");
+            cmd.developerPath = product.bundle._developerPath;
+            cmd.platformInfoPlist = product.bundle._platformInfoPlist;
+            cmd.sdkSettingsPlist = product.bundle._sdkSettingsPlist;
+            cmd.toolchainInfoPlist = product.bundle._toolchainInfoPlist;
 
-            cmd.osBuildVersion = product.moduleProperty("qbs", "hostOSBuildVersion");
+            cmd.osBuildVersion = product.qbs.hostOSBuildVersion;
 
             cmd.sourceCode = function() {
                 var plist, process, key, i;
@@ -331,7 +349,7 @@ Module {
                 if (processInfoPlist) {
                     // Add default values to the aggregate plist if the corresponding keys
                     // for those values are not already present
-                    var defaultValues = ModUtils.moduleProperty(product, "defaultInfoPlist");
+                    var defaultValues = product.bundle.defaultInfoPlist;
                     for (key in defaultValues) {
                         if (defaultValues.hasOwnProperty(key) && !(key in aggregatePlist))
                             aggregatePlist[key] = defaultValues[key];
@@ -427,7 +445,7 @@ Module {
                                 || {};
                         for (key in partialInfoPlist) {
                             if (partialInfoPlist.hasOwnProperty(key)
-                                    && !aggregatePlist.hasOwnProperty(key))
+                                    && aggregatePlist[key] === undefined)
                                 aggregatePlist[key] = partialInfoPlist[key];
                         }
                     }
@@ -443,7 +461,7 @@ Module {
                     infoPlistFormat = "xml1";
 
                 var validFormats = [ "xml1", "binary1", "json" ];
-                if (!validFormats.contains(infoPlistFormat))
+                if (!validFormats.includes(infoPlistFormat))
                     throw("Invalid Info.plist format " + infoPlistFormat + ". " +
                           "Must be in [xml1, binary1, json].");
 
@@ -461,18 +479,18 @@ Module {
     }
 
     Rule {
-        condition: qbs.targetOS.contains("darwin")
+        condition: qbs.targetOS.includes("darwin")
         multiplex: true
         inputs: ["aggregate_infoplist"]
 
         outputFileTags: ["bundle.input", "pkginfo"]
         outputArtifacts: {
             var artifacts = [];
-            if (ModUtils.moduleProperty(product, "isBundle") && ModUtils.moduleProperty(product, "generatePackageInfo")) {
+            if (product.bundle.isBundle && product.bundle.generatePackageInfo) {
                 artifacts.push({
                     filePath: FileInfo.joinPaths(product.destinationDirectory, "PkgInfo"),
                     fileTags: ["bundle.input", "pkginfo"],
-                    bundle: { _bundleFilePath: FileInfo.joinPaths(product.destinationDirectory, ModUtils.moduleProperty(product, "pkgInfoPath")) }
+                    bundle: { _bundleFilePath: FileInfo.joinPaths(product.destinationDirectory, product.bundle.pkgInfoPath) }
                 });
             }
             return artifacts;
@@ -502,13 +520,13 @@ Module {
     }
 
     Rule {
-        condition: qbs.targetOS.contains("darwin")
+        condition: qbs.targetOS.includes("darwin")
         multiplex: true
         inputs: ["bundle.input",
                  "aggregate_infoplist", "pkginfo", "hpp",
-                 "icns", "xcent",
+                 "icns", "codesign.xcent",
                  "compiled_ibdoc", "compiled_assetcatalog",
-                 "xcode.provisioningprofile.main"]
+                 "codesign.embedded_provisioningprofile"]
 
         // Make sure the inputs of this rule are only those rules which produce outputs compatible
         // with the type of the bundle being produced.
@@ -519,15 +537,16 @@ Module {
             "bundle.symlink.headers", "bundle.symlink.private-headers",
             "bundle.symlink.resources", "bundle.symlink.executable",
             "bundle.symlink.version", "bundle.hpp", "bundle.resource",
-            "bundle.provisioningprofile", "bundle.content.copied", "bundle.application-executable"]
+            "bundle.provisioningprofile", "bundle.content.copied", "bundle.application-executable",
+            "bundle.code-signature"]
         outputArtifacts: {
             var i, artifacts = [];
-            if (ModUtils.moduleProperty(product, "isBundle")) {
+            if (product.bundle.isBundle) {
                 for (i in inputs["bundle.input"]) {
-                    var fp = inputs["bundle.input"][i].moduleProperty("bundle", "_bundleFilePath");
+                    var fp = inputs["bundle.input"][i].bundle._bundleFilePath;
                     if (!fp)
                         throw("Artifact " + inputs["bundle.input"][i].filePath + " has no associated bundle file path");
-                    var extraTags = inputs["bundle.input"][i].fileTags.contains("application")
+                    var extraTags = inputs["bundle.input"][i].fileTags.includes("application")
                             ? ["bundle.application-executable"] : [];
                     artifacts.push({
                         filePath: fp,
@@ -535,24 +554,23 @@ Module {
                     });
                 }
 
-                for (i in inputs["xcode.provisioningprofile.main"]) {
-                    var ext = inputs["xcode.provisioningprofile.main"][i].fileName.split('.')[1];
+                var provprofiles = inputs["codesign.embedded_provisioningprofile"];
+                for (i in provprofiles) {
                     artifacts.push({
                         filePath: FileInfo.joinPaths(product.destinationDirectory,
-                                                     ModUtils.moduleProperty(product,
-                                                                             "contentsFolderPath"),
-                                                     "embedded." + ext),
+                                                     product.bundle.contentsFolderPath,
+                                                     provprofiles[i].fileName),
                         fileTags: ["bundle.provisioningprofile", "bundle.content"]
                     });
                 }
 
-                var packageType = ModUtils.moduleProperty(product, "packageType");
-                var isShallow = ModUtils.moduleProperty(product, "isShallow");
+                var packageType = product.bundle.packageType;
+                var isShallow = product.bundle.isShallow;
                 if (packageType === "FMWK" && !isShallow) {
-                    var publicHeaders = ModUtils.moduleProperty(product, "publicHeaders");
+                    var publicHeaders = product.bundle.publicHeaders;
                     if (publicHeaders && publicHeaders.length) {
                         artifacts.push({
-                            filePath: FileInfo.joinPaths(product.destinationDirectory, ModUtils.moduleProperty(product, "bundleName"), "Headers"),
+                            filePath: FileInfo.joinPaths(product.destinationDirectory, product.bundle.bundleName, "Headers"),
                             fileTags: ["bundle.symlink.headers", "bundle.content"]
                         });
                     }
@@ -560,23 +578,23 @@ Module {
                     var privateHeaders = ModUtils.moduleProperty(product, "privateHeaders");
                     if (privateHeaders && privateHeaders.length) {
                         artifacts.push({
-                            filePath: FileInfo.joinPaths(product.destinationDirectory, ModUtils.moduleProperty(product, "bundleName"), "PrivateHeaders"),
+                            filePath: FileInfo.joinPaths(product.destinationDirectory, product.bundle.bundleName, "PrivateHeaders"),
                             fileTags: ["bundle.symlink.private-headers", "bundle.content"]
                         });
                     }
 
                     artifacts.push({
-                        filePath: FileInfo.joinPaths(product.destinationDirectory, ModUtils.moduleProperty(product, "bundleName"), "Resources"),
+                        filePath: FileInfo.joinPaths(product.destinationDirectory, product.bundle.bundleName, "Resources"),
                         fileTags: ["bundle.symlink.resources", "bundle.content"]
                     });
 
                     artifacts.push({
-                        filePath: FileInfo.joinPaths(product.destinationDirectory, ModUtils.moduleProperty(product, "bundleName"), product.targetName),
+                        filePath: FileInfo.joinPaths(product.destinationDirectory, product.bundle.bundleName, product.targetName),
                         fileTags: ["bundle.symlink.executable", "bundle.content"]
                     });
 
                     artifacts.push({
-                        filePath: FileInfo.joinPaths(product.destinationDirectory, ModUtils.moduleProperty(product, "versionsFolderPath"), "Current"),
+                        filePath: FileInfo.joinPaths(product.destinationDirectory, product.bundle.versionsFolderPath, "Current"),
                         fileTags: ["bundle.symlink.version", "bundle.content"]
                     });
                 }
@@ -593,7 +611,7 @@ Module {
                     }
                 }
 
-                sources = ModUtils.moduleProperty(product, "resources");
+                sources = product.bundle.resources;
                 for (i in sources) {
                     destination = BundleTools.destinationDirectoryForResource(product, {baseDir: FileInfo.path(sources[i]), fileName: FileInfo.fileName(sources[i])});
                     artifacts.push({
@@ -604,16 +622,24 @@ Module {
 
                 var wrapperPath = FileInfo.joinPaths(
                             product.destinationDirectory,
-                            ModUtils.moduleProperty(product, "bundleName"));
+                            product.bundle.bundleName);
                 for (var i = 0; i < artifacts.length; ++i)
                     artifacts[i].bundle = { wrapperPath: wrapperPath };
+
+                if (Host.os().includes("darwin") && product.codesign
+                        && product.codesign.enableCodeSigning) {
+                    artifacts.push({
+                        filePath: FileInfo.joinPaths(product.bundle.contentsFolderPath, "_CodeSignature/CodeResources"),
+                        fileTags: ["bundle.code-signature", "bundle.content"]
+                    });
+                }
             }
             return artifacts;
         }
 
         prepare: {
             var i, cmd, commands = [];
-            var packageType = ModUtils.moduleProperty(product, "packageType");
+            var packageType = product.bundle.packageType;
 
             var bundleType = "bundle";
             if (packageType === "APPL")
@@ -621,19 +647,8 @@ Module {
             if (packageType === "FMWK")
                 bundleType = "framework";
 
-            var bundles = outputs.bundle;
-            for (i in bundles) {
-                cmd = new Command("mkdir", ["-p", bundles[i].filePath]);
-                cmd.description = "creating " + bundleType + " " + product.targetName;
-                commands.push(cmd);
-
-                cmd = new Command("touch", ["-c", bundles[i].filePath]);
-                cmd.silent = true;
-                commands.push(cmd);
-            }
-
             // Product is unbundled
-            if (commands.length === 0) {
+            if (!product.bundle.isBundle) {
                 cmd = new JavaScriptCommand();
                 cmd.silent = true;
                 cmd.sourceCode = function () { };
@@ -642,7 +657,7 @@ Module {
 
             var symlinks = outputs["bundle.symlink.version"];
             for (i in symlinks) {
-                cmd = new Command("ln", ["-sfn", ModUtils.moduleProperty(product, "frameworkVersion"),
+                cmd = new Command("ln", ["-sfn", product.bundle.frameworkVersion,
                                   symlinks[i].filePath]);
                 cmd.silent = true;
                 commands.push(cmd);
@@ -689,8 +704,8 @@ Module {
             }
 
             var bundleInputs = sortedArtifactList(inputs["bundle.input"], function (a, b) {
-                return a.moduleProperty("bundle", "_bundleFilePath").localeCompare(
-                            b.moduleProperty("bundle", "_bundleFilePath"));
+                return a.bundle._bundleFilePath.localeCompare(
+                            b.bundle._bundleFilePath);
             });
             var bundleContents = sortedArtifactList(outputs["bundle.content.copied"]);
             for (i in bundleContents) {
@@ -704,24 +719,27 @@ Module {
                 commands.push(cmd);
             }
 
-            var provisioningProfiles = outputs["bundle.provisioningprofile"];
-            for (i in provisioningProfiles) {
-                cmd = new JavaScriptCommand();
-                cmd.description = "copying provisioning profile";
-                cmd.highlight = "filegen";
-                cmd.source = inputs["xcode.provisioningprofile.main"][i].filePath;
-                cmd.destination = provisioningProfiles[i].filePath;
-                cmd.sourceCode = function() {
-                    File.copy(source, destination);
-                };
+            cmd = new JavaScriptCommand();
+            cmd.description = "copying provisioning profile";
+            cmd.highlight = "filegen";
+            cmd.sources = (inputs["codesign.embedded_provisioningprofile"] || [])
+                .map(function(artifact) { return artifact.filePath; });
+            cmd.destination = (outputs["bundle.provisioningprofile"] || [])
+                .map(function(artifact) { return artifact.filePath; });
+            cmd.sourceCode = function() {
+                var i;
+                for (var i in sources) {
+                    File.copy(sources[i], destination[i]);
+                }
+            };
+            if (cmd.sources && cmd.sources.length)
                 commands.push(cmd);
-            }
 
             cmd = new JavaScriptCommand();
             cmd.description = "copying public headers";
             cmd.highlight = "filegen";
-            cmd.sources = ModUtils.moduleProperty(product, "publicHeaders");
-            cmd.destination = FileInfo.joinPaths(product.destinationDirectory, ModUtils.moduleProperty(product, "publicHeadersFolderPath"));
+            cmd.sources = product.bundle.publicHeaders;
+            cmd.destination = FileInfo.joinPaths(product.destinationDirectory, product.bundle.publicHeadersFolderPath);
             cmd.sourceCode = function() {
                 var i;
                 for (var i in sources) {
@@ -734,8 +752,8 @@ Module {
             cmd = new JavaScriptCommand();
             cmd.description = "copying private headers";
             cmd.highlight = "filegen";
-            cmd.sources = ModUtils.moduleProperty(product, "privateHeaders");
-            cmd.destination = FileInfo.joinPaths(product.destinationDirectory, ModUtils.moduleProperty(product, "privateHeadersFolderPath"));
+            cmd.sources = product.bundle.privateHeaders;
+            cmd.destination = FileInfo.joinPaths(product.destinationDirectory, product.bundle.privateHeadersFolderPath);
             cmd.sourceCode = function() {
                 var i;
                 for (var i in sources) {
@@ -748,7 +766,7 @@ Module {
             cmd = new JavaScriptCommand();
             cmd.description = "copying resources";
             cmd.highlight = "filegen";
-            cmd.sources = ModUtils.moduleProperty(product, "resources");
+            cmd.sources = product.bundle.resources;
             cmd.sourceCode = function() {
                 var i;
                 for (var i in sources) {
@@ -759,45 +777,18 @@ Module {
             if (cmd.sources && cmd.sources.length)
                 commands.push(cmd);
 
-            if (product.moduleProperty("qbs", "hostOS").contains("darwin")) {
-                for (i in bundles) {
-                    var actualSigningIdentity = product.moduleProperty("xcode", "actualSigningIdentity");
-                    var codesignDisplayName = product.moduleProperty("xcode", "actualSigningIdentityDisplayName");
-                    if (actualSigningIdentity) {
-                        // If this is a framework, we need to sign its versioned directory
-                        var subpath = "";
-                        var frameworkVersion = ModUtils.moduleProperty(product, "frameworkVersion");
-                        if (frameworkVersion) {
-                            subpath = ModUtils.moduleProperty(product, "contentsFolderPath");
-                            subpath = subpath.substring(subpath.indexOf(ModUtils.moduleProperty("qbs", "pathSeparator")));
-                        }
+            if (product.qbs.hostOS.includes("darwin")) {
+                Array.prototype.push.apply(commands, Codesign.prepareSign(
+                                               project, product, inputs, outputs, input, output));
 
-                        var args = product.moduleProperty("xcode", "codesignFlags") || [];
-                        args.push("--force");
-                        args.push("--sign", actualSigningIdentity);
-                        args = args.concat(DarwinTools._codeSignTimestampFlags(product));
-
-                        for (var j in inputs.xcent) {
-                            args.push("--entitlements", inputs.xcent[j].filePath);
-                            break; // there should only be one
-                        }
-                        args.push(bundles[i].filePath + subpath);
-
-                        cmd = new Command(product.moduleProperty("xcode", "codesignPath"), args);
-                        cmd.description = "codesign "
-                                + ModUtils.moduleProperty(product, "bundleName")
-                                + " using " + codesignDisplayName
-                                + " (" + actualSigningIdentity + ")";
-                        commands.push(cmd);
-                    }
-
-                    if (bundleType === "application"
-                            && product.moduleProperty("qbs", "targetOS").contains("macos")) {
-                        cmd = new Command(ModUtils.moduleProperty(product, "lsregisterPath"),
-                                          ["-f", bundles[i].filePath]);
-                        cmd.description = "register " + ModUtils.moduleProperty(product, "bundleName");
-                        commands.push(cmd);
-                    }
+                if (bundleType === "application"
+                        && product.qbs.targetOS.includes("macos")) {
+                    var bundlePath = FileInfo.joinPaths(
+                        product.destinationDirectory, product.bundle.bundleName);
+                    cmd = new Command(product.bundle.lsregisterPath,
+                                      ["-f", bundlePath]);
+                    cmd.description = "registering " + product.bundle.bundleName;
+                    commands.push(cmd);
                 }
             }
 

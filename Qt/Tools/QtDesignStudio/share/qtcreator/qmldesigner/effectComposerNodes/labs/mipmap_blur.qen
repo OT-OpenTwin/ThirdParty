@@ -1,0 +1,62 @@
+{
+    "QEN": {
+        "description": "This node creates a medium quality but fast blur of the source item. Suitable when speed is more important than output quality. It uses mipmap levels and does not require BlurHelper node.",
+        "fragmentCode": [
+            "@requires NoiseHelper",
+            "@main",
+            "{",
+            "    const float lod = sqrt(mipmapBlurAmount);",
+            "    const vec3 r = mipmapBlurScatterAmount * lod * (hash23(fragCoord) - vec3(0.5));",
+            "    const vec2 cCoord = texCoord + vec2(r.xy * 0.01);",
+            "    vec4 blurredTex;",
+            "    if (mipmapBlurQualityLow) {",
+            "        blurredTex = textureLod(iSource, cCoord, lod);",
+            "    } else {",
+            "        // Take textures from suitable mipmap level, with offsets",
+            "        const float o = (1.0 + r.z) * mipmapBlurAmount / iResolution.x * 0.5;",
+            "        vec2 lo1 = cCoord + vec2(o, o);",
+            "        vec2 lo2 = cCoord + vec2(o, -o);",
+            "        vec2 lo3 = cCoord + vec2(-o, o);",
+            "        vec2 lo4 = cCoord + vec2(-o, -o);",
+            "",
+            "        vec4 t = textureLod(iSource, texCoord, lod);",
+            "        vec4 t1 = textureLod(iSource, lo1, lod);",
+            "        vec4 t2 = textureLod(iSource, lo2, lod);",
+            "        vec4 t3 = textureLod(iSource, lo3, lod);",
+            "        vec4 t4 = textureLod(iSource, lo4, lod);",
+            "        blurredTex = (0.28 * t + 0.18 * t1 + 0.18 * t2 + 0.18 * t3 + 0.18 * t4);",
+            "    }",
+            "    fragColor = blurredTex;",
+            "}"
+        ],
+        "name": "Mipmap Blur",
+        "properties": [
+            {
+                "defaultValue": "0",
+                "description": "This value defines the amount (radius) of the blur.",
+                "maxValue": "30",
+                "minValue": "0",
+                "name": "mipmapBlurAmount",
+                "displayName": "Blur Amount",
+                "type": "float"
+            },
+            {
+                "defaultValue": "0",
+                "description": "This value defines the amount of scatter (randomness) in the blur. This creates frosty looking blur.",
+                "maxValue": "1",
+                "minValue": "0",
+                "name": "mipmapBlurScatterAmount",
+                "displayName": "Scatter Amount",
+                "type": "float"
+            },
+            {
+                "defaultValue": "false",
+                "description": "When this is false, only a single texture lookup is used for the blur. With this blur is very fast but also quite low quality.",
+                "name": "mipmapBlurQualityLow",
+                "displayName": "Low Quality",
+                "type": "bool"
+            }
+        ],
+        "version": 1
+    }
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- idocument.cpp -->
+  <meta name="description" content="The IDocument class describes a document that can be saved and reloaded.">
+  <title>List of All Members for IDocument | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>IDocument</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">List of All Members for IDocument</h1>
+<p>This is the complete list of members for <a href="core-idocument.html">Core::IDocument</a>, including inherited members.</p>
+<div class="table"><table class="propsummary" translate="no">
+<tr><td class="topAlign"><ul>
+<li class="fn" translate="no">enum <span class="name"><b><a href="core-idocument.html#ChangeTrigger-enum" translate="no">ChangeTrigger</a></b></span></li>
+<li class="fn" translate="no">enum <span class="name"><b><a href="core-idocument.html#ChangeType-enum" translate="no">ChangeType</a></b></span></li>
+<li class="fn" translate="no">enum class <span class="name"><b><a href="core-idocument.html#OpenResult-enum" translate="no">OpenResult</a></b></span></li>
+<li class="fn" translate="no">enum <span class="name"><b><a href="core-idocument.html#ReloadFlag-enum" translate="no">ReloadFlag</a></b></span></li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#IDocument" translate="no">IDocument</a></b></span>(QObject *)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#dtor.IDocument" translate="no">~IDocument</a></b></span>()</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#aboutToReload" translate="no">aboutToReload</a></b></span>()</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#aboutToSave" translate="no">aboutToSave</a></b></span>(const Utils::FilePath &amp;, bool)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#changed" translate="no">changed</a></b></span>()</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#checkPermissions" translate="no">checkPermissions</a></b></span>()</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#contents" translate="no">contents</a></b></span>() const : QByteArray</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#contentsChanged" translate="no">contentsChanged</a></b></span>()</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#displayName" translate="no">displayName</a></b></span>() const : QString</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#fallbackSaveAsFileName" translate="no">fallbackSaveAsFileName</a></b></span>() const : QString</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#fallbackSaveAsPath" translate="no">fallbackSaveAsPath</a></b></span>() const : Utils::FilePath</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#filePath" translate="no">filePath</a></b></span>() const : const Utils::FilePath &amp;</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#filePathChanged" translate="no">filePathChanged</a></b></span>(const Utils::FilePath &amp;, const Utils::FilePath &amp;)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#formatContents" translate="no">formatContents</a></b></span>()</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#id" translate="no">id</a></b></span>() const : Utils::Id</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#infoBar" translate="no">infoBar</a></b></span>() : Utils::InfoBar *</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#isFileReadOnly" translate="no">isFileReadOnly</a></b></span>() const : bool</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#isModified" translate="no">isModified</a></b></span>() const : bool</li>
+</ul></td><td class="topAlign"><ul>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#isSaveAsAllowed" translate="no">isSaveAsAllowed</a></b></span>() const : bool</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#isSuspendAllowed" translate="no">isSuspendAllowed</a></b></span>() const : bool</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#isTemporary" translate="no">isTemporary</a></b></span>() const : bool</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#mimeType" translate="no">mimeType</a></b></span>() const : QString</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#mimeTypeChanged" translate="no">mimeTypeChanged</a></b></span>()</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#open" translate="no">open</a></b></span>(QString *, const Utils::FilePath &amp;, const Utils::FilePath &amp;) : Core::IDocument::OpenResult</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#preferredDisplayName" translate="no">preferredDisplayName</a></b></span>() const : QString</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#reload" translate="no">reload</a></b></span>(QString *, Core::IDocument::ReloadFlag, Core::IDocument::ChangeType) : bool</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#reloadBehavior" translate="no">reloadBehavior</a></b></span>(Core::IDocument::ChangeTrigger, Core::IDocument::ChangeType) const : Core::IDocument::ReloadBehavior</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#reloadFinished" translate="no">reloadFinished</a></b></span>(bool)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#save" translate="no">save</a></b></span>(QString *, const Utils::FilePath &amp;, bool) : bool</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#saveImpl" translate="no">saveImpl</a></b></span>(QString *, const Utils::FilePath &amp;, bool) : bool</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#saved" translate="no">saved</a></b></span>(const Utils::FilePath &amp;, bool)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#setContents" translate="no">setContents</a></b></span>(const QByteArray &amp;) : bool</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#setFilePath" translate="no">setFilePath</a></b></span>(const Utils::FilePath &amp;)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#setId" translate="no">setId</a></b></span>(Utils::Id)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#setMimeType" translate="no">setMimeType</a></b></span>(const QString &amp;)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#setPreferredDisplayName" translate="no">setPreferredDisplayName</a></b></span>(const QString &amp;)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#setSuspendAllowed" translate="no">setSuspendAllowed</a></b></span>(bool)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#setTemporary" translate="no">setTemporary</a></b></span>(bool)</li>
+<li class="fn" translate="no"><span class="name"><b><a href="core-idocument.html#shouldAutoSave" translate="no">shouldAutoSave</a></b></span>() const : bool</li>
+</ul>
+</td></tr>
+</table></div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

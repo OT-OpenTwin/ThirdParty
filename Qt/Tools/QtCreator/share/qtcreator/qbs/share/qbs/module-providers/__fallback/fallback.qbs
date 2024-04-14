@@ -37,7 +37,6 @@
 **
 ****************************************************************************/
 
-import qbs
 import qbs.FileInfo
 import qbs.Probes
 
@@ -47,9 +46,12 @@ Module {
 
     property string theName: FileInfo.completeBaseName(filePath)
 
+    readonly property bool __fallback: true // Hack, please look away
+
     Probes.PkgConfigProbe {
         id: pkgConfigProbe
         condition: pkgconfig.present
+        sysroot: pkgconfig.sysroot
         name: theName
         executable: pkgconfig.executableFilePath
         libDirs: pkgconfig.libDirs

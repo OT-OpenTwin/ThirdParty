@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- exporting-3d-assets.qdoc -->
+  <title>Exporting 3D Assets | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Exporting 3D Assets</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="qtbridge-figma-template.html" />
+  <link rel="next" href="exporting-from-blender.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="qtbridge-figma-template.html">Using Figma Quick Control Template Components in Qt Design Studio</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="exporting-from-blender.html">Exporting from Blender</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#geometry">Geometry</a></li>
+<li class="level2"><a href="#pivot-points">Pivot Points</a></li>
+<li class="level2"><a href="#transformation">Transformation</a></li>
+<li class="level1"><a href="#animations">Animations</a></li>
+<li class="level2"><a href="#time-based-animations">Time-based Animations</a></li>
+<li class="level2"><a href="#deform-animations">Deform Animations</a></li>
+<li class="level2"><a href="#baking-actions-for-animations">Baking Actions for Animations</a></li>
+<li class="level2"><a href="#animation-systems">Animation Systems</a></li>
+<li class="level1"><a href="#materials-and-textures">Materials and Textures</a></li>
+<li class="level1"><a href="#lights">Lights</a></li>
+<li class="level1"><a href="#cameras">Cameras</a></li>
+<li class="level1"><a href="#node-hierarchy">Node Hierarchy</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Exporting 3D Assets</h1>
+<!-- $$$exporting-3d-assets.html-description -->
+<div class="descr" id="details">
+<p>You can import files you created using 3D graphics applications and exported to several widely-used formats, such as .blend, .dae, .fbx, .glb, .gltf, .obj, .uia, or .uip. For a list of formats supported by each <a href="studio-porting-projects.html#qt-quick-3d" translate="no">Qt Quick 3D</a> version, see the module documentation.</p>
+<p>Depending on the 3D graphics tool, you might need to install export plugins to be able to export files to a particular format.</p>
+<p>For complex 3D models, we recommend leaving the files exported from 3D graphics tools unmerged, so if there are performance issues, you can easily delete individual meshes within Qt Design Studio.</p>
+<p>Consider how much detail is necessary for your 3D model prior to exporting from 3D graphics tools. If the models will be far from camera view, optimize the models to the least amount of polygons necessary without compromising the model. For high-detailed models in close distance to the camera, use image maps a much as possible for detail. If the model is only viewed from certain angles, consider further optimization of parts not in direct camera view for optimal performance.</p>
+<p>To get the best results when exporting 3D assets and importing them to Qt Design Studio, follow the general guidelines in the following sections. For more information about using the export plugins for a particular tool, see <a href="https://doc.qt.io/qt/quick3d-asset-conditioning-3d-assets.html#exporting-from-different-tools" translate="no">Exporting from Different Tools</a>.</p>
+<h2 id="geometry">Geometry</h2>
+<p>Qt Design Studio supports geometry exported as triangles, quads, and pentagons. For basic geometry, you mostly need to pay attention to pivot points and transformation.</p>
+<h3 id="pivot-points">Pivot Points</h3>
+<p>In Qt Design Studio, there is only one pivot per component. It is used as the origin for scaling and rotation. Adjust the position of a 3D model's pivot as needed.</p>
+<p>However, extreme edits to pivots in 3D modeling tools can cause problems when importing to Qt Design Studio, especially if animated. This difference is often manifested as a difference in the position or orientation of a component. You can prevent these kinds of problems by only making simple edits to your pivot points. Keep your pivot points to the default (world) alignment, don't scale them, and make sure that if you have multiple pivots (Maya) that they are all at the same location in space.</p>
+<h3 id="transformation">Transformation</h3>
+<p>You can import full 3D transform information including position, rotation, scale, and pivot. Qt Design Studio can import left and right-handed coordinate systems, y-up or z-up, and rotations applied in any order. The principal limitation in this area are pivot points. As discussed above, only simple edits to pivot points are supported.</p>
+<p>Most 3D graphics tools enable you to apply transformation to components and vertices. We highly recommend doing so before importing mesh data into Qt Design Studio. This ensures that the mesh coming into Qt Design Studio has clean transform data and no arbitrary transform values which can be confusing or an impediment to your work.</p>
+<div class="admonition note">
+<p><b>Note: </b>After applying transformations, you may have to reposition the pivot point in some 3D graphics tools.</p>
+</div>
+<h2 id="animations">Animations</h2>
+<p>Animations are supported on any imported property. Position, rotation, scale, and pivot can all be animated. For example, a hierarchy of items, rotated simultaneously on arbitrary axes in arbitrary axis order can be imported. Qt Design Studio also supports importing bezier tangent value tweaked into animations.</p>
+<h3 id="time-based-animations">Time-based Animations</h3>
+<p>In many 3D modeling tools, when you create keyframes you associate them with frame numbers. This is great in the film industry where frame rates are constant, but poses problems in applications where the frame rate may or may not be rock solid. If you were to specify that the logo animation will play for 180 frames, it might play for 3 seconds at 60 FPS, but if the speed drops to 30 fps, the animation will also get much slower.</p>
+<p>Luckily, accounting for this is relatively simple. Many 3D modeling tools default to a setting of 24 frames per second, so your keyframes will be translated at that ratio. If you want a keyframe at one second, put it on frame 24. For two seconds, use frame 48, and so on.</p>
+<p>Usually, configurable frame rates are offered, and the frame rate setting should be respected upon import.</p>
+<p>Some tools, such as Maya, start at frame 1, by default. If you have a keyframe at frame 1, the time for that keyframe will be 1/24, or 0.041 seconds. Edit your Maya animation settings to start your animations at frame 0, or 0/24 = 0 seconds.</p>
+<p>In Qt Design Studio, you can specify the duration of the animation in addition to its start and end frame.</p>
+<h3 id="deform-animations">Deform Animations</h3>
+<p><i>Deform animations</i>, such as lattice and bend, are not supported by Qt Design Studio. However, you can work around this limitation by converting deform animations into <i>blend shape</i> animations that are supported in FBX format. Before exporting the animations, you need to bake the actions in them into key frames.</p>
+<h3 id="baking-actions-for-animations">Baking Actions for Animations</h3>
+<p>You need to bake actions to export animations that are using custom curves or object constraints to control the animation.</p>
+<p>We recommend using the export panel in 3D graphics tools to bake animations to the 3D graphics you are about to export. This will only bake your set keyframes, rather than each individual keyframe along the timeline.</p>
+<p><i>Actions</i> are data-blocks containing animation data. If you are exporting animations, you need to bake actions.</p>
+<h3 id="animation-systems">Animation Systems</h3>
+<p>3D modeling tools offer highly complex and specialized animation systems. We recommend using the Qt Design Studio <b translate="no">Timeline</b> view whenever practical. This helps keep mesh information on import clean and reduces conflicts between imported mesh animation and Qt Design Studio's animation.</p>
+<p>The animation system in Qt Design Studio is a full implementation of bezier keys, and the full complement of bezier animation that you can create with 3D modeling tools and export are represented in Qt Design Studio. The more extreme differences between the various animation systems are mitigated by the limitations imposed by the supported formats.</p>
+<h2 id="materials-and-textures">Materials and Textures</h2>
+<p>Create and assign material slots in the 3D graphics tool before you export 3D graphics. If you add several material slots, the first one is assigned to the object. Only material slots that have a material and that are assigned to a mesh on the exported object are imported into Qt Design Studio.</p>
+<p>If no material slots are assigned to an object, a default material is attached to the component that is created when you import the assets to Qt Design Studio.</p>
+<p>UV-unwrapping your model will create a UV layout. Without a UV layout, you will not be able to render any textures on your model in Qt Design Studio.</p>
+<p>There are many different ways and techniques to unwrap 3D meshes, depending on the 3D graphics tool.</p>
+<h2 id="lights">Lights</h2>
+<p>Lights are imported to Qt Design Studio. Position, rotation, scale, brightness, light color, and the cast shadows property values are preserved.</p>
+<p>If the light type is not supported by Qt Quick 3D, it is converted into one of the supported types.</p>
+<h2 id="cameras">Cameras</h2>
+<p>Perspective and orthographic cameras are imported to Qt Design Studio. Position, rotation, and scale property values, as well as start and end clipping values are preserved. For perspective cameras, field of view values are also preserved.</p>
+<h2 id="node-hierarchy">Node Hierarchy</h2>
+<p>Qt Design Studio supports importing hierarchical information. Hierarchies of arbitrary depth are supported, including grouped nodes. Hierarchical transforms are applied as expected.</p>
+</div>
+<!-- @@@exporting-3d-assets.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="qtbridge-figma-template.html">Using Figma Quick Control Template Components in Qt Design Studio</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="exporting-from-blender.html">Exporting from Blender</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

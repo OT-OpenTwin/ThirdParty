@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- tasktree.cpp -->
+  <meta name="description" content="Group represents the basic element for composing declarative recipes describing how to execute and handle a nested tree of asynchronous tasks.">
+  <title>Group Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="taskingsolution-module.html" translate="no">TaskingSolution</a></li>
+<li>Group</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">Group Class</h1>
+<span class="small-subtitle" translate="no">class <a href="tasking.html" translate="no">Tasking</a>::Group</span>
+<!-- $$$Group-brief -->
+<p>Group represents the basic element for composing declarative recipes describing how to execute and handle a nested tree of asynchronous tasks. <a href="#details">More...</a></p>
+<!-- @@@Group -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;solutions/tasking/tasktree.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></td></tr>
+</table></div>
+<ul>
+<li><a href="tasking-group-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="tasking-group.html#Group" translate="no">Group</a></b>(const QList&lt;Tasking::GroupItem&gt; &amp;<i>children</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="tasking-group.html#Group-1" translate="no">Group</a></b>(std::initializer_list&lt;GroupItem&gt; <i>children</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Tasking::GroupItem </td><td class="memItemRight bottomAlign"><b><a href="tasking-group.html#withTimeout" translate="no">withTimeout</a></b>(std::chrono::milliseconds <i>timeout</i>, const Tasking::GroupItem::GroupEndHandler &amp;<i>handler</i> = {}) const</td></tr>
+</table></div>
+<!-- $$$Group-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Group is a container for other group items. It encloses child tasks into one unit, which is seen by the group's parent as a single, asynchronous task. Since Group is of the <a href="tasking-groupitem.html" translate="no">GroupItem</a> type, it may also be a child of Group.</p>
+<p>Insert child tasks into the group by using aliased custom task names, such as, <code translate="no">ConcurrentCallTask&lt;ResultType&gt;</code> or <code translate="no">NetworkQueryTask</code>:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">const</span> Group group {
+     NetworkQueryTask(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)<span class="operator">,</span>
+     ConcurrentCallTask<span class="operator">&lt;</span><span class="type">int</span><span class="operator">&gt;</span>(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)
+ };
+</pre>
+<p>The group's behavior may be customized by inserting the items returned by <a href="tasking.html#parallelLimit" translate="no">parallelLimit</a>() or <a href="tasking.html#workflowPolicy" translate="no">workflowPolicy</a>() functions:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">const</span> Group group {
+     parallel<span class="operator">,</span>
+     continueOnError<span class="operator">,</span>
+     NetworkQueryTask(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)<span class="operator">,</span>
+     NetworkQueryTask(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)
+ };
+</pre>
+<p>The group may contain nested groups:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">const</span> Group group {
+     finishAllAndDone<span class="operator">,</span>
+     NetworkQueryTask(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)<span class="operator">,</span>
+     Group {
+         NetworkQueryTask(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)<span class="operator">,</span>
+         Group {
+             parallel<span class="operator">,</span>
+             NetworkQueryTask(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)<span class="operator">,</span>
+             NetworkQueryTask(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)<span class="operator">,</span>
+         }
+         ConcurrentCallTask<span class="operator">&lt;</span><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span><span class="operator">&gt;</span>(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)
+     }
+ };
+</pre>
+<p>The group may dynamically instantiate a custom storage structure, which may be used for inter-task data exchange:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">struct</span> MyCustomStruct { <span class="type"><a href="https://doc.qt.io/qt/qbytearray.html" translate="no">QByteArray</a></span> data; };
+
+ TreeStorage<span class="operator">&lt;</span>MyCustomStruct<span class="operator">&gt;</span> storage;
+
+ <span class="keyword">const</span> <span class="keyword">auto</span> onFirstSetup <span class="operator">=</span> <span class="operator">[</span><span class="operator">]</span>(NetworkQuery <span class="operator">&amp;</span>task) { <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span> };
+ <span class="keyword">const</span> <span class="keyword">auto</span> onFirstDone <span class="operator">=</span> <span class="operator">[</span>storage<span class="operator">]</span>(<span class="keyword">const</span> NetworkQuery <span class="operator">&amp;</span>task) {
+     <span class="comment">// storage-&gt; gives a pointer to MyCustomStruct instance,</span>
+     <span class="comment">// created dynamically by the running task tree.</span>
+     storage<span class="operator">-</span><span class="operator">&gt;</span>data <span class="operator">=</span> task<span class="operator">.</span>reply()<span class="operator">-</span><span class="operator">&gt;</span>readAll();
+ };
+ <span class="keyword">const</span> <span class="keyword">auto</span> onSecondSetup <span class="operator">=</span> <span class="operator">[</span>storage<span class="operator">]</span>(ConcurrentCall<span class="operator">&lt;</span><span class="type"><a href="https://doc.qt.io/qt/qimage.html" translate="no">QImage</a></span><span class="operator">&gt;</span> <span class="operator">&amp;</span>task) {
+     <span class="comment">// storage-&gt; gives a pointer to MyCustomStruct. Since the group is sequential,</span>
+     <span class="comment">// the stored MyCustomStruct was already updated inside the onFirstDone handler.</span>
+     <span class="keyword">const</span> <span class="type"><a href="https://doc.qt.io/qt/qbytearray.html" translate="no">QByteArray</a></span> storedData <span class="operator">=</span> storage<span class="operator">-</span><span class="operator">&gt;</span>data;
+ };
+
+ <span class="keyword">const</span> Group group {
+     <span class="comment">// When the group is entered by a running task tree, it creates MyCustomStruct</span>
+     <span class="comment">// instance dynamically. It is later accessible from all handlers via</span>
+     <span class="comment">// the *storage or storage-&gt; operators.</span>
+     sequential<span class="operator">,</span>
+     Storage(storage)<span class="operator">,</span>
+     NetworkQueryTask(onFirstSetup<span class="operator">,</span> onFirstDone)<span class="operator">,</span>
+     ConcurrentCallTask<span class="operator">&lt;</span><span class="type"><a href="https://doc.qt.io/qt/qimage.html" translate="no">QImage</a></span><span class="operator">&gt;</span>(onSecondSetup)
+ };
+</pre>
+</div>
+<!-- @@@Group -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Group[overload1]$$$GroupconstQList<Tasking::GroupItem>& -->
+<h3 class="fn" translate="no" id="Group">Group::<span class="name">Group</span>(const <span class="type"><a href="https://doc.qt.io/qt/qlist.html" translate="no">QList</a></span>&lt;<span class="type"><a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></span>&gt; &amp;<i>children</i>)</h3>
+<p>Constructs a group with a given list of <i translate="no">children</i>.</p>
+<p>This constructor is useful when the child items of the group are not known at compile time, but later, at runtime:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">const</span> <span class="type"><a href="https://doc.qt.io/qt/qstringlist.html" translate="no">QStringList</a></span> sourceList <span class="operator">=</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>;
+
+ <span class="type"><a href="https://doc.qt.io/qt/qlist.html" translate="no">QList</a></span><span class="operator">&lt;</span>GroupItem<span class="operator">&gt;</span> groupItems { parallel };
+
+ <span class="keyword">for</span> (<span class="keyword">const</span> <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> <span class="operator">&amp;</span>source : sourceList) {
+     <span class="keyword">const</span> NetworkQueryTask task(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>); <span class="comment">// use source for setup handler</span>
+     groupItems <span class="operator">&lt;</span><span class="operator">&lt;</span> task;
+ }
+
+ <span class="keyword">const</span> Group group(groupItems);
+</pre>
+<!-- @@@Group -->
+<!-- $$$Group$$$Groupstd::initializer_list<GroupItem> -->
+<h3 class="fn" translate="no" id="Group-1">Group::<span class="name">Group</span>(<span class="type">std::initializer_list</span>&lt;<span class="type">GroupItem</span>&gt; <i>children</i>)</h3>
+<p>Constructs a group from std::initializer_list given by <i translate="no">children</i>.</p>
+<p>This constructor is useful when all child items of the group are known at compile time:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">const</span> Group group {
+     finishAllAndDone<span class="operator">,</span>
+     NetworkQueryTask(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)<span class="operator">,</span>
+     Group {
+         NetworkQueryTask(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)<span class="operator">,</span>
+         Group {
+             parallel<span class="operator">,</span>
+             NetworkQueryTask(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)<span class="operator">,</span>
+             NetworkQueryTask(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)<span class="operator">,</span>
+         }
+         ConcurrentCallTask<span class="operator">&lt;</span><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span><span class="operator">&gt;</span>(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)
+     }
+ };
+</pre>
+<!-- @@@Group -->
+<!-- $$$withTimeout[overload1]$$$withTimeoutstd::chrono::millisecondsconstTasking::GroupItem::GroupEndHandler& -->
+<h3 class="fn" translate="no" id="withTimeout"><span class="type"><a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></span> Group::<span class="name">withTimeout</span>(<span class="type">std::chrono::milliseconds</span> <i>timeout</i>, const <span class="type"><a href="tasking-groupitem.html#GroupEndHandler-typedef" translate="no">Tasking::GroupItem::GroupEndHandler</a></span> &amp;<i>handler</i> = {}) const</h3>
+<p>Attaches <code translate="no">TimeoutTask</code> to a copy of <code translate="no">this</code> group, elapsing after <i translate="no">timeout</i> in milliseconds, with an optionally provided timeout <i translate="no">handler</i>, and returns the coupled item.</p>
+<p>When the group finishes before <i translate="no">timeout</i> passes, the returned item finishes immediately with the group's result. Otherwise, the <i translate="no">handler</i> is invoked (if provided), the group is stopped, and the returned item finishes with an error.</p>
+<!-- @@@withTimeout -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

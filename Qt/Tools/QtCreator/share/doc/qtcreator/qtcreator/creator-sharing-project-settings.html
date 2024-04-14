@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
 <!-- creator-projects-settings-sharing.qdoc -->
-  <title>Sharing Project Settings | Qt Creator Manual</title>
+  <title>Share project settings | Qt Creator Manual</title>
   <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
   <script type="text/javascript">
     document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
@@ -22,75 +21,73 @@
 </head>
 <body>
 <div class="header" id="qtdocheader">
-  <div class="main">
+    <div class="main">
     <div class="main-rounded">
-      <div class="navigationbar">
-        <table><tr>
-<td ><a href="index.html">Qt Creator Manual</a></td><td >Sharing Project Settings</td></tr></table><table class="buildversion"><tr>
-<td id="buildversion" width="100%" align="right"><a href="index.html">Qt Creator Manual 4.9&#x2e;1</a></td>
-        </tr></table>
-      </div>
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Share project settings</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
     </div>
+</div>
 <div class="content">
 <div class="line">
 <div class="content mainContent">
-  <link rel="prev" href="creator-build-dependencies.html" />
-  <link rel="next" href="creator-project-managing-sessions.html" />
+  <link rel="prev" href="creator-how-tos.html" />
 <p class="naviNextPrevious headerNavi">
-<a class="prevPage" href="creator-build-dependencies.html">Specifying Dependencies</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-project-managing-sessions.html">Managing Sessions</a>
-</p><p/>
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
 <div class="sidebar">
 <div class="toc">
-<h3><a name="toc">Contents</a></h3>
+<h3 id="toc">Contents</h3>
 <ul>
-<li class="level1"><a href="#creating-shared-settings-file">Creating Shared Settings File</a></li>
-<li class="level1"><a href="#updating-shared-settings">Updating Shared Settings</a></li>
+<li class="level1"><a href="#create-a-shared-settings-file">Create a shared settings file</a></li>
+<li class="level1"><a href="#update-shared-settings">Update shared settings</a></li>
 </ul>
 </div>
 <div class="sidebar-content" id="sidebar-content"></div></div>
-<h1 class="title">Sharing Project Settings</h1>
-<span class="subtitle"></span>
+<h1 class="title">Share project settings</h1>
 <!-- $$$creator-sharing-project-settings.html-description -->
-<div class="descr"> <a name="details"></a>
-<p>Qt Creator stores user-specific project settings in a .pro.user file. You can share these settings between several projects as a .pro.shared file. It has the same XML structure as a .pro.user file, but only contains the settings to share.</p>
-<a name="creating-shared-settings-file"></a>
-<h2 id="creating-shared-settings-file">Creating Shared Settings File</h2>
-<p>The easiest way to create a .pro.shared file is to copy settings from the .pro.user file. Typically, you would share some of the values in the <code>ProjectExplorer.Project.EditorSettings</code> section.</p>
-<p><b>Note: </b>You must always specify the <code>ProjectExplorer.Project.Updater.FileVersion</code> variable and use the same value for it as in the .pro.user file.</p><p>You can then deliver the .pro.shared file to other developers or copy it to other development PCs.</p>
-<p>The following is an example of a pro.shared file:</p>
-<pre class="cpp">
-
-  <span class="operator">&lt;</span><span class="operator">?</span>xml version<span class="operator">=</span><span class="string">&quot;1.0&quot;</span> encoding<span class="operator">=</span><span class="string">&quot;UTF-8&quot;</span><span class="operator">?</span><span class="operator">&gt;</span>
-  <span class="operator">&lt;</span><span class="operator">!</span>DOCTYPE <span class="type">QtCreatorProject</span><span class="operator">&gt;</span>
-  <span class="operator">&lt;</span>qtcreator<span class="operator">&gt;</span>
-      <span class="operator">&lt;</span>data<span class="operator">&gt;</span>
-          <span class="operator">&lt;</span>variable<span class="operator">&gt;</span>ProjectExplorer<span class="operator">.</span>Project<span class="operator">.</span>EditorSettings<span class="operator">&lt;</span><span class="operator">/</span>variable<span class="operator">&gt;</span>
-          <span class="operator">&lt;</span>valuemap type<span class="operator">=</span><span class="string">&quot;QVariantMap&quot;</span><span class="operator">&gt;</span>
-              <span class="operator">&lt;</span>value type<span class="operator">=</span><span class="string">&quot;bool&quot;</span> key<span class="operator">=</span><span class="string">&quot;EditorConfiguration.SpacesForTabs&quot;</span><span class="operator">&gt;</span><span class="keyword">true</span><span class="operator">&lt;</span><span class="operator">/</span>value<span class="operator">&gt;</span>
-              <span class="operator">&lt;</span>value type<span class="operator">=</span><span class="string">&quot;bool&quot;</span> key<span class="operator">=</span><span class="string">&quot;EditorConfiguration.AutoSpacesForTabs&quot;</span><span class="operator">&gt;</span><span class="keyword">false</span><span class="operator">&lt;</span><span class="operator">/</span>value<span class="operator">&gt;</span>
-              <span class="operator">&lt;</span>value type<span class="operator">=</span><span class="string">&quot;int&quot;</span> key<span class="operator">=</span><span class="string">&quot;EditorConfiguration.TabSize&quot;</span><span class="operator">&gt;</span><span class="number">14</span><span class="operator">&lt;</span><span class="operator">/</span>value<span class="operator">&gt;</span>
-              <span class="operator">&lt;</span>value type<span class="operator">=</span><span class="string">&quot;int&quot;</span> key<span class="operator">=</span><span class="string">&quot;EditorConfiguration.IndentSize&quot;</span><span class="operator">&gt;</span><span class="number">4</span><span class="operator">&lt;</span><span class="operator">/</span>value<span class="operator">&gt;</span>
-          <span class="operator">&lt;</span><span class="operator">/</span>valuemap<span class="operator">&gt;</span>
-          <span class="operator">&lt;</span><span class="operator">/</span>data<span class="operator">&gt;</span>
-      <span class="operator">&lt;</span>data<span class="operator">&gt;</span>
-          <span class="operator">&lt;</span>variable<span class="operator">&gt;</span>ProjectExplorer<span class="operator">.</span>Project<span class="operator">.</span>Updater<span class="operator">.</span>FileVersion<span class="operator">&lt;</span><span class="operator">/</span>variable<span class="operator">&gt;</span>
-          <span class="operator">&lt;</span>value type<span class="operator">=</span><span class="string">&quot;int&quot;</span><span class="operator">&gt;</span><span class="number">10</span><span class="operator">&lt;</span><span class="operator">/</span>value<span class="operator">&gt;</span>
-      <span class="operator">&lt;</span><span class="operator">/</span>data<span class="operator">&gt;</span>
-  <span class="operator">&lt;</span><span class="operator">/</span>qtcreator<span class="operator">&gt;</span>
-
-</pre>
-<a name="updating-shared-settings"></a>
-<h2 id="updating-shared-settings">Updating Shared Settings</h2>
-<p>The first time Qt Creator loads the project after you added pro.shared settings, it overwrites the pro.user settings with them. If you open the project for the first time and Qt Creator has not created a .pro.user file, the settings in the .pro.shared file take effect immediately.</p>
-<p>If you receive a .pro.shared file and do not want to use a particular setting in it, you can change it. Qt Creator marks it a <i>sticky</i> setting. The next time you open a project, the setting is not updated. Qt Creator tracks sticky settings in the .pro.user file and removes the mark if the values in the pro.user and pro.shared files eventually become identical. This is to avoid a permanent sticky setting that was created just because you wanted to try something out.</p>
+<div class="descr" id="details">
+<p>Qt Creator stores user-specific project settings in a <i>.user</i> file. You can share these settings between several projects as a <i>.shared</i> file. It has the same XML structure as a <i>.user</i> file, but only has the settings to share.</p>
+<div class="admonition note">
+<p><b>Note: </b>Use <a href="creator-build-settings-cmake-presets.html" translate="no">CMake Presets</a> to share CMake project settings.</p>
 </div>
+<h2 id="create-a-shared-settings-file">Create a shared settings file</h2>
+<p>The easiest way to create a <i>.shared</i> file is to copy settings from the <i>.user</i> file. Typically, you would share some of the values in the <code translate="no">ProjectExplorer.Project.EditorSettings</code> section.</p>
+<div class="admonition note">
+<p><b>Note: </b>You must always specify the <code translate="no">ProjectExplorer.Project.Updater.FileVersion</code> variable and use the same value for it as in the <i>.user</i> file.</p>
+</div>
+<p>You can then deliver the <i>.shared</i> file to other developers or copy it to other development PCs.</p>
+<p>The following is an example of a <i>.shared</i> file:</p>
+<pre class="cpp" translate="no">
+ <span class="operator">&lt;</span><span class="operator">?</span>xml version<span class="operator">=</span><span class="string">&quot;1.0&quot;</span> encoding<span class="operator">=</span><span class="string">&quot;UTF-8&quot;</span><span class="operator">?</span><span class="operator">&gt;</span>
+ <span class="operator">&lt;</span><span class="operator">!</span>DOCTYPE <span class="type">QtCreatorProject</span><span class="operator">&gt;</span>
+ <span class="operator">&lt;</span>qtcreator<span class="operator">&gt;</span>
+     <span class="operator">&lt;</span>data<span class="operator">&gt;</span>
+         <span class="operator">&lt;</span>variable<span class="operator">&gt;</span>ProjectExplorer<span class="operator">.</span>Project<span class="operator">.</span>EditorSettings<span class="operator">&lt;</span><span class="operator">/</span>variable<span class="operator">&gt;</span>
+         <span class="operator">&lt;</span>valuemap type<span class="operator">=</span><span class="string">&quot;QVariantMap&quot;</span><span class="operator">&gt;</span>
+             <span class="operator">&lt;</span>value type<span class="operator">=</span><span class="string">&quot;bool&quot;</span> key<span class="operator">=</span><span class="string">&quot;EditorConfiguration.SpacesForTabs&quot;</span><span class="operator">&gt;</span><span class="keyword">true</span><span class="operator">&lt;</span><span class="operator">/</span>value<span class="operator">&gt;</span>
+             <span class="operator">&lt;</span>value type<span class="operator">=</span><span class="string">&quot;bool&quot;</span> key<span class="operator">=</span><span class="string">&quot;EditorConfiguration.AutoSpacesForTabs&quot;</span><span class="operator">&gt;</span><span class="keyword">false</span><span class="operator">&lt;</span><span class="operator">/</span>value<span class="operator">&gt;</span>
+             <span class="operator">&lt;</span>value type<span class="operator">=</span><span class="string">&quot;int&quot;</span> key<span class="operator">=</span><span class="string">&quot;EditorConfiguration.TabSize&quot;</span><span class="operator">&gt;</span><span class="number">14</span><span class="operator">&lt;</span><span class="operator">/</span>value<span class="operator">&gt;</span>
+             <span class="operator">&lt;</span>value type<span class="operator">=</span><span class="string">&quot;int&quot;</span> key<span class="operator">=</span><span class="string">&quot;EditorConfiguration.IndentSize&quot;</span><span class="operator">&gt;</span><span class="number">4</span><span class="operator">&lt;</span><span class="operator">/</span>value<span class="operator">&gt;</span>
+         <span class="operator">&lt;</span><span class="operator">/</span>valuemap<span class="operator">&gt;</span>
+         <span class="operator">&lt;</span><span class="operator">/</span>data<span class="operator">&gt;</span>
+     <span class="operator">&lt;</span>data<span class="operator">&gt;</span>
+         <span class="operator">&lt;</span>variable<span class="operator">&gt;</span>ProjectExplorer<span class="operator">.</span>Project<span class="operator">.</span>Updater<span class="operator">.</span>FileVersion<span class="operator">&lt;</span><span class="operator">/</span>variable<span class="operator">&gt;</span>
+         <span class="operator">&lt;</span>value type<span class="operator">=</span><span class="string">&quot;int&quot;</span><span class="operator">&gt;</span><span class="number">10</span><span class="operator">&lt;</span><span class="operator">/</span>value<span class="operator">&gt;</span>
+     <span class="operator">&lt;</span><span class="operator">/</span>data<span class="operator">&gt;</span>
+ <span class="operator">&lt;</span><span class="operator">/</span>qtcreator<span class="operator">&gt;</span>
+</pre>
+<h2 id="update-shared-settings">Update shared settings</h2>
+<p>The first time Qt Creator loads the project after you add shared settings, it overwrites the user settings with them. If you open the project for the first time and Qt Creator has not created a <i>.user</i> file, the settings in the <i>.shared</i> file take effect immediately.</p>
+<p>If you receive a <i>.shared</i> file and do not want to use a particular setting in it, you can change it. Qt Creator marks it a <i>sticky</i> setting. The next time you open a project, the setting is not updated. Qt Creator tracks sticky settings in the <i>.user</i> file and removes the mark if the values in the user and shared files eventually become identical. This is to avoid a permanent sticky setting that was created just because you wanted to try something out.</p>
+</div>
+<p><b>See also </b><a href="creator-configuring-projects.html" translate="no">Configuring Projects</a> and <a href="creator-build-settings-cmake-presets.html" translate="no">CMake Presets</a>.</p>
 <!-- @@@creator-sharing-project-settings.html -->
 <p class="naviNextPrevious footerNavi">
-<a class="prevPage" href="creator-build-dependencies.html">Specifying Dependencies</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-project-managing-sessions.html">Managing Sessions</a>
+<a class="prevPage" href="creator-how-tos.html">How To</a>
 </p>
         </div>
        </div>
@@ -99,7 +96,7 @@
 </div>
 <div class="footer">
    <p>
-   <acronym title="Copyright">&copy;</acronym> 2019 The Qt Company Ltd.
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
    Documentation contributions included herein are the copyrights of
    their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
    of their respective owners. </p>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-squish.qdoc -->
+  <title>Using Squish | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li><a href="creator-overview.html" translate="no">Developing with Qt Creator</a></li>
+<li>Using Squish</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-ctf-visualizer.html" />
+  <link rel="next" href="creator-tutorials.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-ctf-visualizer.html">Visualizing Chrome Trace Events</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-tutorials.html">Tutorials</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#specifying-a-squish-server">Specifying a Squish Server</a></li>
+<li class="level1"><a href="#specifying-auts">Specifying AUTs</a></li>
+<li class="level2"><a href="#mapping-auts">Mapping AUTs</a></li>
+<li class="level2"><a href="#specifying-aut-paths">Specifying AUT Paths</a></li>
+<li class="level2"><a href="#adding-attachable-auts">Adding Attachable AUTs</a></li>
+<li class="level1"><a href="#managing-test-suites-and-cases">Managing Test Suites and Cases</a></li>
+<li class="level2"><a href="#creating-test-suites">Creating Test Suites</a></li>
+<li class="level2"><a href="#recording-test-cases">Recording Test Cases</a></li>
+<li class="level2"><a href="#running-test-suites">Running Test Suites</a></li>
+<li class="level2"><a href="#mapping-symbolic-names">Mapping Symbolic Names</a></li>
+<li class="level2"><a href="#inspecting-local-variables">Inspecting Local Variables</a></li>
+<li class="level2"><a href="#specifying-settings-for-running-tests">Specifying Settings for Running Tests</a></li>
+<li class="level1"><a href="#viewing-test-results">Viewing Test Results</a></li>
+<li class="level1"><a href="#viewing-squish-runner-and-server-logs">Viewing Squish Runner and Server Logs</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Using Squish</h1>
+<!-- $$$creator-squish.html-description -->
+<div class="descr" id="details">
+<p><a href="https://www.qt.io/product/quality-assurance/squish" translate="no">Squish</a> is an automated GUI testing framework for testing Android, iOS, Java, macOS, Qt, Tk, Windows, and XView applications, as well as HTML-based web applications running in browsers, such as Apple Safari, Mozilla Firefox, Google Chrome, and Microsoft Internet Explorer and Edge.</p>
+<p>The experimental Squish plugin integrates Squish into Qt Creator. You can:</p>
+<ul>
+<li>Open existing Squish test suites.</li>
+<li>Create new test suites and test cases.</li>
+<li>Record test cases (in a very limited way compared to what you can do inside the Squish IDE).</li>
+<li>Use Squish Runner and Server to run test suites or cases and view the results in the <b translate="no">Squish</b> <a href="creator-how-to-view-output.html" translate="no">output</a>.</li>
+<li>Set breakpoints before running tests to stop at certain locations and inspect the local variables, similarly to when debugging a test.</li>
+</ul>
+<p>When running test suites or cases, the Squish Runner instructs the Squish Server to start the application under test (AUT). The server can be running on multiple machines, and the AUT can be located on a different path on each of them. Therefore, you must either map AUTs to their corresponding paths or specify AUT paths to search from in the server settings.</p>
+<p>In addition, you can test an already running application by attaching to it. This enables you to test your application using a Squish Server running on another machine. However, you can have only one server attached to your application at a time. Also, the attached application is not closed when the test case is completed.</p>
+<p>To use the plugin, you must download and install Squish, create a connection to the Squish Server, and specify AUTs to run.</p>
+<div class="admonition note">
+<p><b>Note: </b>Enable the Squish plugin to use it.</p>
+</div>
+<h2 id="specifying-a-squish-server">Specifying a Squish Server</h2>
+<p>To specify a Squish Server to run:</p>
+<ol class="1" type="1"><li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Squish</b>.<p class="centerAlign"><img src="images/qtcreator-squish-preferences.png" alt="&quot;Squish general preferences&quot;" /></p></li>
+<li>In the <b translate="no">Squish path</b> field, specify the path to the Squish installation directory.</li>
+<li>In the <b translate="no">License path</b> field, specify the path to your Squish license file if it is not located in your home folder. For example, if you have a global installation with several users, where the license key is installed in the global folder.</li>
+<li>Select the <b translate="no">Local server</b> check box to use a locally installed <code translate="no">squishserver.exe</code>. To use a server running in another machine, deselect the check box and specify the server address in the <b translate="no">Server host</b> field and the port number in the <b translate="no">Server port</b> field. If no port is specified, Qt Creator starts <code translate="no">squishserver</code> in a way that enables it to automatically select an open port.</li>
+<li>Select the <b translate="no">Verbose log</b> check box to include additional logging levels in the log output.</li>
+<li>Select the <b translate="no">Minimize IDE</b> check box to automatically minimize Qt Creator when running or recording test cases.</li>
+</ol>
+<h2 id="specifying-auts">Specifying AUTs</h2>
+<p>To specify applications to test using Squish, select <b translate="no">Tools</b> &gt; <b translate="no">Squish</b> &gt; <b translate="no">Server Settings</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-squish-server-settings.png" alt="&quot;Squish Server Settings&quot;" /></p><h3 id="mapping-auts">Mapping AUTs</h3>
+<p>To specify the path to an AUT to run, select <b translate="no">Mapped AUTs</b> &gt; <b translate="no">Add</b> and locate the AUT.</p>
+<p>The Squish server checks whether the name of the AUT to run is mapped to a path and starts the AUT using the mapped path. This way, it does not need to search from all the specified AUT paths.</p>
+<p>Mapping AUTs prevents the server from accidentally executing the wrong AUT if two different executables have the same name, as the server executes the first matching AUT it finds in the <b translate="no">AUT Paths</b> list.</p>
+<p>To change the path to the selected AUT, select <b translate="no">Edit</b>.</p>
+<p>To remove the mapping to the selected AUT, select <b translate="no">Remove</b>.</p>
+<h3 id="specifying-aut-paths">Specifying AUT Paths</h3>
+<p>To specify a path to search AUTs from, select <b translate="no">AUT Paths</b> &gt; <b translate="no">Add</b>.</p>
+<p>The Squish Server searches for the executable to run from the specified AUT paths and runs the first one with the specified name that it finds in any path.</p>
+<p>To change the selected AUT path, select <b translate="no">Edit</b>.</p>
+<p>To remove the selected AUT path, select <b translate="no">Remove</b>.</p>
+<h3 id="adding-attachable-auts">Adding Attachable AUTs</h3>
+<p>To specify the path to a running AUT, select <b translate="no">Attachable AUTs</b> &gt; <b translate="no">Add</b>. In the <b translate="no">Add Attachable AUT</b> dialog, specify a connection to a running application to register an attachable AUT.</p>
+<p class="centerAlign"><img src="images/qtcreator-squish-server-settings-add-attachable-aut.png" alt="&quot;Add Attachable AUT dialog&quot;" /></p><p>To change the connection to the selected AUT, select <b translate="no">Edit</b>.</p>
+<p>To remove the connection to the selected AUT, select <b translate="no">Remove</b>.</p>
+<h2 id="managing-test-suites-and-cases">Managing Test Suites and Cases</h2>
+<p>You can manage Squish test suites and cases in the <b translate="no">Squish</b> <a href="creator-how-to-show-and-hide-sidebars.html" translate="no">view</a>.</p>
+<p class="centerAlign"><img src="images/qtcreator-squish-view.png" alt="&quot;Squish sidebar view&quot;" /></p><p>To show existing test suites in <b translate="no">Test Suites</b>, select <b translate="no">Open Squish Suites</b> in the context menu.</p>
+<p class="centerAlign"><img src="images/qtcreator-squish-view-open-squish-suites.png" alt="&quot;Open Squish Test Suites dialog&quot;" /></p><p>You can open the <b translate="no">Squish Test Suite</b> wizard for creating a new test suite by selecting <b translate="no">Create New Test Suite</b> in the context menu.</p>
+<p>To add a test case to a test suite, select it and then select <b translate="no">Add New Test Case</b> in the context menu.</p>
+<p>To close all test suites, select <b translate="no">Close All Test Suites</b> in the context menu.</p>
+<p>To add a shared folder to <b translate="no">Shared Folders</b>, select <b translate="no">Add Shared Folder</b> in the context menu. To remove all shared folders, select <b translate="no">Remove All Shared Folders</b>.</p>
+<p>Double-click a test suite in <b translate="no">Test Suites</b> to open the <code translate="no">suite.conf</code> configuration file for editing.</p>
+<h3 id="creating-test-suites">Creating Test Suites</h3>
+<p>To create a new test suite:</p>
+<ol class="1" type="1"><li>Select <b translate="no">File</b> &gt; <b translate="no">New Project</b> &gt; <b translate="no">Squish</b> &gt; <b translate="no">Squish Test Suite</b> &gt; <b translate="no">Choose</b>.<p class="centerAlign"><img src="images/qtcreator-squish-create-test-suite.png" alt="&quot;Create Squish Test Suite wizard&quot;" /></p></li>
+<li>On the <b translate="no">Location</b> page, in <b translate="no">Test Suite Name</b>, enter a name for the test suite.<p class="centerAlign"><img src="images/qtcreator-squish-create-test-suite-location.png" alt="&quot;Location page&quot;" /></p></li>
+<li>In <b translate="no">Test Suite folder's parent folder</b>, enter the path to the folder to create the test suite folder, and then select <b translate="no">Next</b>.</li>
+<li>On the <b translate="no">Setup</b> page, select the GUI toolkit used by the AUT, and then select <b translate="no">Next</b>.<p class="centerAlign"><img src="images/qtcreator-squish-create-test-suite-setup.png" alt="&quot;Setup page&quot;" /></p><p>Currently, only desktop GUI toolkits are supported.</p>
+</li>
+<li>On the <b translate="no">Script Language</b> page, select the scripting language to use for the test suite's test script, and then select <b translate="no">Next</b>.<p class="centerAlign"><img src="images/qtcreator-squish-create-test-suite-language.png" alt="&quot;Languages page&quot;" /></p></li>
+<li>On the <b translate="no">AUT</b> page, select the AUT to test, and then select <b translate="no">Next</b>.<p class="centerAlign"><img src="images/qtcreator-squish-create-test-suite-aut.png" alt="&quot;AUT page&quot;" /></p></li>
+<li>On the <b translate="no">Summary</b> page review the test suite settings, and then select <b translate="no">Finish</b> to create the test suite.</li>
+</ol>
+<p>The test suite is listed in <b translate="no">Test Suites</b> in the <b translate="no">Squish</b> sidebar view.</p>
+<h3 id="recording-test-cases">Recording Test Cases</h3>
+<p>Squish records tests using the scripting language that you specified for the test suite. Recordings are made into existing test cases.</p>
+<p>In <b translate="no">Test Suites</b>, select the <img src="images/recordfill.png" alt="" /> (<b translate="no">Record Test Case</b>) button next to the test case name. The AUT that you selected for the test suite is displayed and you can start recording the test case.</p>
+<p class="centerAlign"><img src="images/qtcreator-squish-control-bar-record-test-case.png" alt="&quot;Squish control bar for recording test cases&quot;" /></p><p>When you are done, select the <img src="images/stop_small.png" alt="" /> (<b translate="no">Stop</b>) button in the <b translate="no">Control Bar</b>.</p>
+<p>You can edit recorded test scripts or copy parts of them into manually created test scripts.</p>
+<p class="centerAlign"><img src="images/qtcreator-squish-test-script-edit.png" alt="&quot;A test script open in the editor&quot;" /></p><h3 id="running-test-suites">Running Test Suites</h3>
+<p>You can run a recorded test case to have Squish repeat all the actions that you applied when recording the test, but without the pauses that humans are prone to but which computers don't need. To run a test case, select the <img src="images/run_small.png" alt="" /> (<b translate="no">Run</b>) button next to the test case in <b translate="no">Test Suites</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-squish-control-bar-run-test-case.png" alt="&quot;Squish control bar for running test cases&quot;" /></p><p>While the test is running, you can view test results as well as interrupt and stop tests in the <b translate="no">Control Bar</b>.</p>
+<h3 id="mapping-symbolic-names">Mapping Symbolic Names</h3>
+<p>When Squish records a test, it uses <i>symbolic names</i> to identify the UI elements. Symbolic names are stored in an object map that can be either text-based or script-based. Text-based symbolic names are plain strings starting with a colon (:), whereas script-based symbolic names are script variables.</p>
+<p>Squish generates symbolic names programmatically, but you can use them in hand-written code, or when you edit test cases or use extracts from recorded test cases.</p>
+<p>Symbolic names have one major advantage over real names: if a property that a real name depends on changes in the AUT, the real name becomes invalid, and you must update all occurrences of it in test scripts. When using symbolic names, you only need to update the real name in the object map. You do not need to make any changes to the tests.</p>
+<p>To edit the object map of a test suite, select the <img src="images/objectsmap.png" alt="" /> (<b translate="no">Object Map</b>) button next to the test suite in <b translate="no">Test Suites</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-squish-symbolic-names.png" alt="&quot;Symbolic Names view&quot;" /></p><p>You can filter the symbolic names in the <b translate="no">Symbolic Names</b> view. To edit a symbolic name or the names or values of its properties, double-click the name or value in the view and enter a new one.</p>
+<p>To add a new symbolic name, select <b translate="no">New</b>. Double-click the placeholder for the name and enter a new name. Then select <b translate="no">New</b> next to <b translate="no">Properties</b> to enter properties for the symbolic name.</p>
+<p>To remove the selected symbolic name or property, select <b translate="no">Remove</b>.</p>
+<p>To jump to the symbolic name associated to the selected property, select <img src="images/jumpto.png" alt="" /> .</p>
+<h3 id="inspecting-local-variables">Inspecting Local Variables</h3>
+<p>If you set breakpoints in the test code before running the test, the test execution is automatically interrupted when a breakpoint is hit. You can inspect the contents of local variables in the <b translate="no">Squish Locals</b> view.</p>
+<p class="centerAlign"><img src="images/qtcreator-squish-locals.png" alt="&quot;Squish Locals view&quot;" /></p><p>Use the <b translate="no">Step Into</b>, <b translate="no">Step Over</b>, and <b translate="no">Step Out</b> buttons in the <b translate="no">Squish</b> debugging view to step through the code.</p>
+<p class="centerAlign"><img src="images/qtcreator-squish-debugging-view.png" alt="&quot;Squish debugging view&quot;" /></p><h3 id="specifying-settings-for-running-tests">Specifying Settings for Running Tests</h3>
+<p>To specify settings for running tests, select <b translate="no">Tools</b> &gt; <b translate="no">Squish</b> &gt; <b translate="no">Server Settings</b>:</p>
+<ul>
+<li>In the <b translate="no">Maximum startup time</b> field, set the maximum time to wait for the AUT to start before throwing an error.</li>
+<li>In the <b translate="no">Maximum response time</b> field, set the maximum time to wait for the AUT to respond before throwing an error.</li>
+<li>In the <b translate="no">Maximum post-mortem wait time</b> field, set the maximum time to wait after the main AUT has exited. This is useful for AUTs invoked through launcher applications, such as shell scripts or batch files.</li>
+<li>Select the <b translate="no">Animate mouse cursor</b> check box to animate the mouse cursor when playing back a test.</li>
+</ul>
+<h2 id="viewing-test-results">Viewing Test Results</h2>
+<p>Squish uses compare, verify, and exception functions to record the results of tests applied to a running AUT in the test log as <i>passes</i> or <i>fails</i>. In addition, any kind of test results can be recorded in the test log.</p>
+<p>You can view the test log in the <b translate="no">Squish</b> output, <b translate="no">Test Results</b> tab.</p>
+<p class="centerAlign"><img src="images/qtcreator-squish-output-test-results.png" alt="&quot;Test Results output&quot;" /></p><p>The <b translate="no">Result</b> column displays the time when each test run started and finished, log information and warnings, and test result status:</p>
+<ul>
+<li><b translate="no">Pass</b> - The test passed.</li>
+<li><b translate="no">Fail</b> - The test failed.</li>
+<li><b translate="no">ExpectedFail</b> - The test failed, as expected. For example, a known bug in the AUT caused a comparison or verification to fail.</li>
+<li><b translate="no">UnexpectedPass</b> - The test passed unexpectedly. For example, a comparison or verification succeeded even though it was expected to fail.</li>
+</ul>
+<p>The <b translate="no">Message</b> column displays log messages and information about the type of the operation that was performed: comparison, verification, or exception.</p>
+<h2 id="viewing-squish-runner-and-server-logs">Viewing Squish Runner and Server Logs</h2>
+<p>You can view the Squish Runner and Server logs in the <b translate="no">Squish</b> output, <b translate="no">Runner/Server Log</b> tab.</p>
+<p class="centerAlign"><img src="images/qtcreator-squish-output-runner-server-log.png" alt="&quot;Runner and Server Log output&quot;" /></p></div>
+<p><b>See also </b><a href="creator-how-to-enable-plugins.html" translate="no">Enable and disable plugins</a>.</p>
+<!-- @@@creator-squish.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-ctf-visualizer.html">Visualizing Chrome Trace Events</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-tutorials.html">Tutorials</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

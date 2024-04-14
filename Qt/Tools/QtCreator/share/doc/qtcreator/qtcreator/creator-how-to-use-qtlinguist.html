@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-external-tools.qdoc -->
+  <title>Use Qt Linguist | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Use Qt Linguist</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#use-lupdate-and-lrelease">Use lupdate and lrelease</a></li>
+<li class="level2"><a href="#synchronize-ts-files">Synchronize TS files</a></li>
+<li class="level2"><a href="#generate-qm-files">Generate QM files</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Use Qt Linguist</h1>
+<!-- $$$creator-how-to-use-qtlinguist.html-description -->
+<div class="descr" id="details">
+<p>Most of the text to translate in an application consists of either single words or short phrases. These typically appear as window titles, menu items, tooltips, and labels to buttons, checkboxes, and radio buttons.</p>
+<p>You mark the phrases as translatable in the QML and C++ source code. Qt localization tools provide context information for each of the phrases to help the translator understand their meaning. You can add comments to the phrases.</p>
+<p>Translation files contain all the user-visible text and keyboard shortcuts in an application and translations of that text.</p>
+<p>When you <a href="creator-project-creating.html" translate="no">create a new project</a>, you can automatically generate a translation source file (TS) for one language. To add other languages, edit the project file or go to <b translate="no">File</b> &gt; <b translate="no">New File</b>.</p>
+<p>To open TS files in Qt Linguist, right-click a TS file in the <b translate="no">Projects</b> or <b translate="no">File System</b> view and go to <b translate="no">Open With</b> &gt; <b translate="no">Qt Linguist</b> in the context menu.</p>
+<h2 id="use-lupdate-and-lrelease">Use lupdate and lrelease</h2>
+<p>Use the Qt Linguist release manager tools, lupdate and lrelease, directly from Qt Creator. The lupdate tool synchronizes source code and translations. The lrelease tool creates run-time translation files for use by the released application.</p>
+<div class="admonition note">
+<p><b>Note: </b>Running the tools from Qt Creator is supported only when using qmake as the build system. For more information about using the tools with CMake, see <a href="https://doc.qt.io/qt-6/cmake-command-reference.html#qt6-linguisttools" translate="no">Qt6::LinguistTools</a>.</p>
+</div>
+<p>By default, the project .pro file is passed to the tools as an argument. To specify other command-line arguments for the tools, go to <b translate="no">Tools</b> &gt; <b translate="no">External</b> &gt; <b translate="no">Configure</b>.</p>
+<h3 id="synchronize-ts-files">Synchronize TS files</h3>
+<p>To synchronize TS files from a translator with the application code, go to <b translate="no">Tools</b> &gt; <b translate="no">External</b> &gt; <b translate="no">Linguist</b> &gt; <b translate="no">Update Translations (lupdate)</b>.</p>
+<h3 id="generate-qm-files">Generate QM files</h3>
+<p>To generate from the TS files Qt message (QM) files that can be used by an application, go to <b translate="no">Tools</b> &gt; <b translate="no">External</b> &gt; <b translate="no">Linguist</b> &gt; <b translate="no">Release Translations (lrelease)</b>.</p>
+</div>
+<p><b>See also </b><a href="creator-how-to-add-ts-files.html" translate="no">Add translation files</a>, <a href="creator-editor-external.html" translate="no">Use external tools</a>, Internationalization with Qt, and Qt Linguist Manual.</p>
+<!-- @@@creator-how-to-use-qtlinguist.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

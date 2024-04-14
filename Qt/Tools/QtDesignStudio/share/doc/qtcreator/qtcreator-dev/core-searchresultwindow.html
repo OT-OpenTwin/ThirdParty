@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- searchresultwindow.cpp -->
+  <meta name="description" content="The SearchResultWindow class is the implementation of a commonly shared Search Results output pane.">
+  <title>SearchResultWindow Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>SearchResultWindow</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#public-slots">Public Slots</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">SearchResultWindow Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::SearchResultWindow</span>
+<!-- $$$SearchResultWindow-brief -->
+<p>The SearchResultWindow class is the implementation of a commonly shared <b translate="no">Search Results</b> output pane. <a href="#details">More...</a></p>
+<!-- @@@SearchResultWindow -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/find/searchresultwindow.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="core-ioutputpane.html" translate="no">Core::IOutputPane</a></td></tr>
+</table></div>
+<ul>
+<li><a href="core-searchresultwindow-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="core-searchresultwindow.html#PreserveCaseMode-enum" translate="no">PreserveCaseMode</a></b> { PreserveCaseEnabled, PreserveCaseDisabled }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="core-searchresultwindow.html#SearchMode-enum" translate="no">SearchMode</a></b> { SearchOnly, SearchAndReplace }</td></tr>
+</table></div>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresultwindow.html#openNewSearchPanel" translate="no">openNewSearchPanel</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresultwindow.html#setTabWidth" translate="no">setTabWidth</a></b>(int <i>tabWidth</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::SearchResult *</td><td class="memItemRight bottomAlign"><b><a href="core-searchresultwindow.html#startNewSearch" translate="no">startNewSearch</a></b>(const QString &amp;<i>label</i>, const QString &amp;<i>toolTip</i>, const QString &amp;<i>searchTerm</i>, Core::SearchResultWindow::SearchMode <i>searchOrSearchAndReplace</i> = SearchOnly, Core::SearchResultWindow::PreserveCaseMode <i>preserveCaseMode</i> = PreserveCaseEnabled, const QString &amp;<i>cfgGroup</i> = QString())</td></tr>
+</table></div>
+<h2 id="public-slots">Public Slots</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresultwindow.html#clearContents" translate="no">clearContents</a></b>() override</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Core::SearchResultWindow *</td><td class="memItemRight bottomAlign"><b><a href="core-searchresultwindow.html#instance" translate="no">instance</a></b>()</td></tr>
+</table></div>
+<!-- $$$SearchResultWindow-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p class="centerAlign"><img src="images/qtcreator-search-results.webp" alt="{Search Results view}" /></p><p>Whenever you want to show the user a list of search results, or want to present UI for a global search and replace, use the single instance of this class.</p>
+<p>In addition to being an implementation of an output pane, the SearchResultWindow has functions and enums that enable other plugins to show their search results and hook into the user actions for selecting an entry and performing a global replace.</p>
+<p>Whenever you start a search, call <a href="core-searchresultwindow.html#startNewSearch" translate="no">startNewSearch</a>(<a href="core-searchresultwindow.html#SearchMode-enum" translate="no">SearchMode</a>) to initialize the <b translate="no">Search Results</b> output pane. The parameter determines if the GUI for replacing should be shown. The function returns a <a href="core-searchresult.html" translate="no">SearchResult</a> object that is your hook into the signals from user interaction for this search. When you produce search results, call addResults() or addResult() to add them to the <b translate="no">Search Results</b> output pane. After the search has finished call finishSearch() to inform the <b translate="no">Search Results</b> output pane about it.</p>
+<p>You will get activated() signals via your <a href="core-searchresult.html" translate="no">SearchResult</a> instance when the user selects a search result item. If you started the search with the <a href="core-searchresultwindow.html#SearchMode-enum" translate="no">SearchAndReplace</a> option, the replaceButtonClicked() signal is emitted when the user requests a replace.</p>
+</div>
+<!-- @@@SearchResultWindow -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$PreserveCaseMode$$$PreserveCaseEnabled$$$PreserveCaseDisabled -->
+<h3 class="fn" translate="no" id="PreserveCaseMode-enum">enum SearchResultWindow::<span class="name">PreserveCaseMode</span></h3>
+<p>This enum type specifies whether a search and replace should preserve the case of the replaced strings:</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Core::SearchResultWindow::PreserveCaseEnabled</code></td><td class="topAlign tblval"><code translate="no">0</code></td><td class="topAlign">The case is preserved when replacings strings.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::SearchResultWindow::PreserveCaseDisabled</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">The given case is used when replacing strings.</td></tr>
+</table></div>
+<!-- @@@PreserveCaseMode -->
+<!-- $$$SearchMode$$$SearchOnly$$$SearchAndReplace -->
+<h3 class="fn" translate="no" id="SearchMode-enum">enum SearchResultWindow::<span class="name">SearchMode</span></h3>
+<p>This enum type specifies whether a search should show the replace UI or not:</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Core::SearchResultWindow::SearchOnly</code></td><td class="topAlign tblval"><code translate="no">0</code></td><td class="topAlign">The search does not support replace.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::SearchResultWindow::SearchAndReplace</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">The search supports replace, so show the UI for it.</td></tr>
+</table></div>
+<!-- @@@SearchMode -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$clearContents[overload1]$$$clearContents -->
+<h3 class="fn" translate="no" id="clearContents"><code translate="no">[override virtual slot] </code><span class="type">void</span> SearchResultWindow::<span class="name">clearContents</span>()</h3>
+<p>Reimplements: <a href="core-ioutputpane.html#clearContents" translate="no">IOutputPane::clearContents</a>().</p>
+<p>Clears the current contents of the <b translate="no">Search Results</b> output pane.</p>
+<!-- @@@clearContents -->
+<!-- $$$instance[overload1]$$$instance -->
+<h3 class="fn" translate="no" id="instance"><code translate="no">[static] </code><span class="type"><a href="core-searchresultwindow.html" translate="no">Core::SearchResultWindow</a></span> *SearchResultWindow::<span class="name">instance</span>()</h3>
+<p>Returns the single shared instance of the <b translate="no">Search Results</b> output pane.</p>
+<!-- @@@instance -->
+<!-- $$$openNewSearchPanel[overload1]$$$openNewSearchPanel -->
+<h3 class="fn" translate="no" id="openNewSearchPanel"><span class="type">void</span> SearchResultWindow::<span class="name">openNewSearchPanel</span>()</h3>
+<p>Opens a new search panel.</p>
+<!-- @@@openNewSearchPanel -->
+<!-- $$$setTabWidth[overload1]$$$setTabWidthint -->
+<h3 class="fn" translate="no" id="setTabWidth"><span class="type">void</span> SearchResultWindow::<span class="name">setTabWidth</span>(<span class="type">int</span> <i>tabWidth</i>)</h3>
+<p>Sets the <b translate="no">Search Results</b> tab width to <i translate="no">tabWidth</i>.</p>
+<!-- @@@setTabWidth -->
+<!-- $$$startNewSearch[overload1]$$$startNewSearchconstQString&constQString&constQString&Core::SearchResultWindow::SearchModeCore::SearchResultWindow::PreserveCaseModeconstQString& -->
+<h3 class="fn" translate="no" id="startNewSearch"><span class="type"><a href="core-searchresult.html" translate="no">Core::SearchResult</a></span> *SearchResultWindow::<span class="name">startNewSearch</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>label</i>, const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>toolTip</i>, const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>searchTerm</i>, <span class="type"><a href="core-searchresultwindow.html#SearchMode-enum" translate="no">Core::SearchResultWindow::SearchMode</a></span> <i>searchOrSearchAndReplace</i> = SearchOnly, <span class="type"><a href="core-searchresultwindow.html#PreserveCaseMode-enum" translate="no">Core::SearchResultWindow::PreserveCaseMode</a></span> <i>preserveCaseMode</i> = PreserveCaseEnabled, const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>cfgGroup</i> = QString())</h3>
+<p>Tells the <b translate="no">Search Results</b> output pane to start a new search.</p>
+<p>The <i translate="no">label</i> should be a string that shortly describes the type of the search, that is, the search filter and possibly the most relevant search option, followed by a colon (:). For example: <code translate="no">Project 'myproject':</code> The <i translate="no">searchTerm</i> is shown after the colon.</p>
+<p>The <i translate="no">toolTip</i> should elaborate on the search parameters, like file patterns that are searched and find flags.</p>
+<p>If <i translate="no">cfgGroup</i> is not empty, it will be used for storing the <i>do not ask again</i> setting of a <i>this change cannot be undone</i> warning (which is implicitly requested by passing a non-empty group).</p>
+<p>The <i translate="no">searchOrSearchAndReplace</i> parameter holds whether the search results pane should show a UI for a global search and replace action. The <i translate="no">preserveCaseMode</i> parameter holds whether the case of the search string should be preserved when replacing strings.</p>
+<p>Returns a <a href="core-searchresult.html" translate="no">SearchResult</a> object that is used for signaling user interaction with the results of this search. The search result window owns the returned <a href="core-searchresult.html" translate="no">SearchResult</a> and might delete it any time, even while the search is running. For example, when the user clears the <b translate="no">Search Results</b> pane, or when the user opens so many other searches that this search falls out of the history.</p>
+<!-- @@@startNewSearch -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-autotest.qdoc -->
+  <meta name="description" content="View test results.">
+  <title>Test Results | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Test Results</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-reference.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#qt-test-output">Qt Test Output</a></li>
+<li class="level1"><a href="#summary-of-messages">Summary of Messages</a></li>
+<li class="level1"><a href="#filtering-test-results">Filtering Test Results</a></li>
+<li class="level1"><a href="#blacklisting-tests">Blacklisting Tests</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Test Results</h1>
+<!-- $$$creator-test-results.html-description -->
+<div class="descr" id="details">
+<p>View and filter test results in the <b translate="no">Test Results</b> view.</p>
+<p class="centerAlign"><img src="images/qtcreator-test-results.webp" alt="{Visual display in the Test Results view}" /></p><h2 id="qt-test-output">Qt Test Output</h2>
+<p>The <b translate="no">Test Results</b> view shows Qt and Qt Quick test results in XML format and other test results in plain text format.</p>
+<p>XML can be parsed more easily and reliably than plain text. However, if a Qt or Qt Quick test crashes, it might not produce complete XML code that can be parsed, which might lead to information loss. You might see the lost information when viewing the results as plain text.</p>
+<p>To view the results of Qt and Qt Quick tests as plain text, go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Testing</b> &gt; <b translate="no">Qt Test</b> and then clear <b translate="no">Use XML output</b>. Then select <img src="images/text.png" alt="" /> (<b translate="no">Switch Between Visual and Text Display</b>) in <b translate="no">Test Results</b> to switch to the text display.</p>
+<h2 id="summary-of-messages">Summary of Messages</h2>
+<p>The following table lists the messages that <b translate="no">Test Results</b> shows.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Result</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >BENCH</td><td >Benchmark test.</td></tr>
+<tr valign="top" class="even"><td >DEBUG</td><td >Debug message.</td></tr>
+<tr valign="top" class="odd"><td >FAIL</td><td >Test case failed. Double-click the line for more information.</td></tr>
+<tr valign="top" class="even"><td >FATAL</td><td >A fatal error occurred that stops the test case from being run, for example.</td></tr>
+<tr valign="top" class="odd"><td >INFO</td><td >Informative message.</td></tr>
+<tr valign="top" class="even"><td >INTERNAL</td><td >Internal message.</td></tr>
+<tr valign="top" class="odd"><td >PASS</td><td >Test case passed.</td></tr>
+<tr valign="top" class="even"><td >SKIP</td><td >Test case was skipped.</td></tr>
+<tr valign="top" class="odd"><td >SYSTEM</td><td >An error message received from or influenced by the OS.</td></tr>
+<tr valign="top" class="even"><td >XFAIL</td><td >Test case is expected to fail, so it is marked by using the QEXPECT_FAIL macro. If the test case passes instead, an unexpected pass (XPASS) is written to the test log.</td></tr>
+<tr valign="top" class="odd"><td >XPASS</td><td >Test case passed even though it was expected to fail.</td></tr>
+<tr valign="top" class="even"><td >WARN</td><td >Warning message.</td></tr>
+</table></div>
+<h2 id="filtering-test-results">Filtering Test Results</h2>
+<p>To view only messages of a particular type, select <img src="images/filtericon.png" alt="" /> (<b translate="no">Filter Test Results</b>) and then select the types of messages to show.</p>
+<p>To show all messages, select <b translate="no">Check All Filters</b>.</p>
+<p>To deselect all message types, select <b translate="no">Uncheck All Filters</b>.</p>
+<h2 id="blacklisting-tests">Blacklisting Tests</h2>
+<p>Since Qt 5.4, you can add a BLACKLIST file for tests. It is mainly used internally by the Qt CI system.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Result</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >BFAIL</td><td >Blacklisted test case failed.</td></tr>
+<tr valign="top" class="even"><td >BPASS</td><td >Blacklisted test case passed.</td></tr>
+<tr valign="top" class="odd"><td >BXFAIL</td><td >Blacklisted test case failed but was marked to be expected to fail.</td></tr>
+<tr valign="top" class="even"><td >BXPASS</td><td >Blacklisted test case passed even though it was expected to fail.</td></tr>
+</table></div>
+</div>
+<p><b>See also </b><a href="creator-how-tos.html#test" translate="no">How To: Test</a> and <a href="creator-test-results.html" translate="no">Test Results</a>.</p>
+<!-- @@@creator-test-results.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

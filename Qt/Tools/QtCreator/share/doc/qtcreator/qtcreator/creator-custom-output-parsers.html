@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-custom-output-parser.qdoc -->
+  <title>Add custom output parsers | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Add custom output parsers</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#set-custom-parser-preferences">Set custom parser preferences</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Add custom output parsers</h1>
+<!-- $$$creator-custom-output-parsers.html-description -->
+<div class="descr" id="details">
+<p>Custom output parsers scan command-line output for error and warning patterns that you specify and create entries for found patterns in <a href="creator-reference-issues-view.html" translate="no">Issues</a>.</p>
+<p>To add or change custom output parsers, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Build &amp; Run</b> &gt; <b translate="no">Custom Output Parsers</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-custom-parser-list.png" alt="" /></p><p>To edit the settings of a custom output parser, select it in the list, and then select <b translate="no">Edit</b>.</p>
+<p>To remove the selected parser, select <b translate="no">Remove</b>.</p>
+<h2 id="set-custom-parser-preferences">Set custom parser preferences</h2>
+<p>You can capture errors and warnings separately, according to the settings you specify in the <b translate="no">Error</b> and <b translate="no">Warning</b> tab.</p>
+<p>To create a custom output parser:</p>
+<ol class="1" type="1"><li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Build &amp; Run</b> &gt; <b translate="no">Custom Output Parsers</b> &gt; <b translate="no">Add</b>.<p class="centerAlign"><img src="images/qtcreator-custom-parser-options.png" alt="&quot;Custom Output Parsers preferences&quot;" /></p></li>
+<li>In the <b translate="no">Error message capture pattern</b> field, specify a regular expression to define what is an error. The custom parser matches the compile output line by line against the regular expression and displays errors in <a href="creator-reference-issues-view.html" translate="no">Issues</a>. Create regular expression groups that contain the file name, line number and error message.</li>
+<li>In the <b translate="no">Capture Positions</b> field, map the regular expression groups to <b translate="no">File name</b>, <b translate="no">Line number</b>, and <b translate="no">Message</b>.</li>
+<li>In the <b translate="no">Capture Output Channels</b> field, specify whether messages from standard output, standard error, or both channels should be captured.</li>
+<li>In the <b translate="no">Test</b> group, you can test how the message that you enter in the <b translate="no">Error message</b> field is matched when using the current settings.</li>
+<li>Select <b translate="no">OK</b> to add the parser to the list of parsers and return to the <b translate="no">Custom Output Parsers</b> tab.</li>
+<li>Double-click the parser name to change it to something more descriptive than the default value.</li>
+</ol>
+</div>
+<p><b>See also </b><a href="creator-how-to-activate-custom-output-parsers.html" translate="no">Activate custom output parsers</a>.</p>
+<!-- @@@creator-custom-output-parsers.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

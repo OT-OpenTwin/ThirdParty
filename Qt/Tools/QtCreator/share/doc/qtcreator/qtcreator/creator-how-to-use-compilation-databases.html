@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-compilation-database.qdoc -->
+  <title>Use compilation databases | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Use compilation databases</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Use compilation databases</h1>
+<!-- $$$creator-how-to-use-compilation-databases.html-description -->
+<div class="descr" id="details">
+<p>The <a href="https://clang.llvm.org/docs/JSONCompilationDatabase.html" translate="no">JSON compilation database format</a> specifies how to replay single builds independently of the build system.</p>
+<p>A <i>compilation database</i> is basically a list of files and the compiler flags that are used to compile the files. The database is used to feed the code model with the necessary information for correctly parsing the code when you open a file for editing.</p>
+<p>To generate a compilation database from the information that the code model has, select <b translate="no">Build</b> &gt; <b translate="no">Generate Compilation Database</b>.</p>
+<p>You can add files, such as non-C files, to the project in <i>compile_database.json.files</i>.</p>
+<p>You can use the experimental Compilation Database Project Manager to open the files in a compilation database with access to all the editing features of the Clang code model.</p>
+<div class="admonition note">
+<p><b>Note: </b>Enable the Compilation Database Project Manager plugin to use it.</p>
+</div>
+<p>To switch between header and source files, select <b translate="no">Tools</b> &gt; <b translate="no">C++</b> &gt; <b translate="no">Switch Header/Source</b>.</p>
+<p>You can specify custom build steps and run settings for compilation database projects in the <b translate="no">Projects</b> mode.</p>
+</div>
+<p><b>See also </b><a href="creator-how-to-enable-plugins.html" translate="no">Enable and disable plugins</a>, <a href="creator-build-settings.html#add-custom-build-steps" translate="no">Add custom build steps</a>, <a href="creator-run-settings.html" translate="no">Configure projects for running</a>, and <a href="creator-preferences-cpp-code-model.html" translate="no">Code Model</a>.</p>
+<!-- @@@creator-how-to-use-compilation-databases.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
 <!-- qtdesigner-overview.qdoc -->
-  <title>Developing Widget Based Applications | Qt Creator Manual</title>
+  <meta name="description" content="A visual editor for Qt Widgets.">
+  <title>Qt Designer | Qt Creator Manual</title>
   <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
   <script type="text/javascript">
     document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
@@ -22,82 +22,83 @@
 </head>
 <body>
 <div class="header" id="qtdocheader">
-  <div class="main">
+    <div class="main">
     <div class="main-rounded">
-      <div class="navigationbar">
-        <table><tr>
-<td ><a href="index.html">Qt Creator Manual</a></td><td >Developing Widget Based Applications</td></tr></table><table class="buildversion"><tr>
-<td id="buildversion" width="100%" align="right"><a href="index.html">Qt Creator Manual 4.9&#x2e;1</a></td>
-        </tr></table>
-      </div>
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Qt Designer</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
     </div>
+</div>
 <div class="content">
 <div class="line">
 <div class="content mainContent">
-  <link rel="prev" href="quick-converting-ui-projects.html" />
-  <link rel="next" href="adding-plugins.html" />
+  <link rel="prev" href="creator-reference.html" />
 <p class="naviNextPrevious headerNavi">
-<a class="prevPage" href="quick-converting-ui-projects.html">Converting UI Projects to Applications</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="adding-plugins.html">Adding Qt Designer Plugins</a>
-</p><p/>
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
 <div class="sidebar">
 <div class="toc">
-<h3><a name="toc">Contents</a></h3>
+<h3 id="toc">Contents</h3>
 <ul>
 <li class="level1"><a href="#code-editor-integration">Code Editor Integration</a></li>
 <li class="level1"><a href="#managing-image-resources">Managing Image Resources</a></li>
 <li class="level1"><a href="#specifying-settings-for-qt-designer">Specifying Settings for Qt Designer</a></li>
-<li class="level1"><a href="#previewing-forms-using-device-skins">Previewing Forms Using Device Skins</a></li>
-<li class="level1"><a href="#adding-widgets">Adding Widgets</a></li>
+<li class="level1"><a href="#previewing-forms-using-device-profiles">Previewing Forms Using Device Profiles</a></li>
+<li class="level2"><a href="#adding-device-profiles">Adding Device Profiles</a></li>
 </ul>
 </div>
 <div class="sidebar-content" id="sidebar-content"></div></div>
-<h1 class="title">Developing Widget Based Applications</h1>
-<span class="subtitle"></span>
+<h1 class="title">Qt Designer</h1>
 <!-- $$$creator-using-qt-designer.html-description -->
-<div class="descr"> <a name="details"></a>
-<p>Qt Creator automatically opens all .ui files in the integrated Qt Designer, in <b>Design</b> mode.</p>
-<p class="centerAlign"><img src="images/qtcreator-formedit.png" alt="" /></p><p>For more information about Qt Designer, see the <a href="http://doc.qt.io/qt-5/qtdesigner-manual.html">Qt Designer Manual</a>.</p>
-<p>Generally, the integrated Qt Designer contains the same functions as the standalone Qt Designer. The following sections describe the differences.</p>
-<a name="code-editor-integration"></a>
+<div class="descr" id="details">
+<p>Qt Creator automatically opens all .ui files in the integrated Qt Designer, in <b translate="no">Design</b> mode.</p>
+<p class="centerAlign"><img src="images/qtcreator-formedit.png" alt="" /></p><p>Widgets and forms created with Qt Designer are integrated seamlessly with programmed code by using the Qt signals and slots mechanism that allows you to easily assign behavior to graphical elements. All properties set in Qt Designer can be changed dynamically within the code. Furthermore, features such as widget promotion and custom plugins allow you to use your own widgets with Qt Designer.</p>
+<p>For more information about Qt Designer, see the Qt Designer Manual.</p>
+<p>Generally, the integrated Qt Designer has the same functions as the standalone Qt Designer. The following sections describe the differences.</p>
+<p>The following video shows how to use the integrated Qt Designer to create a small Qt Widgets-based application:</p>
+<div class="video">
+<a href="https://www.youtube.com/watch/?v=LnVjI0I7cKs">
+<img src="images/LnVjI0I7cKs.jpg" title="Click to play in a browser" /></a>
+</div>
 <h2 id="code-editor-integration">Code Editor Integration</h2>
-<p>To switch between forms (<b>Design</b> mode) and code (<b>Edit</b> mode), press <b>Shift+F4</b>.</p>
-<p>You can use Qt Creator to create stub implementations of slot functions. In the <b>Design</b> mode, right-click a widget to open a context menu, and then select <b>Go to Slot</b>. Select a signal in the list to go to an existing slot function or to create a new slot function.</p>
-<a name="managing-image-resources"></a>
+<p>To switch between forms (<b translate="no">Design</b> mode) and code (<b translate="no">Edit</b> mode), press <b>Shift+F4</b>.</p>
+<p>You can use Qt Creator to create stub implementations of slot functions. In the <b translate="no">Design</b> mode, right-click a widget to open a context menu, and then select <b translate="no">Go to Slot</b>. Select a signal in the list to go to an existing slot function or to create a new slot function.</p>
 <h2 id="managing-image-resources">Managing Image Resources</h2>
-<p>In standalone Qt Designer, image resources are created using the built-in <b>Resource Editor</b>. In Qt Creator, .ui files are usually part of a project, which may contain several resource files (.qrc). They are created and maintained by using the Qt Creator Resource Editor. The Qt Designer <b>Resource Editor</b> is de-activated and the image resources are displayed in the Qt Designer <b>Resource Browser</b>.</p>
-<a name="specifying-settings-for-qt-designer"></a>
+<p>In standalone Qt Designer, image resources are created using the built-in <b translate="no">Resource Editor</b>. In Qt Creator, .ui files are usually part of a project, which may have several resource files (.qrc). They are created and maintained by using the Qt Creator Resource Editor. The Qt Designer <b translate="no">Resource Editor</b> is de-activated and the image resources are displayed in the Qt Designer <b translate="no">Resource Browser</b>.</p>
+<p>To open resource files from the code editor, select <b translate="no">Follow Symbol Under Cursor</b> in the context menu or press <b>F2</b> when the cursor is over a string literal.</p>
 <h2 id="specifying-settings-for-qt-designer">Specifying Settings for Qt Designer</h2>
 <p>You can drag and drop the views in Qt Designer to new positions on the screen.</p>
 <p>To specify settings for Qt Designer:</p>
 <ul>
-<li>Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Designer</b>.</li>
-<li>Specify settins for generating classes and code in <b>Class Generation</b>.</li>
-<li>Specify embedded device profiles, that determine style, font, and screen resolution, for example, in <b>Embedded Design</b>.</li>
-<li>Specify settings for the grid and previewing forms in <b>Forms</b>.</li>
-<li>Specify an additional folder for saving templates in <b>Template Paths</b>.</li>
+<li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Designer</b>.</li>
+<li>Specify embedded device profiles, that determine style, font, and screen resolution, for example, in <b translate="no">Embedded Design</b>.</li>
+<li>Specify settings for the grid and previewing forms in <b translate="no">Forms</b>.</li>
+<li>Specify an additional folder for saving templates in <b translate="no">Template Paths</b>.</li>
 </ul>
-<p>To preview the settings, select <b>Tools</b> &gt; <b>Form Editor</b> &gt; <b>Preview</b>, or press <b>Alt+Shift+R</b>.</p>
-<a name="previewing-forms-using-device-skins"></a>
-<h2 id="previewing-forms-using-device-skins">Previewing Forms Using Device Skins</h2>
-<p>A <i>device skin</i> is a set of configuration files that describe a mobile device. It includes a border image that surrounds the form and depicts a mobile device with its buttons.</p>
-<p>To preview your form using device skins:</p>
-<ol class="1" type="1"><li>Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Designer</b>.</li>
-<li>Select the <b>Print/Preview Configuration</b> check box.</li>
-<li>In the <b>Device skin</b> field, select a device skin.</li>
-<li>When the form is open in <b>Design</b> mode, press <b>Alt+Shift+R</b>.</li>
-<li>To end the preview, right-click the skin and select <b>Close</b> in the context menu.</li>
+<p>To preview the settings, select <b translate="no">Tools</b> &gt; <b translate="no">Form Editor</b> &gt; <b translate="no">Preview</b>, or press <b>Alt+Shift+R</b>.</p>
+<h2 id="previewing-forms-using-device-profiles">Previewing Forms Using Device Profiles</h2>
+<p>A <i>device profile</i> is a set of configuration files that describe a mobile device. It includes a border image that surrounds the form and depicts a mobile device with its buttons.</p>
+<p>To preview your form using device profiles, select <b translate="no">Tools</b> &gt; <b translate="no">Form Editor</b> &gt; <b translate="no">Preview In</b>, and then select a device profile.</p>
+<h3 id="adding-device-profiles">Adding Device Profiles</h3>
+<p>To add device profiles:</p>
+<ol class="1" type="1"><li><a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Designer</b>.<p class="centerAlign"><img src="images/qtdesigner-embedded-design.png" alt="&quot;Qt Designer Embedded Design preferences&quot;" /></p></li>
+<li>In <b translate="no">Embedded Design</b>, select <img src="images/plus.png" alt="" /> to open the <b translate="no">Add Profile</b> dialog.<p class="centerAlign"><img src="images/qtdesigner-add-profile.png" alt="&quot;Add Profile dialog&quot;" /></p></li>
+<li>In <b translate="no">Name</b>, enter a name for the device. The name is displayed as an option in <b translate="no">Preview In</b>.</li>
+<li>In <b translate="no">Family</b>, select the font to use.</li>
+<li>In <b translate="no">Point Size</b>, select the font size.</li>
+<li>In <b translate="no">Style</b>, select one of the predefined styles.</li>
+<li>In <b translate="no">Device DPI</b>, select one of the predefined DPI values or <b translate="no">User defined</b> to specify a custom value.</li>
+<li>Select <b translate="no">OK</b> to add the device profile to the list.</li>
 </ol>
-<a name="adding-widgets"></a>
-<h2 id="adding-widgets">Adding Widgets</h2>
-<p>You can use Qt APIs to create plugins that extend Qt applications. This enables you to add your own widgets to Qt Designer. For more information, see <a href="adding-plugins.html">Adding Qt Designer Plugins</a>.</p>
+<p>To import device profiles from .qdp files, select <b translate="no">Open</b>. To save them as .qdp files, select <b translate="no">Save</b>.</p>
 </div>
+<p><b>See also </b><a href="creator-writing-program.html" translate="no">Creating a Qt Widget Based Application</a> and <a href="adding-plugins.html" translate="no">Adding Qt Designer Plugins</a>.</p>
 <!-- @@@creator-using-qt-designer.html -->
 <p class="naviNextPrevious footerNavi">
-<a class="prevPage" href="quick-converting-ui-projects.html">Converting UI Projects to Applications</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="adding-plugins.html">Adding Qt Designer Plugins</a>
+<a class="prevPage" href="creator-reference.html">Reference</a>
 </p>
         </div>
        </div>
@@ -106,7 +107,7 @@
 </div>
 <div class="footer">
    <p>
-   <acronym title="Copyright">&copy;</acronym> 2019 The Qt Company Ltd.
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
    Documentation contributions included herein are the copyrights of
    their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
    of their respective owners. </p>

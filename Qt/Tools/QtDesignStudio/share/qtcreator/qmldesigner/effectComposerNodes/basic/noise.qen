@@ -1,0 +1,56 @@
+{
+    "QEN": {
+        "description": "Adds RGB or unified noise to the source item.",
+        "fragmentCode": [
+            "@requires NoiseHelper",
+            "@main",
+            "{",
+            "    vec3 noiseColor;",
+            "    if (noiseUseRgb) {",
+            "        if (noiseRandomize) {",
+            "            uvec2 noiseCoord = uvec2(fragCoord) + HASH_BOX_SIZE * uint(iTime * 60);",
+            "            noiseColor = _hash13(noiseCoord.x + HASH_BOX_SIZE * noiseCoord.y);",
+            "        } else {",
+            "            noiseColor = hash23(fragCoord);",
+            "        }",
+            "    } else {",
+            "        if (noiseRandomize) {",
+            "            uvec2 noiseCoord = uvec2(fragCoord) + HASH_BOX_SIZE * uint(iTime * 60);",
+            "            noiseColor = vec3(_hash21(noiseCoord));",
+            "        } else {",
+            "            noiseColor = vec3(hash21(fragCoord));",
+            "        }",
+            "    }",
+            "",
+            "    fragColor.rgb = mix(fragColor.rgb, noiseColor * fragColor.a, noiseAmount);",
+            "}"
+        ],
+        "name": "Noise",
+        "properties": [
+            {
+                "defaultValue": "true",
+                "description": "When this is true, the noise affects all RGB color channels separately. Otherwise, noise affects all channels similarly.",
+                "name": "noiseUseRgb",
+                "displayName": "Use RGB",
+                "type": "bool"
+            },
+            {
+                "defaultValue": "true",
+                "description": "When this is true, noise animates randomly. Otherwise, noise remains static.",
+                "name": "noiseRandomize",
+                "displayName": "Randomize",
+                "type": "bool"
+            },
+            {
+                "defaultValue": "0",
+                "description": "The amount of noise applied to the source.",
+                "maxValue": "1",
+                "minValue": "0",
+                "name": "noiseAmount",
+                "displayName": "Amount",
+                "type": "float"
+            }
+        ],
+        "version": 1
+    }
+}

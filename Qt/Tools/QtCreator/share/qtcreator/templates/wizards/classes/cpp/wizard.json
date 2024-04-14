@@ -5,20 +5,21 @@
     "category": "O.C++",
     "trDescription": "Creates a C++ header and a source file for a new class that you can add to a C++ project.",
     "trDisplayName": "C++ Class",
-    "trDisplayCategory": "C++",
+    "trDisplayCategory": "C/C++",
     "iconText": "h/cpp",
-    "enabled": "%{JS: [ %{Plugins} ].indexOf('CppEditor') >= 0}",
+    "enabled": "%{JS: value('Plugins').indexOf('CppEditor') >= 0}",
 
     "options":
     [
         { "key": "TargetPath", "value": "%{Path}" },
         { "key": "HdrPath", "value": "%{Path}/%{HdrFileName}" },
         { "key": "SrcPath", "value": "%{Path}/%{SrcFileName}" },
-        { "key": "CN", "value": "%{JS: Cpp.className('%{Class}')}" },
-        { "key": "Base", "value": "%{JS: ( '%{BaseCB}' === '' ) ? '%{BaseEdit}' : '%{BaseCB}'}" },
-        { "key": "isQObject", "value": "%{JS: [ 'QObject', 'QWidget', 'QMainWindow', 'QDeclarativeItem', 'QQuickItem'].indexOf('%{Base}') >= 0 }" },
-        { "key": "GUARD", "value": "%{JS: Cpp.headerGuard('%{HdrFileName}')}" },
-        { "key": "SharedDataInit", "value": "%{JS: ('%{IncludeQSharedData}') ? 'data(new %{CN}Data)' : '' }" }
+        { "key": "CN", "value": "%{JS: Cpp.className(value('Class'))}" },
+        { "key": "Base", "value": "%{JS: value('BaseCB') === '' ? value('BaseEdit') : value('BaseCB')}" },
+        { "key": "isQObject", "value": "%{JS: [ 'QObject', 'QWidget', 'QMainWindow', 'QQuickItem'].indexOf(value('Base')) >= 0 }" },
+        { "key": "GUARD", "value": "%{JS: Cpp.headerGuard(value('HdrFileName'))}" },
+        { "key": "SharedDataInit", "value": "%{JS: (value('IncludeQSharedData')) ? 'data(new %{CN}Data)' : '' }" },
+        { "key": "Dependencies", "value": "%{JS: '' + (value('IncludeQObject') || value('IncludeQSharedData') || value('BaseCB') === 'QObject' ? ':Qt.core' : '') + (value('IncludeQWidget') || value('IncludeQMainWindow') || value('BaseCB') === 'QWidget' || value('BaseCB') === 'QMainWindow' ? ':Qt.widgets' : '') + (value('IncludeQQuickItem') || value('BaseCB') === 'QQuickItem' ? ':Qt.quick' : '')}"}
     ],
 
     "pages":
@@ -34,7 +35,11 @@
                     "trDisplayName": "Class name:",
                     "mandatory": true,
                     "type": "LineEdit",
-                    "data": { "validator": "(?:(?:[a-zA-Z_][a-zA-Z_0-9]*::)*[a-zA-Z_][a-zA-Z_0-9]*|)" }
+                    "data": {
+                        "trPlaceholder": "Fully qualified name, including namespaces",
+                        "validator": "(?:(?:[a-zA-Z_][a-zA-Z_0-9]*::)*[a-zA-Z_][a-zA-Z_0-9]*|)",
+                        "completion": "namespaces"
+                    }
                 },
                 {
                     "name": "BaseCB",
@@ -43,18 +48,19 @@
                     "data":
                     {
                         "items": [ { "trKey": "<Custom>", "value": "" },
-                                   "QObject", "QWidget", "QMainWindow", "QDeclarativeItem", "QQuickItem" ]
+                                   "QObject", "QWidget", "QMainWindow", "QQuickItem" ]
                     }
                 },
                 {
                     "name": "BaseEdit",
                     "type": "LineEdit",
-                    "enabled": "%{JS: '%{BaseCB}' === ''}",
+                    "enabled": "%{JS: value('BaseCB') === ''}",
                     "mandatory": false,
                     "data":
                     {
-                        "trText": "%{BaseCB}",
-                        "trDisabledText": "%{BaseCB}"
+                        "text": "%{BaseCB}",
+                        "disabledText": "%{BaseCB}",
+                        "completion": "classes"
                     }
                 },
 
@@ -71,7 +77,7 @@
                     {
                         "checkedValue": "QObject",
                         "uncheckedValue": "",
-                        "checked": "%{JS: '%{BaseCB}' === 'QObject'}"
+                        "checked": "%{JS: value('BaseCB') === 'QObject'}"
                     }
                 },
                 {
@@ -82,7 +88,7 @@
                     {
                         "checkedValue": "QWidget",
                         "uncheckedValue": "",
-                        "checked": "%{JS: '%{BaseCB}' === 'QWidget'}"
+                        "checked": "%{JS: value('BaseCB') === 'QWidget'}"
                     }
                 },
                 {
@@ -93,29 +99,18 @@
                     {
                         "checkedValue": "QMainWindow",
                         "uncheckedValue": "",
-                        "checked": "%{JS: '%{BaseCB}' === 'QMainWindow'}"
-                    }
-                },
-                {
-                    "name": "IncludeQDeclarativeItem",
-                    "trDisplayName": "Include QDeclarativeItem - Qt Quick 1",
-                    "type": "CheckBox",
-                    "data":
-                    {
-                        "checkedValue": "QDeclarativeItem",
-                        "uncheckedValue": "",
-                        "checked": "%{JS: '%{BaseCB}' === 'QDeclarativeItem'}"
+                        "checked": "%{JS: value('BaseCB') === 'QMainWindow'}"
                     }
                 },
                 {
                     "name": "IncludeQQuickItem",
-                    "trDisplayName": "Include QQuickItem - Qt Quick 2",
+                    "trDisplayName": "Include QQuickItem",
                     "type": "CheckBox",
                     "data":
                     {
                         "checkedValue": "QQuickItem",
                         "uncheckedValue": "",
-                        "checked": "%{JS: '%{BaseCB}' === 'QQuickItem'}"
+                        "checked": "%{JS: value('BaseCB') === 'QQuickItem'}"
                     }
                 },
                 {
@@ -130,6 +125,28 @@
                     }
                 },
                 {
+                    "name": "AddQObjectMacro",
+                    "trDisplayName": "Add Q_OBJECT",
+                    "type": "CheckBox",
+                    "data":
+                    {
+                        "checkedValue": "AddQObjectMacro",
+                        "uncheckedValue": "",
+                        "checked": "%{JS: [ 'QObject', 'QWidget', 'QMainWindow', 'QQuickItem'].indexOf(value('Base')) >= 0 }"
+                    }
+                },
+                {
+                    "name": "AddQmlElementMacro",
+                    "trDisplayName": "Add QML_ELEMENT",
+                    "type": "CheckBox",
+                    "data":
+                    {
+                        "checkedValue": "AddQmlElementMacro",
+                        "uncheckedValue": "",
+                        "checked": "%{JS: ['QQuickItem'].indexOf(value('Base')) >= 0 }"
+                    }
+                },
+                {
                     "name": "Sp2",
                     "type": "Spacer"
                 },
@@ -139,14 +156,14 @@
                     "type": "LineEdit",
                     "trDisplayName": "Header file:",
                     "mandatory": true,
-                    "data": { "trText": "%{JS: Cpp.classToFileName('%{Class}', '%{JS: Util.preferredSuffix('text/x-c++hdr')}')}" }
+                    "data": { "text": "%{JS: Cpp.classToFileName(value('Class'), Cpp.cxxHeaderSuffix())}" }
                 },
                 {
                     "name": "SrcFileName",
                     "type": "LineEdit",
                     "trDisplayName": "Source file:",
                     "mandatory": true,
-                    "data": { "trText": "%{JS: Cpp.classToFileName('%{Class}', '%{JS: Util.preferredSuffix('text/x-c++src')}')}" }
+                    "data": { "text": "%{JS: Cpp.classToFileName(value('Class'), Cpp.cxxSourceSuffix())}" }
                 },
                 {
                     "name": "Path",
@@ -155,7 +172,7 @@
                     "mandatory": true,
                     "data":
                     {
-                        "kind": "existingDirectory",
+                        "kind": "directory",
                         "basePath": "%{InitialPath}",
                         "path": "%{InitialPath}"
                     }

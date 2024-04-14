@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-app-flows.qdoc -->
+  <title>Adding Action Areas and Transitions | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Adding Action Areas and Transitions</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-flow-item.html" />
+  <link rel="next" href="studio-flow-effects.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-flow-item.html">Adding Flow Items</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-flow-effects.html">Applying Effects to Transitions</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#common-properties">Common Properties</a></li>
+<li class="level1"><a href="#flow-action-area-properties">Flow Action Area Properties</a></li>
+<li class="level1"><a href="#flow-transition-properties">Flow Transition Properties</a></li>
+<li class="level1"><a href="#connecting-and-releasing-signals">Connecting and Releasing Signals</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Adding Action Areas and Transitions</h1>
+<!-- $$$studio-flow-action-area.html-description -->
+<div class="descr" id="details">
+<p><i>Action areas</i> can act as clickable areas that initiate transitions between flow items or they can <a href="studio-flow-action-area.html#connecting-and-releasing-signals" translate="no">create connections</a> to any signal from any component in a <a href="studio-flow-item.html" translate="no">flow item</a>. For example, you could connect an action to the <code translate="no">onPressed</code> signal of a button in your flow item to determine what should happen when users press the button.</p>
+<p class="centerAlign"><img src="images/studio-flow-action-area.png" alt="&quot;Flow Action Area in the 2D view&quot;" /></p><div class="admonition note">
+<p><b>Note: </b>To connect components to <a href="studio-flow-action-area.html#connecting-and-releasing-signals" translate="no">signals</a>, you must first export the components as <a href="qtquick-navigator.html#adding-property-aliases" translate="no">aliases</a> in <a href="qtquick-navigator.html" translate="no">Navigator</a>. To create and release connections, select <b translate="no">Open Signal Dialog</b> in the context menu.</p>
+</div>
+<p>You can select the type of the mouse or touch input to use for triggering events, such as click, double-click, flick, pinch, or press.</p>
+<p>Typically, a flow item can be connected to several other flow items in the flow with two-way connections. To avoid clutter, you can set an action area as <i>go back</i> instead of adding explicit transition lines to and from every potentially connected flow item. When the <b translate="no">Go back</b> option is enabled, the transition will always take the user back to the previous flow item.</p>
+<p>You can specify the appearance of each action area or transition line, including the color, line thickness, dotted or solid lines, and even the curve of the transition lines. You can change some of these properties globally, as instructed in <a href="studio-flow-view.html#flow-view-properties" translate="no">Flow View Properties</a>.</p>
+<p>To create action areas:</p>
+<ol class="1" type="1"><li>Right-click the flow item in the <a href="qtquick-form-editor.html" translate="no">2D</a> view and select <b translate="no">Flow</b> &gt; <b translate="no">Create Flow Action</b> in the context menu.</li>
+<li>Drag the action area to the UI control that you want to connect to the other flow item. For example, to a button that opens another flow item when clicked.</li>
+<li>Double-click the action area and drag the transition line to the flow item you want to connect to.</li>
+<li>In <a href="qtquick-properties-view.html" translate="no">Properties</a>, modify the properties of the action area and transition line.</li>
+</ol>
+<p>To preview the flow, select the <b translate="no">Live Preview</b> button on the top toolbar or press <b>Alt</b> + <b>P</b>.</p>
+<h2 id="common-properties">Common Properties</h2>
+<p>You can specify basic properties for <b translate="no">Flow Action Area</b> and <b translate="no">Flow Transition</b> components in the <a href="qtquick-properties.html#type" translate="no">Component</a>, <a href="qtquick-properties.html#2d-geometry" translate="no">Geometry - 2D</a>, and <a href="qtquick-properties.html#visibility" translate="no">Visibility</a> sections in the <b translate="no">Properties</b> view.</p>
+<p>In the <b translate="no">Layout</b> tab, you can use <a href="qtquick-positioning.html#setting-anchors-and-margins" translate="no">anchors</a> to position the component.</p>
+<p>In the <b translate="no">Advanced</b> section, you can manage the more <a href="qtquick-properties.html#specifying-developer-properties" translate="no">advanced properties</a> of components.</p>
+<h2 id="flow-action-area-properties">Flow Action Area Properties</h2>
+<p>In the <b translate="no">Flow Action Area</b> section, you can use the <a href="qtquick-properties.html#picking-colors" translate="no">color picker</a> to set line and fill color.</p>
+<p class="centerAlign"><img src="images/studio-flow-action-area-properties.png" alt="&quot;Flow Action Area properties&quot;" /></p><p>In the <b translate="no">Flow Action</b> and <b translate="no">Action Area</b> sections, specify additional properties for action areas:</p>
+<ul>
+<li>Select the <b translate="no">Go back</b> check box to specify that the transition will always take the user back to the previous flow item.</li>
+<li>In the <b translate="no">Event IDs</b> field, specify the IDs of the events to connect to, such as mouse, touch or keyboard events.</li>
+<li>In the <b translate="no">Action type</b> field, select the type of the mouse or touch input to use for triggering events.</li>
+<li>In the <b translate="no">Line width</b> field, set the width of the action area outline.</li>
+<li>Select the <b translate="no">Dashed line</b> check box to draw a dashed action area outline.</li>
+<li>Select the <b translate="no">Enabled</b> check box to enable interaction with the action area during preview.</li>
+</ul>
+<h2 id="flow-transition-properties">Flow Transition Properties</h2>
+<p>In the <b translate="no">Transition</b> section, specify additional properties for transitions between <a href="studio-flow-item.html" translate="no">flow items</a>:</p>
+<p class="centerAlign"><img src="images/studio-flow-transition-properties.png" alt="&quot;Flow Transition properties&quot;" /></p><ul>
+<li>Select the <b translate="no">Condition</b> checkbox to activate the transition. You can select <img src="images/action-icon.png" alt="" /> to <a href="quick-property-bindings.html" translate="no">bind</a> a condition to the transition.</li>
+<li>In the <b translate="no">Question</b> field, enter the text that will appear next to the transition line. If the transition represents the connection to a <b translate="no">Flow Decision</b> component, the text will also be visible in the selection dialog that opens when the <a href="studio-flow-conditions.html" translate="no">condition</a> is triggered.</li>
+<li>In the <b translate="no">Event IDs</b> field, specify the IDs of the events to connect to, such as mouse, touch or keyboard events.</li>
+<li>In the <b translate="no">From</b> and <b translate="no">To</b> fields, select the flow item where the transition starts and the one where it ends.</li>
+</ul>
+<p>You can specify the following properties to change the appearance of transition lines in the <b translate="no">2D</b> view:</p>
+<p class="centerAlign"><img src="images/studio-flow-transition-line-properties.png" alt="&quot;Flow Transition Line properties&quot;" /></p><ul>
+<li>In the <b translate="no">Line width</b> field, set the width of the transition line.</li>
+<li>In the <b translate="no">Offset</b> and <b translate="no">Break offset</b> fields, set the start point (<b translate="no">Out</b>) or end point (<b translate="no">In</b>) of a transition line or a break to the specified offset. This enables you to move them up and down or left and right.</li>
+<li>Select the <b translate="no">Dashed line</b> check box to draw a dashed line.</li>
+<li>In the <b translate="no">Type</b> field, select <b translate="no">Bezier</b> to draw transition lines as bezier curves.</li>
+<li>In the <b translate="no">Radius</b> field, specify the corner radius for default curves.</li>
+<li>In the <b translate="no">Bezier factor</b> field, specify the factor that modifies the positions of the control points used for a bezier curve.</li>
+<li>In the <b translate="no">Label position</b> field, set the position of the value of the <b translate="no">Question</b> field in respect to the transition start point.</li>
+<li>Select the <b translate="no">Label flip side</b> check box to move the <b translate="no">Question</b> value to the opposite side of the transition line.</li>
+</ul>
+<h2 id="connecting-and-releasing-signals">Connecting and Releasing Signals</h2>
+<p>To connect a component to a <a href="quick-signals.html" translate="no">signal</a>, select <b translate="no">Open Signal Dialog</b> in the context menu. The <b translate="no">Signal List</b> dialog displays the signals for all components that you export as <a href="qtquick-navigator.html#adding-property-aliases" translate="no">aliases</a> in <a href="qtquick-navigator.html" translate="no">Navigator</a>.</p>
+<p class="centerAlign"><img src="images/studio-flow-signal-list.png" alt="&quot;Signal List dialog&quot;" /></p><p>To connect a component to a signal, select <b translate="no">Connect</b> next to one in the list. To release a connected signal, select <b translate="no">Release</b>.</p>
+</div>
+<!-- @@@studio-flow-action-area.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-flow-item.html">Adding Flow Items</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-flow-effects.html">Applying Effects to Transitions</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- sidemenu.qdoc -->
+  <meta name="description" content="Illustrates how to create reusable components and an animated menu for applying 2D visual effects in Qt 5 projects.">
+  <title>Side Menu | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="studioexamples.html" translate="no">Examples</a></li>
+<li>Side Menu</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#creating-reusable-buttons">Creating Reusable Buttons</a></li>
+<li class="level1"><a href="#constructing-a-menu-bar">Constructing a Menu Bar</a></li>
+<li class="level1"><a href="#creating-a-side-menu">Creating a Side Menu</a></li>
+<li class="level1"><a href="#connecting-the-burger-menu-to-actions">Connecting the Burger Menu to Actions</a></li>
+<li class="level1"><a href="#applying-effects">Applying Effects</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Side Menu</h1>
+<!-- $$$SideMenu-brief -->
+<p>Illustrates how to create reusable components and an animated menu for applying 2D visual effects in Qt 5 projects.</p>
+<!-- @@@SideMenu -->
+<!-- $$$SideMenu-description -->
+<div class="descr" id="details">
+<p class="centerAlign"><img src="images/sidemenu.png" alt="&quot;Side menu example application&quot;" /></p><p><i>Side Menu</i> displays a menu bar and a side menu that slides open when users click the menu icon. The appearance of the menu bar buttons changes when users hover the cursor over them or select them.</p>
+<p>Each button opens an image file. The side menu can be used to apply <a href="quick-2d-effects.html" translate="no">graphical effects</a>, such as hue, saturation, and blur, to the images.</p>
+<div class="admonition note">
+<p><b>Note: </b>Only a subset of effects is available if you select <b translate="no">Qt 6</b> when <a href="studio-projects.html" translate="no">creating the project</a>.</p>
+</div>
+<h4 id="creating-reusable-buttons">Creating Reusable Buttons</h4>
+<p>We select <b translate="no">File</b> &gt; <b translate="no">New File</b> &gt; <b translate="no">Qt Quick Controls</b> &gt; <b translate="no">Custom Button</b> to create a reusable menu bar button that we call <i>CustomButton</i>.</p>
+<p>The button can have the following states: checked, hover, pressed, and normal. We construct the button using different images for the button background, frame, and front. We then add <a href="quick-states.html" translate="no">states</a> in the <a href="qtquick-states-view.html" translate="no">States</a> view for each of the button states. In each state, we turn the visibility of the appropriate images on or off in the button properties, to change the appearance of the button.</p>
+<p class="centerAlign"><img src="images/sidemenu-custombutton-states.png" alt="&quot;CustomButton component states&quot;" /></p><p>To change the button text when the button state changes, we bind the text property to the state of the button in the <a href="qtquick-properties-view.html" translate="no">Properties</a> view. When <i>control</i> is selected in the <a href="qtquick-navigator.html" translate="no">Navigator</a>, we select the <b translate="no">Actions</b> menu for the <b translate="no">Text</b> property, and then select <b translate="no">Set Binding</b>. In the <b translate="no">Binding Editor</b>, we set the binding to <code translate="no">control.state</code>.</p>
+<p class="centerAlign"><img src="images/sidemenu-custombutton-property-bindings.png" alt="" /></p><p>We want the buttons to be checkable, so we set the <a href="https://doc.qt.io/qt/qml-qtquick-controls-abstractbutton.html#checkable-prop" translate="no">checkable</a> property to <code translate="no">true</code>.</p>
+<p>We now select <b translate="no">Set when Condition</b> in the <b translate="no">Actions</b> menu for the states to bind the properties to the states using <code translate="no">when</code> conditions. First, we specify that a button instance enters the <i>checked</i> state when the <a href="https://doc.qt.io/qt/qml-qtquick-controls-abstractbutton.html#checked-prop" translate="no">checked</a> property is set to <code translate="no">true</code>. This is how the code will look in the <a href="qtquick-text-editor.html" translate="no">Code</a> view:</p>
+<pre class="cpp" translate="no">
+     <span class="name">states</span>: [
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;checked&quot;</span>
+             <span class="name">when</span>: <span class="name">control</span>.<span class="name">checked</span>
+</pre>
+<p>We then bind the <i>hover</i> state to the <a href="https://doc.qt.io/qt/qml-qtquick-controls-control.html#hovered-prop" translate="no">hovered</a> property being set to <code translate="no">true</code>, while the <code translate="no">checked</code> and <a href="https://doc.qt.io/qt/qml-qtquick-controls-abstractbutton.html#pressed-signal" translate="no">pressed</a> properties are set to <code translate="no">false</code>:</p>
+<pre class="cpp" translate="no">
+     ...
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;hover&quot;</span>
+             <span class="name">when</span>: <span class="name">control</span>.<span class="name">hovered</span> <span class="operator">&amp;&amp;</span> !<span class="name">control</span>.<span class="name">checked</span> <span class="operator">&amp;&amp;</span> !<span class="name">control</span>.<span class="name">pressed</span>
+</pre>
+<p>Finally, the button state is set to <i>normal</i>, when all the properties are set to <code translate="no">false</code>:</p>
+<pre class="cpp" translate="no">
+     ...
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;normal&quot;</span>
+             <span class="name">when</span>: !<span class="name">control</span>.<span class="name">pressed</span> <span class="operator">&amp;&amp;</span> !<span class="name">control</span>.<span class="name">checked</span> <span class="operator">&amp;&amp;</span>!<span class="name">control</span>.<span class="name">hovered</span>
+</pre>
+<p>We can now use CustomButton instances to create a menu bar.</p>
+<h4 id="constructing-a-menu-bar">Constructing a Menu Bar</h4>
+<p>We construct the menu bar in the <i>MainFile.ui.qml</i> file using the <a href="qtquick-form-editor.html" translate="no">2D</a> view. The CustomButton component is listed in <b translate="no">Components</b> &gt; <b translate="no">My Components</b>. We drag-and-drop several instances of the component to <b translate="no">Navigator</b> or the <b translate="no">2D</b> view and enclose them in a <b translate="no">Row Layout</b> component instance to lay them out as a menu bar.</p>
+<p class="centerAlign"><img src="images/sidemenu-menubar.png" alt="" /></p><p>We can change the properties of each CustomButton instance separately in the <b translate="no">Properties</b> view. We want only one of the menu bar buttons to be checked at any time, so that checking another button automatically unchecks the previously checked one. Therefore, we set the <a href="https://doc.qt.io/qt/qml-qtquick-controls-abstractbutton.html#autoExclusive-prop" translate="no">autoExclusive</a> property to <code translate="no">true</code> for all button instances.</p>
+<p>In addition, we set the <b translate="no">Checked</b> property to <code translate="no">true</code> for the first button instance on the menu bar to make it appear selected.</p>
+<p>We can now select the <img src="images/run_small.png" alt="" /> &quot;Run button&quot; (<b translate="no">Run</b>) button to run the application and test our menu bar.</p>
+<h4 id="creating-a-side-menu">Creating a Side Menu</h4>
+<p>We can now continue to create a side menu that slides open when users click the burger menu. We drag-and-drop a <a href="quick-text.html" translate="no">Text</a> component from <b translate="no">Components</b> &gt; <b translate="no">Default Components</b> &gt; <b translate="no">Basic</b> and a <a href="quick-controls.html#slider-control" translate="no">Slider</a> component from <b translate="no">Qt Quick Controls</b> to <b translate="no">Navigator</b> to create separate submenus for each set of effects we want to apply to the images. We use a background image for the menu background and a BurgerMenu custom component for the burger menu icon.</p>
+<p class="centerAlign"><img src="images/sidemenu-ui.png" alt="&quot;SliderMenu component&quot;" /></p><p>We add states to the <i>SideMenu.qml</i> file in the <b translate="no">States</b> view. When the application starts, the side menu is in the <i>closed</i> state, which means that it is hidden. When users click the burger menu, the <code translate="no">onClicked</code> <a href="studio-terms.html#glossary-signal" translate="no">signal handler</a> triggers the <a href="studio-terms.html#glossary-transition" translate="no">transition</a> to the <i>opening</i> state and runs an animation. When the animation finishes, the side menu state changes to <i>open</i> and the side menu is fully visible.</p>
+<p>When users click the burger menu again, the state changes to <i>closing</i> and another animation is run that closes the side menu. When the animation finishes, the side menu returns to the <i>closed</i> state.</p>
+<p>We select <b translate="no">Create New State</b> in the <b translate="no">States</b> view to add the states:</p>
+<p class="centerAlign"><img src="images/sidemenu-states.png" alt="&quot;Side menu states&quot;" /></p><p>We then select the <img src="images/plus.png" alt="" /> button in the <a href="qtquick-timeline-view.html" translate="no">Timeline</a> view to add animation for transitions to the <i>open</i> and <i>close</i> states:</p>
+<p class="centerAlign"><img src="images/sidemenu-timeline-settings.png" alt="&quot;Side menu timeline settings&quot;" /></p><p>The closing animation is just the opening animation played backwards to hide the side menu. We want the opening animation to be slower than the closing animation, so we specify a shorter duration for the closing animation. This does not affect the duration of the timeline itself.</p>
+<p>We want to change the position of the outline and background images. To start recording the transition from the closed state to the open state, we select <i>imageOutline</i> in <b translate="no">Navigator</b>. We check that the playhead is at frame 0, and then select the <img src="images/recordfill.png" alt="" /> (<b translate="no">Auto Key (K)</b>) button (or press <b>k</b>).</p>
+<p>At frame 0, we set the X coordinate to -423 in <b translate="no">Properties</b> &gt; <b translate="no">Geometry - 2D</b> &gt; <b translate="no">Position</b>. We then move the playhead to frame 1000 and set the X coordinate to 0.</p>
+<p>When we deselect the record button to stop recording the timeline, the new timeline appears in the view.</p>
+<p class="centerAlign"><img src="images/sidemenu-timeline.png" alt="&quot;Timeline view&quot;" /></p><p>We then record the transition of the <i>imageBackground</i> image. At frame 0, we set the X coordinate to -424 again. We then move the playhead to frame 400 and select <b translate="no">Insert Keyframe</b> in the <img src="images/action-icon.png" alt="" /> (<b translate="no">Actions</b>) menu of the X coordinate. We keep the value of the X coordinate -424. We then move the playhead to frame 1000 and set the X coordinate to 0.</p>
+<p>We select <img src="images/animation.png" alt="" /> &quot;Timeline Settings button&quot; to open the <b translate="no">Timeline Settings</b> dialog. In the <b translate="no">Transitions to states</b> field, we select the state to apply when the animation finishes. In the lower part of the dialog, we bind the states that don't have animations to fixed frames.</p>
+<p>For more information about using the timeline, see <a href="studio-timeline.html" translate="no">Creating Timeline Animations</a>.</p>
+<h4 id="connecting-the-burger-menu-to-actions">Connecting the Burger Menu to Actions</h4>
+<p>In <i>SideMenu.qml</i>, we use connections to bind the action of clicking the burger menu to the signal handler for triggering the opening or closing animation, depending on the current state. We create the connections in the <a href="qtquick-connection-view.html" translate="no">Connections</a> view.</p>
+<p class="centerAlign"><img src="images/sidemenu-connections.png" alt="" /></p><p>We use property changes to disable the burger menu until the animation finishes and to hide and show the side menu:</p>
+<pre class="cpp" translate="no">
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;opening&quot;</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">timelineAnimation</span>
+                 <span class="name">running</span>: <span class="number">true</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">burger_menu</span>
+                 <span class="name">enabled</span>: <span class="number">false</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">slidermenu</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+             }
+         },
+</pre>
+<p>The side menu is fully visible and accepts input only in the <i>open</i> state.</p>
+<p>For more information about Connecting Components to Signals, see <a href="quick-signals.html" translate="no">Connecting Components to Signals</a>.</p>
+<h4 id="applying-effects">Applying Effects</h4>
+<p>We nest the effects in an effects stack and bind them to the <a href="quick-controls.html#slider-control" translate="no">Slider</a> component instances. The effects apply to all the images in the example application, not just the currently open one.</p>
+<p>We use property bindings to connect the controls in the slider menu to <a href="quick-2d-effects.html" translate="no">graphical effects</a>. To have access to the properties from all the slider component instances, we export them as aliases in <i>SliderMenu.ui.qml</i>. We select <b translate="no">Export Property as Alias</b> in the <b translate="no">Settings</b> menu of the <b translate="no">Value</b> property in <b translate="no">Properties</b> &gt; <b translate="no">Slider</b>.</p>
+<p>We open the <i>EffectStack.qml</i> file, and drag-and-drop components from <b translate="no">Components</b> &gt; <b translate="no">Qt Quick Studio Effects</b> to <b translate="no">Navigator</b> to create the effect stack.</p>
+<p class="centerAlign"><img src="images/sidemenu-effects-stack.png" alt="&quot;Effects stack in the Navigator&quot;" /></p><p>We use an instance of the <a href="quick-images.html" translate="no">Image</a> component as the last item in the stack to display images that we apply the effects to. We export the image source property as an <a href="qtquick-navigator.html#adding-property-aliases" translate="no">alias</a> to be able to switch the image inside the stack.</p>
+<p>For more information about the available graphical effects, see <a href="quick-2d-effects.html" translate="no">2D Effects</a>.</p>
+<p>Files:</p>
+<ul>
+<li><a href="qtdesignstudio-sidemenu-custombutton-qml.html" translate="no">SideMenu/CustomButton.qml</a></li>
+<li><a href="qtdesignstudio-sidemenu-sidemenu-qml.html" translate="no">SideMenu/SideMenu.qml</a></li>
+<li><a href="qtdesignstudio-sidemenu-sidemenu-qmlproject.html" translate="no">SideMenu/SideMenu.qmlproject</a></li>
+</ul>
+</div>
+<!-- @@@SideMenu -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-debug-views.qdoc -->
+  <title>Setting Breakpoints | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li><a href="creator-overview.html" translate="no">Developing with Qt Creator</a></li>
+<li><a href="creator-debugging.html" translate="no">Debugging</a></li>
+<li><a href="creator-debug-mode.html" translate="no">Debug Mode Views</a></li>
+<li>Setting Breakpoints</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-stack-view.html" />
+  <link rel="next" href="creator-threads-view.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-stack-view.html">Viewing Call Stack Trace</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-threads-view.html">Viewing Threads</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#unclaimed-and-claimed-breakpoints">Unclaimed and Claimed Breakpoints</a></li>
+<li class="level1"><a href="#adding-breakpoints">Adding Breakpoints</a></li>
+<li class="level1"><a href="#specifying-breakpoint-settings">Specifying Breakpoint Settings</a></li>
+<li class="level1"><a href="#moving-breakpoints">Moving Breakpoints</a></li>
+<li class="level1"><a href="#deleting-breakpoints">Deleting Breakpoints</a></li>
+<li class="level1"><a href="#enabling-and-disabling-breakpoints">Enabling and Disabling Breakpoints</a></li>
+<li class="level1"><a href="#setting-data-breakpoints">Setting Data Breakpoints</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Setting Breakpoints</h1>
+<!-- $$$creator-breakpoints-view.html-description -->
+<div class="descr" id="details">
+<p>You can associate breakpoints with:</p>
+<ul>
+<li>Source code files and lines</li>
+<li>Functions</li>
+<li>Addresses</li>
+<li>Throwing and catching exceptions</li>
+<li>Executing and forking processes</li>
+<li>Executing some system calls</li>
+<li>Changes in a block of memory at a particular address when an application is running</li>
+<li>Emitting QML signals</li>
+<li>Throwing JavaScript exceptions</li>
+</ul>
+<p>A breakpoint interrupts the application every time the application reaches its location unless you specify a boolean condition for it. The breakpoint evaluates the expression each time the application passes it, and the application stops only if the condition evaluates to <code translate="no">true</code>.</p>
+<h2 id="unclaimed-and-claimed-breakpoints">Unclaimed and Claimed Breakpoints</h2>
+<p>Breakpoints come in two varieties: <code translate="no">unclaimed</code> and <code translate="no">claimed</code>. An unclaimed breakpoint represents a task to interrupt the debugged application and passes the control to you later. It has two states: <code translate="no">pending</code> and <code translate="no">implanted</code>.</p>
+<p>Unclaimed breakpoints are stored as a part of a session and exist independently of whether an application is being debugged or not. They are listed in the <b translate="no">Breakpoint Preset</b> view and in the editor using the <img src="images/qtcreator-unclaimed-breakpoint-icon.png" alt="" /> (<b translate="no">Unclaimed Breakpoint</b>) icon, when they refer to a position in code.</p>
+<p class="centerAlign"><img src="images/qtcreator-debugger-breakpoint-preset.webp" alt="{Breakpoint Preset view}" /></p><p>When a debugger starts, the debugging backend identifies breakpoints from the set of unclaimed breakpoints that might be handled by the debugged application and claims them for its own exclusive use. Claimed breakpoints are listed in the <b translate="no">Breakpoints</b> view of the running debugger. This view only exists while the debugger is running.</p>
+<p>When a debugger claims a breakpoint, the unclaimed breakpoint disappears from the <b translate="no">Breakpoint Preset</b> view, to appear as a pending breakpoint in the <b translate="no">Breakpoints</b> view.</p>
+<p>At various times, attempts are made to implant pending breakpoints into the debugged process. Successful implantation might create one or more implanted breakpoints, each associated with an actual address in the debugged breakpoint. The implantation might also move a breakpoint marker in the editor from an empty line to the next line for which the actual code was generated, for example. Implanted breakpoint icons don't have the hourglass overlay.</p>
+<p>When the debugger ends, its claimed breakpoints, both pending and implanted, will return to the unclaimed state and re-appear in the <b translate="no">Breakpoint Preset</b> view.</p>
+<p>When an implanted breakpoint is hit during the execution of the debugged application, control is passed back to you. You can then examine the state of the interrupted application, or continue execution either line-by-line or continuously.</p>
+<p class="centerAlign"><img src="images/qtcreator-debug-breakpoints.webp" alt="{Breakpoints view}" /></p><h2 id="adding-breakpoints">Adding Breakpoints</h2>
+<p>To add breakpoints:</p>
+<ol class="1" type="1"><li>Add a new breakpoint in one of the following ways:<ul>
+<li>In the code editor, click the left margin or press <b>F9</b> (<b>F8</b> on macOS) on a particular line you want the application to stop.</li>
+<li>In the <b translate="no">Breakpoint Preset</b> view or the <b translate="no">Breakpoints</b> view:<ul>
+<li>Double-click the empty part of the view.</li>
+<li>Right-click the view, and select <b translate="no">Add Breakpoint</b> in the context menu.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>In the <b translate="no">Breakpoint type</b> field, select the location in the application code where you want the application to stop.<p class="centerAlign"><img src="images/qtcreator-add-breakpoint.webp" alt="{Add Breakpoints} dialog" /></p></li>
+</ol>
+<p>Deselect the <b translate="no">Enabled</b> check box to make the breakpoint temporarily inoperative as if you had deleted it, but keep the information about the breakpoint, so that you can enable it again later.</p>
+<p>The other options to specify depend on the location you select, such as file name and line number, address, expression, or function name. The following table summarizes the advanced options.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Option</th><th >Value</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Condition</b></td><td >The condition to evaluate before stopping at the breakpoint if the condition evaluates as <code translate="no">true</code>.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Ignore count</b></td><td >The number of times to ignore the breakpoint before the application stops.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Thread specification</b></td><td ></td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Path</b></td><td >Determines how to specify the path when setting breakpoints:<ul>
+<li><b translate="no">Use Engine Default</b> is the preferred setting of the debugger engine.</li>
+<li><b translate="no">Use Full Path</b> passes the full path to avoid ambiguity if several modules contain files with the same name. This is the engine default for CDB and LLDB.</li>
+<li><b translate="no">Use File Name</b> passes the file name only. This is useful when the location of the source tree does not match the one used when building the modules. This is the engine default for GDB as using full paths can be slow with it.</li>
+</ul>
+</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Module</b></td><td >Specify the module (base name of the library or executable) for function or file type breakpoints to speed up debugger startup (CDB, LLDB).</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Commands</b></td><td >Commands to execute when the application stops. List one command per line. GDB executes the commands in the order in which you specify them.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Tracepoint only</b></td><td >A <i>tracepoint</i> lets you log information about the application without adding log statements or otherwise modifying your code. You can set conditions for the tracepoint.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Message</b></td><td >The tracepoint message to show in <a href="creator-reference-application-output-view.html" translate="no">Application Output</a>.</td></tr>
+</table></div>
+<h2 id="specifying-breakpoint-settings">Specifying Breakpoint Settings</h2>
+<p>You can specify settings for breakpoints in <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Debugger</b>. For more information, see <a href="creator-debugger-preferences.html" translate="no">Debugger Preferences</a>.</p>
+<p class="centerAlign"><img src="images/qtcreator-debugger-general-options.png" alt="{General tab in Debugger preferences}" /></p><p>To use a full absolute path in breakpoints, select the <b translate="no">Set breakpoints using a full absolute path</b> check box.</p>
+<p>GDB and CDB enable setting breakpoints on source lines for which no code was generated. In such situations, the breakpoint is shifted to the next source code line for which the code was actually generated. To reflect such temporary changes by moving the breakpoint markers in the source code editor, select <b translate="no">GDB</b> &gt; <b translate="no">Adjust breakpoint locations</b> or <b translate="no">CDB</b> &gt; <b translate="no">Correct breakpoint location</b>.</p>
+<p>When using GDB as backend, you can extend the ordinary GDB breakpoint class by using Python. Select <b translate="no">GDB</b> &gt; <b translate="no">Use pseudo message tracepoints</b>.</p>
+<p>When using CDB as backend, you can specify that the debugger should break on specific events, such as C++ exceptions, thread creation or exit, loading or unloading <a href="creator-modules-view.html" translate="no">application modules</a>, or particular output. Select the appropriate check boxes in the <b translate="no">CDB</b> &gt; <b translate="no">Break on</b> group. To disable first-chance break on access violation exceptions, select the <b translate="no">Ignore first chance access violations</b> check box. The second occurrence of an access violation will break into the debugger.</p>
+<p>You can automatically add breakpoints on some functions to catch error and warning messages. For more information, see <a href="creator-debugger-preferences.html#specifying-cdb-settings" translate="no">Specifying CDB Settings</a> and <a href="creator-debugger-preferences.html#specifying-gdb-settings" translate="no">Specifying GDB Settings</a>.</p>
+<p>For more information on breakpoints, see <a href="http://sourceware.org/gdb/onlinedocs/gdb/Breakpoints.html#Breakpoints" translate="no">Breakpoints, Watchpoints, and Catchpoints</a> in GDB documentation.</p>
+<h2 id="moving-breakpoints">Moving Breakpoints</h2>
+<p>To move a breakpoint:</p>
+<ul>
+<li>Drag and drop a breakpoint marker to another line in the text editor.</li>
+<li>In the <b translate="no">Breakpoint Preset</b> view or the <b translate="no">Breakpoints</b> view, select <b translate="no">Edit Selected Breakpoints</b>, and set the line number in the <b translate="no">Line number</b> field.</li>
+</ul>
+<h2 id="deleting-breakpoints">Deleting Breakpoints</h2>
+<p>To delete breakpoints:</p>
+<ul>
+<li>Click the breakpoint marker in the text editor.</li>
+<li>In the <b translate="no">Breakpoint Preset</b> view or the <b translate="no">Breakpoints</b> view:<ul>
+<li>Select the breakpoint and press <b>Delete</b>.</li>
+<li>Select <b translate="no">Delete Selected Breakpoints</b>, <b translate="no">Delete Selected Breakpoints</b>, or <b translate="no">Delete Breakpoints of File</b> in the context menu.</li>
+</ul>
+</li>
+</ul>
+<h2 id="enabling-and-disabling-breakpoints">Enabling and Disabling Breakpoints</h2>
+<p>To temporarily disable a breakpoint without deleting it and losing associated data like conditions and commands:</p>
+<ul>
+<li>Right-click the breakpoint marker in the text editor and select <b translate="no">Disable Breakpoint</b>.</li>
+<li>Select a line that has a breakpoint and press <b>Ctrl+F9</b> (<b>Ctrl+F8</b> on macOS).</li>
+<li>In the <b translate="no">Breakpoint Preset</b> view or the <b translate="no">Breakpoints</b> view:<ul>
+<li>Select the breakpoint and press <b>Space</b>.</li>
+<li>Select <b translate="no">Disable Breakpoint</b> in the context menu.</li>
+</ul>
+</li>
+</ul>
+<p>A hollow breakpoint icon in the text editor and the views indicates a disabled breakpoint. To re-enable a breakpoint, use any of the above methods.</p>
+<p>Other than data breakpoints retain their enabled or disabled state when the debugged application is restarted.</p>
+<h2 id="setting-data-breakpoints">Setting Data Breakpoints</h2>
+<p>A <i>data breakpoint</i> stops the application when data is read or written at the specified address.</p>
+<p>To set a data breakpoint at an address:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Breakpoint Preset</b> or <b translate="no">Breakpoints</b> view, select <b translate="no">Add Breakpoint</b> in the context menu.</li>
+<li>In the <b translate="no">Breakpoint type</b> field, select <b translate="no">Break on data access at fixed address</b>.</li>
+<li>In the <b translate="no">Address</b> field, specify the address of the memory block.</li>
+<li>Select <b translate="no">OK</b>.</li>
+</ol>
+<p>If the address is displayed in the <b translate="no">Locals</b> or <b translate="no">Expressions</b> view, you can select <b translate="no">Add Data Breakpoint at Object's Address</b> in the context menu to set the data breakpoint.</p>
+<p>Data breakpoints will be disabled when the debugged application exits, as it is unlikely that the used addresses will stay the same at the next application launch. If you really want a data breakpoint to be active again, re-enable it manually.</p>
+</div>
+<p><b>See also </b><a href="creator-how-to-debug-cmake-files.html" translate="no">Debug CMake project files</a>.</p>
+<!-- @@@creator-breakpoints-view.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-stack-view.html">Viewing Call Stack Trace</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-threads-view.html">Viewing Threads</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

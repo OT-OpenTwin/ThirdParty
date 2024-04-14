@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- aspects.cpp -->
+  <meta name="description" content="A string aspect is a string-like property of some object, together with a description of its behavior for common operations like visualizing or persisting.">
+  <title>StringAspect Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>StringAspect</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">StringAspect Class</h1>
+<span class="small-subtitle" translate="no">class <a href="utils.html" translate="no">Utils</a>::StringAspect</span>
+<!-- $$$StringAspect-brief -->
+<p>A string aspect is a string-like property of some object, together with a description of its behavior for common operations like visualizing or persisting. <a href="#details">More...</a></p>
+<!-- @@@StringAspect -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;StringAspect&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> Utils::TypedAspect</td></tr>
+</table></div>
+<ul>
+<li><a href="utils-stringaspect-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="utils-stringaspect.html#DisplayStyle-enum" translate="no">DisplayStyle</a></b> { LabelDisplay, LineEditDisplay, TextEditDisplay, PathChooserDisplay, PasswordLineEditDisplay }</td></tr>
+</table></div>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="utils-stringaspect.html#StringAspect" translate="no">StringAspect</a></b>(Utils::AspectContainer *<i>container</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-stringaspect.html#makeCheckable" translate="no">makeCheckable</a></b>(Utils::CheckBoxPlacement <i>checkBoxPlacement</i>, const QString &amp;<i>checkerLabel</i>, const Utils::Key &amp;<i>checkerKey</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-stringaspect.html#setDisplayFilter" translate="no">setDisplayFilter</a></b>(const std::function&lt;QString (const QString &amp;)&gt; &amp;<i>displayFilter</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-stringaspect.html#setDisplayStyle" translate="no">setDisplayStyle</a></b>(Utils::StringAspect::DisplayStyle <i>displayStyle</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-stringaspect.html#setElideMode" translate="no">setElideMode</a></b>(Qt::TextElideMode <i>elideMode</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-stringaspect.html#setHistoryCompleter" translate="no">setHistoryCompleter</a></b>(const Utils::Key &amp;<i>historyCompleterKey</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-stringaspect.html#setPlaceHolderText" translate="no">setPlaceHolderText</a></b>(const QString &amp;<i>placeHolderText</i>)</td></tr>
+</table></div>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="utils-stringaspect.html#fromMap" translate="no">fromMap</a></b>(const Utils::Store &amp;<i>map</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="utils-stringaspect.html#toMap" translate="no">toMap</a></b>(Utils::Store &amp;<i>map</i>) const override</td></tr>
+</table></div>
+<!-- $$$StringAspect-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>String aspects can represent for example a parameter for an external commands, paths in a file system, or simply strings.</p>
+<p>The string can be displayed using a <a href="https://doc.qt.io/qt/qlabel.html" translate="no">QLabel</a>, <a href="https://doc.qt.io/qt/qlineedit.html" translate="no">QLineEdit</a>, <a href="https://doc.qt.io/qt/qtextedit.html" translate="no">QTextEdit</a> or <a href="utils-pathchooser.html" translate="no">Utils::PathChooser</a>.</p>
+<p>The visual representation often contains a label in front of the display of the actual value.</p>
+</div>
+<!-- @@@StringAspect -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$DisplayStyle$$$LabelDisplay$$$LineEditDisplay$$$TextEditDisplay$$$PasswordLineEditDisplay -->
+<h3 class="fn" translate="no" id="DisplayStyle-enum">enum StringAspect::<span class="name">DisplayStyle</span></h3>
+<p>The DisplayStyle enum describes the main visual characteristics of a string aspect.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Utils::StringAspect::LabelDisplay</code></td><td class="topAlign tblval"><code translate="no">0</code></td><td class="topAlign">Based on <a href="https://doc.qt.io/qt/qlabel.html" translate="no">QLabel</a>, used for text that cannot be changed by the user in this place, for example names of executables that are defined in the build system.</td></tr>
+<tr><td class="topAlign"><code translate="no">Utils::StringAspect::LineEditDisplay</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">Based on <a href="https://doc.qt.io/qt/qlineedit.html" translate="no">QLineEdit</a>, used for user-editable strings that usually fit on a line.</td></tr>
+<tr><td class="topAlign"><code translate="no">Utils::StringAspect::TextEditDisplay</code></td><td class="topAlign tblval"><code translate="no">2</code></td><td class="topAlign">Based on <a href="https://doc.qt.io/qt/qtextedit.html" translate="no">QTextEdit</a>, used for user-editable strings that often do not fit on a line.</td></tr>
+<tr><td class="topAlign"><code translate="no">Utils::StringAspect::PathChooserDisplay</code></td><td class="topAlign tblval">?</td><td class="topAlign">Based on <a href="utils-pathchooser.html" translate="no">Utils::PathChooser</a>.</td></tr>
+<tr><td class="topAlign"><code translate="no">Utils::StringAspect::PasswordLineEditDisplay</code></td><td class="topAlign tblval"><code translate="no">3</code></td><td class="topAlign">Based on <a href="https://doc.qt.io/qt/qlineedit.html" translate="no">QLineEdit</a>, used for password strings</td></tr>
+</table></div>
+<p><b>See also </b><a href="utils-pathchooser.html" translate="no">Utils::PathChooser</a>.</p>
+<!-- @@@DisplayStyle -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$StringAspect[overload1]$$$StringAspectUtils::AspectContainer* -->
+<h3 class="fn" translate="no" id="StringAspect">StringAspect::<span class="name">StringAspect</span>(<span class="type"><a href="utils-aspectcontainer.html" translate="no">Utils::AspectContainer</a></span> *<i>container</i> = nullptr)</h3>
+<p>Constructs the string aspect <i translate="no">container</i>.</p>
+<!-- @@@StringAspect -->
+<!-- $$$fromMap[overload1]$$$fromMapconstUtils::Store& -->
+<h3 class="fn" translate="no" id="fromMap"><code translate="no">[override virtual] </code><span class="type">void</span> StringAspect::<span class="name">fromMap</span>(const <span class="type">Utils::Store</span> &amp;<i>map</i>)</h3>
+<p>Reimplements: <a href="utils-baseaspect.html#fromMap" translate="no">BaseAspect::fromMap</a>(const Utils::Store &amp;map).</p>
+<!-- @@@fromMap -->
+<!-- $$$makeCheckable[overload1]$$$makeCheckableUtils::CheckBoxPlacementconstQString&constUtils::Key& -->
+<h3 class="fn" translate="no" id="makeCheckable"><span class="type">void</span> StringAspect::<span class="name">makeCheckable</span>(<span class="type">Utils::CheckBoxPlacement</span> <i>checkBoxPlacement</i>, const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>checkerLabel</i>, const <span class="type">Utils::Key</span> &amp;<i>checkerKey</i>)</h3>
+<p>Adds a check box with a <i translate="no">checkerLabel</i> according to <i translate="no">checkBoxPlacement</i> to the line edit.</p>
+<p>The state of the check box is made persistent when using a non-emtpy <i translate="no">checkerKey</i>.</p>
+<!-- @@@makeCheckable -->
+<!-- $$$setDisplayFilter[overload1]$$$setDisplayFilterconststd::function<QString(constQString&)>& -->
+<h3 class="fn" translate="no" id="setDisplayFilter"><span class="type">void</span> StringAspect::<span class="name">setDisplayFilter</span>(const <span class="type">std::function</span>&lt;<span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> (const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;)&gt; &amp;<i>displayFilter</i>)</h3>
+<p>Sets a <i translate="no">displayFilter</i> for fine-tuning the visual appearance of the value of this string aspect.</p>
+<!-- @@@setDisplayFilter -->
+<!-- $$$setDisplayStyle[overload1]$$$setDisplayStyleUtils::StringAspect::DisplayStyle -->
+<h3 class="fn" translate="no" id="setDisplayStyle"><span class="type">void</span> StringAspect::<span class="name">setDisplayStyle</span>(<span class="type"><a href="utils-stringaspect.html#DisplayStyle-enum" translate="no">Utils::StringAspect::DisplayStyle</a></span> <i>displayStyle</i>)</h3>
+<p>Selects the main display characteristics of the aspect according to <i translate="no">displayStyle</i>.</p>
+<div class="admonition note">
+<p><b>Note: </b>Not all <a href="utils-stringaspect.html" translate="no">StringAspect</a> features are available with all display styles.</p>
+</div>
+<p><b>See also </b><a href="utils-stringaspect.html#DisplayStyle-enum" translate="no">Utils::StringAspect::DisplayStyle</a>.</p>
+<!-- @@@setDisplayStyle -->
+<!-- $$$setElideMode[overload1]$$$setElideModeQt::TextElideMode -->
+<h3 class="fn" translate="no" id="setElideMode"><span class="type">void</span> StringAspect::<span class="name">setElideMode</span>(<span class="type"><a href="https://doc.qt.io/qt/qt.html#TextElideMode-enum" translate="no">Qt::TextElideMode</a></span> <i>elideMode</i>)</h3>
+<p>Sets <i translate="no">elideMode</i> as label elide mode.</p>
+<!-- @@@setElideMode -->
+<!-- $$$setHistoryCompleter[overload1]$$$setHistoryCompleterconstUtils::Key& -->
+<h3 class="fn" translate="no" id="setHistoryCompleter"><span class="type">void</span> StringAspect::<span class="name">setHistoryCompleter</span>(const <span class="type">Utils::Key</span> &amp;<i>historyCompleterKey</i>)</h3>
+<p>Sets <i translate="no">historyCompleterKey</i> as key for the history completer settings for line edits and path chooser displays.</p>
+<p><b>See also </b><a href="utils-pathchooser.html#setExpectedKind" translate="no">Utils::PathChooser::setExpectedKind</a>().</p>
+<!-- @@@setHistoryCompleter -->
+<!-- $$$setPlaceHolderText[overload1]$$$setPlaceHolderTextconstQString& -->
+<h3 class="fn" translate="no" id="setPlaceHolderText"><span class="type">void</span> StringAspect::<span class="name">setPlaceHolderText</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>placeHolderText</i>)</h3>
+<p>Sets <i translate="no">placeHolderText</i> as place holder for line and text displays.</p>
+<!-- @@@setPlaceHolderText -->
+<!-- $$$toMap[overload1]$$$toMapUtils::Store& -->
+<h3 class="fn" translate="no" id="toMap"><code translate="no">[override virtual] </code><span class="type">void</span> StringAspect::<span class="name">toMap</span>(<span class="type">Utils::Store</span> &amp;<i>map</i>) const</h3>
+<p>Reimplements: <a href="utils-baseaspect.html#toMap" translate="no">BaseAspect::toMap(Utils::Store &amp;map) const</a>.</p>
+<!-- @@@toMap -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

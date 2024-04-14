@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
 <!-- creator-mobile-targets.qdoc -->
   <title>Connecting Devices | Qt Creator Manual</title>
   <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
@@ -22,61 +21,57 @@
 </head>
 <body>
 <div class="header" id="qtdocheader">
-  <div class="main">
+    <div class="main">
     <div class="main-rounded">
-      <div class="navigationbar">
-        <table><tr>
-<td ><a href="index.html">Qt Creator Manual</a></td><td >Connecting Devices</td></tr></table><table class="buildversion"><tr>
-<td id="buildversion" width="100%" align="right"><a href="index.html">Qt Creator Manual 4.9&#x2e;1</a></td>
-        </tr></table>
-      </div>
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li><a href="creator-overview.html" translate="no">Developing with Qt Creator</a></li>
+<li>Connecting Devices</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
     </div>
+</div>
 <div class="content">
 <div class="line">
 <div class="content mainContent">
-  <link rel="prev" href="creator-deployment-qnx.html" />
+  <link rel="prev" href="creator-deployment-embedded-linux.html" />
   <link rel="next" href="creator-developing-android.html" />
 <p class="naviNextPrevious headerNavi">
-<a class="prevPage" href="creator-deployment-qnx.html">Deploying Applications to QNX Neutrino Devices</a>
+<a class="prevPage" href="creator-deployment-embedded-linux.html">Deploying to Remote Linux</a>
 <span class="naviSeparator">  &#9702;  </span>
 <a class="nextPage" href="creator-developing-android.html">Connecting Android Devices</a>
-</p><p/>
-<div class="sidebar">
-<div class="toc">
-<h3><a name="toc">Contents</a></h3>
-<ul>
-<li class="level1"><a href="#related-topics">Related Topics</a></li>
-</ul>
-</div>
-<div class="sidebar-content" id="sidebar-content"></div></div>
+</p>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
 <h1 class="title">Connecting Devices</h1>
-<span class="subtitle"></span>
 <!-- $$$creator-connecting-mobile.html-description -->
-<div class="descr"> <a name="details"></a>
-<p>You can connect <a href="creator-glossary.html#glossary-device">devices</a> to the development PC to run, debug, and analyze applications built for them from Qt Creator. When you install Qt for a target platform, such as Android, QNX, or Universal Windows Platform (UWP), the build and run settings for the development targets might be set up automatically in Qt Creator.</p>
+<div class="descr" id="details">
+<p>You can connect <a href="creator-glossary.html#glossary-device" translate="no">devices</a> to the development PC to run, debug, and analyze applications built for them from Qt Creator. When you install Qt for a target platform, such as Android or QNX, the build and run settings for the development targets might be set up automatically in Qt Creator.</p>
 <p>You can connect the device to the development PC using a USB connection. Additionally, you can connect Linux-based devices by using a WLAN connection.</p>
+<p>The experimental WebAssembly plugin enables you to build your applications in WebAssembly format, to deploy them, and to run them in a web browser.</p>
 <ul>
-<li><a href="creator-developing-android.html">Connecting Android Devices</a><p>Qt applications for Android are compiled as <code>shared objects</code> that are loaded by a Java launcher that is part of Qt. This is totally transparent to users. As Qt is composed of libraries referencing each other, Qt 4 applications are only supported on Android version 1.6, or later, and Qt 5 applications on version 4.1 (API level 16), or later. You must install a Qt version targeting Android and the Android SDK and NDK to develop for Android devices.</p>
+<li><a href="creator-developing-android.html" translate="no">Connecting Android Devices</a><p>Qt applications for Android are compiled as <code translate="no">shared objects</code> that are loaded by a Java launcher that is part of Qt. This is totally transparent to users. As Qt is composed of libraries referencing each other, Qt 5 applications are only supported on Android version 4.1 (API level 16), or later, and Qt 6 applications on Android version 6.0 (API level 23), or later. You must install a Qt version targeting Android and the Android SDK and NDK to develop for Android devices.</p>
 </li>
-<li><a href="creator-developing-baremetal.html">Connecting Bare Metal Devices</a><p>You can connect bare metal devices to the development PC and use Qt Creator to debug applications on them with GDB or a hardware debugger.</p>
+<li><a href="creator-developing-baremetal.html" translate="no">Connecting Bare Metal Devices</a><p>You can connect bare metal devices to the development PC and use Qt Creator to debug applications on them with GDB or a hardware debugger.</p>
 </li>
-<li><a href="creator-developing-generic-linux.html">Connecting Embedded Linux Devices</a><p>If you have a tool chain for building applications for embedded Linux devices installed on the development PC, you can add it and the device to Qt Creator.</p>
+<li><a href="creator-developing-b2qt.html" translate="no">Connecting Boot2Qt Devices</a><p>You can connect <a href="creator-embedded-platforms.html#boot2qt" translate="no">Boot2Qt</a> devices to the development PC to run, debug, and analyze applications built for them from Qt Creator.</p>
 </li>
-<li><a href="creator-developing-ios.html">Connecting iOS Devices</a><p>You use the tools delivered with Xcode to connect devices to Qt Creator. Qt Creator detects the tools and configured devices automatically and uses the tools to build, deploy, and run applications.</p>
+<li><a href="creator-adding-docker-devices.html" translate="no">Adding Docker Devices</a><p>Create Docker devices from Docker images and use them to build, run, and debug applications from Qt Creator.</p>
 </li>
-<li><a href="creator-developing-qnx.html">Connecting QNX Devices</a><p>You can connect QNX devices to the development PC to deploy, run and debug applications on them from within Qt Creator. This is currently only supported for QNX Neutrino devices, and requires the QNX SDK to be installed on the development PC.</p>
+<li><a href="creator-developing-ios.html" translate="no">Connecting iOS Devices</a><p>You use the tools delivered with Xcode to connect devices to Qt Creator. Qt Creator detects the tools and configured devices automatically and uses the tools to build, deploy, and run applications.</p>
 </li>
-</ul>
-<a name="related-topics"></a>
-<h2 id="related-topics">Related Topics</h2>
-<ul>
-<li><a href="http://doc.qt.io/qtcreator/creator-overview-qtasam.html">Qt Application Manager</a><p>You can use the experimental Qt Application Manager plugin (commercial only) to deploy, run, and debug applications on the local Linux PC, remote generic SSH Linux targets, or <a href="creator-os-supported-platforms.html#embedded-devices">embedded devices</a>.</p>
+<li><a href="creator-developing-mcu.html" translate="no">Connecting MCUs</a><p>You can connect MCU boards to a development host to deploy, run, and debug applications on them from Qt Creator.</p>
+</li>
+<li><a href="creator-developing-qnx.html" translate="no">Connecting QNX Devices</a><p>You can connect QNX devices to the development PC to deploy, run and debug applications on them from within Qt Creator. This is currently only supported for QNX Neutrino devices, and requires the QNX SDK to be installed on the development PC.</p>
+</li>
+<li><a href="creator-developing-generic-linux.html" translate="no">Connecting Remote Linux Devices</a><p>If you have a tool chain for building applications for embedded Linux devices installed on the development PC, you can add it and the device to Qt Creator.</p>
 </li>
 </ul>
 </div>
+<p><b>See also </b><a href="creator-setup-webassembly.html" translate="no">Building Applications for the Web</a> and <a href="creator-how-to-run-in-app-manager.html" translate="no">Run in Qt Application Manager</a>.</p>
 <!-- @@@creator-connecting-mobile.html -->
 <p class="naviNextPrevious footerNavi">
-<a class="prevPage" href="creator-deployment-qnx.html">Deploying Applications to QNX Neutrino Devices</a>
+<a class="prevPage" href="creator-deployment-embedded-linux.html">Deploying to Remote Linux</a>
 <span class="naviSeparator">  &#9702;  </span>
 <a class="nextPage" href="creator-developing-android.html">Connecting Android Devices</a>
 </p>
@@ -87,7 +82,7 @@
 </div>
 <div class="footer">
    <p>
-   <acronym title="Copyright">&copy;</acronym> 2019 The Qt Company Ltd.
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
    Documentation contributions included herein are the copyrights of
    their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
    of their respective owners. </p>

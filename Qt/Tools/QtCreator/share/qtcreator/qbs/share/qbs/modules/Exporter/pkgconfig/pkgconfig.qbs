@@ -34,9 +34,9 @@ Module {
         auxiliaryInputs: {
             if (!autoDetect)
                 return undefined;
-            if (product.type.contains("staticlibrary"))
+            if (product.type.includes("staticlibrary"))
                 return ["staticlibrary"];
-            if (product.type.contains("dynamiclibrary"))
+            if (product.type.includes("dynamiclibrary"))
                 return ["dynamiclibrary"];
         }
 
@@ -46,7 +46,7 @@ Module {
         }
         prepare: {
             var cmd = new JavaScriptCommand();
-            cmd.description = "Creating " + output.fileName;
+            cmd.description = "creating " + output.fileName;
             cmd.sourceCode = function() {
                 var f = new TextFile(output.filePath, TextFile.WriteOnly);
                 if (product.Exporter.pkgconfig._usePrefix)

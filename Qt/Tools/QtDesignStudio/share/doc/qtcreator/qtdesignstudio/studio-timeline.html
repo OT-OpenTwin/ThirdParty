@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-timeline.qdoc -->
+  <title>Creating Timeline Animations | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Creating Timeline Animations</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="quick-animation-overview.html" />
+  <link rel="next" href="qtquick-editing-easing-curves.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="quick-animation-overview.html">Introduction to Animation Techniques</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtquick-editing-easing-curves.html">Editing Easing Curves</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#creating-an-animation">Creating an Animation</a></li>
+<li class="level2"><a href="#creating-a-timeline">Creating a Timeline</a></li>
+<li class="level2"><a href="#setting-keyframe-values">Setting Keyframe Values</a></li>
+<li class="level2"><a href="#binding-a-timeline-to-a-property">Binding a Timeline to a Property</a></li>
+<li class="level2"><a href="#binding-animations-to-states">Binding Animations to States</a></li>
+<li class="level1"><a href="#managing-keyframes">Managing Keyframes</a></li>
+<li class="level2"><a href="#editing-keyframes">Editing Keyframes</a></li>
+<li class="level2"><a href="#editing-keyframe-values">Editing Keyframe Values</a></li>
+<li class="level2"><a href="#copying-keyframes">Copying Keyframes</a></li>
+<li class="level2"><a href="#deleting-keyframes">Deleting Keyframes</a></li>
+<li class="level1"><a href="#viewing-the-animation">Viewing the Animation</a></li>
+<li class="level1"><a href="#animating-rotation">Animating Rotation</a></li>
+<li class="level1"><a href="#animating-shapes">Animating Shapes</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Creating Timeline Animations</h1>
+<!-- $$$studio-timeline.html-description -->
+<div class="descr" id="details">
+<p>You can create timelines and keyframe-based animations for linear interpolation through intermediate values at specified keyframes instead of immediately changing to the target value.</p>
+<p>You can also bind the timeline to a property value of a component such as a slider and control the animation this way.</p>
+<h2 id="creating-an-animation">Creating an Animation</h2>
+<p>To create an animation, whether it's a keyframe animation or an animation bound to a property value, you first need to create a timeline.</p>
+<h3 id="creating-a-timeline">Creating a Timeline</h3>
+<p>To create a timeline to animate a UI component:</p>
+<ol class="1" type="1"><li>In the <a href="qtquick-timeline-view.html" translate="no">Timeline</a> view, select the <img src="images/plus.png" alt="" /> (<b translate="no">Add Timeline</b>) button to specify settings for the timeline and running the animation in the <b translate="no">Timeline Settings</b> dialog.</li>
+<li>On the <b translate="no">Timeline Settings</b> tab:<ul>
+<li>In the <b translate="no">Timeline ID</b> field, enter an id that describes the timeline.</li>
+<li>In the <b translate="no">Start frame</b> field, set the first frame of the timeline. Negative values are allowed.</li>
+<li>In the <b translate="no">End frame</b> field, set the last frame of the timeline.<p class="centerAlign"><img src="images/timeline-settings-dialog.png" alt="" /></p></li>
+</ul>
+</li>
+<li>On the <b translate="no">Animation Settings</b> tab:<ul>
+<li>In the <b translate="no">Animation ID</b> field, enter an ID for the animation.</li>
+<li>Optional. Select the <b translate="no">Running in Base State</b> check box to run the animation when the base state is applied. Clear the check box to run the animation when some other state is applied. For more information, see <a href="studio-timeline.html#binding-animations-to-states" translate="no">Binding Animations to States</a>.</li>
+<li>In the <b translate="no">Start frame</b> field, set the first frame of the animation.</li>
+<li>In the <b translate="no">End frame</b> field, set the last frame of the animation.</li>
+<li>In the <b translate="no">Duration</b> field, set the length of the animation in milliseconds.</li>
+<li>Optional. Select the <b translate="no">Continuous</b> check box to loop the animation indefinitely.</li>
+<li>Optional. In the <b translate="no">Loops</b> field, set the number of times to run the animation. The default number of loops is one, which means that you must restart the animation to see it again.</li>
+<li>Optional. Select the <b translate="no">Ping pong</b> check box to play the animation backwards back to the beginning when it reaches the end.</li>
+<li>Optional. In the <b translate="no">Finished</b> field, select the state to transition to when the animation finishes.</li>
+</ul>
+</li>
+<li>Select <b translate="no">Close</b> to close the dialog and save the settings.</li>
+</ol>
+<p>Now, with the settings set for the timeline and the animation, you set the keyframes for the properties to animate.</p>
+<h4 id="creating-additional-timelines">Creating Additional Timelines</h4>
+<p>You can create more than one timeline. The purpose of several timelines is to use different timelines in different states.</p>
+<p>To create a timeline for a second state:</p>
+<ol class="1" type="1"><li>In <b translate="no">Timeline</b>, open the <b translate="no">Timeline Settings</b> dialog.</li>
+<li>Next to the <b translate="no">Timeline Settings</b> tab, select <img src="images/plus.png" alt="" /> . This creates another timeline.</li>
+<li>In the table below the <b translate="no">Animation Settings</b> tab, set the Timeline for the state where you want to use it.<p class="centerAlign"><img src="images/timeline-settings-dialog-second.png" alt="" /></p></li>
+</ol>
+<p>To set the keyframe values for the timeline you created, first select the state in <b translate="no">States</b> and the timeline is available in <b translate="no">Timelines</b>.</p>
+<p class="centerAlign"><img src="images/timeline-states.webp" alt="" /></p><h3 id="setting-keyframe-values">Setting Keyframe Values</h3>
+<p>When you create a timeline, Qt Design Studio creates one animation for the timeline. You can create as many animations for a timeline as you want. For example, you can create animations to run just a small section of the timeline or to run the timeline backwards.</p>
+<p>To animate components in the <a href="qtquick-timeline-view.html" translate="no">Timeline</a> view, you set keyframe values for the property to animate. Qt Design Studio automatically adds keyframes between two keyframes and sets their values evenly to create, for example, movement or transformation.</p>
+<p>To set keyframe values for a component property:</p>
+<ol class="1" type="1"><li>In the <a href="qtquick-navigator.html" translate="no">Navigator</a> view, select the component to animate.</li>
+<li>In the <a href="qtquick-properties-view.html" translate="no">Properties</a> view, select <img src="images/action-icon.png" alt="" /> (<b translate="no">Actions</b>) &gt; <b translate="no">Insert Keyframe</b> for the property that you want to animate.<p class="centerAlign"><img src="images/timeline-insert-keyframe.png" alt="" /></p></li>
+<li>In the <a href="qtquick-timeline-view.html" translate="no">Timeline</a> view, select the <b translate="no">Per Property Recording</b> button to start recording property changes.<p class="centerAlign"><img src="images/timeline-per-property-recording.webp" alt="" /></p></li>
+<li>Ensure that the playhead is in frame 0 and enter the value of the property in the field next to the property name on the timeline. Press <b>Enter</b> to save the value.</li>
+<li>Move the playhead to another frame on the timeline and specify the value at that frame. For more information, see <a href="qtquick-timeline-view.html#navigating-in-timeline" translate="no">Navigating in Timeline</a>.</li>
+<li>When you have specified as many values as you need, select <b translate="no">Per Property Recording</b> again to stop recording.</li>
+</ol>
+<h3 id="binding-a-timeline-to-a-property">Binding a Timeline to a Property</h3>
+<p>When you bind a timeline to a component property, the animation's current frame is controlled by the value of the property.</p>
+<p>In this example, you bind the timeline to a slider component.</p>
+<p>With a timeline created and keyframe values set:</p>
+<ol class="1" type="1"><li>From <b translate="no">Components</b>, drag a slider to the <b translate="no">2D</b> or <b translate="no">Navigator</b> view.</li>
+<li>In <b translate="no">Navigator</b>, select <i>slider</i> and in <b translate="no">Properties</b>, set:<ul>
+<li><b translate="no">To</b> to 1000.<div class="admonition note">
+<p><b>Note: </b>The <b translate="no">From</b> and <b translate="no">To</b> values of the slider should match the <b translate="no">Start Frame</b> and <b translate="no">End Frame</b> values of the timeline if you want to control the complete animation with the slider.</p>
+</div>
+</li>
+</ul>
+</li>
+<li>In the <b translate="no">Timeline Settings</b> dialog, select <img src="images/minus.png" alt="" /> next to the <b translate="no">Animation Settings</b> tab to delete the animation. If you have several animations, delete all.</li>
+<li>In <b translate="no">Expression binding</b>, enter <code translate="no">slider.value</code>.<p class="centerAlign"><img src="images/timeline-settings-property-binding.png" alt="" /></p></li>
+</ol>
+<h3 id="binding-animations-to-states">Binding Animations to States</h3>
+<p>You can bind animations to states, this means that the animation will run when you enter the state.</p>
+<p>To bind an animation to a state:</p>
+<ol class="1" type="1"><li>In the table at the bottom of the <b translate="no">Timeline Settings</b> dialog lists:<ul>
+<li>Double-click the value in the <b translate="no">Timeline</b> field and select the timeline with the animation you want to bind to the state.</li>
+<li>Double-click the value in the <b translate="no">Animation</b> field and select the animation you want to bind to the state.<p class="centerAlign"><img src="images/timeline-bind-animation-state.png" alt="" /></p></li>
+</ul>
+</li>
+</ol>
+<p>To bind a state to a certain keyframe in an animation without running the animation, set the keyframe in the <b translate="no">Fixed Frame</b> field.</p>
+<h2 id="managing-keyframes">Managing Keyframes</h2>
+<p class="centerAlign"><img src="images/studio-timeline-with-tracks.webp" alt="&quot;Timeline view&quot;" /></p><h3 id="editing-keyframes">Editing Keyframes</h3>
+<p>To remove all the changes you recorded for a property, right-click the property name on the timeline and select <b translate="no">Remove Property</b>.</p>
+<p>To add keyframes to the keyframe track of a component at the current position of the playhead, right-click the component name on the timeline and select <b translate="no">Add Keyframes at Current Frame</b>.</p>
+<p>Keyframes are marked on the timeline by using <a href="qtquick-timeline-view.html#keyframe-marker" translate="no">markers</a> of different colors and shapes, depending on whether they are active or inactive or whether you have applied <a href="qtquick-editing-easing-curves.html" translate="no">easing curves</a> to them.</p>
+<h3 id="editing-keyframe-values">Editing Keyframe Values</h3>
+<p>To fine-tune the value of a keyframe, double-click a keyframe marker or right-click it and select <b translate="no">Edit Keyframe</b> in the context menu.</p>
+<p>The <b translate="no">Edit Keyframe</b> dialog displays the name of the property you are animating and its current value at the frame specified in the <b translate="no">Frame</b> field. You can change both the keyframe and its value.</p>
+<p class="centerAlign"><img src="images/studio-edit-keyframe.png" alt="&quot;Edit Keyframe dialog&quot;" /></p><h3 id="copying-keyframes">Copying Keyframes</h3>
+<p>You can copy the keyframes from the keyframe track for a component and paste them to the keyframe track of another component.</p>
+<p>To copy all keyframes from one track to another one:</p>
+<ol class="1" type="1"><li>Right-click the component ID and select <b translate="no">Copy All Keyframes</b> in the context menu.</li>
+<li>Right-click the other component ID, and select <b translate="no">Paste Keyframes</b> in the context menu.</li>
+</ol>
+<h3 id="deleting-keyframes">Deleting Keyframes</h3>
+<p>To delete a keyframe, right-click it and select <b translate="no">Delete Keyframe</b> in the context menu.</p>
+<p>To delete all keyframes from the selected component, right-click the component name in <b translate="no">Timeline</b> and select <b translate="no">Delete All Keyframes</b> in the context menu.</p>
+<h2 id="viewing-the-animation">Viewing the Animation</h2>
+<p>To preview your animation, do one of the following in the <b translate="no">Timeline</b> view:</p>
+<ul>
+<li>Drag the playhead along the timeline.</li>
+<li>Select <img src="images/start_playback.png" alt="" /> button or press <b>Space</b>.</li>
+</ul>
+<p>To preview the whole UI, select the <b translate="no">Live Preview</b> button on the top toolbar or press <b>Alt</b> + <b>P</b>.</p>
+<h2 id="animating-rotation">Animating Rotation</h2>
+<p>To animate components that rotate around a central point, you can use the <a href="qtquick-properties.html#basic-item" translate="no">Item</a> component as a parent for the rotating component. Then create a timeline for the Item, and set the rotation property for the start and end keyframes.</p>
+<h2 id="animating-shapes">Animating Shapes</h2>
+<p>You can use the <b translate="no">Qt Quick Studio Components</b> to animate the following shapes:</p>
+<ul>
+<li><a href="quick-shapes.html#arc" translate="no">Arc</a></li>
+<li><a href="https://doc.qt.io/qt/stylesheet-reference.html#border" translate="no">Border</a></li>
+<li><a href="quick-shapes.html#pie" translate="no">Pie</a></li>
+<li><a href="quick-shapes.html#rectangle" translate="no">Rectangle</a></li>
+<li><a href="quick-shapes.html#triangle" translate="no">Triangle</a></li>
+</ul>
+</div>
+<!-- @@@studio-timeline.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="quick-animation-overview.html">Introduction to Animation Techniques</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtquick-editing-easing-curves.html">Editing Easing Curves</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

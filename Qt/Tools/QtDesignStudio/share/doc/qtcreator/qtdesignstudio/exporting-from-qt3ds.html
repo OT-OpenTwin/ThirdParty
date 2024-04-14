@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- exporting-from-qt3ds.qdoc -->
+  <title>Exporting from Qt 3D Studio | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Exporting from Qt 3D Studio</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="exporting-from-maya.html" />
+  <link rel="next" href="studio-importing-designs.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="exporting-from-maya.html">Exporting from Maya</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-importing-designs.html">Importing Designs</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#best-practices">Best Practices</a></li>
+<li class="level1"><a href="#importing-assets">Importing Assets</a></li>
+<li class="level2"><a href="#custom-materials">Custom Materials</a></li>
+<li class="level2"><a href="#standard-materials">Standard Materials</a></li>
+<li class="level2"><a href="#models">Models</a></li>
+<li class="level1"><a href="#example-converting-myowncluster-project-from-qt-3d-studio-to-qt-design-studio">Example: Converting MyOwnCluster Project from Qt 3D Studio to Qt Design Studio</a></li>
+<li class="level2"><a href="#creating-a-new-project-in-qt-design-studio">Creating a New Project in Qt Design Studio</a></li>
+<li class="level2"><a href="#getting-started-with-myowncluster">Getting Started with MyOwnCluster</a></li>
+<li class="level2"><a href="#importing-assets">Importing Assets</a></li>
+<li class="level2"><a href="#adding-components-to-the-project">Adding Components to the Project</a></li>
+<li class="level2"><a href="#converting-3d-elements">Converting 3D Elements</a></li>
+<li class="level2"><a href="#converting-2d-elements">Converting 2D Elements</a></li>
+<li class="level2"><a href="#converting-qml-streams">Converting QML Streams</a></li>
+<li class="level2"><a href="#cleaning-up-the-project-structure">Cleaning Up the Project Structure</a></li>
+<li class="level2"><a href="#finished">Finished</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Exporting from Qt 3D Studio</h1>
+<!-- $$$exporting-from-qt3ds.html-description -->
+<div class="descr" id="details">
+<p>Use the following guidelines to achieve the best results when converting projects from Qt 3D Studio to Qt Design Studio.</p>
+<h2 id="best-practices">Best Practices</h2>
+<ul>
+<li>If something in UI is clearly 2D, do not import it from Qt 3D Studio presentation. Implement it directly in Qt Design Studio.</li>
+<li>QML streams cannot be imported as QML elements directly into Qt Design Studio. They need to be copied manually since there is no import functionality for QML files in Qt Design Studio.</li>
+<li>If you do import the whole Qt 3D Studio project (<code translate="no">.uia</code> file), use only the parts you actually need from it. Use <b translate="no">Move Component Into Separate File</b> for the parts you need, and eventually delete all the rest from the project structure.</li>
+<li>There are extra levels of <code translate="no">Node</code> elements in most imported QML files, and they should be removed for improved performance. As a rule of thumb, each Node that has only one child is considered an extra level that should be deleted.</li>
+<li>Qt 3D Studio <i>slides</i> become Qt Design Studio <i>states</i>, and there may be problems with state changes. Always go through each of the state changes to make sure they work correctly.</li>
+</ul>
+<h2 id="importing-assets">Importing Assets</h2>
+<h3 id="custom-materials">Custom Materials</h3>
+<p>Custom materials (<i>something.shader</i> files in Qt 3D Studio) are not imported correctly, and have to be fixed manually.</p>
+<ul>
+<li>They are imported as <code translate="no">CustomMaterial { id: something; source: &quot;something&quot; }</code> that neither works nor does anything.</li>
+<li>Remove the <i>source: &quot;something&quot;</i> altogether.</li>
+<li>Vertex shader part from the <i>something.shader</i> needs to be copied to <code translate="no">Shader { stage: Shader.Vertex; shader: &quot;vertex shader code here&quot; }</code> inside the <code translate="no">CustomMaterial</code>. Fragment shader part needs to be copied to <code translate="no">Shader { stage: Shader.Fragment; shader: &quot;fragment shader code here&quot; }</code>.</li>
+<li>Properties in <i>Metadata</i> of the <i>something.shader</i> need to be introduced manually as QML properties of the same name and correct type inside the <code translate="no">CustomMaterial</code> element.</li>
+<li>Add <code translate="no">import QtQuick3D.Materials 1.15</code> import statement to files that have <code translate="no">CustomMaterial</code> elements.</li>
+<li>If custom material uses textures, they are not imported automatically and must be manually added to the project structure.</li>
+<li>Many custom materials are not rendered in the <b translate="no">3D</b> or <b translate="no">2D</b> view due to an open bug in Qt Design Studio 1.5. The project needs to be run for them to appear.</li>
+</ul>
+<h3 id="standard-materials">Standard Materials</h3>
+<p>Some properties of standard materials may not be imported correctly.</p>
+<ul>
+<li>The sensible value ranges of some properties may have changed between Qt 3D Studio and Qt Design Studio and need to be redefined manually.</li>
+<li>Extra properties may be added and can be removed manually.</li>
+</ul>
+<h3 id="models">Models</h3>
+<p>Models have some extra properties (tessellations), which can be removed.</p>
+<h2 id="example-converting-myowncluster-project-from-qt-3d-studio-to-qt-design-studio">Example: Converting MyOwnCluster Project from Qt 3D Studio to Qt Design Studio</h2>
+<p class="centerAlign"><img src="images/porting-example-myowncluster.png" alt="&quot;My Own Cluster project in Qt 3D Studio&quot;" /></p><p><i>My Own Cluster project in Qt 3D Studio</i></p>
+<p>The following steps describe how to convert the My Own Cluster project from Qt 3D Studio to Qt Design Studio.</p>
+<h3 id="creating-a-new-project-in-qt-design-studio">Creating a New Project in Qt Design Studio</h3>
+<ol class="1" type="1"><li>To create a new project in Qt Design Studio, select <b translate="no">File &gt; New File or Project</b>, or select <b translate="no">New Project</b> in the Welcome mode.<p class="centerAlign"><img src="images/01-welcome-screen.png" alt="&quot;Welcome mode in Qt Design Studio&quot;" /></p></li>
+<li>Creating a new project in Qt Design Studio is aided by a wizard that contains templates for creating different types of projects. Choose the <b translate="no">Qt Quick 3D Application</b> template to get started with your new 3D project.<p class="centerAlign"><img src="images/02-create-new-project.png" alt="&quot;Create a new Project in Qt Design Studio&quot;" /></p></li>
+<li>In the <b translate="no">Name</b> field, enter a name for the project. In the <b translate="no">Create in</b> field, enter the path for the project files, and then select <b translate="no">Next</b>.<p class="centerAlign"><img src="images/03-folder-and-project-name.png" alt="&quot;Project location and name&quot;" /></p></li>
+<li>In the <b translate="no">Screen resolution</b> field, select the screen resolution for previewing the UI on the desktop or on a device. You must select one of the predefined screen resolutions, which will later be altered to match the width and height of the original project. In the <b translate="no">Qt Quick Controls Style</b> field, select one of the predefined UI styles to use, and then select <b translate="no">Finish</b>.<p class="centerAlign"><img src="images/04-project-size.png" alt="&quot;Select the screen resolution for the project&quot;" /></p></li>
+<li>Your new project has now been created. For more information on creating projects in Qt Design Studio, see <a href="studio-projects.html" translate="no">Creating Projects</a>. For more information on how to get started with Qt Design Studio, see <a href="studio-getting-started.html" translate="no">Getting Started</a>.<p class="centerAlign"><img src="images/05-new-project-created.png" alt="&quot;New project in Qt Design Studio&quot;" /></p></li>
+</ol>
+<h3 id="getting-started-with-myowncluster">Getting Started with MyOwnCluster</h3>
+<ol class="1" type="1"><li>Return to your project in Qt 3D Studio to check the size of the presentation. Select <b translate="no">Edit</b> &gt; <b translate="no">Presentation Settings</b> to see the values for <b translate="no">Width x Height</b>.<p class="centerAlign"><img src="images/06-check-screen-size-in-qt3ds-project.png" alt="&quot;Check screen size in Qt 3D Studio presentation&quot;" /></p></li>
+<li>Adjust the canvas size of your project in Qt Design Studio according to the screen size in Qt 3D Studio presentation by editing the <code translate="no">Constants.qml</code> file in the <a href="qtquick-text-editor.html" translate="no">Code</a> view. If you cannot see the <b translate="no">Code</b> view, select <b translate="no">Window</b> &gt; <b translate="no">Views</b>, and then select the <b translate="no">Code</b> checkbox. In the <b translate="no">Projects</b> view, open the imports subfolder, then the subfolder named after your project, and double-click <code translate="no">Constants.qml</code>. Edit the values for <i>readonly property int width</i> and <i>readonly property int height</i> to match the <b translate="no">Width x Height</b> values in Qt 3D Studio presentation.<p class="centerAlign"><img src="images/07-screen-size-in-text-editor.png" alt="&quot;Adjust the canvas size&quot;" /></p></li>
+<li>To delete the placeholders created by the wizard, multiselect <b translate="no">Text</b> and <b translate="no">view3D</b> components (<b>Ctrl</b> + mouse left click) in <b translate="no">Navigator</b>, then right click on the selected items, and select <b translate="no">Edit</b> &gt; <b translate="no">Delete</b>.<p class="centerAlign"><img src="images/08-delete-placeholders.png" alt="&quot;Delete placeholders in Navigator&quot;" /></p></li>
+</ol>
+<h3 id="importing-assets">Importing Assets</h3>
+<ol class="1" type="1"><li>Select <b translate="no">Assets</b> &gt; <img src="images/plus.png" alt="" /> .<p class="centerAlign"><img src="images/09-add-new-assets.png" alt="" /></p></li>
+<li>Select the <code translate="no">.uia</code> file for the Qt 3D Studio project you wish to import, and then select <b translate="no">Open</b>.<p class="centerAlign"><img src="images/10-find-project-file.png" alt="&quot;Find the uia file in file explorer&quot;" /></p></li>
+<li>Select <b translate="no">Import</b>, and after the import is complete, select <b translate="no">Close</b>.<p class="centerAlign"><img src="images/11-import.png" alt="&quot;Import the file&quot;" /></p></li>
+<li>The 2D assets imported from Qt 3D Studio now appear in &gt; <b translate="no">Assets</b>.<p class="centerAlign"><img src="images/12-imported-image-assets.png" alt="&quot;Imported assets in Components&quot;" /></p></li>
+<li>The QML components generated from the imported Qt 3D Studio project now appear as available imports in <b translate="no">Components</b> under <b translate="no">QML Types</b>. Select <b translate="no">Quick3DAssets.MyOwnCluster</b> to import them to your project.<p class="centerAlign"><img src="images/13-myowncluster-in-qml-types.png" alt="&quot;Available imports in QML Types&quot;" /></p></li>
+<li>The imported QML types now appear in <b translate="no">Components</b> and can be added to the project.<p class="centerAlign"><img src="images/14-add-myowncluster-to-project.png" alt="&quot;MyOwnCluster in Components&quot;" /></p></li>
+</ol>
+<h3 id="adding-components-to-the-project">Adding Components to the Project</h3>
+<ol class="1" type="1"><li>Drag <b translate="no">MyOwnCluster</b> from <b translate="no">My Quick3D Components</b> in <b translate="no">Components</b> to the <b translate="no">2D</b> view.<p class="centerAlign"><img src="images/15-drag-to-project.png" alt="&quot;Drag MyOwnCluster to the 2D view&quot;" /></p></li>
+<li>In <b translate="no">Navigator</b>, right click on myOwnCluster and select <b translate="no">Go into Component</b>.<p class="centerAlign"><img src="images/16-go-into-component.png" alt="&quot;Go into component My Own Cluster&quot;" /></p></li>
+<li>Find the offending line in the <b translate="no">Code</b> view.<p class="centerAlign"><img src="images/17-offending-line.png" alt="" /></p></li>
+<li>Comment out the offending line by placing two slashes in the beginning of it (or remove the line).<p class="centerAlign"><img src="images/17b-commented-out.png" alt="" /></p></li>
+<li>In Navigator, go to each component of the project and comment out (or remove) any offending lines you find.<p class="centerAlign"><img src="images/18-repeat-where-needed.png" alt="" /></p></li>
+<li>You should now see some parts of the project in the <b translate="no">2D</b> view.<p class="centerAlign"><img src="images/19-see-form-editor.png" alt="&quot;Project in the 2D view&quot;" /></p></li>
+</ol>
+<h3 id="converting-3d-elements">Converting 3D Elements</h3>
+<ol class="1" type="1"><li>Drag subpresentation_ADAS from <b translate="no">Components</b> &gt; {My 3D Components} into layer folder in <b translate="no">Navigator</b>.<p class="centerAlign"><img src="images/20-drag-subpresentation-adas-into-layer.png" alt="&quot;Drag into layer&quot;" /></p></li>
+<li>To delete the old subpresentation rectangle, right-click on the file name (subpresentation_ADAS2_u52017 in this project), select <b translate="no">Edit</b> &gt; <b translate="no">Delete</b>.</li>
+<li>Go into the component subpresentation_ADAS.<p class="centerAlign"><img src="images/22-go-into-subpresentation-adas.png" alt="&quot;Go into component&quot;" /></p></li>
+<li>Reposition objects and/or camera in the <b translate="no">3D</b> view according to the original Qt 3D Studio project. The desired scene may be achieved simply by changing the z position sign from positive to negative, or vice versa, in some cases.<p>See the <a href="studio-3d-editor.html" translate="no">3D</a> view for more information on how to edit 3D scenes.</p>
+<p class="centerAlign"><img src="images/23-replace-objects.png" alt="&quot;Replace objects in the 3D view&quot;" /></p></li>
+<li>Recreate animations in subpresentation_ADAS according to the original project. For more information on creating animations in Qt Design Studio, see <a href="studio-timeline.html" translate="no">Creating Timeline Animations</a>.<p class="centerAlign"><img src="images/24-recreate-animations.png" alt="&quot;Recreate animations&quot;" /></p></li>
+<li>Go to the <b translate="no">Timeline</b> View to review the timeline for the project.<p class="centerAlign"><img src="images/25-adas-timeline.png" alt="&quot;ADAS timeline view&quot;" /></p></li>
+</ol>
+<h3 id="converting-2d-elements">Converting 2D Elements</h3>
+<ol class="1" type="1"><li>Recreate the 2D elements of the original project (in all layers) using the 2D QML elements available in Qt Design Studio. You can use the imported 2D layer as a guide for recreating the elements. If the 2D elements in the original project have rotations, especially in a 3D layer, make sure to add rotations that mimic the original ones to the Qt Design Studio project. For example, rotation on one axis with perspective camera requires rotation on two axes in pure 2D. You may need to use the <b translate="no">Code</b> view to achieve rotation similar to the rotation of the object in Qt 3D Studio. For more information on specifying advanced transformations on <b translate="no">Items</b>, see <a href="https://doc.qt.io/qt/qml-qtquick-transform.html" translate="no">Transform</a>.<p class="centerAlign"><img src="images/26-recreate-2d-elements.png" alt="&quot;Recreate 2D elements&quot;" /></p></li>
+<li>To delete the 2D layer (telltaleLayer_u39332) in <b translate="no">Navigator</b> after recreating the 2D elements, right-click on the component, and select <b translate="no">Edit</b> &gt; <b translate="no">Delete</b>.<p class="centerAlign"><img src="images/27-delete-2d-layer.png" alt="&quot;Delete the 2D layer&quot;" /></p></li>
+<li>Next, you need to delete the 2D elements from the 3D layer (speed_u20335 and rPM_u10371 from layer_32325). Right-click on the element, and select <b translate="no">Edit</b> &gt; <b translate="no">Delete</b>.<p class="centerAlign"><img src="images/28-delete-2d-elements-from-3d-layer.png" alt="&quot;Delete old 2D elements from the 3D layer&quot;" /></p></li>
+<li>Recreate the animations for 2D elements the same way it was done for the 3D elements.</li>
+</ol>
+<h3 id="converting-qml-streams">Converting QML Streams</h3>
+<ol class="1" type="1"><li>Find QML stream files in file explorer.<p class="centerAlign"><img src="images/30-find-qml-stream-files-in-file-explorer.png" alt="&quot;Find the QML stream file&quot;" /></p></li>
+<li>Move the QML stream files under the import's main folder (one level up in this example).<p class="centerAlign"><img src="images/31-move-under-myowncluster.png" alt="&quot;Move the QML stream files under the import's main folder&quot;" /></p></li>
+<li>Make sure that the QML stream file names start with a capital letter to enable Qt Design Studio to recognize them as QML component files.<p class="centerAlign"><img src="images/32-rename-the-qml-stream-file.png" alt="&quot;The QML stream file names should start with a capital letter&quot;" /></p></li>
+<li>Return to Qt Design Studio and enter the MyOwnCluster component. The QML stream component now appears in <b translate="no">My 3D Components</b>.<p class="centerAlign"><img src="images/33-see-qml-stream-component-in-myqmlcomponents.png" alt="&quot;QML stream in My QML Components&quot;" /></p></li>
+<li>Drag-and-drop the QML stream component to MyOwnCluster in <b translate="no">Navigator</b>.<p class="centerAlign"><img src="images/34-drag-to-myowncluster-in-navigator.png" alt="&quot;Drag the QML stream component to MyOwnCluster&quot;" /></p></li>
+<li>Go to the <b translate="no">States</b> view and use the <b translate="no">Visibility</b> tab in the <b translate="no">Properties</b> view to make the QML stream component visible only in the correct state.<p class="centerAlign"><img src="images/35-visible-states.png" alt="&quot;Make components visible in correct states&quot;" /></p></li>
+<li>Next, recreate the animations for the QML stream according to the original project.<p class="centerAlign"><img src="images/36-recreate-qml-animations.png" alt="&quot;Recreate animations&quot;" /></p></li>
+<li>Recreate all the keyframes for the imported QML stream that is now a component.<p class="centerAlign"><img src="images/37-recreate-keyframes.png" alt="&quot;Recreate keyframes&quot;" /></p></li>
+</ol>
+<h3 id="cleaning-up-the-project-structure">Cleaning Up the Project Structure</h3>
+<ol class="1" type="1"><li>Go to file explorer and clean up the project structure deleting the folder and files that are not used in the Qt Design Studio project.<p class="centerAlign"><img src="images/38-delete-unnecessary-folders.png" alt="&quot;Delete folders in file explorer&quot;" /></p></li>
+<li>Individual files can also be deleted in the <b translate="no">Projects</b> view in Qt Design Studio. To delete a file, right-click on it, select <b translate="no">Delete File</b>, and then select <b translate="no">Yes</b>.<p class="centerAlign"><img src="images/39-delete-individual-files-in-qds.png" alt="&quot;Delete individual files&quot;" /></p></li>
+<li>This is the project structure after clean-up.<p class="centerAlign"><img src="images/40-done.png" alt="&quot;Project structure after clean-up&quot;" /></p></li>
+</ol>
+<h3 id="finished">Finished</h3>
+<p>You have now converted your Qt 3D Studio project to Qt Design Studio.</p>
+<p class="centerAlign"><img src="images/41-finished-qds-project.png" alt="" /></p></div>
+<!-- @@@exporting-from-qt3ds.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="exporting-from-maya.html">Exporting from Maya</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-importing-designs.html">Importing Designs</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

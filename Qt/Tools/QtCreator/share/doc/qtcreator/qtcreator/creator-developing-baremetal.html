@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
 <!-- creator-baremetal-dev.qdoc -->
   <title>Connecting Bare Metal Devices | Qt Creator Manual</title>
   <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
@@ -22,63 +21,178 @@
 </head>
 <body>
 <div class="header" id="qtdocheader">
-  <div class="main">
+    <div class="main">
     <div class="main-rounded">
-      <div class="navigationbar">
-        <table><tr>
-<td ><a href="index.html">Qt Creator Manual</a></td><td >Connecting Bare Metal Devices</td></tr></table><table class="buildversion"><tr>
-<td id="buildversion" width="100%" align="right"><a href="index.html">Qt Creator Manual 4.9&#x2e;1</a></td>
-        </tr></table>
-      </div>
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li><a href="creator-overview.html" translate="no">Developing with Qt Creator</a></li>
+<li><a href="creator-connecting-mobile.html" translate="no">Connecting Devices</a></li>
+<li>Connecting Bare Metal Devices</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
     </div>
+</div>
 <div class="content">
 <div class="line">
 <div class="content mainContent">
   <link rel="prev" href="creator-developing-android.html" />
-  <link rel="next" href="creator-developing-generic-linux.html" />
+  <link rel="next" href="creator-developing-b2qt.html" />
 <p class="naviNextPrevious headerNavi">
 <a class="prevPage" href="creator-developing-android.html">Connecting Android Devices</a>
 <span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-developing-generic-linux.html">Connecting Embedded Linux Devices</a>
-</p><p/>
-<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
-<h1 class="title">Connecting Bare Metal Devices</h1>
-<span class="subtitle"></span>
-<!-- $$$creator-developing-baremetal.html-description -->
-<div class="descr"> <a name="details"></a>
-<p>You can connect bare metal devices to a development host to run and debug applications on them from Qt Creator using GDB or a hardware debugger. This enables you to debug on small devices that are not supported by the generic remote Linux device plugin. However, if the device does not have Qt libraries, you need a fake Qt installation.</p>
-<p>The bare metal device type accepts custom GDB commands that you specify in the device options. You can specify the commands to execute by default or the commands to execute when connecting to OpenOCD or ST-LINK Utility.</p>
-<p>To connect bare metal devices:</p>
-<ol class="1" type="1"><li>Select <b>Help</b> &gt; <b>About Plugins</b> &gt; <b>Device Support</b> &gt; <b>Bare Metal</b> to enable the Bare Metal Device plugin.</li>
-<li>Restart Qt Creator to be able to use the plugin.</li>
-<li>Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Devices</b> &gt; <b>Bare Metal</b> &gt; <b>Add</b> &gt; <b>Default</b>, <b>OpenOCD</b>, or <b>ST-LINK Utility</b> to specify connections to GDB servers or hardware debuggers:<p class="centerAlign"><img src="images/creator-baremetal-device.png" alt="&quot;Bare Metal options&quot;" /></p><ol class="1" type="1"><li>In the <b>Startup mode</b> field, select the mode to start the GDB server or debugger in. The available modes depend on the server or debugger.</li>
-<li>In the <b>Host</b> field, select the host name and port number to connect to the GDB server or hardware debugger.</li>
-<li>In the <b>Init commands</b> field, enter the commands to execute when initializing the connection.</li>
-<li>In the <b>Reset commands</b> field, enter the commands to execute when resetting the connection.</li>
-<li>Select <b>Apply</b> to add the GDB server or debugger.</li>
-</ol>
-</li>
-<li>Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Devices</b> &gt; <b>Add</b> &gt; <b>Bare Metal Device</b> &gt; <b>Start Wizard</b>:<ol class="1" type="1"><li>In the <b>GDB server provider</b> field, select a GDB server or hardware debugger.</li>
-<li>Select <b>Apply</b> to add the device.</li>
-</ol>
-</li>
-<li>Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Kits</b> &gt; <b>Add</b> to add a kit for building applications and running them on bare metal devices:<p class="centerAlign"><img src="images/creator-baremetal-kits.png" alt="&quot;Bare Metal Device kits&quot;" /></p><ol class="1" type="1"><li>In the <b>Name</b> field, specify a name for the kit.</li>
-<li>In the <b>Device type</b> field, select <b>Bare Metal Device</b>.</li>
-<li>In the <b>Device</b> field, select the bare metal device for the kit.</li>
-<li>Select <b>Apply</b> to add the kit.</li>
-</ol>
-</li>
-<li>Open a project for an application you want to develop for the device.</li>
-<li>Select <b>Projects</b> &gt; <b>Build &amp; Run</b>, and then select the kit for building the application and running it on the bare metal device specified in the kit.<p class="centerAlign"><img src="images/creator-baremetal-kit-for-project.png" alt="&quot;Adding a bare metal kit for a project&quot;" /></p></li>
-<li>Select <b>Run</b> to specify run settings.<p>Usually, you can use the default settings.</p>
-</li>
-</ol>
+<a class="nextPage" href="creator-developing-b2qt.html">Connecting Boot2Qt Devices</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#specifying-settings-for-debug-server-providers">Specifying Settings for Debug Server Providers</a></li>
+<li class="level2"><a href="#eblink">EBlink</a></li>
+<li class="level2"><a href="#j-link">J-Link</a></li>
+<li class="level2"><a href="#openocd">OpenOCD</a></li>
+<li class="level2"><a href="#st-link">St-Link</a></li>
+<li class="level2"><a href="#uvision-ide">uVision IDE</a></li>
+<li class="level1"><a href="#adding-bare-metal-devices">Adding Bare Metal Devices</a></li>
+<li class="level1"><a href="#building-for-and-running-on-bare-metal-devices">Building for and Running on Bare Metal Devices</a></li>
+</ul>
 </div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Connecting Bare Metal Devices</h1>
+<!-- $$$creator-developing-baremetal.html-description -->
+<div class="descr" id="details">
+<p>You can configure build and run kits to use Bare Metal tool chains installed on the development host to build applications for Bare Metal devices. You can connect the devices to the development host to run and debug applications on them from Qt Creator using GDB or a hardware debugger. This enables you to debug on small devices that are not supported by the generic remote Linux device plugin.</p>
+<div class="admonition note">
+<p><b>Note: </b>If you use qmake to build the project and the device does not have Qt libraries, you need a fake Qt installation.</p>
+</div>
+<p>The following tool chains are supported for building applications:</p>
+<ul>
+<li>GCC: Microchip Technology (AVR, AVR32, PIC16, PIC32), NXP Semiconductors (ColdFire, M68K), Texas Instruments (MSP430), National Semiconductor (CR16C), Renesas Electronics (M32R, M32C, RL78, RX, SuperH, V850), Tensilica XTENSA (ESP8266, ESP32), RISC-V, Arm</li>
+<li><a href="https://www.iar.com/iar-embedded-workbench/" translate="no">IAR EW</a>: Microchip Technology (AVR, AVR32), NXP Semiconductors (ColdFire, M68K), Texas Instruments (MSP430), National Semiconductor (CR16C), Renesas Electronics (78K, M16/R8C, M32C, R32C, RH850, RL78, RX, SuperH, V850), STMicroelectronics (STM8), 8051, RISC-V, Arm</li>
+<li><a href="https://www.keil.com/product/" translate="no">Keil</a>: Arm, C51 (8051), C251 (80251), C166 (C16x, XC16x)</li>
+<li><a href="http://sdcc.sourceforge.net/" translate="no">SDCC</a>: STMicroelectronics (STM8), 8051</li>
+</ul>
+<p>The bare metal device type accepts custom GDB commands that you specify in the device preferences. You can specify the commands to execute when connecting using a particular debug server provider.</p>
+<p>The following debug server providers are supported when using GDB:</p>
+<ul>
+<li><a href="creator-developing-baremetal.html#eblink" translate="no">EBlink</a></li>
+<li><a href="creator-developing-baremetal.html#j-link" translate="no">J-Link</a></li>
+<li><a href="creator-developing-baremetal.html#openocd" translate="no">OpenOCD</a></li>
+<li><a href="creator-developing-baremetal.html#st-link" translate="no">ST-Link</a></li>
+</ul>
+<p>ST-Link and J-Link debug server providers can be used together with the <a href="creator-developing-baremetal.html#uvision-ide" translate="no">uVision IDE</a>.</p>
+<div class="admonition note">
+<p><b>Note: </b>Enable the Bare Metal plugin to use it.</p>
+</div>
+<h2 id="specifying-settings-for-debug-server-providers">Specifying Settings for Debug Server Providers</h2>
+<p>To create connections to bare metal devices using a debug server provider, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Devices</b> &gt; <b translate="no">Bare Metal</b> &gt; <b translate="no">Add</b>.</p>
+<p>The available settings depend on the debug server provider.</p>
+<h3 id="eblink">EBlink</h3>
+<p><a href="https://github.com/EmBitz/EBlink" translate="no">EBlink</a> is an ARM Cortex-M debug tool that supports squirrel scripting, live variables, and hot-plugging.</p>
+<p class="centerAlign"><img src="images/qtcreator-baremetal-eblink.webp" alt="{Bare metal device preferences for EBlink}" /></p><p>To specify settings for EBlink:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Name</b> field, enter a name for the connection.</li>
+<li>In the <b translate="no">Startup mode</b> field, select the mode to start the debug server provider in.</li>
+<li>In the <b translate="no">Peripheral description file</b> field, specify a path to a file that describes the peripherals on the device.</li>
+<li>In the <b translate="no">Host</b> field, select the host name and port number to connect to the debug server provider.</li>
+<li>In the <b translate="no">Executable file</b> field, enter the path to the debug server provider executable.</li>
+<li>In the <b translate="no">Script file</b> field, enter the path to a device script file.</li>
+<li>In the <b translate="no">Verbosity level</b> field, enter the level of verbose logging.</li>
+<li>Select the <b translate="no">Connect under reset</b> check box to use the ST-Link interface. Deselect the check box for hot-plugging.</li>
+<li>In the <b translate="no">Type</b> field, select the interface type.</li>
+<li>In the <b translate="no">Speed</b> field, enter the interface speed between 120 and 8000 kilohertz (kHz).</li>
+<li>Select the <b translate="no">Disable cache</b> check box to disable the EBlink flash cache.</li>
+<li>Select the <b translate="no">Auto shutdown</b> check box to automatically shut down the EBlink server after disconnecting.</li>
+<li>In the <b translate="no">Init commands</b> field, enter the commands to execute when initializing the connection.</li>
+<li>In the <b translate="no">Reset commands</b> field, enter the commands to execute when resetting the connection.</li>
+<li>Select <b translate="no">Apply</b> to add the debug server provider.</li>
+</ol>
+<h3 id="j-link">J-Link</h3>
+<p><a href="https://www.segger.com/products/debug-probes/j-link/" translate="no">J-Link</a> is a line of debug probes by Segger.</p>
+<p class="centerAlign"><img src="images/qtcreator-baremetal-jlink.webp" alt="&quot;Bare metal device preferences for J-Link&quot;" /></p><p>To specify settings for J-Link debug probes:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Name</b> field, enter a name for the connection.</li>
+<li>In the <b translate="no">Startup mode</b> field, select the mode to start the debug server provider in.</li>
+<li>In the <b translate="no">Peripheral description file</b> field, specify a path to a file that describes the peripherals on the device.</li>
+<li>In the <b translate="no">Host</b> field, select the host name and port number to connect to the debug server provider.</li>
+<li>In the <b translate="no">Executable file</b> field, enter the path to the debug server provider executable.</li>
+<li>In the <b translate="no">Host interface</b> field, select the connection type, IP or USB, or use the default connection.</li>
+<li>In the <b translate="no">Target interface</b> field, select the target interface type.</li>
+<li>In the <b translate="no">Speed</b> field, enter the interface speed in kHz.</li>
+<li>In the <b translate="no">Device</b> field, select the device to connect to.</li>
+<li>In the <b translate="no">Additional arguments</b> field, enter arguments for the commands.</li>
+<li>In the <b translate="no">Init commands</b> field, enter the commands to execute when initializing the connection.</li>
+<li>In the <b translate="no">Reset commands</b> field, enter the commands to execute when resetting the connection.</li>
+<li>Select <b translate="no">Apply</b> to add the debug server provider.</li>
+</ol>
+<h3 id="openocd">OpenOCD</h3>
+<p><a href="http://openocd.org" translate="no">OpenOCD</a> (Open On-Chip Debugger) is an on-chip debug solution for targets based on the ARM7 and ARM9 family with Embedded-ICE (JTAG) facility. It enables source level debugging with the GDB compiled for the ARM architecture.</p>
+<p class="centerAlign"><img src="images/qtcreator-baremetal-openocd.webp" alt="&quot;Bare metal device preferences for OpenOCD&quot;" /></p><p>To specify settings for OpenOCD:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Name</b> field, enter a name for the connection.</li>
+<li>In the <b translate="no">Startup mode</b> field, select the mode to start the debug server provider in.</li>
+<li>In the <b translate="no">Peripheral description file</b> field, specify a path to a file that describes the peripherals on the device.</li>
+<li>In the <b translate="no">Host</b> field, select the host name and port number to connect to the debug server provider.</li>
+<li>In the <b translate="no">Executable file</b> field, enter the path to the debug server provider executable.</li>
+<li>In the <b translate="no">Root scripts directory</b> field, enter the path to the directory that has configuration scripts.</li>
+<li>In the <b translate="no">Configuration file</b> field, enter the path to the device configuration file.</li>
+<li>In the <b translate="no">Additional arguments</b> field, enter arguments for the commands.</li>
+<li>In the <b translate="no">Init commands</b> field, enter the commands to execute when initializing the connection.</li>
+<li>In the <b translate="no">Reset commands</b> field, enter the commands to execute when resetting the connection.</li>
+<li>Select <b translate="no">Apply</b> to add the debug server provider.</li>
+</ol>
+<h3 id="st-link">St-Link</h3>
+<p><a href="https://www.st.com/en/development-tools/stm32-programmers.html#products" translate="no">ST-LINK Utility</a> is used for programming STM32 microcontrollers.</p>
+<p class="centerAlign"><img src="images/qtcreator-baremetal-stlink.webp" alt="&quot;Bare metal device preferences for St-Link&quot;" /></p><p>To specify settings for St-Link:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Name</b> field, enter a name for the connection.</li>
+<li>In the <b translate="no">Startup mode</b> field, select the mode to start the debug server provider in.</li>
+<li>In the <b translate="no">Peripheral description file</b> field, specify a path to a file that describes the peripherals on the device.</li>
+<li>In the <b translate="no">Host</b> field, select the host name and port number to connect to the debug server provider.</li>
+<li>In the <b translate="no">Executable file</b> field, enter the path to the debug server provider executable.</li>
+<li>In the <b translate="no">Verbosity level</b> field, enter the level of verbose logging.</li>
+<li>Select the <b translate="no">Extended mode</b> check box to continue listening for connection requests after the connection is closed.</li>
+<li>Select the <b translate="no">Reset on connection</b> check box to reset the board when the connection is created.</li>
+<li>In the <b translate="no">Version</b> field, select the transport layer type supported by the device.</li>
+<li>In the <b translate="no">Init commands</b> field, enter the commands to execute when initializing the connection.</li>
+<li>In the <b translate="no">Reset commands</b> field, enter the commands to execute when resetting the connection.</li>
+<li>Select <b translate="no">Apply</b> to add the debug server provider.</li>
+</ol>
+<h3 id="uvision-ide">uVision IDE</h3>
+<p><a href="http://www.keil.com/support/man/docs/uv4/uv4_overview.htm" translate="no">uVision</a> is an IDE for developing applications for embedded devices. Applications can be debugged by using uVision Simulator or directly on hardware by using St-Link and J-Link.</p>
+<p>You can view the current state of peripheral registers in the <b translate="no">Peripheral Registers</b> view in Debug mode. The view is hidden by default.</p>
+<h4 id="uvision-simulator">uVision Simulator</h4>
+<p class="centerAlign"><img src="images/qtcreator-baremetal-uvision-simulator.png" alt="&quot;Bare metal device preferences for uVision Simulator&quot;" /></p><p>To specify settings for uVision Simulator:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Name</b> field, enter a name for the connection.</li>
+<li>In the <b translate="no">Host</b> field, select the host name and port number to connect to the debug server provider.</li>
+<li>In the <b translate="no">Tools file path</b> field, enter the path to the Keil toolset configuration file.</li>
+<li>In the <b translate="no">Target device</b> field, select the device to debug.</li>
+<li>In the <b translate="no">Target driver</b> field, select the driver for connecting to the target device.</li>
+<li>Select the <b translate="no">Limit speed to real-time</b> check box to limit the connection speed.</li>
+<li>Select <b translate="no">Apply</b> to add the debug server provider.</li>
+</ol>
+<h4 id="uvision-st-link-or-jlink-debugger">uVision St-Link or JLink Debugger</h4>
+<p class="centerAlign"><img src="images/qtcreator-baremetal-uvision-st-link.png" alt="&quot;Bare metal device preferences for uVision St-Link&quot;" /></p><p>To specify settings for uVision St-Link or JLink Debugger:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Name</b> field, enter a name for the connection.</li>
+<li>In the <b translate="no">Host</b> field, select the host name and port number to connect to the debug server provider.</li>
+<li>In the <b translate="no">Tools file path</b> field, enter the path to the Keil toolset configuration file.</li>
+<li>In the <b translate="no">Target device</b> field, select the device to debug.</li>
+<li>In the <b translate="no">Target driver</b> field, select the driver for connecting to the target device.</li>
+<li>In the <b translate="no">Adapter options</b> field specify the adapter interface type and speed in MHz.</li>
+<li>Select <b translate="no">Apply</b> to add the debug server provider.</li>
+</ol>
+<h2 id="adding-bare-metal-devices">Adding Bare Metal Devices</h2>
+<p class="centerAlign"><img src="images/qtcreator-baremetal-devices.png" alt="&quot;Bare Metal device preferences&quot;" /></p><p>To add a bare metal device:</p>
+<ol class="1" type="1"><li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Devices</b> &gt; <b translate="no">Add</b> &gt; <b translate="no">Bare Metal Device</b> &gt; <b translate="no">Start Wizard</b>.</li>
+<li>In the <b translate="no">Debug server provider</b> field, select a debug server provider.</li>
+<li>Select <b translate="no">Apply</b> to add the device.</li>
+</ol>
+<h2 id="building-for-and-running-on-bare-metal-devices">Building for and Running on Bare Metal Devices</h2>
+<p>To add a kit for building applications and running them on bare metal devices, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Kits</b> &gt; <b translate="no">Add</b>. For more information, see <a href="creator-targets.html" translate="no">Add kits</a>.</p>
+<p class="centerAlign"><img src="images/qtcreator-baremetal-kit.png" alt="&quot;Kit preferences for Bare Metal&quot;" /></p><p>You can build applications for and run them on bare metal devices in the same way as for and on the desktop. For more information, see <a href="creator-building-targets.html" translate="no">Build for many platforms</a> and <a href="creator-running-targets.html" translate="no">Run on many platforms</a>.</p>
+</div>
+<p><b>See also </b><a href="creator-how-to-enable-plugins.html" translate="no">Enable and disable plugins</a>.</p>
 <!-- @@@creator-developing-baremetal.html -->
 <p class="naviNextPrevious footerNavi">
 <a class="prevPage" href="creator-developing-android.html">Connecting Android Devices</a>
 <span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-developing-generic-linux.html">Connecting Embedded Linux Devices</a>
+<a class="nextPage" href="creator-developing-b2qt.html">Connecting Boot2Qt Devices</a>
 </p>
         </div>
        </div>
@@ -87,7 +201,7 @@
 </div>
 <div class="footer">
    <p>
-   <acronym title="Copyright">&copy;</acronym> 2019 The Qt Company Ltd.
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
    Documentation contributions included herein are the copyrights of
    their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
    of their respective owners. </p>

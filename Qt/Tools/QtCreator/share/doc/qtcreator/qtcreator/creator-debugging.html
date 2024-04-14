@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
 <!-- creator-debugger.qdoc -->
   <title>Debugging | Qt Creator Manual</title>
   <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
@@ -22,53 +21,69 @@
 </head>
 <body>
 <div class="header" id="qtdocheader">
-  <div class="main">
+    <div class="main">
     <div class="main-rounded">
-      <div class="navigationbar">
-        <table><tr>
-<td ><a href="index.html">Qt Creator Manual</a></td><td >Debugging</td></tr></table><table class="buildversion"><tr>
-<td id="buildversion" width="100%" align="right"><a href="index.html">Qt Creator Manual 4.9&#x2e;1</a></td>
-        </tr></table>
-      </div>
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li><a href="creator-overview.html" translate="no">Developing with Qt Creator</a></li>
+<li>Debugging</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
     </div>
+</div>
 <div class="content">
 <div class="line">
 <div class="content mainContent">
-  <link rel="prev" href="creator-testing.html" />
+  <link rel="prev" href="creator-setup-webassembly.html" />
   <link rel="next" href="creator-debugger-engines.html" />
 <p class="naviNextPrevious headerNavi">
-<a class="prevPage" href="creator-testing.html">Testing</a>
+<a class="prevPage" href="creator-setup-webassembly.html">Building Applications for the Web</a>
 <span class="naviSeparator">  &#9702;  </span>
 <a class="nextPage" href="creator-debugger-engines.html">Setting Up Debugger</a>
-</p><p/>
+</p>
 <div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
 <h1 class="title">Debugging</h1>
-<span class="subtitle"></span>
 <!-- $$$creator-debugging.html-description -->
-<div class="descr"> <a name="details"></a>
-<p>Qt Creator provides a debugger plugin that acts as an interface between the Qt Creator core and external native debuggers such as the GNU Symbolic Debugger (GDB), the Microsoft Console Debugger (CDB), a QML/JavaScript debugger, and the debugger of the low level virtual machine (LLVM) project, LLDB.</p>
+<div class="descr" id="details">
+<p>The Qt Creator debugger plugin acts as an interface between the Qt Creator core and external native debuggers that you can use to:</p>
 <ul>
-<li><a href="creator-debugger-engines.html">Setting Up Debugger</a><p>The debugger plugin automatically selects a suitable native debugger for each <a href="creator-glossary.html#glossary-buildandrun-kit">kit</a> from the ones found on your system. You can edit the kits to override this choice.</p>
+<li>Debug executable binary files - GNU Symbolic Debugger (GDB), the Microsoft Console Debugger (CDB), and the debugger of the low level virtual machine (LLVM) project, LLDB.</li>
+<li>Debug QML and Java code and Qt Quick applications - QML/JavaScript debugger.</li>
+<li>Debug Python source code - PDB.</li>
+</ul>
+<p>The following sections describe how to set up, launch, and interact with the debugger:</p>
+<ul>
+<li><a href="creator-debugger-engines.html" translate="no">Setting Up Debugger</a><p>The debugger plugin automatically selects a suitable native debugger for each <a href="creator-glossary.html#glossary-buildandrun-kit" translate="no">kit</a> from the ones found on your system. You can edit the kits to override this choice.</p>
 </li>
-<li><a href="creator-debugger-operating-modes.html">Launching the Debugger</a><p>To start an application from an open project under the control of a debugger, select the <img src="images/qtcreator-debug-button.png" alt="" /> (<b>Start Debugging of Startup Project</b>) button or press <b>F5</b>. Other, less common start options are available in the <b>Debug</b> &gt; <b>Start Debugging</b> menu.</p>
+<li><a href="creator-debugger-operating-modes.html" translate="no">Launching the Debugger</a><p>To start an application from an open project under the control of a debugger, select the <img src="images/qtcreator-debug-button.png" alt="" /> (<b translate="no">Start Debugging of Startup Project</b>) button or press <b>F5</b>. Other, less common start options are available in the <b translate="no">Debug</b> &gt; <b translate="no">Start Debugging</b> menu.</p>
 </li>
-<li><a href="creator-debug-mode.html">Interacting with the Debugger</a><p>You can use the tool views in the <b>Debug</b> mode to inspect the state of your application while debugging.</p>
+<li><a href="creator-debug-mode.html" translate="no">Debug Mode Views</a><p>Use the views in the <b translate="no">Debug</b> mode to inspect the state of your application while debugging.</p>
 </li>
-<li><a href="creator-debugging-helpers.html">Using Debugging Helpers</a><p>Qt Creator is able to show complex data types in a customized, user-extensible manner. For this purpose, it takes advantage of two technologies, collectively referred to as <i>debugging helpers</i>.</p>
+<li><a href="creator-debugger-stopping.html" translate="no">Stopping Applications</a><p>You can interrupt a running application before it terminates or to find out why the application does not work correctly. Set breakpoints to stop the application for examining and changing variables, setting new breakpoints or removing old ones, and then continue running the application.</p>
 </li>
-<li><a href="creator-debugging-qml.html">Debugging Qt Quick Projects</a><p>When debugging a Qt Quick application, you can inspect the state of the application while debugging JavaScript functions. You can set breakpoints, view call stack trace, and examine locals and expressions. While the application is running, you can inspect QML objects and user interfaces, as well as execute JavaScript expressions.</p>
+<li><a href="creator-debugger-examining-data.html" translate="no">Examining Data</a><p>You can examine variable values and data structures in detail.</p>
 </li>
-<li><a href="creator-debugging-example.html">Debugging a C++ Example Application</a><p>Illustrates how to debug C++ applications in Qt Creator.</p>
+<li><a href="creator-remote-debugging.html" translate="no">Remote Debugging</a><p>You can debug an application that runs on a remote target with the necessary helper processes also running.</p>
 </li>
-<li><a href="creator-qml-debugging-example.html">Debugging a Qt Quick Example Application</a><p>Illustrates how to debug Qt Quick applications in Qt Creator.</p>
+<li><a href="creator-debugger-preferences.html" translate="no">Debugger Preferences</a><p>Specify preferences for managing debugger processes. You can specify preferences that are common to all debuggers, or the native debugger that you use, GDB or CDB.</p>
 </li>
-<li><a href="creator-troubleshooting-debugging.html">Troubleshooting Debugger</a><p>If you encounter problems while debugging, check for possible solutions to them.</p>
+<li><a href="creator-debugging-helpers.html" translate="no">Using Debugging Helpers</a><p>Qt Creator is able to show complex data types in a customized, user-extensible manner. For this purpose, it takes advantage of two technologies, collectively referred to as <i>debugging helpers</i>.</p>
+</li>
+<li><a href="creator-debugging-qml.html" translate="no">Debugging Qt Quick Projects</a><p>When debugging a Qt Quick application, you can inspect the state of the application while debugging JavaScript functions. You can set breakpoints, view call stack trace, and examine locals and expressions. While the application is running, you can inspect QML objects and user interfaces, as well as execute JavaScript expressions.</p>
+</li>
+<li><a href="creator-debugging-example.html" translate="no">Debugging a C++ Application</a><p>Illustrates how to debug C++ applications in Qt Creator.</p>
+</li>
+<li><a href="creator-qml-debugging-example.html" translate="no">Debugging a Qt Quick Application</a><p>Illustrates how to debug Qt Quick applications in Qt Creator.</p>
+</li>
+<li><a href="creator-troubleshooting-debugging.html" translate="no">Troubleshooting Debugger</a><p>If you encounter problems while debugging, check for possible solutions to them.</p>
 </li>
 </ul>
 </div>
+<p><b>See also </b><a href="creator-how-to-debug-cmake-files.html" translate="no">Debug CMake project files</a>.</p>
 <!-- @@@creator-debugging.html -->
 <p class="naviNextPrevious footerNavi">
-<a class="prevPage" href="creator-testing.html">Testing</a>
+<a class="prevPage" href="creator-setup-webassembly.html">Building Applications for the Web</a>
 <span class="naviSeparator">  &#9702;  </span>
 <a class="nextPage" href="creator-debugger-engines.html">Setting Up Debugger</a>
 </p>
@@ -79,7 +94,7 @@
 </div>
 <div class="footer">
    <p>
-   <acronym title="Copyright">&copy;</acronym> 2019 The Qt Company Ltd.
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
    Documentation contributions included herein are the copyrights of
    their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
    of their respective owners. </p>

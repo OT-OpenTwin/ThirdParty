@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-projects-creating.qdoc -->
+  <title>Use project wizards | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Use project wizards</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#select-project-type">Select project type</a></li>
+<li class="level1"><a href="#bind-keyboard-shortcuts-to-wizards">Bind keyboard shortcuts to wizards</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Use project wizards</h1>
+<!-- $$$creator-how-to-use-project-wizards.html-description -->
+<div class="descr" id="details">
+<p>To create a new project, select <b translate="no">File</b> &gt; <b translate="no">New Project</b> and select the type of your project. The contents of the wizard dialogs depend on the project type and the <a href="creator-glossary.html#glossary-buildandrun-kit" translate="no">kits</a> that you select in the <b translate="no">Kit Selection</b> dialog. Follow the instructions of the wizard.</p>
+<p>In the first step, you select a template for the project. You can filter templates (1) to view only those that apply to a particular target platform.</p>
+<p class="centerAlign"><img src="images/qtcreator-new-project.webp" alt="{New Project dialog}" /></p><p>Next, you select a location for the project and specify settings for it.</p>
+<p>When you have completed the steps, Qt Creator automatically generates the project with required headers, source files, user interface descriptions and project files, as defined by the wizard.</p>
+<p>For example, if you choose to create a Qt Quick application, Qt Creator generates a QML file that you can modify in the <b translate="no">Edit</b> mode.</p>
+<h2 id="select-project-type">Select project type</h2>
+<p>The following table lists the types of wizard templates that you can use for creating projects. The <b translate="no">New Project</b> dialog shows detailed information about each project wizard template.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Category</th><th >Purpose</th></tr></thead>
+<tr valign="top" class="odd"><td >Application</td><td >Use many UI technologies (Qt Widgets and Qt Quick) and programming languages (C++, QML, and Python) to create applications for different purposes that you can run on many target platforms (desktop, mobile, and embedded).</td></tr>
+<tr valign="top" class="even"><td >Library or plugin</td><td >Create a shared or static C++ library, a C++ plugin for Qt Quick application extensions, or a Qt Creator plugin.</td></tr>
+<tr valign="top" class="odd"><td >Other project</td><td >Create custom <a href="creator-using-qt-designer.html" translate="no">Qt Designer</a> widgets or widget collections, <a href="creator-how-to-create-qtquick-ui-prototype.html" translate="no">Qt Quick UI projects</a>, <a href="creator-how-to-add-subprojects-to-projects.html" translate="no">subprojects</a>, empty qmake projects, or qmake projects for testing code snippets.</td></tr>
+<tr valign="top" class="even"><td >Non-Qt project</td><td >Create plain C or C++ applications or <a href="creator-how-to-create-nimble.html" translate="no">Nim or Nimble</a> applications (experimental).</td></tr>
+<tr valign="top" class="odd"><td >Test project</td><td >Create a test project based on different supported test frameworks, such as Qt Test, Qt Quick Test, Google Test, Boost Test, or Catch2.</td></tr>
+<tr valign="top" class="even"><td >Imported project</td><td >Import projects from a supported <a href="creator-version-control.html" translate="no">version control system</a>, such as Bazaar, CVS, Git, Mercurial, or Subversion.<p>You can also import existing projects that do not use any of the supported build systems to use Qt Creator as a code editor and as a launcher for debugging and analysis tools.</p>
+</td></tr>
+<tr valign="top" class="odd"><td >Squish</td><td >Create new <a href="creator-squish.html" translate="no">Squish test suites</a>.</td></tr>
+</table></div>
+<p>The following video shows how to create a Qt Widgets application project:</p>
+<div class="video">
+<a href="https://www.youtube.com/watch/?v=FTSvDmcAgPI">
+<img src="images/FTSvDmcAgPI.jpg" title="Click to play in a browser" /></a>
+</div>
+<p>For examples of creating different types of projects, see <a href="creator-tutorials.html" translate="no">Tutorials</a>.</p>
+<h2 id="bind-keyboard-shortcuts-to-wizards">Bind keyboard shortcuts to wizards</h2>
+<p>If you use a wizard regularly, you can bind a custom keyboard shortcut to it. Triggering this keyboard shortcut directly opens the wizard, so you do not need to navigate to <b translate="no">File</b> &gt; <b translate="no">New File</b> or <b translate="no">New Project</b>.</p>
+<p>Set keyboard shortcuts for wizards in <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Environment</b> &gt; <b translate="no">Keyboard</b> &gt; <b translate="no">Wizard</b>. All wizard actions start with <b translate="no">Impl</b> there.</p>
+</div>
+<p><b>See also </b><a href="creator-how-to-assign-keyboard-shortcuts.html" translate="no">Assign keyboard shortcuts</a>, <a href="creator-how-to-activate-kits.html" translate="no">Activate kits for a project</a>, <a href="creator-file-creating.html" translate="no">Create files</a>, <a href="creator-how-tos.html#test" translate="no">How To: Test</a>, <a href="creator-how-tos.html#create-projects" translate="no">How To: Create Projects</a>, and <a href="creator-project-creating.html" translate="no">Creating Projects</a>.</p>
+<!-- @@@creator-how-to-use-project-wizards.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

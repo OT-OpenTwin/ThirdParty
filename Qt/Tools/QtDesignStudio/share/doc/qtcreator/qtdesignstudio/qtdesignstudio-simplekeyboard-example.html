@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- simplekeyboard.qdoc -->
+  <meta name="description" content="Illustrates how to use a virtual keyboard in an application.">
+  <title>Simple Keyboard | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="studioexamples.html" translate="no">Examples</a></li>
+<li>Simple Keyboard</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#using-a-virtual-keyboard">Using a Virtual Keyboard</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Simple Keyboard</h1>
+<!-- $$$SimpleKeyboard-brief -->
+<p>Illustrates how to use a virtual keyboard in an application.</p>
+<!-- @@@SimpleKeyboard -->
+<!-- $$$SimpleKeyboard-description -->
+<div class="descr" id="details">
+<p><i>Simple Keyboard</i> provides a virtual keyboard for entering text into several text fields. It uses functionality from the <a href="https://doc.qt.io/qt/qtvirtualkeyboard-index.html" translate="no">Qt Virtual Keyboard</a> module.</p>
+<p class="centerAlign"><img src="images/simplekeyboard.png" alt="&quot;Virtual keyboard opening from a text input field&quot;" /></p><p>The virtual keyboard is automatically displayed when users start entering text into <a href="quick-text.html#text-edit" translate="no">Text Edit</a> or <a href="quick-text.html#text-input" translate="no">Text Input</a> components. For more information about using it, see <a href="https://doc.qt.io/qt/qtvirtualkeyboard-user-guide.html" translate="no">Virtual Keyboard: User Guide</a>.</p>
+<p>To test the virtual keyboard, you need to select the <img src="images/run_small.png" alt="" /> (<b translate="no">Run</b>) button to run the example on the desktop or a device. The keyboard is not available during preview.</p>
+<h4 id="using-a-virtual-keyboard">Using a Virtual Keyboard</h4>
+<p>First, we create an empty project, as described in <a href="studio-projects.html" translate="no">Creating Projects</a>. For the purposes of this example, we call the project <i>SimpleKeyboard</i>. We can use the default settings for other options, but we need to select the <b translate="no">Use Qt Virtual Keyboard</b> check box on the <b translate="no">Define Project Details</b> page.</p>
+<p class="centerAlign"><img src="images/simplekeyboard-project-details.png" alt="&quot;SimpleKeyboard project details&quot;" /></p><p>The project wizard template adds the Qt Quick Virtual Keyboard module to the project and creates a component based on <a href="https://doc.qt.io/qt/qml-qtquick-virtualkeyboard-inputpanel.html" translate="no">InputPanel</a> in <i>SimpleKeyboard.qml</i>.</p>
+<p class="centerAlign"><img src="images/simplekeyboard-component.png" alt="&quot;SimpleKeyboard component&quot;" /></p><p>We then create a tabbed UI that contains fields for entering text, among other things. The virtual keyboard is automatically enabled for the text edit and text input controls.</p>
+<p>Files:</p>
+<ul>
+<li><a href="qtdesignstudio-simplekeyboard-simplekeyboard-qml.html" translate="no">SimpleKeyboard/SimpleKeyboard.qml</a></li>
+<li><a href="qtdesignstudio-simplekeyboard-simplekeyboard-qmlproject.html" translate="no">SimpleKeyboard/SimpleKeyboard.qmlproject</a></li>
+</ul>
+</div>
+<!-- @@@SimpleKeyboard -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

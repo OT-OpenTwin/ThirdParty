@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-semantic-highlighting.qdoc -->
+  <title>Semantic Highlighting | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Semantic Highlighting</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-editor-functions.html" />
+  <link rel="next" href="creator-checking-code-syntax.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-editor-functions.html">Writing Code</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-checking-code-syntax.html">Checking Code Syntax</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#generic-highlighting">Generic Highlighting</a></li>
+<li class="level1"><a href="#highlighting-blocks">Highlighting Blocks</a></li>
+<li class="level1"><a href="#folding-blocks">Folding Blocks</a></li>
+<li class="level2"><a href="#folding-all-comment-blocks">Folding All Comment Blocks</a></li>
+<li class="level1"><a href="#animating-matching-braces">Animating Matching Braces</a></li>
+<li class="level1"><a href="#moving-between-blocks">Moving Between Blocks</a></li>
+<li class="level1"><a href="#selecting-the-current-block">Selecting the Current Block</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Semantic Highlighting</h1>
+<!-- $$$creator-highlighting.html-description -->
+<div class="descr" id="details">
+<p>Qt Design Studio understands the C++, QML, and JavaScript languages as code, not as plain text. It reads the source code, analyzes it, and highlights it based on the semantic checks that it does for the following code elements:</p>
+<ul>
+<li>Types (such as classes, structs, and type definitions)</li>
+<li>Local variables</li>
+<li>Class fields</li>
+<li>Virtual functions</li>
+</ul>
+<p>To specify the color scheme to use for semantic highlighting, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Text Editor</b> &gt; <b translate="no">Fonts &amp; Color</b>.</p>
+<p>Qt Design Studio supports syntax highlighting also for other types of files than C++, QML, or JavaScript.</p>
+<h2 id="generic-highlighting">Generic Highlighting</h2>
+<p>Qt Design Studio uses <a href="https://api.kde.org/frameworks/syntax-highlighting/html/index.html" translate="no">KSyntaxHighlighting</a>, which is the syntax highlighting engine for Kate syntax definitions. Qt Design Studio comes with most of the commonly used syntax files, and you can download additional files. For more information about the definition files, see <a href="https://docs.kde.org/trunk5/en/kate/katepart/highlight.html" translate="no">Working with Syntax Highlighting</a>.</p>
+<p>Font attributes that a syntax definition file explicitly specifies, such as bold, italic, underline, or strike through, are applied. Colors are applied if they are readable with Qt Design Studio themes.</p>
+<p>If more than one highlight definition is available for the file that you open for editing, the editor asks you to select the one to use. To save the selection, select <b translate="no">Remember My Choice</b>. To reset the remembered definitions, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Text Editor</b> &gt; <b translate="no">Generic Highlighter</b> &gt; <b translate="no">Reset Remembered Definitions</b>.</p>
+<p>If the editor cannot find the highlight definition for a file that you open for editing, it prompts you to download additional highlight definition files. Select <b translate="no">Download Definitions</b> to download the files. To view information about the downloaded files, open the <a href="creator-how-to-view-output.html" translate="no">General Messages</a> view.</p>
+<p>To suppress the message for a particular file pattern, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Text Editor</b> &gt; <b translate="no">Generic Highlighter</b> and add the pattern to the <b translate="no">Ignored file patterns</b> field.</p>
+<p class="centerAlign"><img src="images/qtcreator-syntax-highlighter.png" alt="&quot;Generic Highlighter preferences&quot;" /></p><p>If you have written your own syntax definition files, you can add a definition search path in the <b translate="no">User Highlight Definition Files</b> field. To apply the changes you make to the definition files, select <b translate="no">Reload Definitions</b>.</p>
+<h2 id="highlighting-blocks">Highlighting Blocks</h2>
+<p>Use block highlighting to visually separate parts of the code that belong together. For example, when you place the cursor within the braces, the code enclosed in braces is highlighted.</p>
+<p class="centerAlign"><img src="images/qtcreator-blockhighlighting.png" alt="" /></p><p>To enable block highlighting, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Text Editor</b> &gt; <b translate="no">Display</b> &gt; <b translate="no">Highlight blocks</b>.</p>
+<h2 id="folding-blocks">Folding Blocks</h2>
+<p>Use the folding markers to collapse and expand blocks of code within braces. Click the folding marker to collapse or expand a block. In the figure above, the folding markers are located between the line number and the text pane.</p>
+<p>To show the folding markers, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Text Editor</b> &gt; <b translate="no">Display</b> &gt; <b translate="no">Display folding markers</b>. This option is enabled by default.</p>
+<p class="centerAlign"><img src="images/qtcreator-options-text-editor-display.png" alt="&quot;Text Editor Display preferences&quot;" /></p><h3 id="folding-all-comment-blocks">Folding All Comment Blocks</h3>
+<p>To fold all comment blocks, select <b translate="no">Tools</b> &gt; <b translate="no">C++</b> &gt; <b translate="no">Fold All Comment Blocks</b>. To unfold all comment blocks, select <b translate="no">Unfold All Comment Blocks</b>.</p>
+<h2 id="animating-matching-braces">Animating Matching Braces</h2>
+<p>When the cursor is on a brace, the matching brace is animated by default.</p>
+<p>To turn off the animation and just highlight the block and the braces, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Text Editor</b> &gt; <b translate="no">Display</b> and deselect <b translate="no">Animate matching parentheses</b>.</p>
+<h2 id="moving-between-blocks">Moving Between Blocks</h2>
+<p>You can use keyboard shortcuts to move within and between blocks. To go to block end, press <b>Ctrl+]</b> and to go to block start, press <b>Ctrl+[</b>. To also select the lines from the cursor position to the end or beginning of the block, press <b>Ctrl+Shift+]</b> and <b>Ctrl+Shift+[</b>, respectively.</p>
+<h2 id="selecting-the-current-block">Selecting the Current Block</h2>
+<p>To select the current block, press <b>Ctrl+U</b>. A second key press extends the selection to the parent block. To undo the last selection, press <b>Ctrl+Alt+Shift+U</b>.</p>
+<p>To enable smart block selection, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Text Editor</b> &gt; <b translate="no">Behavior</b> &gt; <b translate="no">Enable smart selection changing</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-preferences-texteditor-behavior.webp" alt="&quot;Text Editor Behavior preferences&quot;" /></p></div>
+<!-- @@@creator-highlighting.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-editor-functions.html">Writing Code</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-checking-code-syntax.html">Checking Code Syntax</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

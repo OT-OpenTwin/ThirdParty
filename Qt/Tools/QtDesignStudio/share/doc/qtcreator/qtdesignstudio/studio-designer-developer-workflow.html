@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- studio-designer-developer-workflow.qdoc -->
+  <title>Designer-Developer Workflow | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Designer-Developer Workflow</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-implementing-applications.html" />
+  <link rel="next" href="creator-coding.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-implementing-applications.html">Implementing Applications</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-coding.html">Coding</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#exporting-a-qt-design-studio-project">Exporting a Qt Design Studio Project</a></li>
+<li class="level1"><a href="#using-the-exported-project-in-qt-creator">Using the Exported Project in Qt Creator</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Designer-Developer Workflow</h1>
+<!-- $$$studio-designer-developer-workflow.html-description -->
+<div class="descr" id="details">
+<div class="admonition note">
+<p><b>Note: </b>In this section, you are using advanced menu items. These are not visible by default. To toggle the visibility of advanced menu items, see <a href="creator-quick-tour.html#customizing-the-menu" translate="no">Customizing the Menu</a>.</p>
+</div>
+<p>Qt Design Studio enables designers and developers to work together on common projects to develop applications. Designers use the <a href="creator-using-qt-quick-designer.html" translate="no">views</a> in the <b translate="no">Design</b> mode to modify <a href="creator-quick-ui-forms.html" translate="no">UI files</a> (<i>.ui.qml</i>), whereas developers use Qt Creator to work on the Qt Quick (<i>.qml</i>) and other files that are needed to implement the application logic and to prepare the application for production.</p>
+<p>Use the <a href="creator-vcs-git.html" translate="no">Git</a> version control system to ensure that changes are not lost when files are passed back and forth between designers and developers.</p>
+<p>Qt Design Studio <a href="studio-projects.html" translate="no">projects</a> come with boilerplate code for a working Qt 6 application that you can build and run in Qt Creator using CMake. Therefore, you can open, build, and run the projects with Qt Creator.</p>
+<p>Qt Design Studio continues to use the <i>.qmlproject</i> file format, while Qt Creator uses a <i>CMakeLists.txt</i> file as the project file. This enables you to share your project as a fully working C++ application with developers.</p>
+<p>If you use Git, you can clone an example project <a href="https://git.qt.io/public-demos/qtdesign-studio/-/tree/master/playground/AuroraCluster0" translate="no">here</a>.</p>
+<h2 id="exporting-a-qt-design-studio-project">Exporting a Qt Design Studio Project</h2>
+<p>Qt Design Studio uses a different project format than Qt Creator. Qt Design Studio does not build the project, it uses a pre-compiled <a href="https://doc.qt.io/qt/qtqml-cppclasses-topic.html#qml-runtime" translate="no">QML runtime</a> to run the project. To export a Qt Design Studio project for the Qt Creator, follow the process:</p>
+<ol class="1" type="1"><li>Open the project you want to export in Qt Design Studio.</li>
+<li>Select <b translate="no">File</b> &gt; <b translate="no">Export Project</b> &gt; <b translate="no">Generate CMake Build Files</b>.<p class="centerAlign"><img src="images/studio-project-export.webp" alt="&quot;Export the \QDS project for Qt Creator&quot;" /></p></li>
+<li>Select <b translate="no">Details</b> to access the Advanced Options.<p class="centerAlign"><img src="images/studio-project-export-advanced.webp" alt="&quot;Access Advanced Options in the project exporter&quot;" /></p><div class="admonition note">
+<p><b>Note: </b>The project exporter has default settings selected. This works better if the project is combined with an existing Qt project.</p>
+</div>
+</li>
+<li>Select all the options here. This allows to export the complete project. So, it can be compiled as a stand-alone application.<p class="centerAlign"><img src="images/studio-project-export-advanced-options.webp" alt="&quot;Select all the options in the project exporter&quot;" /></p><div class="admonition note">
+<p><b>Note: </b>If you copy this export on top of the existing Qt Creator project it overwrites the existing project. Hence, the default selected options in the exporter only exports the QML-specific items. You get a list of warnings at the bottom part of the exporter that denotes exactly which parts of the project gets overwritten.</p>
+</div>
+</li>
+</ol>
+<h2 id="using-the-exported-project-in-qt-creator">Using the Exported Project in Qt Creator</h2>
+<p>After exporting the project from the Qt Design Studio, you have to open it from Qt Creator.</p>
+<p>If you have used any version before Qt Design Studio 4.0 to create the project, manually include this code in the CMakeLists.txt file so the exported project works in Qt Creator.</p>
+<pre class="cpp" translate="no">
+ set(BUILD_QDS_COMPONENTS ON CACHE BOOL <span class="string">&quot;Build design studio components&quot;</span>)
+
+ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+ <span class="keyword">if</span> (${BUILD_QDS_COMPONENTS})
+     <span class="keyword">include</span>(${CMAKE_CURRENT_SOURCE_DIR}<span class="operator">/</span>qmlcomponents)
+ endif ()
+
+ <span class="keyword">include</span>(${CMAKE_CURRENT_SOURCE_DIR}<span class="operator">/</span>qmlmodules)
+</pre>
+<div class="admonition note">
+<p><b>Note: </b>If you have created the project with the Qt Design Studio version 4.0 or above, you already have this code in CMakeLists.txt by default.</p>
+</div>
+</div>
+<!-- @@@studio-designer-developer-workflow.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-implementing-applications.html">Implementing Applications</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-coding.html">Coding</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

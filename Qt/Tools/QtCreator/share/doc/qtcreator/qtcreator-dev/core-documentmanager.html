@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- documentmanager.cpp -->
+  <meta name="description" content="The DocumentManager class manages a set of documents.">
+  <title>DocumentManager Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>DocumentManager</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-slots">Public Slots</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">DocumentManager Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::DocumentManager</span>
+<!-- $$$DocumentManager-brief -->
+<p>The DocumentManager class manages a set of documents. <a href="#details">More...</a></p>
+<!-- @@@DocumentManager -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/documentmanager.h&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="core-documentmanager-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-slots">Public Slots</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#clearRecentFiles" translate="no">clearRecentFiles</a></b>()</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#addDocument" translate="no">addDocument</a></b>(Core::IDocument *<i>document</i>, bool <i>addWatcher</i> = true)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#addDocuments" translate="no">addDocuments</a></b>(const QList&lt;Core::IDocument *&gt; &amp;<i>documents</i>, bool <i>addWatcher</i> = true)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#addToRecentFiles" translate="no">addToRecentFiles</a></b>(const Utils::FilePath &amp;<i>filePath</i>, Utils::Id <i>editorId</i> = {})</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#defaultLocationForNewFiles" translate="no">defaultLocationForNewFiles</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#expectFileChange" translate="no">expectFileChange</a></b>(const Utils::FilePath &amp;<i>filePath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#fileDialogInitialDirectory" translate="no">fileDialogInitialDirectory</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#fileDialogLastVisitedDirectory" translate="no">fileDialogLastVisitedDirectory</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#filePathKey" translate="no">filePathKey</a></b>(const Utils::FilePath &amp;<i>filePath</i>, Core::DocumentManager::ResolveMode <i>resolveMode</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePaths </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#getOpenFileNames" translate="no">getOpenFileNames</a></b>(const QString &amp;<i>filters</i>, const Utils::FilePath &amp;<i>pathIn</i> = {}, QString *<i>selectedFilter</i> = nullptr, QFileDialog::Options <i>options</i> = {})</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#getSaveAsFileName" translate="no">getSaveAsFileName</a></b>(const Core::IDocument *<i>document</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;Core::IDocument *&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#modifiedDocuments" translate="no">modifiedDocuments</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#projectsDirectory" translate="no">projectsDirectory</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;Core::DocumentManager::RecentFile&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#recentFiles" translate="no">recentFiles</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#removeDocument" translate="no">removeDocument</a></b>(Core::IDocument *<i>document</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#renamedFile" translate="no">renamedFile</a></b>(const Utils::FilePath &amp;<i>from</i>, const Utils::FilePath &amp;<i>to</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#saveAllModifiedDocuments" translate="no">saveAllModifiedDocuments</a></b>(const QString &amp;<i>message</i> = QString(), bool *<i>canceled</i> = nullptr, const QString &amp;<i>alwaysSaveMessage</i> = QString(), bool *<i>alwaysSave</i> = nullptr, QList&lt;Core::IDocument *&gt; *<i>failedToClose</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#saveAllModifiedDocumentsSilently" translate="no">saveAllModifiedDocumentsSilently</a></b>(bool *<i>canceled</i> = nullptr, QList&lt;Core::IDocument *&gt; *<i>failedToClose</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#saveModifiedDocument" translate="no">saveModifiedDocument</a></b>(Core::IDocument *<i>document</i>, const QString &amp;<i>message</i> = QString(), bool *<i>canceled</i> = nullptr, const QString &amp;<i>alwaysSaveMessage</i> = QString(), bool *<i>alwaysSave</i> = nullptr, QList&lt;Core::IDocument *&gt; *<i>failedToClose</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#saveModifiedDocumentSilently" translate="no">saveModifiedDocumentSilently</a></b>(Core::IDocument *<i>document</i>, bool *<i>canceled</i> = nullptr, QList&lt;Core::IDocument *&gt; *<i>failedToClose</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#saveModifiedDocuments" translate="no">saveModifiedDocuments</a></b>(const QList&lt;Core::IDocument *&gt; &amp;<i>documents</i>, const QString &amp;<i>message</i> = QString(), bool *<i>canceled</i> = nullptr, const QString &amp;<i>alwaysSaveMessage</i> = QString(), bool *<i>alwaysSave</i> = nullptr, QList&lt;Core::IDocument *&gt; *<i>failedToClose</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#saveModifiedDocumentsSilently" translate="no">saveModifiedDocumentsSilently</a></b>(const QList&lt;Core::IDocument *&gt; &amp;<i>documents</i>, bool *<i>canceled</i> = nullptr, QList&lt;Core::IDocument *&gt; *<i>failedToClose</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#setDefaultLocationForNewFiles" translate="no">setDefaultLocationForNewFiles</a></b>(const Utils::FilePath &amp;<i>location</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#setFileDialogLastVisitedDirectory" translate="no">setFileDialogLastVisitedDirectory</a></b>(const Utils::FilePath &amp;<i>directory</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#setProjectsDirectory" translate="no">setProjectsDirectory</a></b>(const Utils::FilePath &amp;<i>directory</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#setUseProjectsDirectory" translate="no">setUseProjectsDirectory</a></b>(bool <i>useProjectsDirectory</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#unexpectFileChange" translate="no">unexpectFileChange</a></b>(const Utils::FilePath &amp;<i>filePath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-documentmanager.html#useProjectsDirectory" translate="no">useProjectsDirectory</a></b>()</td></tr>
+</table></div>
+<!-- $$$DocumentManager-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The DocumentManager service monitors a set of <a href="core-idocument.html" translate="no">IDocument</a> objects.</p>
+<p>This section uses the following terminology:</p>
+<ul>
+<li>A <i>file</i> means a collection of data stored on a disk under a name (that is, the usual meaning of the term <i>file</i> in computing).</li>
+<li>A <i>document</i> holds content open in Qt Creator. If it corresponds to a file, it might differ from it, because it was modified. But a document might not correspond to a file at all. For example, diff viewer documents or Git blame or log records are created and displayed by Qt Creator upon request.</li>
+<li>An <i translate="no">editor</i> provides a view into a document that is actually visible to the user and potentially allows editing the document. Multiple editors can open views into the same document.</li>
+</ul>
+<p>Plugins should register documents they work with at the document management service. The files the <a href="core-idocument.html" translate="no">IDocument</a> objects point to will be monitored at file system level. If a file changes on disk, the status of the <a href="core-idocument.html" translate="no">IDocument</a> object will be adjusted accordingly. On application exit the user will be asked to save all modified documents.</p>
+<p>Different <a href="core-idocument.html" translate="no">IDocument</a> objects in the set can point to the same file in the file system. The monitoring for an <a href="core-idocument.html" translate="no">IDocument</a> can be blocked by using the <a href="core-filechangeblocker.html" translate="no">Core::FileChangeBlocker</a> class.</p>
+<p>The functions <code translate="no">expectFileChange()</code> and <code translate="no">unexpectFileChange()</code> mark a file change as expected. On expected file changes all <a href="core-idocument.html" translate="no">IDocument</a> objects are notified to reload themselves.</p>
+<p>The DocumentManager service also provides convenience functions for saving documents, such as <a href="core-documentmanager.html#saveModifiedDocuments" translate="no">saveModifiedDocuments</a>() and <a href="core-documentmanager.html#saveModifiedDocumentsSilently" translate="no">saveModifiedDocumentsSilently</a>(). They present users with a dialog that lists all modified documents and asks them which documents should be saved.</p>
+<p>The service also manages the list of recent files to be shown to the user.</p>
+</div>
+<p><b>See also </b><a href="core-documentmanager.html#addToRecentFiles" translate="no">addToRecentFiles</a>() and <a href="core-documentmanager.html#recentFiles" translate="no">recentFiles</a>().</p>
+<!-- @@@DocumentManager -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$addDocument[overload1]$$$addDocumentCore::IDocument*bool -->
+<h3 class="fn" translate="no" id="addDocument"><code translate="no">[static] </code><span class="type">void</span> DocumentManager::<span class="name">addDocument</span>(<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *<i>document</i>, <span class="type">bool</span> <i>addWatcher</i> = true)</h3>
+<p>Adds <i translate="no">document</i> to the collection. If <i translate="no">addWatcher</i> is <code translate="no">true</code> (the default), the document's file is added to a file system watcher that notifies the document manager about file changes.</p>
+<!-- @@@addDocument -->
+<!-- $$$addDocuments[overload1]$$$addDocumentsconstQList<Core::IDocument*>&bool -->
+<h3 class="fn" translate="no" id="addDocuments"><code translate="no">[static] </code><span class="type">void</span> DocumentManager::<span class="name">addDocuments</span>(const <span class="type">QList</span>&lt;<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *&gt; &amp;<i>documents</i>, <span class="type">bool</span> <i>addWatcher</i> = true)</h3>
+<p>Adds a list of <i translate="no">documents</i> to the collection. If <i translate="no">addWatcher</i> is <code translate="no">true</code> (the default), the documents' files are added to a file system watcher that notifies the document manager about file changes.</p>
+<!-- @@@addDocuments -->
+<!-- $$$addToRecentFiles[overload1]$$$addToRecentFilesconstUtils::FilePath&Utils::Id -->
+<h3 class="fn" translate="no" id="addToRecentFiles"><code translate="no">[static] </code><span class="type">void</span> DocumentManager::<span class="name">addToRecentFiles</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>, <span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>editorId</i> = {})</h3>
+<p>Adds the <i translate="no">filePath</i> to the list of recent files. Associates the file to be reopened with the editor that has the specified <i translate="no">editorId</i>, if possible. <i translate="no">editorId</i> defaults to the empty ID, which lets Qt Creator figure out the best editor itself.</p>
+<!-- @@@addToRecentFiles -->
+<!-- $$$clearRecentFiles[overload1]$$$clearRecentFiles -->
+<h3 class="fn" translate="no" id="clearRecentFiles"><code translate="no">[slot] </code><span class="type">void</span> DocumentManager::<span class="name">clearRecentFiles</span>()</h3>
+<p>Clears the list of recent files. Should only be called by the core plugin when the user chooses to clear the list.</p>
+<!-- @@@clearRecentFiles -->
+<!-- $$$defaultLocationForNewFiles[overload1]$$$defaultLocationForNewFiles -->
+<h3 class="fn" translate="no" id="defaultLocationForNewFiles"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> DocumentManager::<span class="name">defaultLocationForNewFiles</span>()</h3>
+<p>Returns the default location for new files.</p>
+<p><b>See also </b><a href="core-documentmanager.html#setDefaultLocationForNewFiles" translate="no">setDefaultLocationForNewFiles</a>() and <a href="core-documentmanager.html#fileDialogInitialDirectory" translate="no">fileDialogInitialDirectory</a>().</p>
+<!-- @@@defaultLocationForNewFiles -->
+<!-- $$$expectFileChange[overload1]$$$expectFileChangeconstUtils::FilePath& -->
+<h3 class="fn" translate="no" id="expectFileChange"><code translate="no">[static] </code><span class="type">void</span> DocumentManager::<span class="name">expectFileChange</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>)</h3>
+<p>Treats any subsequent change to <i translate="no">filePath</i> as an expected file change.</p>
+<p><b>See also </b><a href="core-documentmanager.html#unexpectFileChange" translate="no">unexpectFileChange</a>().</p>
+<!-- @@@expectFileChange -->
+<!-- $$$fileDialogInitialDirectory[overload1]$$$fileDialogInitialDirectory -->
+<h3 class="fn" translate="no" id="fileDialogInitialDirectory"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> DocumentManager::<span class="name">fileDialogInitialDirectory</span>()</h3>
+<p>Returns the initial directory for a new file dialog. If there is a current document associated with a file, uses that. Or if there is a default location for new files, uses that. Otherwise, uses the last visited directory.</p>
+<p><b>See also </b><a href="core-documentmanager.html#setFileDialogLastVisitedDirectory" translate="no">setFileDialogLastVisitedDirectory</a>() and <a href="core-documentmanager.html#setDefaultLocationForNewFiles" translate="no">setDefaultLocationForNewFiles</a>().</p>
+<!-- @@@fileDialogInitialDirectory -->
+<!-- $$$fileDialogLastVisitedDirectory[overload1]$$$fileDialogLastVisitedDirectory -->
+<h3 class="fn" translate="no" id="fileDialogLastVisitedDirectory"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> DocumentManager::<span class="name">fileDialogLastVisitedDirectory</span>()</h3>
+<p>Returns the last visited directory of a file dialog.</p>
+<p><b>See also </b><a href="core-documentmanager.html#setFileDialogLastVisitedDirectory" translate="no">setFileDialogLastVisitedDirectory</a>() and <a href="core-documentmanager.html#fileDialogInitialDirectory" translate="no">fileDialogInitialDirectory</a>().</p>
+<!-- @@@fileDialogLastVisitedDirectory -->
+<!-- $$$filePathKey[overload1]$$$filePathKeyconstUtils::FilePath&Core::DocumentManager::ResolveMode -->
+<h3 class="fn" translate="no" id="filePathKey"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> DocumentManager::<span class="name">filePathKey</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>, <span class="type">Core::DocumentManager::ResolveMode</span> <i>resolveMode</i>)</h3>
+<p>Returns a guaranteed cleaned absolute file path for <i translate="no">filePath</i>. Resolves symlinks if <i translate="no">resolveMode</i> is ResolveLinks.</p>
+<!-- @@@filePathKey -->
+<!-- $$$getOpenFileNames[overload1]$$$getOpenFileNamesconstQString&constUtils::FilePath&QString*QFileDialog::Options -->
+<h3 class="fn" translate="no" id="getOpenFileNames"><code translate="no">[static] </code><span class="type">Utils::FilePaths</span> DocumentManager::<span class="name">getOpenFileNames</span>(const <span class="type">QString</span> &amp;<i>filters</i>, const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>pathIn</i> = {}, <span class="type">QString</span> *<i>selectedFilter</i> = nullptr, <span class="type">QFileDialog::Options</span> <i>options</i> = {})</h3>
+<p>Asks the user for a set of file names to be opened. The <i translate="no">filters</i> and <i translate="no">selectedFilter</i> arguments are interpreted like in QFileDialog::getOpenFileNames(). <i translate="no">pathIn</i> specifies a path to open the dialog in if that is not overridden by the user's policy.</p>
+<p>The <i translate="no">options</i> argument holds various options about how to run the dialog. See the QFileDialog::Option enum for more information about the flags you can pass.</p>
+<!-- @@@getOpenFileNames -->
+<!-- $$$getSaveAsFileName[overload1]$$$getSaveAsFileNameconstCore::IDocument* -->
+<h3 class="fn" translate="no" id="getSaveAsFileName"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> DocumentManager::<span class="name">getSaveAsFileName</span>(const <span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *<i>document</i>)</h3>
+<p>Asks the user for a new file name (<b translate="no">Save File As</b>) for <i translate="no">document</i>.</p>
+<!-- @@@getSaveAsFileName -->
+<!-- $$$modifiedDocuments[overload1]$$$modifiedDocuments -->
+<h3 class="fn" translate="no" id="modifiedDocuments"><code translate="no">[static] </code><span class="type">QList</span>&lt;<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *&gt; DocumentManager::<span class="name">modifiedDocuments</span>()</h3>
+<p>Returns the list of IDocuments that have been modified.</p>
+<!-- @@@modifiedDocuments -->
+<!-- $$$projectsDirectory[overload1]$$$projectsDirectory -->
+<h3 class="fn" translate="no" id="projectsDirectory"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> DocumentManager::<span class="name">projectsDirectory</span>()</h3>
+<p>Returns the directory for projects. Defaults to HOME.</p>
+<p><b>See also </b><a href="core-documentmanager.html#setProjectsDirectory" translate="no">setProjectsDirectory</a>() and <a href="core-documentmanager.html#setUseProjectsDirectory" translate="no">setUseProjectsDirectory</a>().</p>
+<!-- @@@projectsDirectory -->
+<!-- $$$recentFiles[overload1]$$$recentFiles -->
+<h3 class="fn" translate="no" id="recentFiles"><code translate="no">[static] </code><span class="type">QList</span>&lt;<span class="type">Core::DocumentManager::RecentFile</span>&gt; DocumentManager::<span class="name">recentFiles</span>()</h3>
+<p>Returns the list of recent files.</p>
+<!-- @@@recentFiles -->
+<!-- $$$removeDocument[overload1]$$$removeDocumentCore::IDocument* -->
+<h3 class="fn" translate="no" id="removeDocument"><code translate="no">[static] </code><span class="type">bool</span> DocumentManager::<span class="name">removeDocument</span>(<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *<i>document</i>)</h3>
+<p>Removes <i translate="no">document</i> from the collection.</p>
+<p>Returns <code translate="no">true</code> if the document had the <code translate="no">addWatcher</code> argument to <a href="core-documentmanager.html#addDocument" translate="no">addDocument</a>() set.</p>
+<!-- @@@removeDocument -->
+<!-- $$$renamedFile[overload1]$$$renamedFileconstUtils::FilePath&constUtils::FilePath& -->
+<h3 class="fn" translate="no" id="renamedFile"><code translate="no">[static] </code><span class="type">void</span> DocumentManager::<span class="name">renamedFile</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>from</i>, const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>to</i>)</h3>
+<p>Tells the document manager that a file has been renamed from <i translate="no">from</i> to <i translate="no">to</i> on disk from within Qt Creator.</p>
+<p>Needs to be called right after the actual renaming on disk (that is, before the file system watcher can report the event during the next event loop run).</p>
+<p><i translate="no">from</i> needs to be an absolute file path. This will notify all <a href="core-idocument.html" translate="no">IDocument</a> objects pointing to that file of the rename by calling <a href="core-idocument.html#setFilePath" translate="no">IDocument::setFilePath</a>(), and update the cached time and permission information to avoid annoying the user with <i>the file has been removed</i> popups.</p>
+<!-- @@@renamedFile -->
+<!-- $$$saveAllModifiedDocuments[overload1]$$$saveAllModifiedDocumentsconstQString&bool*constQString&bool*QList<Core::IDocument*>* -->
+<h3 class="fn" translate="no" id="saveAllModifiedDocuments"><code translate="no">[static] </code><span class="type">bool</span> DocumentManager::<span class="name">saveAllModifiedDocuments</span>(const <span class="type">QString</span> &amp;<i>message</i> = QString(), <span class="type">bool</span> *<i>canceled</i> = nullptr, const <span class="type">QString</span> &amp;<i>alwaysSaveMessage</i> = QString(), <span class="type">bool</span> *<i>alwaysSave</i> = nullptr, <span class="type">QList</span>&lt;<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *&gt; *<i>failedToClose</i> = nullptr)</h3>
+<p>Presents a dialog with all modified documents to users and asks them which of these should be saved.</p>
+<p>This method may show additional dialogs to the user, e.g&#x2e; if a file is not writeable.</p>
+<p>The dialog text can be set using <i translate="no">message</i>. If users canceled any of the dialogs they interacted with, <i translate="no">canceled</i> is set and the method returns <code translate="no">false</code>.</p>
+<p>The <i translate="no">alwaysSaveMessage</i> shows an additional checkbox in the dialog. The state of this checkbox is written into <i translate="no">alwaysSave</i> if set.</p>
+<p>If passed to the method, <i translate="no">failedToClose</i> returns a list of documents that could not be saved.</p>
+<!-- @@@saveAllModifiedDocuments -->
+<!-- $$$saveAllModifiedDocumentsSilently[overload1]$$$saveAllModifiedDocumentsSilentlybool*QList<Core::IDocument*>* -->
+<h3 class="fn" translate="no" id="saveAllModifiedDocumentsSilently"><code translate="no">[static] </code><span class="type">bool</span> DocumentManager::<span class="name">saveAllModifiedDocumentsSilently</span>(<span class="type">bool</span> *<i>canceled</i> = nullptr, <span class="type">QList</span>&lt;<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *&gt; *<i>failedToClose</i> = nullptr)</h3>
+<p>Silently saves all documents and returns <code translate="no">true</code> if all modified documents are saved successfully.</p>
+<p>This method tries to avoid showing dialogs to the user, but can do so anyway (e.g&#x2e; if a file is not writeable).</p>
+<p>If users canceled any of the dialogs they interacted with, <i translate="no">canceled</i> is set. If passed to the method, <i translate="no">failedToClose</i> returns a list of documents that could not be saved.</p>
+<!-- @@@saveAllModifiedDocumentsSilently -->
+<!-- $$$saveModifiedDocument[overload1]$$$saveModifiedDocumentCore::IDocument*constQString&bool*constQString&bool*QList<Core::IDocument*>* -->
+<h3 class="fn" translate="no" id="saveModifiedDocument"><code translate="no">[static] </code><span class="type">bool</span> DocumentManager::<span class="name">saveModifiedDocument</span>(<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *<i>document</i>, const <span class="type">QString</span> &amp;<i>message</i> = QString(), <span class="type">bool</span> *<i>canceled</i> = nullptr, const <span class="type">QString</span> &amp;<i>alwaysSaveMessage</i> = QString(), <span class="type">bool</span> *<i>alwaysSave</i> = nullptr, <span class="type">QList</span>&lt;<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *&gt; *<i>failedToClose</i> = nullptr)</h3>
+<p>Presents a dialog with the <i translate="no">document</i> to users and asks them whether it should be saved.</p>
+<p>This method may show additional dialogs to the user, e.g&#x2e; if a file is not writeable.</p>
+<p>The dialog text can be set using <i translate="no">message</i>. If users canceled any of the dialogs they interacted with, <i translate="no">canceled</i> is set and the method returns <code translate="no">false</code>.</p>
+<p>The <i translate="no">alwaysSaveMessage</i> shows an additional checkbox in the dialog. The state of this checkbox is written into <i translate="no">alwaysSave</i> if set.</p>
+<p>If passed to the method, <i translate="no">failedToClose</i> returns a list of documents that could not be saved.</p>
+<!-- @@@saveModifiedDocument -->
+<!-- $$$saveModifiedDocumentSilently[overload1]$$$saveModifiedDocumentSilentlyCore::IDocument*bool*QList<Core::IDocument*>* -->
+<h3 class="fn" translate="no" id="saveModifiedDocumentSilently"><code translate="no">[static] </code><span class="type">bool</span> DocumentManager::<span class="name">saveModifiedDocumentSilently</span>(<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *<i>document</i>, <span class="type">bool</span> *<i>canceled</i> = nullptr, <span class="type">QList</span>&lt;<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *&gt; *<i>failedToClose</i> = nullptr)</h3>
+<p>Silently saves <i translate="no">document</i> and returns <code translate="no">true</code> if it was saved successfully.</p>
+<p>This method tries to avoid showing dialogs to the user, but can do so anyway (e.g&#x2e; if a file is not writeable).</p>
+<p>If users canceled any of the dialogs they interacted with, <i translate="no">canceled</i> is set. If passed to the method, <i translate="no">failedToClose</i> returns a list of documents that could not be saved.</p>
+<!-- @@@saveModifiedDocumentSilently -->
+<!-- $$$saveModifiedDocuments[overload1]$$$saveModifiedDocumentsconstQList<Core::IDocument*>&constQString&bool*constQString&bool*QList<Core::IDocument*>* -->
+<h3 class="fn" translate="no" id="saveModifiedDocuments"><code translate="no">[static] </code><span class="type">bool</span> DocumentManager::<span class="name">saveModifiedDocuments</span>(const <span class="type">QList</span>&lt;<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *&gt; &amp;<i>documents</i>, const <span class="type">QString</span> &amp;<i>message</i> = QString(), <span class="type">bool</span> *<i>canceled</i> = nullptr, const <span class="type">QString</span> &amp;<i>alwaysSaveMessage</i> = QString(), <span class="type">bool</span> *<i>alwaysSave</i> = nullptr, <span class="type">QList</span>&lt;<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *&gt; *<i>failedToClose</i> = nullptr)</h3>
+<p>Presents a dialog with <i translate="no">documents</i> to users and asks them which of these should be saved.</p>
+<p>This method may show additional dialogs to the user, e.g&#x2e; if a file is not writeable.</p>
+<p>The dialog text can be set using <i translate="no">message</i>. If users canceled any of the dialogs they interacted with, <i translate="no">canceled</i> is set and the method returns <code translate="no">false</code>.</p>
+<p>The <i translate="no">alwaysSaveMessage</i> shows an additional checkbox in the dialog. The state of this checkbox is written into <i translate="no">alwaysSave</i> if set.</p>
+<p>If passed to the method, <i translate="no">failedToClose</i> returns a list of documents that could not be saved.</p>
+<!-- @@@saveModifiedDocuments -->
+<!-- $$$saveModifiedDocumentsSilently[overload1]$$$saveModifiedDocumentsSilentlyconstQList<Core::IDocument*>&bool*QList<Core::IDocument*>* -->
+<h3 class="fn" translate="no" id="saveModifiedDocumentsSilently"><code translate="no">[static] </code><span class="type">bool</span> DocumentManager::<span class="name">saveModifiedDocumentsSilently</span>(const <span class="type">QList</span>&lt;<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *&gt; &amp;<i>documents</i>, <span class="type">bool</span> *<i>canceled</i> = nullptr, <span class="type">QList</span>&lt;<span class="type"><a href="core-idocument.html" translate="no">Core::IDocument</a></span> *&gt; *<i>failedToClose</i> = nullptr)</h3>
+<p>Silently saves <i translate="no">documents</i> and returns <code translate="no">true</code> if all of them were saved successfully.</p>
+<p>This method tries to avoid showing dialogs to the user, but can do so anyway (e.g&#x2e; if a file is not writeable).</p>
+<p>If users canceled any of the dialogs they interacted with, <i translate="no">canceled</i> is set. If passed to the method, <i translate="no">failedToClose</i> returns a list of documents that could not be saved.</p>
+<!-- @@@saveModifiedDocumentsSilently -->
+<!-- $$$setDefaultLocationForNewFiles[overload1]$$$setDefaultLocationForNewFilesconstUtils::FilePath& -->
+<h3 class="fn" translate="no" id="setDefaultLocationForNewFiles"><code translate="no">[static] </code><span class="type">void</span> DocumentManager::<span class="name">setDefaultLocationForNewFiles</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>location</i>)</h3>
+<p>Sets the default <i translate="no">location</i> for new files.</p>
+<p><b>See also </b><a href="core-documentmanager.html#defaultLocationForNewFiles" translate="no">defaultLocationForNewFiles</a>().</p>
+<!-- @@@setDefaultLocationForNewFiles -->
+<!-- $$$setFileDialogLastVisitedDirectory[overload1]$$$setFileDialogLastVisitedDirectoryconstUtils::FilePath& -->
+<h3 class="fn" translate="no" id="setFileDialogLastVisitedDirectory"><code translate="no">[static] </code><span class="type">void</span> DocumentManager::<span class="name">setFileDialogLastVisitedDirectory</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>directory</i>)</h3>
+<p>Sets the last visited <i translate="no">directory</i> of a file dialog that will be remembered for the next one.</p>
+<p><b>See also </b><a href="core-documentmanager.html#fileDialogLastVisitedDirectory" translate="no">fileDialogLastVisitedDirectory</a>() and <a href="core-documentmanager.html#fileDialogInitialDirectory" translate="no">fileDialogInitialDirectory</a>().</p>
+<!-- @@@setFileDialogLastVisitedDirectory -->
+<!-- $$$setProjectsDirectory[overload1]$$$setProjectsDirectoryconstUtils::FilePath& -->
+<h3 class="fn" translate="no" id="setProjectsDirectory"><code translate="no">[static] </code><span class="type">void</span> DocumentManager::<span class="name">setProjectsDirectory</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>directory</i>)</h3>
+<p>Sets the <i translate="no">directory</i> for projects.</p>
+<p><b>See also </b><a href="core-documentmanager.html#projectsDirectory" translate="no">projectsDirectory</a>() and <a href="core-documentmanager.html#useProjectsDirectory" translate="no">useProjectsDirectory</a>().</p>
+<!-- @@@setProjectsDirectory -->
+<!-- $$$setUseProjectsDirectory[overload1]$$$setUseProjectsDirectorybool -->
+<h3 class="fn" translate="no" id="setUseProjectsDirectory"><code translate="no">[static] </code><span class="type">void</span> DocumentManager::<span class="name">setUseProjectsDirectory</span>(<span class="type">bool</span> <i>useProjectsDirectory</i>)</h3>
+<p>Sets whether the directory for projects is to be used to <i translate="no">useProjectsDirectory</i>.</p>
+<p><b>See also </b><a href="core-documentmanager.html#projectsDirectory" translate="no">projectsDirectory</a>() and <a href="core-documentmanager.html#useProjectsDirectory" translate="no">useProjectsDirectory</a>().</p>
+<!-- @@@setUseProjectsDirectory -->
+<!-- $$$unexpectFileChange[overload1]$$$unexpectFileChangeconstUtils::FilePath& -->
+<h3 class="fn" translate="no" id="unexpectFileChange"><code translate="no">[static] </code><span class="type">void</span> DocumentManager::<span class="name">unexpectFileChange</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>)</h3>
+<p>Considers all changes to <i translate="no">filePath</i> unexpected again.</p>
+<p><b>See also </b><a href="core-documentmanager.html#expectFileChange" translate="no">expectFileChange</a>().</p>
+<!-- @@@unexpectFileChange -->
+<!-- $$$useProjectsDirectory[overload1]$$$useProjectsDirectory -->
+<h3 class="fn" translate="no" id="useProjectsDirectory"><code translate="no">[static] </code><span class="type">bool</span> DocumentManager::<span class="name">useProjectsDirectory</span>()</h3>
+<p>Returns whether the directory for projects is to be used or whether the user chose to use the current directory.</p>
+<p><b>See also </b><a href="core-documentmanager.html#setProjectsDirectory" translate="no">setProjectsDirectory</a>() and <a href="core-documentmanager.html#setUseProjectsDirectory" translate="no">setUseProjectsDirectory</a>().</p>
+<!-- @@@useProjectsDirectory -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

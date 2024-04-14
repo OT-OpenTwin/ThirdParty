@@ -1,30 +1,23 @@
-import qbs
 import qbs.File
 import qbs.FileInfo
 import qbs.Probes
 import "protobuf.js" as HelperFunctions
 
 Module {
-    property string protocBinary: protocProbe.filePath
+    property string compilerName: "protoc"
+    property string compilerPath: compilerProbe.filePath
+
     property pathList importPaths: []
 
-    property string outputDir: product.buildDirectory + "/protobuf"
-    readonly property string protobufRoot: FileInfo.path(FileInfo.path(protocBinary))
-
-    readonly property var baseValidate: {
-        return function() {
-            if (!File.exists(protocBinary))
-                throw "Can't find protoc binary. Please set the protocBinary property or make sure it is found in PATH";
-        }
-    }
+    readonly property string outputDir: product.buildDirectory + "/protobuf"
 
     FileTagger {
         patterns: ["*.proto"]
-        fileTags: ["protobuf.input"];
+        fileTags: ["protobuf.input"]
     }
 
     Probes.BinaryProbe {
-        id: protocProbe
-        names: ["protoc"]
+        id: compilerProbe
+        names: [compilerName]
     }
 }

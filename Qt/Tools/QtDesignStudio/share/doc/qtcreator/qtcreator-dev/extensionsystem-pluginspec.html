@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- pluginspec.cpp -->
+  <meta name="description" content="The PluginSpec class contains the information of the plugin's embedded meta data and information about the plugin's current state.">
+  <title>PluginSpec Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>PluginSpec</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">PluginSpec Class</h1>
+<span class="small-subtitle" translate="no">class <a href="extensionsystem.html" translate="no">ExtensionSystem</a>::PluginSpec</span>
+<!-- $$$PluginSpec-brief -->
+<p>The PluginSpec class contains the information of the plugin's embedded meta data and information about the plugin's current state. <a href="#details">More...</a></p>
+<!-- @@@PluginSpec -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;extensionsystem/pluginspec.h&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="extensionsystem-pluginspec-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#State-enum" translate="no">State</a></b> { Invalid, Read, Resolved, Loaded, Initialized, &hellip;, Deleted }</td></tr>
+</table></div>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#addArgument" translate="no">addArgument</a></b>(const QString &amp;<i>argument</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ExtensionSystem::PluginSpec::PluginArgumentDescriptions </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#argumentDescriptions" translate="no">argumentDescriptions</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#arguments" translate="no">arguments</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#category" translate="no">category</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#compatVersion" translate="no">compatVersion</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#copyright" translate="no">copyright</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QVector&lt;ExtensionSystem::PluginDependency&gt; </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#dependencies" translate="no">dependencies</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QHash&lt;ExtensionSystem::PluginDependency, ExtensionSystem::PluginSpec *&gt; </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#dependencySpecs" translate="no">dependencySpecs</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#description" translate="no">description</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#errorString" translate="no">errorString</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#filePath" translate="no">filePath</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#hasError" translate="no">hasError</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#isAvailableForHostPlatform" translate="no">isAvailableForHostPlatform</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#isEffectivelyEnabled" translate="no">isEffectivelyEnabled</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#isEnabledByDefault" translate="no">isEnabledByDefault</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#isEnabledBySettings" translate="no">isEnabledBySettings</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#isEnabledIndirectly" translate="no">isEnabledIndirectly</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#isExperimental" translate="no">isExperimental</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#isForceDisabled" translate="no">isForceDisabled</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#isForceEnabled" translate="no">isForceEnabled</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#isRequired" translate="no">isRequired</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#license" translate="no">license</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#location" translate="no">location</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#longDescription" translate="no">longDescription</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QJsonObject </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#metaData" translate="no">metaData</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#name" translate="no">name</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QRegularExpression </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#platformSpecification" translate="no">platformSpecification</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ExtensionSystem::IPlugin *</td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#plugin" translate="no">plugin</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#provides" translate="no">provides</a></b>(const QString &amp;<i>pluginName</i>, const QString &amp;<i>version</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#requiresAny" translate="no">requiresAny</a></b>(const QSet&lt;ExtensionSystem::PluginSpec *&gt; &amp;<i>plugins</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#setArguments" translate="no">setArguments</a></b>(const QStringList &amp;<i>arguments</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#setEnabledBySettings" translate="no">setEnabledBySettings</a></b>(bool <i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ExtensionSystem::PluginSpec::State </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#state" translate="no">state</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#url" translate="no">url</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#vendor" translate="no">vendor</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-pluginspec.html#version" translate="no">version</a></b>() const</td></tr>
+</table></div>
+<!-- $$$PluginSpec-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The plugin spec is also filled with more information as the plugin goes through its loading process (see <a href="extensionsystem-pluginspec.html#State-enum" translate="no">PluginSpec::State</a>). If an error occurs, the plugin spec is the place to look for the error details.</p>
+</div>
+<!-- @@@PluginSpec -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$State$$$Invalid$$$Read$$$Resolved$$$Loaded$$$Initialized$$$Running$$$Stopped$$$Deleted -->
+<h3 class="fn" translate="no" id="State-enum">enum PluginSpec::<span class="name">State</span></h3>
+<p>The State enum indicates the states the plugin goes through while it is being loaded.</p>
+<p>The state gives a hint on what went wrong in case of an error.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">ExtensionSystem::PluginSpec::Invalid</code></td><td class="topAlign tblval"><code translate="no">0</code></td><td class="topAlign">Starting point: Even the plugin meta data was not read.</td></tr>
+<tr><td class="topAlign"><code translate="no">ExtensionSystem::PluginSpec::Read</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">The plugin meta data has been successfully read, and its information is available via the <a href="extensionsystem-pluginspec.html" translate="no">PluginSpec</a>.</td></tr>
+<tr><td class="topAlign"><code translate="no">ExtensionSystem::PluginSpec::Resolved</code></td><td class="topAlign tblval"><code translate="no">2</code></td><td class="topAlign">The dependencies given in the description file have been successfully found, and are available via the <a href="extensionsystem-pluginspec.html#dependencySpecs" translate="no">dependencySpecs</a>() function.</td></tr>
+<tr><td class="topAlign"><code translate="no">ExtensionSystem::PluginSpec::Loaded</code></td><td class="topAlign tblval"><code translate="no">3</code></td><td class="topAlign">The plugin's library is loaded and the plugin instance created (available through <a href="extensionsystem-pluginspec.html#plugin" translate="no">plugin</a>()).</td></tr>
+<tr><td class="topAlign"><code translate="no">ExtensionSystem::PluginSpec::Initialized</code></td><td class="topAlign tblval"><code translate="no">4</code></td><td class="topAlign">The plugin instance's <a href="extensionsystem-iplugin.html#initialize-1" translate="no">IPlugin::initialize</a>() function has been called and returned a success value.</td></tr>
+<tr><td class="topAlign"><code translate="no">ExtensionSystem::PluginSpec::Running</code></td><td class="topAlign tblval"><code translate="no">5</code></td><td class="topAlign">The plugin's dependencies are successfully initialized and extensionsInitialized has been called. The loading process is complete.</td></tr>
+<tr><td class="topAlign"><code translate="no">ExtensionSystem::PluginSpec::Stopped</code></td><td class="topAlign tblval"><code translate="no">6</code></td><td class="topAlign">The plugin has been shut down, i.e. the plugin's <a href="extensionsystem-iplugin.html#aboutToShutdown" translate="no">IPlugin::aboutToShutdown</a>() function has been called.</td></tr>
+<tr><td class="topAlign"><code translate="no">ExtensionSystem::PluginSpec::Deleted</code></td><td class="topAlign tblval"><code translate="no">7</code></td><td class="topAlign">The plugin instance has been deleted.</td></tr>
+</table></div>
+<!-- @@@State -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$addArgument[overload1]$$$addArgumentconstQString& -->
+<h3 class="fn" translate="no" id="addArgument"><span class="type">void</span> PluginSpec::<span class="name">addArgument</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>argument</i>)</h3>
+<p>Adds <i translate="no">argument</i> to the command line arguments specific to the plugin.</p>
+<!-- @@@addArgument -->
+<!-- $$$argumentDescriptions[overload1]$$$argumentDescriptions -->
+<h3 class="fn" translate="no" id="argumentDescriptions"><span class="type">ExtensionSystem::PluginSpec::PluginArgumentDescriptions</span> PluginSpec::<span class="name">argumentDescriptions</span>() const</h3>
+<p>Returns a list of descriptions of command line arguments the plugin processes.</p>
+<!-- @@@argumentDescriptions -->
+<!-- $$$arguments[overload1]$$$arguments -->
+<h3 class="fn" translate="no" id="arguments"><span class="type"><a href="https://doc.qt.io/qt/qstringlist.html" translate="no">QStringList</a></span> PluginSpec::<span class="name">arguments</span>() const</h3>
+<p>Returns command line arguments specific to the plugin. Set at startup.</p>
+<p><b>See also </b><a href="extensionsystem-pluginspec.html#setArguments" translate="no">setArguments</a>().</p>
+<!-- @@@arguments -->
+<!-- $$$category[overload1]$$$category -->
+<h3 class="fn" translate="no" id="category"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> PluginSpec::<span class="name">category</span>() const</h3>
+<p>Returns the category that the plugin belongs to. Categories are used to group plugins together in the UI. Returns an empty string if the plugin does not belong to a category.</p>
+<!-- @@@category -->
+<!-- $$$compatVersion[overload1]$$$compatVersion -->
+<h3 class="fn" translate="no" id="compatVersion"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> PluginSpec::<span class="name">compatVersion</span>() const</h3>
+<p>Returns the plugin compatibility version. This is valid after the <a href="extensionsystem-pluginspec.html#State-enum" translate="no">PluginSpec::Read</a> state is reached.</p>
+<!-- @@@compatVersion -->
+<!-- $$$copyright[overload1]$$$copyright -->
+<h3 class="fn" translate="no" id="copyright"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> PluginSpec::<span class="name">copyright</span>() const</h3>
+<p>Returns the plugin copyright. This is valid after the <a href="extensionsystem-pluginspec.html#State-enum" translate="no">PluginSpec::Read</a> state is reached.</p>
+<!-- @@@copyright -->
+<!-- $$$dependencies[overload1]$$$dependencies -->
+<h3 class="fn" translate="no" id="dependencies"><span class="type"><a href="https://doc.qt.io/qt/qvector.html" translate="no">QVector</a></span>&lt;<span class="type"><a href="extensionsystem-plugindependency.html" translate="no">ExtensionSystem::PluginDependency</a></span>&gt; PluginSpec::<span class="name">dependencies</span>() const</h3>
+<p>The plugin dependencies. This is valid after the <a href="extensionsystem-pluginspec.html#State-enum" translate="no">PluginSpec::Read</a> state is reached.</p>
+<!-- @@@dependencies -->
+<!-- $$$dependencySpecs[overload1]$$$dependencySpecs -->
+<h3 class="fn" translate="no" id="dependencySpecs"><span class="type"><a href="https://doc.qt.io/qt/qhash.html" translate="no">QHash</a></span>&lt;<span class="type"><a href="extensionsystem-plugindependency.html" translate="no">ExtensionSystem::PluginDependency</a></span>, <span class="type"><a href="extensionsystem-pluginspec.html" translate="no">ExtensionSystem::PluginSpec</a></span> *&gt; PluginSpec::<span class="name">dependencySpecs</span>() const</h3>
+<p>Returns the list of dependencies, already resolved to existing plugin specs. Valid if <a href="extensionsystem-pluginspec.html#State-enum" translate="no">PluginSpec::Resolved</a> state is reached.</p>
+<p><b>See also </b><a href="extensionsystem-pluginspec.html#dependencies" translate="no">PluginSpec::dependencies</a>().</p>
+<!-- @@@dependencySpecs -->
+<!-- $$$description[overload1]$$$description -->
+<h3 class="fn" translate="no" id="description"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> PluginSpec::<span class="name">description</span>() const</h3>
+<p>Returns the plugin description. This is valid after the <a href="extensionsystem-pluginspec.html#State-enum" translate="no">PluginSpec::Read</a> state is reached.</p>
+<!-- @@@description -->
+<!-- $$$errorString[overload1]$$$errorString -->
+<h3 class="fn" translate="no" id="errorString"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> PluginSpec::<span class="name">errorString</span>() const</h3>
+<p>Returns a detailed, possibly multi-line, error description in case of an error.</p>
+<!-- @@@errorString -->
+<!-- $$$filePath[overload1]$$$filePath -->
+<h3 class="fn" translate="no" id="filePath"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> PluginSpec::<span class="name">filePath</span>() const</h3>
+<p>Returns the absolute path to the plugin.</p>
+<!-- @@@filePath -->
+<!-- $$$hasError[overload1]$$$hasError -->
+<h3 class="fn" translate="no" id="hasError"><span class="type">bool</span> PluginSpec::<span class="name">hasError</span>() const</h3>
+<p>Returns whether an error occurred while reading or starting the plugin.</p>
+<!-- @@@hasError -->
+<!-- $$$isAvailableForHostPlatform[overload1]$$$isAvailableForHostPlatform -->
+<h3 class="fn" translate="no" id="isAvailableForHostPlatform"><span class="type">bool</span> PluginSpec::<span class="name">isAvailableForHostPlatform</span>() const</h3>
+<p>Returns whether the plugin works on the host platform.</p>
+<!-- @@@isAvailableForHostPlatform -->
+<!-- $$$isEffectivelyEnabled[overload1]$$$isEffectivelyEnabled -->
+<h3 class="fn" translate="no" id="isEffectivelyEnabled"><span class="type">bool</span> PluginSpec::<span class="name">isEffectivelyEnabled</span>() const</h3>
+<p>Returns whether the plugin is loaded at startup.</p>
+<p><b>See also </b><a href="extensionsystem-pluginspec.html#isEnabledBySettings" translate="no">isEnabledBySettings</a>().</p>
+<!-- @@@isEffectivelyEnabled -->
+<!-- $$$isEnabledByDefault[overload1]$$$isEnabledByDefault -->
+<h3 class="fn" translate="no" id="isEnabledByDefault"><span class="type">bool</span> PluginSpec::<span class="name">isEnabledByDefault</span>() const</h3>
+<p>Returns whether the plugin is enabled by default. A plugin might be disabled because the plugin is experimental, or because the installation settings define it as disabled by default.</p>
+<!-- @@@isEnabledByDefault -->
+<!-- $$$isEnabledBySettings[overload1]$$$isEnabledBySettings -->
+<h3 class="fn" translate="no" id="isEnabledBySettings"><span class="type">bool</span> PluginSpec::<span class="name">isEnabledBySettings</span>() const</h3>
+<p>Returns whether the plugin should be loaded at startup, taking into account the default enabled state, and the user's settings.</p>
+<div class="admonition note">
+<p><b>Note: </b>This function might return <code translate="no">false</code> even if the plugin is loaded as a requirement of another enabled plugin.</p>
+</div>
+<p><b>See also </b><a href="extensionsystem-pluginspec.html#isEffectivelyEnabled" translate="no">isEffectivelyEnabled</a>().</p>
+<!-- @@@isEnabledBySettings -->
+<!-- $$$isEnabledIndirectly[overload1]$$$isEnabledIndirectly -->
+<h3 class="fn" translate="no" id="isEnabledIndirectly"><span class="type">bool</span> PluginSpec::<span class="name">isEnabledIndirectly</span>() const</h3>
+<p>Returns <code translate="no">true</code> if loading was not done due to user unselecting this plugin or its dependencies.</p>
+<!-- @@@isEnabledIndirectly -->
+<!-- $$$isExperimental[overload1]$$$isExperimental -->
+<h3 class="fn" translate="no" id="isExperimental"><span class="type">bool</span> PluginSpec::<span class="name">isExperimental</span>() const</h3>
+<p>Returns whether the plugin has its experimental flag set.</p>
+<!-- @@@isExperimental -->
+<!-- $$$isForceDisabled[overload1]$$$isForceDisabled -->
+<h3 class="fn" translate="no" id="isForceDisabled"><span class="type">bool</span> PluginSpec::<span class="name">isForceDisabled</span>() const</h3>
+<p>Returns whether the plugin is disabled via the <code translate="no">-noload</code> option on the command line.</p>
+<!-- @@@isForceDisabled -->
+<!-- $$$isForceEnabled[overload1]$$$isForceEnabled -->
+<h3 class="fn" translate="no" id="isForceEnabled"><span class="type">bool</span> PluginSpec::<span class="name">isForceEnabled</span>() const</h3>
+<p>Returns whether the plugin is enabled via the <code translate="no">-load</code> option on the command line.</p>
+<!-- @@@isForceEnabled -->
+<!-- $$$isRequired[overload1]$$$isRequired -->
+<h3 class="fn" translate="no" id="isRequired"><span class="type">bool</span> PluginSpec::<span class="name">isRequired</span>() const</h3>
+<p>Returns whether the plugin is required.</p>
+<!-- @@@isRequired -->
+<!-- $$$license[overload1]$$$license -->
+<h3 class="fn" translate="no" id="license"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> PluginSpec::<span class="name">license</span>() const</h3>
+<p>Returns the plugin license. This is valid after the <a href="extensionsystem-pluginspec.html#State-enum" translate="no">PluginSpec::Read</a> state is reached.</p>
+<!-- @@@license -->
+<!-- $$$location[overload1]$$$location -->
+<h3 class="fn" translate="no" id="location"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> PluginSpec::<span class="name">location</span>() const</h3>
+<p>Returns the absolute path to the directory containing the plugin.</p>
+<!-- @@@location -->
+<!-- $$$longDescription[overload1]$$$longDescription -->
+<h3 class="fn" translate="no" id="longDescription"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> PluginSpec::<span class="name">longDescription</span>() const</h3>
+<p>Returns the plugin's long description. This is valid after the <a href="extensionsystem-pluginspec.html#State-enum" translate="no">PluginSpec::Read</a> state is reached.</p>
+<!-- @@@longDescription -->
+<!-- $$$metaData[overload1]$$$metaData -->
+<h3 class="fn" translate="no" id="metaData"><span class="type"><a href="https://doc.qt.io/qt/qjsonobject.html" translate="no">QJsonObject</a></span> PluginSpec::<span class="name">metaData</span>() const</h3>
+<p>Returns the plugin meta data.</p>
+<!-- @@@metaData -->
+<!-- $$$name[overload1]$$$name -->
+<h3 class="fn" translate="no" id="name"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> PluginSpec::<span class="name">name</span>() const</h3>
+<p>Returns the plugin name. This is valid after the <a href="extensionsystem-pluginspec.html#State-enum" translate="no">PluginSpec::Read</a> state is reached.</p>
+<!-- @@@name -->
+<!-- $$$platformSpecification[overload1]$$$platformSpecification -->
+<h3 class="fn" translate="no" id="platformSpecification"><code translate="no">[since 3.0] </code><span class="type"><a href="https://doc.qt.io/qt/qregularexpression.html" translate="no">QRegularExpression</a></span> PluginSpec::<span class="name">platformSpecification</span>() const</h3>
+<p>Returns a <a href="https://doc.qt.io/qt/qregularexpression.html" translate="no">QRegularExpression</a> matching the platforms this plugin works on. An empty pattern implies all platforms.</p>
+<p>This function was introduced in Qt 3.0.</p>
+<!-- @@@platformSpecification -->
+<!-- $$$plugin[overload1]$$$plugin -->
+<h3 class="fn" translate="no" id="plugin"><span class="type"><a href="extensionsystem-iplugin.html" translate="no">ExtensionSystem::IPlugin</a></span> *PluginSpec::<span class="name">plugin</span>() const</h3>
+<p>Returns the corresponding <a href="extensionsystem-iplugin.html" translate="no">IPlugin</a> instance, if the plugin library has already been successfully loaded. That is, the <a href="extensionsystem-pluginspec.html#State-enum" translate="no">PluginSpec::Loaded</a> state is reached.</p>
+<!-- @@@plugin -->
+<!-- $$$provides[overload1]$$$providesconstQString&constQString& -->
+<h3 class="fn" translate="no" id="provides"><span class="type">bool</span> PluginSpec::<span class="name">provides</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>pluginName</i>, const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>version</i>) const</h3>
+<p>Returns whether this plugin can be used to fill in a dependency of the given <i translate="no">pluginName</i> and <i translate="no">version</i>.</p>
+<p><b>See also </b><a href="extensionsystem-pluginspec.html#dependencies" translate="no">PluginSpec::dependencies</a>().</p>
+<!-- @@@provides -->
+<!-- $$$requiresAny[overload1]$$$requiresAnyconstQSet<ExtensionSystem::PluginSpec*>& -->
+<h3 class="fn" translate="no" id="requiresAny"><span class="type">bool</span> PluginSpec::<span class="name">requiresAny</span>(const <span class="type"><a href="https://doc.qt.io/qt/qset.html" translate="no">QSet</a></span>&lt;<span class="type"><a href="extensionsystem-pluginspec.html" translate="no">ExtensionSystem::PluginSpec</a></span> *&gt; &amp;<i>plugins</i>) const</h3>
+<p>Returns whether the plugin requires any of the plugins specified by <i translate="no">plugins</i>.</p>
+<!-- @@@requiresAny -->
+<!-- $$$setArguments[overload1]$$$setArgumentsconstQStringList& -->
+<h3 class="fn" translate="no" id="setArguments"><span class="type">void</span> PluginSpec::<span class="name">setArguments</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstringlist.html" translate="no">QStringList</a></span> &amp;<i>arguments</i>)</h3>
+<p>Sets the command line arguments specific to the plugin to <i translate="no">arguments</i>.</p>
+<p><b>See also </b><a href="extensionsystem-pluginspec.html#arguments" translate="no">arguments</a>().</p>
+<!-- @@@setArguments -->
+<!-- $$$setEnabledBySettings[overload1]$$$setEnabledBySettingsbool -->
+<h3 class="fn" translate="no" id="setEnabledBySettings"><span class="type">void</span> PluginSpec::<span class="name">setEnabledBySettings</span>(<span class="type">bool</span> <i>value</i>)</h3>
+<p>Sets whether the plugin should be loaded at startup to <i translate="no">value</i>.</p>
+<p><b>See also </b><a href="extensionsystem-pluginspec.html#isEnabledBySettings" translate="no">isEnabledBySettings</a>().</p>
+<!-- @@@setEnabledBySettings -->
+<!-- $$$state[overload1]$$$state -->
+<h3 class="fn" translate="no" id="state"><span class="type"><a href="extensionsystem-pluginspec.html#State-enum" translate="no">ExtensionSystem::PluginSpec::State</a></span> PluginSpec::<span class="name">state</span>() const</h3>
+<p>Returns the state in which the plugin currently is. See the description of the <a href="extensionsystem-pluginspec.html#State-enum" translate="no">PluginSpec::State</a> enum for details.</p>
+<!-- @@@state -->
+<!-- $$$url[overload1]$$$url -->
+<h3 class="fn" translate="no" id="url"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> PluginSpec::<span class="name">url</span>() const</h3>
+<p>Returns the plugin URL where you can find more information about the plugin. This is valid after the <a href="extensionsystem-pluginspec.html#State-enum" translate="no">PluginSpec::Read</a> state is reached.</p>
+<!-- @@@url -->
+<!-- $$$vendor[overload1]$$$vendor -->
+<h3 class="fn" translate="no" id="vendor"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> PluginSpec::<span class="name">vendor</span>() const</h3>
+<p>Returns the plugin vendor. This is valid after the <a href="extensionsystem-pluginspec.html#State-enum" translate="no">PluginSpec::Read</a> state is reached.</p>
+<!-- @@@vendor -->
+<!-- $$$version[overload1]$$$version -->
+<h3 class="fn" translate="no" id="version"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> PluginSpec::<span class="name">version</span>() const</h3>
+<p>Returns the plugin version. This is valid after the <a href="extensionsystem-pluginspec.html#State-enum" translate="no">PluginSpec::Read</a> state is reached.</p>
+<!-- @@@version -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

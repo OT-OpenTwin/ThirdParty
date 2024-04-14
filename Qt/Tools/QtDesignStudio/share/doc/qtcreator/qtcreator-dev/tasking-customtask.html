@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- tasktree.cpp -->
+  <meta name="description" content="A class template used for declaring task items and defining their setup, done, and error handlers.">
+  <title>CustomTask Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="taskingsolution-module.html" translate="no">TaskingSolution</a></li>
+<li>CustomTask</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">CustomTask Class</h1>
+<span class="small-subtitle" translate="no">template &lt;typename Adapter&gt; class <a href="tasking.html" translate="no">Tasking</a>::CustomTask</span>
+<!-- $$$CustomTask-brief -->
+<p>A class template used for declaring task items and defining their setup, done, and error handlers. <a href="#details">More...</a></p>
+<!-- @@@CustomTask -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;solutions/tasking/tasktree.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></td></tr>
+</table></div>
+<ul>
+<li><a href="tasking-customtask-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="tasking-customtask.html#EndHandler-typedef" translate="no">EndHandler</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="tasking-customtask.html#Task-typedef" translate="no">Task</a></b></td></tr>
+</table></div>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="tasking-customtask.html#CustomTask-1" translate="no">CustomTask</a></b>(SetupHandler &amp;&amp;<i>setup</i>, const Tasking::CustomTask::EndHandler &amp;<i>done</i> = {}, const Tasking::CustomTask::EndHandler &amp;<i>error</i> = {})</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> CustomTask&lt;Adapter&gt; &amp;</td><td class="memItemRight bottomAlign"><b><a href="tasking-customtask.html#onDone" translate="no">onDone</a></b>(const Tasking::CustomTask::EndHandler &amp;<i>handler</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> CustomTask&lt;Adapter&gt; &amp;</td><td class="memItemRight bottomAlign"><b><a href="tasking-customtask.html#onError" translate="no">onError</a></b>(const Tasking::CustomTask::EndHandler &amp;<i>handler</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> CustomTask&lt;Adapter&gt; &amp;</td><td class="memItemRight bottomAlign"><b><a href="tasking-customtask.html#onSetup" translate="no">onSetup</a></b>(SetupHandler &amp;&amp;<i>handler</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Tasking::GroupItem </td><td class="memItemRight bottomAlign"><b><a href="tasking-customtask.html#withTimeout" translate="no">withTimeout</a></b>(std::chrono::milliseconds <i>timeout</i>, const Tasking::GroupItem::GroupEndHandler &amp;<i>handler</i> = {}) const</td></tr>
+</table></div>
+<!-- $$$CustomTask-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The CustomTask class template is used inside <a href="tasking-tasktree.html" translate="no">TaskTree</a> for describing custom task items.</p>
+<p>Custom task names are aliased with unique names using the CustomTask template with a given <a href="tasking-taskadapter.html" translate="no">TaskAdapter</a> subclass as a template parameter. For example, <code translate="no">ConcurrentCallTask&lt;T&gt;</code> is an alias to the CustomTask that is defined to work with <code translate="no">ConcurrentCall&lt;T&gt;</code> as an associated task class. The following table contains all the built-in tasks and their associated task classes:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Aliased Task Name (Tasking Namespace)</th><th >Associated Task Class</th><th >Brief Description</th></tr></thead>
+<tr valign="top" class="odd"><td >ConcurrentCallTask&lt;ReturnType&gt;</td><td >ConcurrentCall&lt;ReturnType&gt;</td><td >Starts an asynchronous task. Runs in a separate thread.</td></tr>
+<tr valign="top" class="even"><td >NetworkQueryTask</td><td >NetworkQuery</td><td >Sends a network query.</td></tr>
+<tr valign="top" class="odd"><td >TaskTreeTask</td><td ><a href="tasking-tasktree.html" translate="no">TaskTree</a></td><td >Starts a nested task tree.</td></tr>
+<tr valign="top" class="even"><td >TimeoutTask</td><td ><code translate="no">std::chrono::milliseconds</code></td><td >Starts a timer.</td></tr>
+<tr valign="top" class="odd"><td >WaitForBarrierTask</td><td >MultiBarrier&lt;Limit&gt;</td><td >Starts an asynchronous task waiting for the barrier to pass.</td></tr>
+</table></div>
+</div>
+<!-- @@@CustomTask -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$EndHandler -->
+<h3 class="fn" translate="no" id="EndHandler-typedef"><code translate="no">[alias] </code>CustomTask::<span class="name">EndHandler</span></h3>
+<p>Type alias for <code translate="no">std::function&lt;void(const Task &amp;)&gt;</code>.</p>
+<!-- @@@EndHandler -->
+<!-- $$$Task -->
+<h3 class="fn" translate="no" id="Task-typedef"><code translate="no">[alias] </code>CustomTask::<span class="name">Task</span></h3>
+<p>Type alias for <code translate="no">Adapter::Type</code>.</p>
+<p>This is the associated task's type.</p>
+<!-- @@@Task -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$CustomTask$$$CustomTaskSetupHandler&&constTasking::CustomTask::EndHandler&constTasking::CustomTask::EndHandler& -->
+<h3 class="fn" translate="no" id="CustomTask-1">template &lt;typename SetupHandler&gt; CustomTask::<span class="name">CustomTask</span>(<span class="type">SetupHandler</span> &amp;&amp;<i>setup</i>, const <span class="type"><a href="tasking-customtask.html#EndHandler-typedef" translate="no">Tasking::CustomTask::EndHandler</a></span> &amp;<i>done</i> = {}, const <span class="type"><a href="tasking-customtask.html#EndHandler-typedef" translate="no">Tasking::CustomTask::EndHandler</a></span> &amp;<i>error</i> = {})</h3>
+<p>Constructs the CustomTask instance and attaches the <i translate="no">setup</i>, <i translate="no">done</i>, and <i translate="no">error</i> handlers to the task. When the running task tree is about to start the task, it instantiates the associated <a href="tasking-customtask.html#Task-typedef" translate="no">Task</a> object, invokes <i translate="no">setup</i> handler with a <i>reference</i> to the created task, and starts it. When the running task finishes with success or an error, the task tree invokes <i translate="no">done</i> or <i translate="no">error</i> handler, respectively, with a <i>const reference</i> to the created task.</p>
+<p>The passed <i translate="no">setup</i> handler is either of the <code translate="no">std::function&lt;SetupResult(Task &amp;)&gt;</code> or <code translate="no">std::function&lt;void(Task &amp;)&gt;</code> type. For example:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">static</span> <span class="type">void</span> parseAndLog(<span class="keyword">const</span> <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> <span class="operator">&amp;</span>input);
+
+ <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+
+ <span class="keyword">const</span> <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> input <span class="operator">=</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>;
+
+ <span class="keyword">const</span> <span class="keyword">auto</span> onFirstSetup <span class="operator">=</span> <span class="operator">[</span>input<span class="operator">]</span>(ConcurrentCall<span class="operator">&lt;</span><span class="type">void</span><span class="operator">&gt;</span> <span class="operator">&amp;</span>task) {
+     <span class="keyword">if</span> (input <span class="operator">=</span><span class="operator">=</span> <span class="string">&quot;Skip&quot;</span>)
+         <span class="keyword">return</span> SetupResult<span class="operator">::</span>StopWithDone; <span class="comment">// This task won't start, the next one will</span>
+     <span class="keyword">if</span> (input <span class="operator">=</span><span class="operator">=</span> <span class="string">&quot;Error&quot;</span>)
+         <span class="keyword">return</span> SetupResult<span class="operator">::</span>StopWithError; <span class="comment">// This task and the next one won't start</span>
+     task<span class="operator">.</span>setConcurrentCallData(parseAndLog<span class="operator">,</span> input);
+     <span class="comment">// This task will start, and the next one will start after this one finished with success</span>
+     <span class="keyword">return</span> SetupResult<span class="operator">::</span>Continue;
+ };
+
+ <span class="keyword">const</span> <span class="keyword">auto</span> onSecondSetup <span class="operator">=</span> <span class="operator">[</span>input<span class="operator">]</span>(ConcurrentCall<span class="operator">&lt;</span><span class="type">void</span><span class="operator">&gt;</span> <span class="operator">&amp;</span>task) {
+     task<span class="operator">.</span>setConcurrentCallData(parseAndLog<span class="operator">,</span> input);
+ };
+
+ <span class="keyword">const</span> Group group {
+     ConcurrentCallTask<span class="operator">&lt;</span><span class="type">void</span><span class="operator">&gt;</span>(onFirstSetup)<span class="operator">,</span>
+     ConcurrentCallTask<span class="operator">&lt;</span><span class="type">void</span><span class="operator">&gt;</span>(onSecondSetup)
+ };
+</pre>
+<p>When the passed <i translate="no">setup</i> handler is of the <code translate="no">std::function&lt;SetupResult(Task &amp;)&gt;</code> type, the return value of the handler instructs the running tree on how to proceed after the handler's invocation is finished. The default return value of <a href="tasking.html#SetupResult-enum" translate="no">SetupResult::Continue</a> instructs the tree to continue running, i.e. to execute the associated <code translate="no">Task</code>. The return value of <a href="tasking.html#SetupResult-enum" translate="no">SetupResult::StopWithDone</a> or <a href="tasking.html#SetupResult-enum" translate="no">SetupResult::StopWithError</a> instructs the tree to skip the task's execution and finish immediately with success or an error, respectively. When the return type is either <a href="tasking.html#SetupResult-enum" translate="no">SetupResult::StopWithDone</a> or <a href="tasking.html#SetupResult-enum" translate="no">SetupResult::StopWithError</a>, the task's <i translate="no">done</i> or <i translate="no">error</i> handler (even if provided) are not called afterwards.</p>
+<p>The <i translate="no">setup</i> handler may be of a shortened form of std::function&lt;void(Task &amp;)&gt;, i.e. the return value is void. In this case it's assumed that the return value is <a href="tasking.html#SetupResult-enum" translate="no">SetupResult::Continue</a> by default.</p>
+<p>When the running task finishes, one of <i translate="no">done</i> or <i translate="no">error</i> handlers is called, depending on whether it finished with success or an error, respectively. Both handlers are of std::function&lt;void(const Task &amp;)&gt; type.</p>
+<p><b>See also </b><a href="tasking-customtask.html#onSetup" translate="no">onSetup</a>(), <a href="tasking-customtask.html#onDone" translate="no">onDone</a>(), and <a href="tasking-customtask.html#onError" translate="no">onError</a>().</p>
+<!-- @@@CustomTask -->
+<!-- $$$onDone[overload1]$$$onDoneconstTasking::CustomTask::EndHandler& -->
+<h3 class="fn" translate="no" id="onDone"><span class="type">CustomTask</span>&lt;<span class="type">Adapter</span>&gt; &amp;CustomTask::<span class="name">onDone</span>(const <span class="type"><a href="tasking-customtask.html#EndHandler-typedef" translate="no">Tasking::CustomTask::EndHandler</a></span> &amp;<i>handler</i>)</h3>
+<p>Attaches the done <i translate="no">handler</i> to <code translate="no">this</code> task. The handler is invoked when the task finishes with success.</p>
+<p>This function enables defining the task's details with a fluent interface style.</p>
+<p><b>See also </b><a href="tasking-customtask.html#CustomTask-1" translate="no">CustomTask</a>(), <a href="tasking-customtask.html#onSetup" translate="no">onSetup</a>(), and <a href="tasking-customtask.html#onError" translate="no">onError</a>().</p>
+<!-- @@@onDone -->
+<!-- $$$onError[overload1]$$$onErrorconstTasking::CustomTask::EndHandler& -->
+<h3 class="fn" translate="no" id="onError"><span class="type">CustomTask</span>&lt;<span class="type">Adapter</span>&gt; &amp;CustomTask::<span class="name">onError</span>(const <span class="type"><a href="tasking-customtask.html#EndHandler-typedef" translate="no">Tasking::CustomTask::EndHandler</a></span> &amp;<i>handler</i>)</h3>
+<p>Attaches the error <i translate="no">handler</i> to <code translate="no">this</code> task. The handler is invoked when the task finishes with an error.</p>
+<p>This function enables defining the task's details with a fluent interface style.</p>
+<p><b>See also </b><a href="tasking-customtask.html#CustomTask-1" translate="no">CustomTask</a>(), <a href="tasking-customtask.html#onSetup" translate="no">onSetup</a>(), and <a href="tasking-customtask.html#onDone" translate="no">onDone</a>().</p>
+<!-- @@@onError -->
+<!-- $$$onSetup[overload1]$$$onSetupSetupHandler&& -->
+<h3 class="fn" translate="no" id="onSetup">template &lt;typename SetupHandler&gt; <span class="type">CustomTask</span>&lt;<span class="type">Adapter</span>&gt; &amp;CustomTask::<span class="name">onSetup</span>(<span class="type">SetupHandler</span> &amp;&amp;<i>handler</i>)</h3>
+<p>Attaches the setup <i translate="no">handler</i> to <code translate="no">this</code> task. The <i translate="no">handler</i> is invoked when the task is about to be started.</p>
+<p>This function enables defining the task's details with a <a href="https://en.wikipedia.org/wiki/Fluent_interface" translate="no">fluent interface</a> style:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">const</span> <span class="keyword">auto</span> onQuerySetup <span class="operator">=</span> <span class="operator">[</span><span class="operator">]</span>(NetworkQuery <span class="operator">&amp;</span>task) { <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span> };
+ <span class="keyword">const</span> <span class="keyword">auto</span> onQueryError <span class="operator">=</span> <span class="operator">[</span><span class="operator">]</span>(<span class="keyword">const</span> NetworkQuery <span class="operator">&amp;</span>task) { <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span> };
+
+ <span class="keyword">const</span> Group group {
+     NetworkQueryTask(onQuerySetup<span class="operator">,</span> {}<span class="operator">,</span> onQueryError)<span class="operator">,</span>
+     NetworkQueryTask()<span class="operator">.</span>onSetup(onQuerySetup)<span class="operator">.</span>onError(onQueryError)<span class="operator">,</span> <span class="comment">// fluent interface style</span>
+     NetworkQueryTask(onQuerySetup<span class="operator">,</span> {}<span class="operator">,</span> onQueryError)<span class="operator">.</span>withTimeout(<span class="number">500ms</span>)
+ }
+</pre>
+<p><b>See also </b><a href="tasking-customtask.html#CustomTask-1" translate="no">CustomTask</a>(), <a href="tasking-customtask.html#onDone" translate="no">onDone</a>(), and <a href="tasking-customtask.html#onError" translate="no">onError</a>().</p>
+<!-- @@@onSetup -->
+<!-- $$$withTimeout[overload1]$$$withTimeoutstd::chrono::millisecondsconstTasking::GroupItem::GroupEndHandler& -->
+<h3 class="fn" translate="no" id="withTimeout"><span class="type"><a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></span> CustomTask::<span class="name">withTimeout</span>(<span class="type">std::chrono::milliseconds</span> <i>timeout</i>, const <span class="type"><a href="tasking-groupitem.html#GroupEndHandler-typedef" translate="no">Tasking::GroupItem::GroupEndHandler</a></span> &amp;<i>handler</i> = {}) const</h3>
+<p>Attaches <code translate="no">TimeoutTask</code> to a copy of <code translate="no">this</code> task, elapsing after <i translate="no">timeout</i> in milliseconds, with an optionally provided timeout <i translate="no">handler</i>, and returns the coupled item.</p>
+<p>When the task finishes before <i translate="no">timeout</i> passes, the returned item finishes immediately with the task's result. Otherwise, the <i translate="no">handler</i> is invoked (if provided), the task is stopped, and the returned item finishes with an error.</p>
+<p><b>See also </b><a href="tasking-customtask.html#onSetup" translate="no">onSetup</a>().</p>
+<!-- @@@withTimeout -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

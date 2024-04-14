@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-view.qdoc -->
+  <title>3D Views | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>3D Views</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="quick-animations.html" />
+  <link rel="next" href="studio-3d-node.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="quick-animations.html">Animations</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-node.html">Node</a>
+</p>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">3D Views</h1>
+<!-- $$$studio-3d-view.html-description -->
+<div class="descr" id="details">
+<p>To create a Qt Quick 3D UI project, we recommend using a <b translate="no">Qt Quick 3D Application</b> wizard template that adds the <a href="quick-preset-components.html#3d-components" translate="no">Qt Quick 3D</a> components to <b translate="no">Components</b> and contains a 3D view. A 3D view component includes a <a href="studio-3d-scene-environment.html" translate="no">scene environment</a> as well as a scene <a href="studio-3d-lights.html" translate="no">light</a>, <a href="studio-3d-camera.html" translate="no">camera</a>, and <a href="studio-3d-model.html" translate="no">model</a>. A default <a href="studio-3d-materials.html" translate="no">material</a> is attached to the model. You can attach <a href="studio-3d-texture.html" translate="no">textures</a> to materials. For more information about creating projects, see <a href="studio-projects.html" translate="no">Creating Projects</a>.</p>
+<p>To add a 3D view to some other kind of a project, you first need to add the <b translate="no">Qt Quick 3D</b> module to <b translate="no">Components</b>, as described in <a href="quick-components-view.html#adding-and-removing-modules" translate="no">Adding and Removing Modules</a>.</p>
+<p class="centerAlign"><img src="images/studio-qtquick-3d-components.png" alt="&quot;Qt Quick 3D components in Components&quot;" /></p><p>You can now drag-and-drop a <b translate="no">View3D</b> component to the <a href="qtquick-navigator.html" translate="no">Navigator</a> or <a href="qtquick-form-editor.html" translate="no">2D</a> view.</p>
+<p class="centerAlign"><img src="images/studio-navigator-view3d.png" alt="&quot;A View 3D component in the Navigator&quot;" /></p><p>By default, a directional light and a perspective camera are used in a 3D scene created by using the wizard template mentioned above. To use other light and camera types, select the component in the <b translate="no">3D</b> or <b translate="no">Navigator</b> view and change the type of the component in the <b translate="no">Type</b> field in <a href="qtquick-properties-view.html" translate="no">Properties</a>. For example, to use a point light, enter <i><a href="https://doc.qt.io/qt/qml-qtquick3d-pointlight.html" translate="no">PointLight</a></i>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-type.png" alt="&quot;Type field in Properties view&quot;" /></p><p>Similarly to other components, you can select a 3D view in <b translate="no">Navigator</b> or the <b translate="no">3D</b> view and modify its property values in the <b translate="no">Properties</b> view. Use the properties in the <b translate="no">View3D</b> tab to set properties specific to a 3D view component.</p>
+<p class="centerAlign"><img src="images/studio-qtquick-3d-view.png" alt="&quot;View 3D component properties&quot;" /></p><p>The <b translate="no">Camera</b> property defines which camera is used to render the scene to the <b translate="no">2D</b> view. If this property is not defined, the first enabled camera in the scene will be used.</p>
+<p>The <b translate="no">Environment</b> property specifies the <b translate="no">Scene Environment</b> used to render the scene. By default, the first <b translate="no">Scene Environment</b> in the scene is set as the property value.</p>
+<p>The <b translate="no">Import Scene</b> property defines the ID of the component to render to the <b translate="no">2D</b> view. The component does not have to be a child of a 3D view component. This referenced component becomes a sibling to child items of a 3D view, if there are any. You can use this property, for example, to create a split screen view showing your scene from multiple cameras. For more information on how to to use a 3D view to show a scene from multiple cameras, see <a href="https://doc.qt.io/qt/qtquick3d-view3d-example.html" translate="no">Qt Quick 3D - View3D Example</a>.</p>
+<div class="admonition note">
+<p><b>Note: </b>The <b translate="no">Import Scene</b> property can only be set once. Subsequent changes will have no effect.</p>
+</div>
+</div>
+<!-- @@@studio-3d-view.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="quick-animations.html">Animations</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-node.html">Node</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

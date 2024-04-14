@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-texture.qdoc -->
+  <title>Textures | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Textures</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-3d-materials.html" />
+  <link rel="next" href="studio-3d-materials-types.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-3d-materials.html">Materials and Shaders</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-materials-types.html">3D Materials</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#selecting-the-mapping-method">Selecting the Mapping Method</a></li>
+<li class="level1"><a href="#uv-scaling">UV Scaling</a></li>
+<li class="level1"><a href="#setting-uv-transform-properties">Setting UV Transform Properties</a></li>
+<li class="level1"><a href="#applying-textures-to-materials">Applying Textures to Materials</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Textures</h1>
+<!-- $$$studio-3d-texture.html-description -->
+<div class="descr" id="details">
+<p>You can use the <b translate="no">Texture</b> component to attach textures to materials. You specify an image to use as the source file for the <b translate="no">Texture</b>, and also define how it is mapped to meshes in a 3D scene.</p>
+<p class="centerAlign"><img src="images/studio-qtquick-3d-texture.webp" alt="{Texture attached to a material in Design mode}" /></p><h2 id="selecting-the-mapping-method">Selecting the Mapping Method</h2>
+<p>To specify the method of mapping to use when sampling a texture, select <b translate="no">UV</b>, <b translate="no">Environment</b>, or <b translate="no">LightProbe</b> in the <b translate="no">Texture mapping</b> field.</p>
+<p>UV mapping is the process of projecting 2D images to the surface of a 3D model for texture mapping. The letters <i>U</i> and <i>V</i> denote the axes of the 2D texture because x, y, and z are already used to denote the axes of the 3D object in the model space. You can paint the polygons that make up a 3D object with color and other surface attributes from a UV texture map. Pixels in the image are assigned to surface mappings on the polygon. Usually this is done by programmatically copying a triangular piece of the image map and pasting it onto a triangle on the object.</p>
+<p>UV mapping is used by default for diffuse and opacity maps. It sticks the image to the mesh, so that a particular same portion of the image always appears on a particular vertex, unless you animate the UV properties.</p>
+<p>Environment mapping is used by default for specular reflection. It <i>projects</i> the image onto the material as though it is being reflected from the material. Using Environmental mapping for diffuse maps provides a mirror effect.</p>
+<p>Light probe mapping is used by default for HDRI sphere maps of light probes. For more information about light probes, see <a href="studio-material-editor.html#using-highlights-and-reflections" translate="no">Using Highlights and Reflections</a>.</p>
+<p>To use image data from a file, specify the path to the file in the <b translate="no">Source</b> field. To use a 2D Qt Quick QML type as the source, specify the type in the <b translate="no">Source item</b> field. The type is rendered as an offscreen layer. If you specify the source item, any image you might specify as a source is ignored.</p>
+<div class="admonition note">
+<p><b>Note: </b>Currently, there is no way to forward input events to the Item used as a texture source.</p>
+</div>
+<h2 id="uv-scaling">UV Scaling</h2>
+<p>The <b translate="no">U</b> and <b translate="no">V</b> scale properties define how to scale the U and V texture coordinates when mapping to a mesh's UV coordinates.</p>
+<p>Scaling the U value when using horizontal tiling specifies how many times the texture is repeated from left to right, while scaling the V value when using vertical tiling specifies the repetition from bottom to top.</p>
+<p>To control how the texture is mapped when the U scaling value is greater than 1, set the horizontal tiling mode in the <b translate="no">U tiling</b> field. To control how the texture is mapped when the V scaling value is greater than 1, set the vertical tiling mode in the <b translate="no">V tiling</b> field.</p>
+<p>To specify that the texture is not tiled, but the value on the edge is used instead, select <b translate="no">ClampToEdge</b>. To repeat the texture and mirrored it over the x or y axis, select <b translate="no">MirroredRepeat</b>. To repeat the texture over the x or y axis, select <b translate="no">Repeat</b>.</p>
+<h2 id="setting-uv-transform-properties">Setting UV Transform Properties</h2>
+<p>To offset the U coordinate mapping from left to right, set the position of the component in the <b translate="no">U position</b> field. To offset the mapping from bottom to top, set it in the <b translate="no">V position</b> field.</p>
+<p>Specify the U and V pivot points in the <b translate="no">U</b> and <b translate="no">V</b> pivot fields.</p>
+<p>To rotate the texture around the pivot point, specify rotation as degrees in the <b translate="no">UV rotation</b> field. A positive value indicates clockwise rotation.</p>
+<p>For more information about rotating and pivoting components in the local coordinate space, see <a href="studio-3d-node.html#managing-3d-transformations" translate="no">Managing 3D Transformations</a>.</p>
+<h2 id="applying-textures-to-materials">Applying Textures to Materials</h2>
+<p>To create and apply a texture on the material from an image:</p>
+<ol class="1" type="1"><li>Drag an image from <a href="quick-assets.html" translate="no">Assets</a> to a material in <b translate="no">Material Browser</b>.</li>
+<li>Select a property from the list of properties.</li>
+<li>Select <b translate="no">Apply</b>.</li>
+</ol>
+<p>Alternatively, you can add textures to materials as instructed in <a href="studio-material-editor.html#working-with-textures" translate="no">Working with Textures</a>.</p>
+<div class="admonition note">
+<p><b>Note: </b>If the colors in your texture are not visualized correctly, try setting the <b translate="no">Base Color</b> in <b translate="no">Material Editor</b> to <i>white (#ffffff)</i>.</p>
+</div>
+<p class="centerAlign"><img src="images/studio-qtquick-3d-material-texture.webp" alt="{Material Editor}" /></p><p>To change the source file for the texture:</p>
+<ol class="1" type="1"><li>Double-click the texture in <b translate="no">Material Browser</b>.</li>
+<li>In <b translate="no">Texture Editor</b>, select <img src="images/add-file-16px.png" alt="" /> next to <b translate="no">Source</b>.</li>
+<li>Select the new texture.</li>
+<li>Select <b translate="no">Open</b>.</li>
+</ol>
+<p class="centerAlign"><img src="images/studio-qtquick-3d-texture-properties.webp" alt="{Texture Editor}" /></p></div>
+<!-- @@@studio-3d-texture.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-3d-materials.html">Materials and Shaders</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-materials-types.html">3D Materials</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

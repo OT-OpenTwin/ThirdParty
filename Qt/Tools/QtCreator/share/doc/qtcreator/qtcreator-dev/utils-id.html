@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- id.cpp -->
+  <meta name="description" content="The Id class encapsulates an identifier that is unique within a specific running Qt Creator process.">
+  <title>Id Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>Id</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">Id Class</h1>
+<span class="small-subtitle" translate="no">class <a href="utils.html" translate="no">Utils</a>::Id</span>
+<!-- $$$Id-brief -->
+<p>The Id class encapsulates an identifier that is unique within a specific running Qt Creator process. <a href="#details">More...</a></p>
+<!-- @@@Id -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;utils/id.h&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="utils-id-members.html">List of all members, including inherited members</a></li>
+<li><a href="utils-id-obsolete.html">Deprecated members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="utils-id.html#Id-1" translate="no">Id</a></b>(const char *<i>name</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QByteArray </td><td class="memItemRight bottomAlign"><b><a href="utils-id.html#name" translate="no">name</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-id.html#suffixAfter" translate="no">suffixAfter</a></b>(Utils::Id <i>baseId</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QVariant </td><td class="memItemRight bottomAlign"><b><a href="utils-id.html#toSetting" translate="no">toSetting</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-id.html#toString" translate="no">toString</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Id </td><td class="memItemRight bottomAlign"><b><a href="utils-id.html#withPrefix" translate="no">withPrefix</a></b>(const char *<i>prefix</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Id </td><td class="memItemRight bottomAlign"><b><a href="utils-id.html#withSuffix" translate="no">withSuffix</a></b>(int <i>suffix</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Id </td><td class="memItemRight bottomAlign"><b><a href="utils-id.html#withSuffix-1" translate="no">withSuffix</a></b>(const char *<i>suffix</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Id </td><td class="memItemRight bottomAlign"><b><a href="utils-id.html#withSuffix-2" translate="no">withSuffix</a></b>(const QString &amp;<i>suffix</i>) const</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Id </td><td class="memItemRight bottomAlign"><b><a href="utils-id.html#fromSetting" translate="no">fromSetting</a></b>(const QVariant &amp;<i>variant</i>)</td></tr>
+</table></div>
+<!-- $$$Id-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p><code translate="no">Utils::Id</code> is used as facility to identify objects of interest in a more typesafe and faster manner than a plain QString or QByteArray would provide.</p>
+<p>An id is associated with a plain 7-bit-clean ASCII name used for display and persistency.</p>
+</div>
+<!-- @@@Id -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Id$$$Idconstchar* -->
+<h3 class="fn" translate="no" id="Id-1">Id::<span class="name">Id</span>(const <span class="type">char</span> *<i>name</i>)</h3>
+<p>Constructs an id given its associated <i translate="no">name</i>. The internal representation will be unspecified, but consistent within a Qt Creator process.</p>
+<!-- @@@Id -->
+<!-- $$$fromSetting[overload1]$$$fromSettingconstQVariant& -->
+<h3 class="fn" translate="no" id="fromSetting"><code translate="no">[static] </code><span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> Id::<span class="name">fromSetting</span>(const <span class="type">QVariant</span> &amp;<i>variant</i>)</h3>
+<p>Reconstructs an id from the persistent value <i translate="no">variant</i>.</p>
+<p><b>See also </b><a href="utils-id.html#toSetting" translate="no">toSetting</a>().</p>
+<!-- @@@fromSetting -->
+<!-- $$$name[overload1]$$$name -->
+<h3 class="fn" translate="no" id="name"><span class="type">QByteArray</span> Id::<span class="name">name</span>() const</h3>
+<p>Returns an internal representation of the id.</p>
+<!-- @@@name -->
+<!-- $$$suffixAfter[overload1]$$$suffixAfterUtils::Id -->
+<h3 class="fn" translate="no" id="suffixAfter"><span class="type">QString</span> Id::<span class="name">suffixAfter</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>baseId</i>) const</h3>
+<p>Extracts a part of the id string representation. This function can be used to split off the base part specified by <i translate="no">baseId</i> used when generating an id with <code translate="no">withSuffix()</code>.</p>
+<p><b>See also </b><a href="utils-id.html#withSuffix" translate="no">withSuffix</a>().</p>
+<!-- @@@suffixAfter -->
+<!-- $$$toSetting[overload1]$$$toSetting -->
+<h3 class="fn" translate="no" id="toSetting"><span class="type">QVariant</span> Id::<span class="name">toSetting</span>() const</h3>
+<p>Returns a persistent value representing the id which is suitable to be stored in QSettings.</p>
+<p><b>See also </b><a href="utils-id.html#fromSetting" translate="no">fromSetting</a>().</p>
+<!-- @@@toSetting -->
+<!-- $$$toString[overload1]$$$toString -->
+<h3 class="fn" translate="no" id="toString"><span class="type">QString</span> Id::<span class="name">toString</span>() const</h3>
+<p>Returns a string representation of the id suitable for UI display.</p>
+<p>This should not be used to create a persistent version of the Id, use <code translate="no">toSetting()</code> instead.</p>
+<p><b>See also </b><a href="utils-id-obsolete.html#fromString" translate="no">fromString</a>() and <a href="utils-id.html#toSetting" translate="no">toSetting</a>().</p>
+<!-- @@@toString -->
+<!-- $$$withPrefix[overload1]$$$withPrefixconstchar* -->
+<h3 class="fn" translate="no" id="withPrefix"><span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> Id::<span class="name">withPrefix</span>(const <span class="type">char</span> *<i>prefix</i>) const</h3>
+<p>Constructs a derived id.</p>
+<p>This can be used to construct groups of ids logically belonging together. The associated internal name will be generated by prepending <i translate="no">prefix</i>.</p>
+<!-- @@@withPrefix -->
+<!-- $$$withSuffix[overload1]$$$withSuffixint -->
+<h3 class="fn" translate="no" id="withSuffix"><span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> Id::<span class="name">withSuffix</span>(<span class="type">int</span> <i>suffix</i>) const</h3>
+<p>Constructs a derived id.</p>
+<p>This can be used to construct groups of ids logically belonging together. The associated internal name will be generated by appending <i translate="no">suffix</i>.</p>
+<!-- @@@withSuffix -->
+<!-- $$$withSuffix$$$withSuffixconstchar* -->
+<h3 class="fn" translate="no" id="withSuffix-1"><span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> Id::<span class="name">withSuffix</span>(const <span class="type">char</span> *<i>suffix</i>) const</h3>
+<p>This is an overloaded function.</p>
+<!-- @@@withSuffix -->
+<!-- $$$withSuffix$$$withSuffixconstQString& -->
+<h3 class="fn" translate="no" id="withSuffix-2"><span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> Id::<span class="name">withSuffix</span>(const <span class="type">QString</span> &amp;<i>suffix</i>) const</h3>
+<p>This is an overloaded function.</p>
+<!-- @@@withSuffix -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

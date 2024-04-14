@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-debug-views.qdoc -->
+  <title>Viewing Call Stack Trace | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li><a href="creator-overview.html" translate="no">Developing with Qt Creator</a></li>
+<li><a href="creator-debugging.html" translate="no">Debugging</a></li>
+<li><a href="creator-debug-mode.html" translate="no">Debug Mode Views</a></li>
+<li>Viewing Call Stack Trace</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-debug-mode.html" />
+  <link rel="next" href="creator-breakpoints-view.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-debug-mode.html">Debug Mode Views</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-breakpoints-view.html">Setting Breakpoints</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#loading-qml-stack">Loading QML Stack</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Viewing Call Stack Trace</h1>
+<!-- $$$creator-stack-view.html-description -->
+<div class="descr" id="details">
+<p>When the application being debugged is interrupted, Qt Creator displays the nested function calls leading to the current position as a call stack trace. This stack trace is built up from call stack frames, each representing a particular function. For each function, Qt Creator tries to retrieve the file name and line number of the corresponding source file. This data is shown in the <b translate="no">Stack</b> view.</p>
+<p class="centerAlign"><img src="images/qtcreator-debug-stack.png" alt="{Stack view}" /></p><p>Since the call stack leading to the current position may originate or go through code for which no debug information is available, not all stack frames have corresponding source locations. Stack frames without corresponding source locations are grayed out.</p>
+<p>If you click a frame with a known source location, the text editor jumps to the corresponding location and updates the <a href="creator-locals-view.html" translate="no">Locals</a> and <a href="creator-expressions-view.html" translate="no">Expressions</a> views, making it seem like the application was interrupted before entering the function.</p>
+<h2 id="loading-qml-stack">Loading QML Stack</h2>
+<p>To find out which QML file is causing a Qt Quick application to crash, select <b translate="no">Load QML Stack</b> in the context menu in the <b translate="no">Stack</b> view. The debugger tries to retrieve the JavaScript stack from the stopped executable and prepends the frames to the C++ frames, should it find any. You can click a frame in the QML stack to open the QML file in the editor.</p>
+</div>
+<!-- @@@creator-stack-view.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-debug-mode.html">Debug Mode Views</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-breakpoints-view.html">Setting Breakpoints</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

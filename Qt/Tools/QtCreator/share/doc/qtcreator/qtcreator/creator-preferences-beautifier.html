@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-beautifier.qdoc -->
+  <meta name="description" content="Format source code with Artistic Style, ClangFormat, or Uncrustify.">
+  <title>Beautifier | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Beautifier</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-reference.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#beautifier-tool-options">Beautifier Tool Options</a></li>
+<li class="level2"><a href="#using-a-predefined-clangformat-style">Using a Predefined ClangFormat Style</a></li>
+<li class="level2"><a href="#defining-a-style">Defining a Style</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Beautifier</h1>
+<!-- $$$creator-preferences-beautifier.html-description -->
+<div class="descr" id="details">
+<p>Automatically apply indentation and style to source code files when you save them. Use a predefined style or define your own style.</p>
+<p>To specify settings for beautifying files:</p>
+<ol class="1" type="1"><li>Go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Beautifier</b> &gt; <b translate="no">General</b>.</li>
+<li>Select <b translate="no">Automatic formatting on file save</b> to automatically beautify files when you save them using the tool you select in the <b translate="no">Tool</b> field.<p class="centerAlign"><img src="images/qtcreator-preferences-beautifier-general.webp" alt="{General Beautifier preferences}" /></p></li>
+<li>In <b translate="no">Restrict to MIME types</b>, define the MIME types of the files to beautify, separated by semicolons. Leave the field empty to apply the tool on all files.<p>This setting is applied only when automatically beautifying files on save. To restrict the MIME types when selecting the menu item to format the currently open file, specify this option in the tool-specific tab.</p>
+</li>
+<li>Select <b translate="no">Restrict to files contained in the current project</b> to only beautify files that belong to the current project.</li>
+<li>Go to <b translate="no">Artistic Style</b>, <b translate="no">ClangFormat</b>, or <b translate="no">Uncrustify</b> to specify settings for the tool you want to use.<p class="centerAlign"><img src="images/beautifier_options.png" alt="{Uncrustify Beautifier preferences}" /></p></li>
+<li>In <b translate="no">Configuration</b>, specify the path to the tool executable in <b translate="no">Artistic Style command</b>, <b translate="no">ClangFormat command</b>, or <b translate="no">Uncrustify command</b>.</li>
+<li>In <b translate="no">Restrict to MIME types</b>, define the MIME types of the files to beautify. This setting is applied when you select the menu item to format the currently open file.</li>
+<li>In <b translate="no">Options</b>, select the configuration file that defines the style to use in the source files. If you select several options, they are applied from top down. The available options depend on the tool.</li>
+</ol>
+<h2 id="beautifier-tool-options">Beautifier Tool Options</h2>
+<p>To set the following options, you must have one of the tools installed.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Option</th><th >Value</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Use file *.astylerc defined in project files</b><p><b translate="no">Use file uncrustify.cfg defined in project files</b></p>
+</td><td >Use the configuration file <a href="creator-how-to-specify-project-contents.html" translate="no">defined in the project file</a> as the configuration file for the selected tool.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Use specific config file</b><p><b translate="no">Use file specific uncrustify.cfg</b></p>
+</td><td >The file to use as the configuration file for the selected tool.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Use file uncrustify.cfg in &lt;$HOME&gt;</b><p><b translate="no">Use file .astylerc or acstylerc in &lt;$HOME&gt;</b></p>
+</td><td >Use the specified file in the user's home directory as the configuration file for the selected tool.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Use customized style</b></td><td >Set your own code style.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Format entire file if no text was selected</b></td><td >Format the whole file when no text is selected in the editor and you select <b translate="no">Format Selected Text</b>.</td></tr>
+</table></div>
+<h3 id="using-a-predefined-clangformat-style">Using a Predefined ClangFormat Style</h3>
+<p>To use a predefined ClangFormat style, go to <b translate="no">ClangFormat</b> and select a style in <b translate="no">Use predefined style</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-beautifier-options-clangformat.png" alt="{ClangFormat Beautifier preferences}" /></p><p>Select <b translate="no">File</b> to load the style configuration from the <code translate="no">.clang-format</code> or <code translate="no">_clang-format</code> file located in the same directory as the source file or in one of its parent directories.</p>
+<p>In <b translate="no">Fallback style</b>, select a fallback style to use if the style configuration file is not available. Select <b translate="no">Default</b> to use the default style. Select <b translate="no">None</b> to skip formatting.</p>
+<h3 id="defining-a-style">Defining a Style</h3>
+<p>To define your own style, select <b translate="no">Use customized style</b>, and then select <b translate="no">Add</b>.</p>
+<p>Set the code style in the <b translate="no">Add Configuration</b> dialog. It offers syntax highlighting, auto-completion, and context-sensitive help.</p>
+<p class="centerAlign"><img src="images/beautifier_editor.png" alt="{Add Configuration dialog}" /></p></div>
+<p><b>See also </b><a href="creator-beautifier.html" translate="no">Beautify source code</a> and <a href="creator-how-to-enable-plugins.html" translate="no">Enable and disable plugins</a>.</p>
+<!-- @@@creator-preferences-beautifier.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

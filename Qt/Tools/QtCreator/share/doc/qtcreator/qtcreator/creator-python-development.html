@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-python-development.qdoc -->
+  <title>Develop Qt for Python applications | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Develop Qt for Python applications</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#set-up-pyside6">Set up PySide6</a></li>
+<li class="level1"><a href="#create-qt-for-python-applications">Create Qt for Python applications</a></li>
+<li class="level1"><a href="#select-the-python-version">Select the Python version</a></li>
+<li class="level1"><a href="#create-kits-for-python">Create kits for Python</a></li>
+<li class="level1"><a href="#use-python-interactive-shell">Use Python interactive shell</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Develop Qt for Python applications</h1>
+<!-- $$$creator-python-development.html-description -->
+<div class="descr" id="details">
+<p>With <a href="https://doc.qt.io/qtforpython/index.html" translate="no">Qt for Python</a>, you can use Qt 6 API in Python applications. Use the PySide6 modules to gain access to individual Qt modules, such as Qt Core, Qt GUI, and Qt Widgets.</p>
+<p>The following sections describe using Qt Creator for developing with Qt for Python:</p>
+<ul>
+<li><a href="creator-python-development.html#set-up-pyside6" translate="no">Set up PySide6</a></li>
+<li><a href="creator-python-development.html#create-qt-for-python-applications" translate="no">Create Qt for Python applications</a></li>
+<li><a href="creator-python-development.html#select-the-python-version" translate="no">Select the Python version</a></li>
+<li><a href="creator-python-development.html#create-kits-for-python" translate="no">Create kits for Python</a></li>
+<li><a href="creator-python-development.html#use-python-interactive-shell" translate="no">Use Python interactive shell</a></li>
+<li><a href="creator-how-to-configure-python-language-servers.html" translate="no">Configure Python language servers</a></li>
+<li><a href="creator-how-to-run-python-apps.html" translate="no">Run Python applications</a></li>
+<li><a href="creator-run-settings-python.html" translate="no">Python Run Settings</a></li>
+<li><a href="creator-debugger-engines.html#pdb" translate="no">PDB</a></li>
+<li><a href="creator-debugger-operating-modes.html" translate="no">Launching the Debugger</a></li>
+</ul>
+<p>For more information about developing with Qt for Python, including limitations, see <a href="https://doc.qt.io/qtforpython/index.html" translate="no">Qt for Python</a>.</p>
+<h2 id="set-up-pyside6">Set up PySide6</h2>
+<p>If you have not installed the required version of PySide6, Qt Creator prompts you to do so when you open a .py file.</p>
+<p class="centerAlign"><img src="images/qtcreator-python-install.webp" alt="{Prompts to install PySide6 and Python language server}" /></p><p>Further, Qt Creator prompts you to install the <a href="creator-how-to-configure-python-language-servers.html" translate="no">Python language server</a> that offers services such as code completion and annotations. Select <b translate="no">Install</b> to install PySide6 and the language server.</p>
+<h2 id="create-qt-for-python-applications">Create Qt for Python applications</h2>
+<p>Use wizards to create Qt for Python application projects. The wizards generate a project file, <code translate="no">.pyproject</code>, that lists the files in the Python project. They also generate a <code translate="no">.py</code> file that has some boilerplate code and <code translate="no">reguirements.txt</code> that stores the PySide version of the generated code. In addition, the widget-based UI wizard creates a <code translate="no">.ui</code> file that has a Qt Designer form, and the Qt Quick Application wizard creates a <code translate="no">.qml</code> file that imports Qt Quick controls.</p>
+<div class="admonition note">
+<p><b>Note: </b>Before importing UI classes and after editing them, create the Python code from your UI form. In PySide6, run <code translate="no">pyside6-uic form.ui -o ui_form.py</code> in the <a href="creator-reference-terminal-view.html" translate="no">Terminal</a> view.</p>
+</div>
+<p class="centerAlign"><img src="images/qtcreator-new-qt-for-python-app-window-ui-uic.webp" alt="{Creating Python code in Terminal}" /></p><p>The <b translate="no">Window</b> wizard adds code to the source file, without the UI file.</p>
+<p>The <b translate="no">Empty</b> wizard adds code to the source file, but it does not add any classes, so you need to add and instantiate them yourself.</p>
+<p>The <code translate="no">.pyproject</code> files are JSON-based configuration files that replace the previously used <code translate="no">.pyqtc</code> configuration files. You can still open and use <code translate="no">.pyqtc</code> files, but we recommend that you choose <code translate="no">.pyproject</code> files for new projects.</p>
+<h2 id="select-the-python-version">Select the Python version</h2>
+<p>The <a href="creator-preferences-kits.html#kits-tab" translate="no">kits</a> you select for the project in <b translate="no">Projects</b> &gt; <b translate="no">Build &amp; Run</b> set the Python version to use.</p>
+<p>The <a href="creator-coding-navigating.html" translate="no">Edit mode</a> toolbar shows the current Python version.</p>
+<p class="centerAlign"><img src="images/qtcreator-python-interpreter-edit-mode.webp" alt="{Python version on the Edit mode toolbar}" /></p><p>To use another Python version, activate another kit for the project.</p>
+<h2 id="create-kits-for-python">Create kits for Python</h2>
+<p>Qt Creator automatically adds all Python versions it can find to the list of Python versions in <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Python</b> &gt; <b translate="no">Interpreters</b>. It generates kits for the global Python versions that are not inside a virtual environment.</p>
+<p class="centerAlign"><img src="images/qtcreator-python-interpreters.webp" alt="{Python Interpreters in Preferences}" /></p><p>You can add and remove Python versions and clean up references to Python versions that you uninstalled, but that still appear in the list.</p>
+<p>To use the selected Python version when opening <code translate="no">.py</code> files that don't belong to a project, select <b translate="no">Make Default</b>.</p>
+<p>To use a virtual environment as a kit, select it in <b translate="no">Interpreters</b>, and then select <b translate="no">Generate Kit</b>.</p>
+<h2 id="use-python-interactive-shell">Use Python interactive shell</h2>
+<p>You can write Python code in the <b translate="no">Edit</b> mode. Select <b translate="no">REPL</b> on the toolbar to start the <a href="https://pythonprogramminglanguage.com/repl/" translate="no">Python interactive shell</a> in the <a href="creator-reference-terminal-view.html" translate="no">Terminal</a> view.</p>
+<p class="centerAlign"><img src="images/qtcreator-terminal-python.webp" alt="{Python shell in the Terminal view}" /></p><p>To start the shell and import the current file as a module, select <b translate="no">REPL Import File</b>. To also import all functions from the file, select <b translate="no">REPL Import *</b>.</p>
+</div>
+<p><b>See also </b><a href="creator-tutorial-python-application-qt-widgets.html" translate="no">Creating a Qt for Python Application with Qt Widgets</a>, <a href="creator-tutorial-python-application-qt-quick.html" translate="no">Creating a Qt for Python Application with Qt Quick</a>, and <a href="creator-how-to-activate-kits.html" translate="no">Activate kits for a project</a>.</p>
+<!-- @@@creator-python-development.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

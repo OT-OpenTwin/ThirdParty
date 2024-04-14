@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-morph-target.qdoc -->
+  <title>Morph Target | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Morph Target</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-3d-scene-environment.html" />
+  <link rel="next" href="studio-3d-repeater-3d.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-3d-scene-environment.html">Scene Environment</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-repeater-3d.html">Repeater3D</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#morph-target-properties">Morph Target Properties</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Morph Target</h1>
+<!-- $$$studio-3d-morph-target.html-description -->
+<div class="descr" id="details">
+<p>The <b translate="no">Morph Target</b> component can be used to define morph targets for vertex animation. Morph targets are the objects we bind to control the morphing of a model. Usually, morphing is controlled by using <a href="qtquick-timeline-view.html" translate="no">timeline</a> animation or <a href="quick-animations.html#applying-animation" translate="no">property animation</a>. The degree of morphing is controlled by defining the <b translate="no">Weight</b> property of the <b translate="no">Morph Target</b> component.</p>
+<p>The normal workflow is to use an external content creation tool to create a mesh, which also contains morph targets, and import it to Qt Design Studio.</p>
+<p>To add a morph target for a model in Qt Design Studio, drag-and-drop a <b translate="no">Morph Target</b> component from <b translate="no">Components</b> &gt; <b translate="no">Qt Quick 3D</b> &gt; <b translate="no">Qt Quick 3D</b> to <b translate="no">Scene</b> in <a href="qtquick-navigator.html" translate="no">Navigator</a>. Then select the model in <b translate="no">Navigator</b>, and in <a href="qtquick-properties-view.html" translate="no">Properties</a> &gt; <b translate="no">Model</b> &gt; <b translate="no">Morph Targets</b>, select the name of the <b translate="no">Morph Target</b> component.</p>
+<h2 id="morph-target-properties">Morph Target Properties</h2>
+<p>To define attributes and weight for a <b translate="no">Morph Target</b>, select it in <b translate="no">Navigator</b> and specify its properties in the <b translate="no">Properties</b> view.</p>
+<p class="centerAlign"><img src="images/studio-3d-morph-target-properties.png" alt="&quot;Morph Target Properties&quot;" /></p><p>Use the <b translate="no">Weight</b> property to specify the weight of the <b translate="no">Morph Target</b>. The value of <b translate="no">Weight</b> functions as the multiplication factor used by the linear interpolation. If the value is set to 1, the target is fully applied. If the <b translate="no">Weight</b> property value is set to 0, it has no influence.</p>
+<p>Use the <b translate="no">Attributes</b> property to specify a set of attributes for the selected <b translate="no">Morph Target</b>. In order to animate vertex attributes in morphing, the mesh must contain those target attributes and the <b translate="no">Morph Target</b> must have the attributes enabled.</p>
+<p>Click the dropdown menu to select one of the following attributes:</p>
+<ul>
+<li><b translate="no">Position</b> animates the vertex positions.</li>
+<li><b translate="no">Normal</b> animates the normal vectors.</li>
+<li><b translate="no">Tangent</b> animates the tangent vectors.</li>
+<li><b translate="no">Binormal</b> animates the binormal vectors.</li>
+</ul>
+</div>
+<!-- @@@studio-3d-morph-target.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-3d-scene-environment.html">Scene Environment</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-repeater-3d.html">Repeater3D</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

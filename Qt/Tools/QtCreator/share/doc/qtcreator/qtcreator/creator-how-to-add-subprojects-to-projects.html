@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-projects-creating.qdoc -->
+  <title>Add subprojects to projects | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Add subprojects to projects</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#cmake-projects">CMake projects</a></li>
+<li class="level1"><a href="#qmake-projects">qmake projects</a></li>
+<li class="level2"><a href="#add-subprojects-to-the-root-project">Add subprojects to the root project</a></li>
+<li class="level2"><a href="#remove-subprojects">Remove subprojects</a></li>
+<li class="level2"><a href="#specify-dependencies">Specify dependencies</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Add subprojects to projects</h1>
+<!-- $$$creator-how-to-add-subprojects-to-projects.html-description -->
+<div class="descr" id="details">
+<p>You can link your application to Qt libraries and other libraries, such as system libraries or your own libraries. Further, your own libraries might link to other libraries. To compile your project and benefit from services such as code completion and syntax highlighting, add the libraries to your project. The process of adding a library to a project depends on the build system that you use.</p>
+<h2 id="cmake-projects">CMake projects</h2>
+<p>To add CMakeLists.txt files to any project, use the <a href="https://cmake.org/cmake/help/latest/command/add_subdirectory.html" translate="no">add_subdirectory</a> command. The files can define complete projects that you include into the top-level project or any other CMake commands.</p>
+<h2 id="qmake-projects">qmake projects</h2>
+<p>When you create a new project and select qmake as the build system, you can add it to another project as a subproject in the <b translate="no">Project Management</b> dialog. However, the root project must specify that qmake uses the <code translate="no">subdirs</code> template to build the project.</p>
+<p>To create a root project:</p>
+<ol class="1" type="1"><li>Select <b translate="no">File</b> &gt; <b translate="no">New Project</b> &gt; <b translate="no">Other Project</b> &gt; <b translate="no">Subdirs Project</b> &gt; <b translate="no">Choose</b>.</li>
+<li>On the <b translate="no">Summary</b> page, select <b translate="no">Finish &amp; Add Subproject</b> to create the root project and to add another project, such as a C++ library.</li>
+</ol>
+<p>The wizard creates a project file (.pro) that defines a <code translate="no">subdirs</code> template and the subproject that you add as a value of the SUBDIRS variable. It also adds all the necessary files for the subproject.</p>
+<h3 id="add-subprojects-to-the-root-project">Add subprojects to the root project</h3>
+<p>To create more subprojects, right-click the project name in the <a href="creator-projects-view.html" translate="no">Projects</a> view to open the context menu, and select <b translate="no">New Subproject</b>. Follow the steps in the <b translate="no">New Subproject</b> wizard to create a subproject.</p>
+<p class="centerAlign"><img src="images/qtcreator-project-qt-quick.webp" alt="{New Project dialog}" /></p><p>To add an existing project as a subproject, select <b translate="no">Add Existing Projects</b> in the context menu. In the file browser dialog, locate your subproject.</p>
+<h3 id="remove-subprojects">Remove subprojects</h3>
+<p>To remove subprojects, right-click the project name in the <b translate="no">Projects</b> view, and select <b translate="no">Remove Subproject</b> in the context menu.</p>
+<h3 id="specify-dependencies">Specify dependencies</h3>
+<p>To specify dependencies, use the <b translate="no">Add Library</b> wizard.</p>
+</div>
+<p><b>See also </b><a href="creator-project-creating.html" translate="no">Creating Projects</a>, <a href="creator-how-to-use-project-wizards.html" translate="no">Use project wizards</a>, <a href="creator-project-qmake-libraries.html" translate="no">Add libraries to qmake projects</a>, and <a href="creator-how-to-add-external-libraries-to-cmake-projects.html" translate="no">Add libraries to CMake projects</a>.</p>
+<!-- @@@creator-how-to-add-subprojects-to-projects.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

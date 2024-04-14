@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-buttons.qdoc -->
+  <title>Creating Buttons | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Creating Buttons</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="quick-components-creating.html" />
+  <link rel="next" href="quick-scalable-image.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="quick-components-creating.html">Creating Custom Components</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-scalable-image.html">Creating Scalable Buttons and Borders</a>
+</p>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Creating Buttons</h1>
+<!-- $$$quick-buttons.html-description -->
+<div class="descr" id="details">
+<p>To create a button component:</p>
+<ol class="1" type="1"><li>Select <b translate="no">File</b> &gt; <b translate="no">New File</b> &gt; <b translate="no">Qt Quick Files</b> &gt; <b translate="no">Qt Quick UI File</b> &gt; <b translate="no">Choose</b> to create a <a href="creator-quick-ui-forms.html" translate="no">UI file</a> called Button.ui.qml (for example).<div class="admonition note">
+<p><b>Note: </b>Components are listed in <b translate="no">Components</b> &gt; <b translate="no">My Components</b> only if the filename begins with a capital letter.</p>
+</div>
+</li>
+<li>Click <b translate="no">Design</b> to edit the file in the <a href="qtquick-form-editor.html" translate="no">2D</a> view.</li>
+<li>In <a href="qtquick-navigator.html" translate="no">Navigator</a>, select <b translate="no">Item</b> and set the width (<b translate="no">W</b>) and height (<b translate="no">H</b>) of the button in <a href="qtquick-properties-view.html" translate="no">Properties</a>.</li>
+<li>Drag-and-drop a <b translate="no">Rectangle</b> from <b translate="no">Components</b> &gt; <b translate="no">Default Components</b> &gt; <b translate="no">Basic</b> to the component in <b translate="no">Navigator</b>. This creates a nested component where the Item is the parent of the Rectangle. Components are positioned relative to their parents.</li>
+<li>In the <b translate="no">Properties</b> view, modify the appearance of the rectangle:<ol class="a" type="a"><li>In the <b translate="no">Color</b> field, select the button color.</li>
+<li>In the <b translate="no">Radius</b> field, set the radius of the rectangle to produce rounded corners for the button.</li>
+<li>Select <b translate="no">Layout</b>, and then select the <img src="images/anchor-fill.png" alt="" /> (<b translate="no">Fill to Parent</b>) button to anchor the Rectangle to the Item.</li>
+</ol>
+</li>
+<li>Drag-and-drop a <b translate="no">Text</b> component to the Item in <b translate="no">Navigator</b>.</li>
+<li>In the <b translate="no">Properties</b> view, edit the properties of the <b translate="no">Text</b> component<ol class="a" type="a"><li>In the <b translate="no">Text</b> field, enter <i>Button</i>.<p>You can select the text color in the <b translate="no">Text color</b> field and the font, size, and style in the <b translate="no">Font</b> section.</p>
+</li>
+<li>In the <b translate="no">Alignment</b> field, select the center buttons to align the text to the center of the button.</li>
+<li>Select <b translate="no">Layout</b> &gt; <b translate="no">Fill to Parent</b> to anchor the text to the whole button area.</li>
+</ol>
+</li>
+<li>Press <b>Ctrl+S</b> to save the button.<p class="centerAlign"><img src="images/qmldesigner-button.png" alt="&quot;Button component&quot;" /></p></li>
+</ol>
+<p>To be useful, the button component has to be created in a project. When you work on other files in the project to create screens or other components for the UI, the button component appears in <b translate="no">Components</b> &gt; <b translate="no">My Components</b>. You can use it to create button instances and modify their properties to assign them useful IDs, change their appearance, and set the button text for each button instance, for example.</p>
+<p>To create a graphical button that scales beautifully without using vector graphics, use the <a href="https://doc.qt.io/qt/stylesheet-reference.html#border-image" translate="no">Border Image</a> component. For more information, see <a href="quick-scalable-image.html" translate="no">Creating Scalable Buttons and Borders</a>.</p>
+</div>
+<!-- @@@quick-buttons.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="quick-components-creating.html">Creating Custom Components</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-scalable-image.html">Creating Scalable Buttons and Borders</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

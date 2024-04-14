@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- filepath.cpp -->
+  <meta name="description" content="The FilePath class is an abstraction for handles to objects in a (possibly remote) file system, similar to a URL or, in the local case, a path to a file or directory.">
+  <title>FilePath Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>FilePath</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">FilePath Class</h1>
+<span class="small-subtitle" translate="no">class <a href="utils.html" translate="no">Utils</a>::FilePath</span>
+<!-- $$$FilePath-brief -->
+<p>The FilePath class is an abstraction for handles to objects in a (possibly remote) file system, similar to a URL or, in the local case, a path to a file or directory. <a href="#details">More...</a></p>
+<!-- @@@FilePath -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;FilePath&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="utils-filepath-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#baseName" translate="no">baseName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#canonicalPath" translate="no">canonicalPath</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Qt::CaseSensitivity </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#caseSensitivity" translate="no">caseSensitivity</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#chopped" translate="no">chopped</a></b>(int <i>n</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#cleanPath" translate="no">cleanPath</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#clear" translate="no">clear</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#completeBaseName" translate="no">completeBaseName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#completeSuffix" translate="no">completeSuffix</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#contains" translate="no">contains</a></b>(const QString &amp;<i>s</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#createDir" translate="no">createDir</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#displayName" translate="no">displayName</a></b>(const QString &amp;<i>args</i> = {}) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#endsWith" translate="no">endsWith</a></b>(const QString &amp;<i>s</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> expected_str&lt;void&gt; </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#ensureWritableDir" translate="no">ensureWritableDir</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#exists" translate="no">exists</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#isChildOf" translate="no">isChildOf</a></b>(const Utils::FilePath &amp;<i>s</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#isEmpty" translate="no">isEmpty</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#isExecutableFile" translate="no">isExecutableFile</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#isNewerThan" translate="no">isNewerThan</a></b>(const QDateTime &amp;<i>timeStamp</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#isRelativePath" translate="no">isRelativePath</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#isWritableDir" translate="no">isWritableDir</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#isWritableFile" translate="no">isWritableFile</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#iterateDirectory" translate="no">iterateDirectory</a></b>(const Utils::FilePath::IterateDirCallback &amp;<i>callBack</i>, const Utils::FileFilter &amp;<i>filter</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#nativePath" translate="no">nativePath</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#parentDir" translate="no">parentDir</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QChar </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#pathComponentSeparator" translate="no">pathComponentSeparator</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QChar </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#pathListSeparator" translate="no">pathListSeparator</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> std::optional&lt;FilePath&gt; </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#refersToExecutableFile" translate="no">refersToExecutableFile</a></b>(Utils::FilePath::MatchScope <i>matchScope</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#relativeChildPath" translate="no">relativeChildPath</a></b>(const Utils::FilePath &amp;<i>parent</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#relativePathFrom" translate="no">relativePathFrom</a></b>(const Utils::FilePath &amp;<i>anchor</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#removeRecursively" translate="no">removeRecursively</a></b>(QString *<i>error</i> = nullptr) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#resolvePath" translate="no">resolvePath</a></b>(const Utils::FilePath &amp;<i>tail</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#resolvePath-1" translate="no">resolvePath</a></b>(const QString &amp;<i>tail</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#resolveSymlinks" translate="no">resolveSymlinks</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#searchInDirectories" translate="no">searchInDirectories</a></b>(const Utils::FilePaths &amp;<i>dirs</i>, const Utils::FilePathPredicate &amp;<i>filter</i> = {}, Utils::FilePath::MatchScope <i>matchScope</i> = WithAnySuffix) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#shortNativePath" translate="no">shortNativePath</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#startsWith" translate="no">startsWith</a></b>(const QString &amp;<i>s</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#startsWithDriveLetter" translate="no">startsWithDriveLetter</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringView </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#suffixView" translate="no">suffixView</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#symLinkTarget" translate="no">symLinkTarget</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#toFSPathString" translate="no">toFSPathString</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QFileInfo </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#toFileInfo" translate="no">toFileInfo</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#toString" translate="no">toString</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#toUserOutput" translate="no">toUserOutput</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QVariant </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#toVariant" translate="no">toVariant</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#withNewMappedPath" translate="no">withNewMappedPath</a></b>(const Utils::FilePath &amp;<i>newPath</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#withNewPath" translate="no">withNewPath</a></b>(const QString &amp;<i>newPath</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#withTildeHomePath" translate="no">withTildeHomePath</a></b>() const</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#calcRelativePath" translate="no">calcRelativePath</a></b>(QStringView <i>absolutePath</i>, QStringView <i>absoluteAnchorPath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#fromFileInfo" translate="no">fromFileInfo</a></b>(const QFileInfo &amp;<i>info</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#fromString" translate="no">fromString</a></b>(const QString &amp;<i>filepath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#fromStringWithExtension" translate="no">fromStringWithExtension</a></b>(const QString &amp;<i>filepath</i>, const QString &amp;<i>defaultExtension</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#fromUrl" translate="no">fromUrl</a></b>(const QUrl &amp;<i>url</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#fromUserInput" translate="no">fromUserInput</a></b>(const QString &amp;<i>filePath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#fromUtf8" translate="no">fromUtf8</a></b>(const char *<i>filename</i>, int <i>filenameSize</i> = -1)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="utils-filepath.html#fromVariant" translate="no">fromVariant</a></b>(const QVariant &amp;<i>variant</i>)</td></tr>
+</table></div>
+<!-- $$$FilePath-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Ideally, all of Qt Creator code should use FilePath for this purpose, but for historic reasons there are still large parts using QString.</p>
+<p>FilePaths are internally stored as triple of strings, with one part (&quot;scheme&quot;) identifying an access method, a second part (&quot;host&quot;) a file system (e.g&#x2e; a host) and a third part (&quot;path&quot;) identifying a (potential) object on the systems.</p>
+<p>FilePath follows the Unix paradigm of &quot;everything is a file&quot;: There is no conceptional difference between FilePaths referring to plain files or directories.</p>
+<p>A FilePath is implicitly associated with an operating system via its host part. The path part of a FilePath is internally stored with forward slashes, independent of the associated OS.</p>
+<p>The path parts of FilePaths associated with Windows (and macOS, unless selected otherwise in the settings) are compared case-insensitively to each other. Note that comparisons for equivalence generally need out-of-band knowledge, as there may be multiple FilePath representations for the same file (e.g&#x2e; different access methods may lead to the same file).</p>
+<p>There are several conversions between FilePath and other string-like representations:</p>
+<ul>
+<li><a href="utils-filepath.html#fromUserInput" translate="no">FilePath::fromUserInput</a>()<p>Convert string-like data from sources originating outside of Qt Creator, e.g&#x2e; from human input in GUI controls, from environment variables and from command-line parameters to Qt Creator.</p>
+<p>The input can contain both slashes and backslashes and will be parsed and normalized.</p>
+</li>
+<li><a href="utils-filepath.html#nativePath" translate="no">FilePath::nativePath</a>()<p>Converts the FilePath to the slash convention of the associated OS and drops the scheme and host parts.</p>
+<p>This is useful to interact with the facilities of the associated OS, e.g&#x2e; when passing this FilePath as an argument to a command executed on the associated OS.</p>
+<div class="admonition note">
+<p><b>Note: </b>The FilePath passed as executable to a <a href="utils-commandline.html" translate="no">CommandLine</a> is typically not touched by user code. The Process will use it to determine the remote system and apply the necessary conversions internally.</p>
+</div>
+</li>
+<li><a href="utils-filepath.html#toFSPathString" translate="no">FilePath::toFSPathString</a>()<p>Converts the FilePath to a [drive:]/__qtc_devices__/scheme/host/path string.</p>
+<p>The result works in most cases also with remote setups and QDir/QFileInfo but is slower than direct FilePath use and should only be used when proper porting to FilePath is too difficult, or not possible, e.g&#x2e; when external Qt based libraries are used that do not use FilePath.</p>
+</li>
+<li><a href="utils-filepath.html#toUserOutput" translate="no">FilePath::toUserOutput</a>()<p>Converts the FilePath to the slash convention of the associated OS and retains the scheme and host parts.</p>
+<p>This is rarely useful for remote paths as there is practically no consumer of this style.</p>
+</li>
+<li><a href="utils-filepath.html#displayName" translate="no">FilePath::displayName</a>()<p>Converts the FilePath to the slash convention of the associated OS and adds the scheme and host as a &quot; on &lt;device&gt;&quot; suffix.</p>
+<p>This is useful for static user-facing output in the GUI.</p>
+</li>
+<li><a href="utils-filepath.html#fromVariant" translate="no">FilePath::fromVariant</a>(), <a href="utils-filepath.html#toVariant" translate="no">FilePath::toVariant</a>()<p>These are used to interface QVariant-based API, e.g&#x2e; settings or item model (internal) data.</p>
+</li>
+<li><a href="utils-filepath.html#fromString" translate="no">FilePath::fromString</a>(), <a href="utils-filepath.html#toString" translate="no">FilePath::toString</a>()<p>These are used for internal interfaces to code areas that still use QString based file paths for simple storage and retrieval.</p>
+<p>In most cases, use of one of the more specialized above is more appropriate.</p>
+</li>
+</ul>
+<p>Conversion of string-like data should always happen at the outer boundary of Qt Creator code, using <code translate="no">fromUserInput()</code> for in-bound communication, and depending on the medium <code translate="no">nativePath()</code> or <code translate="no">displayName()</code> for out-bound communication.</p>
+<p>Communication with QVariant based Qt API should use <code translate="no">fromVariant()</code> and <code translate="no">toVariant()</code>.</p>
+<p>Uses of <code translate="no">fromString()</code> and <code translate="no">toString()</code> should be phased out by transforming code from QString based file path to FilePath. An exception here are fragments of paths of a FilePath that are later used with <code translate="no">pathAppended()</code> or similar which should be kept as QString.</p>
+<p>UNC paths will retain their &quot;//&quot; begin, and are recognizable by this.</p>
+</div>
+<!-- @@@FilePath -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$baseName[overload1]$$$baseName -->
+<h3 class="fn" translate="no" id="baseName"><span class="type">QString</span> FilePath::<span class="name">baseName</span>() const</h3>
+<p>Returns the base name of the file without the path.</p>
+<p>The base name consists of all characters in the file up to (but not including) the first '.' character.</p>
+<!-- @@@baseName -->
+<!-- $$$calcRelativePath[overload1]$$$calcRelativePathQStringViewQStringView -->
+<h3 class="fn" translate="no" id="calcRelativePath"><code translate="no">[static] </code><span class="type">QString</span> FilePath::<span class="name">calcRelativePath</span>(<span class="type">QStringView</span> <i>absolutePath</i>, <span class="type">QStringView</span> <i>absoluteAnchorPath</i>)</h3>
+<p>Returns the relative path of <i translate="no">absolutePath</i> to given <i translate="no">absoluteAnchorPath</i>. Both paths must be an absolute path to a directory.</p>
+<p>Example usage:</p>
+<pre class="cpp" translate="no">
+ qDebug() <span class="operator">&lt;</span><span class="operator">&lt;</span> FilePath<span class="operator">::</span>calcRelativePath(<span class="string">&quot;/foo/b/ar&quot;</span><span class="operator">,</span> <span class="string">&quot;/foo/c&quot;</span>);
+</pre>
+<p>The debug output will be &quot;../b/ar&quot;.</p>
+<p><b>See also </b><a href="utils-filepath.html#isRelativePath" translate="no">FilePath::isRelativePath</a>(), <a href="utils-filepath.html#relativePathFrom" translate="no">FilePath::relativePathFrom</a>(), and <a href="utils-filepath.html#relativeChildPath" translate="no">FilePath::relativeChildPath</a>().</p>
+<!-- @@@calcRelativePath -->
+<!-- $$$canonicalPath[overload1]$$$canonicalPath -->
+<h3 class="fn" translate="no" id="canonicalPath"><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">canonicalPath</span>() const</h3>
+<p>Recursively resolves possibly present symlinks in this file name.</p>
+<p>On Windows, also resolves SUBST and re-mounted NTFS drives. Unlike QFileInfo::canonicalFilePath(), this function will not return an empty string if path doesn't exist.</p>
+<p>Returns the canonical path.</p>
+<!-- @@@canonicalPath -->
+<!-- $$$caseSensitivity[overload1]$$$caseSensitivity -->
+<h3 class="fn" translate="no" id="caseSensitivity"><span class="type">Qt::CaseSensitivity</span> FilePath::<span class="name">caseSensitivity</span>() const</h3>
+<p>Returns the caseSensitivity of the path.</p>
+<p>This is currently only based on the Host OS. For device paths, <code translate="no">Qt::CaseSensitive</code> is always returned.</p>
+<!-- @@@caseSensitivity -->
+<!-- $$$chopped[overload1]$$$choppedint -->
+<h3 class="fn" translate="no" id="chopped"><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">chopped</span>(<span class="type">int</span> <i>n</i>) const</h3>
+<p>Returns a path with the <i translate="no">n</i> characters of the local path removed. Example usage:</p>
+<pre class="cpp" translate="no">
+ backup <span class="operator">=</span> FilePath(<span class="string">&quot;/tmp/example.txt.backup&quot;</span>);
+ real <span class="operator">=</span> backup<span class="operator">.</span>chopped(<span class="number">7</span>);
+ assert(real <span class="operator">=</span><span class="operator">=</span> FilePath(<span class="string">&quot;/tmp/example.txt&quot;</span>))
+</pre>
+<!-- @@@chopped -->
+<!-- $$$cleanPath[overload1]$$$cleanPath -->
+<h3 class="fn" translate="no" id="cleanPath"><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">cleanPath</span>() const</h3>
+<p>Cleans path part similar to <code translate="no">QDir::cleanPath()</code>.</p>
+<ul>
+<li>directory separators normalized (that is, platform-native separators converted to &quot;/&quot;) and redundant ones removed, and &quot;.&quot;s and &quot;..&quot;s resolved (as far as possible).</li>
+<li>Symbolic links are kept. This function does not return the canonical path, but rather the simplest version of the input. For example, &quot;./local&quot; becomes &quot;local&quot;, &quot;local/../bin&quot; becomes &quot;bin&quot; and &quot;/local/usr/../bin&quot; becomes &quot;/local/bin&quot;.</li>
+</ul>
+<!-- @@@cleanPath -->
+<!-- $$$clear[overload1]$$$clear -->
+<h3 class="fn" translate="no" id="clear"><span class="type">void</span> FilePath::<span class="name">clear</span>()</h3>
+<p>Clears all parts of the <a href="utils-filepath.html" translate="no">FilePath</a>.</p>
+<!-- @@@clear -->
+<!-- $$$completeBaseName[overload1]$$$completeBaseName -->
+<h3 class="fn" translate="no" id="completeBaseName"><span class="type">QString</span> FilePath::<span class="name">completeBaseName</span>() const</h3>
+<p>Returns the complete base name of the file without the path.</p>
+<p>The complete base name consists of all characters in the file up to (but not including) the last '.' character. In case of &quot;.ui.qml&quot; it will be treated as one suffix.</p>
+<!-- @@@completeBaseName -->
+<!-- $$$completeSuffix[overload1]$$$completeSuffix -->
+<h3 class="fn" translate="no" id="completeSuffix"><span class="type">QString</span> FilePath::<span class="name">completeSuffix</span>() const</h3>
+<p>Returns the complete suffix (extension) of the file.</p>
+<p>The complete suffix consists of all characters in the file after (but not including) the first '.'&#x2e;</p>
+<!-- @@@completeSuffix -->
+<!-- $$$contains[overload1]$$$containsconstQString& -->
+<h3 class="fn" translate="no" id="contains"><span class="type">bool</span> FilePath::<span class="name">contains</span>(const <span class="type">QString</span> &amp;<i>s</i>) const</h3>
+<p>Returns whether <code translate="no">path()</code> contains <i translate="no">s</i>.</p>
+<!-- @@@contains -->
+<!-- $$$createDir[overload1]$$$createDir -->
+<h3 class="fn" translate="no" id="createDir"><span class="type">bool</span> FilePath::<span class="name">createDir</span>() const</h3>
+<p>Creates a directory in this location.</p>
+<p>Returns true if the directory could be created, false if not, even if it existed before.</p>
+<p><b>See also </b><a href="utils-filepath.html#ensureWritableDir" translate="no">ensureWritableDir</a>().</p>
+<!-- @@@createDir -->
+<!-- $$$displayName[overload1]$$$displayNameconstQString& -->
+<h3 class="fn" translate="no" id="displayName"><span class="type">QString</span> FilePath::<span class="name">displayName</span>(const <span class="type">QString</span> &amp;<i>args</i> = {}) const</h3>
+<p>Converts the file path to the slash convention of the associated OS and adds the scheme and host as a &quot; on &lt;device&gt;&quot; suffix.</p>
+<p>This is useful for static user-facing output in the GUI.</p>
+<p>If <i translate="no">args</i> is not empty, it is added to the output after the file path: &quot;&lt;path&gt; &lt;args&gt; on &lt;device&gt;&quot;.</p>
+<!-- @@@displayName -->
+<!-- $$$endsWith[overload1]$$$endsWithconstQString& -->
+<h3 class="fn" translate="no" id="endsWith"><span class="type">bool</span> FilePath::<span class="name">endsWith</span>(const <span class="type">QString</span> &amp;<i>s</i>) const</h3>
+<p>Returns whether <code translate="no">path()</code> ends with <i translate="no">s</i>.</p>
+<!-- @@@endsWith -->
+<!-- $$$ensureWritableDir[overload1]$$$ensureWritableDir -->
+<h3 class="fn" translate="no" id="ensureWritableDir"><span class="type">expected_str</span>&lt;<span class="type">void</span>&gt; FilePath::<span class="name">ensureWritableDir</span>() const</h3>
+<p>Re-uses or creates a directory in this location.</p>
+<p>Returns true if the directory is writable afterwards.</p>
+<p><b>See also </b><a href="utils-filepath.html#createDir" translate="no">createDir</a>().</p>
+<!-- @@@ensureWritableDir -->
+<!-- $$$exists[overload1]$$$exists -->
+<h3 class="fn" translate="no" id="exists"><span class="type">bool</span> FilePath::<span class="name">exists</span>() const</h3>
+<p>Returns a bool indicating whether a file or directory with this <a href="utils-filepath.html" translate="no">FilePath</a> exists.</p>
+<!-- @@@exists -->
+<!-- $$$fromFileInfo[overload1]$$$fromFileInfoconstQFileInfo& -->
+<h3 class="fn" translate="no" id="fromFileInfo"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">fromFileInfo</span>(const <span class="type">QFileInfo</span> &amp;<i>info</i>)</h3>
+<p>Constructs a <a href="utils-filepath.html" translate="no">FilePath</a> from <i translate="no">info</i>.</p>
+<!-- @@@fromFileInfo -->
+<!-- $$$fromString[overload1]$$$fromStringconstQString& -->
+<h3 class="fn" translate="no" id="fromString"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">fromString</span>(const <span class="type">QString</span> &amp;<i>filepath</i>)</h3>
+<p>Constructs a <a href="utils-filepath.html" translate="no">FilePath</a> from <i translate="no">filepath</i></p>
+<p><i translate="no">filepath</i> is not checked for validity. It can be given in the following forms:</p>
+<ul>
+<li>/some/absolute/local/path</li>
+<li>some/relative/path</li>
+<li>scheme://host/absolute/path</li>
+<li>scheme://host/./relative/path<div class="admonition note">
+<p><b>Note: </b>the ./ is verbatim part of the path</p>
+</div>
+</li>
+</ul>
+<p>Some decoding happens when parsing the <i translate="no">filepath</i> A sequence %25 present in the host part is replaced by % in the host name, a sequence %2f present in the host part is replaced by / in the host name.</p>
+<p>The path part might consist of several parts separated by /, independent of the platform or file system.</p>
+<p>To create <a href="utils-filepath.html" translate="no">FilePath</a> objects from strings possibly containing backslashes as path separator, use <code translate="no">fromUserInput</code>.</p>
+<p><b>See also </b><a href="utils-filepath.html#toString" translate="no">toString</a> and <a href="utils-filepath.html#fromUserInput" translate="no">fromUserInput</a>.</p>
+<!-- @@@fromString -->
+<!-- $$$fromStringWithExtension[overload1]$$$fromStringWithExtensionconstQString&constQString& -->
+<h3 class="fn" translate="no" id="fromStringWithExtension"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">fromStringWithExtension</span>(const <span class="type">QString</span> &amp;<i>filepath</i>, const <span class="type">QString</span> &amp;<i>defaultExtension</i>)</h3>
+<p>Constructs a <a href="utils-filepath.html" translate="no">FilePath</a> from <i translate="no">filepath</i>. The <i translate="no">defaultExtension</i> is appended to <i translate="no">filepath</i> if that does not have an extension already.</p>
+<p><i translate="no">filepath</i> is not checked for validity.</p>
+<!-- @@@fromStringWithExtension -->
+<!-- $$$fromUrl[overload1]$$$fromUrlconstQUrl& -->
+<h3 class="fn" translate="no" id="fromUrl"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">fromUrl</span>(const <span class="type">QUrl</span> &amp;<i>url</i>)</h3>
+<p>Constructs a <a href="utils-filepath.html" translate="no">FilePath</a> from <i translate="no">url</i>.</p>
+<p><b>See also </b><a href="utils-filepath.html#toVariant" translate="no">toVariant</a>().</p>
+<!-- @@@fromUrl -->
+<!-- $$$fromUserInput[overload1]$$$fromUserInputconstQString& -->
+<h3 class="fn" translate="no" id="fromUserInput"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">fromUserInput</span>(const <span class="type">QString</span> &amp;<i>filePath</i>)</h3>
+<p>Constructs a <a href="utils-filepath.html" translate="no">FilePath</a> from <i translate="no">filePath</i></p>
+<p>The path <i translate="no">filePath</i> is cleaned, and ~ is replaced by the home path.</p>
+<!-- @@@fromUserInput -->
+<!-- $$$fromUtf8[overload1]$$$fromUtf8constchar*int -->
+<h3 class="fn" translate="no" id="fromUtf8"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">fromUtf8</span>(const <span class="type">char</span> *<i>filename</i>, <span class="type">int</span> <i>filenameSize</i> = -1)</h3>
+<p>Constructs a <a href="utils-filepath.html" translate="no">FilePath</a> from <i translate="no">filename</i> with <i translate="no">filenameSize</i>, which is encoded as UTF-8.</p>
+<p><i translate="no">filename</i> is not checked for validity.</p>
+<!-- @@@fromUtf8 -->
+<!-- $$$fromVariant[overload1]$$$fromVariantconstQVariant& -->
+<h3 class="fn" translate="no" id="fromVariant"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">fromVariant</span>(const <span class="type">QVariant</span> &amp;<i>variant</i>)</h3>
+<p>Constructs a <a href="utils-filepath.html" translate="no">FilePath</a> from <i translate="no">variant</i>.</p>
+<p><b>See also </b><a href="utils-filepath.html#toVariant" translate="no">toVariant</a>().</p>
+<!-- @@@fromVariant -->
+<!-- $$$isChildOf[overload1]$$$isChildOfconstUtils::FilePath& -->
+<h3 class="fn" translate="no" id="isChildOf"><span class="type">bool</span> FilePath::<span class="name">isChildOf</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>s</i>) const</h3>
+<p>Returns whether <a href="utils-filepath.html" translate="no">FilePath</a> is a child of <i translate="no">s</i>.</p>
+<!-- @@@isChildOf -->
+<!-- $$$isEmpty[overload1]$$$isEmpty -->
+<h3 class="fn" translate="no" id="isEmpty"><span class="type">bool</span> FilePath::<span class="name">isEmpty</span>() const</h3>
+<p>Checks if the path() is empty.</p>
+<p>Returns true if the path() is empty. The Host and Scheme of the part are ignored.</p>
+<!-- @@@isEmpty -->
+<!-- $$$isExecutableFile[overload1]$$$isExecutableFile -->
+<h3 class="fn" translate="no" id="isExecutableFile"><span class="type">bool</span> FilePath::<span class="name">isExecutableFile</span>() const</h3>
+<p>Returns a bool indicating whether this is an executable file.</p>
+<!-- @@@isExecutableFile -->
+<!-- $$$isNewerThan[overload1]$$$isNewerThanconstQDateTime& -->
+<h3 class="fn" translate="no" id="isNewerThan"><span class="type">bool</span> FilePath::<span class="name">isNewerThan</span>(const <span class="type">QDateTime</span> &amp;<i>timeStamp</i>) const</h3>
+<p>Checks if this is newer than <i translate="no">timeStamp</i>.</p>
+<p>The time stamp <i translate="no">timeStamp</i> to compare with. Returns <code translate="no">true</code> if this is newer than <i translate="no">timeStamp</i>. If this is a directory, the function will recursively check all files and return <code translate="no">true</code> if one of them is newer than <i translate="no">timeStamp</i>. If this is a single file, <code translate="no">true</code> will be returned if the file is newer than <i translate="no">timeStamp</i>.</p>
+<p>Returns whether at least one file in the file path has a newer date than <i translate="no">timeStamp</i>.</p>
+<!-- @@@isNewerThan -->
+<!-- $$$isRelativePath[overload1]$$$isRelativePath -->
+<h3 class="fn" translate="no" id="isRelativePath"><span class="type">bool</span> FilePath::<span class="name">isRelativePath</span>() const</h3>
+<p>Checks whether the path is relative.</p>
+<p>Returns true if the path is relative.</p>
+<!-- @@@isRelativePath -->
+<!-- $$$isWritableDir[overload1]$$$isWritableDir -->
+<h3 class="fn" translate="no" id="isWritableDir"><span class="type">bool</span> FilePath::<span class="name">isWritableDir</span>() const</h3>
+<p>Returns a bool indicating whether this is a writable directory.</p>
+<!-- @@@isWritableDir -->
+<!-- $$$isWritableFile[overload1]$$$isWritableFile -->
+<h3 class="fn" translate="no" id="isWritableFile"><span class="type">bool</span> FilePath::<span class="name">isWritableFile</span>() const</h3>
+<p>Returns a bool indicating whether this is a writable file.</p>
+<!-- @@@isWritableFile -->
+<!-- $$$iterateDirectory[overload1]$$$iterateDirectoryconstUtils::FilePath::IterateDirCallback&constUtils::FileFilter& -->
+<h3 class="fn" translate="no" id="iterateDirectory"><span class="type">void</span> FilePath::<span class="name">iterateDirectory</span>(const <span class="type">Utils::FilePath::IterateDirCallback</span> &amp;<i>callBack</i>, const <span class="type">Utils::FileFilter</span> &amp;<i>filter</i>) const</h3>
+<p>Runs <i translate="no">callBack</i> on each directory entry matching the <i translate="no">filter</i>.</p>
+<!-- @@@iterateDirectory -->
+<!-- $$$nativePath[overload1]$$$nativePath -->
+<h3 class="fn" translate="no" id="nativePath"><span class="type">QString</span> FilePath::<span class="name">nativePath</span>() const</h3>
+<p>Returns a QString to pass to target system native commands, without the device prefix.</p>
+<p>Converts the separators to the native format of the system this path belongs to.</p>
+<!-- @@@nativePath -->
+<!-- $$$parentDir[overload1]$$$parentDir -->
+<h3 class="fn" translate="no" id="parentDir"><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">parentDir</span>() const</h3>
+<p>Finds the parent directory of the file path.</p>
+<p>Returns an empty file path if the file path is already a root level directory.</p>
+<p>Returns a file path with the last segment removed.</p>
+<!-- @@@parentDir -->
+<!-- $$$pathComponentSeparator[overload1]$$$pathComponentSeparator -->
+<h3 class="fn" translate="no" id="pathComponentSeparator"><span class="type">QChar</span> FilePath::<span class="name">pathComponentSeparator</span>() const</h3>
+<p>Returns the separator of path components for this path.</p>
+<p>Returns the path separator of the path.</p>
+<!-- @@@pathComponentSeparator -->
+<!-- $$$pathListSeparator[overload1]$$$pathListSeparator -->
+<h3 class="fn" translate="no" id="pathListSeparator"><span class="type">QChar</span> FilePath::<span class="name">pathListSeparator</span>() const</h3>
+<p>Returns the path list separator for the device this path belongs to.</p>
+<p>Returns the path list separator of the device for this path.</p>
+<!-- @@@pathListSeparator -->
+<!-- $$$refersToExecutableFile[overload1]$$$refersToExecutableFileUtils::FilePath::MatchScope -->
+<h3 class="fn" translate="no" id="refersToExecutableFile"><span class="type">std::optional</span>&lt;<span class="type">FilePath</span>&gt; FilePath::<span class="name">refersToExecutableFile</span>(<span class="type">Utils::FilePath::MatchScope</span> <i>matchScope</i>) const</h3>
+<p>Returns a bool indicating on whether a process with this <a href="utils-filepath.html" translate="no">FilePath</a>'s native path is likely to start.</p>
+<p>This is equivalent to <a href="utils-filepath.html#isExecutableFile" translate="no">isExecutableFile</a>() in general. On Windows, it might append various suffixes depending on <i translate="no">matchScope</i>.</p>
+<!-- @@@refersToExecutableFile -->
+<!-- $$$relativeChildPath[overload1]$$$relativeChildPathconstUtils::FilePath& -->
+<h3 class="fn" translate="no" id="relativeChildPath"><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">relativeChildPath</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>parent</i>) const</h3>
+<p>Relative path from <i translate="no">parent</i> to this.</p>
+<p>Returns a empty <code translate="no">FilePath</code> if this is not a child of <i translate="no">parent</i>. <i translate="no">parent</i> is the Parent to calculate the relative path to. That is, this never returns a path starting with &quot;../&quot;</p>
+<p>Returns the relative path of this to <i translate="no">parent</i> if this is a child of <i translate="no">parent</i>.</p>
+<!-- @@@relativeChildPath -->
+<!-- $$$relativePathFrom[overload1]$$$relativePathFromconstUtils::FilePath& -->
+<h3 class="fn" translate="no" id="relativePathFrom"><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">relativePathFrom</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>anchor</i>) const</h3>
+<p>Returns the relative path of <a href="utils-filepath.html" translate="no">FilePath</a> from a given <i translate="no">anchor</i>. Both, <a href="utils-filepath.html" translate="no">FilePath</a> and anchor may be files or directories. Example usage:</p>
+<pre class="cpp" translate="no">
+ FilePath filePath(<span class="string">&quot;/foo/b/ar/file.txt&quot;</span>);
+ FilePath relativePath <span class="operator">=</span> filePath<span class="operator">.</span>relativePathFrom(<span class="string">&quot;/foo/c&quot;</span>);
+ qDebug() <span class="operator">&lt;</span><span class="operator">&lt;</span> relativePath
+</pre>
+<p>The debug output will be &quot;../b/ar/file.txt&quot;.</p>
+<!-- @@@relativePathFrom -->
+<!-- $$$removeRecursively[overload1]$$$removeRecursivelyQString* -->
+<h3 class="fn" translate="no" id="removeRecursively"><span class="type">bool</span> FilePath::<span class="name">removeRecursively</span>(<span class="type">QString</span> *<i>error</i> = nullptr) const</h3>
+<p>Removes the directory this filePath refers too and its subdirectories recursively.</p>
+<div class="admonition note">
+<p><b>Note: </b>The <i translate="no">error</i> parameter is optional.</p>
+</div>
+<p>Returns a Bool indicating whether the operation succeeded.</p>
+<!-- @@@removeRecursively -->
+<!-- $$$resolvePath[overload1]$$$resolvePathconstUtils::FilePath& -->
+<h3 class="fn" translate="no" id="resolvePath"><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">resolvePath</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>tail</i>) const</h3>
+<p>Appends the <i translate="no">tail</i> to this, if the tail is a relative path.</p>
+<p>Returns the tail if the tail is absolute, otherwise this + tail.</p>
+<!-- @@@resolvePath -->
+<!-- $$$resolvePath$$$resolvePathconstQString& -->
+<h3 class="fn" translate="no" id="resolvePath-1"><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">resolvePath</span>(const <span class="type">QString</span> &amp;<i>tail</i>) const</h3>
+<p>Appends the <i translate="no">tail</i> to this, if the tail is a relative path.</p>
+<p>Returns the tail if the tail is absolute, otherwise this + tail.</p>
+<!-- @@@resolvePath -->
+<!-- $$$resolveSymlinks[overload1]$$$resolveSymlinks -->
+<h3 class="fn" translate="no" id="resolveSymlinks"><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">resolveSymlinks</span>() const</h3>
+<p>Recursively resolves symlinks if this is a symlink.</p>
+<p>To resolve symlinks anywhere in the path, see <a href="utils-filepath.html#canonicalPath" translate="no">canonicalPath</a>. Unlike QFileInfo::canonicalFilePath(), this function will still return the expected deepest target file even if the symlink is dangling.</p>
+<div class="admonition note">
+<p><b>Note: </b>Maximum recursion depth == 16.</p>
+</div>
+<p>Returns the symlink target file path.</p>
+<!-- @@@resolveSymlinks -->
+<!-- $$$searchInDirectories[overload1]$$$searchInDirectoriesconstUtils::FilePaths&constUtils::FilePathPredicate&Utils::FilePath::MatchScope -->
+<h3 class="fn" translate="no" id="searchInDirectories"><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">searchInDirectories</span>(const <span class="type">Utils::FilePaths</span> &amp;<i>dirs</i>, const <span class="type">Utils::FilePathPredicate</span> &amp;<i>filter</i> = {}, <span class="type">Utils::FilePath::MatchScope</span> <i>matchScope</i> = WithAnySuffix) const</h3>
+<p>Search for a binary corresponding to this object on each directory entry specified by <i translate="no">dirs</i> matching the <i translate="no">filter</i> with the <i translate="no">matchScope</i> of the file path.</p>
+<p>Example usage:</p>
+<pre class="cpp" translate="no">
+ binary <span class="operator">=</span> FilePath<span class="operator">::</span>fromUrl(<span class="string">&quot;docker://123/./make);
+ fullPath = binary.searchInDirectories(binary.deviceEnvironment().path());
+ assert(fullPath == FilePath::fromUrl(&quot;</span>docker:<span class="comment">//123/usr/bin/make&quot;))</span>
+</pre>
+<!-- @@@searchInDirectories -->
+<!-- $$$shortNativePath[overload1]$$$shortNativePath -->
+<h3 class="fn" translate="no" id="shortNativePath"><span class="type">QString</span> FilePath::<span class="name">shortNativePath</span>() const</h3>
+<p>Converts the path to a possibly shortened path with native separators.</p>
+<p>Like QDir::toNativeSeparators(), but use prefix '~' instead of $HOME on unix systems when an absolute path is given.</p>
+<p>Returns the possibly shortened path with native separators.</p>
+<!-- @@@shortNativePath -->
+<!-- $$$startsWith[overload1]$$$startsWithconstQString& -->
+<h3 class="fn" translate="no" id="startsWith"><span class="type">bool</span> FilePath::<span class="name">startsWith</span>(const <span class="type">QString</span> &amp;<i>s</i>) const</h3>
+<p>Returns whether <code translate="no">path()</code> starts with <i translate="no">s</i>.</p>
+<!-- @@@startsWith -->
+<!-- $$$startsWithDriveLetter[overload1]$$$startsWithDriveLetter -->
+<h3 class="fn" translate="no" id="startsWithDriveLetter"><span class="type">bool</span> FilePath::<span class="name">startsWithDriveLetter</span>() const</h3>
+<p>Checks whether the <a href="utils-filepath.html" translate="no">FilePath</a> starts with a drive letter. Returns whether <a href="utils-filepath.html" translate="no">FilePath</a> starts with a drive letter</p>
+<!-- @@@startsWithDriveLetter -->
+<!-- $$$suffixView[overload1]$$$suffixView -->
+<h3 class="fn" translate="no" id="suffixView"><span class="type">QStringView</span> FilePath::<span class="name">suffixView</span>() const</h3>
+<p>Returns the suffix (extension) of the file.</p>
+<p>The suffix consists of all characters in the file after (but not including) the last '.'&#x2e; In case of &quot;.ui.qml&quot; it will be treated as one suffix.</p>
+<!-- @@@suffixView -->
+<!-- $$$symLinkTarget[overload1]$$$symLinkTarget -->
+<h3 class="fn" translate="no" id="symLinkTarget"><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">symLinkTarget</span>() const</h3>
+<p>Returns an empty <a href="utils-filepath.html" translate="no">FilePath</a> if this is not a symbolic link.</p>
+<!-- @@@symLinkTarget -->
+<!-- $$$toFSPathString[overload1]$$$toFSPathString -->
+<h3 class="fn" translate="no" id="toFSPathString"><span class="type">QString</span> FilePath::<span class="name">toFSPathString</span>() const</h3>
+<p>Returns a QString for passing on to QString based APIs.</p>
+<p>This uses a /__qtc_devices__/host/path setup.</p>
+<p>This works in most cases also with remote setups and QDir/QFileInfo etc. but is slower than direct <a href="utils-filepath.html" translate="no">FilePath</a> use and should only be used when proper porting to <a href="utils-filepath.html" translate="no">FilePath</a> is too difficult, or not possible, e.g&#x2e; when external Qt based libraries are used that do not use <a href="utils-filepath.html" translate="no">FilePath</a>.</p>
+<p><b>See also </b><a href="utils-filepath.html#fromUserInput" translate="no">fromUserInput</a>().</p>
+<!-- @@@toFSPathString -->
+<!-- $$$toFileInfo[overload1]$$$toFileInfo -->
+<h3 class="fn" translate="no" id="toFileInfo"><span class="type">QFileInfo</span> FilePath::<span class="name">toFileInfo</span>() const</h3>
+<p>Returns a QFileInfo.</p>
+<!-- @@@toFileInfo -->
+<!-- $$$toString[overload1]$$$toString -->
+<h3 class="fn" translate="no" id="toString"><span class="type">QString</span> FilePath::<span class="name">toString</span>() const</h3>
+<p>Returns a QString for passing through QString based APIs.</p>
+<div class="admonition note">
+<p><b>Note: </b>This is obsolete API and should be replaced by extended use of proper <code translate="no">FilePath</code>, or, in case this is not possible by <code translate="no">toFSPathString()</code>.</p>
+</div>
+<p>This uses a scheme://host/path setup and is, together with <a href="utils-filepath.html#fromString" translate="no">fromString</a>, used to pass <a href="utils-filepath.html" translate="no">FilePath</a> through <code translate="no">QString</code> using code paths.</p>
+<p>The result is not useful for use with cQDir and <code translate="no">QFileInfo</code> and gets destroyed by some operations like <code translate="no">QFileInfo::canonicalFile</code>.</p>
+<p><b>See also </b><a href="utils-filepath.html#toFSPathString" translate="no">toFSPathString</a>().</p>
+<!-- @@@toString -->
+<!-- $$$toUserOutput[overload1]$$$toUserOutput -->
+<h3 class="fn" translate="no" id="toUserOutput"><span class="type">QString</span> FilePath::<span class="name">toUserOutput</span>() const</h3>
+<p>Returns a QString to display to the user, including the device prefix.</p>
+<p>Converts the separators to the native format of the system this path belongs to.</p>
+<!-- @@@toUserOutput -->
+<!-- $$$toVariant[overload1]$$$toVariant -->
+<h3 class="fn" translate="no" id="toVariant"><span class="type">QVariant</span> FilePath::<span class="name">toVariant</span>() const</h3>
+<p>Returns the <a href="utils-filepath.html" translate="no">FilePath</a> as a variant.</p>
+<p>To be used for type-agnostic internal interfaces like storage in QAbstractItemModels.</p>
+<!-- @@@toVariant -->
+<!-- $$$withNewMappedPath[overload1]$$$withNewMappedPathconstUtils::FilePath& -->
+<h3 class="fn" translate="no" id="withNewMappedPath"><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">withNewMappedPath</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>newPath</i>) const</h3>
+<p>Returns a path corresponding to <i translate="no">newPath</i> object on the same device as the current object.</p>
+<p>This may involve device-specific translations like converting windows style paths to unix style paths with suitable file system case or handling of drive letters: C:/dev/src -&gt; /c/dev/src</p>
+<p>Example usage:</p>
+<pre class="cpp" translate="no">
+ localDir <span class="operator">=</span> FilePath(<span class="string">&quot;/tmp/workingdir&quot;</span>);
+ executable <span class="operator">=</span> FilePath<span class="operator">::</span>fromUrl(<span class="string">&quot;docker://123/bin/ls&quot;</span>)
+ realDir <span class="operator">=</span> executable<span class="operator">.</span>withNewMappedPath(localDir)
+ assert(realDir <span class="operator">=</span><span class="operator">=</span> FilePath<span class="operator">::</span>fromUrl(<span class="string">&quot;docker://123/tmp/workingdir&quot;</span>))
+</pre>
+<!-- @@@withNewMappedPath -->
+<!-- $$$withNewPath[overload1]$$$withNewPathconstQString& -->
+<h3 class="fn" translate="no" id="withNewPath"><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> FilePath::<span class="name">withNewPath</span>(const <span class="type">QString</span> &amp;<i>newPath</i>) const</h3>
+<p>Returns a <a href="utils-filepath.html" translate="no">FilePath</a> with local path <i translate="no">newPath</i> on the same device as the current object.</p>
+<p>Example usage:</p>
+<pre class="cpp" translate="no">
+ devicePath <span class="operator">=</span> FilePath(<span class="string">&quot;docker://123/tmp&quot;</span>);
+ newPath <span class="operator">=</span> devicePath<span class="operator">.</span>withNewPath(<span class="string">&quot;/bin/ls&quot;</span>);
+ assert(realDir <span class="operator">=</span><span class="operator">=</span> FilePath<span class="operator">::</span>fromUrl(<span class="string">&quot;docker://123/bin/ls&quot;</span>))
+</pre>
+<!-- @@@withNewPath -->
+<!-- $$$withTildeHomePath[overload1]$$$withTildeHomePath -->
+<h3 class="fn" translate="no" id="withTildeHomePath"><span class="type">QString</span> FilePath::<span class="name">withTildeHomePath</span>() const</h3>
+<p>On Linux/Mac replace user's home path with ~ in the <code translate="no">toString()</code> result for this path after cleaning.</p>
+<p>If path is not sub of home path, or when running on Windows, returns the input</p>
+<!-- @@@withTildeHomePath -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

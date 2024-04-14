@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- inavigationwidgetfactory.cpp -->
+  <meta name="description" content="The INavigationWidgetFactory class provides new instances of navigation widgets.">
+  <title>INavigationWidgetFactory Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>INavigationWidgetFactory</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">INavigationWidgetFactory Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::INavigationWidgetFactory</span>
+<!-- $$$INavigationWidgetFactory-brief -->
+<p>The INavigationWidgetFactory class provides new instances of navigation widgets. <a href="#details">More...</a></p>
+<!-- @@@INavigationWidgetFactory -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/inavigationwidgetfactory.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a></td></tr>
+</table></div>
+<ul>
+<li><a href="core-inavigationwidgetfactory-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-inavigationwidgetfactory.html#INavigationWidgetFactory" translate="no">INavigationWidgetFactory</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QKeySequence </td><td class="memItemRight bottomAlign"><b><a href="core-inavigationwidgetfactory.html#activationSequence" translate="no">activationSequence</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Core::NavigationView </td><td class="memItemRight bottomAlign"><b><a href="core-inavigationwidgetfactory.html#createWidget" translate="no">createWidget</a></b>() = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-inavigationwidgetfactory.html#displayName" translate="no">displayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Id </td><td class="memItemRight bottomAlign"><b><a href="core-inavigationwidgetfactory.html#id" translate="no">id</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="core-inavigationwidgetfactory.html#priority" translate="no">priority</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-inavigationwidgetfactory.html#restoreSettings" translate="no">restoreSettings</a></b>(Utils::QtcSettings *<i>settings</i>, int <i>position</i>, QWidget *<i>widget</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-inavigationwidgetfactory.html#saveSettings" translate="no">saveSettings</a></b>(Utils::QtcSettings *<i>settings</i>, int <i>position</i>, QWidget *<i>widget</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-inavigationwidgetfactory.html#setActivationSequence" translate="no">setActivationSequence</a></b>(const QKeySequence &amp;<i>keys</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-inavigationwidgetfactory.html#setDisplayName" translate="no">setDisplayName</a></b>(const QString &amp;<i>displayName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-inavigationwidgetfactory.html#setId" translate="no">setId</a></b>(Utils::Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-inavigationwidgetfactory.html#setPriority" translate="no">setPriority</a></b>(int <i>priority</i>)</td></tr>
+</table></div>
+<!-- $$$INavigationWidgetFactory-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>A navigation widget factory is necessary because there can be more than one navigation widget of the same type at a time. Each navigation widget is wrapped in a <a href="core-navigationview.html" translate="no">Core::NavigationView</a> for delivery.</p>
+</div>
+<!-- @@@INavigationWidgetFactory -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$INavigationWidgetFactory[overload1]$$$INavigationWidgetFactory -->
+<h3 class="fn" translate="no" id="INavigationWidgetFactory">INavigationWidgetFactory::<span class="name">INavigationWidgetFactory</span>()</h3>
+<p>Constructs a navigation widget factory.</p>
+<!-- @@@INavigationWidgetFactory -->
+<!-- $$$activationSequence[overload1]$$$activationSequence -->
+<h3 class="fn" translate="no" id="activationSequence"><span class="type"><a href="https://doc.qt.io/qt/qkeysequence.html" translate="no">QKeySequence</a></span> INavigationWidgetFactory::<span class="name">activationSequence</span>() const</h3>
+<p>Returns the keyboard shortcut to activate an instance of a navigation widget.</p>
+<p><b>See also </b><a href="core-inavigationwidgetfactory.html#setActivationSequence" translate="no">setActivationSequence</a>().</p>
+<!-- @@@activationSequence -->
+<!-- $$$createWidget[overload1]$$$createWidget -->
+<h3 class="fn" translate="no" id="createWidget"><code translate="no">[pure virtual] </code><span class="type"><a href="core-navigationview.html" translate="no">Core::NavigationView</a></span> INavigationWidgetFactory::<span class="name">createWidget</span>()</h3>
+<p>Returns a <a href="core-navigationview.html" translate="no">Core::NavigationView</a> containing the widget and the buttons. The ownership is given to the caller.</p>
+<!-- @@@createWidget -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" translate="no" id="displayName"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> INavigationWidgetFactory::<span class="name">displayName</span>() const</h3>
+<p>Returns the display name of the navigation widget, which is shown in the dropdown menu above the navigation widget.</p>
+<p><b>See also </b><a href="core-inavigationwidgetfactory.html#setDisplayName" translate="no">setDisplayName</a>().</p>
+<!-- @@@displayName -->
+<!-- $$$id[overload1]$$$id -->
+<h3 class="fn" translate="no" id="id"><span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> INavigationWidgetFactory::<span class="name">id</span>() const</h3>
+<p>Returns a unique identifier for referencing the navigation widget factory.</p>
+<p><b>See also </b><a href="core-inavigationwidgetfactory.html#setId" translate="no">setId</a>().</p>
+<!-- @@@id -->
+<!-- $$$priority[overload1]$$$priority -->
+<h3 class="fn" translate="no" id="priority"><span class="type">int</span> INavigationWidgetFactory::<span class="name">priority</span>() const</h3>
+<p>Determines the position of the navigation widget in the dropdown menu.</p>
+<p>0 to 1000 from top to bottom</p>
+<p><b>See also </b><a href="core-inavigationwidgetfactory.html#setPriority" translate="no">setPriority</a>().</p>
+<!-- @@@priority -->
+<!-- $$$restoreSettings[overload1]$$$restoreSettingsUtils::QtcSettings*intQWidget* -->
+<h3 class="fn" translate="no" id="restoreSettings"><code translate="no">[virtual] </code><span class="type">void</span> INavigationWidgetFactory::<span class="name">restoreSettings</span>(<span class="type"><a href="utils-qtcsettings.html" translate="no">Utils::QtcSettings</a></span> *<i>settings</i>, <span class="type">int</span> <i>position</i>, <span class="type"><a href="https://doc.qt.io/qt/qwidget.html" translate="no">QWidget</a></span> *<i>widget</i>)</h3>
+<p>Reads and restores the <i translate="no">settings</i> for the <i translate="no">widget</i> at <i translate="no">position</i> that was created by this factory (the <i translate="no">position</i> identifies a specific navigation widget).</p>
+<p><b>See also </b><a href="core-inavigationwidgetfactory.html#saveSettings" translate="no">INavigationWidgetFactory::saveSettings</a>().</p>
+<!-- @@@restoreSettings -->
+<!-- $$$saveSettings[overload1]$$$saveSettingsUtils::QtcSettings*intQWidget* -->
+<h3 class="fn" translate="no" id="saveSettings"><code translate="no">[virtual] </code><span class="type">void</span> INavigationWidgetFactory::<span class="name">saveSettings</span>(<span class="type"><a href="utils-qtcsettings.html" translate="no">Utils::QtcSettings</a></span> *<i>settings</i>, <span class="type">int</span> <i>position</i>, <span class="type"><a href="https://doc.qt.io/qt/qwidget.html" translate="no">QWidget</a></span> *<i>widget</i>)</h3>
+<p>Stores the <i translate="no">settings</i> for the <i translate="no">widget</i> at <i translate="no">position</i> that was created by this factory (the <i translate="no">position</i> identifies a specific navigation widget).</p>
+<p><b>See also </b><a href="core-inavigationwidgetfactory.html#restoreSettings" translate="no">INavigationWidgetFactory::restoreSettings</a>().</p>
+<!-- @@@saveSettings -->
+<!-- $$$setActivationSequence[overload1]$$$setActivationSequenceconstQKeySequence& -->
+<h3 class="fn" translate="no" id="setActivationSequence"><span class="type">void</span> INavigationWidgetFactory::<span class="name">setActivationSequence</span>(const <span class="type"><a href="https://doc.qt.io/qt/qkeysequence.html" translate="no">QKeySequence</a></span> &amp;<i>keys</i>)</h3>
+<p>Sets the keyboard activation sequence for the factory to <i translate="no">keys</i>.</p>
+<p><b>See also </b><a href="core-inavigationwidgetfactory.html#activationSequence" translate="no">activationSequence</a>().</p>
+<!-- @@@setActivationSequence -->
+<!-- $$$setDisplayName[overload1]$$$setDisplayNameconstQString& -->
+<h3 class="fn" translate="no" id="setDisplayName"><span class="type">void</span> INavigationWidgetFactory::<span class="name">setDisplayName</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>displayName</i>)</h3>
+<p>Sets the display name for the factory to <i translate="no">displayName</i>.</p>
+<p><b>See also </b><a href="core-inavigationwidgetfactory.html#displayName" translate="no">displayName</a>().</p>
+<!-- @@@setDisplayName -->
+<!-- $$$setId[overload1]$$$setIdUtils::Id -->
+<h3 class="fn" translate="no" id="setId"><span class="type">void</span> INavigationWidgetFactory::<span class="name">setId</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>id</i>)</h3>
+<p>Sets the <i translate="no">id</i> for the factory.</p>
+<p><b>See also </b><a href="core-inavigationwidgetfactory.html#id" translate="no">id</a>().</p>
+<!-- @@@setId -->
+<!-- $$$setPriority[overload1]$$$setPriorityint -->
+<h3 class="fn" translate="no" id="setPriority"><span class="type">void</span> INavigationWidgetFactory::<span class="name">setPriority</span>(<span class="type">int</span> <i>priority</i>)</h3>
+<p>Sets the <i translate="no">priority</i> for the factory.</p>
+<p><b>See also </b><a href="core-inavigationwidgetfactory.html#priority" translate="no">priority</a>().</p>
+<!-- @@@setPriority -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

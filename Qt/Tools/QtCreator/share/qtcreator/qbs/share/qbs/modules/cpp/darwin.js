@@ -28,6 +28,7 @@
 **
 ****************************************************************************/
 
+var Codesign = require("../codesign/codesign.js");
 var File = require("qbs.File");
 var FileInfo = require("qbs.FileInfo");
 var Gcc = require("./gcc.js");
@@ -72,7 +73,7 @@ function lipoOutputArtifacts(product, inputs, fileTag, debugSuffix) {
     // approach for all bundle types.
     var defaultVariant;
     if (!buildVariants.some(function (x) { return x.name === "release"; })
-            && product.multiplexByQbsProperties.contains("buildVariants")
+            && product.multiplexByQbsProperties.includes("buildVariants")
             && product.qbs.buildVariants && product.qbs.buildVariants.length > 1) {
         var defaultBuildVariant = product.qbs.defaultBuildVariant;
         buildVariants.map(function (variant) {
@@ -98,6 +99,9 @@ function lipoOutputArtifacts(product, inputs, fileTag, debugSuffix) {
             tags.push("bundle.variant_symlink");
         else
             tags.push(fileTag, "primary");
+
+        if (product.codesign.enableCodeSigning)
+            tags.push("codesign.signed_artifact");
 
         return {
             filePath: FileInfo.joinPaths(product.destinationDirectory,
@@ -133,7 +137,7 @@ function prepareLipo(project, product, inputs, outputs, input, output) {
     for (var p in inputs)
         inputs[p] = inputs[p].filter(function(inp) { return inp.product.name === product.name; });
     var allInputs = [].concat.apply([], Object.keys(inputs).map(function (tag) {
-        return ["application", "dynamiclibrary", "staticlibrary", "loadablemodule"].contains(tag)
+        return ["application", "dynamiclibrary", "staticlibrary", "loadablemodule"].includes(tag)
                 ? inputs[tag] : [];
     }));
 
@@ -168,26 +172,17 @@ function prepareLipo(project, product, inputs, outputs, input, output) {
         commands.push(cmd);
     }
 
-    var debugInfo = outputs.debuginfo_app || outputs.debuginfo_dll
-            || outputs.debuginfo_loadablemodule;
-    if (debugInfo) {
-        var dsymPath = debugInfo[0].filePath;
-        if (outputs.debuginfo_bundle && outputs.debuginfo_bundle[0])
-            dsymPath = outputs.debuginfo_bundle[0].filePath;
-        var flags = ModUtils.moduleProperty(product, "dsymutilFlags") || [];
-        cmd = new Command(ModUtils.moduleProperty(product, "dsymutilPath"), flags.concat([
-            "-o", dsymPath
-        ]).concat(outputs.primary.map(function (f) { return f.filePath; })));
-        cmd.description = "generating dSYM for " + product.name;
-        commands.push(cmd);
-    }
+    commands = commands.concat(
+            Gcc.separateDebugInfoCommandsDarwin(product, outputs, outputs.primary));
 
-    cmd = new Command(ModUtils.moduleProperty(product, "stripPath"),
-                      ["-S", outputs.primary[0].filePath]);
-    cmd.silent = true;
-    commands.push(cmd);
     if (outputs.dynamiclibrary_symbols)
         Array.prototype.push.apply(commands, Gcc.createSymbolCheckingCommands(product, outputs));
+
+    if (product.codesign.enableCodeSigning) {
+        Array.prototype.push.apply(
+                commands, Codesign.prepareSign(project, product, inputs, outputs, input, output));
+    }
+
     return commands;
 }
 

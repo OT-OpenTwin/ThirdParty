@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-transition-editor.qdoc -->
+  <title>Transitions | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Transitions</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-translations.html" />
+  <link rel="next" href="qtquick-timeline-view.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-translations.html">Translations</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtquick-timeline-view.html">Timeline</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#zooming-in-transitions">Zooming in Transitions</a></li>
+<li class="level1"><a href="#summary-of-transitions-toolbar-actions">Summary of Transitions Toolbar Actions</a></li>
+<li class="level1"><a href="#animating-transitions-between-states">Animating Transitions Between States</a></li>
+<li class="level1"><a href="#specifying-transition-settings">Specifying Transition Settings</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Transitions</h1>
+<!-- $$$qtquick-transition-editor.html-description -->
+<div class="descr" id="details">
+<p>To make movement between states smooth, you can use <b translate="no">Transitions</b> to animate the changes between states.</p>
+<p>First, you need to <a href="quick-states.html" translate="no">add states</a> in the <a href="qtquick-states-view.html" translate="no">States</a> view and <a href="qtquick-properties.html" translate="no">edit some properties</a> that can be animated, such as colors or numbers, in the <a href="qtquick-properties-view.html" translate="no">Properties</a> view. For example, you can animate the changes in the position of a component.</p>
+<p class="centerAlign"><img src="images/qtquick-transition-editor-view.png" alt="&quot;Transitions view&quot;" /></p><p>In <b translate="no">Transitions</b>, you can set the start frame, end frame, and duration for the transition of each property. You can also set an <a href="qtquick-editing-easing-curves.html" translate="no">easing curve</a> for each animation and the maximum duration of the whole transition.</p>
+<h2 id="zooming-in-transitions">Zooming in Transitions</h2>
+<p>Use the slider on the toolbar to set the zooming level in <b translate="no">Transitions</b>. Select the <img src="images/zoom_small.png" alt="" /> and <img src="images/zoom_big.png" alt="" /> buttons to zoom out of or into the view.</p>
+<h2 id="summary-of-transitions-toolbar-actions">Summary of Transitions Toolbar Actions</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Button/Field</th><th >Action</th><th >Read More</th></tr></thead>
+<tr valign="top" class="odd"><td ><img src="images/settings.png" alt="" /></td><td >Opens <b translate="no">Transition Settings</b> dialog for editing transition settings.</td><td ><a href="qtquick-transition-editor.html#specifying-transition-settings" translate="no">Specifying Transition Settings</a></td></tr>
+<tr valign="top" class="even"><td >Transition ID</td><td >Displays a list of transitions that you can open in <b translate="no">Transitions</b>.</td><td ><a href="qtquick-transition-editor.html#animating-transitions-between-states" translate="no">Animating Transitions Between States</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/curve_editor.png" alt="" /></td><td >Opens <b translate="no">Easing Curve Editor</b> for attaching an easing curve to the selected transition.</td><td ><a href="qtquick-editing-easing-curves.html" translate="no">Editing Easing Curves</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/zoomOut.png" alt="" /></td><td ><b translate="no">Zoom Out</b> (<b>Ctrl+-</b>): zooms out of the view.</td><td ><a href="qtquick-transition-editor.html#zooming-in-transitions" translate="no">Zooming in Transitions</a></td></tr>
+<tr valign="top" class="odd"><td >Slider</td><td >Sets the zooming level.</td><td ><a href="qtquick-transition-editor.html#zooming-in-transitions" translate="no">Zooming in Transitions</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/zoomIn.png" alt="" /></td><td ><b translate="no">Zoom In</b> (<b>Ctrl++</b>): zooms into the view.</td><td ><a href="qtquick-transition-editor.html#zooming-in-transitions" translate="no">Zooming in Transitions</a></td></tr>
+<tr valign="top" class="odd"><td >Maximum Duration</td><td >Specifies the maximum duration of the transition.</td><td ></td></tr>
+</table></div>
+<h2 id="animating-transitions-between-states">Animating Transitions Between States</h2>
+<p>To animate transitions:</p>
+<ol class="1" type="1"><li>Select <b translate="no">View</b> &gt; <b translate="no">Views</b> &gt; <b translate="no">Transition Editor</b>.<p class="centerAlign"><img src="images/qmldesigner-transition-editor-startup.png" alt="&quot;Empty Transitions view&quot;" /></p></li>
+<li>Select the <img src="images/plus.png" alt="" /> (<b translate="no">Add Transition</b>) button to add a transition. This works only if you have added at least one state and modified at least one property in it.<p class="centerAlign"><img src="images/qtquick-transition-editor-view.png" alt="&quot;Transitions view&quot;" /></p></li>
+<li>Move the blue bar next to the component or property name to set the start and end frame of the animation of the property. Pull its left and right edges to set the duration of the animation.</li>
+<li>To attach an <a href="qtquick-editing-easing-curves.html" translate="no">easing curve</a> to the selected transition, select the <img src="images/curve_editor.png" alt="" /> (<b translate="no">Easing Curve Editor (C)</b>) button.</li>
+</ol>
+<h2 id="specifying-transition-settings">Specifying Transition Settings</h2>
+<p>To modify transition settings, select the <img src="images/settings.png" alt="" /> (<b translate="no">Transition Settings (S)</b>) button in <b translate="no">Transition Editor</b>.</p>
+<p class="centerAlign"><img src="images/qtquick-transition-editor-settings.png" alt="&quot;Transitions settings&quot;" /></p><p>To add transitions:</p>
+<ol class="1" type="1"><li>Select the <img src="images/plus.png" alt="" /> (<b translate="no">Add Transition</b>) button.</li>
+<li>In the <b translate="no">Transition ID</b> field, enter an ID for the transition.</li>
+<li>In the <b translate="no">From</b> field, select the state to transition from.</li>
+<li>In the <b translate="no">To</b> field, select the state to transition to.</li>
+</ol>
+<p>To remove the current transition, select the <img src="images/minus.png" alt="" /> (<b translate="no">Remove Transition</b>) button.</p>
+</div>
+<!-- @@@qtquick-transition-editor.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-translations.html">Translations</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtquick-timeline-view.html">Timeline</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

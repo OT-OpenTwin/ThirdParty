@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-locator.qdoc -->
+  <title>Searching with the Locator | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Searching with the Locator</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-editor-finding.html" />
+  <link rel="next" href="creator-jump-to-the-code.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-editor-finding.html">Finding and Replacing</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-jump-to-the-code.html">Jump to the Code</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#activating-the-locator">Activating the Locator</a></li>
+<li class="level1"><a href="#using-locator-filters">Using Locator Filters</a></li>
+<li class="level2"><a href="#locating-files">Locating Files</a></li>
+<li class="level2"><a href="#locating-files-from-global-file-system-index">Locating Files from Global File System Index</a></li>
+<li class="level2"><a href="#locating-lines-and-columns">Locating Lines and Columns</a></li>
+<li class="level2"><a href="#creating-files-and-directories-from-locator">Creating Files and Directories from Locator</a></li>
+<li class="level2"><a href="#opening-sessions-from-locator">Opening Sessions from Locator</a></li>
+<li class="level2"><a href="#default-filters">Default Filters</a></li>
+<li class="level1"><a href="#changing-locator-filters">Changing Locator Filters</a></li>
+<li class="level2"><a href="#adding-web-search-engines">Adding Web Search Engines</a></li>
+<li class="level1"><a href="#creating-locator-filters">Creating Locator Filters</a></li>
+<li class="level1"><a href="#configuring-locator-cache">Configuring Locator Cache</a></li>
+<li class="level1"><a href="#executing-javascript">Executing JavaScript</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Searching with the Locator</h1>
+<!-- $$$creator-editor-locator.html-description -->
+<div class="descr" id="details">
+<p>The locator is the fastest way to find a particular project, file, class, or function, or almost anything else in your project.</p>
+<p>By default, you can find the locator in the bottom left of the Qt Design Studio window. To open it as a centered popup, click <img src="images/magnifier.png" alt="" /> (<b translate="no">Options</b>) in it and select <b translate="no">Open as Centered Popup</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-locator.webp" alt="&quot;List of locator filters&quot;" /></p><h2 id="activating-the-locator">Activating the Locator</h2>
+<p>To activate the locator:</p>
+<ul>
+<li>Press <b>Ctrl+K</b> (<b>Cmd+K</b> on macOS).</li>
+<li>Select <b translate="no">Tools</b> &gt; <b translate="no">Locate</b>.</li>
+<li>Select <b translate="no">Edit</b> &gt; <b translate="no">Go to Line</b>.</li>
+<li>Click the line and column indicator on the editor toolbar.</li>
+</ul>
+<h2 id="using-locator-filters">Using Locator Filters</h2>
+<p>You can locate not only files, but any items defined by <i>locator filters</i>, as well as trigger global actions and perform other tasks, such as build projects or run external tools.</p>
+<p>The filters that are available depend on the file type. For more information about what a particular locator filter does, see the tooltips that appear when you hover over a filter in the locator. For longer descriptions of the filters, select <b translate="no">Configure</b> to open the <b translate="no">Locator</b> <a href="creator-editor-locator.html#creating-locator-filters" translate="no">preferences</a>.</p>
+<p>To use a locator filter, type its prefix followed by <b>Space</b>. The prefix is usually short, from one to three characters. Then type the search string (for example, a filename or class name) or the command to execute.</p>
+<p>You can also double-click a locator filter in the filter list to use it. Use the up and down arrow keys or the <b>Ctrl+P</b> and <b>Ctrl+N</b> keyboard shortcuts to move up and down the list, and then press <b>Enter</b> to use the selected filter.</p>
+<p>As you type a search string, the locator shows the occurrences of that string regardless of where in the name of an component it appears. Some locator filters, such as colon, <code translate="no">m</code>, and <code translate="no">t</code>, support <i>fuzzy</i> matching, which means that you can enter the uppercase letters to locate a symbol when using camel case or the letters after the underscore when using snake case.</p>
+<p>To narrow down the search results, use the following wildcard characters:</p>
+<ul>
+<li>To match any number of any or no characters, enter <code translate="no">*</code>.</li>
+<li>To match a single instance of any character, enter <code translate="no">?</code>.</li>
+</ul>
+<h3 id="locating-files">Locating Files</h3>
+<p>You can locate files in the local file system or on connected devices. By default, the file system filter shows the files in the same folder as the currently open file and lets you navigate the file system. Also, it shows items that let you switch to another device root.</p>
+<p>For example, to open a QML file called <i>HelloWorld.qml</i> in the currently open project using the locator:</p>
+<ol class="1" type="1"><li>Press <b>Ctrl+K</b> to activate the locator.</li>
+<li>Start typing the filename.<p class="centerAlign"><img src="images/qtcreator-locator-open.webp" alt="&quot;List of files found in the locator&quot;" /></p></li>
+<li>Use the arrow keys to move to the filename in the list and press <b>Enter</b>.<p>The file opens in the editor.</p>
+</li>
+<li>To move to a line in the file, enter the line number in the locator.</li>
+</ol>
+<p>If the path to a file is very long, it might not fit into the locator window. To view the full path, press <b>Alt</b> when the filename is selected or use the handle next to the locator window to increase the window width.</p>
+<h3 id="locating-files-from-global-file-system-index">Locating Files from Global File System Index</h3>
+<p>You can install tools such as Spotlight, Locate, or Everything and use them to locate files from a global file system index. Use the <code translate="no">md</code> locator filter to locate the files.</p>
+<p>To use the sorting from the selected tool instead of from Qt Design Studio, deselect the <b translate="no">Sort results</b> check box in the <code translate="no">md</code> locator filter configuration.</p>
+<p class="centerAlign"><img src="images/qtcreator-locator-filter-edit-md.webp" alt="{Filter Configuration dialog}" /></p><h3 id="locating-lines-and-columns">Locating Lines and Columns</h3>
+<p>To move directly to a particular line and column in the document when you open the document, append the line and column number to the file name in the locator, separated by plus signs (+) or colons (:).</p>
+<p>For example, to open <i>HelloWorld.qml</i> to line 41 and column 2, enter:</p>
+<pre class="cpp" translate="no">
+ HelloWorld<span class="operator">.</span>qml:<span class="number">41</span>:<span class="number">2</span>
+</pre>
+<h3 id="creating-files-and-directories-from-locator">Creating Files and Directories from Locator</h3>
+<p>To create a new file and open it in the editor, type <code translate="no">f</code> followed by <b>Space</b>, followed by path and file name, and then press <b>Enter</b> or select <b translate="no">Create and Open File</b>. To create a directory, select <b translate="no">Create Directory</b>.</p>
+<h3 id="opening-sessions-from-locator">Opening Sessions from Locator</h3>
+<p>You can use the filter that triggers menu commands to open <a href="creator-project-managing-sessions.html" translate="no">sessions</a>. Enter <code translate="no">t yoursess</code> or <code translate="no">t sess yoursess</code> to trigger <b translate="no">File</b> &gt; <b translate="no">Sessions</b> &gt; <i>&lt;session_name&gt;</i>.</p>
+<h3 id="default-filters">Default Filters</h3>
+<p>By default, you can use the following preset locator filters without a prefix:</p>
+<ul>
+<li>Going to a line and column in the current file (<code translate="no">l</code>).</li>
+<li>Going to an open file (<code translate="no">o</code>).</li>
+<li>Going to a file in any open project (<code translate="no">a</code>).</li>
+</ul>
+<h2 id="changing-locator-filters">Changing Locator Filters</h2>
+<p>You can change the preset locator filters to match your use case. For example, you can change the filter prefix and restrict the search to items that match the filter.</p>
+<p class="centerAlign"><img src="images/qtcreator-locator-filter-edit-ai.webp" alt="{Filter Configuration dialog}" /></p><p>To configure a locator filter:</p>
+<ol class="1" type="1"><li>In the locator, click <img src="images/magnifier.png" alt="" /> (<b translate="no">Options</b>) and select <b translate="no">Configure</b> to open the <b translate="no">Locator</b> preferences.</li>
+<li>Select a filter, and then select <b translate="no">Edit</b>.</li>
+<li>Specify the prefix string.</li>
+<li>To implicitly include the filter even when not typing a prefix as a part of the search string, select <b translate="no">Include by default</b>.</li>
+<li>Set other available preferences.</li>
+</ol>
+<h3 id="adding-web-search-engines">Adding Web Search Engines</h3>
+<p>You can use the <b translate="no">Web Search (r)</b> locator filter to perform web searches. URLs and search commands for Bing, Google, Yahoo! Search, cplusplus.com, and Wikipedia are configured by default.</p>
+<p>To find out the format of the search command to use for your favorite web search engine, perform a search in your browser and copy the resulting URL to the locator filter configuration. Replace the search term with the variable <code translate="no">%1</code>.</p>
+<p>To add URLs and search commands to the list:</p>
+<ol class="1" type="1"><li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Environment</b> &gt; <b translate="no">Locator</b> &gt; <b translate="no">Web Search</b> &gt; <b translate="no">Edit</b>.</li>
+<li>Select <b translate="no">Add</b> to add a new entry to the list.<p class="centerAlign"><img src="images/qtcreator-add-online-doc.webp" alt="&quot;List of URLs in Filter Configuration dialog&quot;" /></p></li>
+<li>Double-click the new entry to specify a URL and a search command. For example, <code translate="no">http://www.google.com/search?q=%1</code>.</li>
+<li>Click <b translate="no">OK</b>.</li>
+</ol>
+<h2 id="creating-locator-filters">Creating Locator Filters</h2>
+<p>You can create custom locator filters for searching in a directory structure or on the web.</p>
+<p>To quickly access files not directly mentioned in your project, you can create your own directory filters. That way you can locate files in a directory structure you have defined.</p>
+<p>To create custom locator filters:</p>
+<ol class="1" type="1"><li>In the locator, select <b translate="no">Options</b> &gt; <b translate="no">Configure</b> to open the <b translate="no">Locator</b> preferences.<p class="centerAlign"><img src="images/qtcreator-locator-customize.webp" alt="&quot;Locator preferences&quot;" /></p></li>
+<li>Select <b translate="no">Add</b> &gt; <b translate="no">Files in Directories</b> to add a directory filter or <b translate="no">URL Template</b> to add a URL filter. The settings to specify depend on the filter type.<p class="centerAlign"><img src="images/qtcreator-locator-generic-directory-filter.png" alt="&quot;Filter Configuration dialog&quot;" /></p></li>
+<li>In the <b translate="no">Name</b> field, enter a name for your filter.</li>
+<li>In the <b translate="no">Directories</b> field, select at least one directory. The locator searches directories recursively.</li>
+<li>In the <b translate="no">File pattern</b> field, specify file patterns to restrict the search to files that match the pattern. Separate the patterns with commas. For example, to search for all <code translate="no">.qml</code> and <code translate="no">.ui.qml</code> files, enter <code translate="no">*.qml,*.ui.qml</code></li>
+<li>In the <b translate="no">Exclusion pattern</b> field, specify file patterns to omit files from the search.</li>
+<li>In the <b translate="no">Prefix</b> field, specify the prefix string.<p>To implicitly include the filter even when not typing a prefix as a part of the search string, select <b translate="no">Include by default</b>.</p>
+</li>
+<li>Select <b translate="no">OK</b>.</li>
+</ol>
+<h2 id="configuring-locator-cache">Configuring Locator Cache</h2>
+<p>The locator searches the files matching your file pattern in the directories you have selected and caches that information. Qt Design Studio updates the cache for all preset filters as you write code. By default, Qt Design Studio updates your custom filters once an hour.</p>
+<p>To update the cached information manually, select <b translate="no">Options</b> &gt; <b translate="no">Refresh</b> in the locator.</p>
+<p>To set a new cache update time:</p>
+<ol class="1" type="1"><li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Environment</b> &gt; <b translate="no">Locator</b>.</li>
+<li>In <b translate="no">Refresh interval</b>, define new time in minutes.</li>
+</ol>
+<h2 id="executing-javascript">Executing JavaScript</h2>
+<p>The locator has a JavaScript interpreter for performing calculations.</p>
+<p>Beside simple mathematical operations, like ((1 + 2) * 3), the following built-in functions exist:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Function</th><th >Purpose</th></tr></thead>
+<tr valign="top" class="odd"><td >abs(x)</td><td >Returns the absolute value of x</td></tr>
+<tr valign="top" class="even"><td >acos(x)</td><td >Returns the arccosine of x, in radians</td></tr>
+<tr valign="top" class="odd"><td >asin(x)</td><td >Returns the arcsine of x, in radians</td></tr>
+<tr valign="top" class="even"><td >atan(x)</td><td >Returns the arctangent of x, in radians</td></tr>
+<tr valign="top" class="odd"><td >atan2(x, y)</td><td >Returns the arctangent of the quotient of its arguments</td></tr>
+<tr valign="top" class="even"><td >bin(x)</td><td >Returns the binary representation of x</td></tr>
+<tr valign="top" class="odd"><td >ceil(x)</td><td >Returns the value of x rounded up to the next integer</td></tr>
+<tr valign="top" class="even"><td >cos(x)</td><td >Returns the cosine of x (x is in radians)</td></tr>
+<tr valign="top" class="odd"><td >exp(x)</td><td >Returns the value of E to the power of x</td></tr>
+<tr valign="top" class="even"><td >e()</td><td >Returns Euler's number E (2.71828...)</td></tr>
+<tr valign="top" class="odd"><td >floor(x)</td><td >Returns the value of x rounded down to the next integer</td></tr>
+<tr valign="top" class="even"><td >hex(x)</td><td >Returns the hexadecimal representation of x</td></tr>
+<tr valign="top" class="odd"><td >log(x)</td><td >Returns the natural logarithm (base E) of x</td></tr>
+<tr valign="top" class="even"><td >max([value1[, value2[, ...]]])</td><td >Returns the highest value of the given numbers</td></tr>
+<tr valign="top" class="odd"><td >min([value1[, value2[, ...]]])</td><td >Returns the lowest value of the given numbers</td></tr>
+<tr valign="top" class="even"><td >oct(x)</td><td >Returns the octal representation of x</td></tr>
+<tr valign="top" class="odd"><td >pi()</td><td >Returns PI (3.14159...)</td></tr>
+<tr valign="top" class="even"><td >pow(x, y)</td><td >Returns the value of x to the power of y</td></tr>
+<tr valign="top" class="odd"><td >random()</td><td >Returns a random number between 0 and 1</td></tr>
+<tr valign="top" class="even"><td >round(x)</td><td >Returns the value of x rounded to the next integer</td></tr>
+<tr valign="top" class="odd"><td >sin(x)</td><td >Returns the sine of x (x is in radians)</td></tr>
+<tr valign="top" class="even"><td >sqrt(x)</td><td >Returns the square root of x</td></tr>
+<tr valign="top" class="odd"><td >tan(x)</td><td >Returns the tangent of x (x is in radians)</td></tr>
+</table></div>
+</div>
+<!-- @@@creator-editor-locator.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-editor-finding.html">Finding and Replacing</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-jump-to-the-code.html">Jump to the Code</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

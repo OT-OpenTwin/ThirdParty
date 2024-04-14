@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-importing-2d.qdoc -->
+  <title>Importing 2D Assets | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Importing 2D Assets</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-importing-designs.html" />
+  <link rel="next" href="qtquick-fonts.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-importing-designs.html">Importing Designs</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtquick-fonts.html">Using Custom Fonts</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#importing-designs-from-other-design-tools">Importing Designs From Other Design Tools</a></li>
+<li class="level2"><a href="#merging-qml-files">Merging QML Files</a></li>
+<li class="level2"><a href="#qt-bridge-for-sketch-tutorials">Qt Bridge for Sketch Tutorials</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Importing 2D Assets</h1>
+<!-- $$$studio-importing-2d.html-description -->
+<div class="descr" id="details">
+<p>You can import 2D assets, such as images, fonts, and sound files, to Qt Design Studio to use them in your projects.</p>
+<p>To import an asset, drag-and-drop the external file containing the asset from, for example, File Explorer on Windows, to the <b translate="no">2D</b>, <b translate="no">Navigator</b>, or <b translate="no">Code</b> view. Alternatively, select <b translate="no">Assets</b> &gt; <img src="images/plus.png" alt="" /> and follow the instructions in the <b translate="no">Asset Import</b> dialog. You can also multiselect several external asset files to drag-and-drop them to Qt Design Studio simultaneously.</p>
+<p>The imported images will appear in <b translate="no">Assets</b>. If you initiate the import by dragging the assets to the <b translate="no">2D</b> view, they are also added to your projects as image components, and you can view them in the <b translate="no">2D</b> and <b translate="no">Navigator</b> view. If you drag an external font file to the <b translate="no">2D</b> view, it will be added to your project as a text component. Other imported assets, such as sound files, will only appear in <b translate="no">Assets</b>, and you can then drag-and-drop them to a suitable view.</p>
+<h2 id="importing-designs-from-other-design-tools">Importing Designs From Other Design Tools</h2>
+<p class="centerAlign"><img src="images/studio-imported-assets.webp" alt="&quot;UI imported into Qt Design Studio&quot;" /></p><p>Qt Bridge enables you to export assets and then import them to a Qt Design Studio project as images and QML files for editing in the <a href="qtquick-form-editor.html" translate="no">2D</a> view. If you make changes to your design in the design tool that you originally used to create it, you can merge the changes into existing QML files without overwriting the changes you have made in Qt Design Studio. For more information, see <a href="qtbridge-overview.html" translate="no">Exporting from Design Tools</a>.</p>
+<p>Qt Bridge exports the designs either as an archive(.qtbridge) or as images with a .metadata file. Qt Design Studio support both formats.</p>
+<p>The following instructions use an empty project as an example. For more information about the options you have, see <a href="studio-projects.html" translate="no">Creating Projects</a>.</p>
+<p>To import the exported assets to Qt Design Studio projects:</p>
+<ol class="1" type="1"><li>Select <b translate="no">File</b> &gt; <b translate="no">New Project</b> &gt; <b translate="no">General</b> &gt; <b translate="no">Empty</b>. Add <b translate="no">Details</b> about the project and select <b translate="no">Create</b>.</li>
+<li>In <b translate="no">Projects</b>, double-click <i>Screen01.ui.qml</i> to move to the Design mode.</li>
+<li>Select <b translate="no">Assets</b> &gt; <img src="images/plus.png" alt="" /> .</li>
+<li>Select the folder where you exported the assets.</li>
+<li>Select <b translate="no">Compressed Metadata (*.qtbridge)</b> or <b translate="no">Exported Metadata (*.metadata)</b> in the dropdown menu to filter the exported files.</li>
+<li>Select a the file to import and then select <b translate="no">Open</b>.</li>
+<li>Select <b translate="no">Details</b> next to the <b translate="no">Import Paths</b> field to display the path where the exported assets are imported from.<p class="centerAlign"><img src="images/studio-asset-import.png" alt="&quot;Asset Import dialog&quot;" /></p></li>
+<li>Select <b translate="no">Details</b> next to the <b translate="no">Export Paths</b> field to display the paths to copy the assets to.</li>
+<li>In the <b translate="no">QML</b> field, you can change the folder to copy the QML files to.</li>
+<li>In the <b translate="no">Assets</b> field, you can change the folder to copy the image files to.</li>
+<li>Select the <b translate="no">Create sub directory</b> check box to import the assets in a sub directory inside <b translate="no">Export Paths</b>.</li>
+<li>Deselect the <b translate="no">Import assets</b> check box if you only want to create QML files.</li>
+<li>Deselect the <b translate="no">Generate QML</b> check box if you only want to import assets.</li>
+<li>Select the <b translate="no">Merge QML</b> check box if you have imported the assets before and want to merge the changes into existing QML files instead of overwriting the existing files. See <a href="studio-importing-2d.html#merging-qml-files" translate="no">Merging QML Files</a>.</li>
+<li>Select the <b translate="no">Round off coordinates</b> check box to round off the position and dimension values to integers in the generated QML files.</li>
+<li>Select the <b translate="no">Save Logs</b> check box to write the export logs to a text file inside the directory selected in <b translate="no">QML</b> export path.</li>
+<li>Select <b translate="no">Import</b> to import the QML files and assets. This might take a little while for complex projects.</li>
+</ol>
+<p>The imported assets are displayed in <b translate="no">Assets</b> as images. The components that you specified in the design tool are displayed in <b translate="no">Components</b> &gt; <b translate="no">My Components</b> as well as in the <b translate="no">Projects</b> view as separate QML files. To use them, drag-and-drop them from <b translate="no">Components</b> to the <b translate="no">2D</b> or <a href="qtquick-navigator.html" translate="no">Navigator</a> view.</p>
+<p>If asset importer conflicts, warnings, and errors are displayed in the <b translate="no">Asset Import</b> dialog while importing, fix the issues in design tool and export the assets again.</p>
+<h3 id="merging-qml-files">Merging QML Files</h3>
+<p>When you re-import a QML component, the changes done in Qt Design Studio are preserved. The QML item changes in the existing QML component are copied to the corresponding QML item in the new component.</p>
+<p>The following rules are observed while merging QML components.</p>
+<ul>
+<li>While importing, a unique identifier (UUID) is added for each QML item in the component. The UUID is used to find the corresponding QML item in the existing component.</li>
+<li>New item properties in the existing component are added to the corresponding item in the new component.</li>
+<li>When a QML property is set in both old and new QML item, the property in the new item remains unchanged. This rule does not apply to binding properties. In case of bindings, changes done in Qt Design Studio are preserved.</li>
+<li>New child items are added to the corresponding item in the new component.</li>
+<li>QML items for which a corresponding QML item is not found in the existing component, are added under the root item of the new component.</li>
+</ul>
+<h3 id="qt-bridge-for-sketch-tutorials">Qt Bridge for Sketch Tutorials</h3>
+<p>For more information, read the tutorials about using Qt Bridge for Sketch that are also accessible from the <b translate="no">Tutorials</b> tab of the Welcome mode:</p>
+<ul>
+<li><a href="https://www.qt.io/blog/qt-design-studio-sketch-bridge-tutorial-part-1" translate="no">Sketch Bridge Tutorial Part 1</a></li>
+<li><a href="https://www.qt.io/blog/qt-design-studio-sketch-bridge-tutorial-part-2" translate="no">Sketch Bridge Tutorial Part 2</a></li>
+</ul>
+</div>
+<!-- @@@studio-importing-2d.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-importing-designs.html">Importing Designs</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtquick-fonts.html">Using Custom Fonts</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

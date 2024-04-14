@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-terms.qdoc -->
+  <title>Concepts and Terms | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Concepts and Terms</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-use-cases.html" />
+  <link rel="next" href="studioexamples.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-use-cases.html">Use Cases</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studioexamples.html">Examples</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#asset">Asset</a></li>
+<li class="level1"><a href="#binding">Binding</a></li>
+<li class="level1"><a href="#component">Component</a></li>
+<li class="level1"><a href="#connection">Connection</a></li>
+<li class="level1"><a href="#device">Device</a></li>
+<li class="level1"><a href="#mode">Mode</a></li>
+<li class="level1"><a href="#project">Project</a></li>
+<li class="level1"><a href="#property">Property</a></li>
+<li class="level1"><a href="#signal">Signal</a></li>
+<li class="level1"><a href="#state">State</a></li>
+<li class="level1"><a href="#transition">Transition</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Concepts and Terms</h1>
+<!-- $$$studio-terms.html-description -->
+<div class="descr" id="details">
+<p>This topic describes main Qt Design Studio concepts and terms:</p>
+<ul>
+<li><a href="studio-terms.html#glossary-asset" translate="no">Asset</a></li>
+<li><a href="studio-terms.html#glossary-binding" translate="no">Binding</a></li>
+<li><a href="studio-terms.html#glossary-component" translate="no">Component</a></li>
+<li><a href="studio-terms.html#glossary-connection" translate="no">Connection</a></li>
+<li><a href="studio-terms.html#glossary-device" translate="no">Device</a></li>
+<li><a href="studio-terms.html#glossary-mode" translate="no">Mode</a></li>
+<li><a href="studio-terms.html#glossary-project" translate="no">Project</a></li>
+<li><a href="studio-terms.html#glossary-property" translate="no">Property</a></li>
+<li><a href="studio-terms.html#glossary-signal" translate="no">Signal</a></li>
+<li><a href="studio-terms.html#glossary-state" translate="no">State</a></li>
+<li><a href="studio-terms.html#glossary-transition" translate="no">Transition</a></li>
+</ul>
+<h2 id="asset">Asset</h2>
+<span id="glossary-asset"></span><p>An <i>asset</i> is an image, font file, 3D model, or other supported file that you add to your <a href="studio-terms.html#glossary-project" translate="no">project</a>.</p>
+<p class="centerAlign"><img src="images/qtquick-assets-tab.png" alt="&quot;Assets&quot;" /></p><p>Assets are packaged with <a href="studio-terms.html#glossary-component" translate="no">components</a> for delivery to users.</p>
+<p>Read more about assets:</p>
+<ul>
+<li><a href="quick-assets.html" translate="no">Assets</a></li>
+</ul>
+<h2 id="binding">Binding</h2>
+<span id="glossary-binding"></span><p>A <i>binding</i> is a declarative way of specifying the value of a <a href="studio-terms.html#glossary-property" translate="no">property</a>. Binding allows a property value to be expressed as a JavaScript expression that defines the value relative to other property values or data accessible in the application. The property value is automatically updated if the other properties or data values change.</p>
+<p>At its simplest, a binding may be a reference to another property. For example, the height of a <a href="studio-terms.html#glossary-component" translate="no">component</a> can be bound to the height of its parent, so that when the parent height changes, the component height is adjusted automatically. Similarly, the opacity of a component can be bound to the opacity of its parent component.</p>
+<p class="centerAlign"><img src="images/qtquick-connection-editor-assignment.webp" alt="&quot;Binding Editor&quot;" /></p><p>Property bindings are created implicitly whenever a property is assigned a JavaScript expression.</p>
+<p>Read more about bindings:</p>
+<ul>
+<li><a href="quick-property-bindings.html" translate="no">Adding Bindings Between Properties</a></li>
+<li><a href="qtquick-positioning.html#setting-bindings" translate="no">Setting Bindings</a></li>
+</ul>
+<h2 id="component">Component</h2>
+<span id="glossary-component"></span><p>A <i>component</i> is a reusable building block for a UI.</p>
+<p>Qt Design Studio comes with <i>preset components</i> that you can use in your UI by creating instances of them. These are similar to <i>Symbols</i> in Sketch or <i>Prefab</i> in Unity.</p>
+<p class="centerAlign"><img src="images/qtquick-components-tab.png" alt="&quot;Preset components in Components&quot;" /></p><p>Some of the <a href="quick-components-view.html#component-types" translate="no">preset components</a> represent simple shapes, text, or images, while others represent complex UI controls with full functionality, such as spin boxes or sliders. You can also add instances of preset <a href="quick-preset-components.html#3d-components" translate="no">3D components</a> to your UIs. You can find all the preset components in <a href="quick-components-view.html" translate="no">Components</a>.</p>
+<p>To build <a href="quick-component-instances.html" translate="no">your own components</a>, you can modify the <a href="studio-terms.html#glossary-property" translate="no">properties</a> of the component instances and combine them.</p>
+<p>A component is specified within one file (with the file extension <i>ui.qml</i> or <i>.qml</i>). For example, a Button component may be defined in Button.ui.qml. Typically, the visual appearance of a component is defined in a <i>UI file</i>. To create component files, you can use <a href="quick-components-creating.html#creating-components-from-scratch" translate="no">wizard templates</a>, or <a href="quick-components-creating.html#turning-component-instances-into-custom-components" translate="no">move component instances into separate component files</a>.</p>
+<p>Read more about components:</p>
+<ul>
+<li><a href="quick-preset-components.html" translate="no">Preset Components</a></li>
+<li><a href="quick-component-instances.html" translate="no">Creating Component Instances</a></li>
+<li><a href="quick-components-creating.html" translate="no">Creating Custom Components</a></li>
+</ul>
+<h2 id="connection">Connection</h2>
+<span id="glossary-connection"></span><p>A <i>connection</i> can be created between a <a href="studio-terms.html#glossary-component" translate="no">component</a> and <a href="studio-terms.html#glossary-signal" translate="no">signal</a> to determine how the UI should react to application events. Another way to create connections between components is to create <a href="studio-terms.html#glossary-binding" translate="no">bindings</a> between the values of their <a href="studio-terms.html#glossary-property" translate="no">properties</a>.</p>
+<p class="centerAlign"><img src="images/qmldesigner-connections.webp" alt="&quot;The Connections view&quot;" /></p><p>Read more about connections:</p>
+<ul>
+<li><a href="qtquick-connection-view.html" translate="no">Connections</a></li>
+<li><a href="qmldesigner-connections.html" translate="no">Working with Connections</a></li>
+</ul>
+<h2 id="device">Device</h2>
+<span id="glossary-device"></span><p>An embedded device.</p>
+<p>Read more about devices:</p>
+<ul>
+<li><a href="creator-live-preview-devices.html" translate="no">Previewing on Devices</a></li>
+</ul>
+<h2 id="mode">Mode</h2>
+<span id="glossary-mode"></span><p>A <i>mode</i> adapts the Qt Design Studio UI to the different UI design tasks at hand. Each mode has its own view that shows only the information required for performing a particular task, and provides only the most relevant features and functions related to it. As a result, the majority of the Qt Design Studio window area is always dedicated to the actual task.</p>
+<p>For a designer, the most important modes are <b translate="no">Design</b> for the actual work, <b translate="no">Welcome</b> for opening examples and tutorials, and <b translate="no">Help</b> for reading documentation. The other modes are mostly needed for application development.</p>
+<p class="centerAlign"><img src="images/studio-design-mode.webp" alt="&quot;Design mode&quot;" /></p><p>The mode selector is hidden by default.</p>
+<p>To show the mode selector, go to <b translate="no">Views</b> &gt; <b translate="no">Mode Selector Style</b> and select <b translate="no">Icons and Text</b> or <b translate="no">Icons Only</b>.</p>
+<h2 id="project">Project</h2>
+<span id="glossary-project"></span><p>A project is a container for the <a href="studio-terms.html#glossary-component" translate="no">components</a> and <a href="studio-terms.html#glossary-asset" translate="no">assets</a> that you use in your UI. You can <i>package</i> the UI and preview or run it on different operating systems on the desktop or a <a href="studio-terms.html#glossary-device" translate="no">device</a>.</p>
+<p>You use templates to create different types of projects according to your needs. The templates add preset components to the project by default. For example, if you create a 3D project, preset 3D components are added to it. You can add more preset components in <b translate="no">Components</b>.</p>
+<p class="centerAlign"><img src="images/studio-project-wizards.png" alt="&quot;New Project dialog&quot;" /></p><p>Read more about projects:</p>
+<ul>
+<li><a href="studio-projects.html" translate="no">Creating Projects</a></li>
+</ul>
+<h2 id="property">Property</h2>
+<span id="glossary-property"></span><p>A <i>property</i> is an attribute of a <a href="studio-terms.html#glossary-component" translate="no">component</a> that can be assigned a static value or bound to a dynamic expression. A property's value can be read by other components. Generally, it can also be modified by another component, unless a particular component type has explicitly disallowed this for a specific property.</p>
+<p class="centerAlign"><img src="images/qtquick-item-properties-common.png" alt="&quot;Properties view&quot;" /></p><p>Read more about properties:</p>
+<ul>
+<li><a href="qtquick-properties-view.html" translate="no">Properties</a></li>
+<li><a href="quick-preset-components.html" translate="no">Preset Components</a></li>
+<li><a href="qtquick-properties.html" translate="no">Specifying Component Properties</a></li>
+<li><a href="quick-property-bindings.html" translate="no">Adding Bindings Between Properties</a></li>
+<li><a href="quick-dynamic-properties.html" translate="no">Specifying Custom Properties</a></li>
+</ul>
+<h2 id="signal">Signal</h2>
+<span id="glossary-signal"></span><p>A <i>signal</i> represents an application event, such as a user clicking a button or the value of a <a href="studio-terms.html#glossary-property" translate="no">property</a> of a <a href="studio-terms.html#glossary-component" translate="no">component</a> changing. The application needs this information to perform actions or to relay it to other applications.</p>
+<p>Components have predefined signals that are emitted when users interact with the application. For example, the <a href="quick-user-interaction-methods.html#mouse-area" translate="no">Mouse Area</a> component has a <code translate="no">clicked</code> signal that is emitted whenever the mouse is clicked within the area. Since the signal name is <code translate="no">clicked</code>, the signal handler for receiving this signal is named <code translate="no">onClicked</code>. Then it performs the defined <b translate="no">Action</b>.</p>
+<p class="centerAlign"><img src="images/qtquick-component-signal.webp" alt="&quot;Component signal&quot;" /></p><p>Further, a signal is automatically emitted when the value of a <a href="studio-terms.html#glossary-property" translate="no">property</a> changes.</p>
+<p>Read more about signals:</p>
+<ul>
+<li><a href="quick-signals.html" translate="no">Connecting Components to Signals</a></li>
+<li><a href="quick-user-interaction-methods.html#mouse-area" translate="no">Mouse Area</a></li>
+</ul>
+<h2 id="state">State</h2>
+<span id="glossary-state"></span><p>The <i>state</i> of a particular visual <a href="studio-terms.html#glossary-component" translate="no">component</a> is the set of information that describes how and where the individual parts of the component are displayed within it, and all the data associated with that state. Most visual components in a UI will have a limited number of states, each with well-defined <a href="studio-terms.html#glossary-property" translate="no">properties</a>.</p>
+<p>For example, an element in a list may be either selected or not, and if selected, it may either be the currently active single selection or it may be part of a selection group. Each of those states may have certain associated visual appearance (neutral highlighted, expanded, and so forth).</p>
+<p>Similarly, the appearance of a button can change to indicate a <i>pressed</i> state.</p>
+<p class="centerAlign"><img src="images/studio-custom-button.gif" alt="&quot;Button states&quot;" /></p><p>Read more about states:</p>
+<ul>
+<li><a href="qtquick-states-view.html" translate="no">States</a></li>
+<li><a href="quick-states.html" translate="no">Working with States</a></li>
+</ul>
+<h2 id="transition">Transition</h2>
+<span id="glossary-transition"></span><p>When a visual <a href="studio-terms.html#glossary-component" translate="no">component</a> transitions from one <a href="studio-terms.html#glossary-state" translate="no">state</a> to another, its appearance changes. A <i>transition</i> is an <i>edge</i> between two states. It may trigger other events to occur, as other parts of the application may have behavior that is triggered when a certain state is entered or left.</p>
+<p>Read more about transitions:</p>
+<ul>
+<li><a href="qtquick-transition-editor.html" translate="no">Transitions</a></li>
+<li><a href="qtquick-transition-editor.html#animating-transitions-between-states" translate="no">Animating Transitions Between States</a></li>
+</ul>
+</div>
+<!-- @@@studio-terms.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-use-cases.html">Use Cases</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studioexamples.html">Examples</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

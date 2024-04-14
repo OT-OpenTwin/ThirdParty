@@ -48,10 +48,7 @@
 **
 ****************************************************************************/
 
-import qbs 1.0
-
-Product {
-    type: "staticlibrary"
+StaticLibrary {
     name: "mylib"
     files: [
         "lib.cpp",
@@ -62,7 +59,7 @@ Product {
 
     Export {
         Depends { name: "cpp" }
-        cpp.includePaths: [product.sourceDirectory]
+        cpp.includePaths: [exportingProduct.sourceDirectory]
     }
 }
 

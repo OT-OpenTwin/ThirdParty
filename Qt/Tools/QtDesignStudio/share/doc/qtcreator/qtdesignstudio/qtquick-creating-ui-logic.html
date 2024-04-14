@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-creating-ui-logic.qdoc -->
+  <title>Creating UI Logic | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Creating UI Logic</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="qtquick-prototyping.html" />
+  <link rel="next" href="studio-simulation-overview.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="qtquick-prototyping.html">Prototyping</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-simulation-overview.html">Simulating Complex Experiences</a>
+</p>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Creating UI Logic</h1>
+<!-- $$$qtquick-creating-ui-logic.html-description -->
+<div class="descr" id="details">
+<p>Turn your wireframe into an interactive prototype by adding UI logic that enables your components to apply actions or react to mock data from backend systems to simulate complex experiences.</p>
+<p>Create connections between the UI components to enable them to communicate with each other. For example, how should the appearance of a button change on a mouse click and which action should the UI perform in response to the <i>signal</i> that is emitted upon the mouse click.</p>
+<p>You can create connections between UI components by binding their properties together. This way, when the value of a property changes in a parent component, it can be automatically changed in all the child components by emitting a signal that indicates a change in the value.</p>
+<p>To reference a property of a component from another component, you can create <a href="qtquick-navigator.html#adding-property-aliases" translate="no">property aliases</a> that hold a reference to another property. Unlike an ordinary property definition, which allocates a new, unique storage space for the property, a property alias connects the newly declared property (called the <i>aliasing property</i>) as a direct reference to an existing property (the <i>aliased property</i>). Any content that is data-driven should be exported as a public property of the relevant component. For example, a speedometer should have a property for speed to which the UI is bound.</p>
+<p>You can declare various <a href="quick-states.html" translate="no">UI states</a> that describe how property values change from a base state. States can be a useful way of organizing your UI logic. You can associate transitions with components to define how their properties will animate when they change due to a state change.</p>
+<p>The <a href="qtdesignstudio-loginui3-example.html" translate="no">Log In UI - States</a> example illustrates using states to create two UI screens and signals emitted by buttons to apply the states. The button components also switch states when they are pressed down.</p>
+<p class="centerAlign"><img src="images/loginui3.gif" alt="&quot;Clicking buttons to switch between screens&quot;" /></p><p>Using property aliases and states to create the differences in your component instances enables you to reuse components instead of duplicating them. Thus, the components do not need to be processed as completely new component types. This reduces the loading and compilation time as well as the package size of the final application.</p>
+<p>The preset <a href="quick-controls.html" translate="no">UI controls</a> have default properties and states that you can modify. If you need additional properties, you can turn instances of the controls into custom components and specify new properties for them.</p>
+<p>To have your UI perform certain operations, you might need to write JavaScript expressions for conditions or convert numbers to strings. To make this easier, Qt Design Studio provides preset components called <a href="quick-logic-helpers.html" translate="no">logic helpers</a>. They are invisible components that you can use in connection with controls, such as a <a href="quick-controls.html#slider-control" translate="no">Slider</a> or <a href="quick-controls.html#check-box" translate="no">Check Box</a>.</p>
+<p>Logic helpers are available for binding property values using the boolean AND, NOT, and OR operators, as well as for mapping numbers and numerical ranges. In addition, you can synchronize the property values of two components bi-directionally.</p>
+<p>The logic helper example uses property binding, states, and logic helpers to implement the UI logic.</p>
+<p class="centerAlign"><img src="images/studio-logic-helper-combining-example.gif" alt="&quot;Logic helper example application&quot;" /></p><p>The following table summarizes some typical use cases with links to more information.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >To Learn About</th><th >Go To</th></tr></thead>
+<tr valign="top" class="odd"><td >Responding to application events</td><td ><a href="quick-signals.html" translate="no">Connecting Components to Signals</a></td></tr>
+<tr valign="top" class="even"><td >Formatting connections</td><td >Adding Actions and Assignments</td></tr>
+<tr valign="top" class="odd"><td >Dynamically changing the behavior of a component</td><td ><a href="quick-property-bindings.html" translate="no">Adding Bindings Between Properties</a></td></tr>
+<tr valign="top" class="even"><td >Formatting property bindings</td><td ><a href="qtquick-positioning.html#setting-bindings" translate="no">Setting Bindings</a></td></tr>
+<tr valign="top" class="odd"><td >Referencing a property of a component from another component</td><td ><a href="qtquick-navigator.html#adding-property-aliases" translate="no">Adding Property Aliases</a></td></tr>
+<tr valign="top" class="even"><td >Referencing a state from within a specific component</td><td ><a href="quick-states.html" translate="no">Working with States</a></td></tr>
+<tr valign="top" class="odd"><td >Switching to a state when a particular property changes</td><td ><a href="quick-states.html#applying-states" translate="no">Applying States</a></td></tr>
+<tr valign="top" class="even"><td >Using preset UI controls that have default properties and states</td><td ><a href="quick-controls.html" translate="no">UI Controls</a></td></tr>
+<tr valign="top" class="odd"><td >Creating conditional conditions</td><td ><a href="quick-logic-helpers.html" translate="no">Logic Helpers</a></td></tr>
+<tr valign="top" class="even"><td >Adding custom properties for a particular component type</td><td ><a href="quick-dynamic-properties.html" translate="no">Specifying Custom Properties</a></td></tr>
+</table></div>
+</div>
+<!-- @@@qtquick-creating-ui-logic.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="qtquick-prototyping.html">Prototyping</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-simulation-overview.html">Simulating Complex Experiences</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

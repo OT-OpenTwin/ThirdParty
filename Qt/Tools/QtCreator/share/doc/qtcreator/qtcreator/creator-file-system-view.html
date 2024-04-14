@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-file-system-view.qdoc -->
+  <meta name="description" content="Shows all the files in the current directory.">
+  <title>File System | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>File System</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-reference.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#file-system-context-menu">File System Context Menu</a></li>
+<li class="level1"><a href="#file-system-view-toolbar">File System View Toolbar</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">File System</h1>
+<!-- $$$creator-file-system-view.html-description -->
+<div class="descr" id="details">
+<div class="admonition note">
+<p><b>Note: </b>Usually, <a href="creator-editor-locator.html" translate="no">searching with the locator</a> is the fastest way to find a particular project, file, class, or function, or almost anything else in your project. Use the <i>file system (f)</i> filter to open files from anywhere in the file system.</p>
+</div>
+<p class="centerAlign"><img src="images/qtcreator-filesystem-view.webp" alt="{File System view in the sidebar}" /></p><p>To go to the root directory of the file system, select <b translate="no">Computer</b> in the menu (1). Select <b translate="no">Home</b> to go to the user's home directory. Further, you can select a project to go to an open project or <b translate="no">Projects</b> to go to the directory specified in <b translate="no">Projects directory</b> in <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Build &amp; Run</b> &gt; <b translate="no">General</b>.</p>
+<p>The file that is currently active in the editor determines which folder to display in the <b translate="no">File System</b> view:</p>
+<ul>
+<li><b translate="no">Projects</b> if the file is located in a subdirectory of the <b translate="no">Projects directory</b></li>
+<li><b translate="no">Home</b> if the file is located in the user's home directory</li>
+<li><b translate="no">Computer</b> in all other cases</li>
+</ul>
+<p>To stop the synchronization between the editor and the <b translate="no">File System</b> view, clear <img src="images/linkicon.png" alt="" /> (<b translate="no">Synchronize Root Directory with Editor</b>).</p>
+<p>The view displays the path to the active file as bread crumbs. You can move to any directory along the path by clicking it.</p>
+<h2 id="file-system-context-menu">File System Context Menu</h2>
+<p>Use the context menu functions to:</p>
+<ul>
+<li>Open files with the default editor or some other editor.</li>
+<li>Open a project located in the selected directory.</li>
+<li>Show the file or directory in the file explorer.</li>
+<li>Open a terminal window in the selected directory or in the directory that has the file. To specify the terminal to use on Linux and macOS, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Environment</b> &gt; <b translate="no">System</b>. To use an <a href="creator-reference-terminal-view.html" translate="no">internal terminal</a>, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Terminal</b> &gt; <b translate="no">Use internal terminal</b>.</li>
+<li>Search in the selected directory.</li>
+<li>View file properties, such as name, path, MIME type, default editor, line endings, indentation, owner, size, last read and modified dates, and permissions.</li>
+<li>Create new files. For more information, see <a href="creator-file-creating.html" translate="no">Create files</a>.</li>
+<li>Rename existing files. To move the file to another directory, enter the relative or absolute path to its new location in addition to the new filename.</li>
+<li>Remove existing files.</li>
+<li>Create new folders.</li>
+<li>Compare the selected file with the currently open file in the diff editor. For more information, see <a href="creator-diff-editor.html" translate="no">Compare files</a>.</li>
+<li>Display the contents of a particular directory in the view.</li>
+<li>Collapse all open folders.</li>
+</ul>
+<h2 id="file-system-view-toolbar">File System View Toolbar</h2>
+<p>The toolbar in the <b translate="no">File System</b> view has additional options.</p>
+<p>To manage view contents, select <img src="images/filtericon.png" alt="" /> (<b translate="no">Options</b>):</p>
+<ul>
+<li>To hide the bread crumbs, clear <b translate="no">Show Bread Crumbs</b>.</li>
+<li>By default, the view separates folders from files and lists them first. To list all items in alphabetic order, clear <b translate="no">Show Folders on Top</b>.</li>
+<li>To also show hidden files, select <b translate="no">Show Hidden Files</b>.</li>
+</ul>
+<p>To stop the synchronization with the file currently open in the editor, clear <img src="images/linkicon.png" alt="" /> (<b translate="no">Synchronize with Editor</b>).</p>
+</div>
+<p><b>See also </b><a href="creator-how-to-view-cmake-project-contents.html" translate="no">View CMake project contents</a> and <a href="creator-projects-view.html" translate="no">Projects</a>.</p>
+<!-- @@@creator-file-system-view.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

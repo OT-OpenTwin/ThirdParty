@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-animation-types.qdoc -->
+  <title>Animations | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Animations</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="quick-logic-helpers.html" />
+  <link rel="next" href="studio-3d-view.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="quick-logic-helpers.html">Logic Helpers</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-view.html">3D Views</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#applying-animation">Applying Animation</a></li>
+<li class="level2"><a href="#animating-color-changes">Animating Color Changes</a></li>
+<li class="level2"><a href="#animating-changes-in-numerical-values">Animating Changes in Numerical Values</a></li>
+<li class="level2"><a href="#setting-non-animated-properties">Setting Non-Animated Properties</a></li>
+<li class="level1"><a href="#playing-animations">Playing Animations</a></li>
+<li class="level2"><a href="#playing-groups-of-animations">Playing Groups of Animations</a></li>
+<li class="level1"><a href="#performance-considerations">Performance Considerations</a></li>
+<li class="level1"><a href="#summary-of-animation-components">Summary of Animation Components</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Animations</h1>
+<!-- $$$quick-animations.html-description -->
+<div class="descr" id="details">
+<p>To create an animation, use the appropriate animation type for the property that is to be animated, and apply the animation depending on the type of behavior that is required.</p>
+<p>You can drag-and-drop animation components from <b translate="no">Components</b> &gt; <b translate="no">Default Components</b> &gt; <b translate="no">Animation</b> to the <a href="qtquick-navigator.html" translate="no">Navigator</a> or <a href="qtquick-form-editor.html" translate="no">2D</a> view to create instances of them.</p>
+<p>You can achieve similar results by using different animation techniques. For more information, see <a href="quick-animation-overview.html" translate="no">Introduction to Animation Techniques</a>.</p>
+<h2 id="applying-animation">Applying Animation</h2>
+<p>A property animation is applied when the value of a property changes. Color and number animations are property animation types for specific purposes. Specify settings for animations in <a href="qtquick-properties-view.html" translate="no">Properties</a> &gt; <b translate="no">Animation Targets</b>.</p>
+<h3 id="animating-color-changes">Animating Color Changes</h3>
+<p>For example, you can apply animation to the value of the <b translate="no">Color</b> property of an instance of a <a href="quick-shapes.html#rectangle" translate="no">Rectangle</a> component to change its value from its current color to another color over a period of time specified in milliseconds.</p>
+<p class="centerAlign"><img src="images/qtquick-color-animation.gif" alt="&quot;Color animation&quot;" /></p><p>First create an instance of the <b translate="no">Color Animation</b> component. Select the component to animate in the <b translate="no">Target</b> field, and enter the property to animate in the <b translate="no">Property</b> field. To animate several properties, enter them into the <b translate="no">Properties</b> field separated by commas.</p>
+<p class="centerAlign"><img src="images/qtquick-properties-coloranimation.png" alt="&quot;Color Animation properties&quot;" /></p><p>Select the original color in the <b translate="no">From color</b> field and the new color in the <b translate="no">To color</b> field. Specify the duration of the animation in the <b translate="no">Duration</b> field.</p>
+<h3 id="animating-changes-in-numerical-values">Animating Changes in Numerical Values</h3>
+<p>Similarly, to apply animation when a numerical value of a property changes, create an instance of the <b translate="no">Number Animation</b> component.</p>
+<p class="centerAlign"><img src="images/qtquick-properties-numberanimation.png" alt="&quot;Number Animation properties&quot;" /></p><p>Select the original value in the <b translate="no">From</b> field and the new value in the <b translate="no">To</b> field. Then specify the duration of the animation in the <b translate="no">Duration</b> field.</p>
+<p>For example, you can apply animation to the value of the <b translate="no">X</b> property of a <a href="quick-shapes.html#rectangle" translate="no">Rectangle</a> instance to make it appear to move from its current position on the x axis to another position over a period of time specified in milliseconds. To make the component appear to move both on the x and y axis, enter x and y into the <b translate="no">Properties</b> field separated by a comma.</p>
+<p class="centerAlign"><img src="images/qtquick-number-animation.gif" alt="&quot;Number animation&quot;" /></p><p>For an example of using property animation to animate the scale and opacity of components, see the <a href="qtdesignstudio-coffeemachine-example.html" translate="no">Coffee Machine</a> example.</p>
+<h3 id="setting-non-animated-properties">Setting Non-Animated Properties</h3>
+<p>To immediately change a property value during an animation without animating the property change, create an instance of the <b translate="no">Property Action</b> component instead, and set the value in the <b translate="no">Value</b> field. This is useful for setting non-animated property values during an animation.</p>
+<p class="centerAlign"><img src="images/qtquick-properties-propertyaction.png" alt="&quot;Property Action properties&quot;" /></p><p>For example, you can create an instance of the <b translate="no">Sequential Animation</b> component that contains two instances of the <b translate="no">Property Action</b> component around an instance of the <b translate="no">Number Animation</b> component. The first property action sets the <b translate="no">Opacity</b> property of a <a href="quick-shapes.html#rectangle" translate="no">Rectangle</a> to <code translate="no">0.5</code>, the number animation changes the width of the image, and the second property action sets the opacity back to <code translate="no">1</code>.</p>
+<p class="centerAlign"><img src="images/qtquick-property-action.gif" alt="&quot;Sequential property actions and number animation&quot;" /></p><h2 id="playing-animations">Playing Animations</h2>
+<p>Specify settings for playing animations in the <b translate="no">Animation</b> group.</p>
+<p class="centerAlign"><img src="images/qtquick-properties-animation.png" alt="&quot;Animation properties&quot;" /></p><p>To run animations automatically, select the <b translate="no">Running</b> check box. Animations are run for the time you specify in the <b translate="no">Duration</b> field.</p>
+<p>You can connect the running property of an animation to a signal emitted by a component to play the animation when users click a button, for example. For more information, see <a href="quick-signals.html" translate="no">Connecting Components to Signals</a>.</p>
+<p>To run animations several times in a loop, set the number of times they should play in the <b translate="no">Loops</b> field. Set the value to -1 to have the animation continuously repeat until it is explicitly stopped.</p>
+<p>To specify that animations should run to completion when they are stopped, select the <b translate="no">Run to end</b> check box. This behavior is most useful when the <b translate="no">Loops</b> property is set, as the animation will finish playing normally but not restart.</p>
+<p>All animations defined for a component are run in parallel, unless you include them in a <b translate="no">Parallel Animation</b> or <b translate="no">Sequential Animation</b> component for managing them as a group.</p>
+<p>To pause animations, select the <img src="images/pause-icon.png" alt="" /> (<b translate="no">Paused</b>) check box.</p>
+<p>To attach an <a href="qtquick-editing-easing-curves.html" translate="no">easing curve</a> to the animation, select the <img src="images/curve_editor.png" alt="" /> (<b translate="no">Easing Curve Editor</b>) button in the <b translate="no">Easing Curve</b> field.</p>
+<h3 id="playing-groups-of-animations">Playing Groups of Animations</h3>
+<p>You can create several animations that can run in parallel or in sequence. To manage a group of animations that will play at the same time, create an instance of a <b translate="no">Parallel Animation</b> component and drag-and-drop the other animations to it. To play the animations in the specified order, one after the other, create an instance of a <b translate="no">Sequential Animation</b> instead.</p>
+<p>For example, a banner component may have several icons or slogans to display, one after the other. The value of the <b translate="no">Opacity</b> property could change to <code translate="no">1.0</code> denoting an opaque object. Using a sequential animation, each opacity animation will play after the preceding animation finishes, whereas using a parallel animation will play the animations at the same time.</p>
+<p>Once individual animations are placed into a group of parallel or sequential animations, they can no longer be started and stopped independently. The sequential or parallel animations must be started and stopped as a group.</p>
+<p>When used in a <b translate="no">Sequential Animation</b>, a <b translate="no">Pause Animation</b> is a step when nothing happens, for a specified duration. To specify a pause between two animations, select the <b translate="no">Paused</b> check box and specify the duration of the pause in the <b translate="no">Duration</b> field.</p>
+<h2 id="performance-considerations">Performance Considerations</h2>
+<p>Qt Design Studio enables you to use fluidity and dynamic transitions as well as visual effects to great effect in a UI. However, you need to take some care when using some of the supported features because they can affect the performance of the UI.</p>
+<p>In general, animating a property will cause any bindings which reference that property to be re-evaluated. Usually, this is what is desired, but in some cases it may be better to disable the binding prior to performing the animation and then reassign the binding once the animation has completed.</p>
+<p>Avoid running JavaScript during animation. For example, running a complex JavaScript expression for each frame of an x property animation should be avoided.</p>
+<p>Take special care when creating instances of the <b translate="no">Script Action</b> component because script animations are run in the main thread and can therefore cause frames to be skipped if they take too long to complete.</p>
+<h2 id="summary-of-animation-components">Summary of Animation Components</h2>
+<p>The following table lists the components that you can use to animate component properties programmatically. They are available in <b translate="no">Components</b> &gt; <b translate="no">Default Components</b> &gt; <b translate="no">Animation</b>.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Component</th><th >Use Case</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Property Animation</b></td><td >Applying animation when the value of a property changes. Color and number animations are property animation types for specific purposes.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Property Action</b></td><td >Setting non-animated property values during an animation.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Color Animation</b></td><td >Applying animation when a color value changes.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Number Animation</b></td><td >Applying animation when a numerical value changes.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Parallel Animation</b></td><td >Running animations in parallel.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Sequential Animation</b></td><td >Running animations sequentially.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Pause Animation</b></td><td >Creating a step in a sequential animation where nothing happens for a specified duration.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Script Action</b></td><td >Executing JavaScript during an animation.</td></tr>
+</table></div>
+</div>
+<!-- @@@quick-animations.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="quick-logic-helpers.html">Logic Helpers</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-view.html">3D Views</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

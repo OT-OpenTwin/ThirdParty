@@ -28,6 +28,7 @@
 **
 ****************************************************************************/
 
+import qbs.Host
 import qbs.Process
 import qbs.FileInfo
 
@@ -42,7 +43,6 @@ Probe {
     property string maxVersion
     property bool forStaticBuild: false
     property stringList libDirs // Full, non-sysrooted paths, mirroring the environment variable
-    property string pathListSeparator: qbs.pathListSeparator
 
     // Output
     property stringList cflags // Unmodified --cflags output
@@ -60,6 +60,7 @@ Probe {
         if (!packageNames || packageNames.length === 0)
             throw 'PkgConfigProbe.packageNames must be specified.';
         var p = new Process();
+        var stdout;
         try {
             var libDirsToSet = libDirs;
             if (sysroot) {
@@ -72,7 +73,7 @@ Probe {
                 }
             }
             if (libDirsToSet)
-                p.setEnv("PKG_CONFIG_LIBDIR", libDirsToSet.join(pathListSeparator));
+                p.setEnv("PKG_CONFIG_LIBDIR", libDirsToSet.join(FileInfo.pathListSeparator()));
             var versionArgs = [];
             if (minVersion !== undefined)
                 versionArgs.push("--atleast-version=" + minVersion);
@@ -84,16 +85,22 @@ Probe {
                     && p.exec(executable, versionArgs.concat(packageNames)) !== 0) {
                 return;
             }
+
+            // protobuf is reserved as qbs module name, which depends on the protobuflib module
+            packageNames = packageNames.map(function(name) {
+                return name === "protobuflib" ? "protobuf" : name;
+            });
+
             var args = packageNames;
             if (p.exec(executable, args.concat([ '--cflags' ])) === 0) {
-                cflags = p.readStdOut().trim();
-                cflags = cflags ? cflags.split(/\s/) : [];
+                stdout = p.readStdOut().trim();
+                cflags = stdout ? stdout.split(/\s/): [];
                 var libsArgs = args.concat("--libs");
                 if (forStaticBuild)
                     libsArgs.push("--static");
                 if (p.exec(executable, libsArgs) === 0) {
-                    libs = p.readStdOut().trim();
-                    libs = libs ? libs.split(/\s/) : [];
+                    stdout = p.readStdOut().trim();
+                    libs = stdout ? stdout.split(/\s/): [];
                     if (p.exec(executable, [packageNames[0]].concat([ '--modversion' ])) === 0) {
                         modversion = p.readStdOut().trim();
                         found = true;

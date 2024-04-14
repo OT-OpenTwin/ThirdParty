@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-connection-editor-properties.qdoc -->
+  <title>Specifying Custom Properties | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Specifying Custom Properties</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="quick-property-bindings.html" />
+  <link rel="next" href="quick-states.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="quick-property-bindings.html">Adding Bindings Between Properties</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-states.html">Working with States</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#adding-properties-for-a-component">Adding Properties for a Component</a></li>
+<li class="level1"><a href="#binding-a-property-value">Binding a Property Value</a></li>
+<li class="level1"><a href="#adding-a-custom-property-to-a-component-from-the-connections-view">Adding a Custom Property to a Component from the Connections View</a></li>
+<li class="level1"><a href="#supported-property-types">Supported Property Types</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Specifying Custom Properties</h1>
+<!-- $$$quick-dynamic-properties.html-description -->
+<div class="descr" id="details">
+<p>Each <a href="quick-preset-components.html" translate="no">preset component </a>has a set of preset properties that you can specify values for. You can add custom properties that would not otherwise exist for a particular <a href="quick-components-view.html#component-types" translate="no">component type</a>. You bind the properties to dynamic expressions to define global properties for a component that can be read by other components. For example, you can specify global properties for the root component that you can use in the child components.</p>
+<p>For example, to specify spacing between UI elements, you could define a margin for a component that does not have a margin property, and then use <a href="quick-property-bindings.html" translate="no">bindings</a> to refer to the value of the margin property from other components.</p>
+<p>Similarly, you can add custom properties for your own components that are based on preset components.</p>
+<p>Any content that is data-driven should be exported as a public property (alias property) of the relevant component. For example, a speedometer should have an <i>int</i> or <i>real</i> property for speed to which the UI is bound.</p>
+<h2 id="adding-properties-for-a-component">Adding Properties for a Component</h2>
+<p>To add a custom property for a component:</p>
+<ol class="1" type="1"><li>Go to the <b translate="no">Local Custom Properties</b> section in the <b translate="no">Properties</b> view.</li>
+<li>Select the <img src="images/plus.png" alt="" /> (<b translate="no">Add</b>) button to add a custom property for the currently selected component.<p class="centerAlign"><img src="images/add-local-custom-property.png" alt="" /></p></li>
+<li>Set the <b translate="no">Name</b> and <b translate="no">Type</b> for the property.<p class="centerAlign"><img src="images/add-new-property-dialog.png" alt="" /></p></li>
+</ol>
+<h2 id="binding-a-property-value">Binding a Property Value</h2>
+<p>To bind the value of the property to that of another one or to data accessible in the application.</p>
+<ol class="1" type="1"><li>In the <b translate="no">Properties</b> view, select <img src="images/action-icon.png" alt="" /> next to the property.</li>
+<li>Select <b translate="no">Set Binding</b>.<p class="centerAlign"><img src="images/qmldesigner-binding-editor.png" alt="&quot;Binding Editor&quot;" /></p></li>
+</ol>
+<p>For more information, see <a href="qtquick-positioning.html#setting-bindings" translate="no">Setting Bindings</a>.</p>
+<h2 id="adding-a-custom-property-to-a-component-from-the-connections-view">Adding a Custom Property to a Component from the Connections View</h2>
+<p>You can add a custom property to a component from the <b translate="no">Connections</b> view. Follow the process:</p>
+<ol class="1" type="1"><li>Select the component you want to add a Custom property to in the <b translate="no">2D</b> view or in the <b translate="no">Navigator</b> view.</li>
+<li>Select <b translate="no">Properties</b> from the <b translate="no">Connections</b> view.<p class="centerAlign"><img src="images/add-updated-local-custom-property.webp" alt="" /></p></li>
+<li>Select the <img src="images/plus.png" alt="" /> (<b translate="no">Add</b>) button to add a Custom property.</li>
+<li>From the pop-up <b translate="no">Custom property editor</b>, select the <b translate="no">Type</b> of the property you want to include.<p class="centerAlign"><img src="images/add-updated-local-custom-property-editor.webp" alt="" /></p></li>
+<li>Next, set the <b translate="no">Name</b> of the property.</li>
+<li>Set a value to the Custom property in the <b translate="no">Value</b> field.</li>
+</ol>
+<div class="admonition note">
+<p><b>Note: </b>Select the <img src="images/minus.png" alt="" /> (<b translate="no">Remove</b>) to delete a Custom Property.</p>
+</div>
+<h2 id="supported-property-types">Supported Property Types</h2>
+<p>The following table describes the supported property types:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Type</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >alias</td><td ><a href="https://doc.qt.io/qt/qtqml-syntax-objectattributes.html#property-aliases" translate="no">Property alias</a> that holds a reference to another property</td></tr>
+<tr valign="top" class="even"><td >bool</td><td >Binary <code translate="no">true</code> or <code translate="no">false</code> value</td></tr>
+<tr valign="top" class="odd"><td >color</td><td >Color value that can be specified by using an SVG color name, such as &quot;red&quot;, &quot;green&quot;, or &quot;lightsteelblue&quot;, or a hexadecimal triplet or quad in the form &quot;#RRGGBB&quot; and &quot;#AARRGGBB&quot;, respectively. For example, the color red corresponds to a triplet of &quot;#FF0000&quot; and a slightly transparent blue to a quad of &quot;#800000FF&quot;. In addition, you can use the following Qt functions: <a href="https://doc.qt.io/qt/qml-qtqml-qt.html#rgba-method" translate="no">Qt.rgba</a>(), <a href="https://doc.qt.io/qt/qml-qtqml-qt.html#hsva-method" translate="no">Qt.hsva</a>(), <a href="https://doc.qt.io/qt/qml-qtqml-qt.html#hsla-method" translate="no">Qt.hsla</a>(), <a href="https://doc.qt.io/qt/qml-qtqml-qt.html#darker-method" translate="no">Qt.darker</a>(), <a href="https://doc.qt.io/qt/qml-qtqml-qt.html#lighter-method" translate="no">Qt.lighter</a>(), and <a href="https://doc.qt.io/qt/qml-qtqml-qt.html#tint-method" translate="no">Qt.tint</a>().</td></tr>
+<tr valign="top" class="even"><td >int</td><td >Whole integer number, such as 0, 10, or -20</td></tr>
+<tr valign="top" class="odd"><td >real</td><td >Number with a decimal point</td></tr>
+<tr valign="top" class="even"><td >string</td><td >Free form text string</td></tr>
+<tr valign="top" class="odd"><td ><a href="https://doc.qt.io/qt/qml-qtquick3d-textureinput.html" translate="no">TextureInput</a></td><td >Specifies a texture exposed to the shaders of a <a href="https://doc.qt.io/qt/qml-qtquick3d-custommaterial.html" translate="no">CustomMaterial</a> or Effect.</td></tr>
+<tr valign="top" class="even"><td >url</td><td >Resource locator, such as a file name. It can be either absolute, (<code translate="no">http://qt-project.org</code>), or relative (<code translate="no">pics/logo.png</code>). A relative URL is resolved relative to the URL of the parent component.</td></tr>
+<tr valign="top" class="odd"><td >variant</td><td >Generic property type. For example, variant properties can store numbers, strings, objects, arrays, and functions.</td></tr>
+<tr valign="top" class="even"><td >vector2d</td><td >Refers to a value with x and y attributes.</td></tr>
+<tr valign="top" class="odd"><td >vector3d</td><td >Refers to a value with x, y, and z attributes.</td></tr>
+<tr valign="top" class="even"><td >vector4d</td><td >Refers to a value with x, y, z, and w attributes.</td></tr>
+</table></div>
+</div>
+<p><b>See also </b><a href="qtquick-properties.html" translate="no">Specifying Component Properties</a>.</p>
+<!-- @@@quick-dynamic-properties.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="quick-property-bindings.html">Adding Bindings Between Properties</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-states.html">Working with States</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

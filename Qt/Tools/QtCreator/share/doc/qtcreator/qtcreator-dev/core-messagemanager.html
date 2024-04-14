@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- messagemanager.cpp -->
+  <meta name="description" content="The MessageManager class is used to post messages in the General Messages pane.">
+  <title>MessageManager Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>MessageManager</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">MessageManager Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::MessageManager</span>
+<!-- $$$MessageManager-brief -->
+<p>The MessageManager class is used to post messages in the <b translate="no">General Messages</b> pane. <a href="#details">More...</a></p>
+<!-- @@@MessageManager -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/messagemanager.h&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="core-messagemanager-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-messagemanager.html#writeDisrupting" translate="no">writeDisrupting</a></b>(const QString &amp;<i>message</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-messagemanager.html#writeDisrupting-1" translate="no">writeDisrupting</a></b>(const QStringList &amp;<i>messages</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-messagemanager.html#writeFlashing" translate="no">writeFlashing</a></b>(const QString &amp;<i>message</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-messagemanager.html#writeFlashing-1" translate="no">writeFlashing</a></b>(const QStringList &amp;<i>messages</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-messagemanager.html#writeSilently" translate="no">writeSilently</a></b>(const QString &amp;<i>message</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-messagemanager.html#writeSilently-1" translate="no">writeSilently</a></b>(const QStringList &amp;<i>messages</i>)</td></tr>
+</table></div>
+<!-- $$$MessageManager-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+</div>
+<!-- @@@MessageManager -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$writeDisrupting[overload1]$$$writeDisruptingconstQString& -->
+<h3 class="fn" translate="no" id="writeDisrupting"><code translate="no">[static] </code><span class="type">void</span> MessageManager::<span class="name">writeDisrupting</span>(const <span class="type">QString</span> &amp;<i>message</i>)</h3>
+<p>Writes the <i translate="no">message</i> to the <b translate="no">General Messages</b> pane and brings the pane to the front.</p>
+<p>This might interrupt a user's workflow, so only use this as a direct response to something a user did, like explicitly running a tool.</p>
+<p><b>See also </b><a href="core-messagemanager.html#writeSilently" translate="no">writeSilently</a>() and <a href="core-messagemanager.html#writeFlashing" translate="no">writeFlashing</a>().</p>
+<!-- @@@writeDisrupting -->
+<!-- $$$writeDisrupting$$$writeDisruptingconstQStringList& -->
+<h3 class="fn" translate="no" id="writeDisrupting-1"><code translate="no">[static] </code><span class="type">void</span> MessageManager::<span class="name">writeDisrupting</span>(const <span class="type">QStringList</span> &amp;<i>messages</i>)</h3>
+<p>This function overloads writeDisrupting().</p>
+<!-- @@@writeDisrupting -->
+<!-- $$$writeFlashing[overload1]$$$writeFlashingconstQString& -->
+<h3 class="fn" translate="no" id="writeFlashing"><code translate="no">[static] </code><span class="type">void</span> MessageManager::<span class="name">writeFlashing</span>(const <span class="type">QString</span> &amp;<i>message</i>)</h3>
+<p>Writes the <i translate="no">message</i> to the <b translate="no">General Messages</b> pane and flashes the output pane button.</p>
+<p>This notifies the user that something important has happened that might require the user's attention. Use sparingly, since continually flashing the button is annoying, especially if the condition is something the user might not be able to fix.</p>
+<p><b>See also </b><a href="core-messagemanager.html#writeSilently" translate="no">writeSilently</a>() and <a href="core-messagemanager.html#writeDisrupting" translate="no">writeDisrupting</a>().</p>
+<!-- @@@writeFlashing -->
+<!-- $$$writeFlashing$$$writeFlashingconstQStringList& -->
+<h3 class="fn" translate="no" id="writeFlashing-1"><code translate="no">[static] </code><span class="type">void</span> MessageManager::<span class="name">writeFlashing</span>(const <span class="type">QStringList</span> &amp;<i>messages</i>)</h3>
+<p>This function overloads writeFlashing().</p>
+<!-- @@@writeFlashing -->
+<!-- $$$writeSilently[overload1]$$$writeSilentlyconstQString& -->
+<h3 class="fn" translate="no" id="writeSilently"><code translate="no">[static] </code><span class="type">void</span> MessageManager::<span class="name">writeSilently</span>(const <span class="type">QString</span> &amp;<i>message</i>)</h3>
+<p>Writes the <i translate="no">message</i> to the <b translate="no">General Messages</b> pane without any further action.</p>
+<p>This is the preferred method of posting messages, since it does not interrupt the user.</p>
+<p><b>See also </b><a href="core-messagemanager.html#writeFlashing" translate="no">writeFlashing</a>() and <a href="core-messagemanager.html#writeDisrupting" translate="no">writeDisrupting</a>().</p>
+<!-- @@@writeSilently -->
+<!-- $$$writeSilently$$$writeSilentlyconstQStringList& -->
+<h3 class="fn" translate="no" id="writeSilently-1"><code translate="no">[static] </code><span class="type">void</span> MessageManager::<span class="name">writeSilently</span>(const <span class="type">QStringList</span> &amp;<i>messages</i>)</h3>
+<p>This function overloads writeSilently().</p>
+<!-- @@@writeSilently -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

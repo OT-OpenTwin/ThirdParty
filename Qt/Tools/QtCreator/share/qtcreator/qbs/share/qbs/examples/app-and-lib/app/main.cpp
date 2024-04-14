@@ -48,11 +48,11 @@
 **
 ****************************************************************************/
 
-#include <stdio.h>
+#include <cstdio>
 #include <lib.h>
 
 int main()
 {
-    puts("Now calling a function from mylib:");
+    std::puts("Now calling a function from mylib:");
     return bla();
 }

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- tasktree.cpp -->
+  <meta name="description" content="The Tasking namespace encloses all classes and global functions of the Tasking solution.">
+  <title>Tasking Namespace | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li>Tasking Namespace</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#classes">Classes</a></li>
+<li class="level1"><a href="#types">Types</a></li>
+<li class="level1"><a href="#variables">Variables</a></li>
+<li class="level1"><a href="#functions">Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">Tasking Namespace</h1>
+<!-- $$$Tasking-brief -->
+<p>The Tasking namespace encloses all classes and global functions of the Tasking solution. <a href="#details">More...</a></p>
+<!-- @@@Tasking -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;Tasking&gt;</span></td></tr>
+</table></div>
+<h2 id="classes">Classes</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="tasking-customtask.html" translate="no">CustomTask</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="tasking-group.html" translate="no">Group</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="tasking-groupitem.html" translate="no">GroupItem</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="tasking-taskadapter.html" translate="no">TaskAdapter</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="tasking-taskinterface.html" translate="no">TaskInterface</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html" translate="no">TaskTree</a></b></td></tr>
+</table></div>
+<h2 id="types">Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> enum class </td><td class="memItemRight bottomAlign"><b><a href="tasking.html#SetupResult-enum" translate="no">SetupResult</a></b> { Continue, StopWithDone, StopWithError }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> enum class </td><td class="memItemRight bottomAlign"><b><a href="tasking.html#WorkflowPolicy-enum" translate="no">WorkflowPolicy</a></b> { StopOnError, ContinueOnError, StopOnDone, ContinueOnDone, StopOnFinished, &hellip;, FinishAllAndError }</td></tr>
+</table></div>
+<h2 id="variables">Variables</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> const Tasking::GroupItem </td><td class="memItemRight bottomAlign"><b><a href="tasking.html#continueOnDone-var" translate="no">continueOnDone</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Tasking::GroupItem </td><td class="memItemRight bottomAlign"><b><a href="tasking.html#continueOnError-var" translate="no">continueOnError</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Tasking::GroupItem </td><td class="memItemRight bottomAlign"><b><a href="tasking.html#finishAllAndDone-var" translate="no">finishAllAndDone</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Tasking::GroupItem </td><td class="memItemRight bottomAlign"><b><a href="tasking.html#finishAllAndError-var" translate="no">finishAllAndError</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Tasking::GroupItem </td><td class="memItemRight bottomAlign"><b><a href="tasking.html#parallel-var" translate="no">parallel</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Tasking::GroupItem </td><td class="memItemRight bottomAlign"><b><a href="tasking.html#sequential-var" translate="no">sequential</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Tasking::GroupItem </td><td class="memItemRight bottomAlign"><b><a href="tasking.html#stopOnDone-var" translate="no">stopOnDone</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Tasking::GroupItem </td><td class="memItemRight bottomAlign"><b><a href="tasking.html#stopOnError-var" translate="no">stopOnError</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Tasking::GroupItem </td><td class="memItemRight bottomAlign"><b><a href="tasking.html#stopOnFinished-var" translate="no">stopOnFinished</a></b></td></tr>
+</table></div>
+<h2 id="functions">Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Tasking::GroupItem </td><td class="memItemRight bottomAlign"><b><a href="tasking.html#onGroupDone" translate="no">onGroupDone</a></b>(const GroupItem::GroupEndHandler &amp;<i>handler</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Tasking::GroupItem </td><td class="memItemRight bottomAlign"><b><a href="tasking.html#onGroupError" translate="no">onGroupError</a></b>(const GroupItem::GroupEndHandler &amp;<i>handler</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Tasking::GroupItem </td><td class="memItemRight bottomAlign"><b><a href="tasking.html#onGroupSetup" translate="no">onGroupSetup</a></b>(SetupHandler &amp;&amp;<i>handler</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Tasking::GroupItem </td><td class="memItemRight bottomAlign"><b><a href="tasking.html#parallelLimit" translate="no">parallelLimit</a></b>(int <i>limit</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Tasking::GroupItem </td><td class="memItemRight bottomAlign"><b><a href="tasking.html#workflowPolicy" translate="no">workflowPolicy</a></b>(Tasking::WorkflowPolicy <i>policy</i>)</td></tr>
+</table></div>
+<!-- $$$Tasking-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+</div>
+<!-- @@@Tasking -->
+<div class="classes">
+<h2>Classes</h2>
+<h3> class <a href="tasking-customtask.html">CustomTask</a></h3><!-- $$$CustomTask-brief -->
+<p>A class template used for declaring task items and defining their setup, done, and error handlers. <a href="tasking-customtask.html#details">More...</a></p>
+<!-- @@@CustomTask -->
+<h3> class <a href="tasking-group.html">Group</a></h3><!-- $$$Group-brief -->
+<p>Group represents the basic element for composing declarative recipes describing how to execute and handle a nested tree of asynchronous tasks. <a href="tasking-group.html#details">More...</a></p>
+<!-- @@@Group -->
+<h3> class <a href="tasking-groupitem.html">GroupItem</a></h3><!-- $$$GroupItem-brief -->
+<p>GroupItem represents the basic element that may be a part of any <a href="tasking-group.html" translate="no">Group</a>. <a href="tasking-groupitem.html#details">More...</a></p>
+<!-- @@@GroupItem -->
+<h3> class <a href="tasking-taskadapter.html">TaskAdapter</a></h3><!-- $$$TaskAdapter-brief -->
+<p>A class template for implementing custom task adapters. <a href="tasking-taskadapter.html#details">More...</a></p>
+<!-- @@@TaskAdapter -->
+<h3> class <a href="tasking-taskinterface.html">TaskInterface</a></h3><!-- $$$TaskInterface-brief -->
+<p>TaskInterface is the abstract base class for implementing custom task adapters. <a href="tasking-taskinterface.html#details">More...</a></p>
+<!-- @@@TaskInterface -->
+<h3> class <a href="tasking-tasktree.html">TaskTree</a></h3><!-- $$$TaskTree-brief -->
+<p>The TaskTree class runs an async task tree structure defined in a declarative way. <a href="tasking-tasktree.html#details">More...</a></p>
+<!-- @@@TaskTree -->
+</div>
+<div class="types">
+<h2>Type Documentation</h2>
+<!-- $$$SetupResult$$$Continue$$$StopWithDone$$$StopWithError -->
+<h3 class="fn" translate="no" id="SetupResult-enum">enum class Tasking::<span class="name">SetupResult</span></h3>
+<p>This enum is optionally returned from the group's or task's setup handler function. It instructs the running task tree on how to proceed after the setup handler's execution finished.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Tasking::SetupResult::Continue</code></td><td class="topAlign tblval"><code translate="no">0</code></td><td class="topAlign">Default. The group's or task's execution continues normally. When a group's or task's setup handler returns void, it's assumed that it returned Continue.</td></tr>
+<tr><td class="topAlign"><code translate="no">Tasking::SetupResult::StopWithDone</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">The group's or task's execution stops immediately with success. When returned from the group's setup handler, all child tasks are skipped, and the group's <a href="tasking.html#onGroupDone" translate="no">onGroupDone</a>() handler is invoked (if provided). The group reports success to its parent. The group's workflow policy is ignored. When returned from the task's setup handler, the task isn't started, its done handler isn't invoked, and the task reports success to its parent.</td></tr>
+<tr><td class="topAlign"><code translate="no">Tasking::SetupResult::StopWithError</code></td><td class="topAlign tblval"><code translate="no">2</code></td><td class="topAlign">The group's or task's execution stops immediately with an error. When returned from the group's setup handler, all child tasks are skipped, and the group's <a href="tasking.html#onGroupError" translate="no">onGroupError</a>() handler is invoked (if provided). The group reports an error to its parent. The group's workflow policy is ignored. When returned from the task's setup handler, the task isn't started, its error handler isn't invoked, and the task reports an error to its parent.</td></tr>
+</table></div>
+<!-- @@@SetupResult -->
+<!-- $$$WorkflowPolicy$$$StopOnError$$$ContinueOnError$$$StopOnDone$$$ContinueOnDone$$$StopOnFinished$$$FinishAllAndDone$$$FinishAllAndError -->
+<h3 class="fn" translate="no" id="WorkflowPolicy-enum">enum class Tasking::<span class="name">WorkflowPolicy</span></h3>
+<p>This enum describes the possible behavior of the Group element when any group's child task finishes its execution. It's also used when the running Group is stopped.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Tasking::WorkflowPolicy::StopOnError</code></td><td class="topAlign tblval"><code translate="no">0</code></td><td class="topAlign">Default. Corresponds to the <a href="tasking.html#stopOnError-var" translate="no">stopOnError</a> global element. If any child task finishes with an error, the group stops and finishes with an error. If all child tasks finished with success, the group finishes with success. If a group is empty, it finishes with success.</td></tr>
+<tr><td class="topAlign"><code translate="no">Tasking::WorkflowPolicy::ContinueOnError</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">Corresponds to the <a href="tasking.html#continueOnError-var" translate="no">continueOnError</a> global element. Similar to <a href="tasking.html#stopOnError-var" translate="no">stopOnError</a>, but in case any child finishes with an error, the execution continues until all tasks finish, and the group reports an error afterwards, even when some other tasks in the group finished with success. If all child tasks finish successfully, the group finishes with success. If a group is empty, it finishes with success.</td></tr>
+<tr><td class="topAlign"><code translate="no">Tasking::WorkflowPolicy::StopOnDone</code></td><td class="topAlign tblval"><code translate="no">2</code></td><td class="topAlign">Corresponds to the <a href="tasking.html#stopOnDone-var" translate="no">stopOnDone</a> global element. If any child task finishes with success, the group stops and finishes with success. If all child tasks finished with an error, the group finishes with an error. If a group is empty, it finishes with an error.</td></tr>
+<tr><td class="topAlign"><code translate="no">Tasking::WorkflowPolicy::ContinueOnDone</code></td><td class="topAlign tblval"><code translate="no">3</code></td><td class="topAlign">Corresponds to the <a href="tasking.html#continueOnDone-var" translate="no">continueOnDone</a> global element. Similar to <a href="tasking.html#stopOnDone-var" translate="no">stopOnDone</a>, but in case any child finishes successfully, the execution continues until all tasks finish, and the group reports success afterwards, even when some other tasks in the group finished with an error. If all child tasks finish with an error, the group finishes with an error. If a group is empty, it finishes with an error.</td></tr>
+<tr><td class="topAlign"><code translate="no">Tasking::WorkflowPolicy::StopOnFinished</code></td><td class="topAlign tblval"><code translate="no">4</code></td><td class="topAlign">Corresponds to the <a href="tasking.html#stopOnFinished-var" translate="no">stopOnFinished</a> global element. The group starts as many tasks as it can. When any task finishes, the group stops and reports the task's result. Useful only in parallel mode. In sequential mode, only the first task is started, and when finished, the group finishes too, so the other tasks are always skipped. If a group is empty, it finishes with an error.</td></tr>
+<tr><td class="topAlign"><code translate="no">Tasking::WorkflowPolicy::FinishAllAndDone</code></td><td class="topAlign tblval"><code translate="no">5</code></td><td class="topAlign">Corresponds to the <a href="tasking.html#finishAllAndDone-var" translate="no">finishAllAndDone</a> global element. The group executes all tasks and ignores their return results. When all tasks finished, the group finishes with success. If a group is empty, it finishes with success.</td></tr>
+<tr><td class="topAlign"><code translate="no">Tasking::WorkflowPolicy::FinishAllAndError</code></td><td class="topAlign tblval"><code translate="no">6</code></td><td class="topAlign">Corresponds to the <a href="tasking.html#finishAllAndError-var" translate="no">finishAllAndError</a> global element. The group executes all tasks and ignores their return results. When all tasks finished, the group finishes with an error. If a group is empty, it finishes with an error.</td></tr>
+</table></div>
+<p>Whenever a child task's result causes the Group to stop, i.e. in case of StopOnError, StopOnDone, or StopOnFinished policies, the Group stops the other running child tasks (if any - for example in parallel mode), and skips executing tasks it has not started yet (for example, in the sequential mode - those, that are placed after the failed task). Both stopping and skipping child tasks may happen when <a href="tasking.html#parallelLimit" translate="no">parallelLimit</a>() is used.</p>
+<p>The table below summarizes the differences between various workflow policies:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >WorkflowPolicy</th><th >Executes all child tasks</th><th >Result</th><th >Result when the group is empty</th></tr></thead>
+<tr valign="top" class="odd"><td >StopOnError</td><td >Stops when any child task finished with an error and reports an error</td><td >An error when at least one child task failed, success otherwise</td><td >Success</td></tr>
+<tr valign="top" class="even"><td >ContinueOnError</td><td >Yes</td><td >An error when at least one child task failed, success otherwise</td><td >Success</td></tr>
+<tr valign="top" class="odd"><td >StopOnDone</td><td >Stops when any child task finished with success and reports success</td><td >Success when at least one child task succeeded, an error otherwise</td><td >An error</td></tr>
+<tr valign="top" class="even"><td >ContinueOnDone</td><td >Yes</td><td >Success when at least one child task succeeded, an error otherwise</td><td >An error</td></tr>
+<tr valign="top" class="odd"><td >StopOnFinished</td><td >Stops when any child task finished and reports child task's result</td><td >Success or an error, depending on the finished child task's result</td><td >An error</td></tr>
+<tr valign="top" class="even"><td >FinishAllAndDone</td><td >Yes</td><td >Success</td><td >Success</td></tr>
+<tr valign="top" class="odd"><td >FinishAllAndError</td><td >Yes</td><td >An error</td><td >An error</td></tr>
+</table></div>
+<p>If a child of a group is also a group, the child group runs its tasks according to its own workflow policy. When a parent group stops the running child group because of parent group's workflow policy, i.e. when the StopOnError, StopOnDone, or StopOnFinished policy was used for the parent, the child group's result is reported according to the <b>Result</b> column and to the <b>child group's workflow policy</b> row in the table above.</p>
+<!-- @@@WorkflowPolicy -->
+</div>
+<div class="vars">
+<h2>Variable Documentation</h2>
+<!-- $$$continueOnDone -->
+<h3 class="fn" translate="no" id="continueOnDone-var">const <span class="type"><a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></span> Tasking::<span class="name">continueOnDone</span></h3>
+<p>A convenient global group's element describing the <a href="tasking.html#WorkflowPolicy-enum" translate="no">ContinueOnDone</a> workflow policy.</p>
+<!-- @@@continueOnDone -->
+<!-- $$$continueOnError -->
+<h3 class="fn" translate="no" id="continueOnError-var">const <span class="type"><a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></span> Tasking::<span class="name">continueOnError</span></h3>
+<p>A convenient global group's element describing the <a href="tasking.html#WorkflowPolicy-enum" translate="no">ContinueOnError</a> workflow policy.</p>
+<!-- @@@continueOnError -->
+<!-- $$$finishAllAndDone -->
+<h3 class="fn" translate="no" id="finishAllAndDone-var">const <span class="type"><a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></span> Tasking::<span class="name">finishAllAndDone</span></h3>
+<p>A convenient global group's element describing the <a href="tasking.html#WorkflowPolicy-enum" translate="no">FinishAllAndDone</a> workflow policy.</p>
+<!-- @@@finishAllAndDone -->
+<!-- $$$finishAllAndError -->
+<h3 class="fn" translate="no" id="finishAllAndError-var">const <span class="type"><a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></span> Tasking::<span class="name">finishAllAndError</span></h3>
+<p>A convenient global group's element describing the <a href="tasking.html#WorkflowPolicy-enum" translate="no">FinishAllAndError</a> workflow policy.</p>
+<!-- @@@finishAllAndError -->
+<!-- $$$parallel -->
+<h3 class="fn" translate="no" id="parallel-var">const <span class="type"><a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></span> Tasking::<span class="name">parallel</span></h3>
+<p>A convenient global group's element describing the parallel execution mode.</p>
+<p>All the direct child tasks of a group are started after the group is started, without waiting for the previous child tasks to finish. In this mode, all child tasks run simultaneously.</p>
+<p><b>See also </b><a href="tasking.html#sequential-var" translate="no">sequential</a> and <a href="tasking.html#parallelLimit" translate="no">parallelLimit</a>().</p>
+<!-- @@@parallel -->
+<!-- $$$sequential -->
+<h3 class="fn" translate="no" id="sequential-var">const <span class="type"><a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></span> Tasking::<span class="name">sequential</span></h3>
+<p>A convenient global group's element describing the sequential execution mode.</p>
+<p>This is the default execution mode of the Group element.</p>
+<p>When a Group has no execution mode, it runs in the sequential mode. All the direct child tasks of a group are started in a chain, so that when one task finishes, the next one starts. This enables you to pass the results from the previous task as input to the next task before it starts. This mode guarantees that the next task is started only after the previous task finishes.</p>
+<p><b>See also </b><a href="tasking.html#parallel-var" translate="no">parallel</a> and <a href="tasking.html#parallelLimit" translate="no">parallelLimit</a>().</p>
+<!-- @@@sequential -->
+<!-- $$$stopOnDone -->
+<h3 class="fn" translate="no" id="stopOnDone-var">const <span class="type"><a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></span> Tasking::<span class="name">stopOnDone</span></h3>
+<p>A convenient global group's element describing the <a href="tasking.html#WorkflowPolicy-enum" translate="no">StopOnDone</a> workflow policy.</p>
+<!-- @@@stopOnDone -->
+<!-- $$$stopOnError -->
+<h3 class="fn" translate="no" id="stopOnError-var">const <span class="type"><a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></span> Tasking::<span class="name">stopOnError</span></h3>
+<p>A convenient global group's element describing the <a href="tasking.html#WorkflowPolicy-enum" translate="no">StopOnError</a> workflow policy.</p>
+<p>This is the default workflow policy of the Group element.</p>
+<!-- @@@stopOnError -->
+<!-- $$$stopOnFinished -->
+<h3 class="fn" translate="no" id="stopOnFinished-var">const <span class="type"><a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></span> Tasking::<span class="name">stopOnFinished</span></h3>
+<p>A convenient global group's element describing the <a href="tasking.html#WorkflowPolicy-enum" translate="no">StopOnFinished</a> workflow policy.</p>
+<!-- @@@stopOnFinished -->
+</div>
+<div class="func">
+<h2>Function Documentation</h2>
+<!-- $$$onGroupDone[overload1]$$$onGroupDoneconstGroupItem::GroupEndHandler& -->
+<h3 class="fn" translate="no" id="onGroupDone"><span class="type"><a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></span> Tasking::<span class="name">onGroupDone</span>(const <span class="type"><a href="tasking-groupitem.html#GroupEndHandler-typedef" translate="no">GroupItem::GroupEndHandler</a></span> &amp;<i>handler</i>)</h3>
+<p>Constructs a group's element holding the group done handler. The <i translate="no">handler</i> is invoked whenever the group finishes with success. Depending on the group's workflow policy, this handler may also be called when the running group is stopped (e.g. when <a href="tasking.html#finishAllAndDone-var" translate="no">finishAllAndDone</a> element was used).</p>
+<p>When the <i translate="no">handler</i> is invoked, all of the group's child tasks are already finished.</p>
+<p>If a group contains the Storage elements, the <i translate="no">handler</i> is invoked before the storages are destructed, so that the <i translate="no">handler</i> may still perform a last read of the active storages' data.</p>
+<p><b>See also </b><a href="tasking-groupitem.html#GroupEndHandler-typedef" translate="no">GroupItem::GroupEndHandler</a>, <a href="tasking.html#onGroupSetup" translate="no">onGroupSetup</a>(), and <a href="tasking.html#onGroupError" translate="no">onGroupError</a>().</p>
+<!-- @@@onGroupDone -->
+<!-- $$$onGroupError[overload1]$$$onGroupErrorconstGroupItem::GroupEndHandler& -->
+<h3 class="fn" translate="no" id="onGroupError"><span class="type"><a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></span> Tasking::<span class="name">onGroupError</span>(const <span class="type"><a href="tasking-groupitem.html#GroupEndHandler-typedef" translate="no">GroupItem::GroupEndHandler</a></span> &amp;<i>handler</i>)</h3>
+<p>Constructs a group's element holding the group error handler. The <i translate="no">handler</i> is invoked whenever the group finishes with an error. Depending on the group's workflow policy, this handler may also be called when the running group is stopped (e.g. when <a href="tasking.html#stopOnError-var" translate="no">stopOnError</a> element was used).</p>
+<p>When the <i translate="no">handler</i> is invoked, all of the group's child tasks are already finished.</p>
+<p>If a group contains the Storage elements, the <i translate="no">handler</i> is invoked before the storages are destructed, so that the <i translate="no">handler</i> may still perform a last read of the active storages' data.</p>
+<p><b>See also </b><a href="tasking-groupitem.html#GroupEndHandler-typedef" translate="no">GroupItem::GroupEndHandler</a>, <a href="tasking.html#onGroupSetup" translate="no">onGroupSetup</a>(), and <a href="tasking.html#onGroupDone" translate="no">onGroupDone</a>().</p>
+<!-- @@@onGroupError -->
+<!-- $$$onGroupSetup[overload1]$$$onGroupSetupSetupHandler&& -->
+<h3 class="fn" translate="no" id="onGroupSetup">template &lt;typename SetupHandler&gt; <span class="type"><a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></span> Tasking::<span class="name">onGroupSetup</span>(<span class="type">SetupHandler</span> &amp;&amp;<i>handler</i>)</h3>
+<p>Constructs a group's element holding the group setup handler. The <i translate="no">handler</i> is invoked whenever the group starts.</p>
+<p>The passed <i translate="no">handler</i> is either of <code translate="no">std::function&lt;SetupResult()&gt;</code> or <code translate="no">std::function&lt;void()&gt;</code> type. For more information on possible argument type, refer to <a href="tasking-groupitem.html#GroupSetupHandler-typedef" translate="no">GroupItem::GroupSetupHandler</a>.</p>
+<p>When the <i translate="no">handler</i> is invoked, none of the group's child tasks are running yet.</p>
+<p>If a group contains the Storage elements, the <i translate="no">handler</i> is invoked after the storages are constructed, so that the <i translate="no">handler</i> may already perform some initial modifications to the active storages.</p>
+<p><b>See also </b><a href="tasking-groupitem.html#GroupSetupHandler-typedef" translate="no">GroupItem::GroupSetupHandler</a>, <a href="tasking.html#onGroupDone" translate="no">onGroupDone</a>(), and <a href="tasking.html#onGroupError" translate="no">onGroupError</a>().</p>
+<!-- @@@onGroupSetup -->
+<!-- $$$parallelLimit[overload1]$$$parallelLimitint -->
+<h3 class="fn" translate="no" id="parallelLimit"><span class="type"><a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></span> Tasking::<span class="name">parallelLimit</span>(<span class="type">int</span> <i>limit</i>)</h3>
+<p>Constructs a group's element describing the <a href="tasking-tasktree.html#execution-mode" translate="no">execution mode</a>.</p>
+<p>The execution mode element in a Group specifies how the direct child tasks of the Group are started.</p>
+<p>For convenience, when appropriate, the <a href="tasking.html#sequential-var" translate="no">sequential</a> or <a href="tasking.html#parallel-var" translate="no">parallel</a> global elements may be used instead.</p>
+<p>The <i translate="no">limit</i> defines the maximum number of direct child tasks running in parallel:</p>
+<ul>
+<li>When <i translate="no">limit</i> equals to 0, there is no limit, and all direct child tasks are started together, in the oder in which they appear in a group. This means the fully parallel execution, and the <a href="tasking.html#parallel-var" translate="no">parallel</a> element may be used instead.</li>
+<li>When <i translate="no">limit</i> equals to 1, it means that only one child task may run at the time. This means the sequential execution, and the <a href="tasking.html#sequential-var" translate="no">sequential</a> element may be used instead. In this case child tasks run in chain, so the next child task starts after the previous child task has finished.</li>
+<li>When other positive number is passed as <i translate="no">limit</i>, the group's child tasks run in parallel, but with a limited number of tasks running simultanously. The <i>limit</i> defines the maximum number of tasks running in parallel in a group. When the group is started, the first batch of tasks is started (the number of tasks in a batch equals to the passed <i translate="no">limit</i>, at most), while the others are kept waiting. When any running task finishes, the group starts the next remaining one, so that the <i>limit</i> of simultaneously running tasks inside a group isn't exceeded. This repeats on every child task's finish until all child tasks are started. This enables you to limit the maximum number of tasks that run simultaneously, for example if running too many processes might block the machine for a long time.</li>
+</ul>
+<p>In all execution modes, a group starts tasks in the oder in which they appear.</p>
+<p>If a child of a group is also a group, the child group runs its tasks according to its own execution mode.</p>
+<p><b>See also </b><a href="tasking.html#sequential-var" translate="no">sequential</a> and <a href="tasking.html#parallel-var" translate="no">parallel</a>.</p>
+<!-- @@@parallelLimit -->
+<!-- $$$workflowPolicy[overload1]$$$workflowPolicyTasking::WorkflowPolicy -->
+<h3 class="fn" translate="no" id="workflowPolicy"><span class="type"><a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></span> Tasking::<span class="name">workflowPolicy</span>(<span class="type"><a href="tasking.html#WorkflowPolicy-enum" translate="no">Tasking::WorkflowPolicy</a></span> <i>policy</i>)</h3>
+<p>Constructs a group's workflow policy element for a given <i translate="no">policy</i>.</p>
+<p>For convenience, global elements may be used instead.</p>
+<p><b>See also </b><a href="tasking.html#stopOnError-var" translate="no">stopOnError</a>, <a href="tasking.html#continueOnError-var" translate="no">continueOnError</a>, <a href="tasking.html#stopOnDone-var" translate="no">stopOnDone</a>, <a href="tasking.html#continueOnDone-var" translate="no">continueOnDone</a>, <a href="tasking.html#stopOnFinished-var" translate="no">stopOnFinished</a>, <a href="tasking.html#finishAllAndDone-var" translate="no">finishAllAndDone</a>, <a href="tasking.html#finishAllAndError-var" translate="no">finishAllAndError</a>, and <a href="tasking.html#WorkflowPolicy-enum" translate="no">WorkflowPolicy</a>.</p>
+<!-- @@@workflowPolicy -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-how-tos.qdoc -->
+  <title>Run Qt Creator from the command line | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Run Qt Creator from the command line</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#examples-of-cli-commands">Examples of CLI commands</a></li>
+<li class="level1"><a href="#open-a-project-from-a-directory">Open a project from a directory</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Run Qt Creator from the command line</h1>
+<!-- $$$creator-how-to-run-from-cli.html-description -->
+<div class="descr" id="details">
+<p>You can start Qt Creator and specify some options from the command line. For example, you can open a file to any line and column.</p>
+<p>To use command-line options, enter the following command in the directory that contains the Qt Creator executable or specify the path to Qt Creator as a part of the command:</p>
+<pre class="cpp plain" translate="no">
+ qtcreator [option] [filename[:line_number[:column_number]]]
+</pre>
+<div class="admonition note">
+<p><b>Note: </b>You can use either a colon (:) or a plus sign (+) as a separator between the filename and line number and the line number and the column number. You can also use a space between the separator and the line number.</p>
+</div>
+<h2 id="examples-of-cli-commands">Examples of CLI commands</h2>
+<p>On Windows:</p>
+<ul>
+<li><code translate="no">C:\qtcreator\bin&gt;qtcreator -help</code></li>
+<li><code translate="no">C:\qtcreator\bin&gt;qtcreator C:\TextFinder\textfinder.cpp:100:2</code></li>
+<li><code translate="no">C:\qtcreator\bin&gt;qtcreator C:\TextFinder\textfinder.cpp +100+2</code></li>
+</ul>
+<p>On macOS:</p>
+<ul>
+<li><code translate="no">Qt\ Creator.app/Contents/MacOS/Qt\ Creator -help</code></li>
+</ul>
+<h2 id="open-a-project-from-a-directory">Open a project from a directory</h2>
+<p>To open a project that is located in a particular directory, you can pass on the directory name as a command-line argument. Qt Creator looks for a <a href="creator-project-managing-sessions.html" translate="no">session</a> that matches the directory name and loads it. Or it looks for a project file in the directory and opens it.</p>
+<p>For example, on Windows:</p>
+<p><code translate="no">C:\qtcreator\bin&gt;qtcreator.exe C:\Examples\alarms</code></p>
+</div>
+<p><b>See also </b><a href="creator-cli.html" translate="no">Command-Line Options</a>.</p>
+<!-- @@@creator-how-to-run-from-cli.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

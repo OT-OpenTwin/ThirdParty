@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- searchresultwindow.cpp -->
+  <meta name="description" content="The SearchResult class reports user interaction, such as the activation of a search result item.">
+  <title>SearchResult Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>SearchResult</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#public-slots">Public Slots</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">SearchResult Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::SearchResult</span>
+<!-- $$$SearchResult-brief -->
+<p>The SearchResult class reports user interaction, such as the activation of a search result item. <a href="#details">More...</a></p>
+<!-- @@@SearchResult -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/find/searchresultwindow.h&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="core-searchresult-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#AddMode-enum" translate="no">AddMode</a></b> { AddSorted, AddOrdered }</td></tr>
+</table></div>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> QWidget *</td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#additionalReplaceWidget" translate="no">additionalReplaceWidget</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#count" translate="no">count</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#setAdditionalReplaceWidget" translate="no">setAdditionalReplaceWidget</a></b>(QWidget *<i>widget</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#setSearchAgainSupported" translate="no">setSearchAgainSupported</a></b>(bool <i>supported</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#setUserData" translate="no">setUserData</a></b>(const QVariant &amp;<i>data</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#textToReplace" translate="no">textToReplace</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QVariant </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#userData" translate="no">userData</a></b>() const</td></tr>
+</table></div>
+<h2 id="public-slots">Public Slots</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#addResult" translate="no">addResult</a></b>(const Utils::SearchResultItem &amp;<i>item</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#addResults" translate="no">addResults</a></b>(const Utils::SearchResultItems &amp;<i>items</i>, Core::SearchResult::AddMode <i>mode</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#finishSearch" translate="no">finishSearch</a></b>(bool <i>canceled</i>, const QString &amp;<i>reason</i> = {})</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#popup" translate="no">popup</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#restart" translate="no">restart</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#setReplaceEnabled" translate="no">setReplaceEnabled</a></b>(bool <i>enabled</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#setSearchAgainEnabled" translate="no">setSearchAgainEnabled</a></b>(bool <i>enabled</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#setTextToReplace" translate="no">setTextToReplace</a></b>(const QString &amp;<i>textToReplace</i>)</td></tr>
+</table></div>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#activated" translate="no">activated</a></b>(const Utils::SearchResultItem &amp;<i>item</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#canceled" translate="no">canceled</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#countChanged" translate="no">countChanged</a></b>(int <i>count</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#paused" translate="no">paused</a></b>(bool <i>paused</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#replaceButtonClicked" translate="no">replaceButtonClicked</a></b>(const QString &amp;<i>replaceText</i>, const Utils::SearchResultItems &amp;<i>checkedItems</i>, bool <i>preserveCase</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#searchAgainRequested" translate="no">searchAgainRequested</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-searchresult.html#visibilityChanged" translate="no">visibilityChanged</a></b>(bool <i>visible</i>)</td></tr>
+</table></div>
+<!-- $$$SearchResult-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Whenever a new search is initiated via startNewSearch, an instance of this class is returned to provide the initiator with the hooks for handling user interaction.</p>
+</div>
+<!-- @@@SearchResult -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$AddMode$$$AddSortedByContent$$$AddSortedByPosition$$$AddOrdered -->
+<h3 class="fn" translate="no" id="AddMode-enum">enum SearchResult::<span class="name">AddMode</span></h3>
+<p>This enum type specifies whether the search results should be sorted or ordered:</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Core::SearchResult::AddSorted</code></td><td class="topAlign tblval">?</td><td class="topAlign">The search results are sorted.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::SearchResult::AddOrdered</code></td><td class="topAlign tblval"><code translate="no">2</code></td><td class="topAlign">The search results are ordered.</td></tr>
+</table></div>
+<!-- @@@AddMode -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$activated[overload1]$$$activatedconstUtils::SearchResultItem& -->
+<h3 class="fn" translate="no" id="activated"><code translate="no">[signal] </code><span class="type">void</span> SearchResult::<span class="name">activated</span>(const <span class="type">Utils::SearchResultItem</span> &amp;<i>item</i>)</h3>
+<p>Indicates that the user activated the search result <i translate="no">item</i> by double-clicking it, for example.</p>
+<!-- @@@activated -->
+<!-- $$$addResult[overload1]$$$addResultconstUtils::SearchResultItem& -->
+<h3 class="fn" translate="no" id="addResult"><code translate="no">[slot] </code><span class="type">void</span> SearchResult::<span class="name">addResult</span>(const <span class="type">Utils::SearchResultItem</span> &amp;<i>item</i>)</h3>
+<p>Adds a single result line to the <b translate="no">Search Results</b> output pane.</p>
+<p><i translate="no">item</i>.mainRange() specifies the region from the beginning of the search term through its length that should be visually marked. <i translate="no">item</i>.path(), <i translate="no">item</i>.text() are shown on the result line. You can attach arbitrary <i translate="no">item</i>.<a href="core-searchresult.html#userData" translate="no">userData</a>() to the search result, which can be used, for example, when reacting to the signals of the search results for your search.</p>
+<p><b>See also </b><a href="core-searchresult.html#addResults" translate="no">addResults</a>().</p>
+<!-- @@@addResult -->
+<!-- $$$addResults[overload1]$$$addResultsconstUtils::SearchResultItems&Core::SearchResult::AddMode -->
+<h3 class="fn" translate="no" id="addResults"><code translate="no">[slot] </code><span class="type">void</span> SearchResult::<span class="name">addResults</span>(const <span class="type">Utils::SearchResultItems</span> &amp;<i>items</i>, <span class="type"><a href="core-searchresult.html#AddMode-enum" translate="no">Core::SearchResult::AddMode</a></span> <i>mode</i>)</h3>
+<p>Adds the search result <i translate="no">items</i> to the <b translate="no">Search Results</b> output pane using <i translate="no">mode</i>.</p>
+<p><b>See also </b><a href="core-searchresult.html#addResult" translate="no">addResult</a>().</p>
+<!-- @@@addResults -->
+<!-- $$$additionalReplaceWidget[overload1]$$$additionalReplaceWidget -->
+<h3 class="fn" translate="no" id="additionalReplaceWidget"><span class="type">QWidget</span> *SearchResult::<span class="name">additionalReplaceWidget</span>() const</h3>
+<p>Returns a UI for a global search and replace action.</p>
+<p><b>See also </b><a href="core-searchresult.html#setAdditionalReplaceWidget" translate="no">setAdditionalReplaceWidget</a>().</p>
+<!-- @@@additionalReplaceWidget -->
+<!-- $$$canceled[overload1]$$$canceled -->
+<h3 class="fn" translate="no" id="canceled"><code translate="no">[signal] </code><span class="type">void</span> SearchResult::<span class="name">canceled</span>()</h3>
+<p>This signal is emitted if the user cancels the search.</p>
+<!-- @@@canceled -->
+<!-- $$$count[overload1]$$$count -->
+<h3 class="fn" translate="no" id="count"><span class="type">int</span> SearchResult::<span class="name">count</span>() const</h3>
+<p>Returns the number of search hits.</p>
+<!-- @@@count -->
+<!-- $$$countChanged[overload1]$$$countChangedint -->
+<h3 class="fn" translate="no" id="countChanged"><code translate="no">[signal] </code><span class="type">void</span> SearchResult::<span class="name">countChanged</span>(<span class="type">int</span> <i>count</i>)</h3>
+<p>This signal is emitted when the number of search hits changes to <i translate="no">count</i>.</p>
+<!-- @@@countChanged -->
+<!-- $$$finishSearch[overload1]$$$finishSearchboolconstQString& -->
+<h3 class="fn" translate="no" id="finishSearch"><code translate="no">[slot] </code><span class="type">void</span> SearchResult::<span class="name">finishSearch</span>(<span class="type">bool</span> <i>canceled</i>, const <span class="type">QString</span> &amp;<i>reason</i> = {})</h3>
+<p>Notifies the <b translate="no">Search Results</b> output pane that the current search has been <i translate="no">canceled</i> for the specified <i translate="no">reason</i>, and the UI should reflect that.</p>
+<!-- @@@finishSearch -->
+<!-- $$$paused[overload1]$$$pausedbool -->
+<h3 class="fn" translate="no" id="paused"><code translate="no">[signal] </code><span class="type">void</span> SearchResult::<span class="name">paused</span>(<span class="type">bool</span> <i>paused</i>)</h3>
+<p>This signal is emitted when the search status is set to <i translate="no">paused</i>.</p>
+<!-- @@@paused -->
+<!-- $$$popup[overload1]$$$popup -->
+<h3 class="fn" translate="no" id="popup"><code translate="no">[slot] </code><span class="type">void</span> SearchResult::<span class="name">popup</span>()</h3>
+<p>Opens the <b translate="no">Search Results</b> output pane with this search.</p>
+<!-- @@@popup -->
+<!-- $$$replaceButtonClicked[overload1]$$$replaceButtonClickedconstQString&constUtils::SearchResultItems&bool -->
+<h3 class="fn" translate="no" id="replaceButtonClicked"><code translate="no">[signal] </code><span class="type">void</span> SearchResult::<span class="name">replaceButtonClicked</span>(const <span class="type">QString</span> &amp;<i>replaceText</i>, const <span class="type">Utils::SearchResultItems</span> &amp;<i>checkedItems</i>, <span class="type">bool</span> <i>preserveCase</i>)</h3>
+<p>Indicates that the user initiated a text replace by selecting <b translate="no">Replace All</b>, for example.</p>
+<p>The signal reports the text to use for replacement in <i translate="no">replaceText</i>, the list of search result items that were selected by the user in <i translate="no">checkedItems</i>, and whether a search and replace should preserve the case of the replaced strings in <i translate="no">preserveCase</i>. The handler of this signal should apply the replace only on the selected items.</p>
+<!-- @@@replaceButtonClicked -->
+<!-- $$$restart[overload1]$$$restart -->
+<h3 class="fn" translate="no" id="restart"><code translate="no">[slot] </code><span class="type">void</span> SearchResult::<span class="name">restart</span>()</h3>
+<p>Removes all search results.</p>
+<!-- @@@restart -->
+<!-- $$$searchAgainRequested[overload1]$$$searchAgainRequested -->
+<h3 class="fn" translate="no" id="searchAgainRequested"><code translate="no">[signal] </code><span class="type">void</span> SearchResult::<span class="name">searchAgainRequested</span>()</h3>
+<p>This signal is emitted when the <b translate="no">Search Again</b> button is selected.</p>
+<!-- @@@searchAgainRequested -->
+<!-- $$$setAdditionalReplaceWidget[overload1]$$$setAdditionalReplaceWidgetQWidget* -->
+<h3 class="fn" translate="no" id="setAdditionalReplaceWidget"><span class="type">void</span> SearchResult::<span class="name">setAdditionalReplaceWidget</span>(<span class="type">QWidget</span> *<i>widget</i>)</h3>
+<p>Sets a <i translate="no">widget</i> as UI for a global search and replace action.</p>
+<p><b>See also </b><a href="core-searchresult.html#additionalReplaceWidget" translate="no">additionalReplaceWidget</a>().</p>
+<!-- @@@setAdditionalReplaceWidget -->
+<!-- $$$setReplaceEnabled[overload1]$$$setReplaceEnabledbool -->
+<h3 class="fn" translate="no" id="setReplaceEnabled"><code translate="no">[slot] </code><span class="type">void</span> SearchResult::<span class="name">setReplaceEnabled</span>(<span class="type">bool</span> <i>enabled</i>)</h3>
+<p>Sets whether replace is <i translate="no">enabled</i> and can be triggered by the user.</p>
+<!-- @@@setReplaceEnabled -->
+<!-- $$$setSearchAgainEnabled[overload1]$$$setSearchAgainEnabledbool -->
+<h3 class="fn" translate="no" id="setSearchAgainEnabled"><code translate="no">[slot] </code><span class="type">void</span> SearchResult::<span class="name">setSearchAgainEnabled</span>(<span class="type">bool</span> <i>enabled</i>)</h3>
+<p>Sets whether the <b translate="no">Seach Again</b> button is enabled to <i translate="no">enabled</i>.</p>
+<!-- @@@setSearchAgainEnabled -->
+<!-- $$$setSearchAgainSupported[overload1]$$$setSearchAgainSupportedbool -->
+<h3 class="fn" translate="no" id="setSearchAgainSupported"><span class="type">void</span> SearchResult::<span class="name">setSearchAgainSupported</span>(<span class="type">bool</span> <i>supported</i>)</h3>
+<p>Sets whether the <b translate="no">Seach Again</b> button is enabled to <i translate="no">supported</i>.</p>
+<!-- @@@setSearchAgainSupported -->
+<!-- $$$setTextToReplace[overload1]$$$setTextToReplaceconstQString& -->
+<h3 class="fn" translate="no" id="setTextToReplace"><code translate="no">[slot] </code><span class="type">void</span> SearchResult::<span class="name">setTextToReplace</span>(const <span class="type">QString</span> &amp;<i>textToReplace</i>)</h3>
+<p>Sets the value in the UI element that allows the user to type the text that should replace text in search results to <i translate="no">textToReplace</i>.</p>
+<p><b>See also </b><a href="core-searchresult.html#textToReplace" translate="no">textToReplace</a>().</p>
+<!-- @@@setTextToReplace -->
+<!-- $$$setUserData[overload1]$$$setUserDataconstQVariant& -->
+<h3 class="fn" translate="no" id="setUserData"><span class="type">void</span> SearchResult::<span class="name">setUserData</span>(const <span class="type">QVariant</span> &amp;<i>data</i>)</h3>
+<p>Attaches some random <i translate="no">data</i> to this search, that you can use later.</p>
+<p><b>See also </b><a href="core-searchresult.html#userData" translate="no">userData</a>().</p>
+<!-- @@@setUserData -->
+<!-- $$$textToReplace[overload1]$$$textToReplace -->
+<h3 class="fn" translate="no" id="textToReplace"><span class="type">QString</span> SearchResult::<span class="name">textToReplace</span>() const</h3>
+<p>Returns the text that should replace the text in search results.</p>
+<p><b>See also </b><a href="core-searchresult.html#setTextToReplace" translate="no">setTextToReplace</a>().</p>
+<!-- @@@textToReplace -->
+<!-- $$$userData[overload1]$$$userData -->
+<h3 class="fn" translate="no" id="userData"><span class="type">QVariant</span> SearchResult::<span class="name">userData</span>() const</h3>
+<p>Returns the data that was attached to this search by calling <a href="core-searchresult.html#setUserData" translate="no">setUserData</a>().</p>
+<p><b>See also </b><a href="core-searchresult.html#setUserData" translate="no">setUserData</a>().</p>
+<!-- @@@userData -->
+<!-- $$$visibilityChanged[overload1]$$$visibilityChangedbool -->
+<h3 class="fn" translate="no" id="visibilityChanged"><code translate="no">[signal] </code><span class="type">void</span> SearchResult::<span class="name">visibilityChanged</span>(<span class="type">bool</span> <i>visible</i>)</h3>
+<p>This signal is emitted when the visibility of the search results changes to <i translate="no">visible</i>.</p>
+<!-- @@@visibilityChanged -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

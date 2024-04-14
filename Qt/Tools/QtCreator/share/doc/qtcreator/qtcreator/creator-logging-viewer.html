@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-logging-viewer.qdoc -->
+  <title>Inspect internal logs | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Inspect internal logs</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#view-logs">View logs</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Inspect internal logs</h1>
+<!-- $$$creator-logging-viewer.html-description -->
+<div class="descr" id="details">
+<p>You can inspect internal log messages of Qt Creator at runtime without having to restart it or configure the logging rules. Log messages are helpful when you develop Qt Creator, need to investigate some problem you are facing, or want to take a look behind the scenes.</p>
+<p>To open the log viewer and start collecting log information, select <b translate="no">Tools</b> &gt; <b translate="no">Debug Qt Creator</b> &gt; <b translate="no">Show Logs</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-logging-category-viewer.png" alt="" /></p><p>The viewer displays log messages from the selected logging categories. If you have logging rules defined, they might be listed on startup. Otherwise, the list of categories is extended while you are using Qt Creator.</p>
+<div class="admonition note">
+<p><b>Note: </b>Messages are not cached, so the viewer displays only messages that are recorded after you enabled a category.</p>
+</div>
+<h2 id="view-logs">View logs</h2>
+<p>To enable logging categories, select them in <b translate="no">Category</b>. <b translate="no">Type</b> specifies the minimum level of messages to display from the respective category. To change the minimum level, double-click the type and select another value.</p>
+<p>If you enable more than one category, you can specify different colors for the messages in each category. Double-click the value of <b translate="no">Color</b> to pick colors for the categories.</p>
+<p>To store information about the currently enabled categories, select <b translate="no">Save Enabled as Preset</b> in the context-menu. To load the saved information, select <b translate="no">Update from Preset</b>.</p>
+<p>To save the content of the displayed messages, select <img src="images/savefile.png" alt="" /> (<b translate="no">Save Log</b>). To copy all or selected messages, select <b translate="no">Copy All</b> or <b translate="no">Copy Selected Logs</b> in the context menu.</p>
+<p>To clean the content of displayed messages select <img src="images/clean_pane_small.png" alt="" /> (<b translate="no">Clear</b>).</p>
+<p>To temporarily stop logging, select <img src="images/stop_small.png" alt="" /> (<b translate="no">Stop Logging</b>). To continue logging, select <img src="images/run_small.png" alt="" /> (<b translate="no">Start Logging</b>).</p>
+<p>By default, logging categories and messages coming directly from Qt are disabled. To display them, select <img src="images/qtlogo-16.png" alt="" /> (<b translate="no">Toggle Qt Internal Logging</b>).</p>
+<p>New messages automatically scroll the message display to the bottom. To stop automatic scrolling, toggle <img src="images/arrowdown.png" alt="" /> (<b translate="no">Auto Scroll</b>).</p>
+<p>By default, messages are listed with a timestamp, without message type. To hide and show this information, toggle <img src="images/stopwatch.png" alt="" /> (<b translate="no">Timestamps</b>) and <img src="images/message.png" alt="" /> (<b translate="no">Message Types</b>).</p>
+</div>
+<!-- @@@creator-logging-viewer.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

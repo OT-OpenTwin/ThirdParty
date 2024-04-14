@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
 <!-- qtquick-from-qmlproject-to-pro.qdoc -->
+  <meta name="description" content="Converting a project that has a .qmlproject file to one that has a .pro file.">
   <title>Converting UI Projects to Applications | Qt Creator Manual</title>
   <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
   <script type="text/javascript">
@@ -22,125 +22,142 @@
 </head>
 <body>
 <div class="header" id="qtdocheader">
-  <div class="main">
+    <div class="main">
     <div class="main-rounded">
-      <div class="navigationbar">
-        <table><tr>
-<td ><a href="index.html">Qt Creator Manual</a></td><td >Converting UI Projects to Applications</td></tr></table><table class="buildversion"><tr>
-<td id="buildversion" width="100%" align="right"><a href="index.html">Qt Creator Manual 4.9&#x2e;1</a></td>
-        </tr></table>
-      </div>
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Converting UI Projects to Applications</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
     </div>
+</div>
 <div class="content">
 <div class="line">
 <div class="content mainContent">
-  <link rel="prev" href="creator-qml-modules-with-plugins.html" />
-  <link rel="next" href="creator-using-qt-designer.html" />
+  <link rel="prev" href="creator-reference.html" />
 <p class="naviNextPrevious headerNavi">
-<a class="prevPage" href="creator-qml-modules-with-plugins.html">Using QML Modules with Plugins</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-using-qt-designer.html">Developing Widget Based Applications</a>
-</p><p/>
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
 <div class="sidebar">
 <div class="toc">
-<h3><a name="toc">Contents</a></h3>
+<h3 id="toc">Contents</h3>
 <ul>
-<li class="level1"><a href="#converting-projects">Converting Projects</a></li>
-<li class="level1"><a href="#adding-qt-quick-timeline-module-to-qt-installations">Adding Qt Quick Timeline Module to Qt Installations</a></li>
+<li class="level1"><a href="#converting-into-qmake-projects">Converting into qmake Projects</a></li>
+<li class="level1"><a href="#handling-large-data-files">Handling Large Data Files</a></li>
+<li class="level1"><a href="#adding-custom-fonts">Adding Custom Fonts</a></li>
+<li class="level1"><a href="#adding-qt-quick-designer-components-to-qt-installations">Adding Qt Quick Designer Components to Qt Installations</a></li>
 </ul>
 </div>
 <div class="sidebar-content" id="sidebar-content"></div></div>
 <h1 class="title">Converting UI Projects to Applications</h1>
-<span class="subtitle"></span>
 <!-- $$$quick-converting-ui-projects.html-description -->
-<div class="descr"> <a name="details"></a>
-<p>Qt Quick UI projects are useful for creating user interfaces. To use them for application development in Qt Creator you have to add:</p>
+<div class="descr" id="details">
+<p>Qt Quick UI Prototype projects are useful for creating user interfaces. To use them for application development in Qt Creator you have to add:</p>
 <ul>
-<li>Project configuration file (.pro)</li>
+<li>Project configuration file (CMakeLists.txt or .pro)</li>
 <li>C++ code (.cpp)</li>
-<li>Resource files (.qrc)</li>
-<li>Code needed for deploying applications to <a href="creator-glossary.html#glossary-device">devices</a></li>
+<li>Resource files</li>
+<li>Code needed for deploying applications to <a href="creator-glossary.html#glossary-device" translate="no">devices</a></li>
 </ul>
-<p>You can use a Qt Creator wizard to create a Qt Quick application that is built using the qmake build system and then copy the source files from the Qt UI Quick project to the application project.</p>
-<p>You can use the <code>RESOURCES</code> option in the project configuration file to automatically add all the QML files and related assets to a Qt resource file.</p>
-<p>The wizard automatically adds the <code>QML_IMPORT_PATH</code> option to the project file for specifying the required <a href="https://doc.qt.io/qt-5/qtqml-syntax-imports.html#qml-import-path">QML import path</a>. The path is only needed if more than one subdirectory contains QML files.</p>
-<p>Then you can use the <a href="http://doc.qt.io/qt-5/qquickview.html">QQuickView</a> class in the main C++ source file to show the main QML file when the application starts.</p>
-<p>At the time of this writing, the Qt Quick Timeline module is delivered with Qt Design Studio, but not with Qt. If you use a timeline in a Qt Design Studio project that you import to Qt Creator, you must build the Qt Quick Timeline module and install it to your Qt to be able to build your project.</p>
-<a name="converting-projects"></a>
-<h2 id="converting-projects">Converting Projects</h2>
-<p>To convert a project that has a .qmlproject file to one that has a .pro file:</p>
-<ol class="1" type="1"><li>Select <b>File</b> &gt; <b>New File or Project</b> &gt; <b>Application</b> &gt; <b>Qt Quick Application - Empty</b> &gt; <b>Choose</b>.</li>
-<li>In the <b>Build system</b> field, select <a href="http://doc.qt.io/qt-5/qmake-manual.html">qmake</a> as the build system to use for building and running the project, and then select <b>Next</b> (or <b>Continue</b> on macOS).</li>
-<li>Follow the instructions of the wizard to create the project.</li>
-<li>In the file explorer, copy the source files from the Qt Quick UI project directory to a subdirectory in the application project directory. For the purpose of these instructions, the directory is called <code>qml</code>.</li>
-<li>Open the application project file, and edit the value of the <code>RESOURCES</code> option to add the following line:<pre class="cpp plain">
-
-  RESOURCES += \
-      $$files(qml/*)
-
-</pre>
-</li>
-<li>Select <b>Build</b> &gt; <b>Run qmake</b> to apply the <code>RESOURCES</code> option to the build configuration.</li>
-<li>Open the <i>main.cpp</i> file and replace the <a href="http://doc.qt.io/qt-5/qqmlapplicationengine.html">QQmlApplicationEngine</a> object with a <a href="http://doc.qt.io/qt-5/qquickview.html">QQuickView</a> object:<pre class="cpp">
-
-      <span class="type"><a href="http://doc.qt.io/qt-5/qquickview.html">QQuickView</a></span> view;
-      view<span class="operator">.</span>setSource(<span class="type"><a href="http://doc.qt.io/qt-5/qurl.html">QUrl</a></span>(<span class="string">&quot;qrc:/qml/ProgressBar.ui.qml&quot;</span>));
-      <span class="keyword">if</span> (<span class="operator">!</span>view<span class="operator">.</span>errors()<span class="operator">.</span>isEmpty())
-          <span class="keyword">return</span> <span class="operator">-</span><span class="number">1</span>;
-      view<span class="operator">.</span>show();
-
-</pre>
-<p>Where <code>qml\main.qml</code> is the path to and the name of the main QML file in the Qt Quick UI project.</p>
-</li>
-<li>Select <b>Build</b> &gt; <b>Run</b> to build and run your project.</li>
-</ol>
-<p>For example, if you copy the source files of the <i>ProgressBar</i> example from your Qt Design Studio installation (located in the <code>\share\qtcreator\examples\ProgressBar</code> directory) to an empty Qt Quick application project and make the necessary changes, the <i>main.cpp</i> file should look as follows:</p>
-<pre class="cpp">
-
-  <span class="preprocessor">#include &lt;QGuiApplication&gt;</span>
-  <span class="preprocessor">#include &lt;QQmlApplicationEngine&gt;</span>
-  <span class="preprocessor">#include &lt;QQuickView&gt;</span>
-
-  <span class="type">int</span> main(<span class="type">int</span> argc<span class="operator">,</span> <span class="type">char</span> <span class="operator">*</span>argv<span class="operator">[</span><span class="operator">]</span>)
-  {
-      <span class="type"><a href="http://doc.qt.io/qt-5/qcoreapplication.html">QCoreApplication</a></span><span class="operator">::</span>setAttribute(<span class="type"><a href="http://doc.qt.io/qt-5/qt.html">Qt</a></span><span class="operator">::</span>AA_EnableHighDpiScaling);
-
-      <span class="type"><a href="http://doc.qt.io/qt-5/qguiapplication.html">QGuiApplication</a></span> app(argc<span class="operator">,</span> argv);
-
-      <span class="type"><a href="http://doc.qt.io/qt-5/qquickview.html">QQuickView</a></span> view;
-      view<span class="operator">.</span>setSource(<span class="type"><a href="http://doc.qt.io/qt-5/qurl.html">QUrl</a></span>(<span class="string">&quot;qrc:/qml/ProgressBar.ui.qml&quot;</span>));
-      <span class="keyword">if</span> (<span class="operator">!</span>view<span class="operator">.</span>errors()<span class="operator">.</span>isEmpty())
-          <span class="keyword">return</span> <span class="operator">-</span><span class="number">1</span>;
-      view<span class="operator">.</span>show();
-
-      app<span class="operator">.</span>exec();
-  }
-
-</pre>
-<a name="adding-qt-quick-timeline-module-to-qt-installations"></a>
-<h2 id="adding-qt-quick-timeline-module-to-qt-installations">Adding Qt Quick Timeline Module to Qt Installations</h2>
-<p>Check out the Qt Quick Timeline module from <a href="https://codereview.qt-project.org/#/admin/projects/qt/qtquicktimeline">Qt Code Review</a>.</p>
-<p>For example:</p>
-<pre class="cpp plain">
-
-  git clone ssh://user@codereview.qt-project.org:29418/qt/qtquicktimeline
-
-</pre>
-<p>Then use qmake from your Qt installation to build the module and to add it to your Qt. Switch to the directory that contains the sources (usually, <code>qtquicktimeline</code>), and enter the following commands:</p>
-<pre class="cpp plain">
-
-  &lt;path_to_qmake&gt;\qmake -r
-  make
-  make install
-
-</pre>
-<p>On Windows, use the <code>nmake</code> and <code>nmake install</code> commands instead.</p>
+<p>For more information about integrating QML and C++, see <a href="https://doc.qt.io/qt/qtqml-cppintegration-overview.html" translate="no">Overview - QML and C++ Integration</a>.</p>
+<div class="admonition note">
+<p><b>Note: </b>Since Qt Design Studio 2.3&#x2e;0, Qt Design Studio project wizard templates generate projects that can be built with CMake. You can open the <i>CMakeLists.txt</i> project file in Qt Creator to continue developing the project. Also, you can use Qt Creator to create a Qt Quick Application project that you can open in Qt Design Studio.</p>
 </div>
+<span id="wizard-template-note"></span><div class="admonition note">
+<p><b>Note: </b>Since Qt Design Studio 3.9&#x2e;0, Qt Design Studio project wizard templates generate projects that automatically checkout and build the Qt Quick Studio Components from <a href="https://code.qt.io/cgit/qt-labs/qtquickdesigner-components.git/" translate="no">Qt Code Review</a>, using CMake. To turn off this feature, use the option <i>BUILD_QDS_COMPONENTS</i> in the CMake configuration.</p>
+</div>
+<p>For more information about using Qt Design Studio to create projects, see <a href="https://doc.qt.io/qtdesignstudio/index.html" translate="no">Qt Design Studio Manual</a>.</p>
+<p>If you want to use qmake as the build system, you can use a Qt Creator wizard template to create a Qt Quick application that is built using the qmake build system and then copy the source files from the Qt UI Quick project to the application project.</p>
+<p>You can use the <code translate="no">RESOURCES</code> option in the project configuration file to automatically add all the QML files and related assets to a Qt resource collection file (.qrc). However, large files should be included as external binary resources instead of compiling them into the binary.</p>
+<p>The wizard automatically adds the <code translate="no">QML_IMPORT_PATH</code> option to the project file for specifying the required <a href="https://doc.qt.io/qt/qtqml-syntax-imports.html#qml-import-path" translate="no">QML import path</a>. The path is only needed if more than one subdirectory has QML files.</p>
+<p>Then you can use the QQuickView class in the main C++ source file to show the main QML file when the application starts.</p>
+<p>The <i>Qt Quick Designer Components</i> module is installed when you install Qt Design Studio. If you use Qt Quick Studio Components or Effects from the module in a project that you want to edit in Qt Creator, you have to build the module and install it to your Qt to be able to build your project. For more information, see <a href="quick-converting-ui-projects.html#adding-qt-quick-designer-components-to-qt-installations" translate="no">Adding Qt Quick Designer Components to Qt Installations</a>.</p>
+<p>The Qt Quick Timeline module is installed when you install Qt Design Studio. If you only install Qt Creator and Qt, remember to also select the Qt Quick Timeline module for installation. If your Qt is older than 5.14, you must build the Qt Quick Timeline module and install it to your Qt to be able to build your project.</p>
+<h2 id="converting-into-qmake-projects">Converting into qmake Projects</h2>
+<p>To convert a project that has a .qmlproject file to one that has a .pro file:</p>
+<ol class="1" type="1"><li>Select <b translate="no">File</b> &gt; <b translate="no">New Project</b> &gt; <b translate="no">Application (Qt)</b> &gt; <b translate="no">Qt Quick Application</b> &gt; <b translate="no">Choose</b>.</li>
+<li>In the <b translate="no">Build system</b> field, select qmake as the build system to use for building and running the project, and then select <b translate="no">Next</b> (or <b translate="no">Continue</b> on macOS).</li>
+<li>Follow the instructions of the wizard to create the project.</li>
+<li>In the file explorer, copy the source files from the Qt Quick UI project directory to a subdirectory in the application project directory. For the purpose of these instructions, the directory is called <code translate="no">qml</code>.</li>
+<li>Open the application project file, and edit the value of the <code translate="no">RESOURCES</code> option to add the following line:<pre class="cpp plain" translate="no">
+ RESOURCES += \
+     $$files(qml/*)
+</pre>
+</li>
+<li>Also edit the value of the <code translate="no">QML_IMPORT_PATH</code> option to specify the QML import path:<pre class="cpp plain" translate="no">
+ QML_IMPORT_PATH = qml/imports
+</pre>
+<p>Where <code translate="no">qml/imports</code> is the import path.</p>
+</li>
+<li>Select <b translate="no">Build</b> &gt; <b translate="no">Run qmake</b> to apply the <code translate="no">RESOURCES</code> option to the build configuration.</li>
+<li>Open the <i>main.cpp</i> file and replace the QQmlApplicationEngine object with a QQuickView object:<pre class="cpp" translate="no">
+     <span class="type">QQuickView</span> view;
+     view<span class="operator">.</span>engine()<span class="operator">-</span><span class="operator">&gt;</span>addImportPath(<span class="string">&quot;qrc:/qml/imports&quot;</span>);
+     view<span class="operator">.</span>setSource(<span class="type">QUrl</span>(<span class="string">&quot;qrc:/qml/ProgressBar.ui.qml&quot;</span>));
+     <span class="keyword">if</span> (<span class="operator">!</span>view<span class="operator">.</span>errors()<span class="operator">.</span>isEmpty())
+         <span class="keyword">return</span> <span class="operator">-</span><span class="number">1</span>;
+     view<span class="operator">.</span>show();
+</pre>
+<p>Where <code translate="no">qrc:/qml/imports</code> is the import path and <code translate="no">qrc:/qml/ProgressBar.ui.qml</code> is the path to and the name of the main QML file in the Qt Quick UI project.</p>
+</li>
+<li>Select <b translate="no">Build</b> &gt; <b translate="no">Run</b> to build and run your project.<div class="admonition note">
+<p><b>Note: </b>If you get error messages related to modules, perfom the steps described in <a href="quick-converting-ui-projects.html#adding-qt-quick-designer-components-to-qt-installations" translate="no">Adding Qt Quick Designer Components to Qt Installations</a>.</p>
+</div>
+</li>
+</ol>
+<p>For example, if you copy the source files of the <i>ProgressBar</i> example from your Qt Design Studio installation (located in the <code translate="no">\share\qtcreator\examples\ProgressBar</code> directory) to an empty Qt Quick application project and make the necessary changes, the <i>main.cpp</i> file should look as follows:</p>
+<pre class="cpp" translate="no">
+ <span class="preprocessor">#include &lt;QGuiApplication&gt;</span>
+ <span class="preprocessor">#include &lt;QQmlApplicationEngine&gt;</span>
+ <span class="preprocessor">#include &lt;QQuickView&gt;</span>
+
+ <span class="type">int</span> main(<span class="type">int</span> argc<span class="operator">,</span> <span class="type">char</span> <span class="operator">*</span>argv<span class="operator">[</span><span class="operator">]</span>)
+ {
+     <span class="type">QCoreApplication</span><span class="operator">::</span>setAttribute(<span class="type">Qt</span><span class="operator">::</span>AA_EnableHighDpiScaling);
+
+     <span class="type">QGuiApplication</span> app(argc<span class="operator">,</span> argv);
+
+     <span class="type">QQuickView</span> view;
+     view<span class="operator">.</span>engine()<span class="operator">-</span><span class="operator">&gt;</span>addImportPath(<span class="string">&quot;qrc:/qml/imports&quot;</span>);
+     view<span class="operator">.</span>setSource(<span class="type">QUrl</span>(<span class="string">&quot;qrc:/qml/ProgressBar.ui.qml&quot;</span>));
+     <span class="keyword">if</span> (<span class="operator">!</span>view<span class="operator">.</span>errors()<span class="operator">.</span>isEmpty())
+         <span class="keyword">return</span> <span class="operator">-</span><span class="number">1</span>;
+     view<span class="operator">.</span>show();
+
+     app<span class="operator">.</span>exec();
+ }
+</pre>
+<h2 id="handling-large-data-files">Handling Large Data Files</h2>
+<p>Graphical assets used in the UI, such as images, effects, or 3D scenes are a typical cause for performance problems in UIs. Even building the application requires huge amounts of memory if you try to include large asset files, such as 100-MB 3D models or 64-MB textures, into the <code translate="no">.qrc</code> file for compiling them into the binary.</p>
+<p>First try to optimize your assets, as described in <a href="https://doc.qt.io/qtdesignstudio/qtquick-optimizing-designs.html" translate="no">Optimizing Designs</a> and <a href="https://doc.qt.io/qtdesignstudio/studio-optimized-3d-scenes.html" translate="no">Creating Optimized 3D Scenes</a>.</p>
+<p>If you really need large assets, they should either be loaded directly from the file system or use the Qt resource system in the dynamic way. For more information, see The Qt Resource System in the Qt documentation.</p>
+<h2 id="adding-custom-fonts">Adding Custom Fonts</h2>
+<p>To use custom fonts from the Qt Quick UI project, call the QFontDatabase::addApplicationFont() function from the <i>main.cpp</i> file.</p>
+<h2 id="adding-qt-quick-designer-components-to-qt-installations">Adding Qt Quick Designer Components to Qt Installations</h2>
+<p>Since Qt Design Studio 3.9, the Qt Quick Studio Components module is installed by default as part of the application. You can also install the module manually.</p>
+<p>For example:</p>
+<ol class="1" type="1"><li>Clone the module repository.<pre class="cpp plain" translate="no">
+ git clone https://code.qt.io/qt-labs/qtquickdesigner-components.git
+</pre>
+</li>
+<li>Install the Qt Quick Designer Components module. Enter the following commands:<pre class="cpp plain" translate="no">
+ mkdir build
+ cd build
+ cmake -GNinja -DCMAKE_INSTALL_PREFIX=&lt;path_to_qt_install_directory&gt; &lt;path_to_qtquickdesigner-components&gt;
+ cmake --build .
+ cmake --install .
+</pre>
+<div class="admonition note">
+<p><b>Note: </b>Here, <i>&lt;path_to_qt_install_directory&gt;</i> and <i>&lt;path_to_qtquickdesigner-components&gt;</i> needs to be replaced with the real location on your local drive. For example, <i>&lt;path_to_qt_install_directory&gt;</i> can be something like <i>/Qt/6.3&#x2e;0/msvc2019_64</i> and <i>&lt;path_to_qtquickdesigner-components&gt;</i> like this <i>../qtquickdesigner-components/</i></p>
+</div>
+</li>
+</ol>
+</div>
+<p><b>See also </b><a href="creator-how-to-create-qtquick-ui-prototype.html" translate="no">Create Qt Quick UI Prototypes</a>.</p>
 <!-- @@@quick-converting-ui-projects.html -->
 <p class="naviNextPrevious footerNavi">
-<a class="prevPage" href="creator-qml-modules-with-plugins.html">Using QML Modules with Plugins</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-using-qt-designer.html">Developing Widget Based Applications</a>
+<a class="prevPage" href="creator-reference.html">Reference</a>
 </p>
         </div>
        </div>
@@ -149,7 +166,7 @@
 </div>
 <div class="footer">
    <p>
-   <acronym title="Copyright">&copy;</acronym> 2019 The Qt Company Ltd.
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
    Documentation contributions included herein are the copyrights of
    their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
    of their respective owners. </p>

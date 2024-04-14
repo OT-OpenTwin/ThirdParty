@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- pluginmanager.qdoc -->
+  <title>The Plugin Manager, the Object Pool, and Registered Objects | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li>The Plugin Manager, the Object Pool, and Registered Objects</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#plugin-manager">Plugin Manager</a></li>
+<li class="level1"><a href="#object-pool-and-registered-objects">Object Pool and Registered Objects</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">The Plugin Manager, the Object Pool, and Registered Objects</h1>
+<!-- $$$pluginmanager.html-description -->
+<div class="descr" id="details">
+<p>Usually, plugins do not need to access the plugin manager directly. They interact with it mostly indirectly through the <a href="extensionsystem-iplugin.html" translate="no">ExtensionSystem::IPlugin</a> interface. There are occasions though, where using the plugin manager API is necessary. Plugins need to access the plugin manager's object pool to extend some aspects of Qt Design Studio, for example to add pages to the options dialog. They can also utilize the object pool to provide extension points for other plugins.</p>
+<h2 id="plugin-manager">Plugin Manager</h2>
+<p>The plugin manager handles all the details regarding finding plugins, reading their description files, resolving plugin dependencies, loading and initializing all plugins in the right order, and passing on command-line arguments.</p>
+<p>In addition, the plugin manager manages an <i>object pool</i>, where objects can be registered and retrieved depending on different criteria.</p>
+<p>Most interaction of plugins with the plugin manager should be done through the <a href="extensionsystem-iplugin.html" translate="no">ExtensionSystem::IPlugin</a> interface, but the following tables summarize some functions and signals that can be useful for plugins. See the <a href="extensionsystem-pluginmanager.html" translate="no">ExtensionSystem::PluginManager</a> reference documentation for the complete list.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Function</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >instance()</td><td >Returns the singleton plugin manager instance, for example for connecting to signals.</td></tr>
+<tr valign="top" class="even"><td >addObject()</td><td >Registers an object in the object pool. Also available through ExtensionSystem::IPlugin::addObject().</td></tr>
+<tr valign="top" class="odd"><td >removeObject()</td><td >Unregisters an object from the object pool. Also available through ExtensionSystem::IPlugin::removeObject().</td></tr>
+<tr valign="top" class="even"><td >allObjects()</td><td >Returns an unfiltered list of all objects that are registered in the object pool.</td></tr>
+<tr valign="top" class="odd"><td >getObject&lt;T&gt;()</td><td >Returns one object of type T that is registered in the object pool. This respects <a href="aggregation.html" translate="no">Aggregation</a>.</td></tr>
+<tr valign="top" class="even"><td >getObjectByName(const <a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a> &amp;name)</td><td >Returns one object with the given object name that is registered in the object pool.</td></tr>
+</table></div>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Signal</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >objectAdded(<a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a> *object)</td><td >Sent after an object is registered in the object pool.</td></tr>
+<tr valign="top" class="even"><td >aboutToRemoveObject(<a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a> *object)</td><td >Sent just before an object is unregistered from the object pool.</td></tr>
+<tr valign="top" class="odd"><td >initializationDone()</td><td >Sent when plugins are running and all delayed initialization is done.</td></tr>
+</table></div>
+<span id="object-pool"></span><h2 id="object-pool-and-registered-objects">Object Pool and Registered Objects</h2>
+<p>Plugins can register objects to a common <i>pool</i> that is managed by the plugin manager. Objects in the pool must derive from <a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a>, there are no other prerequisites.</p>
+<p>All objects of a specified type can be retrieved from the object pool via the <a href="extensionsystem-pluginmanager.html#getObject" translate="no">getObject</a>() function. It is aware of <a href="aggregation-aggregate.html" translate="no">Aggregation::Aggregate</a>, and uses the Aggregation::query() function instead of <code translate="no">qobject_cast</code> to determine the matching objects.</p>
+<p>An unfiltered list of all objects that are registered in the object pool can be retrieved via the <a href="extensionsystem-pluginmanager.html#allObjects" translate="no">allObjects</a>() function.</p>
+<p>It is also possible to retrieve an object with a specific object name with <a href="extensionsystem-pluginmanager.html#getObjectByName" translate="no">getObjectByName</a>() (see <a href="https://doc.qt.io/qt/qobject.html#objectName-prop" translate="no">QObject::objectName</a>()).</p>
+<p>Whenever the state of the object pool changes, a corresponding <code translate="no">objectAdded()</code> or <code translate="no">aboutToRemoveObject()</code> signal is emitted by the plugin manager.</p>
+<p>A common use case for the object pool is that a plugin (or the application) provides an <i>extension point</i> for other plugins, which is a class that can be implemented and added to the object pool to be retrieved by the providing plugin. It is also possible to use the object pool to provide access to an object without actually linking against the providing plugin library.</p>
+</div>
+<!-- @@@pluginmanager.html -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-projects-settings-run-desktop.qdoc -->
+  <meta name="description" content="Settings for running applications on desktop device types.">
+  <title>Desktop Device Run Settings | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Desktop Device Run Settings</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-reference.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#working-directory">Working Directory</a></li>
+<li class="level1"><a href="#run-in-terminal">Run in Terminal</a></li>
+<li class="level1"><a href="#linker-libraries">Linker Libraries</a></li>
+<li class="level1"><a href="#debugging-linked-frameworks">Debugging Linked Frameworks</a></li>
+<li class="level1"><a href="#running-as-root-user">Running as root User</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Desktop Device Run Settings</h1>
+<!-- $$$creator-run-settings-desktop-devices.html-description -->
+<div class="descr" id="details">
+<p>Specify settings for running applications on the <a href="creator-preferences-kits.html#kits-tab" translate="no">Run device</a> that you select for a kit in <b translate="no">Projects</b> &gt; <b translate="no">Build &amp; Run</b> &gt; <b translate="no">Run</b> &gt; <b translate="no">Run Settings</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-settings-run-desktop.webp" alt="{Run Settings for desktop devices}" /></p><h2 id="working-directory">Working Directory</h2>
+<p>You can specify command-line arguments to be passed to the executable and the working directory to use. The working directory defaults to the directory of the build result.</p>
+<p>Select <b translate="no">Add Deploy Step</b> &gt; <b translate="no">CMake Install</b> to add the <a href="https://cmake.org/cmake/help/latest/manual/cmake.1.html#install-a-project" translate="no">install</a> option. It runs installation without using the generated build system or the native build tool. Qt Creator automatically adds the value of the <b translate="no">Working directory</b> field as the installation directory in the <code translate="no">--install</code> signature.</p>
+<h2 id="run-in-terminal">Run in Terminal</h2>
+<p>For console applications, select <b translate="no">Run in terminal</b>. To specify the terminal to use on Linux and macOS, go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Environment</b> &gt; <b translate="no">System</b>. To use an <a href="creator-reference-terminal-view.html" translate="no">internal terminal</a>, go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Terminal</b> &gt; <b translate="no">Use internal terminal</b>.</p>
+<h2 id="linker-libraries">Linker Libraries</h2>
+<p>When building an application, Qt Creator creates a list of directories where the linker will look for libraries that the application links to. By default, the linked libraries are made visible to the executable that Qt Creator is attempting to run. Usually, you should disable this option only if it causes unwanted side-effects or if you use deployment steps, such as <code translate="no">make install</code>, and want to make sure that the deployed application will find the libraries also when it is run without Qt Creator.</p>
+<p>To disable library linking for the current project, clear <b translate="no">Add build library search path to PATH</b>. To disable library linking for all projects, go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Build &amp; Run</b> and then clear <b translate="no">Add linker library search paths to run environment</b>.</p>
+<h2 id="debugging-linked-frameworks">Debugging Linked Frameworks</h2>
+<p>On macOS, select <b translate="no">Use debug version of frameworks (DYLD_IMAGE_SUFFIX=_debug)</b> to debug (for example, step into) linked frameworks, such as the Qt framework itself. You do not need this option for debugging your application code.</p>
+<h2 id="running-as-root-user">Running as root User</h2>
+<p>On Linux and macOS, select <b translate="no">Run as root user</b> to run the application with root user permissions.</p>
+</div>
+<p><b>See also </b><a href="creator-run-settings.html" translate="no">Configure projects for running</a>, <a href="creator-how-to-run-custom-executables.html" translate="no">Specify a custom executable to run</a>, and <a href="creator-how-set-project-environment.html#specify-the-run-environment" translate="no">Specify the run environment</a>.</p>
+<!-- @@@creator-run-settings-desktop-devices.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

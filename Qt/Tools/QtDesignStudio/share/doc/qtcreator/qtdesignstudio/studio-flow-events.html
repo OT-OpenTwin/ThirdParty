@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-app-flows.qdoc -->
+  <title>Simulating Events | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Simulating Events</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-flow-effects.html" />
+  <link rel="next" href="studio-flow-conditions.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-flow-effects.html">Applying Effects to Transitions</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-flow-conditions.html">Simulating Conditions</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#creating-event-lists">Creating Event Lists</a></li>
+<li class="level1"><a href="#assigning-events-to-actions">Assigning Events to Actions</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Simulating Events</h1>
+<!-- $$$studio-flow-events.html-description -->
+<div class="descr" id="details">
+<p>While <a href="studio-flow-action-area.html" translate="no">transition lines</a> are useful for prototyping, in production you need to use the real <a href="studio-flow-action-area.html#connecting-and-releasing-signals" translate="no">signals</a> from UI <a href="studio-terms.html#glossary-component" translate="no">components</a> to control the flow of the application. For this purpose, you can use action areas in a more advanced way, by having them listen to signals from flow items or the controls in them and by connecting these to the <a href="studio-flow-view.html" translate="no">flow view</a>. You can use keyboard shortcuts to simulate these events when you preview the UI.</p>
+<p>When you use the wizard to create a <b translate="no">Flow View</b> component, select the <b translate="no">Use event simulator</b> check box to add an event simulator to the flow view.</p>
+<p>You can create an event list where you assign keyboard shortcuts to events, and then use context-menu commands to attach the events to action areas or transition lines.</p>
+<h2 id="creating-event-lists">Creating Event Lists</h2>
+<p>To create an event list:</p>
+<ol class="1" type="1"><li>Right-click in the <b translate="no">2D</b> or <b translate="no">Navigator</b> view and select <b translate="no">Event List</b> &gt; <b translate="no">Show Event List</b>.</li>
+<li>In the <b translate="no">Event List</b> dialog, select <img src="images/plus.png" alt="" /> to add a keyboard shortcut for triggering an event to the list.<p class="centerAlign"><img src="images/studio-flow-event-list.png" alt="&quot;Event List dialog&quot;" /></p></li>
+<li>In the <b translate="no">Event ID</b> field, enter an identifier for the event. You can search for existing events by entering search criteria in the <b translate="no">Filter</b> field.</li>
+<li>In the <b translate="no">Description</b> field, describe the keyboard shortcut.</li>
+<li>In the <b translate="no">Shortcut</b> field, press the keyboard key that will trigger the event, and then select <b translate="no">R</b> to record the keyboard shortcut. The key identifier appears in the field.</li>
+</ol>
+<p>You can now assign the events to action areas and transitions.</p>
+<h2 id="assigning-events-to-actions">Assigning Events to Actions</h2>
+<p>To assign events to actions:</p>
+<ol class="1" type="1"><li>In <b translate="no">Navigator</b>, select an action area or transition line.</li>
+<li>In the context menu, select <b translate="no">Event List</b> &gt; <b translate="no">Assign Events to Actions</b>.<p class="centerAlign"><img src="images/studio-flow-events-assign.png" alt="&quot;Assign Events to Actions dialog&quot;" /></p></li>
+<li>In the <b translate="no">ID</b> field, select a transition or an action area <img src="images/flow-action-icon.png" alt="" /> . You can search for events by entering search criteria in the <b translate="no">Filter</b> field.</li>
+<li>To connect an event, select <b translate="no">Connect</b> next to an event in the list. To release a connected event, select <b translate="no">Release</b>.</li>
+<li>Press <b>Alt+P</b> to preview the UI.</li>
+<li>Select action areas in the preview, double-click events in the event list, or use the keyboard shortcuts to trigger events.<p class="centerAlign"><img src="images/studio-flow-decision-preview.png" alt="&quot;Event list in preview&quot;" /></p></li>
+</ol>
+<p>If the event triggers a <a href="studio-flow-conditions.html" translate="no">flow decision</a>, you can select the path to take to the next flow item.</p>
+</div>
+<!-- @@@studio-flow-events.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-flow-effects.html">Applying Effects to Transitions</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-flow-conditions.html">Simulating Conditions</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

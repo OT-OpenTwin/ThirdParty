@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-states.qdoc -->
+  <title>Working with States | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Working with States</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="quick-dynamic-properties.html" />
+  <link rel="next" href="creator-live-preview.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="quick-dynamic-properties.html">Specifying Custom Properties</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-live-preview.html">Validating with Target Hardware</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#setting-the-default-state">Setting the Default State</a></li>
+<li class="level1"><a href="#applying-states">Applying States</a></li>
+<li class="level2"><a href="#summary-of-logical-operators">Summary of Logical Operators</a></li>
+<li class="level2"><a href="#examples-of-when-conditions">Examples of when Conditions</a></li>
+<li class="level1"><a href="#using-states">Using States</a></li>
+<li class="level1"><a href="#state-groups">State Groups</a></li>
+<li class="level1"><a href="#extending-states">Extending States</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Working with States</h1>
+<!-- $$$quick-states.html-description -->
+<div class="descr" id="details">
+<p>You can define states for components and component instances in the <a href="qtquick-states-view.html" translate="no">States</a> view by selecting <img src="images/plus.png" alt="" /> .</p>
+<p class="centerAlign"><img src="images/qmldesigner-transitions.png" alt="&quot;States view&quot;" /></p><p>Click the new state to switch to it in the <a href="qtquick-form-editor.html" translate="no">2D</a> and <a href="studio-3d-editor.html" translate="no">3D</a> views, and then modify the values of the properties of components or component instances in <a href="qtquick-properties-view.html" translate="no">Properties</a>.</p>
+<p>For example, to change the appearance of a button, you can define states in the button component to hide the button image and show another image in its place or to change the button background or text color. When you use instances of the button in other components, you can define states to create different screens by hiding or showing button component instances. The preset <a href="quick-controls.html#button" translate="no">Button</a> control in <b translate="no">Components</b> &gt; <b translate="no">Qt Quick Controls</b> &gt; <b translate="no">Controls</b> has predefined <i>normal</i> and <i>down</i> states.</p>
+<p>This also applies to the custom button component that you can create by using a <a href="quick-components-creating.html#creating-custom-controls" translate="no">wizard template</a>. For more information about editing the states within the button component and hiding and showing buttons to create several screens, see <a href="qtdesignstudio-loginui1-example.html" translate="no">Log In UI - Components</a> and <a href="qtdesignstudio-loginui3-example.html" translate="no">Log In UI - States</a>.</p>
+<p>To add motion to a screen, you can change the position of a component instance in the <b translate="no">2D</b> view and then add animation to the change between the states.</p>
+<p>The properties that you change in a state are highlighted with blue color. In the <a href="qtquick-text-editor.html" translate="no">Code</a> view, you can see the changes recorded as changes to the base state.</p>
+<p class="centerAlign"><img src="images/qmldesigner-states.png" alt="&quot;States and Properties views&quot;" /></p><div class="admonition note">
+<p><b>Note: </b>If you have <a href="qtquick-navigator.html#locking-components" translate="no">locked a component</a> in <a href="qtquick-navigator.html" translate="no">Navigator</a>, and you attempt to remove states where you change the values of its properties, you are prompted to confirm the removal.</p>
+</div>
+<p>For more information, watch the following video:</p>
+<div class="video">
+<a href="https://www.youtube.com/watch/?v=FzmLuRHQXaw">
+<img src="images/FzmLuRHQXaw.jpg" title="Click to play in a browser" /></a>
+</div>
+<h2 id="setting-the-default-state">Setting the Default State</h2>
+<p>The default state determines the startup state of the application.</p>
+<p>To set a state to the default state, select <b translate="no">Default</b>.</p>
+<h2 id="applying-states">Applying States</h2>
+<p>To determine when a state is applied, select <img src="images/edit.png" alt="" /> in the <b translate="no">When Condition</b> field. In <b translate="no">Binding Editor</b>, specify a <a href="https://doc.qt.io/qt/qml-qtquick-state.html#when-prop" translate="no">when</a> property for the state. Set the value of the property to a boolean expression that evaluates to <code translate="no">true</code> when you want the state to be applied.</p>
+<p>This enables you to evaluate the truthfulness of several components' properties and move the UI to the state in which these conditions apply. You can evaluate whether something is true or false, greater than or equal to something else, and so on. You can also use operators, such as AND or OR, to evaluate the truthfulness of several components.</p>
+<p>The when conditions are evaluated from left to right and in order of appearance in the code. Therefore, if you have two conditions for two different states that both evaluate to <code translate="no">true</code>, the first state is applied.</p>
+<p>In <b translate="no">Binding Editor</b>, select the component and property to create the expression. For example, to change the state when a button is pressed, you could select a button component and its pressed property.</p>
+<p class="centerAlign"><img src="images/qtquick-states-binding-editor.png" alt="&quot;Binding Editor in States view&quot;" /></p><p>When you compose the expressions in <b translate="no">Binding Editor</b>, the <a href="creator-completing-code.html" translate="no">code completion</a> feature lists the components and their properties you can use in the expressions.</p>
+<h3 id="summary-of-logical-operators">Summary of Logical Operators</h3>
+<p>You can use the following <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators" translate="no">logical operators</a> in the expressions to combine several conditions in one expression:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Operator</th><th >Meaning</th><th >Evaluates to <code translate="no">true</code> if</th></tr></thead>
+<tr valign="top" class="odd"><td >!</td><td >NOT</td><td >The condition is not met.</td></tr>
+<tr valign="top" class="even"><td >&amp;&amp;</td><td >AND</td><td >Both conditions are met.</td></tr>
+<tr valign="top" class="odd"><td >||</td><td >OR</td><td >Either of the conditions is met.</td></tr>
+<tr valign="top" class="even"><td >&lt;</td><td >Less than</td><td >The left operand is less than the right operand.</td></tr>
+<tr valign="top" class="odd"><td >&gt;</td><td >Greater than</td><td >The left operand is greater than the right operand.</td></tr>
+<tr valign="top" class="even"><td >&gt;=</td><td >Greater than or equal</td><td >The left operand is greater than or equal to the right operand.</td></tr>
+<tr valign="top" class="odd"><td >&lt;=</td><td >Less than or equal</td><td >The left operand is less than or equal to the right operand.</td></tr>
+<tr valign="top" class="even"><td >==</td><td >Equal</td><td >The operands are equal.</td></tr>
+<tr valign="top" class="odd"><td >===</td><td >Strict equal</td><td >The operands are equal and of the same type.</td></tr>
+<tr valign="top" class="even"><td >!=</td><td >Not equal</td><td >The operands are not equal.</td></tr>
+<tr valign="top" class="odd"><td >!==</td><td >Strict not equal</td><td >The operands are of the same type but not equal, or are of different type.</td></tr>
+</table></div>
+<p>Alternatively, you can use <b translate="no">And Operator</b>, <b translate="no">Or Operator</b>, and <b translate="no">Not Operator</b> components to bind property values using the boolean AND, OR, and NOT operator. For more information, see <a href="quick-logic-helpers.html" translate="no">Logic Helpers</a>.</p>
+<p>In addition, you can use arithmetic operators to compare numbers before checks. However, we recommend that you create separate properties for this purpose whenever possible.</p>
+<h3 id="examples-of-when-conditions">Examples of when Conditions</h3>
+<p>To apply a state to a button when the button is pressed, you could simply write:</p>
+<pre class="cpp plain" translate="no">
+ when: control.pressed
+</pre>
+<p>To apply a state when the button is not pressed, select the <b translate="no">NOT</b> check box.</p>
+<p class="centerAlign"><img src="images/qtquick-states-binding-editor-not.png" alt="&quot;NOT check box in Binding Editor&quot;" /></p><p>To apply a state when the button is not pressed, selected, nor hovered on, you could combine conditions, as follows:</p>
+<pre class="cpp plain" translate="no">
+ when: !control.pressed &amp;&amp; !control.checked &amp;&amp; !control.hovered
+</pre>
+<p>To apply a state when the button is pressed or selected, but not hovered on, you could write:</p>
+<pre class="cpp plain" translate="no">
+ when: control.pressed || control.checked &amp;&amp; !control.hovered
+</pre>
+<p>If you are not familiar with writing expressions, you can use preset <a href="quick-logic-helpers.html" translate="no">logic helpers</a> from <b translate="no">Components</b> &gt; <b translate="no">Qt Quick Studio Logic Helper</b>.</p>
+<h2 id="using-states">Using States</h2>
+<p>To keep the code clean, you should create a base state that contains all the components you will need in the application. You can then create states, in which you hide and show a set of components and modify their properties. This allows you to:</p>
+<ul>
+<li>Align components on different views with each other.</li>
+<li>Avoid excessive property changes. If a component is invisible in the base state, you must define all changes to its child components as property changes, which leads to complicated code.</li>
+<li>Minimize the differences between the base state and the other states to keep the code short and readable and to improve performance.</li>
+<li>Avoid problems when using transitions and animation when changing states.</li>
+</ul>
+<p>To create views for an application by using states:</p>
+<p class="centerAlign"><img src="images/qmldesigner-screen-design.png" alt="&quot;Designing views&quot;" /></p><ol class="1" type="1"><li>In the base state, add all components you will need in the application (1). While you work on one view, you can click the <img src="images/eye_open.png" alt="" /> icon in <a href="qtquick-navigator.html" translate="no">Navigator</a> to hide components on the canvas that are not part of a view.</li>
+<li>In <b translate="no">States</b>, select the <b translate="no">+</b> symbol to create a new state and give it a name. For example, <code translate="no">Normal</code>.</li>
+<li>In <a href="qtquick-properties-view.html" translate="no">Properties</a> (2), deselect the <b translate="no">Visibility</b> check box or set <b translate="no">Opacity</b> to 0 for each component that is not needed in this view. If you specify the setting for the parent component, all child components inherit it and are also hidden.</li>
+<li>Create additional states for each view and set the visibility or opacity of the components in the view.</li>
+<li>To determine which state is applied when the application starts, select <b translate="no">Default</b>.</li>
+</ol>
+<h2 id="state-groups">State Groups</h2>
+<p>With state groups, you can change the state of certain components independently of other components and their states in the same view.</p>
+<p>Each state group has its own property changes and transitions.</p>
+<p>By default, there is one default state group.</p>
+<h2 id="extending-states">Extending States</h2>
+<p>When a state extends another state, it inherits all the changes of that state. The state being extended is treated as the base state in regards to the changes specified by the extending state.</p>
+<p>Using extended states can make the user interface and your QML code cleaner.</p>
+<p>Below is an example where the only change between <i>State1</i> and <i>State2</i> is the brightness of <i>directionalLight</i>.</p>
+<p>Here, extended states are not used:</p>
+<p class="centerAlign"><img src="images/no-extended-state.webp" alt="" /></p><p>Here, <i>State2</i> is extended from <i>State1</i>:</p>
+<p class="centerAlign"><img src="images/extended-state.webp" alt="" /></p></div>
+<!-- @@@quick-states.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="quick-dynamic-properties.html">Specifying Custom Properties</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-live-preview.html">Validating with Target Hardware</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

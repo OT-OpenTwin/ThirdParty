@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-mcu-dev.qdoc -->
+  <title>Connecting MCUs | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li><a href="creator-overview.html" translate="no">Developing with Qt Creator</a></li>
+<li><a href="creator-connecting-mobile.html" translate="no">Connecting Devices</a></li>
+<li>Connecting MCUs</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-developing-ios.html" />
+  <link rel="next" href="creator-developing-qnx.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-developing-ios.html">Connecting iOS Devices</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-developing-qnx.html">Connecting QNX Devices</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#requirements">Requirements</a></li>
+<li class="level1"><a href="#setting-up-the-development-environment">Setting Up the Development Environment</a></li>
+<li class="level2"><a href="#mcu-plugin">MCU Plugin</a></li>
+<li class="level2"><a href="#specifying-mcu-settings">Specifying MCU Settings</a></li>
+<li class="level2"><a href="#adding-mcu-devices">Adding MCU Devices</a></li>
+<li class="level2"><a href="#managing-mcu-kits">Managing MCU Kits</a></li>
+<li class="level1"><a href="#running-applications-on-mcus">Running Applications on MCUs</a></li>
+<li class="level1"><a href="#supported-qt-for-mcus-sdks">Supported Qt for MCUs SDKs</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Connecting MCUs</h1>
+<!-- $$$creator-developing-mcu.html-description -->
+<div class="descr" id="details">
+<p>Qt for MCUs enables you to use subsets of QML and Qt Quick Controls to create user interfaces for devices that are powered by microcontroller units (MCU). It includes a new graphics rendering engine that has a low memory footprint and is optimized for MCUs and other resource-constrained devices.</p>
+<p>You can connect MCU boards to a development host to build applications for them using the GNU Arm Embedded GCC compiler, libraries, and other GNU tools necessary for bare metal software development on devices based on the Arm Cortex-M processors. You can deploy the applications on MCUs to run and debug them using Qt Creator.</p>
+<p>The toolchains are available for cross-compilation on Microsoft Windows, Linux, and macOS. However, the Qt for Qt for MCUs SDK is currently only available for Windows and Linux.</p>
+<p>For a list of Qt for MCUs reference implementations, see the <a href="https://doc.qt.io/QtForMCUs/qtul-supported-platforms.html" translate="no">Qt for MCUs</a> documentation.</p>
+<h2 id="requirements">Requirements</h2>
+<p>To use Qt Creator to develop QML applications for MCUs, you need the following:</p>
+<ul>
+<li>Qt for MCUs SDK (only available for Windows and Linux)</li>
+<li><a href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm" translate="no">GNU ARM Embedded Toolchain</a></li>
+</ul>
+<p>The hardware-specific requirements vary depending on the hardware platform you are developing for. For more information see:</p>
+<ul>
+<li><a href="https://doc.qt.io/QtForMCUs/qtul-getting-started-on-nxp.html" translate="no">Getting Started on NXP</a></li>
+<li><a href="https://doc.qt.io/QtForMCUs/qtul-getting-started-on-stm.html" translate="no">Getting Started on STM</a></li>
+<li><a href="https://doc.qt.io/QtForMCUs/qtul-getting-started-renesas.html" translate="no">Getting Started on Renesas</a></li>
+</ul>
+<h2 id="setting-up-the-development-environment">Setting Up the Development Environment</h2>
+<p>You must download and install the required software and create connections between Qt Creator and MCUs. The following subsections guide you through the setup process.</p>
+<h3 id="mcu-plugin">MCU Plugin</h3>
+<p>To be able to develop applications for MCUs, you need the MCU plugin. This plugin is enabled automatically by Qt Online Installer when you install Qt for MCUs.</p>
+<h3 id="specifying-mcu-settings">Specifying MCU Settings</h3>
+<p>To configure a connection between Qt Creator and your MCU board, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Devices</b> &gt; <b translate="no">MCU</b>:</p>
+<p class="centerAlign"><img src="images/qtcreator-mcu-options.png" alt="&quot;MCU preferences&quot;" /></p><ol class="1" type="1"><li>In the <b translate="no">Qt for MCUs SDK</b> field, specify the path to the directory where you installed Qt for MCUs SDK.</li>
+<li>In the <b translate="no">Targets supported by the Qt for MCUs SDK</b> field, select your MCU board.</li>
+<li>In the <b translate="no">Requirements</b> section, ensure that the platform-specific requirements are met. This varies depending on the target chosen:<ul>
+<li>For STM32 targets:<ul>
+<li>The <b translate="no">GNU ARM Embedded Toolchain</b> or <b translate="no">IAR ARM Compiler</b> path.</li>
+<li>The <b translate="no">STM32CubeProgrammer</b> install path.</li>
+<li>The <b translate="no">MCU SDK</b> for the chosen target.</li>
+<li>The <b translate="no">FreeRTOS Sources</b> for the chosen target.</li>
+</ul>
+</li>
+<li>For NXP targets:<ul>
+<li>The <b translate="no">GNU ARM Embedded Toolchain</b> or <b translate="no">IAR ARM Compiler</b> path.</li>
+<li>The <b translate="no">MCUXpresso IDE</b> install path.</li>
+<li>The <b translate="no">MCU SDK</b> for the chosen target.</li>
+<li>The <b translate="no">FreeRTOS Sources</b> for the chosen target.</li>
+</ul>
+</li>
+<li>For Renesas targets:<ul>
+<li>The <b translate="no">Green Hills Compiler</b> path.</li>
+<li>The <b translate="no">Renesas Graphics Library</b> path.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Select the <b translate="no">Automatically create kits for all available targets on start</b> option to create kits automatically the next time Qt Creator is started.<div class="admonition note">
+<p><b>Note: </b>You could also use <b translate="no">Create Kit</b> to manually create kits for the chosen target.</p>
+</div>
+</li>
+<li>Select <b translate="no">Apply</b> to save the settings.</li>
+</ol>
+<div class="admonition note">
+<p><b>Note: </b>When updating to other versions of the Qt for MCUs SDK, Qt Creator will ask you if you want to replace the existing kits, or create new ones alongside. This can also be done manually, for each individual target, via <b translate="no">Update Kit</b> and <b translate="no">Create Kit</b>, respectively.</p>
+</div>
+<h3 id="adding-mcu-devices">Adding MCU Devices</h3>
+<div class="admonition note">
+<p><b>Note: </b>This optional step is not necessary if you have already set up the MCU SDK as outlined in <a href="creator-developing-mcu.html#specifying-mcu-settings" translate="no">Specifying MCU Settings</a>.</p>
+</div>
+<p>Qt Creator automatically adds a default MCU device when you select <b translate="no">Apply</b> in the <b translate="no">MCU</b> tab after configuring the MCU tool chain.</p>
+<p class="centerAlign"><img src="images/qtcreator-mcu-device.png" alt="&quot;MCU devices&quot;" /></p><p>To add MCU devices, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Devices</b> &gt; <b translate="no">Add</b> &gt; <b translate="no">MCU Device</b> &gt; <b translate="no">Start Wizard</b>:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Name</b> field, give the device a name.</li>
+<li>In the <b translate="no">Type</b> field, select the board type.</li>
+<li>Select <b translate="no">Apply</b> to add the device.</li>
+</ol>
+<h3 id="managing-mcu-kits">Managing MCU Kits</h3>
+<p>Qt Creator automatically adds kits for all the available targets, if the <b translate="no">Automatically create kits for all available targets on start</b> option is enabled under the <b translate="no">MCU</b> settings tab. You can also create kits for individual targets manually, as outlined in <a href="creator-developing-mcu.html#specifying-mcu-settings" translate="no">Specifying MCU Settings</a>.</p>
+<p class="centerAlign"><img src="images/qtcreator-mcu-kit.png" alt="&quot;MCU kits&quot;" /></p><p>You can edit and/or remove individual kits in <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Kits</b>.</p>
+<p>However, for adding new kits you should use the <b translate="no">Create Kit</b> button in the {Qt for MCUs} settings tab. This method adds the paths to the kit's toolkits and SDKs, and keeps them synchronized when selecting <b translate="no">Apply</b> or <b translate="no">OK</b>.</p>
+<p>The <b translate="no">MCU dependencies</b> field displays paths to 3rd party software required for MCU development with the current kit.</p>
+<h2 id="running-applications-on-mcus">Running Applications on MCUs</h2>
+<p>You can use a wizard to set up a project for developing an application that you can run on MCUs. The project uses a subset of QML and Qt Quick Controls that are supported by Qt for MCUs. For more information about developing applications for MCUs, see the Qt for MCUs documentation.</p>
+<p>To create an application and run it on a MCU board:</p>
+<ol class="1" type="1"><li>Select <b translate="no">File</b> &gt; <b translate="no">New Project</b> &gt; <b translate="no">Application (Qt for MCUs)</b> &gt; <b translate="no">MCU Support Application</b> &gt; <b translate="no">Choose</b>.</li>
+<li>Follow the instructions of the wizard to create the project.</li>
+<li>Select <b translate="no">Projects</b> &gt; <b translate="no">Build &amp; Run</b>, and then select the kit for building the application and running it on the MCU board specified in the kit.</li>
+<li>Select <b translate="no">Run</b> to specify run settings. Usually, you can use the default settings.</li>
+</ol>
+<h2 id="supported-qt-for-mcus-sdks">Supported Qt for MCUs SDKs</h2>
+<div class="admonition note">
+<p><b>Note: </b>The Qt for MCUs SDK 2.3 requires Qt Creator 9.0&#x2e;0, or later.</p>
+</div>
+<p>The following table lists the Qt Creator versions you can use to develop applications with particular Qt for MCUs SDK versions.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Qt Creator version</th><th >Qt for MCUs SDK version</th></tr></thead>
+<tr valign="top" class="odd"><td >9.0&#x2e;0 or later</td><td >2.0 or later</td></tr>
+<tr valign="top" class="even"><td >7.0&#x2e;0 up to 8.0&#x2e;2</td><td >2.0 up to 2.2</td></tr>
+<tr valign="top" class="odd"><td >6.0&#x2e;x</td><td >1.3 up to 2.2</td></tr>
+<tr valign="top" class="even"><td >4.12.4 up to 5.0&#x2e;3</td><td >1.3 up to 1.9</td></tr>
+<tr valign="top" class="odd"><td >4.12.2 or 4.12.3</td><td >1.2</td></tr>
+<tr valign="top" class="even"><td >4.12.0 or 4.12.1</td><td >1.1</td></tr>
+<tr valign="top" class="odd"><td >4.11.x</td><td >1.0</td></tr>
+</table></div>
+</div>
+<!-- @@@creator-developing-mcu.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-developing-ios.html">Connecting iOS Devices</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-developing-qnx.html">Connecting QNX Devices</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

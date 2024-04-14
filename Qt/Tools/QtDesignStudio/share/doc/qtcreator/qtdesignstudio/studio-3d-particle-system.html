@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-particles.qdoc -->
+  <title>Particle System | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Particle System</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-3d-particles.html" />
+  <link rel="next" href="studio-3d-logical-particles.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-3d-particles.html">Particles</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-logical-particles.html">Logical Particles</a>
+</p>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Particle System</h1>
+<!-- $$$studio-3d-particle-system.html-description -->
+<div class="descr" id="details">
+<p>The preset <b translate="no">Particle System</b> component is the root of the particle system. It ties all the other components together and manages the shared progression in time. Emitters and affectors must either be children of the same <b translate="no">Particle System</b> component or refer to the same <b translate="no">System</b> to be able to interact with each other.</p>
+<p>You can add several <b translate="no">Particle System</b> components. Typically, you would use separate <b translate="no">Particle System</b> instances for the components that interact with each other. Or, you can use just one instance if the total number of components is small enough to be controllable.</p>
+<p>Specify settings for the particle system in <a href="qtquick-properties-view.html" translate="no">Properties</a> &gt; <b translate="no">Particle System</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-system.png" alt="&quot;Particle System properties&quot;" /></p><p>You can freely animate the particle system property values using a timeline, which enables you to synchronize particles with other animations, for example.</p>
+<p>In <b translate="no">Start time</b>, set the time in milliseconds where the system starts. This can be useful to warm up the system so that a set of particles has already been emitted when the simulation starts. For example, if you set the start time to 2000 and animate <b translate="no">Time</b> from 0 to 1000, the animation shows particles from 2000 ms to 3000 ms.</p>
+<p>In <b translate="no">Time</b>, set the time in milliseconds for the system. If you modify the value of this property, you should usually disable <b translate="no">Running</b> to stop the simulation. All particles are destroyed when you select it again.</p>
+<p>To temporarily stop the simulation, select <b translate="no">Paused</b>. Particles are not destroyed, and when you deselect the check box, the simulation resumes from the point where you paused it.</p>
+<p>Select <b translate="no">Logging</b> to collect particle system statistics, such as the current and maximum amounts of particles in the system or the average time in milliseconds used for emitting and animating particles in each frame. Logging data can be useful when developing and optimizing the particle effects.</p>
+<div class="admonition note">
+<p><b>Note: </b>Logging can negatively affect performance, so it should be disabled before packaging applications for release and delivery to users.</p>
+</div>
+<p>Select <b translate="no">Use random seed</b> to randomize the particle system with the seed that you specify in <b translate="no">Seed</b> to get an identical pixel-perfect particle effect on every run. You should not modify the seed value during particle animation.</p>
+</div>
+<!-- @@@studio-3d-particle-system.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-3d-particles.html">Particles</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-logical-particles.html">Logical Particles</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-particles.qdoc -->
+  <title>Particle Directions | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Particle Directions</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-3d-particle-affectors.html" />
+  <link rel="next" href="quick-component-instances.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-3d-particle-affectors.html">Particle Affectors</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-component-instances.html">Creating Component Instances</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#target-direction">Target Direction</a></li>
+<li class="level1"><a href="#vector-direction">Vector Direction</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Particle Directions</h1>
+<!-- $$$studio-3d-particle-directions.html-description -->
+<div class="descr" id="details">
+<p>Directions can be specified by specifying the emitted particle velocity towards either the target position or the target vector.</p>
+<h2 id="target-direction">Target Direction</h2>
+<p>The <b translate="no">Target Direction</b> component sets emitted particle velocity towards the target position.</p>
+<p>Specify common settings for particle target direction in <b translate="no">Properties</b> &gt; <b translate="no">Particle Target Direction</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-target-direction.png" alt="&quot;Particle Target Direction properties&quot;" /></p><p><b translate="no">Position</b> specifies the position of the target of the particle. For variation in the target position, specify <b translate="no">Position variation</b>.</p>
+<p><b translate="no">Normalized</b> determines whether the distance to the position affects the magnitude of the particle's velocity. Enable <b translate="no">Normalize</b> to derive the velocity amount only from <b translate="no">Magnitude</b> and <b translate="no">Magnitude variation</b>.</p>
+<p><b translate="no">Magnitude</b> specifies the magnitude in <b translate="no">Position</b> change per second. A negative value accelerates the in the opposite direction from the position. When <b translate="no">Normalized</b> is disabled, this value is multiplied with the distance to the target position. For variation in the magnitude, specify <b translate="no">Magnitude variation</b>.</p>
+<p>For example, to emit particles towards the target position (100, 0, 0) with random magnitude between 10..20, set <b translate="no">Magnitude</b> to 15.00 and <b translate="no">Magnitude variation</b> to 5.00. Further, enable <b translate="no">Normalized</b>.</p>
+<h2 id="vector-direction">Vector Direction</h2>
+<p>The <b translate="no">Vector Direction</b> component sets emitted particle velocity towards the target vector. The length of the direction vector is used as the velocity magnitude.</p>
+<p>Specify common settings for particle vector direction in <b translate="no">Properties</b> &gt; <b translate="no">Particle Vector Direction</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-vector-direction.png" alt="&quot;Vector Direction properties&quot;" /></p><p><b translate="no">Direction</b> specifies the direction of the target of the particle. A positive <b translate="no">Y</b> value means <i>up</i>, while a negative value means <i>down</i>. A negative <b translate="no">Z</b> value causes the particles to move in the direction opposite to the target vector.</p>
+<p>For variation in the target direction, specify <b translate="no">Direction variation</b>. Enable <b translate="no">Normalized</b> to normalize direction after applying the variation. When it is disabled, variation affects the magnitude of the particles' velocity. When it is enabled, variation affects the direction, but the magnitude is determined by the original direction length.</p>
+</div>
+<!-- @@@studio-3d-particle-directions.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-3d-particle-affectors.html">Particle Affectors</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-component-instances.html">Creating Component Instances</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -48,11 +48,11 @@
 **
 ****************************************************************************/
 
-import qbs
+import qbs.Utilities
 
 CppApplication {
     Depends { condition: product.condition; name: "ib" }
-    condition: qbs.hostOS.contains("macos")
+    condition: qbs.targetOS.contains("macos")
     name: "Cocoa Application"
 
     cpp.useObjcPrecompiledHeader: true
@@ -100,4 +100,11 @@ CppApplication {
     }
 
     ib.appIconName: "AppIcon"
+
+    Properties {
+        // codesign module only present starting from 1.19
+        condition: Utilities.versionCompare(qbs.version, "1.19") >= 0
+        codesign.enableCodeSigning: true
+        codesign.signingType: "ad-hoc"
+    }
 }

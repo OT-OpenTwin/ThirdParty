@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-code-refactoring.qdoc -->
+  <title>Refactoring | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Refactoring</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-jump-to-the-code.html" />
+  <link rel="next" href="creator-editor-quick-fixes.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-jump-to-the-code.html">Jump to the Code</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-editor-quick-fixes.html">Applying Refactoring Actions</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#finding-qml-types">Finding QML Types</a></li>
+<li class="level1"><a href="#viewing-search-results">Viewing Search Results</a></li>
+<li class="level1"><a href="#renaming-symbols">Renaming Symbols</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Refactoring</h1>
+<!-- $$$creator-editor-refactoring.html-description -->
+<div class="descr" id="details">
+<p>Refactor code to:</p>
+<ul>
+<li>Improve internal quality of your application</li>
+<li>Improve performance and extensibility</li>
+<li>Improve code readability and maintainability</li>
+<li>Simplify code structure</li>
+</ul>
+<p>Qt Design Studio allows you to quickly and conveniently apply actions to refactor your code by selecting them in a context menu. For more information, see <a href="creator-editor-quick-fixes.html" translate="no">Applying Refactoring Actions</a>.</p>
+<p>By default, the refactored files are saved automatically. To disable this feature, deselect <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Environment</b> &gt; <b translate="no">System</b> &gt; <b translate="no">Auto-save files after refactoring</b>.</p>
+<h2 id="finding-qml-types">Finding QML Types</h2>
+<p>To find instances of a specific QML type in a project, place the cursor on the type and select <b translate="no">Tools</b> &gt; <b translate="no">QML/JS</b> &gt; <b translate="no">Find References to Symbol Under Cursor</b> or press <b>Ctrl+Shift+U</b>.</p>
+<h2 id="viewing-search-results">Viewing Search Results</h2>
+<p>Qt Design Studio searches from the following locations:</p>
+<ul>
+<li>Files listed as a part of the project</li>
+<li>Files directly used by the project files (for example, generated files)</li>
+</ul>
+<p><a href="creator-reference-search-results-view.html" translate="no">Search Results</a> shows the location and number of search hits in the current project.</p>
+<p class="centerAlign"><img src="images/qml-find-usages.png" alt="" /></p><p>You can browse the search results in the following ways:</p>
+<ul>
+<li>To go directly to an instance, double-click the instance in <b translate="no">Search Results</b>.</li>
+<li>To move between instances, click the <img src="images/next.png" alt="" /> (<b translate="no">Next Item</b>) button and <img src="images/prev.png" alt="" /> (<b translate="no">Previous Item</b>) button in <b translate="no">Search Results</b>.</li>
+<li>To expand and collapse the list of all instances, click the <img src="images/qtcreator-expand.png" alt="" /> (<b translate="no">Expand All</b>) button.</li>
+<li>To filter the search results for the usage of symbols according to access type, such as read, write, or declaration, click the <img src="images/filtericon.png" alt="" /> (<b translate="no">Filter Tree</b>) button and select the access type.</li>
+<li>To clear the search results, click the <img src="images/clean_pane_small.png" alt="" /> (<b translate="no">Clear</b>) button.</li>
+<li>To start a new search, click the <img src="images/qtcreator-new-search-icon.png" alt="" /> (<b translate="no">New Search</b>) button.</li>
+</ul>
+<h2 id="renaming-symbols">Renaming Symbols</h2>
+<p>You can rename symbols in all files in a project. To rename a QML type in a project, select <b translate="no">Tools</b> &gt; <b translate="no">QML/JS</b> &gt; <b translate="no">Rename Symbol Under Cursor</b> or press <b>Ctrl+Shift+R</b>.</p>
+<p><b translate="no">Search Results</b> shows the location and number of instances of the symbol in the current project.</p>
+<p class="centerAlign"><img src="images/qml-rename-symbol.png" alt="" /></p><p>To replace all selected instances, enter the name of the new symbol in the <b translate="no">Replace with</b> text box, and select <b translate="no">Replace</b>. To omit an instance, deselect the check box next to the instance.</p>
+<div class="admonition note">
+<p><b>Note: </b>This action replaces all selected instances of the symbol in all files listed in <b translate="no">Search Results</b>. You cannot undo this action.</p>
+</div>
+</div>
+<!-- @@@creator-editor-refactoring.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-jump-to-the-code.html">Jump to the Code</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-editor-quick-fixes.html">Applying Refactoring Actions</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

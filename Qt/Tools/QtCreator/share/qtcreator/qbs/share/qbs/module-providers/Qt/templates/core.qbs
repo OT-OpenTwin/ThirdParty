@@ -5,6 +5,7 @@ import qbs.Utilities
 import qbs.Xml
 import "moc.js" as Moc
 import "qdoc.js" as Qdoc
+import "rcc.js" as Rcc
 
 Module {
     condition: (qbs.targetPlatform === targetPlatform || isCombinedUIKitBuild)
@@ -17,13 +18,21 @@ Module {
         && qbs.targetPlatform === targetPlatform + "-simulator"
 
     Depends { name: "cpp" }
+    Depends { name: "Sanitizers.address"; condition: config.contains("sanitize_address") }
 
     Depends { name: "Qt.android_support"; condition: qbs.targetOS.contains("android") }
     Properties {
         condition: qbs.targetOS.contains("android")
-        Qt.android_support._qtInstallDir: FileInfo.path(binPath)
+        Qt.android_support._qtBinaryDir: FileInfo.path(binPath)
+        Qt.android_support._qtInstallDir: FileInfo.path(installPath)
         Qt.android_support.version: version
+        Qt.android_support.rccFilePath: Rcc.fullPath(product)
     }
+    // qmlImportScanner is required by androiddeployqt even if the project doesn't
+    // depend on qml. That's why the scannerName must be defined here and not in the
+    // qml module
+    property string qmlImportScannerName: "qmlimportscanner"
+    property string qmlImportScannerFilePath: qmlLibExecPath + '/' + qmlImportScannerName
 
     version: @version@
     property stringList architectures: @archs@
@@ -32,17 +41,23 @@ Module {
     property stringList config: @config@
     property stringList qtConfig: @qtConfig@
     property path binPath: @binPath@
+    property path installPath: @installPath@
     property path incPath: @incPath@
     property path libPath: @libPath@
+    property path installPrefixPath: @installPrefixPath@
+    property path libExecPath: @libExecPath@
+    property path qmlLibExecPath: @qmlLibExecPath@
     property path pluginPath: @pluginPath@
     property string mkspecName: @mkspecName@
     property path mkspecPath: @mkspecPath@
     property string mocName: "moc"
     property stringList mocFlags: []
     property string lreleaseName: "lrelease"
+    property string rccName: "rcc"
     property string qdocName: versionMajor >= 5 ? "qdoc" : "qdoc3"
     property stringList qdocEnvironment
     property path docPath: @docPath@
+    property string helpGeneratorLibExecPath: @helpGeneratorLibExecPath@
     property stringList helpGeneratorArgs: versionMajor >= 5 ? ["-platform", "minimal"] : []
     property var versionParts: version ? version.split('.').map(function(item) { return parseInt(item, 10); }) : []
     property int versionMajor: versionParts[0]
@@ -52,11 +67,17 @@ Module {
     property bool staticBuild: @staticBuild@
     property stringList pluginMetaData: []
     property bool enableKeywords: true
+    property bool generateMetaTypesFile
+    readonly property bool _generateMetaTypesFile: generateMetaTypesFile
+        && Utilities.versionCompare(version, "5.15") >= 0
+    property string metaTypesInstallDir
 
     property stringList availableBuildVariants: @availableBuildVariants@
     property string qtBuildVariant: {
         if (availableBuildVariants.contains(qbs.buildVariant))
             return qbs.buildVariant;
+        if (qbs.buildVariant === "profiling" && availableBuildVariants.contains("release"))
+            return "release";
         return availableBuildVariants.length > 0 ? availableBuildVariants[0] : "";
     }
 
@@ -88,8 +109,10 @@ Module {
     property string libFilePathRelease: @libFilePathRelease@
     property string libFilePath: qtBuildVariant === "debug"
                                       ? libFilePathDebug : libFilePathRelease
+    property bool useRPaths: qbs.targetOS.contains("linux") && !qbs.targetOS.contains("android")
 
     property stringList coreLibPaths: @libraryPaths@
+    property bool hasLibrary: true
 
     // These are deliberately not path types
     // We don't want to resolve them against the source directory
@@ -100,23 +123,26 @@ Module {
     property bool lreleaseMultiplexMode: false
 
     property stringList moduleConfig: @moduleConfig@
+
     Properties {
         condition: moduleConfig.contains("use_gold_linker")
         cpp.linkerVariant: "gold"
     }
+    Properties {
+        condition: !moduleConfig.contains("use_gold_linker") && qbs.toolchain.contains("gcc")
+        cpp.linkerVariant: original
+    }
 
-    cpp.entryPoint: qbs.targetOS.containsAny(["ios", "tvos"])
-                        && Utilities.versionCompare(version, "5.6.0") >= 0
-                    ? "_qt_main_wrapper"
-                    : undefined
-    cpp.cxxLanguageVersion: Utilities.versionCompare(version, "5.7.0") >= 0 ? "c++11" : original
+    cpp.cxxLanguageVersion: Utilities.versionCompare(version, "6.0.0") >= 0
+                            ? "c++17"
+                            : Utilities.versionCompare(version, "5.7.0") >= 0 ? "c++11" : original
     cpp.enableCompilerDefinesByLanguage: ["cpp"].concat(
         qbs.targetOS.contains("darwin") ? ["objcpp"] : [])
     cpp.defines: {
         var defines = @defines@;
-        // ### QT_NO_DEBUG must be added if the current build variant is derived
-        //     from the build variant "release"
-        if (!qbs.debugInformation)
+        // ### QT_NO_DEBUG must be added if the current build variant is not derived
+        //     from the build variant "debug"
+        if (!qbs.enableDebugCode)
             defines.push("QT_NO_DEBUG");
         if (!enableKeywords)
             defines.push("QT_NO_KEYWORDS");
@@ -126,13 +152,13 @@ Module {
             if (Utilities.versionCompare(version, "5.6.0") < 0)
                 defines.push("main=qtmn");
         }
+        if (qbs.toolchain.contains("msvc"))
+            defines.push("_ENABLE_EXTENDED_ALIGNED_STORAGE");
         return defines;
     }
     cpp.driverFlags: {
         var flags = [];
         if (qbs.toolchain.contains("gcc")) {
-            if (config.contains("sanitize_address"))
-                flags.push("-fsanitize=address");
             if (config.contains("sanitize_undefined"))
                 flags.push("-fsanitize=undefined");
             if (config.contains("sanitize_thread"))
@@ -142,11 +168,8 @@ Module {
         }
         return flags;
     }
-    cpp.includePaths: {
-        var paths = @includes@;
-        paths.push(mkspecPath, generatedHeadersDir);
-        return paths;
-    }
+    cpp.includePaths: generatedHeadersDir
+    cpp.systemIncludePaths: @includes@.concat(mkspecPath)
     cpp.libraryPaths: {
         var libPaths = [libPath];
         if (staticBuild && pluginPath)
@@ -165,7 +188,7 @@ Module {
     }
     cpp.dynamicLibraries: dynamicLibs
     cpp.linkerFlags: coreLinkerFlags
-    cpp.frameworkPaths: coreFrameworkPaths.concat(frameworkBuild ? [libPath] : [])
+    cpp.systemFrameworkPaths: coreFrameworkPaths.concat(frameworkBuild ? [libPath] : [])
     cpp.frameworks: {
         var frameworks = coreFrameworks
         if (frameworkBuild)
@@ -176,18 +199,21 @@ Module {
             return undefined;
         return frameworks;
     }
-    cpp.rpaths: qbs.targetOS.contains('linux') ? [libPath] : undefined
+    cpp.rpaths: useRPaths ? libPath : undefined
     cpp.runtimeLibrary: qbs.toolchain.contains("msvc")
         ? config.contains("static_runtime") ? "static" : "dynamic"
         : original
-    cpp.positionIndependentCode: versionMajor >= 5 ? true : undefined
+    cpp.positionIndependentCode: versionMajor >= 5 ? true : original
     cpp.cxxFlags: {
         var flags = [];
         if (qbs.toolchain.contains('msvc')) {
             if (versionMajor < 5)
                 flags.push('/Zc:wchar_t-');
+            if (Utilities.versionCompare(version, "6.3") >= 0
+                && Utilities.versionCompare(cpp.compilerVersion, "19.10") >= 0) {
+                flags.push("/permissive-");
+            }
         }
-
         return flags;
     }
     cpp.cxxStandardLibrary: {
@@ -196,19 +222,19 @@ Module {
             return "libc++";
         return original;
     }
-    cpp.minimumWindowsVersion: @minWinVersion@
-    cpp.minimumMacosVersion: @minMacVersion@
-    cpp.minimumIosVersion: @minIosVersion@
-    cpp.minimumTvosVersion: @minTvosVersion@
-    cpp.minimumWatchosVersion: @minWatchosVersion@
-    cpp.minimumAndroidVersion: @minAndroidVersion@
+    cpp.minimumWindowsVersion: @minWinVersion_optional@
+    cpp.minimumMacosVersion: @minMacVersion_optional@
+    cpp.minimumIosVersion: @minIosVersion_optional@
+    cpp.minimumTvosVersion: @minTvosVersion_optional@
+    cpp.minimumWatchosVersion: @minWatchosVersion_optional@
+    cpp.minimumAndroidVersion: @minAndroidVersion_optional@
 
     // Universal Windows Platform support
     cpp.windowsApiFamily: mkspecName.startsWith("winrt-") ? "pc" : undefined
     cpp.windowsApiAdditionalPartitions: mkspecPath.startsWith("winrt-") ? ["phone"] : undefined
     cpp.requireAppContainer: mkspecName.startsWith("winrt-")
 
-    additionalProductTypes: ["qm"]
+    additionalProductTypes: ["qm", "qt.core.metatypes"]
 
     validate: {
         var validator = new ModUtils.PropertyValidator("Qt.core");
@@ -278,24 +304,29 @@ Module {
 
     property bool combineMocOutput: cpp.combineCxxSources
     property bool enableBigResources: false
+    // Product should not moc in the aggregate when multiplexing.
+    property bool enableMoc: !(product.multiplexed || product.aggregate)
+                             || product.multiplexConfigurationId
 
     Rule {
         name: "QtCoreMocRuleCpp"
+        condition: enableMoc
         property string cppInput: cpp.combineCxxSources ? "cpp.combine" : "cpp"
         property string objcppInput: cpp.combineObjcxxSources ? "objcpp.combine" : "objcpp"
         inputs: [objcppInput, cppInput]
         auxiliaryInputs: "qt_plugin_metadata"
         excludedInputs: "unmocable"
-        outputFileTags: ["hpp", "unmocable"]
+        outputFileTags: ["hpp", "unmocable", "qt.core.metatypes.in"]
         outputArtifacts: Moc.outputArtifacts.apply(Moc, arguments)
         prepare: Moc.commands.apply(Moc, arguments)
     }
     Rule {
         name: "QtCoreMocRuleHpp"
+        condition: enableMoc
         inputs: "hpp"
         auxiliaryInputs: ["qt_plugin_metadata", "cpp", "objcpp"];
         excludedInputs: "unmocable"
-        outputFileTags: ["hpp", "cpp", "moc_cpp", "unmocable"]
+        outputFileTags: ["hpp", "cpp", "moc_cpp", "unmocable", "qt.core.metatypes.in"]
         outputArtifacts: Moc.outputArtifacts.apply(Moc, arguments)
         prepare: Moc.commands.apply(Moc, arguments)
     }
@@ -315,6 +346,27 @@ Module {
                 ModUtils.mergeCFiles(inputs["moc_cpp"], output.filePath);
             };
             return [cmd];
+        }
+    }
+
+    Rule {
+        multiplex: true
+        inputs: "qt.core.metatypes.in"
+        Artifact {
+            filePath: product.targetName.toLowerCase() + "_metatypes.json"
+            fileTags: "qt.core.metatypes"
+            qbs.install: product.Qt.core.metaTypesInstallDir
+            qbs.installDir: product.Qt.core.metaTypesInstallDir
+        }
+        prepare: {
+            var inputFilePaths = inputs["qt.core.metatypes.in"].map(function(a) {
+                return a.filePath;
+            });
+            var cmd = new Command(Moc.fullPath(product),
+                ["--collect-json", "-o", output.filePath].concat(inputFilePaths));
+            cmd.description = "generating " + output.fileName;
+            cmd.highlight = "codegen";
+            return cmd;
         }
     }
 
@@ -392,7 +444,7 @@ Module {
                         "-o", output.filePath];
             if (input.Qt.core.enableBigResources)
                 args.push("-pass", "1");
-            var cmd = new Command(product.Qt.core.binPath + '/rcc', args);
+            var cmd = new Command(Rcc.fullPath(product), args);
             cmd.description = "rcc "
                 + (input.Qt.core.enableBigResources ? "(pass 1) " : "")
                 + input.fileName;
@@ -404,7 +456,7 @@ Module {
     Rule {
         inputs: ["intermediate_obj"]
         Artifact {
-            filePath: input.completeBaseName + ".2.o"
+            filePath: input.completeBaseName + ".2" + input.cpp.objectSuffix
             fileTags: ["obj"]
         }
         prepare: {
@@ -423,7 +475,7 @@ Module {
             }
             var qrcArtifact = findChild(input, function(c) { return c.fileTags.contains("qrc"); });
             var cppArtifact = findChild(input, function(c) { return c.fileTags.contains("cpp"); });
-            var cmd = new Command(product.Qt.core.binPath + '/rcc',
+            var cmd = new Command(Rcc.fullPath(product),
                                   [qrcArtifact.filePath,
                                    "-temp", input.filePath,
                                    "-name", FileInfo.completeBaseName(input.filePath),
@@ -456,7 +508,7 @@ Module {
             var args = ['-silent', '-qm', output.filePath].concat(inputFilePaths);
             var cmd = new Command(product.Qt.core.binPath + '/'
                                   + product.Qt.core.lreleaseName, args);
-            cmd.description = 'Creating ' + output.fileName;
+            cmd.description = 'creating ' + output.fileName;
             cmd.highlight = 'filegen';
             return cmd;
         }
@@ -496,7 +548,8 @@ Module {
             args = args.concat(product.Qt.core.helpGeneratorArgs);
             args.push("-o");
             args.push(output.filePath);
-            var cmd = new Command(product.Qt.core.binPath + "/qhelpgenerator", args);
+            var cmd = new Command(
+                product.Qt.core.helpGeneratorLibExecPath + "/qhelpgenerator", args);
             cmd.description = 'qhelpgenerator ' + input.fileName;
             cmd.highlight = 'filegen';
             cmd.stdoutFilterFunction = function(output) {

@@ -1,5 +1,7 @@
-#include "%PluginName:l%plugin.%CppHeaderSuffix%"
-#include "%PluginName:l%constants.%CppHeaderSuffix%"
+%{Cpp:LicenseTemplate}\
+#include "%{HdrFileName}"
+#include "%{ConstantsHdrFileName}"
+#include "%{TrHdrFileName}"
 
 #include <coreplugin/icore.h>
 #include <coreplugin/icontext.h>
@@ -13,21 +15,20 @@
 #include <QMainWindow>
 #include <QMenu>
 
-namespace %PluginName% {
-namespace Internal {
+namespace %{PluginName}::Internal {
 
-%PluginName%Plugin::%PluginName%Plugin()
+%{CN}::%{CN}()
 {
     // Create your members
 }
 
-%PluginName%Plugin::~%PluginName%Plugin()
+%{CN}::~%{CN}()
 {
     // Unregister objects from the plugin manager's object pool
     // Delete members
 }
 
-bool %PluginName%Plugin::initialize(const QStringList &arguments, QString *errorString)
+void %{CN}::initialize()
 {
     // Register objects in the plugin manager's object pool
     // Load settings
@@ -36,31 +37,30 @@ bool %PluginName%Plugin::initialize(const QStringList &arguments, QString *error
     // In the initialize function, a plugin can be sure that the plugins it
     // depends on have initialized their members.
 
-    Q_UNUSED(arguments)
-    Q_UNUSED(errorString)
+    // If you need access to command line arguments or to report errors, use the
+    //    bool IPlugin::initialize(const QStringList &arguments, QString *errorString)
+    // overload.
 
-    auto action = new QAction(tr("%PluginName% Action"), this);
+    auto action = new QAction(Tr::tr("%{PluginName} Action"), this);
     Core::Command *cmd = Core::ActionManager::registerAction(action, Constants::ACTION_ID,
                          Core::Context(Core::Constants::C_GLOBAL));
-    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Alt+Meta+A")));
-    connect(action, &QAction::triggered, this, &%PluginName%Plugin::triggerAction);
+    cmd->setDefaultKeySequence(QKeySequence(Tr::tr("Ctrl+Alt+Meta+A")));
+    connect(action, &QAction::triggered, this, &%{CN}::triggerAction);
 
     Core::ActionContainer *menu = Core::ActionManager::createMenu(Constants::MENU_ID);
-    menu->menu()->setTitle(tr("%PluginName%"));
+    menu->menu()->setTitle(Tr::tr("%{PluginName}"));
     menu->addAction(cmd);
     Core::ActionManager::actionContainer(Core::Constants::M_TOOLS)->addMenu(menu);
-
-    return true;
 }
 
-void %PluginName%Plugin::extensionsInitialized()
+void %{CN}::extensionsInitialized()
 {
     // Retrieve objects from the plugin manager's object pool
     // In the extensionsInitialized function, a plugin can be sure that all
     // plugins that depend on it are completely initialized.
 }
 
-ExtensionSystem::IPlugin::ShutdownFlag %PluginName%Plugin::aboutToShutdown()
+ExtensionSystem::IPlugin::ShutdownFlag %{CN}::aboutToShutdown()
 {
     // Save settings
     // Disconnect from signals that are not needed during shutdown
@@ -68,12 +68,11 @@ ExtensionSystem::IPlugin::ShutdownFlag %PluginName%Plugin::aboutToShutdown()
     return SynchronousShutdown;
 }
 
-void %PluginName%Plugin::triggerAction()
+void %{CN}::triggerAction()
 {
     QMessageBox::information(Core::ICore::mainWindow(),
-                             tr("Action Triggered"),
-                             tr("This is an action from %PluginName%."));
+                             Tr::tr("Action Triggered"),
+                             Tr::tr("This is an action from %{PluginName}."));
 }
 
-} // namespace Internal
-} // namespace %PluginName%
+} // namespace %{PluginName}::Internal

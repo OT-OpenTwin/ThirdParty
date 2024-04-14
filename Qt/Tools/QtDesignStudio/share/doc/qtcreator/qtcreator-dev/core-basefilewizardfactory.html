@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- basefilewizardfactory.cpp -->
+  <meta name="description" content="The BaseFileWizardFactory class implements a generic wizard for creating files.">
+  <title>BaseFileWizardFactory Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>BaseFileWizardFactory</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#static-protected-members">Static Protected Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">BaseFileWizardFactory Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::BaseFileWizardFactory</span>
+<!-- $$$BaseFileWizardFactory-brief -->
+<p>The BaseFileWizardFactory class implements a generic wizard for creating files. <a href="#details">More...</a></p>
+<!-- @@@BaseFileWizardFactory -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/basefilewizardfactory.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="core-iwizardfactory.html" translate="no">Core::IWizardFactory</a></td></tr>
+</table></div>
+<ul>
+<li><a href="core-basefilewizardfactory-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="core-basefilewizardfactory.html#buildFileName" translate="no">buildFileName</a></b>(const Utils::FilePath &amp;<i>path</i>, const QString &amp;<i>baseName</i>, const QString &amp;<i>extension</i>)</td></tr>
+</table></div>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Core::BaseFileWizard *</td><td class="memItemRight bottomAlign"><b><a href="core-basefilewizardfactory.html#create" translate="no">create</a></b>(QWidget *<i>parent</i>, const Core::WizardDialogParameters &amp;<i>parameters</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Core::GeneratedFiles </td><td class="memItemRight bottomAlign"><b><a href="core-basefilewizardfactory.html#generateFiles" translate="no">generateFiles</a></b>(const QWizard *<i>w</i>, QString *<i>errorMessage</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-basefilewizardfactory.html#postGenerateFiles" translate="no">postGenerateFiles</a></b>(const QWizard *<i>w</i>, const Core::GeneratedFiles &amp;<i>l</i>, QString *<i>errorMessage</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-basefilewizardfactory.html#writeFiles" translate="no">writeFiles</a></b>(const Core::GeneratedFiles &amp;<i>files</i>, QString *<i>errorMessage</i>) const</td></tr>
+</table></div>
+<h2 id="static-protected-members">Static Protected Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-basefilewizardfactory.html#postGenerateOpenEditors" translate="no">postGenerateOpenEditors</a></b>(const Core::GeneratedFiles &amp;<i>l</i>, QString *<i>errorMessage</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-basefilewizardfactory.html#preferredSuffix" translate="no">preferredSuffix</a></b>(const QString &amp;<i>mimeType</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::BaseFileWizardFactory::OverwriteResult </td><td class="memItemRight bottomAlign"><b><a href="core-basefilewizardfactory.html#promptOverwrite" translate="no">promptOverwrite</a></b>(Core::GeneratedFiles *<i>files</i>, QString *<i>errorMessage</i>)</td></tr>
+</table></div>
+<!-- $$$BaseFileWizardFactory-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The following abstract functions must be implemented:</p>
+<ul>
+<li><a href="core-basefilewizardfactory.html#create" translate="no">create</a>(): Called to create the <a href="https://doc.qt.io/qt/qwizard.html" translate="no">QWizard</a> dialog to be shown.</li>
+<li><a href="core-basefilewizardfactory.html#generateFiles" translate="no">generateFiles</a>(): Generates file content.</li>
+</ul>
+<p>The behavior can be further customized by overwriting the virtual function <a href="core-basefilewizardfactory.html#postGenerateFiles" translate="no">postGenerateFiles</a>(), which is called after generating the files.</p>
+<div class="admonition note">
+<p><b>Note: </b>Instead of using this class, we recommend that you create JSON-based wizards, as instructed in <a href="https://doc.qt.io/qtcreator/creator-project-wizards.html" translate="no">Adding New Custom Wizards</a>.</p>
+</div>
+</div>
+<p><b>See also </b><a href="core-generatedfile.html" translate="no">Core::GeneratedFile</a>, <a href="core-wizarddialogparameters.html" translate="no">Core::WizardDialogParameters</a>, and <a href="core-basefilewizard.html" translate="no">Core::BaseFileWizard</a>.</p>
+<!-- @@@BaseFileWizardFactory -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$buildFileName[overload1]$$$buildFileNameconstUtils::FilePath&constQString&constQString& -->
+<h3 class="fn" translate="no" id="buildFileName"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> BaseFileWizardFactory::<span class="name">buildFileName</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>path</i>, const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>baseName</i>, const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>extension</i>)</h3>
+<p>Constructs a file name including <i translate="no">path</i>, adding the <i translate="no">extension</i> unless <i translate="no">baseName</i> already has one.</p>
+<!-- @@@buildFileName -->
+<!-- $$$create[overload1]$$$createQWidget*constCore::WizardDialogParameters& -->
+<h3 class="fn" translate="no" id="create"><code translate="no">[pure virtual protected] </code><span class="type"><a href="core-basefilewizard.html" translate="no">Core::BaseFileWizard</a></span> *BaseFileWizardFactory::<span class="name">create</span>(<span class="type"><a href="https://doc.qt.io/qt/qwidget.html" translate="no">QWidget</a></span> *<i>parent</i>, const <span class="type"><a href="core-wizarddialogparameters.html" translate="no">Core::WizardDialogParameters</a></span> &amp;<i>parameters</i>) const</h3>
+<p>Creates the wizard on the <i translate="no">parent</i> with the <i translate="no">parameters</i>.</p>
+<!-- @@@create -->
+<!-- $$$generateFiles[overload1]$$$generateFilesconstQWizard*QString* -->
+<h3 class="fn" translate="no" id="generateFiles"><code translate="no">[pure virtual protected] </code><span class="type">Core::GeneratedFiles</span> BaseFileWizardFactory::<span class="name">generateFiles</span>(const <span class="type"><a href="https://doc.qt.io/qt/qwizard.html" translate="no">QWizard</a></span> *<i>w</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> *<i>errorMessage</i>) const</h3>
+<p>Overwrite to query the parameters from the wizard <i translate="no">w</i> and generate the files.</p>
+<p>Possible errors are held in <i translate="no">errorMessage</i>.</p>
+<div class="admonition note">
+<p><b>Note: </b>This does not generate physical files, but merely the list of <a href="core-generatedfile.html" translate="no">Core::GeneratedFile</a>.</p>
+</div>
+<!-- @@@generateFiles -->
+<!-- $$$postGenerateFiles[overload1]$$$postGenerateFilesconstQWizard*constCore::GeneratedFiles&QString* -->
+<h3 class="fn" translate="no" id="postGenerateFiles"><code translate="no">[virtual protected] </code><span class="type">bool</span> BaseFileWizardFactory::<span class="name">postGenerateFiles</span>(const <span class="type"><a href="https://doc.qt.io/qt/qwizard.html" translate="no">QWizard</a></span> *<i>w</i>, const <span class="type">Core::GeneratedFiles</span> &amp;<i>l</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> *<i>errorMessage</i>) const</h3>
+<p>Overwrite to perform steps to be done by the wizard <i translate="no">w</i> after the files specified by <i translate="no">l</i> are actually created.</p>
+<p>The default implementation opens editors with the newly generated files that have GeneratedFile::OpenEditorAttribute set.</p>
+<p>Returns <i translate="no">errorMessage</i> if errors occur.</p>
+<!-- @@@postGenerateFiles -->
+<!-- $$$postGenerateOpenEditors[overload1]$$$postGenerateOpenEditorsconstCore::GeneratedFiles&QString* -->
+<h3 class="fn" translate="no" id="postGenerateOpenEditors"><code translate="no">[static protected] </code><span class="type">bool</span> BaseFileWizardFactory::<span class="name">postGenerateOpenEditors</span>(const <span class="type">Core::GeneratedFiles</span> &amp;<i>l</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> *<i>errorMessage</i> = nullptr)</h3>
+<p>Opens the editors for the files <i translate="no">l</i> if their GeneratedFile::OpenEditorAttribute attribute is set accordingly.</p>
+<p>If the editorrs cannot be opened, returns <code translate="no">false</code> and dand sets <i translate="no">errorMessage</i> to the message that is displayed to users.</p>
+<!-- @@@postGenerateOpenEditors -->
+<!-- $$$preferredSuffix[overload1]$$$preferredSuffixconstQString& -->
+<h3 class="fn" translate="no" id="preferredSuffix"><code translate="no">[static protected] </code><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> BaseFileWizardFactory::<span class="name">preferredSuffix</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>mimeType</i>)</h3>
+<p>Returns the preferred suffix for <i translate="no">mimeType</i>.</p>
+<!-- @@@preferredSuffix -->
+<!-- $$$promptOverwrite[overload1]$$$promptOverwriteCore::GeneratedFiles*QString* -->
+<h3 class="fn" translate="no" id="promptOverwrite"><code translate="no">[static protected] </code><span class="type">Core::BaseFileWizardFactory::OverwriteResult</span> BaseFileWizardFactory::<span class="name">promptOverwrite</span>(<span class="type">Core::GeneratedFiles</span> *<i>files</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> *<i>errorMessage</i>)</h3>
+<p>Performs an overwrite check on a set of <i translate="no">files</i>. Checks if the file exists and can be overwritten at all, and then prompts the user with a summary.</p>
+<p>Returns <i translate="no">errorMessage</i> if the file cannot be overwritten.</p>
+<!-- @@@promptOverwrite -->
+<!-- $$$writeFiles[overload1]$$$writeFilesconstCore::GeneratedFiles&QString* -->
+<h3 class="fn" translate="no" id="writeFiles"><code translate="no">[virtual protected] </code><span class="type">bool</span> BaseFileWizardFactory::<span class="name">writeFiles</span>(const <span class="type">Core::GeneratedFiles</span> &amp;<i>files</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> *<i>errorMessage</i>) const</h3>
+<p>Physically writes <i translate="no">files</i>.</p>
+<p>If the files cannot be written, returns <code translate="no">false</code> and sets <i translate="no">errorMessage</i> to the message that is displayed to users.</p>
+<p>Re-implement (calling the base implementation) to create files with GeneratedFile::CustomGeneratorAttribute set.</p>
+<!-- @@@writeFiles -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

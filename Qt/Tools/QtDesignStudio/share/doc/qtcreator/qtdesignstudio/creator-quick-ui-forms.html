@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-ui-forms.qdoc -->
+  <title>UI Files | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>UI Files</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-advanced.html" />
+  <link rel="next" href="creator-telemetry.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-advanced.html">Advanced Designer Topics</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-telemetry.html">Manage data collection</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#supported-methods">Supported Methods</a></li>
+<li class="level2"><a href="#javascript-functions">JavaScript Functions</a></li>
+<li class="level2"><a href="#qt-qml-methods">Qt QML Methods</a></li>
+<li class="level1"><a href="#using-ui-files">Using UI Files</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">UI Files</h1>
+<!-- $$$creator-quick-ui-forms.html-description -->
+<div class="descr" id="details">
+<p>You can use Qt Design Studio wizards to create UI files that have the filename extension <i>.ui.qml</i>. The UI files can be edited in the <a href="qtquick-form-editor.html" translate="no">2D</a> view. If you use the <a href="qtquick-text-editor.html" translate="no">Code</a> view to add code that is not supported by the <b translate="no">2D</b> view, Qt Design Studio displays error messages.</p>
+<p>The following features are not supported in .ui.qml files:</p>
+<ul>
+<li>JavaScript blocks</li>
+<li>Other bindings than pure expressions</li>
+<li>Signal handlers</li>
+<li>States in other components than the root component</li>
+<li>Root components that are not derived from <a href="https://doc.qt.io/qt/qquickitem.html" translate="no">QQuickItem</a> or <a href="https://doc.qt.io/qt/qml-qtquick-item.html" translate="no">Item</a></li>
+<li>Referencing the parent of the root component</li>
+</ul>
+<p>The following components are not supported:</p>
+<ul>
+<li>Behavior</li>
+<li>Binding</li>
+<li>Canvas</li>
+<li>Shader Effect</li>
+<li>Timer</li>
+<li>Transform</li>
+</ul>
+<h2 id="supported-methods">Supported Methods</h2>
+<p>Qt Design Studio supports most JavaScript functions that are supported by the QML engine, as well as a subset of Qt QML methods.</p>
+<p>This section lists the functions that you can use in <i>.ui.qml</i> files.</p>
+<h3 id="javascript-functions">JavaScript Functions</h3>
+<p>As a rule of thumb, <i>pure functions</i> are supported. They only depend on and modify states of parameters that are within their scope, and therefore always return the same results when given the same parameters. This makes it possible to convert and reformat property bindings without breaking the <i>.ui.qml</i> files.</p>
+<p>The following JavaScript functions are supported:</p>
+<ul>
+<li><code translate="no">charAt()</code></li>
+<li><code translate="no">charCodeAt()</code></li>
+<li><code translate="no">concat()</code></li>
+<li><code translate="no">endsWith()</code></li>
+<li><code translate="no">includes()</code></li>
+<li><code translate="no">indexOf()</code></li>
+<li><code translate="no">isFinite()</code></li>
+<li><code translate="no">isNaN()</code></li>
+<li><code translate="no">lastIndexOf()</code></li>
+<li><code translate="no">substring()</code></li>
+<li><code translate="no">toExponential()</code></li>
+<li><code translate="no">toFixed()</code></li>
+<li><code translate="no">toLocaleLowerCase()</code></li>
+<li><code translate="no">toLocaleString</code></li>
+<li><code translate="no">toLocaleUpperCase()</code></li>
+<li><code translate="no">toLowerCase()</code></li>
+<li><code translate="no">toPrecision()</code></li>
+<li><code translate="no">toString()</code></li>
+<li><code translate="no">toUpperCase()</code></li>
+<li><code translate="no">valueOf()</code></li>
+</ul>
+<p>In addition, all functions of the <code translate="no">Math</code> and <code translate="no">Date</code> objects are supported.</p>
+<p>For more information, see <a href="https://doc.qt.io/qt/qtqml-javascript-functionlist.html" translate="no">List of JavaScript Objects and Functions</a>.</p>
+<h3 id="qt-qml-methods">Qt QML Methods</h3>
+<p>Qt Design Studio supports color methods, helper methods for creating objects of specific data types, and translation methods.</p>
+<p>The following color methods are supported:</p>
+<ul>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#darker-method" translate="no">Qt.darker</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#hsla-method" translate="no">Qt.hsla</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#hsva-method" translate="no">Qt.hsva</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#lighter-method" translate="no">Qt.lighter</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#rgba-method" translate="no">Qt.rgba</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#tint-method" translate="no">Qt.tint</a>()</li>
+</ul>
+<p>The following helper methods are supported:</p>
+<ul>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#formatDate-method" translate="no">Qt.formatDate</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#formatDateTime-method" translate="no">Qt.formatDateTime</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#formatTime-method" translate="no">Qt.formatTime</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#matrix4x4-method" translate="no">Qt.matrix4x4</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#point-method" translate="no">Qt.point</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#quaternion-method" translate="no">Qt.quaternion</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#rect-method" translate="no">Qt.rect</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#size-method" translate="no">Qt.size</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#vector2d-method" translate="no">Qt.vector2d</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#vector3d-method" translate="no">Qt.vector3d</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#vector4d-method" translate="no">Qt.vector4d</a>()</li>
+</ul>
+<p>The following translation methods are supported:</p>
+<ul>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#qsTr-method" translate="no">qsTr</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#qsTranslate-method" translate="no">qsTranslate</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#qsTranslateNoOp-method" translate="no">qsTranslateNoOp</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#qsTrId-method" translate="no">qsTrId</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#qsTrIdNoOp-method" translate="no">qsTrIdNoOp</a>()</li>
+<li><a href="https://doc.qt.io/qt/qml-qtqml-qt.html#qsTrNoOp-method" translate="no">qsTrNoOp</a>()</li>
+</ul>
+<div class="admonition note">
+<p><b>Note: </b>Do not mix translation methods in a UI file.</p>
+</div>
+<p>For more information about using the methods, see <a href="https://doc.qt.io/qt/qml-qtqml-qt.html" translate="no">Qt QML Methods</a>.</p>
+<h2 id="using-ui-files">Using UI Files</h2>
+<p>You can edit the UI files in the <a href="qtquick-form-editor.html" translate="no">2D</a> and <b translate="no">Text Editor</b> views. Components that are supposed to be used in code have to be exported as properties:</p>
+<pre class="cpp" translate="no">
+ Item {
+     width: <span class="number">640</span>
+     height: <span class="number">480</span>
+
+     property alias button: button
+
+     Button {
+         anchors<span class="operator">.</span>centerIn: parent
+         id: button
+         text: qsTr(<span class="string">&quot;Press Me&quot;</span>)
+     }
+ }
+</pre>
+<p>The property alias exports the button to the code that uses the form. You can use the <img src="images/alias.png" alt="" /> (<b translate="no">Export</b>) button in <a href="qtquick-navigator.html" translate="no">Navigator</a> to export a component as a property:</p>
+<p class="centerAlign"><img src="images/qmldesigner-export-item.png" alt="" /></p><p>In the UI file where the component is used, you can use the <code translate="no">button</code> property alias to implement signal handlers, for example. In the following code snippet, the UI file is called <i>MainForm.ui.qml</i>:</p>
+<pre class="cpp" translate="no">
+ MainForm {
+     anchors<span class="operator">.</span>fill: parent
+     button<span class="operator">.</span>onClicked: messageDialog<span class="operator">.</span>show(qsTr(<span class="string">&quot;Button pressed&quot;</span>))
+ }
+</pre>
+<p>You can also assign properties or define behavior or transitions.</p>
+<p>To move from the <a href="qtquick-form-editor.html" translate="no">2D</a> or <a href="qtquick-navigator.html" translate="no">Navigator</a> view directly to the implementation of a component in the .qml file, right-click the component and select <b translate="no">Go to Implementation</b> in the context menu.</p>
+</div>
+<!-- @@@creator-quick-ui-forms.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-advanced.html">Advanced Designer Topics</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-telemetry.html">Manage data collection</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-particles.qdoc -->
+  <title>Logical Particles | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Logical Particles</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-3d-particle-system.html" />
+  <link rel="next" href="studio-3d-particle-emitters.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-3d-particle-system.html">Particle System</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-particle-emitters.html">Particle Emitters</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#sprite-particle">Sprite Particle</a></li>
+<li class="level1"><a href="#sprite-sequence">Sprite Sequence</a></li>
+<li class="level1"><a href="#line-particle">Line Particle</a></li>
+<li class="level1"><a href="#model-particle">Model Particle</a></li>
+<li class="level1"><a href="#model-blend-particle">Model Blend Particle</a></li>
+<li class="level1"><a href="#common-particle-properties">Common Particle Properties</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Logical Particles</h1>
+<!-- $$$studio-3d-logical-particles.html-description -->
+<div class="descr" id="details">
+<p>All the particle system components act on <i>logical particles</i>. Each particle has a logical representation within the particle system, and this is what the components act upon. Not every logical particle needs to be visualized, and some logical particles could lead to multiple visual particles being drawn on screen.</p>
+<p>Qt Design Studio supports the following logical particle components:</p>
+<ul>
+<li><b translate="no">Sprite Particle</b> and <b translate="no">Line Particle</b> for <a href="studio-3d-texture.html" translate="no">2D texture</a> particles.</li>
+<li><b translate="no">Model Particle</b> for <a href="studio-3d-model.html" translate="no">3D model</a> particles. Model particles use <a href="studio-3d-instancing.html" translate="no">instanced rendering</a> to render thousands of particles, with full <a href="studio-3d-materials-types.html" translate="no">materials</a> and <a href="studio-3d-lights.html" translate="no">lights</a> support.</li>
+</ul>
+<p>You can use the following components to add and modify logical particles:</p>
+<ul>
+<li><a href="studio-3d-logical-particles.html#sprite-particle" translate="no">Sprite Particle</a></li>
+<li><a href="studio-3d-logical-particles.html#sprite-sequence" translate="no">Sprite Sequence</a></li>
+<li><a href="studio-3d-logical-particles.html#line-particle" translate="no">Line Particle</a></li>
+<li><a href="studio-3d-logical-particles.html#model-particle" translate="no">Model Particle</a></li>
+<li><a href="studio-3d-logical-particles.html#model-blend-particle" translate="no">Model Blend Particle</a></li>
+</ul>
+<h2 id="sprite-particle">Sprite Particle</h2>
+<p>Specify properties for sprite particles in <b translate="no">Properties</b> &gt; <b translate="no">Sprite Particle</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-sprite-particle.png" alt="&quot;Sprite Particle properties&quot;" /></p><p><b translate="no">Blend mode</b> determines whether particles are blended using source over, screen, or multiply mode. If you select <b translate="no">SourceOver</b>, the pixel component values from a foreground source are written over the source by using alpha blending. If you select <b translate="no">Screen</b>, the values are negated, then multiplied, negated again, and written. If you select <b translate="no">Multiply</b>, they are multiplied and written.</p>
+<p><b translate="no">Sprite</b> defines the <a href="studio-3d-texture.html" translate="no">Texture</a> component used for the particles. For example, to use an image of a snowflake to simulate snow, create an instance of the <b translate="no">Texture</b> component with the image as the <b translate="no">Source</b>.</p>
+<p>In <b translate="no">Sprite sequence</b>, select the <a href="studio-3d-logical-particles.html#sprite-sequence" translate="no">Sprite Sequence</a> component instance for the particle if the sprite texture contains a frame sequence. If your image only has a single sprite frame, don't set this value.</p>
+<p>Select <b translate="no">Billboard</b> to specify that the particle texture should always be aligned face towards the screen. Enabling this property automatically disables <b translate="no">Particle</b> &gt; <b translate="no">Align mode</b>.</p>
+<p><b translate="no">Particle scale</b> specifies the scale multiplier of the particles. To adjust particle sizes in the emitter, set <b translate="no">Particle Emitter</b> properties.</p>
+<p>In <b translate="no">Color table</b>, select the <b translate="no">Texture</b> component that is used for coloring the particles. The image can be a 1D or a 2D texture. Horizontal pixels determine the particle color over the value you set in <b translate="no">Particle Emitter</b> &gt; <b translate="no">Life span</b>. For example, when the particle is halfway through its life, it will have the color specified halfway across the image. If the image is 2D, a vertical row is randomly selected for each particle. For example, a <code translate="no">256 x 4</code> image contains 4 different coloring options for particles.</p>
+<h2 id="sprite-sequence">Sprite Sequence</h2>
+<p>Specify properties for a sprite particle sequence that contains a frame sequence in <b translate="no">Properties</b> &gt; <b translate="no">Particle Sprite Sequence</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle-sprite-sequence.png" alt="&quot;Particle Sprite Sequence properties&quot;" /></p><p><b translate="no">Frame count</b> specifies the amount of image frames in a sprite. A particle animates through these frames during its duration. The frames should be laid out horizontally in the same image file. For example, the sprite could be a 512x64 image, with the frame count of 8. This would make each particle frame size 64x64 pixels.</p>
+<p><b translate="no">Frame index</b> specifies the initial index of the frame. This is the position between frames where the animation is started. For example, when the frame index is 5 and <b translate="no">Animation direction</b> is set to <b translate="no">Normal</b>, the first rendered frame is 5. If the animation direction is set to <b translate="no">Reverse</b>, the first rendered frame is 4.</p>
+<p>The value of <b translate="no">Frame index</b> must be between 0 and the value of <b translate="no">Frame count</b> minus 1. When <b translate="no">Animation direction</b> is set to <b translate="no">SingleFrame</b> and <b translate="no">Random start</b> is disabled, all the particles will render sprites with the frame index.</p>
+<p>Enable <b translate="no">Random start</b> to start the animation from a random frame between 0 and <b translate="no">Frame count</b> minus 1. This allows animations to not look like they all just started when the animation begins.</p>
+<p><b translate="no">Interpolate</b> determines whether sprites are blended between frames to make the animation appear smoother.</p>
+<p><b translate="no">Duration</b> specifies the time in milliseconds that it takes for the sprite sequence to animate. For example, if the duration is 400 and the <b translate="no">Frame count</b> is 8, each frame will be shown for 50 milliseconds. When the value is -1, <b translate="no">Particle</b> &gt; <b translate="no">Life span</b> is used as the duration.</p>
+<p><b translate="no">Duration variation</b> defines the duration variation in milliseconds. The actual duration of the animation is between duration minus duration variation and duration plus duration variation.</p>
+<p><b translate="no">Animation direction</b> defines the animation playback direction of the sequence. Select <b translate="no">Normal</b> to play the animation from the first frame to the last frame and to jump back to the first frame from the last one. Select <b translate="no">Reverse</b> to reverse the normal order. Select <b translate="no">Alternate</b> or <b translate="no">AlternateReverse</b> to alternate between normal and reversed orders.</p>
+<p>If you don't want to animate the frame, select <b translate="no">SingleFrame</b>. When <b translate="no">Random start</b> is disabled, the frame set in <b translate="no">Frame index</b> is rendered. When it is enabled, each particle renders a random frame.</p>
+<h2 id="line-particle">Line Particle</h2>
+<p>Specify properties for line particles in <b translate="no">Properties</b> &gt; <b translate="no">Line Particle</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-line-particle.png" alt="" /></p><p><b translate="no">Segments</b> defines the number of segments in each line.</p>
+<p><b translate="no">Alpha Fade</b> defines the alpha fade factor of the lines. The value range is [0, 1]. When the value is greater than 0.0, the line fades more the further the segment is from the first particle segment.</p>
+<p><b translate="no">Scale Multiplier</b> modifies the line size for the line segments. The value range is [0, 2]. If the value is less than 1.0, the line gets smaller the further a segment is from the first segment and if the value is greater than 1.0 the line gets bigger.</p>
+<p><b translate="no">Texcoord Multipier</b> defines the texture coordinate multiplier of the line. This value is factored to the texture coordinate values of the line.</p>
+<p><b translate="no">Texcoord Mode</b> defines the texture coordinate mode of the line.</p>
+<p><b translate="no">Line Length</b> defines the length of the line. If the value is set, the line length is limited to the value. In this case the minimum delta of the line is the length divided by the segment count. If the value is not set, the line length varies based on the particle speed, segment count, and minimum delta.</p>
+<p><b translate="no">Line Length Variation</b> defines the length variation of the line. This parameter is not used if <b translate="no">Line Length</b> has not been set. When the length is set, this parameter can be used to vary the length of each line.</p>
+<p><b translate="no">Minimum Segment Length</b> defines he minimum length between segment points. This parameter is ignored if <b translate="no">Line Length</b> is set.</p>
+<p><b translate="no">Eol Fade Out Duration</b> defines the end-of-life fade-out duration of the line. If set, each line remains in the place it was when the particle reached the end of its lifetime, then fades out during this time period.</p>
+<h2 id="model-particle">Model Particle</h2>
+<p>Specify properties for model particles in <b translate="no">Properties</b> &gt; <b translate="no">Model Particle</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-model-particle.png" alt="&quot;Model Particle properties&quot;" /></p><p>In <b translate="no">Delegate</b>, select the <b translate="no">3D Model</b> component that defines each object instantiated by the particle.</p>
+<p><b translate="no">Instance table</b> provides you with access to the internal instancing table of the model particle that is used to implement efficient rendering. This table can be applied to the instancing property of models that are not part of the particle system.</p>
+<p>You can use this feature also to provide an instancing table without showing any particles. This is done by omitting the delegate.</p>
+<h2 id="model-blend-particle">Model Blend Particle</h2>
+<p>Specify properties for model blend particles in <b translate="no">Properties</b> &gt; <b translate="no">Model Blend Particle</b>.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-model-blend-particle.png" alt="&quot;Model Blend Particle properties&quot;" /></p><p>The <b translate="no">Model Blend Particle</b> component blends a particle effect with a <b translate="no">3D Model</b> component. The provided model needs to be triangle-based. Each triangle in the model is converted into a particle, which are then used by the emitter. Instead of particle shader, the model is shaded using the material specified in the model. The way the effect is blended is determined by <b translate="no">Model blend mode</b>.</p>
+<p>The possible blend modes are:</p>
+<ul>
+<li><b translate="no">Construct</b>, where the model is constructed from the particles.</li>
+<li><b translate="no">Explode</b>, where the model is converted into particles.</li>
+<li><b translate="no">Transfer</b>, where <b translate="no">Construct</b> and <b translate="no">Explode</b> are combined to create an effect where the model is transferred from one place to another.</li>
+</ul>
+<p>The particles are emitted in the order they are specified in the model unless <b translate="no">Activation node</b> is set or <b translate="no">Random</b> is enabled.</p>
+<p>In <b translate="no">Delegate</b>, select the <b translate="no">3D Model</b> component that defines each object instantiated by the particle.</p>
+<p><b translate="no">End node</b> specifies the transformation for the model at the end of a particle effect. It defines the size, position, and rotation where the model is constructed when you set <b translate="no">Model blend mode</b> to <b translate="no">Construct</b> or <b translate="no">Explode</b>.</p>
+<p><b translate="no">End time</b> specifies the end time of the particle in milliseconds. The end time is used during construction and defines duration from particle lifetime at the end where the effect is blended with the model positions. Before the end time, the particles' positions are defined only by the particle effect, but during the end time the particle position is blended linearly with the model end position.</p>
+<p>In <b translate="no">Activation node</b>, select the component instance that activates particles and overrides the regular emit routine. The activation node can be used to control how the particles are emitted spatially when the model is exploded or constructed from the particles. The activation node emits a particle if the center of that particle is on the positive half of the z-axis of the activation node. Animating the activation node to move trough the model will cause the particles to be emitted sequentially along the path the activation node moves.</p>
+<p>To emit particles in random order instead of in the order in which they are specified in the model, select <b translate="no">Random</b>.</p>
+<h2 id="common-particle-properties">Common Particle Properties</h2>
+<p>The properties that you specify for logical particles in <b translate="no">Properties</b> &gt; <b translate="no">Particle</b> determine the common appearance of all particles.</p>
+<p class="centerAlign"><img src="images/studio-3d-properties-particle.png" alt="&quot;Particle properties&quot;" /></p><p><b translate="no">Max amount</b> allocates data for particles. Setting this value instead of just growing the data based on <b translate="no">Particle Emitter</b> &gt; <b translate="no">Emit rate</b>, <b translate="no">Life span</b>, and <b translate="no">Emit Bursts</b> enables you to optimize memory usage and to modify the emit rate and life span without reallocation.</p>
+<p><b translate="no">Color</b> determines the base color for particles. You can use the <a href="qtquick-properties.html#picking-colors" translate="no">Color Picker</a> to select colors. For color variation, set values in <b translate="no">Color variation</b>. The values are in RGBA order (X=red, Y=green, Z=blue, and W=alpha), and each value should be between 0.00 (no variation) and 1.00 (full variation).</p>
+<p>To apply color variation uniformly for all the color channels, enable <b translate="no">Unified color variation</b>. This applies all variations with the same random amount.</p>
+<p><b translate="no">Fade in effect</b> and <b translate="no">Fade out effect</b> define the fading effect used when the particles appear. Fading is implemented by changing the value of opacity or scale between 0 and 1 over the time specified in milliseconds in <b translate="no">Fade in duration</b> and <b translate="no">Fade out duration</b>. Fading duration is calculated into the particle lifespan. For example, if <b translate="no">Particle Emitter</b> &gt; <b translate="no">Life span</b> is 3000, <b translate="no">Fade in duration</b> is 500, and <b translate="no">Fade out duration</b> is 500, the particle will be fully visible for 2000 ms.</p>
+<p><b translate="no">Align mode</b> determines the direction that particles face:</p>
+<ul>
+<li>Select <b translate="no">AlignNone</b> to use the value set for the emitter component in <b translate="no">Particle Rotation</b> &gt; <b translate="no">Rotation</b>.</li>
+<li>Select <b translate="no">AlignTowardsTarget</b> to align the particles towards the direction set in <b translate="no">Align target position</b>.</li>
+<li>Select <b translate="no">AlignTowardsStartVelocity</b> to align the particles towards their starting velocity direction.</li>
+</ul>
+<p>This value takes no effect if <b translate="no">Sprite Particle</b> &gt; <b translate="no">Billboard</b> is enabled.</p>
+<p>Unlike the materials used with the models, particles default to being rendered with assuming semi-transparency, and so with blending enabled. This is the desired behavior most of the time due to particle textures, color (alpha) variations, fadings, and so on. If you don't need the blending, disable <b translate="no">Has transparency</b> for possible performance gain.</p>
+<p><b translate="no">Sort mode</b> determines the order in which the particles are drawn. You can sort particles based on their distance from the camera, farthest first, or lifetime, newest or oldest first.</p>
+<p>The particles are emitted from the location of the <a href="studio-3d-particle-emitters.html#emitter" translate="no">Emitter</a> or <a href="studio-3d-particle-emitters.html#trail-emitter" translate="no">Trail Emitter</a> component instance.</p>
+</div>
+<!-- @@@studio-3d-logical-particles.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-3d-particle-system.html">Particle System</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-particle-emitters.html">Particle Emitters</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

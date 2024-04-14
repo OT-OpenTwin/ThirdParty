@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-projects-settings-build-qbs.qdoc -->
+  <meta name="description" content="Settings for building applications with Qbs.">
+  <title>Qbs Build Configuration | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Qbs Build Configuration</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-reference.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#qbs-build-steps">Qbs Build Steps</a></li>
+<li class="level1"><a href="#qbs-clean-steps">Qbs Clean Steps</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Qbs Build Configuration</h1>
+<!-- $$$creator-build-settings-qbs.html-description -->
+<div class="descr" id="details">
+<p>Specify build settings for the selected <a href="creator-glossary.html#glossary-buildandrun-kit" translate="no">kit</a> in <b translate="no">Projects</b> &gt; <b translate="no">Build &amp; Run</b> &gt; <b translate="no">Build</b> &gt; <b translate="no">Build Settings</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-build-settings-qbs.png" alt="{Qbs build settings}" /></p><p>Qbs builds projects in the directory specified in the <b translate="no">Build Directory</b> field.</p>
+<p>In the <b translate="no">Tooltip in target selector</b> field, you can enter text that is displayed as a tooltip when you hover the mouse over the build configuration in the <a href="creator-building-targets.html" translate="no">kit selector</a>.</p>
+<p>You can enter a name for the build configuration in the <b translate="no">Configuration name</b> field.</p>
+<p>If debug info is being generated, you can have it placed into separate files, rather than embedded into the binary, by selecting <b translate="no">Enable</b> in the <b translate="no">Separate debug info</b> field. For more information, see <a href="creator-cpu-usage-analyzer.html#using-the-performance-analyzer" translate="no">Using the Performance Analyzer</a>. To use default settings, select <b translate="no">Leave at Default</b>.</p>
+<p>For more information about the QML debugging options, see <a href="creator-debugging-qml.html#setting-up-qml-debugging" translate="no">Setting Up QML Debugging</a>.</p>
+<p>For more information about configuring Qbs, see <a href="creator-preferences-qbs.html#qbs-preferences" translate="no">Preferences: Qbs</a>.</p>
+<h2 id="qbs-build-steps">Qbs Build Steps</h2>
+<p class="centerAlign"><img src="images/creator-qbs-build-app.png" alt="{Qbs build steps}" /></p><p>To specify build steps for Qbs:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Build variant</b> field, select:<ul>
+<li><b translate="no">Debug</b> to include debug symbols in the build for debugging the application.</li>
+<li><b translate="no">Profile</b> for an optimized release build that is delivered with separate debug information. It is best suited for analyzing applications.</li>
+<li><b translate="no">Release</b> to create the final installation binary package.</li>
+</ul>
+</li>
+<li>In the <b translate="no">ABIs</b> field, select the ABIs for the <a href="creator-developing-android.html" translate="no">Android</a> device architectures to build the project for.</li>
+<li>In the <b translate="no">Parallel jobs</b> field, specify the number of parallel jobs to use for building.</li>
+<li>In the <b translate="no">Properties</b> field, specify the properties to pass to the project. Use colons (:) to separate keys from values. For more information, see <a href="http://doc.qt.io/qbs/language-introduction.html" translate="no">Modules</a> in the Qbs Manual.</li>
+<li>In the <b translate="no">Flags</b> field, select:<ul>
+<li><b translate="no">Keep going</b> to continue building when errors occur, if possible.</li>
+<li><b translate="no">Show command lines</b> to print actual command lines to <a href="creator-reference-compile-output-view.html" translate="no">Compile Output</a> instead of high-level descriptions.</li>
+<li><b translate="no">Force probes</b> to force re-execution of the configure scripts of <a href="https://doc.qt.io/qbs/qbsprobes-qmlmodule.html" translate="no">Probes</a>.</li>
+</ul>
+</li>
+<li>In the <b translate="no">Installation flags</b> field:<ul>
+<li>Select <b translate="no">Install</b> to copy artifacts to their install location after building them. This option is enabled by default.<div class="admonition note">
+<p><b>Note: </b>On Windows, the build will fail if the application is running because the executable file cannot be overwritten. To avoid this issue, you can deselect this check box and add a <b translate="no">Qbs Install</b> deployment step in the run settings that will be performed just before running the application.</p>
+</div>
+</li>
+<li>Select <b translate="no">Clean install root</b> to remove the contents of the install root directory before the build starts.</li>
+<li>Select <b translate="no">Use default location</b> to install the artifacts to the default location. Deselect the check box to specify another location in the <b translate="no">Installation directory</b> field.</li>
+</ul>
+</li>
+</ol>
+<p>The <b translate="no">Equivalent command line</b> field displays the build command that is constructed based on the selected options.</p>
+<h2 id="qbs-clean-steps">Qbs Clean Steps</h2>
+<p>When building with Qbs, you can specify flags in <b translate="no">Clean Steps</b>:</p>
+<p class="centerAlign"><img src="images/creator-qbs-build-clean.png" alt="{Qbs clean steps}" /></p><ul>
+<li>Select <b translate="no">Dry run</b> to test cleaning without executing commands or making permanent changes to the build graph.</li>
+<li>Select <b translate="no">Keep going</b> to continue cleaning when errors occur, if possible.</li>
+</ul>
+<p>The <b translate="no">Equivalent command line</b> field displays the clean command that is constructed based on the selected options.</p>
+</div>
+<p><b>See also </b><a href="creator-project-qbs.html#qbs-build-system" translate="no">Build Systems: Qbs</a> and <a href="creator-preferences-qbs.html#qbs-preferences" translate="no">Preferences: Qbs</a>.</p>
+<!-- @@@creator-build-settings-qbs.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

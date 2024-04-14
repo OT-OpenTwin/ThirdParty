@@ -162,17 +162,66 @@ var PropertyListVariableExpander = (function () {
           * Finds the first index of a replacement starting with one of the supported syntaxes
           * This is needed so we don't do recursive substitutions
           */
-        function indexOfReplacementStart(syntaxes, str, offset) {
+        function indexOfReplacementStart(syntaxes, str) {
             var syntax;
-            var idx = str.length;
+            var idx = -1;
             for (var i in syntaxes) {
-                var j = str.indexOf(syntaxes[i].open, offset);
-                if (j !== -1 && j < idx) {
+                var j;
+                // normal case - we search for the last occurrence to do a correct replacement
+                // for nested variables, e.g. ${VAR1_${VAR2}}. This doesn't work in case
+                // when start == end, e.g. @VAR@ - in that case we search from the start
+                if (syntaxes[i].open !== syntaxes[i].close)
+                    j = str.lastIndexOf(syntaxes[i].open);
+                else
+                    j = str.indexOf(syntaxes[i].open);
+                if (j > idx) {
                     syntax = syntaxes[i];
                     idx = j;
                 }
             }
-            return { "syntax": syntax, "index": idx === str.length ? -1 : idx };
+            return { "syntax": syntax, "index": idx };
+        }
+
+        function expandString(key, str, env, seenVars) {
+            if (!str)
+                return str;
+            var repl = indexOfReplacementStart(syntaxes, str);
+            var i = repl.index;
+            while (i !== -1) {
+                var j = str.indexOf(repl.syntax.close, i + repl.syntax.open.length);
+                if (j === -1)
+                    return str;
+                var varParts = str.slice(i + repl.syntax.open.length, j).split(':');
+                var varName = varParts[0];
+                var varFormatter = varParts[1];
+                var envValue = env[varName];
+                // if we end up expanding the same variable again, break the recursion
+                if (seenVars.indexOf(varName) !== -1)
+                    envValue = "";
+                else
+                    seenVars.push(varName);
+                var varValue = expandString(key, envValue, env, seenVars);
+                seenVars.pop();
+                if (undefined === varValue) {
+                    // skip replacement
+                    if ($this.undefinedVariableFunction)
+                        $this.undefinedVariableFunction(key, varName);
+                    varValue = "";
+                }
+                varValue = String(varValue);
+                if (varFormatter !== undefined) {
+                    // TODO: XCode supports multiple formatters separated by a comma
+                    var varFormatterLower = varFormatter.toLowerCase();
+                    if (varFormatterLower === "rfc1034identifier" || varFormatterLower === "identifier")
+                        varValue = Utilities.rfc1034Identifier(varValue);
+                    if (varValue === "" && varFormatterLower.startsWith("default="))
+                        varValue = varFormatter.split("=")[1];
+                }
+                str = str.slice(0, i) + varValue + str.slice(j + repl.syntax.close.length);
+                repl = indexOfReplacementStart(syntaxes, str);
+                i = repl.index;
+            }
+            return str;
         }
 
         function expandRecursive(obj, env, checked) {
@@ -187,38 +236,9 @@ var PropertyListVariableExpander = (function () {
                 }
                 if (type !== "string")
                     continue;
-                var repl = indexOfReplacementStart(syntaxes, value);
-                var i = repl.index;
-                var changes = false;
-                while (i !== -1) {
-                    var j = value.indexOf(repl.syntax.close, i + repl.syntax.open.length);
-                    if (j === -1)
-                        break;
-                    var varParts = value.slice(i + repl.syntax.open.length, j).split(':');
-                    var varName = varParts[0];
-                    var varFormatter = varParts[1];
-                    var varValue = env[varName];
-                    if (undefined === varValue) {
-                        // skip replacement
-                        if ($this.undefinedVariableFunction)
-                            $this.undefinedVariableFunction(key, varName);
-                        i = j + repl.syntax.close.length;
-                    } else {
-                        changes = true;
-                        varValue = String(varValue);
-                        if (varFormatter !== undefined)
-                            varFormatter = varFormatter.toLowerCase();
-                        if (varFormatter === "rfc1034identifier")
-                            varValue = Utilities.rfc1034Identifier(varValue);
-                        value = value.slice(0, i) + varValue + value.slice(j + repl.syntax.close.length);
-                        // avoid recursive substitutions to avoid potentially infinite loops
-                        i += varValue.length;
-                    }
-                    repl = indexOfReplacementStart(syntaxes, value, i);
-                    i = repl.index;
-                }
-                if (changes)
-                    obj[key] = value;
+                var expandedValue = expandString(key, value, env, []);
+                if (expandedValue !== value)
+                    obj[key] = expandedValue;
             }
         }
         expandRecursive(obj, env, []);
@@ -255,20 +275,4 @@ function cleanPropertyList(plist) {
         else
             cleanPropertyList(plist[key]);
     }
-}
-
-function _codeSignTimestampFlags(product) {
-    // If signingTimestamp is undefined, do not specify the flag at all -
-    // this uses the system-specific default behavior
-    var signingTimestamp = product.moduleProperty("xcode", "signingTimestamp");
-    if (signingTimestamp !== undefined) {
-        // If signingTimestamp is an empty string, specify the flag but do
-        // not specify a value - this uses a default Apple-provided server
-        var flag = "--timestamp";
-        if (signingTimestamp)
-            flag += "=" + signingTimestamp;
-        return [flag];
-    }
-
-    return [];
 }

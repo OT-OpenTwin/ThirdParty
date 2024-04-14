@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
 <!-- creator-projects-libraries.qdoc -->
-  <title>Adding Libraries to Projects | Qt Creator Manual</title>
+  <title>Add libraries to qmake projects | Qt Creator Manual</title>
   <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
   <script type="text/javascript">
     document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
@@ -22,85 +21,67 @@
 </head>
 <body>
 <div class="header" id="qtdocheader">
-  <div class="main">
+    <div class="main">
     <div class="main-rounded">
-      <div class="navigationbar">
-        <table><tr>
-<td ><a href="index.html">Qt Creator Manual</a></td><td >Adding Libraries to Projects</td></tr></table><table class="buildversion"><tr>
-<td id="buildversion" width="100%" align="right"><a href="index.html">Qt Creator Manual 4.9&#x2e;1</a></td>
-        </tr></table>
-      </div>
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Add libraries to qmake projects</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
     </div>
+</div>
 <div class="content">
 <div class="line">
 <div class="content mainContent">
-  <link rel="prev" href="creator-project-opening.html" />
-  <link rel="next" href="creator-project-wizards.html" />
+  <link rel="prev" href="creator-how-tos.html" />
 <p class="naviNextPrevious headerNavi">
-<a class="prevPage" href="creator-project-opening.html">Opening Projects</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-project-wizards.html">Adding New Custom Wizards</a>
-</p><p/>
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
 <div class="sidebar">
 <div class="toc">
-<h3><a name="toc">Contents</a></h3>
+<h3 id="toc">Contents</h3>
 <ul>
-<li class="level1"><a href="#to-add-libraries">To Add Libraries</a></li>
-<li class="level1"><a href="#example-of-adding-internal-libraries">Example of Adding Internal Libraries</a></li>
+<li class="level1"><a href="#library-location">Library location</a></li>
+<li class="level1"><a href="#target-platform">Target platform</a></li>
+<li class="level1"><a href="#linking">Linking</a></li>
+<li class="level1"><a href="#development-platform">Development platform</a></li>
 </ul>
 </div>
 <div class="sidebar-content" id="sidebar-content"></div></div>
-<h1 class="title">Adding Libraries to Projects</h1>
-<span class="subtitle"></span>
+<h1 class="title">Add libraries to qmake projects</h1>
 <!-- $$$creator-project-qmake-libraries.html-description -->
-<div class="descr"> <a name="details"></a>
-<p>In addition to Qt libraries, you can add other libraries to your projects. The way the library is added depends on the type and location of the library. You can add a system library, your own library, or a 3rd party library. The library can be located either in the build tree of the current project or in another build tree.</p>
-<p class="centerAlign"><img src="images/qtcreator-add-library-wizard.png" alt="&quot;Add Library wizard&quot;" /></p><p>Because system libraries do not typically change and are often found by default, you do not need to specify the path to the library or to its includes when you add it. You can use <code>pkg-config</code> to query system libraries during compilation.</p>
-<p>For your own libraries and 3rd party libraries, you need to specify the paths. Qt Creator tries to guess the include path for an external library, but you need to check it and modify it if necessary. Qt Creator automatically adds the include path for an internal library.</p>
-<p>For all libraries, select the target platforms for the application, library, or plugin.</p>
-<p>Specify whether the library is statically or dynamically linked. For a statically linked internal library, Qt Creator adds dependencies (<a href="http://doc.qt.io/qt-5/qmake-variable-reference.html#pre-targetdeps">PRE_TARGETDEPS</a>) in the project file.</p>
-<p>Depending on the development platform, some options might be detected automatically. For example, on macOS, the library type (<b>Library</b> or <b>Framework</b>) is detected automatically and the option is hidden. However, if you develop on another platform than macOS and want to build your project for macOS, you must specify the library type.</p>
-<p>The default convention on Windows is that the debug and release versions of a library have the same name, but are placed in different subdirectories, usually called <i>debug</i> and <i>release</i>. If the library path does not contain either of these folders, you cannot select the option to place the libraries in separate folders.</p>
-<p>Alternatively, the letter <i>d</i> can be added to the library name for the debug version. For example, if the release version is called example.lib, the debug version is called exampled.lib. You can specify that the letter is added for the debug version and removed for the release version. If the library name ends in <i>d</i>, deselect the <b>Remove &quot;d&quot; suffix for release version</b> option.</p>
+<div class="descr" id="details">
+<p>In addition to Qt libraries, you can add other libraries to your projects. The process depends on the type and location of the library:</p>
+<ul>
+<li>A system library</li>
+<li>Your own library</li>
+<li>A 3rd party library</li>
+</ul>
 <p>Qt Creator supports code completion and syntax highlighting for the added libraries once your project successfully builds and links to them.</p>
-<a name="to-add-libraries"></a>
-<h2 id="to-add-libraries">To Add Libraries</h2>
-<ol class="1" type="1"><li>In the <b>Projects</b> pane, right-click the project name to open the context menu and select <b>Add Library</b>.</li>
-<li>Follow the instructions of the wizard.</li>
-</ol>
-<p>For more information about the project file settings, see <a href="http://doc.qt.io/qt-5/qmake-project-files.html#declaring-other-libraries">Declaring Other Libraries</a>.</p>
-<a name="example-of-adding-internal-libraries"></a>
-<h2 id="example-of-adding-internal-libraries">Example of Adding Internal Libraries</h2>
-<p>The following example describes how to add a statically linked internal library to your project.</p>
-<ol class="1" type="1"><li>Choose <b>File</b> &gt; <b>New File or Project</b> &gt; <b>Library</b> &gt; <b>C++ Library</b> to create the library.<p>The <b>Introduction and Product Location</b> dialog opens.</p>
-<p class="centerAlign"><img src="images/qtcreator-add-library-wizard-ex-1.png" alt="&quot;Introduction and Product Location dialog&quot;" /></p></li>
-<li>In the <b>Type</b> field, select <b>Statically Linked Library</b>.</li>
-<li>In the <b>Name</b> field, give a name for the library. For example, <b>mylib</b>.</li>
-<li>Follow the instructions of the wizard until you get to the <b>Project Management</b> dialog. In the <b>Add to project</b> list, select a project. For example, <b>myapp</b>.</li>
-<li>In the <b>Projects</b> pane, right-click the project name to open the context menu and select <b>Add Library &gt; Internal Library &gt; Next</b>.</li>
-<li>In the <b>Library</b> field, select <b>mylib</b> and click <b>Next</b>.</li>
-<li>Click <b>Finish</b> to add the following library declaration to the project file:<pre class="cpp">
-
-  win32:CONFIG(release<span class="operator">,</span> debug<span class="operator">|</span>release): LIBS <span class="operator">+</span><span class="operator">=</span> <span class="operator">-</span>L$$OUT_PWD<span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span>projects<span class="operator">/</span>mylib<span class="operator">/</span>release<span class="operator">/</span> <span class="operator">-</span>lmylib
-  <span class="keyword">else</span>:win32:CONFIG(debug<span class="operator">,</span> debug<span class="operator">|</span>release): LIBS <span class="operator">+</span><span class="operator">=</span> <span class="operator">-</span>L$$OUT_PWD<span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span>projects<span class="operator">/</span>mylib<span class="operator">/</span>debug<span class="operator">/</span> <span class="operator">-</span>lmylib
-  <span class="keyword">else</span>:unix: LIBS <span class="operator">+</span><span class="operator">=</span> <span class="operator">-</span>L$$OUT_PWD<span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span>projects<span class="operator">/</span>mylib<span class="operator">/</span> <span class="operator">-</span>lmylib
-
-  INCLUDEPATH <span class="operator">+</span><span class="operator">=</span> $$PWD<span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span>projects<span class="operator">/</span>mylib
-  DEPENDPATH <span class="operator">+</span><span class="operator">=</span> $$PWD<span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span>projects<span class="operator">/</span>mylib
-
-  win32:CONFIG(release<span class="operator">,</span> debug<span class="operator">|</span>release): PRE_TARGETDEPS <span class="operator">+</span><span class="operator">=</span> $$OUT_PWD<span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span>projects<span class="operator">/</span>mylib<span class="operator">/</span>release<span class="operator">/</span>mylib<span class="operator">.</span>lib
-  <span class="keyword">else</span>:win32:CONFIG(debug<span class="operator">,</span> debug<span class="operator">|</span>release): PRE_TARGETDEPS <span class="operator">+</span><span class="operator">=</span> $$OUT_PWD<span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span>projects<span class="operator">/</span>mylib<span class="operator">/</span>debug<span class="operator">/</span>mylib<span class="operator">.</span>lib
-  <span class="keyword">else</span>:unix: PRE_TARGETDEPS <span class="operator">+</span><span class="operator">=</span> $$OUT_PWD<span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span><span class="operator">.</span><span class="operator">.</span><span class="operator">/</span>projects<span class="operator">/</span>mylib<span class="operator">/</span>libmylib<span class="operator">.</span>a
-
-</pre>
+<p>The library can be located either in the build tree of the current project or in another build tree.</p>
+<p>To add libraries to projects that you build with qmake:</p>
+<ol class="1" type="1"><li>In the <a href="creator-projects-view.html" translate="no">Projects</a> view, right-click the project name to open the context menu and select <b translate="no">Add Library</b>.<p class="centerAlign"><img src="images/qtcreator-add-library-wizard.png" alt="{Add Library wizard}" /></p></li>
+<li>Specify settings for the library.<p class="centerAlign"><img src="images/qtcreator-add-library-external.webp" alt="{Adding an external library}" /></p><p>The settings depend on the library type.</p>
 </li>
 </ol>
+<h2 id="library-location">Library location</h2>
+<p>Because system libraries do not typically change and are often found by default, you do not need to specify the path to the library or to its includes when you add it. You can use <code translate="no">pkg-config</code> to query system libraries during compilation.</p>
+<p>For your own libraries and 3rd party libraries, you need to specify the paths. Qt Creator tries to guess the include path for an external library, but you need to check it and modify it if necessary. Qt Creator automatically adds the include path for an internal library.</p>
+<h2 id="target-platform">Target platform</h2>
+<p>For all libraries, select the target platforms for the application, library, or plugin.</p>
+<h2 id="linking">Linking</h2>
+<p>Specify whether the library is statically or dynamically linked. For a statically linked internal library, Qt Creator adds dependencies as the value of the PRE_TARGETDEPS qmake variable in the project file (.pro).</p>
+<h2 id="development-platform">Development platform</h2>
+<p>Depending on the development platform, Qt Creator might detect some options automatically. For example, on macOS, it detects the library type (<b translate="no">Library</b> or <b translate="no">Framework</b>) automatically and hides the option. However, if you develop on another platform than macOS and want to build your project for macOS, you must specify the library type.</p>
+<p>The default convention on Windows is that the debug and release versions of a library have the same name, but are placed in different subdirectories, usually called <i>debug</i> and <i>release</i>. If the library path does not have either of these folders, you cannot select the option to place the libraries in separate folders.</p>
+<p>Alternatively, the letter <i>d</i> can be added to the library name for the debug version. For example, if the release version is called example.lib, the debug version is called exampled.lib. You can specify that the letter is added for the debug version and removed for the release version. If the library name ends in <i>d</i>, deselect the <b translate="no">Remove &quot;d&quot; suffix for release version</b> option.</p>
+<p>For more information about the project file settings, see qmake Manual: Declaring Other Libraries.</p>
 </div>
+<p><b>See also </b><a href="creator-tutorial-adding-internal-libraries-to-projects.html" translate="no">Tutorial: Adding an Internal Library to a qmake Project</a>, <a href="creator-how-to-add-subprojects-to-projects.html" translate="no">Add subprojects to projects</a>, <a href="creator-how-to-add-external-libraries-to-cmake-projects.html" translate="no">Add libraries to CMake projects</a>, <a href="creator-how-to-use-project-wizards.html" translate="no">Use project wizards</a>, and <a href="creator-project-creating.html" translate="no">Creating Projects</a>.</p>
 <!-- @@@creator-project-qmake-libraries.html -->
 <p class="naviNextPrevious footerNavi">
-<a class="prevPage" href="creator-project-opening.html">Opening Projects</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-project-wizards.html">Adding New Custom Wizards</a>
+<a class="prevPage" href="creator-how-tos.html">How To</a>
 </p>
         </div>
        </div>
@@ -109,7 +90,7 @@
 </div>
 <div class="footer">
    <p>
-   <acronym title="Copyright">&copy;</acronym> 2019 The Qt Company Ltd.
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
    Documentation contributions included herein are the copyrights of
    their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
    of their respective owners. </p>

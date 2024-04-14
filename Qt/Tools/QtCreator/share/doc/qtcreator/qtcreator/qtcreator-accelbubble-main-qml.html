@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-mobile-app-tutorial.qdoc -->
+  <meta name="description" content="How to create a Qt Quick application that uses Qt Quick Controls and runs on Android and iOS devices.">
+  <title>Creating a Mobile Application | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Creating a Mobile Application</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-tutorials.html" />
+  <link rel="next" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-tutorials.html">Tutorials</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-how-tos.html">How To</a>
+</p>
+<h1 class="title">Creating a Mobile Application</h1>
+<pre class="qml" translate="no">
+ import QtQuick
+ import QtSensors
+
+ <span class="type">Window</span> {
+     <span class="name">id</span>: <span class="name">mainWindow</span>
+     <span class="name">width</span>: <span class="number">320</span>
+     <span class="name">height</span>: <span class="number">480</span>
+     <span class="name">visible</span>: <span class="number">true</span>
+     <span class="name">title</span>: <span class="name">qsTr</span>(<span class="string">&quot;Accelerate Bubble&quot;</span>)
+     readonly property <span class="type">double</span> <span class="name">radians_to_degrees</span>: <span class="number">180</span> <span class="operator">/</span> <span class="name">Math</span>.<span class="name">PI</span>
+
+     <span class="type">Accelerometer</span> {
+         <span class="name">id</span>: <span class="name">accel</span>
+         <span class="name">dataRate</span>: <span class="number">100</span>
+         <span class="name">active</span>:<span class="number">true</span>
+
+         <span class="name">onReadingChanged</span>: {
+             var newX = (<span class="name">bubble</span>.<span class="name">x</span> <span class="operator">+</span> <span class="name">calcRoll</span>(<span class="name">accel</span>.<span class="name">reading</span>.<span class="name">x</span>, <span class="name">accel</span>.<span class="name">reading</span>.<span class="name">y</span>, <span class="name">accel</span>.<span class="name">reading</span>.<span class="name">z</span>) <span class="operator">*</span> <span class="number">.1</span>)
+             var newY = (<span class="name">bubble</span>.<span class="name">y</span> <span class="operator">-</span> <span class="name">calcPitch</span>(<span class="name">accel</span>.<span class="name">reading</span>.<span class="name">x</span>, <span class="name">accel</span>.<span class="name">reading</span>.<span class="name">y</span>, <span class="name">accel</span>.<span class="name">reading</span>.<span class="name">z</span>) <span class="operator">*</span> <span class="number">.1</span>)
+
+             <span class="keyword">if</span> (<span class="name">isNaN</span>(<span class="name">newX</span>) <span class="operator">||</span> <span class="name">isNaN</span>(<span class="name">newY</span>))
+                 <span class="keyword">return</span>;
+
+             <span class="keyword">if</span> (<span class="name">newX</span> <span class="operator">&lt;</span> <span class="number">0</span>)
+                 <span class="name">newX</span> <span class="operator">=</span> <span class="number">0</span>
+
+             <span class="keyword">if</span> (<span class="name">newX</span> <span class="operator">&gt;</span> <span class="name">mainWindow</span>.<span class="name">width</span> <span class="operator">-</span> <span class="name">bubble</span>.<span class="name">width</span>)
+                 <span class="name">newX</span> <span class="operator">=</span> <span class="name">mainWindow</span>.<span class="name">width</span> <span class="operator">-</span> <span class="name">bubble</span>.<span class="name">width</span>
+
+             <span class="keyword">if</span> (<span class="name">newY</span> <span class="operator">&lt;</span> <span class="number">18</span>)
+                 <span class="name">newY</span> <span class="operator">=</span> <span class="number">18</span>
+
+             <span class="keyword">if</span> (<span class="name">newY</span> <span class="operator">&gt;</span> <span class="name">mainWindow</span>.<span class="name">height</span> <span class="operator">-</span> <span class="name">bubble</span>.<span class="name">height</span>)
+                 <span class="name">newY</span> <span class="operator">=</span> <span class="name">mainWindow</span>.<span class="name">height</span> <span class="operator">-</span> <span class="name">bubble</span>.<span class="name">height</span>
+
+                 <span class="name">bubble</span>.<span class="name">x</span> <span class="operator">=</span> <span class="name">newX</span>
+                 <span class="name">bubble</span>.<span class="name">y</span> <span class="operator">=</span> <span class="name">newY</span>
+         }
+     }
+
+     <span class="keyword">function </span><span class="name">calcPitch</span>(x,y,z) {
+         <span class="keyword">return</span> -<span class="name">Math</span>.<span class="name">atan2</span>(<span class="name">y</span>, <span class="name">Math</span>.<span class="name">hypot</span>(<span class="name">x</span>, <span class="name">z</span>)) <span class="operator">*</span> <span class="name">mainWindow</span>.<span class="name">radians_to_degrees</span>;
+     }
+     <span class="keyword">function </span><span class="name">calcRoll</span>(x,y,z) {
+         <span class="keyword">return</span> -<span class="name">Math</span>.<span class="name">atan2</span>(<span class="name">x</span>, <span class="name">Math</span>.<span class="name">hypot</span>(<span class="name">y</span>, <span class="name">z</span>)) <span class="operator">*</span> <span class="name">mainWindow</span>.<span class="name">radians_to_degrees</span>;
+     }
+
+     <span class="type">Image</span> {
+         <span class="name">id</span>: <span class="name">bubble</span>
+         <span class="name">source</span>: <span class="string">&quot;Bluebubble.svg&quot;</span>
+         <span class="name">smooth</span>: <span class="number">true</span>
+         property <span class="type">real</span> <span class="name">centerX</span>: <span class="name">mainWindow</span>.<span class="name">width</span> <span class="operator">/</span> <span class="number">2</span>
+         property <span class="type">real</span> <span class="name">centerY</span>: <span class="name">mainWindow</span>.<span class="name">height</span> <span class="operator">/</span> <span class="number">2</span>
+         property <span class="type">real</span> <span class="name">bubbleCenter</span>: <span class="name">bubble</span>.<span class="name">width</span> <span class="operator">/</span> <span class="number">2</span>
+         <span class="name">x</span>: <span class="name">centerX</span> <span class="operator">-</span> <span class="name">bubbleCenter</span>
+         <span class="name">y</span>: <span class="name">centerY</span> <span class="operator">-</span> <span class="name">bubbleCenter</span>
+
+         Behavior on <span class="name">y</span> {
+             <span class="type">SmoothedAnimation</span> {
+                 <span class="name">easing</span>.type: <span class="name">Easing</span>.<span class="name">Linear</span>
+                 <span class="name">duration</span>: <span class="number">100</span>
+             }
+         }
+         Behavior on <span class="name">x</span> {
+             <span class="type">SmoothedAnimation</span> {
+                 <span class="name">easing</span>.type: <span class="name">Easing</span>.<span class="name">Linear</span>
+                 <span class="name">duration</span>: <span class="number">100</span>
+             }
+         }
+     }
+ }
+</pre>

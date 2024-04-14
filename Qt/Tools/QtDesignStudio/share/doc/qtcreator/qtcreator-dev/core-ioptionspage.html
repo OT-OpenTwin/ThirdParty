@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- ioptionspage.cpp -->
+  <meta name="description" content="The IOptionsPage class is an interface for providing pages for the Options dialog (called Preferences on macOS).">
+  <title>IOptionsPage Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>IOptionsPage</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">IOptionsPage Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::IOptionsPage</span>
+<!-- $$$IOptionsPage-brief -->
+<p>The IOptionsPage class is an interface for providing pages for the <b translate="no">Options</b> dialog (called <b translate="no">Preferences</b> on macOS). <a href="#details">More...</a></p>
+<!-- @@@IOptionsPage -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/dialogs/ioptionspage.h&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="core-ioptionspage-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-ioptionspage.html#IOptionsPage-2" translate="no">IOptionsPage</a></b>(bool <i>registerGlobally</i> = true)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ioptionspage.html#apply" translate="no">apply</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Id </td><td class="memItemRight bottomAlign"><b><a href="core-ioptionspage.html#category" translate="no">category</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="core-ioptionspage.html#categoryIconPath" translate="no">categoryIconPath</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-ioptionspage.html#displayCategory" translate="no">displayCategory</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-ioptionspage.html#displayName" translate="no">displayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ioptionspage.html#finish" translate="no">finish</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Id </td><td class="memItemRight bottomAlign"><b><a href="core-ioptionspage.html#id" translate="no">id</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-ioptionspage.html#matches" translate="no">matches</a></b>(const QRegularExpression &amp;<i>regexp</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioptionspage.html#setWidgetCreator" translate="no">setWidgetCreator</a></b>(const Core::IOptionsPage::WidgetCreator &amp;<i>widgetCreator</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QWidget *</td><td class="memItemRight bottomAlign"><b><a href="core-ioptionspage.html#widget" translate="no">widget</a></b>()</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> const QList&lt;Core::IOptionsPage *&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-ioptionspage.html#allOptionsPages" translate="no">allOptionsPages</a></b>()</td></tr>
+</table></div>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QStringList </td><td class="memItemRight bottomAlign"><b><a href="core-ioptionspage.html#keywords" translate="no">keywords</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioptionspage.html#setCategory" translate="no">setCategory</a></b>(Utils::Id <i>category</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioptionspage.html#setCategoryIconPath" translate="no">setCategoryIconPath</a></b>(const Utils::FilePath &amp;<i>categoryIconPath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioptionspage.html#setDisplayCategory" translate="no">setDisplayCategory</a></b>(const QString &amp;<i>displayCategory</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioptionspage.html#setDisplayName" translate="no">setDisplayName</a></b>(const QString &amp;<i>displayName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioptionspage.html#setId" translate="no">setId</a></b>(Utils::Id <i>id</i>)</td></tr>
+</table></div>
+<!-- $$$IOptionsPage-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p class="centerAlign"><img src="images/qtcreator-options-dialog.png" alt="" /></p></div>
+<!-- @@@IOptionsPage -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$IOptionsPage$$$IOptionsPagebool -->
+<h3 class="fn" translate="no" id="IOptionsPage-2"><code translate="no">[explicit] </code>IOptionsPage::<span class="name">IOptionsPage</span>(<span class="type">bool</span> <i>registerGlobally</i> = true)</h3>
+<p>Constructs an options page and registers it at the global options page pool if <i translate="no">registerGlobally</i> is <code translate="no">true</code>.</p>
+<!-- @@@IOptionsPage -->
+<!-- $$$allOptionsPages[overload1]$$$allOptionsPages -->
+<h3 class="fn" translate="no" id="allOptionsPages"><code translate="no">[static] </code>const <span class="type"><a href="https://doc.qt.io/qt/qlist.html" translate="no">QList</a></span>&lt;<span class="type"><a href="core-ioptionspage.html" translate="no">Core::IOptionsPage</a></span> *&gt; IOptionsPage::<span class="name">allOptionsPages</span>()</h3>
+<p>Returns a list of all options pages.</p>
+<!-- @@@allOptionsPages -->
+<!-- $$$apply[overload1]$$$apply -->
+<h3 class="fn" translate="no" id="apply"><code translate="no">[virtual] </code><span class="type">void</span> IOptionsPage::<span class="name">apply</span>()</h3>
+<p>Called when selecting the <b translate="no">Apply</b> button on the options page dialog. Should detect whether any changes were made and store those.</p>
+<p>Either override this function in a derived class, or set a widget creator.</p>
+<p><b>See also </b><a href="core-ioptionspage.html#setWidgetCreator" translate="no">setWidgetCreator</a>().</p>
+<!-- @@@apply -->
+<!-- $$$category[overload1]$$$category -->
+<h3 class="fn" translate="no" id="category"><span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> IOptionsPage::<span class="name">category</span>() const</h3>
+<p>Returns the unique id for the category that the options page should be displayed in. This id is used for sorting the list on the left side of the <b translate="no">Options</b> dialog.</p>
+<p><b>See also </b><a href="core-ioptionspage.html#setCategory" translate="no">setCategory</a>().</p>
+<!-- @@@category -->
+<!-- $$$categoryIconPath[overload1]$$$categoryIconPath -->
+<h3 class="fn" translate="no" id="categoryIconPath"><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> IOptionsPage::<span class="name">categoryIconPath</span>() const</h3>
+<p>Returns the path to the category icon of the options page. This icon will be read from this path and displayed in the list on the left side of the <b translate="no">Options</b> dialog.</p>
+<p><b>See also </b><a href="core-ioptionspage.html#setCategoryIconPath" translate="no">setCategoryIconPath</a>().</p>
+<!-- @@@categoryIconPath -->
+<!-- $$$displayCategory[overload1]$$$displayCategory -->
+<h3 class="fn" translate="no" id="displayCategory"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> IOptionsPage::<span class="name">displayCategory</span>() const</h3>
+<p>Returns the translated category name of the options page. This name is displayed in the list on the left side of the <b translate="no">Options</b> dialog.</p>
+<p><b>See also </b><a href="core-ioptionspage.html#setDisplayCategory" translate="no">setDisplayCategory</a>().</p>
+<!-- @@@displayCategory -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" translate="no" id="displayName"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> IOptionsPage::<span class="name">displayName</span>() const</h3>
+<p>Returns the translated display name of the options page.</p>
+<p><b>See also </b><a href="core-ioptionspage.html#setDisplayName" translate="no">setDisplayName</a>().</p>
+<!-- @@@displayName -->
+<!-- $$$finish[overload1]$$$finish -->
+<h3 class="fn" translate="no" id="finish"><code translate="no">[virtual] </code><span class="type">void</span> IOptionsPage::<span class="name">finish</span>()</h3>
+<p>Called directly before the <b translate="no">Options</b> dialog closes. Here you should delete the widget that was created in <a href="core-ioptionspage.html#widget" translate="no">widget</a>() to free resources.</p>
+<p>Either override this function in a derived class, or set a widget creator.</p>
+<p><b>See also </b><a href="core-ioptionspage.html#setWidgetCreator" translate="no">setWidgetCreator</a>().</p>
+<!-- @@@finish -->
+<!-- $$$id[overload1]$$$id -->
+<h3 class="fn" translate="no" id="id"><span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> IOptionsPage::<span class="name">id</span>() const</h3>
+<p>Returns a unique identifier for referencing the options page.</p>
+<p><b>See also </b><a href="core-ioptionspage.html#setId" translate="no">setId</a>().</p>
+<!-- @@@id -->
+<!-- $$$keywords[overload1]$$$keywords -->
+<h3 class="fn" translate="no" id="keywords"><code translate="no">[virtual protected] </code><span class="type"><a href="https://doc.qt.io/qt/qstringlist.html" translate="no">QStringList</a></span> IOptionsPage::<span class="name">keywords</span>() const</h3>
+<p>Returns a list of ui strings that are used inside the widget.</p>
+<!-- @@@keywords -->
+<!-- $$$matches[overload1]$$$matchesconstQRegularExpression& -->
+<h3 class="fn" translate="no" id="matches"><code translate="no">[virtual] </code><span class="type">bool</span> IOptionsPage::<span class="name">matches</span>(const <span class="type"><a href="https://doc.qt.io/qt/qregularexpression.html" translate="no">QRegularExpression</a></span> &amp;<i>regexp</i>) const</h3>
+<p>Is used by the <b translate="no">Options</b> dialog search filter to match <i translate="no">regexp</i> to this options page. This defaults to take the widget and then looks for all child labels, check boxes, push buttons, and group boxes. Should return <code translate="no">true</code> when a match is found.</p>
+<!-- @@@matches -->
+<!-- $$$setCategory[overload1]$$$setCategoryUtils::Id -->
+<h3 class="fn" translate="no" id="setCategory"><code translate="no">[protected] </code><span class="type">void</span> IOptionsPage::<span class="name">setCategory</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>category</i>)</h3>
+<p>Uses <i translate="no">category</i> to sort the options pages.</p>
+<p><b>See also </b><a href="core-ioptionspage.html#category" translate="no">category</a>().</p>
+<!-- @@@setCategory -->
+<!-- $$$setCategoryIconPath[overload1]$$$setCategoryIconPathconstUtils::FilePath& -->
+<h3 class="fn" translate="no" id="setCategoryIconPath"><code translate="no">[protected] </code><span class="type">void</span> IOptionsPage::<span class="name">setCategoryIconPath</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>categoryIconPath</i>)</h3>
+<p>Sets <i translate="no">categoryIconPath</i> as the path to the category icon of the options page.</p>
+<p><b>See also </b><a href="core-ioptionspage.html#categoryIconPath" translate="no">categoryIconPath</a>().</p>
+<!-- @@@setCategoryIconPath -->
+<!-- $$$setDisplayCategory[overload1]$$$setDisplayCategoryconstQString& -->
+<h3 class="fn" translate="no" id="setDisplayCategory"><code translate="no">[protected] </code><span class="type">void</span> IOptionsPage::<span class="name">setDisplayCategory</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>displayCategory</i>)</h3>
+<p>Sets <i translate="no">displayCategory</i> as the display category of the options page.</p>
+<p><b>See also </b><a href="core-ioptionspage.html#displayCategory" translate="no">displayCategory</a>().</p>
+<!-- @@@setDisplayCategory -->
+<!-- $$$setDisplayName[overload1]$$$setDisplayNameconstQString& -->
+<h3 class="fn" translate="no" id="setDisplayName"><code translate="no">[protected] </code><span class="type">void</span> IOptionsPage::<span class="name">setDisplayName</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>displayName</i>)</h3>
+<p>Sets <i translate="no">displayName</i> as the display name of the options page.</p>
+<p><b>See also </b><a href="core-ioptionspage.html#displayName" translate="no">displayName</a>().</p>
+<!-- @@@setDisplayName -->
+<!-- $$$setId[overload1]$$$setIdUtils::Id -->
+<h3 class="fn" translate="no" id="setId"><code translate="no">[protected] </code><span class="type">void</span> IOptionsPage::<span class="name">setId</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>id</i>)</h3>
+<p>Sets the <i translate="no">id</i> of the options page.</p>
+<p><b>See also </b><a href="core-ioptionspage.html#id" translate="no">id</a>().</p>
+<!-- @@@setId -->
+<!-- $$$setWidgetCreator[overload1]$$$setWidgetCreatorconstCore::IOptionsPage::WidgetCreator& -->
+<h3 class="fn" translate="no" id="setWidgetCreator"><span class="type">void</span> IOptionsPage::<span class="name">setWidgetCreator</span>(const <span class="type">Core::IOptionsPage::WidgetCreator</span> &amp;<i>widgetCreator</i>)</h3>
+<p>Sets the <i translate="no">widgetCreator</i> callback to create page widgets on demand. The widget will be destroyed on <a href="core-ioptionspage.html#finish" translate="no">finish</a>().</p>
+<!-- @@@setWidgetCreator -->
+<!-- $$$widget[overload1]$$$widget -->
+<h3 class="fn" translate="no" id="widget"><code translate="no">[virtual] </code><span class="type"><a href="https://doc.qt.io/qt/qwidget.html" translate="no">QWidget</a></span> *IOptionsPage::<span class="name">widget</span>()</h3>
+<p>Returns the widget to show in the <b translate="no">Options</b> dialog. You should create a widget lazily here, and delete it again in the <a href="core-ioptionspage.html#finish" translate="no">finish</a>() method. This method can be called multiple times, so you should only create a new widget if the old one was deleted.</p>
+<p>Alternatively, use <a href="core-ioptionspage.html#setWidgetCreator" translate="no">setWidgetCreator</a>() to set a callback function that is used to lazily create a widget in time.</p>
+<p>Either override this function in a derived class, or set a widget creator.</p>
+<!-- @@@widget -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

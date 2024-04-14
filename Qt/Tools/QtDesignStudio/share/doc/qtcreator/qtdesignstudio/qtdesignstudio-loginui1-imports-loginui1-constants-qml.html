@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- loginui1.qdoc -->
+  <meta name="description" content="Illustrates how to use wizard templates to create a simple UI that contains a text label, images, and push buttons.">
+  <title>Log In UI - Components | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="gstutorials.html" translate="no">Tutorials</a></li>
+<li>Log In UI - Components</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="next" href="qtdesignstudio-loginui2-example.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="nextPage" href="qtdesignstudio-loginui2-example.html">Log In UI - Positioning</a>
+</p>
+<h1 class="title">Log In UI - Components</h1>
+<pre class="qml" translate="no">
+ pragma Singleton
+ import QtQuick
+
+ <span class="type"><a href="https://doc.qt.io/qt/qml-qtqml-qtobject.html" translate="no">QtObject</a></span> {
+     readonly property <span class="type"><a href="https://doc.qt.io/qt/qml-int.html" translate="no">int</a></span> <span class="name">width</span>: <span class="number">720</span>
+     readonly property <span class="type"><a href="https://doc.qt.io/qt/qml-int.html" translate="no">int</a></span> <span class="name">height</span>: <span class="number">1280</span>
+
+     property <span class="type">alias</span> <span class="name">fontDirectory</span>: <span class="name">directoryFontLoader</span>.<span class="name">fontDirectory</span>
+     property <span class="type">alias</span> <span class="name">relativeFontDirectory</span>: <span class="name">directoryFontLoader</span>.<span class="name">relativeFontDirectory</span>
+
+     <span class="comment">/* Edit this comment to add your custom font */</span>
+     readonly property <span class="type"><a href="https://doc.qt.io/qt/qml-font.html" translate="no">font</a></span> <span class="name">font</span>: <span class="name">Qt</span>.<span class="name">font</span>({
+                                              family: <span class="name">Qt</span>.<span class="name">application</span>.<span class="name">font</span>.<span class="name">family</span>,
+                                              pixelSize: <span class="name">Qt</span>.<span class="name">application</span>.<span class="name">font</span>.<span class="name">pixelSize</span>
+                                          })
+     readonly property <span class="type"><a href="https://doc.qt.io/qt/qml-font.html" translate="no">font</a></span> <span class="name">largeFont</span>: <span class="name">Qt</span>.<span class="name">font</span>({
+                                                   family: <span class="name">Qt</span>.<span class="name">application</span>.<span class="name">font</span>.<span class="name">family</span>,
+                                                   pixelSize: <span class="name">Qt</span>.<span class="name">application</span>.<span class="name">font</span>.<span class="name">pixelSize</span> <span class="operator">*</span> <span class="number">1.6</span>
+                                               })
+
+     readonly property <span class="type"><a href="https://doc.qt.io/qt/qml-color.html" translate="no">color</a></span> <span class="name">backgroundColor</span>: <span class="string">&quot;#c2c2c2&quot;</span>
+
+     property <span class="type">DirectoryFontLoader</span> <span class="name">directoryFontLoader</span>: <span class="name">DirectoryFontLoader</span> {
+         <span class="name">id</span>: <span class="name">directoryFontLoader</span>
+     }
+ }
+</pre>

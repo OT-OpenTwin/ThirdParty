@@ -1,461 +1,329 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 import os
-import struct
 
-from .resources import *
-
-# ISO language and country codes to Macintosh Region codes (from Script.h)
-# <key> == CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes(NULL,
-#                                                                        kTextLanguageDontCare,
-#                                                                        <value>)
-region_codes = {
-    "en_US":             0,
-    "fr_FR":             1,
-    "en_GB":             2,
-    "de_DE":             3,
-    "it_IT":             4,
-    "nl_NL":             5,
-    "nl_BE":             6,
-    "sv_SE":             7,
-    "es_ES":             8,
-    "da_DK":             9,
-    "pt_PT":             10,
-    "fr_CA":             11,
-    "nb_NO":             12,
-    "he_IL":             13,
-    "ja_JP":             14,
-    "en_AU":             15,
-    "ar":                16,
-    "fi_FI":             17,
-    "fr_CH":             18,
-    "de_CH":             19,
-    "el_GR":             20,
-    "is_IS":             21,
-    "mt_MT":             22,
-    "el_CY":             23,
-    "tr_TR":             24,
-    "hi_IN":             33,
-    "ur_PK":             34,
-    "it_CH":             36,
-    "ro_RO":             39,
-    "grc":               40,
-    "lt_LT":             41,
-    "pl_PL":             42,
-    "hu_HU":             43,
-    "et_EE":             44,
-    "lv_LV":             45,
-    "se":                46,
-    "fo_FO":             47,
-    "fa_IR":             48,
-    "ru_RU":             49,
-    "ga_IE":             50,
-    "ko_KR":             51,
-    "zh_CN":             52,
-    "zh_TW":             53,
-    "th_TH":             54,
-    "cs_CZ":             56,
-    "sk_SK":             57,
-    "bn":                60,
-    "be_BY":             61,
-    "uk_UA":             62,
-    "sr_RS":             65,
-    "sl_SI":             66,
-    "mk_MK":             67,
-    "hr_HR":             68,
-    "pt_BR":             71,
-    "bg_BG":             72,
-    "ca_ES":             73,
-    "gd":                75,
-    "gv":                76,
-    "br":                77,
-    "iu_CA":             78,
-    "cy":                79,
-    "ga-Latg_IE":        81,
-    "en_CA":             82,
-    "dz_BT":             83,
-    "hy_AM":             84,
-    "ka_GE":             85,
-    "es_419":            86,
-    "to_TO":             88,
-    "fr_001":            91,
-    "de_AT":             92,
-    "gu_IN":             94,
-    "pa":                95,
-    "ur_IN":             96,
-    "vi_VN":             97,
-    "fr_BE":             98,
-    "uz_UZ":             99,
-    "en_SG":             100,
-    "nn_NO":             101,
-    "af_ZA":             102,
-    "eo":                103,
-    "mr_IN":             104,
-    "bo":                105,
-    "ne_NP":             106,
-    "kl":                107,
-    "en_IE":             108
-}
-
-# Map of region constants to script constants (from Script.h)
-# TextEncoding textEncoding;
-# GetTextEncodingFromScriptInfo(kTextScriptDontCare, kTextLanguageDontCare, <key>, &textEncoding);
-# <value> == GetTextEncodingBase(textEncoding);
-script_codes = {
-    0:   0,
-    1:   0,
-    2:   0,
-    3:   0,
-    4:   0,
-    5:   0,
-    6:   0,
-    7:   0,
-    8:   0,
-    9:   0,
-    10:  0,
-    11:  0,
-    12:  0,
-    13:  5,
-    14:  1,
-    15:  0,
-    16:  4,
-    17:  0,
-    18:  0,
-    19:  0,
-    20:  6,
-    21:  37,
-    22:  0,
-    23:  6,
-    24:  35,
-    25:  36,
-    26:  0,
-    27:  0,
-    30:  0,
-    31:  0,
-    32:  0,
-    33:  9,
-    34:  4,
-    35:  35,
-    36:  0,
-    37:  0,
-    39:  38,
-    40:  6,
-    41:  29,
-    42:  29,
-    43:  29,
-    44:  29,
-    45:  29,
-    46:  0,
-    47:  37,
-    48:  140,
-    49:  7,
-    50:  39,
-    51:  3,
-    52:  25,
-    53:  2,
-    54:  21,
-    56:  29,
-    57:  29,
-    59:  29,
-    60:  13,
-    61:  7,
-    62:  7,
-    64:  6,
-    65:  7,
-    66:  36,
-    67:  7,
-    68:  36,
-    70:  0,
-    71:  0,
-    72:  7,
-    73:  0,
-    75:  39,
-    76:  39,
-    77:  39,
-    78:  236,
-    79:  39,
-    81:  40,
-    82:  0,
-    83:  26,
-    84:  24,
-    85:  23,
-    86:  0,
-    88:  0,
-    91:  0,
-    92:  0,
-    94:  11,
-    95:  10,
-    96:  4,
-    97:  30,
-    98:  0,
-    99:  7,
-    100: 0,
-    101: 0,
-    102: 0,
-    103: 0,
-    104: 9,
-    105: 26,
-    106: 9,
-    107: 0,
-    108: 0
-}
-
-# Map of TextEncodingBase constants to Python encoder names (from TextCommon.h)
-encodings_map = {
-    0:   'mac_roman',       # kTextEncodingMacRoman
-    1:   'shift_jis',       # kTextEncodingMacJapanese
-    2:   'big5',            # kTextEncodingMacChineseTrad
-    3:   'euc_kr',          # kTextEncodingMacKorean
-    4:   'mac_arabic',      # kTextEncodingMacArabic
-    6:   'mac_greek',       # kTextEncodingMacGreek
-    7:   'mac_cyrillic',    # kTextEncodingMacCyrillic
-    21:  'iso8859_11',      # kTextEncodingMacThai
-    25:  'euc-cn',          # kTextEncodingMacChineseSimp
-    29:  'mac_centeuro',    # kTextEncodingMacCentralEurRoman
-    35:  'mac_turkish',     # kTextEncodingMacTurkish
-    36:  'mac_croatian',    # kTextEncodingMacCroatian
-    37:  'mac_iceland',     # kTextEncodingMacIcelandic
-    38:  'mac_romanian',    # kTextEncodingMacRomanian
-    140: 'mac_farsi'        # kTextEncodingMacFarsi
-}
-
-# Standard fonts
-fonts = {
-    'New York':      2,
-    'Geneva':        3,
-    'Monaco':        4,
-    'Venice':        5,
-    'London':        6,
-    'Athens':        7,
-    'San Francisco': 8,
-    'Toronto':       9,
-    'Cairo':         11,
-    'Los Angeles':   12,
-    'Times':         20,
-    'Helvetica':     21,
-    'Courier':       22,
-    'Symbol':        23,
-    'Mobile':        24
+# based on https://github.com/argv-minus-one/dmg-license/blob/master/language-info-generator/Languages.tsv
+# note that this table specifies STR# Resource ID but it seems to have no effect
+language_info_map = {
+    "da_DK": {"buttons": "Danish", "name": "Danish", "language_id": 9},
+    "de_AT": {"buttons": "German", "name": "German (Austrian)", "language_id": 92},
+    "de_CH": {"buttons": "German", "name": "German (Swiss)", "language_id": 19},
+    "de_DE": {"buttons": "German", "name": "German", "language_id": 3},
+    "en_AU": {"buttons": "English", "name": "English (Australian)", "language_id": 15},
+    "en_GB": {"buttons": "English", "name": "English (UK)", "language_id": 2},
+    "en_IE": {"buttons": "English", "name": "English (Ireland)", "language_id": 108},
+    "en_SG": {
+        "buttons": "English",
+        "name": "English (Singaporean)",
+        "language_id": 100,
+    },
+    "en_US": {"buttons": "English", "name": "English", "language_id": 0},
+    "es_ES": {"buttons": "Spanish", "name": "Spanish", "language_id": 8},
+    "fi_FI": {"buttons": "Finnish", "name": "Finnish", "language_id": 17},
+    "fr_BE": {"buttons": "French", "name": "French (Belgian)", "language_id": 98},
+    "fr_CA": {"buttons": "French", "name": "French (Canadian)", "language_id": 11},
+    "fr_CH": {"buttons": "French", "name": "French (Swiss)", "language_id": 18},
+    "fr_FR": {"buttons": "French", "name": "French", "language_id": 1},
+    "it_IT": {"buttons": "Italian", "name": "Italian", "language_id": 4},
+    "ja_JP": {
+        "buttons": "Japanese",
+        "name": "Japanese",
+        "language_id": 14,
+        "encoding": "shift_jis",  # not sure if this is correct encoding, but seems to be working
+        "multibyte": True,
+    },
+    "ko_KR": {
+        "buttons": "Korean",
+        "name": "Korean",
+        "language_id": 51,
+        "encoding": "ksx1001",
+        "multibyte": True,
+    },
+    "nb_NO": {"buttons": "Norwegian", "name": "Norwegian", "language_id": 12},
+    "nl_BE": {"buttons": "Dutch", "name": "Dutch", "language_id": 6},
+    "nl_NL": {"buttons": "Dutch", "name": "Dutch", "language_id": 5},
+    "pt_BR": {
+        "buttons": "Portuguese",
+        "name": "Portuguese (Brazilian)",
+        "language_id": 71,
+    },
+    "pt_PT": {"buttons": "Portuguese", "name": "Portuguese", "language_id": 10},
+    "ru_RU": {
+        "buttons": "Russian",
+        "name": "Russian",
+        "language_id": 49,
+        "encoding": "mac_cyrillic",
+    },
+    "sv_SE": {"buttons": "Swedish", "name": "Swedish", "language_id": 7},
+    "zh_CN": {
+        "buttons": "Simplified",
+        "name": "Simplified Chinese",
+        "language_id": 52,
+        "encoding": "gb2312",
+        "multibyte": True,
+    },
+    "zh_TW": {
+        "buttons": "Traditional",
+        "name": "Traditional Chinese",
+        "language_id": 53,
+        "encoding": "big5",
+        "multibyte": True,
+    },
 }
 
 # Buttons (these come from the SLAResources file which you can find in the SLA
 #          SDK on developer.apple.com)
 default_buttons = {
-    0: (
-        b'English',
-        b'Agree',
-        b'Disagree',
-        b'Print',
-        b'Save',
-        b'If you agree with the terms of this license, press "Agree" to '
-        b'install the software.  If you do not agree, press "Disagree".'
+    "English": (
+        "English",
+        "Agree",
+        "Disagree",
+        "Print",
+        "Save",
+        'If you agree with the terms of this license, press "Agree" to install the software.  If you do not agree, press "Disagree".',  # noqa; E501
     ),
-
-    3: (
-        b'Deutsch',
-        b'Akzeptieren',
-        b'Ablehnen',
-        b'Drucken',
-        b'Sichern...',
-        b'Klicken Sie in \xd2Akzeptieren\xd3, wenn Sie mit den Bestimmungen des Software-Lizenzvertrags einverstanden sind. Falls nicht, bitte \xd2Ablehnen\xd3 anklicken. Sie k\x9annen die Software nur installieren, wenn Sie \xd2Akzeptieren\xd3 angeklickt haben.'
+    "German": (
+        "Deutsch",
+        "Akzeptieren",
+        "Ablehnen",
+        "Drucken",
+        "Sichern...",
+        'Klicken Sie in "Akzeptieren", wenn Sie mit den Bestimmungen des Software-Lizenzvertrags einverstanden sind. Falls nicht, bitte "Ablehnen" anklicken. Sie können die Software nur installieren, wenn Sie "Akzeptieren" angeklickt haben.',  # noqa; E501
     ),
-
-    8: (
-        b'Espa\x96ol',
-        b'Aceptar',
-        b'No aceptar',
-        b'Imprimir',
-        b'Guardar...',
-        b'Si est\x87 de acuerdo con los t\x8erminos de esta licencia, pulse "Aceptar" para instalar el software. En el supuesto de que no est\x8e de acuerdo con los t\x8erminos de esta licencia, pulse "No aceptar."'
+    "Spanish": (
+        "Español",
+        "Aceptar",
+        "No aceptar",
+        "Imprimir",
+        "Guardar...",
+        'Si está de acuerdo con los términos de esta licencia, pulse "Aceptar" para instalar el software. En el supuesto de que no esté de acuerdo con los términos de esta licencia, pulse "No aceptar."',  # noqa; E501
     ),
-
-    1: (
-        b'Fran\x8dais',
-        b'Accepter',
-        b'Refuser',
-        b'Imprimer',
-        b'Enregistrer...',
-        b'Si vous acceptez les termes de la pr\x8esente licence, cliquez sur "Accepter" afin d\'installer le logiciel. Si vous n\'\x90tes pas d\'accord avec les termes de la licence, cliquez sur "Refuser".'
+    "French": (
+        "Français",
+        "Accepter",
+        "Refuser",
+        "Imprimer",
+        "Enregistrer...",
+        'Si vous acceptez les termes de la présente licence, cliquez sur "Accepter" afin d\'installer le logiciel. Si vous n\'êtes pas d\'accord avec les termes de la licence, cliquez sur "Refuser".',  # noqa; E501
     ),
-
-    4: (
-        b'Italiano',
-        b'Accetto',
-        b'Rifiuto',
-        b'Stampa',
-        b'Registra...',
-        b'Se accetti le condizioni di questa licenza, fai clic su "Accetto" per installare il software. Altrimenti fai clic su "Rifiuto".'
+    "Italian": (
+        "Italiano",
+        "Accetto",
+        "Rifiuto",
+        "Stampa",
+        "Registra...",
+        'Se accetti le condizioni di questa licenza, fai clic su "Accetto" per installare il software. Altrimenti fai clic su "Rifiuto".',  # noqa; E501
     ),
-
-    14: (
-        b'Japanese',
-        b'\x93\xaf\x88\xd3\x82\xb5\x82\xdc\x82\xb7',
-        b'\x93\xaf\x88\xd3\x82\xb5\x82\xdc\x82\xb9\x82\xf1',
-        b'\x88\xf3\x8d\xfc\x82\xb7\x82\xe9',
-        b'\x95\xdb\x91\xb6...',
-        b'\x96{\x83\\\x83t\x83g\x83E\x83G\x83A\x8eg\x97p\x8b\x96\x91\xf8\x8c_\x96\xf1\x82\xcc\x8f\xf0\x8c\x8f\x82\xc9\x93\xaf\x88\xd3\x82\xb3\x82\xea\x82\xe9\x8f\xea\x8d\x87\x82\xc9\x82\xcd\x81A\x83\\\x83t\x83g\x83E\x83G\x83A\x82\xf0\x83C\x83\x93\x83X\x83g\x81[\x83\x8b\x82\xb7\x82\xe9\x82\xbd\x82\xdf\x82\xc9\x81u\x93\xaf\x88\xd3\x82\xb5\x82\xdc\x82\xb7\x81v\x82\xf0\x89\x9f\x82\xb5\x82\xc4\x82\xad\x82\xbe\x82\xb3\x82\xa2\x81B\x81@\x93\xaf\x88\xd3\x82\xb3\x82\xea\x82\xc8\x82\xa2\x8f\xea\x8d\x87\x82\xc9\x82\xcd\x81A\x81u\x93\xaf\x88\xd3\x82\xb5\x82\xdc\x82\xb9\x82\xf1\x81v\x82\xf0\x89\x9f\x82\xb5\x82\xc4\x82\xad\x82\xbe\x82\xb3\x82\xa2\x81B'
+    "Japanese": (
+        "日本語",
+        "同意します",
+        "同意しません",
+        "印刷する",
+        "保存...",
+        "本ソフトウエア使用許諾契約の条件に同意される場合には、ソフトウエアをインストールするために「同意します」を押してください。\u3000同意されない場合には、「同意しません」を押してください。",  # noqa; E501
     ),
-
-    5: (
-        b'Nederlands',
-        b'Ja',
-        b'Nee',
-        b'Print',
-        b'Bewaar...',
-        b'Indien u akkoord gaat met de voorwaarden van deze licentie, kunt u op \'Ja\' klikken om de programmatuur te installeren. Indien u niet akkoord gaat, klikt u op \'Nee\'.'
+    "Dutch": (
+        "Nederlands",
+        "Ja",
+        "Nee",
+        "Print",
+        "Bewaar...",
+        "Indien u akkoord gaat met de voorwaarden van deze licentie, kunt u op 'Ja' klikken om de programmatuur te installeren. Indien u niet akkoord gaat, klikt u op 'Nee'.",  # noqa; E501
     ),
-
-    7: (
-        b'Svensk',
-        b'Godk\x8anns',
-        b'Avb\x9ajs',
-        b'Skriv ut',
-        b'Spara...',
-        b'Om Du godk\x8anner licensvillkoren klicka p\x8c "Godk\x8anns" f\x9ar att installera programprodukten. Om Du inte godk\x8anner licensvillkoren, klicka p\x8c "Avb\x9ajs".'
+    "Russian": (
+        "Русский",
+        "Согласен",
+        "Не согласен",
+        "Распечатать",
+        "Сохранить",
+        "Если вы согласны с условиями данной лицензии, нажмите «Согласен», чтобы установить программное обеспечение. Если вы не согласны, нажмите «Не согласен».",  # noqa; E501
     ),
-
-    71: (
-        b'Portugu\x90s',
-        b'Concordar',
-        b'Discordar',
-        b'Imprimir',
-        b'Salvar...',
-        b'Se est\x87 de acordo com os termos desta licen\x8da, pressione "Concordar" para instalar o software. Se n\x8bo est\x87 de acordo, pressione "Discordar".'
+    "Swedish": (
+        "Svensk",
+        "Godkänns",
+        "Avböjs",
+        "Skriv ut",
+        "Spara...",
+        'Om Du godkänner licensvillkoren klicka på "Godkänns" för att installera programprodukten. Om Du inte godkänner licensvillkoren, klicka på "Avböjs".',  # noqa; E501
     ),
-
-    52: (
-        b'Simplified Chinese',
-        b'\xcd\xac\xd2\xe2',
-        b'\xb2\xbb\xcd\xac\xd2\xe2',
-        b'\xb4\xf2\xd3\xa1',
-        b'\xb4\xe6\xb4\xa2\xa1\xad',
-        b'\xc8\xe7\xb9\xfb\xc4\xfa\xcd\xac\xd2\xe2\xb1\xbe\xd0\xed\xbf\xc9\xd0\xad\xd2\xe9\xb5\xc4\xcc\xf5\xbf\xee\xa3\xac\xc7\xeb\xb0\xb4\xa1\xb0\xcd\xac\xd2\xe2\xa1\xb1\xc0\xb4\xb0\xb2\xd7\xb0\xb4\xcb\xc8\xed\xbc\xfe\xa1\xa3\xc8\xe7\xb9\xfb\xc4\xfa\xb2\xbb\xcd\xac\xd2\xe2\xa3\xac\xc7\xeb\xb0\xb4\xa1\xb0\xb2\xbb\xcd\xac\xd2\xe2\xa1\xb1\xa1\xa3'
+    "Portuguese": (
+        "Português",
+        "Concordar",
+        "Discordar",
+        "Imprimir",
+        "Salvar...",
+        'Se está de acordo com os termos desta licença, pressione "Concordar" para instalar o software. Se não está de acordo, pressione "Discordar".',  # noqa; E501
     ),
-
-    53: (
-        b'Traditional Chinese',
-        b'\xa6P\xb7N',
-        b'\xa4\xa3\xa6P\xb7N',
-        b'\xa6C\xa6L',
-        b'\xc0x\xa6s\xa1K',
-        b'\xa6p\xaaG\xb1z\xa6P\xb7N\xa5\xbb\xb3\\\xa5i\xc3\xd2\xb8\xcc\xaa\xba\xb1\xf8\xb4\xda\xa1A\xbd\xd0\xab\xf6\xa1\xa7\xa6P\xb7N\xa1\xa8\xa5H\xa6w\xb8\xcb\xb3n\xc5\xe9\xa1C\xa6p\xaaG\xa4\xa3\xa6P\xb7N\xa1A\xbd\xd0\xab\xf6\xa1\xa7\xa4\xa3\xa6P\xb7N\xa1\xa8\xa1C'
+    "Simplified Chinese": (
+        "汉语",
+        "同意",
+        "不同意",
+        "打印",
+        "存储…",
+        "如果您同意本许可协议的条款，请按“同意”来安装此软件。如果您不同意，请按“不同意”。",  # noqa; E501
     ),
-
-    9: (
-        b'Dansk',
-        b'Enig',
-        b'Uenig',
-        b'Udskriv',
-        b'Arkiver...',
-        b'Hvis du accepterer betingelserne i licensaftalen, skal du klikke p\x8c \xd2Enig\xd3 for at installere softwaren. Klik p\x8c \xd2Uenig\xd3 for at annullere installeringen.'
+    "Traditional Chinese": (
+        "漢語",
+        "同意",
+        "不同意",
+        "列印",
+        "儲存…",
+        "如果您同意本許可證裡的條款，請按“同意”以安裝軟體。如果不同意，請按“不同意”。",  # noqa; E501
     ),
-
-    17: (
-        b'Suomi',
-        b'Hyv\x8aksyn',
-        b'En hyv\x8aksy',
-        b'Tulosta',
-        b'Tallenna\xc9',
-        b'Hyv\x8aksy lisenssisopimuksen ehdot osoittamalla \xd5Hyv\x8aksy\xd5. Jos et hyv\x8aksy sopimuksen ehtoja, osoita \xd5En hyv\x8aksy\xd5.'
+    "Danish": (
+        "Dansk",
+        "Enig",
+        "Uenig",
+        "Udskriv",
+        "Arkiver...",
+        "Hvis du accepterer betingelserne i licensaftalen, skal du klikke på “Enig” for at installere softwaren. Klik på “Uenig” for at annullere installeringen.",  # noqa; E501
     ),
-
-    51: (
-        b'Korean',
-        b'\xb5\xbf\xc0\xc7',
-        b'\xb5\xbf\xc0\xc7 \xbe\xc8\xc7\xd4',
-        b'\xc7\xc1\xb8\xb0\xc6\xae',
-        b'\xc0\xfa\xc0\xe5...',
-        b'\xbb\xe7\xbf\xeb \xb0\xe8\xbe\xe0\xbc\xad\xc0\xc7 \xb3\xbb\xbf\xeb\xbf\xa1 \xb5\xbf\xc0\xc7\xc7\xcf\xb8\xe9, "\xb5\xbf\xc0\xc7" \xb4\xdc\xc3\xdf\xb8\xa6 \xb4\xad\xb7\xaf \xbc\xd2\xc7\xc1\xc6\xae\xbf\xfe\xbe\xee\xb8\xa6 \xbc\xb3\xc4\xa1\xc7\xcf\xbd\xca\xbd\xc3\xbf\xc0. \xb5\xbf\xc0\xc7\xc7\xcf\xc1\xf6 \xbe\xca\xb4\xc2\xb4\xd9\xb8\xe9, "\xb5\xbf\xc0\xc7 \xbe\xc8\xc7\xd4" \xb4\xdc\xc3\xdf\xb8\xa6 \xb4\xa9\xb8\xa3\xbd\xca\xbd\xc3\xbf\xc0.'
+    "Finnish": (
+        "Suomi",
+        "Hyväksyn",
+        "En hyväksy",
+        "Tulosta",
+        "Tallenna…",
+        'Hyväksy lisenssisopimuksen ehdot osoittamalla "Hyväksy". Jos et hyväksy sopimuksen ehtoja, osoita "En hyväksy".',  # noqa; E501
     ),
-
-    12: (
-        b'Norsk',
-        b'Enig',
-        b'Ikke enig',
-        b'Skriv ut',
-        b'Arkiver...',
-        b'Hvis De er enig i bestemmelsene i denne lisensavtalen, klikker De p\x8c "Enig"-knappen for \x8c installere programvaren. Hvis De ikke er enig, klikker De p\x8c "Ikke enig".'
+    "Korean": (
+        "한국어",
+        "동의",
+        "동의 안함",
+        "프린트",
+        "저장...",
+        '사용 계약서의 내용에 동의하면, "동의" 단추를 눌러 소프트웨어를 설치하십시오. 동의하지 않는다면, "동의 안함" 단추를 누르십시오.',  # noqa; E501
+    ),
+    "Norwegian": (
+        "Norsk",
+        "Enig",
+        "Ikke enig",
+        "Skriv ut",
+        "Arkiver...",
+        'Hvis De er enig i bestemmelsene i denne lisensavtalen, klikker De på "Enig"-knappen for å installere programvaren. Hvis De ikke er enig, klikker De på "Ikke enig".',  # noqa; E501
     ),
 }
 
-class LPicResource (Resource):
-    def __init__(self, res_id, res_name, default_lang, lpic, res_attrs=0):
-        data = []
-        data.append(struct.pack(b'>HH', default_lang, len(lpic)))
-        for lang,rid,two_byte in lpic:
-            data.append(struct.pack(b'>HHH', lang, rid, int(two_byte)))
-        super(LPicResource, self).__init__(b'LPic', res_id, res_name,
-                                           b''.join(data), res_attrs)
+udifrezXMLtemplate = {
+    "STR#": [],
+    # ?? License text would be included in a block like this:
+    # ?? 'TEXT': [
+    # ??     {
+    # ??         'Attributes': '0x0000',
+    # ??         'Data': b'license text',
+    # ??         'ID': '5000',
+    # ??         'Name': 'English'
+    # ??     }
+    # ?? ],
+    "TMPL": [
+        {
+            "Attributes": "0x0000",
+            "Data": b"\x13Default Language IDDWRD\x05CountOCNT\x04****LSTC\x0bsys lang IDDWRD\x1elocal res ID (offset from 5000DWRD\x102-byte language?DWRD\x04****LSTE",  # noqa: E501
+            "ID": "128",
+            "Name": "LPic",
+        }
+    ],
+}
 
-def get_encoder_name(locale):
-    if locale not in region_codes:
-        raise Exception("Cannot determine region code for locale '%s'" % locale)
-    region_code = region_codes[locale]
 
-    if region_code not in script_codes:
-        raise Exception("Cannot determine script code for locale '%s'" % locale)
-    script_code = script_codes[region_code]
+# Another implementation in TS:
+# https://github.com/argv-minus-one/dmg-license/blob/4268f2e822944fd670c1e197596396f233d6484e/src/makeLicensePlist.ts
 
-    if script_code not in encodings_map:
-        raise Exception("Cannot determine Python encoder name for locale '%s' - "
-                        "encode the string data manually as a byte array instead" % locale)
-    return encodings_map[script_code]
 
-def maybe_encode(s, encoding):
-    if isinstance(s, bytes):
-        return s
-    return s.encode(encoding)
+def build_license(license_info):
+    """Add a license agreement to the specified disk image file, see
+    https://developer.apple.com/forums/thread/668084."""
+    # Copy the original template
+    xml = dict(udifrezXMLtemplate)
 
-def add_license(filename, license_info):
-    """Add a license agreement to the specified disk image file, which should
-    have been unflattened first."""
+    licenses = license_info.get(
+        "licenses",
+        {"en_US": default_buttons["English"][5].encode("utf-8")},
+    )
 
-    fork = ResourceFork.from_file(filename)
+    lpic = b""
+    # The first field is the default language ID.
+    lpic += int(5000).to_bytes(2, "big")
+    # The second field is the count of language ID to license resource mappings.
+    lpic += len(licenses.items()).to_bytes(2, "big")
 
-    default_lang = license_info.get('default-language', 'en_US')
-    default_lang_id = region_codes.get(default_lang, 0)
+    for language, license_data in licenses.items():
+        if language not in language_info_map:
+            raise Exception(
+                "Unknown language '"
+                + language
+                + "'. Valid languages are: "
+                + ", ".join(sorted(language_info_map.keys()))
+            )
 
-    lpic = []
-    ndx = 1
-    for language,license_data in license_info['licenses'].items():
-        if language not in region_codes:
-            raise Exception("Unknown language '" + language + "'. Valid languages are: " +
-                            ", ".join(sorted(region_codes.keys())))
-        encoding_name = get_encoder_name(language)
-        lang_id = region_codes[language]
-
-        is_two_byte = lang_id in (14, 51, 52, 53) # Japanese, Korean, SimpChinese, TradChinese
+        language_info = language_info_map[language]
+        language_buttons = language_info["buttons"]
+        language_name = language_info["name"]
+        language_id = language_info["language_id"]
+        # for simplicity we use the same id for the resource as system language id + 5000
+        resource_id = language_id + 5000
+        language_encoding = language_info.get("encoding", "mac_roman")
+        multibyte_encoding = language_info.get("multibyte_encoding", False)
 
         if os.path.isfile(license_data):
-            with open(license_data) as f:
+            mode = "rb" if license_data.endswith(".rtf") else "r"
+            with open(license_data, mode=mode) as f:
                 license_data = f.read()
 
-        if license_data.startswith('{\\rtf1'):
-            fork.add(Resource(b'RTF ', 5000 + ndx, language + ' SLA',
-                              str(license_data)))
+        if isinstance(license_data, bytes):
+            if license_data.startswith(b"{\\rtf1"):
+                licenseDataFormat = "RTF "
+            else:
+                licenseDataFormat = "TEXT"
         else:
-            fork.add(TextResource(5000 + ndx, language + ' SLA',
-                                  maybe_encode(license_data, encoding_name)))
-            fork.add(StyleResource(5000 + ndx, language + ' SLA',
-                                   [Style(0, 12, 9, Style.Helvetica,
-                                          0, 0, (0, 0, 0))]))
+            licenseDataFormat = "TEXT"
+            license_data = license_data.encode(language_encoding)
 
-        buttons = license_info.get('buttons', {}).get(language, None)
-        if buttons is None:
-            buttons = default_buttons.get(lang_id, None)
-            if buttons is None:
-                buttons = default_buttons[0]
+        if licenseDataFormat not in xml:
+            xml[licenseDataFormat] = []
 
-        buttons = [maybe_encode(b, encoding_name) for b in buttons]
+        xml[licenseDataFormat].append(
+            {
+                "Attributes": "0x0000",
+                "Data": license_data,
+                "ID": str(resource_id),
+                "Name": f"{language_name} SLA",
+            }
+        )
 
-        fork.add(StringListResource(5000 + ndx, language + ' Buttons',
-                                    buttons))
+        language_default_buttons = default_buttons.get(
+            language_buttons, default_buttons["English"]
+        )
+        buttons = license_info.get("buttons", {}).get(
+            language, language_default_buttons
+        )
 
-        lpic.append((lang_id, ndx, is_two_byte))
+        assert len(buttons) == 6, "License buttons must have 6 entries."
 
-        ndx += 1
+        buttons = [b.encode(language_encoding) for b in buttons]
+        buttons = [len(b).to_bytes(1, "big") + b for b in buttons]
+        xml["STR#"].append(
+            {
+                "Attributes": "0x0000",
+                # \x06 is apparently the number of buttons which is always 6
+                "Data": b"\x00\x06" + b"".join(buttons),
+                "ID": str(resource_id),
+                "Name": language_name,
+            }
+        )
 
-    fork.add(LPicResource(5000, None, default_lang_id, lpic))
+        # Finally, the list of resource ID mappings:
+        # Mapping field 1: system language ID
+        lpic += language_id.to_bytes(2, "big")
+        # Mapping field 2: local resource ID minus 5000
+        lpic += int(resource_id - 5000).to_bytes(2, "big")
+        # Mapping field 3: 2-byte language?
+        lpic += int(1 if multibyte_encoding else 0).to_bytes(2, "big")
 
-    fork.write_to_file(filename)
+    xml["LPic"] = [
+        {
+            "Attributes": "0x0000",
+            "Data": lpic,
+            "ID": "5000",
+            "Name": "",
+        }
+    ]
+    return xml

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- futureprogress.cpp -->
+  <meta name="description" content="The FutureProgress class is used to adapt the appearance of progress indicators that were created through the ProgressManager class.">
+  <title>FutureProgress Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>FutureProgress</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">FutureProgress Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::FutureProgress</span>
+<!-- $$$FutureProgress-brief -->
+<p>The FutureProgress class is used to adapt the appearance of progress indicators that were created through the <a href="core-progressmanager.html" translate="no">ProgressManager</a> class. <a href="#details">More...</a></p>
+<!-- @@@FutureProgress -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/progressmanager/futureprogress.h&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="core-futureprogress-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> QFuture&lt;void&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-futureprogress.html#future" translate="no">future</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-futureprogress.html#hasError" translate="no">hasError</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-futureprogress.html#setTitle" translate="no">setTitle</a></b>(const QString &amp;<i>title</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-futureprogress.html#setWidget" translate="no">setWidget</a></b>(QWidget *<i>widget</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-futureprogress.html#title" translate="no">title</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QWidget *</td><td class="memItemRight bottomAlign"><b><a href="core-futureprogress.html#widget" translate="no">widget</a></b>() const</td></tr>
+</table></div>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-futureprogress.html#canceled" translate="no">canceled</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-futureprogress.html#clicked" translate="no">clicked</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-futureprogress.html#finished" translate="no">finished</a></b>()</td></tr>
+</table></div>
+<!-- $$$FutureProgress-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Use the instance of this class that was returned by <a href="core-progressmanager.html#addTask-1" translate="no">ProgressManager::addTask</a>() to define a widget that should be shown below the progress bar, or to change the progress title. Also use it to react on the event that the user clicks on the progress indicator (which can be used to e.g&#x2e; open a more detailed view, or the results of the task).</p>
+</div>
+<!-- @@@FutureProgress -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$canceled[overload1]$$$canceled -->
+<h3 class="fn" translate="no" id="canceled"><code translate="no">[signal] </code><span class="type">void</span> FutureProgress::<span class="name">canceled</span>()</h3>
+<p>Connect to this signal to get informed when the operation is canceled.</p>
+<!-- @@@canceled -->
+<!-- $$$clicked[overload1]$$$clicked -->
+<h3 class="fn" translate="no" id="clicked"><code translate="no">[signal] </code><span class="type">void</span> FutureProgress::<span class="name">clicked</span>()</h3>
+<p>Connect to this signal to get informed when the user clicks on the progress indicator.</p>
+<!-- @@@clicked -->
+<!-- $$$finished[overload1]$$$finished -->
+<h3 class="fn" translate="no" id="finished"><code translate="no">[signal] </code><span class="type">void</span> FutureProgress::<span class="name">finished</span>()</h3>
+<p>Another way to get informed when the task has finished.</p>
+<!-- @@@finished -->
+<!-- $$$future[overload1]$$$future -->
+<h3 class="fn" translate="no" id="future"><span class="type">QFuture</span>&lt;<span class="type">void</span>&gt; FutureProgress::<span class="name">future</span>() const</h3>
+<p>Returns a QFuture object that represents this running task.</p>
+<!-- @@@future -->
+<!-- $$$hasError[overload1]$$$hasError -->
+<h3 class="fn" translate="no" id="hasError"><span class="type">bool</span> FutureProgress::<span class="name">hasError</span>() const</h3>
+<p>Returns the error state of this progress indicator.</p>
+<!-- @@@hasError -->
+<!-- $$$setTitle[overload1]$$$setTitleconstQString& -->
+<h3 class="fn" translate="no" id="setTitle"><span class="type">void</span> FutureProgress::<span class="name">setTitle</span>(const <span class="type">QString</span> &amp;<i>title</i>)</h3>
+<p>Changes the <i translate="no">title</i> of the progress indicator.</p>
+<p><b>See also </b><a href="core-futureprogress.html#title" translate="no">title</a>().</p>
+<!-- @@@setTitle -->
+<!-- $$$setWidget[overload1]$$$setWidgetQWidget* -->
+<h3 class="fn" translate="no" id="setWidget"><span class="type">void</span> FutureProgress::<span class="name">setWidget</span>(<span class="type">QWidget</span> *<i>widget</i>)</h3>
+<p>Sets the <i translate="no">widget</i> to show below the progress bar. This will be destroyed when the progress indicator is destroyed. Default is to show no widget below the progress indicator.</p>
+<p><b>See also </b><a href="core-futureprogress.html#widget" translate="no">widget</a>().</p>
+<!-- @@@setWidget -->
+<!-- $$$title[overload1]$$$title -->
+<h3 class="fn" translate="no" id="title"><span class="type">QString</span> FutureProgress::<span class="name">title</span>() const</h3>
+<p>Returns the title of the progress indicator.</p>
+<p><b>See also </b><a href="core-futureprogress.html#setTitle" translate="no">setTitle</a>().</p>
+<!-- @@@title -->
+<!-- $$$widget[overload1]$$$widget -->
+<h3 class="fn" translate="no" id="widget"><span class="type">QWidget</span> *FutureProgress::<span class="name">widget</span>() const</h3>
+<p>Returns the custom widget that is shown below the progress indicator.</p>
+<p><b>See also </b><a href="core-futureprogress.html#setWidget" translate="no">setWidget</a>().</p>
+<!-- @@@widget -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

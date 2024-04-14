@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- aspects.cpp -->
+  <meta name="description" content="A text display is a phony aspect with the sole purpose of providing some text display using an Utils::InfoLabel in places where otherwise more expensive Utils::StringAspect items would be used.">
+  <title>TextDisplay Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>TextDisplay</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">TextDisplay Class</h1>
+<span class="small-subtitle" translate="no">class <a href="utils.html" translate="no">Utils</a>::TextDisplay</span>
+<!-- $$$TextDisplay-brief -->
+<p>A text display is a phony aspect with the sole purpose of providing some text display using an Utils::InfoLabel in places where otherwise more expensive <a href="utils-stringaspect.html" translate="no">Utils::StringAspect</a> items would be used. <a href="#details">More...</a></p>
+<!-- @@@TextDisplay -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;TextDisplay&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="utils-baseaspect.html" translate="no">Utils::BaseAspect</a></td></tr>
+</table></div>
+<ul>
+<li><a href="utils-textdisplay-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="utils-textdisplay.html#TextDisplay" translate="no">TextDisplay</a></b>(Utils::AspectContainer *<i>container</i>, const QString &amp;<i>message</i> = {}, InfoLabel::InfoType <i>type</i> = InfoLabel::None)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-textdisplay.html#setIconType" translate="no">setIconType</a></b>(InfoLabel::InfoType <i>t</i>)</td></tr>
+</table></div>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="utils-textdisplay.html#addToLayout" translate="no">addToLayout</a></b>(Layouting::LayoutItem &amp;<i>parent</i>) override</td></tr>
+</table></div>
+<!-- $$$TextDisplay-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>A text display does not have a real value.</p>
+</div>
+<!-- @@@TextDisplay -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$TextDisplay[overload1]$$$TextDisplayUtils::AspectContainer*constQString&InfoLabel::InfoType -->
+<h3 class="fn" translate="no" id="TextDisplay"><code translate="no">[explicit] </code>TextDisplay::<span class="name">TextDisplay</span>(<span class="type"><a href="utils-aspectcontainer.html" translate="no">Utils::AspectContainer</a></span> *<i>container</i>, const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>message</i> = {}, <span class="type">InfoLabel::InfoType</span> <i>type</i> = InfoLabel::None)</h3>
+<p>Constructs a text display showing the <i translate="no">message</i> with an icon representing type <i translate="no">type</i>.</p>
+<!-- @@@TextDisplay -->
+<!-- $$$addToLayout[overload1]$$$addToLayoutLayouting::LayoutItem& -->
+<h3 class="fn" translate="no" id="addToLayout"><code translate="no">[override virtual] </code><span class="type">void</span> TextDisplay::<span class="name">addToLayout</span>(<span class="type"><a href="layouting-layoutitem.html" translate="no">Layouting::LayoutItem</a></span> &amp;<i>parent</i>)</h3>
+<p>Reimplements: <a href="utils-baseaspect.html#addToLayout" translate="no">BaseAspect::addToLayout</a>(Layouting::LayoutItem &amp;parent).</p>
+<!-- @@@addToLayout -->
+<!-- $$$setIconType[overload1]$$$setIconTypeInfoLabel::InfoType -->
+<h3 class="fn" translate="no" id="setIconType"><span class="type">void</span> TextDisplay::<span class="name">setIconType</span>(<span class="type">InfoLabel::InfoType</span> <i>t</i>)</h3>
+<p>Sets <i translate="no">t</i> as the information label type for the visual representation of this aspect.</p>
+<!-- @@@setIconType -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-reference.qdoc -->
+  <title>Reference | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Reference</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+  <link rel="next" href="creator-acknowledgements.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-acknowledgements.html">Acknowledgements</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#analyzers">Analyzers</a></li>
+<li class="level1"><a href="#build-systems">Build Systems</a></li>
+<li class="level1"><a href="#build-configurations">Build Configurations</a></li>
+<li class="level1"><a href="#editors">Editors</a></li>
+<li class="level1"><a href="#platforms">Platforms</a></li>
+<li class="level1"><a href="#preferences">Preferences</a></li>
+<li class="level2"><a href="#analyzer">Analyzer</a></li>
+<li class="level2"><a href="#c">C++</a></li>
+<li class="level2"><a href="#kits">Kits</a></li>
+<li class="level2"><a href="#text-editor">Text Editor</a></li>
+<li class="level1"><a href="#run-configurations">Run Configurations</a></li>
+<li class="level1"><a href="#ui-design">UI Design</a></li>
+<li class="level1"><a href="#views">Views</a></li>
+<li class="level2"><a href="#output-views">Output Views</a></li>
+<li class="level2"><a href="#sidebar-views">Sidebar Views</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Reference</h1>
+<!-- $$$creator-reference.html-description -->
+<div class="descr" id="details">
+<p>The following topics contain reference information about using Qt Creator and the integrated tools.</p>
+<div class="table"><table class="annotated">
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-acknowledgements.html">Acknowledgements</a></p></td><td class="tblDescr"><p>Third-party components in Qt Creator.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-cli.html">Command-Line Options</a></p></td><td class="tblDescr"><p>Options for starting Qt Creator from the command line.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-project-wizards.html">Custom Wizards</a></p></td><td class="tblDescr"><p>Wizard types and JSON wizard format.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-faq.html">FAQ</a></p></td><td class="tblDescr"><p>Answers to some frequently asked questions about Qt Creator.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-glossary.html">Glossary</a></p></td><td class="tblDescr"><p>Qt Creator terms and concepts.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-keyboard-shortcuts.html">Keyboard Shortcuts</a></p></td><td class="tblDescr"><p>Default keyboard shortcuts.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-known-issues.html">Known Issues</a></p></td><td class="tblDescr"><p>Known issues in Qt Creator version 13.0&#x2e;0&#x2e;</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="technical-support.html">Technical Support</a></p></td><td class="tblDescr"><p>Qt support sites and other useful sites.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-version-control.html">Version Control Systems</a></p></td><td class="tblDescr"><p>Version control systems that you can use from Qt Creator.</p></td></tr>
+</table></div>
+<h2 id="analyzers">Analyzers</h2>
+<p>Use integrated code analysis tools to improve your C++ or QML code.</p>
+<div class="table"><table class="annotated">
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-reference-js-and-qml-error-codes.html">JavaScript and QML Checks</a></p></td><td class="tblDescr"><p>Run static checks on the QML and JavaScript code in your project to find common problems.</p></td></tr>
+</table></div>
+<h2 id="build-systems">Build Systems</h2>
+<p>When you create projects, you can choose the build system to use for building the project: CMake, qmake, Meson, or Qbs. qmake is installed and configured when you install Qt. To use one of the other supported build systems, you need to set it up.</p>
+<div class="table"><table class="annotated">
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-projects-autotools.html">Autotools</a></p></td><td class="tblDescr"><p>With Autotools, you can create a portable, complete, and self-contained GNU Build System from simple instructions.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-project-cmake.html">CMake</a></p></td><td class="tblDescr"><p>CMake is an alternative to qmake for automating the generation of build systems.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-project-conan.html">Conan Package Manager</a></p></td><td class="tblDescr"><p>The experimental Conan plugin integrates the Conan package manager.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-project-incredibuild.html">IncrediBuild</a></p></td><td class="tblDescr"><p>IncrediBuild decreases the time it takes to build C++ code.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-project-meson.html">Meson</a></p></td><td class="tblDescr"><p>Use Meson to build native desktop applications.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-project-nimble.html">Nimble</a></p></td><td class="tblDescr"><p>The Nimble package manager uses the Nim compiler to generate Nim application executables for the desktop platforms.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-project-qbs.html">Qbs</a></p></td><td class="tblDescr"><p>Qbs is an all-in-one build tool that generates a build graph from a high-level project description (like qmake or CMake do) and executes the commands in the low-level build graph (like make does).</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-vcpkg.html">vcpkg Package Manager</a></p></td><td class="tblDescr"><p>The experimental vcpkg plugin integrates the vcpkg C/C++ package manager.</p></td></tr>
+</table></div>
+<h2 id="build-configurations">Build Configurations</h2>
+<p>Build configurations have everything you need to compile the sources into binaries. Build configurations use the tools and settings defined in their corresponding kit.</p>
+<div class="table"><table class="annotated">
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-build-settings-cmake.html">CMake Build Configuration</a></p></td><td class="tblDescr"><p>Settings for building applications with CMake.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-build-settings-cmake-presets.html">CMake Presets</a></p></td><td class="tblDescr"><p>Examples of supported CMake presets.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-build-settings-conan.html">Conan Build Configuration</a></p></td><td class="tblDescr"><p>Settings for building applications with the Conan package manager.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-build-settings-incredibuild.html">IncrediBuild Build Configuration</a></p></td><td class="tblDescr"><p>Build and clean steps for Incredibuild.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-build-settings-meson.html">Meson Build Configuration</a></p></td><td class="tblDescr"><p>Settings for building applications with Meson.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-build-settings-qbs.html">Qbs Build Configuration</a></p></td><td class="tblDescr"><p>Settings for building applications with Qbs.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-build-settings-qmake.html">qmake Build Configuration</a></p></td><td class="tblDescr"><p>Settings for building applications with qmake.</p></td></tr>
+</table></div>
+<h2 id="editors">Editors</h2>
+<p>When you open files, Qt Creator chooses a suitable editor according to the file type.</p>
+<div class="table"><table class="annotated">
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-reference-cpp-quick-fixes.html">C++ Quick Fixes</a></p></td><td class="tblDescr"><p>Summary of quick fixes for C++ code.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-clang-codemodel.html">Clang Code Model</a></p></td><td class="tblDescr"><p>Offers code editing services for C++.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-coding-navigating.html">Edit Mode</a></p></td><td class="tblDescr"><p>Edit and navigate code and other resources in your projects.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-editor-fakevim.html">FakeVim Modes and Commands</a></p></td><td class="tblDescr"><p>Supported Vim modes and emulated commands.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-language-servers.html">Language Servers</a></p></td><td class="tblDescr"><p>Get code completion, highlighting of the symbol under cursor, and jumping to the symbol definition in the editor for other programming languages besides C++, as well as diagnostics.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-modeling.html">Model Editor</a></p></td><td class="tblDescr"><p>Create Universal Modeling Language (UML) style models with structured and behavioral diagrams.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-reference-qml-quick-fixes.html">QML Quick Fixes</a></p></td><td class="tblDescr"><p>Summary of quick fixes for QML code.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-scxml.html">SCXML Editor</a></p></td><td class="tblDescr"><p>Edit state chart (.scxml) files.</p></td></tr>
+</table></div>
+<h2 id="platforms">Platforms</h2>
+<p>You can install and run Qt Creator on several operating systems to create applications for multiple desktop, embedded, and mobile device platforms.</p>
+<div class="table"><table class="annotated">
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-desktop-platforms.html">Desktop Platforms</a></p></td><td class="tblDescr"><p>Requirements for operating systems that you can install and run Qt Creator on.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-embedded-platforms.html">Embedded Platforms</a></p></td><td class="tblDescr"><p>Embedded platforms that you can develop applications for.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-mobile-platforms.html">Mobile Platforms</a></p></td><td class="tblDescr"><p>Mobile platforms that you can develop applications for.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-usability.html">Optimizing Applications for Mobile Devices</a></p></td><td class="tblDescr"><p>Guidelines for developing usable applications for mobile devices.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-os-supported-platforms.html">Supported Platforms</a></p></td><td class="tblDescr"><p>Summary of development and target platforms.</p></td></tr>
+</table></div>
+<h2 id="preferences">Preferences</h2>
+<p>You can set preferences that apply globally to all projects and override them for particular projects.</p>
+<div class="table"><table class="annotated">
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-preferences-axivion.html">Axivion</a></p></td><td class="tblDescr"><p>Create a connection to an Axivion dashboard server.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-preferences-beautifier.html">Beautifier</a></p></td><td class="tblDescr"><p>Format source code with Artistic Style, ClangFormat, or Uncrustify.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-reference-preferences-fakevim.html">FakeVim</a></p></td><td class="tblDescr"><p>Set indentation for Vim-style editing and map vim commands to Qt Creator functions.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-preferences-locator.html">Locator</a></p></td><td class="tblDescr"><p>Add and change locator filters.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-preferences-nim.html">Nim</a></p></td><td class="tblDescr"><p>Set Nim code style and paths to tools.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-preferences-qbs.html">Qbs</a></p></td><td class="tblDescr"><p>Set preferences for Qbs and Qbs profiles.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-preferences-qtquick-code-style.html">Qt Quick Code Style</a></p></td><td class="tblDescr"><p>Set QML code style.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-preferences-screen-recording.html">Screen Recording</a></p></td><td class="tblDescr"><p>Set preferences for recording screens with FFmpeg.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-preferences-testing.html">Testing</a></p></td><td class="tblDescr"><p>Customize the handling of tests, test frameworks, and test tools.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-reference-preferences-to-do.html">To-Do</a></p></td><td class="tblDescr"><p>Add keywords for listing to-do entries.</p></td></tr>
+</table></div>
+<h3 id="analyzer">Analyzer</h3>
+<p>Preferences for code analysis tools.</p>
+<div class="table"><table class="annotated">
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-preferences-analyzer-clang-tools.html">Clang Tools</a></p></td><td class="tblDescr"><p>Set preferences for Clang-Tidy and Clazy.</p></td></tr>
+</table></div>
+<h3 id="c">C++</h3>
+<p>Preferences for editing C++ code.</p>
+<div class="table"><table class="annotated">
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-preferences-cpp-code-style.html">C++ Code Style</a></p></td><td class="tblDescr"><p>Set global code style for C++ files.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-preferences-cpp-clangd.html">Clangd</a></p></td><td class="tblDescr"><p>Sets global preferences for the clangd code model.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-preferences-cpp-code-model.html">Code Model</a></p></td><td class="tblDescr"><p>Sets global preferences for the code model.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-reference-preferences-cpp-quick-fixes.html">Quick Fixes</a></p></td><td class="tblDescr"><p>Set global preferences for C++ quick fixes.</p></td></tr>
+</table></div>
+<h3 id="kits">Kits</h3>
+<p>Preferences for build and run kits.</p>
+<div class="table"><table class="annotated">
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-preferences-kits-compilers.html">Compilers</a></p></td><td class="tblDescr"><p>Lists the registered compilers. You can add custom compilers to the list.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-preferences-kits.html">Kits</a></p></td><td class="tblDescr"><p>Set kit preferences. A kit consists of a set of values that define one environment, such as a device, tool chain, Qt version, and debugger command to use.</p></td></tr>
+</table></div>
+<h3 id="text-editor">Text Editor</h3>
+<p>Preferences for the behavior and appearance of text and code editors.</p>
+<div class="table"><table class="annotated">
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-preferences-text-editor-behavior.html">Behavior</a></p></td><td class="tblDescr"><p>Set preferences for indentation, typing, and file encoding in the text editor.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-preferences-text-editor-completion.html">Completion</a></p></td><td class="tblDescr"><p>Set preferences for code completion and inserting matching characters in the text editor.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-preferences-text-editor-font-colors.html">Font &amp; Colors</a></p></td><td class="tblDescr"><p>Set the font preferences and apply color schemes for syntax highlighting, diff editor, and code analysis results.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-preferences-text-editor-shippets.html">Snippets</a></p></td><td class="tblDescr"><p>Add, change, and remove snippets in the snippet editor.</p></td></tr>
+</table></div>
+<h2 id="run-configurations">Run Configurations</h2>
+<p>Run configurations start the application in the location where the <i>deploy configuration</i> copied it. By default, when you select <b translate="no">Run</b>, Qt Creator builds the project, deploys it to the device defined in the kit, and runs it there. If you did not make changes to the project since you last built and deployed it, Qt Creator simply runs it again.</p>
+<div class="table"><table class="annotated">
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-run-settings-android.html">Android Run Settings</a></p></td><td class="tblDescr"><p>Settings for running applications on Android devices.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-run-settings-boot2qt.html">Boot2Qt Run Settings</a></p></td><td class="tblDescr"><p>Settings for running applications on Boot2Qt devices.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-run-settings-desktop-devices.html">Desktop Device Run Settings</a></p></td><td class="tblDescr"><p>Settings for running applications on desktop device types.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-run-settings-python.html">Python Run Settings</a></p></td><td class="tblDescr"><p>Settings for running Qt for Python applications.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-run-settings-qnx.html">QNX Run Settings</a></p></td><td class="tblDescr"><p>Settings for running applications on Linux-based devices.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-run-settings-qtquick-ui-prototype.html">Qt Quick UI Prototype Run Settings</a></p></td><td class="tblDescr"><p>Settings for running Qt Quick UI Prototype projects (.qmlproject).</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-run-settings-remote-linux.html">Remote Linux Run Settings</a></p></td><td class="tblDescr"><p>Settings for running applications on Linux-based devices.</p></td></tr>
+</table></div>
+<h2 id="ui-design">UI Design</h2>
+<p>You can use a visual editor, Qt Designer, for designing widget-based UIs in the <b translate="no">Design</b> mode. For Qt Quick UIs, use a separate visual editor, <a href="https://doc.qt.io/qtdesignstudio/index.html" translate="no">Qt Design Studio</a>, or the <b translate="no">Edit</b> mode.</p>
+<div class="table"><table class="annotated">
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="adding-plugins.html">Adding Qt Designer Plugins</a></p></td><td class="tblDescr"><p>Adding widgets to Qt Designer by creating plugins that extend Qt applications.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="quick-converting-ui-projects.html">Converting UI Projects to Applications</a></p></td><td class="tblDescr"><p>Converting a project that has a .qmlproject file to one that has a .pro file.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-using-qt-designer.html">Qt Designer</a></p></td><td class="tblDescr"><p>A visual editor for Qt Widgets.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-qtquickdesigner-plugin.html">Qt Quick Designer</a></p></td><td class="tblDescr"><p>A visual editor for QML files (.qml) and Qt Design Studio UI files (.ui.qml).</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-quick-ui-forms.html">UI Files</a></p></td><td class="tblDescr"><p>Limitations of Qt Design Studio UI files (.ui.qml).</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-qml-modules-with-plugins.html">Using QML Modules with Plugins</a></p></td><td class="tblDescr"><p>Using C++ plugins to expose custom components to Qt Quick applications.</p></td></tr>
+</table></div>
+<h2 id="views">Views</h2>
+<p>When you switch modes or trigger actions, Qt Creator opens views for viewing output and organizing project contents.</p>
+<h3 id="output-views">Output Views</h3>
+<p>You can view output from several sources, such as a list of errors and warnings encountered during a build, detailed output from the compiler, status of a program when it is executed, debug output, or search results.</p>
+<div class="table"><table class="annotated">
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-reference-application-output-view.html">Application Output</a></p></td><td class="tblDescr"><p>Displays the status of a program when you execute it, and the debug output.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-reference-compile-output-view.html">Compile Output</a></p></td><td class="tblDescr"><p>Shows all output from the compiler.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-reference-issues-view.html">Issues</a></p></td><td class="tblDescr"><p>Lists issues from different sources.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-reference-search-results-view.html">Search Results View</a></p></td><td class="tblDescr"><p>Search through projects, files on a file system or the currently open files and view search results.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-reference-terminal-view.html">Terminal</a></p></td><td class="tblDescr"><p>Opens a terminal.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-test-results.html">Test Results</a></p></td><td class="tblDescr"><p>View test results.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-reference-to-do-entries-view.html">To-Do Entries</a></p></td><td class="tblDescr"><p>Lists to-do keywords from project files.</p></td></tr>
+</table></div>
+<h3 id="sidebar-views">Sidebar Views</h3>
+<p>In some modes, you can use a left and right sidebar to organize different views into project contents. Only views that are relevant to the mode you are working in are available in it.</p>
+<div class="table"><table class="annotated">
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-call-hierarchy-view.html">Call Hierarchy</a></p></td><td class="tblDescr"><p>Shows information about incoming and outgoing function calls from a language server.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-class-view.html">Class View</a></p></td><td class="tblDescr"><p>Shows the class hierarchy of the currently open projects.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-file-system-view.html">File System</a></p></td><td class="tblDescr"><p>Shows all the files in the current directory.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-include-hierarchy-view.html">Include Hierarchy</a></p></td><td class="tblDescr"><p>Shows the files that the current file includes and those that include the current file.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-open-documents-view.html">Open Documents</a></p></td><td class="tblDescr"><p>Shows currently open files.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-outline-view.html">Outline</a></p></td><td class="tblDescr"><p>Shows an overview of defined types and other symbols, as well as their properties and hierarchy in a source file.</p></td></tr>
+<tr class="odd topAlign"><td class="tblName" translate="no"><p><a href="creator-projects-view.html">Projects</a></p></td><td class="tblDescr"><p>Shows a list of projects in a project tree.</p></td></tr>
+<tr class="even topAlign"><td class="tblName" translate="no"><p><a href="creator-type-hierarchy.html">Type Hierarchy</a></p></td><td class="tblDescr"><p>Shows the base classes and derived classes of a class.</p></td></tr>
+</table></div>
+</div>
+<!-- @@@creator-reference.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-acknowledgements.html">Acknowledgements</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

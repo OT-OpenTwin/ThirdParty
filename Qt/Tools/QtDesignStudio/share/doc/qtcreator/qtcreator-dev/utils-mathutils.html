@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- mathutils.cpp -->
+  <meta name="description" content="Contains functions for interpolation.">
+  <title>MathUtils Namespace | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li>MathUtils Namespace</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#functions">Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">MathUtils Namespace</h1>
+<span class="small-subtitle" translate="no">Utils::MathUtils</span>
+<!-- $$$MathUtils-brief -->
+<p>Contains functions for interpolation. <a href="#details">More...</a></p>
+<!-- @@@MathUtils -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;MathUtils&gt;</span></td></tr>
+</table></div>
+<h2 id="functions">Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="utils-mathutils.html#interpolateExponential" translate="no">interpolateExponential</a></b>(int <i>x</i>, int <i>xHalfLife</i>, int <i>y1</i>, int <i>y2</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="utils-mathutils.html#interpolateLinear" translate="no">interpolateLinear</a></b>(int <i>x</i>, int <i>x1</i>, int <i>x2</i>, int <i>y1</i>, int <i>y2</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="utils-mathutils.html#interpolateTangential" translate="no">interpolateTangential</a></b>(int <i>x</i>, int <i>xHalfLife</i>, int <i>y1</i>, int <i>y2</i>)</td></tr>
+</table></div>
+<!-- $$$MathUtils-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+</div>
+<!-- @@@MathUtils -->
+<div class="func">
+<h2>Function Documentation</h2>
+<!-- $$$interpolateExponential[overload1]$$$interpolateExponentialintintintint -->
+<h3 class="fn" translate="no" id="interpolateExponential"><span class="type">int</span> MathUtils::<span class="name">interpolateExponential</span>(<span class="type">int</span> <i>x</i>, <span class="type">int</span> <i>xHalfLife</i>, <span class="type">int</span> <i>y1</i>, <span class="type">int</span> <i>y2</i>)</h3>
+<p>Exponential interpolation:</p>
+<ul>
+<li>For <i translate="no">x</i> = 0 it returns <i translate="no">y1</i>.</li>
+<li>For <i translate="no">x</i> = <i translate="no">xHalfLife</i> it returns 50 % of the distance between <i translate="no">y1</i> and <i translate="no">y2</i>.</li>
+<li>For <i translate="no">x</i> = infinity it returns <i translate="no">y2</i>.</li>
+</ul>
+<!-- @@@interpolateExponential -->
+<!-- $$$interpolateLinear[overload1]$$$interpolateLinearintintintintint -->
+<h3 class="fn" translate="no" id="interpolateLinear"><span class="type">int</span> MathUtils::<span class="name">interpolateLinear</span>(<span class="type">int</span> <i>x</i>, <span class="type">int</span> <i>x1</i>, <span class="type">int</span> <i>x2</i>, <span class="type">int</span> <i>y1</i>, <span class="type">int</span> <i>y2</i>)</h3>
+<p>Linear interpolation:</p>
+<ul>
+<li>For <i translate="no">x</i> = <i translate="no">x1</i> it returns <i translate="no">y1</i>.</li>
+<li>For <i translate="no">x</i> = <i translate="no">x2</i> it returns <i translate="no">y2</i>.</li>
+</ul>
+<!-- @@@interpolateLinear -->
+<!-- $$$interpolateTangential[overload1]$$$interpolateTangentialintintintint -->
+<h3 class="fn" translate="no" id="interpolateTangential"><span class="type">int</span> MathUtils::<span class="name">interpolateTangential</span>(<span class="type">int</span> <i>x</i>, <span class="type">int</span> <i>xHalfLife</i>, <span class="type">int</span> <i>y1</i>, <span class="type">int</span> <i>y2</i>)</h3>
+<p>Tangential interpolation:</p>
+<ul>
+<li>For <i translate="no">x</i> = 0 it returns <i translate="no">y1</i>.</li>
+<li>For <i translate="no">x</i> = <i translate="no">xHalfLife</i> it returns 50 % of the distance between <i translate="no">y1</i> and <i translate="no">y2</i>.</li>
+<li>For <i translate="no">x</i> = infinity it returns <i translate="no">y2</i>.</li>
+</ul>
+<!-- @@@interpolateTangential -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-docker.qdoc -->
+  <title>Adding Docker Devices | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li><a href="creator-overview.html" translate="no">Developing with Qt Creator</a></li>
+<li><a href="creator-connecting-mobile.html" translate="no">Connecting Devices</a></li>
+<li>Adding Docker Devices</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-developing-b2qt.html" />
+  <link rel="next" href="creator-developing-ios.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-developing-b2qt.html">Connecting Boot2Qt Devices</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-developing-ios.html">Connecting iOS Devices</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#adding-docker-images-as-devices">Adding Docker Images as Devices</a></li>
+<li class="level2"><a href="#selecting-docker-images">Selecting Docker Images</a></li>
+<li class="level2"><a href="#modifying-entry-points">Modifying Entry Points</a></li>
+<li class="level2"><a href="#specifying-paths-to-mount">Specifying Paths to Mount</a></li>
+<li class="level2"><a href="#auto-detecting-kit-items">Auto-detecting Kit Items</a></li>
+<li class="level1"><a href="#editing-docker-device-kits">Editing Docker Device Kits</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Adding Docker Devices</h1>
+<!-- $$$creator-adding-docker-devices.html-description -->
+<div class="descr" id="details">
+<p>Create Docker devices from <a href="https://docs.docker.com/get-started/overview/" translate="no">Docker images</a> and use them to build, run, and debug applications. A Docker container operates like a virtual machine but uses less system resources at the cost of being less flexible.</p>
+<p>While Linux, macOS, and Windows hosts are supported in principle, Linux is the recommended platform.</p>
+<p>To build, run, and debug applications on Docker devices, you must install and configure <code translate="no">docker-cli</code> on the development host. Qt Creator automatically detects <a href="creator-preferences-kits.html#kits-tab" translate="no">build and run kit</a> items, such <a href="creator-debuggers.html" translate="no">debuggers</a> and <a href="creator-project-qmake.html" translate="no">Qt versions</a>, in the Docker container and creates kits for the devices.</p>
+<p>You are advised to use CMake to build applications in the Docker container.</p>
+<p>To pull images from Docker hub or other registries, use the <a href="https://docs.docker.com/engine/reference/commandline/pull/" translate="no">docker pull</a> command.</p>
+<h2 id="adding-docker-images-as-devices">Adding Docker Images as Devices</h2>
+<p>To add a Docker image as a device:</p>
+<ol class="1" type="1"><li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Devices</b> &gt; <b translate="no">Docker</b> and enter the path to the Docker CLI in the <b translate="no">Command</b> field.<p class="centerAlign"><img src="images/qtcreator-preferences-devices-docker.webp" alt="&quot;Docker tab in Devices preferences&quot;" /></p></li>
+<li>Select <b translate="no">Devices</b> &gt; <b translate="no">Add</b> &gt; <b translate="no">Docker Device</b> &gt; <b translate="no">Start Wizard</b> to search for images in your local Docker installation.</li>
+<li>Select the Docker image to use, and then select <b translate="no">OK</b>.</li>
+<li>In <b translate="no">Devices</b>, check and change Docker device preferences.<p class="centerAlign"><img src="images/qtcreator-preferences-devices-docker-device.png" alt="&quot;Docker device preferences&quot;" /></p></li>
+<li>Select <b translate="no">Apply</b> to save your changes.</li>
+</ol>
+<p>The following table summarizes the options you can set.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Option</th><th >Value</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Run as outside user</b></td><td >On Linux and macOS, sets the user ID and group ID of the user running Qt Creator in the Docker container. This option is not available on Windows.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Do not modify entry point</b></td><td >Stops Qt Creator from modifying the <a href="creator-adding-docker-devices.html#modifying-entry-points" translate="no">entry point</a> of the image. Make sure that the entry point starts a shell.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Enable flags needed for LLDB</b></td><td >Adds the following flags to the container to allow LLDB to run:<pre class="cpp plain" translate="no">
+ --cap-add=SYS_PTRACE --security-opt seccomp=unconfined
+</pre>
+</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Clangd executable</b></td><td >The path to a remote Clangd executable to use for a remote code model.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Paths to mount</b></td><td >Host directories to <a href="creator-adding-docker-devices.html#specifying-paths-to-mount" translate="no">mount</a> into the container, such as the project directory.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Search locations</b></td><td >Where to <a href="creator-adding-docker-devices.html#auto-detecting-kit-items" translate="no">automatically detect</a> kit items.</td></tr>
+</table></div>
+<p>The following sections describe the Docker device preferences in more detail.</p>
+<h3 id="selecting-docker-images">Selecting Docker Images</h3>
+<p>The <b translate="no">Docker Image Selection</b> dialog displays a list of Docker images in your local Docker installation. You can sort the images according to the repository name or tag or the image ID or size.</p>
+<p class="centerAlign"><img src="images/qtcreator-docker-image-selection.webp" alt="&quot;Docker Image Selection dialog&quot;" /></p><p>Select <b translate="no">Show unnamed images</b> to show images that are not tagged.</p>
+<p>Double-click an image to select it.</p>
+<h3 id="modifying-entry-points">Modifying Entry Points</h3>
+<p>The entry point of a Docker container is specified in the container settings and started as the main process when starting the container. The entry point can be a shell, an SSH server, or another process, for example. By default, Qt Creator modifies the entry point before it starts a container to make sure that the main process is an <code translate="no">sh</code> shell.</p>
+<p>To stop Qt Creator from modifying the entry point, select <b translate="no">Do not modify entry point</b>. However, if the entry point you specify is not a shell, Qt Creator cannot start the container.</p>
+<h3 id="specifying-paths-to-mount">Specifying Paths to Mount</h3>
+<p>You can either copy your project files into the Docker container or specify paths to them in <b translate="no">Paths to mount</b>. Shared mounts are restricted to locations in the host system that can end up in the same absolute location in the Docker container. On Windows, network mounts cannot be used as shared mounts.</p>
+<p>The paths in <b translate="no">Paths to mount</b> are mapped one-to-one to the Docker container. Select <b translate="no">Insert</b> to browse directories to add. Select <b translate="no">Delete Line</b> to delete the selected path or <b translate="no">Clear</b> to delete all paths.</p>
+<h3 id="auto-detecting-kit-items">Auto-detecting Kit Items</h3>
+<p>Select <b translate="no">Auto-detect Kit Items</b> to find kit items and create kits for the Docker device. You can search for kit items in the device's PATH or in the specified directories.</p>
+<p>In <b translate="no">Search locations</b>, select:</p>
+<ul>
+<li><b translate="no">Search in PATH</b> to find kit items in PATH.</li>
+<li><b translate="no">Search in Selected Directories</b> to find kit items in the selected directories.</li>
+<li><b translate="no">Search in PATH and Additional Directories</b> to find kit items in the PATH and in the selected directories.</li>
+</ul>
+<p>When searching in directories, enter a semicolon-separated list of directory paths in the Docker image to scan for kit entries.</p>
+<p>To list the automatically detected kit items, select <b translate="no">List Auto-Detected Kit Items</b>. To remove them, select <b translate="no">Remove Auto-Detected Kit Items</b>.</p>
+<h2 id="editing-docker-device-kits">Editing Docker Device Kits</h2>
+<p>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Kits</b> to check that the automatically generated kits point to the appropriate kit items.</p>
+<p>To specify build settings:</p>
+<ol class="1" type="1"><li>Open a project for an application you want to develop for the device.</li>
+<li>Select <b translate="no">Projects</b> &gt; <b translate="no">Build &amp; Run</b> to enable the kit that you specified above.</li>
+</ol>
+<p>Select <b translate="no">Run</b> to specify run settings. Usually, you can use the default settings.</p>
+</div>
+<!-- @@@creator-adding-docker-devices.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-developing-b2qt.html">Connecting Boot2Qt Devices</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-developing-ios.html">Connecting iOS Devices</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtcreator-documentation.qdoc -->
+  <title>Writing Documentation | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li>Writing Documentation</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="external-tool-spec.html" />
+  <link rel="next" href="coding-style.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="external-tool-spec.html">External Tool Specification Files</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="coding-style.html">Qt Creator Coding Rules</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#configuring-documentation-projects">Configuring Documentation Projects</a></li>
+<li class="level1"><a href="#creating-folders-and-files">Creating Folders and Files</a></li>
+<li class="level1"><a href="#integrating-topics-to-documentation">Integrating Topics to Documentation</a></li>
+<li class="level2"><a href="#showing-and-hiding-information">Showing and Hiding Information</a></li>
+<li class="level2"><a href="#updating-next-and-previous-links">Updating Next and Previous Links</a></li>
+<li class="level1"><a href="#adding-documentation-for-independent-plugins">Adding Documentation for Independent Plugins</a></li>
+<li class="level1"><a href="#writing-text">Writing Text</a></li>
+<li class="level2"><a href="#capitalizing-headings">Capitalizing Headings</a></li>
+<li class="level1"><a href="#using-images">Using Images</a></li>
+<li class="level2"><a href="#taking-screen-shots">Taking Screen Shots</a></li>
+<li class="level2"><a href="#hightlighting-parts-of-the-screen">Hightlighting Parts of the Screen</a></li>
+<li class="level2"><a href="#icons">Icons</a></li>
+<li class="level2"><a href="#saving-images">Saving Images</a></li>
+<li class="level2"><a href="#optimizing-images">Optimizing Images</a></li>
+<li class="level2"><a href="#creating-gif-videos">Creating GIF Videos</a></li>
+<li class="level2"><a href="#linking-to-youtube-videos">Linking to Youtube Videos</a></li>
+<li class="level1"><a href="#building-documentation">Building Documentation</a></li>
+<li class="level2"><a href="#setting-up-documentation-builds">Setting Up Documentation Builds</a></li>
+<li class="level2"><a href="#additional-build-commands">Additional Build Commands</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Writing Documentation</h1>
+<!-- $$$qtcreator-documentation.html-description -->
+<div class="descr" id="details">
+<p>When you add plugins or contribute new features to Qt Design Studio, you probably want other people to know about them and to be able to use them. Therefore, you should also contribute documentation for them. Follow the guidelines in this section to make sure that your documentation fits in well with the rest of the Qt Design Studio documentation.</p>
+<p>When you contribute a plugin, you should write documentation both for the developers who use Qt Design Studio and for the ones who develop it.</p>
+<p>Write the following user documentation for addition to the Qt Design Studio Manual or as a separate Plugin Manual if your plugin is located in a repository of its own:</p>
+<ul>
+<li>Overview topic, which describes the purpose of your plugin from the viewpoint of Qt Design Studio users</li>
+<li>Procedure topics, which describe how to use your plugin as part of Qt Design Studio</li>
+<li>Reference topics, which contain information that developers occasionally need to look up (optional)</li>
+</ul>
+<p>Write the following developer documentation for addition to the Extending Qt Design Studio Manual:</p>
+<ul>
+<li>Overview topic, which describes the architecture and use cases for your plugin from the viewpoint of Qt Design Studio developers</li>
+<li>API documentation, which is generated from code comments</li>
+</ul>
+<h2 id="configuring-documentation-projects">Configuring Documentation Projects</h2>
+<p>Qt Design Studio documentation is written by using QDoc. For more information about using QDoc, see the <a href="https://doc.qt.io/qt/qdoc-index.html" translate="no">QDoc Manual</a>.</p>
+<p>QDoc finds the new topics automatically, when you place them as <code translate="no">.qdoc</code> files in a doc source folder. However, to make the topics accessible to readers, you must also add them to the table of contents and fix the next page and previous page links to them from other topics.</p>
+<h2 id="creating-folders-and-files">Creating Folders and Files</h2>
+<p>The <code translate="no">qtcreator</code> repository contains the sources for building the following documents:</p>
+<ul>
+<li>Qt Design Studio Manual</li>
+<li>Extending Qt Design Studio Manual</li>
+<li>Qt Design Studio Manual</li>
+</ul>
+<p>The sources for each project are stored in the following subfolders of the Qt Design Studio project folder:</p>
+<ul>
+<li><code translate="no">\doc\qtcreator\src</code></li>
+<li><code translate="no">\doc\qtcreatordev\src</code></li>
+<li><code translate="no">\doc\qtdesignstudio\src</code></li>
+</ul>
+<p>The Qt Design Studio Manual is based on the Qt Design Studio Manual, with additional topics.</p>
+<p>The Extending Qt Design Studio Manual has its own sources. In addition, it pulls in API reference documentation from the Qt Design Studio source files. Add code documentation directly to the code source files. However, you can write an API overview also as a separate <code translate="no">.qdoc</code> file.</p>
+<p>Create a subfolder for your documentation in the appropriate <code translate="no">src</code> folder. Create a separate file for each topic.</p>
+<p>The easiest way is probably to copy an existing file, save it as a new file, and modify it. This way, you already have samples of the necessary bits and pieces in place, such as topic start and end commands, copyright statement, links to next and previous topics, and topic title.</p>
+<h2 id="integrating-topics-to-documentation">Integrating Topics to Documentation</h2>
+<p>You must integrate your new topics to the manuals by adding links to them to the table of contents and to other relevant topics.</p>
+<p>To link to the topic, you can use the topic title. For example:</p>
+<pre class="cpp plain" translate="no">
+ \l{Integrating Topics to Documentation}
+</pre>
+<p>This does not work if topic titles are not unique. Also, if you change the title, the link breaks. You can avoid this risk by adding the <code translate="no">\target</code> command to your topic and then linking to the target.</p>
+<h3 id="showing-and-hiding-information">Showing and Hiding Information</h3>
+<p>Qt Design Studio uses only a subset of Qt Design Studio plugins and it has its own special plugins. This means that their manuals have somewhat different structures. Which, in turn breaks the navigation links to previous and next pages.</p>
+<p>This also means that some of the Qt Design Studio Manual source files are not needed at all and some contain information that does not apply to the Qt Design Studio Manual. If QDoc parsed all the Qt Design Studio Manual sources, it would generate HTML files for each topic and include those files and all the images that they refer to in the Qt Design Studio help compilation files. This would unnecessarily increase the size of the Qt Design Studio help database and pollute the help index with references to files that are not actually listed in the table of contents of the Qt Design Studio Manual. To avoid this, some files are excluded from the Qt Design Studio Manual builds.</p>
+<h4 id="excluding-source-files-from-qt-design-studio-manual-builds">Excluding Source Files from Qt Design Studio Manual Builds</h4>
+<p>The directories to exclude from Qt Design Studio Manual builds are listed as values of the <code translate="no">excludedirs</code> option in <code translate="no">\doc\qtdesignstudio\config\qtdesignstudio.qdocconf</code>.</p>
+<p>You only need to edit the values of the option if you want to show or hide all the contents of a directory. For example, if you add support for a Qt Design Studio plugin that was previously not supported by Qt Design Studio, you should remove the directory that contains the documentation for the plugin from the values.</p>
+<p>To hide or show individual topics within individual <code translate="no">.qdoc</code> files, you need to move the files in the Qt Design Studio Manual source (<code translate="no">\doc\qtcreator\src</code>) to or from the excluded directories.</p>
+<p>For example, if support for iOS were added, you would need to check whether the information about iOS support is applicable to Qt Design Studio Manual. If yes, you would need to remove the following line from the <code translate="no">excludedirs</code> value:</p>
+<pre class="cpp plain" translate="no">
+ ../../src/ios \
+</pre>
+<p>You would then use defines to hide any Qt Design Studio specific information from the source file in the directory.</p>
+<p>If a directory contains some files that are needed in both manuals and some that are only needed in the Qt Design Studio Manual, the latter are located in a subdirectory called <code translate="no">creator-only</code>, which is excluded from the Qt Design Studio Manual builds.</p>
+<h4 id="hiding-text-in-qt-design-studio-manual-sources">Hiding Text in Qt Design Studio Manual Sources</h4>
+<p>The <code translate="no">qtcreator</code> define is specified as a value of the <code translate="no">defines</code> option in the Qt Design Studio QDoc configuration file, <code translate="no">\doc\qtcreator\config\qtcreator-project.qdocconf</code>. It is mostly used in the Qt Design Studio Manual sources to hide Qt Design Studio specific information when the Qt Design Studio Manual is built.</p>
+<p>The <code translate="no">\else</code> command is sometimes used to replace some Qt Design Studio specific text with text that applies to Qt Design Studio. For example, the following <code translate="no">if-else</code> statement is needed in the Qt Design Studio Manual sources because the project wizards in Qt Design Studio are different from those in Qt Design Studio, and are therefore described in a new topic that is located in the Qt Design Studio Manual sources:</p>
+<pre class="cpp plain" translate="no">
+ For more information, see
+ \if defined(qtcreator)
+ \l{Creating Qt Quick Projects}.
+ \else
+ \l{Creating UI Prototype Projects}.
+ \endif
+</pre>
+<div class="admonition note">
+<p><b>Note: </b>Section titles in the two manuals can be identical only if the page is excluded from the Qt Design Studio Manual. In this case, QDoc can correctly determine the link target. If you add a link to a section title that appears twice in the doc source files, QDoc uses the first reference to that title in the <code translate="no">.index</code> file.</p>
+</div>
+<h4 id="writing-about-qt-design-studio-specific-features">Writing About Qt Design Studio Specific Features</h4>
+<p>Qt Design Studio specific plugins and features are described in a set of doc source files located in the <code translate="no">\doc\qtdesignstudio\src</code> directory. Some files are used to include subsections in topics in the Qt Design Studio Manual sources.</p>
+<p>Screenshots and other illustrations are stored in the <code translate="no">\qtdesignstudio\images</code> directory.</p>
+<p>If you add new topics to the Qt Design Studio Manual, add links to them to the table of contents in <code translate="no">qtdesignstudio-toc.qdoc</code> and check the values of the navigation links around them.</p>
+<h4 id="including-sections-in-qt-design-studio-manual-sources">Including Sections in Qt Design Studio Manual Sources</h4>
+<p>Qt Quick Designer is an integral part of both Qt Design Studio and Qt Design Studio. Therefore, most topics that describe it are needed in the manuals of both tools. You can use the <code translate="no">\include</code> command in the Qt Design Studio Manual sources to include <code translate="no">.qdocinc</code> files from the Qt Design Studio Manual sources when building the Qt Design Studio Manual.</p>
+<p>For example, the following lines in the <code translate="no">\doc\qtcreator\src\qtquick\qtquick-components.qdoc</code> file add information about creating and using Qt Design Studio Components to the <i>Creating Components</i> topic that is pulled from the Qt Design Studio Manual sources:</p>
+<pre class="cpp plain" translate="no">
+ \if defined(qtdesignstudio)
+ \include qtdesignstudio-components.qdocinc creating studio components
+ \include qtdesignstudio-components.qdocinc studio components
+ \endif
+</pre>
+<p>Similarly, you can use include files to include subsections in different main level topics in the two manuals.</p>
+<h3 id="updating-next-and-previous-links">Updating Next and Previous Links</h3>
+<p>When you add new topics to a document, you must also change the navigation links of the topics around them.</p>
+<p>The navigation order of the topics in the Qt Design Studio Manual is specified in <code translate="no">\doc\qtcreator\src\qtcreator-toc.qdoc</code> and that of the topics in the Qt Design Studio Manual in <code translate="no">\doc\qtdesignstudio\src\qtdesignstudio-toc.qdoc</code>. If you add topics to or move them around in a TOC file, you must adjust the navigation links accordingly.</p>
+<p>The <code translate="no">qtdesignstudio</code> define is specified as a value of the <code translate="no">defines</code> option in the Qt Design Studio Manual configuration file, <code translate="no">qtcreator\doc\qtdesignstudio\config\qtdesignstudio.qdocconf</code>. It is mostly used in the Qt Design Studio Manual sources to specify values for the <code translate="no">\previouspage</code> and <code translate="no">\nextpage</code> commands depending on whether the Qt Design Studio Manual or Qt Design Studio Manual is being built. For example, the following <code translate="no">if-else</code> statement is needed because only the Git version control system is integrated to Qt Design Studio, and information about the other systems integrated to Qt Design Studio is hidden:</p>
+<pre class="cpp plain" translate="no">
+ \page creator-vcs-git.html
+ \if defined(qtdesignstudio)
+ \previouspage studio-projects.html
+ \nextpage studio-importing-designs.html
+ \else
+ \previouspage creator-vcs-cvs.html
+ \nextpage creator-vcs-mercurial.html
+ \endif
+</pre>
+<h2 id="adding-documentation-for-independent-plugins">Adding Documentation for Independent Plugins</h2>
+<p>You can develop Qt Design Studio plugins in separate repositories. Such plugins should have their own help files (.qch) that are installed and registered only if the plugin is installed.</p>
+<p>The easiest way to set up the documentation project for an independent plugin is to copy it from an existing repository, such as the <a href="https://code.qt.io/cgit/qt-creator/plugin-fossil-scm.git/" translate="no">Fossil plugin</a>, and then make the necessary changes.</p>
+<p>Use the following naming scheme for Qt Design Studio plugin manuals: <i>Qt Design Studio &lt;Plugin Name&gt; Plugin Manual</i>. For example, <i>Qt Design Studio Fossil Plugin Manual</i>.</p>
+<h2 id="writing-text">Writing Text</h2>
+<p>Follow the guidelines for <a href="http://wiki.qt.io/Writing_Qt_Documentation" translate="no">writing Qt documentation</a>.</p>
+<p>The documentation must be grammatically correct English and use the standard form of written language. Do not use dialect or slang words. Use idiomatic language, that is, expressions that are characteristic for English. If possible, ask a native English speaker for a review.</p>
+<h3 id="capitalizing-headings">Capitalizing Headings</h3>
+<p>Use the book title capitalization style for all titles and section headings (<code translate="no">\title</code>, <code translate="no">\section1</code>, <code translate="no">\section2</code>, and so on). For more information, see <a href="qtcreator-ui-text.html#using-book-style-capitalization" translate="no">Using Book Style Capitalization</a>.</p>
+<h2 id="using-images">Using Images</h2>
+<p>You can illustrate your documentation by using screen shots, diagrams, and other images.</p>
+<p>Use the <code translate="no">\image</code> and <code translate="no">\inlineimage</code> QDoc commands to refer to images from the text. You do not need to add paths to image names. For example:</p>
+<pre class="cpp plain" translate="no">
+ \image riot.png
+</pre>
+<h3 id="taking-screen-shots">Taking Screen Shots</h3>
+<p>Qt Design Studio has the native look and feel on Windows, Linux, and macOS, and therefore, screen shots can end up looking very different, depending on who takes them and which system they use. To try to preserve a consistent look and feel in the Qt Design Studio Manual, observe the guidelines listed in this section when taking screen shots.</p>
+<div class="admonition note">
+<p><b>Note: </b>Do not rely on screen shots present reasonable example values to users, but always place example values also in the text.</p>
+</div>
+<ul>
+<li>Use the screen resolution of 1920x1080 (available on the most commonly used screens, as of this writing).<div class="admonition note">
+<p><b>Note: </b>Use display scaling 100%.</p>
+</div>
+</li>
+<li>Use your favorite tool to take the screen shot.</li>
+<li>Include only the part of the screen that you need (you can crop the image also in the screen capture tool). In Qt Design Studio, close all unnecessary views to avoid clutter.</li>
+<li>Do not scale or resize the images in the tool because it causes reduced visual quality and bigger file size. Also, the CSS we use online scales down images if needed (their width is larger than 800 pixels).</li>
+<li>To highlight parts of the screen shot, use the images of numbers that are stored in <code translate="no">qtcreator/doc/qtcreator/images/numbers</code> in the Qt Design Studio repository.</li>
+<li>Before you submit PNG images to the repository, optimize them to save space.</li>
+</ul>
+<h3 id="hightlighting-parts-of-the-screen">Hightlighting Parts of the Screen</h3>
+<p>You can use number icons in screenshots to highlight parts of the screenshot (instead of using red arrows or borders, or something similar). You can then refer to the numbers in text. For an example, see the <a href="https://doc.qt.io/qtcreator/creator-quick-tour.html" translate="no">User Interface</a> topic in the Qt Design Studio Manual.</p>
+<p>This improves the consistency of the look and feel of Qt documentation, and eliminates the need to describe parts of the UI in the text because you can just insert the number of the element you are referring to in brackets.</p>
+<p>You can find a set of images that show the numbers from 1 to 10 in the <code translate="no">qtcreator/doc/qtcreator/images/numbers</code> directory (or in the <code translate="no">qtdoc</code> module sources in <code translate="no">doc/images/numbers</code>).</p>
+<p>To use the numbers, copy-paste the number images on the screenshot to the places that you want to refer to from text.</p>
+<h3 id="icons">Icons</h3>
+<p>The <a href="https://doc.qt.io/" translate="no">Qt Documentation</a> published online can be viewed in dark and light modes. To make the icons used in the docs visible in both modes, save icon files as gray-scale images with a transparent background in the following locations, depending on whether they are used in both manuals or just the Qt Design Studio Manual:</p>
+<ul>
+<li><code translate="no">qtcreator/doc/qtcreator/images/icons</code> - used in the Qt Design Studio Manual</li>
+<li><code translate="no">qtcreator/doc/qtdesignstudio/images/icons</code> - used only in the Qt Design Studio Manual</li>
+</ul>
+<p>If you receive a large number of icons that are not visible in either light or dark mode or have a solid background, run the <code translate="no">recolordocsicons.py</code> Python script from the <code translate="no">src/tools/icons/</code> directory. By default, the script recolors icons in <code translate="no">qtcreator/doc/qtcreator/images/icons</code>. Use the <code translate="no">-docspath</code> option to specify the path to another icon source directory.</p>
+<p>For example, if you saved the new icons in <code translate="no">C:\iconconversions</code>, switch to the <code translate="no">qtcreator\src\tools\icons</code> folder and enter:</p>
+<pre class="cpp plain" translate="no">
+ recolordocsicons.py -docspath C:\iconconversions
+</pre>
+<p>To run the script, you will need to install the following tools and add them to the PATH:</p>
+<ul>
+<li>Python 3.x (the script has been tested to work with 3.10)</li>
+<li>ImageMagick</li>
+<li>optipng</li>
+</ul>
+<h3 id="saving-images">Saving Images</h3>
+<p>Save images in PNG or WebP format in the Qt Design Studio project folder in the <code translate="no">doc/qtcreator/images</code> or <code translate="no">doc/qtdesignstudio/images</code> folder. Binary images can easily add megabytes to the Git history. To keep the history as small as possible, the Git post-commit hooks remind you to try to keep image file size below 50 kilobytes. To achieve this goal, crop images so that only relevant information is visible in them.</p>
+<p>If your screenshot contains lots of colorful content or a photo, for example, consider saving it in WebP format for a smaller image file size.</p>
+<h3 id="optimizing-images">Optimizing Images</h3>
+<p>Before committing PNG images, optimize them by using an image optimization tool. Optimization should not visibly reduce image quality. If it does, try saving the image as WebP instead.</p>
+<p>You can use a web service, such as <a href="https://tinypng.com" translate="no">https://tinypng.com</a>, or an image optimization tool to shrink PNG images. For example, you can use the Radical Image Optimization Tool (RIOT) or OptiPNG on Windows, ImageOptim on macOS, or some other tool available on Linux.</p>
+<p>With ImageOptim, you simply drag and drop the image files to the application. The following section describes the settings to use for RIOT.</p>
+<h4 id="using-riot">Using RIOT</h4>
+<p>Download and install <a href="http://luci.criosweb.ro/riot/" translate="no">RIOT</a>.</p>
+<p class="centerAlign"><img src="images/riot.png" alt="" /></p><p>Open your images in RIOT and use the following settings for them:</p>
+<ul>
+<li>Color reduction: Optimal 256 colors palette</li>
+<li>Reduce colors to: 256</li>
+<li>Best compression (slow)</li>
+<li>Color quantization algorithm: NeuQuant neural-net (slow)</li>
+<li>External optimizers: OptiPNG o3</li>
+</ul>
+<p>Compare the initial and optimized images to check that image quality is preserved. If the image quality deteriorates, do not use color reduction (select the <b translate="no">True Color</b> option, instead).</p>
+<p>You can also see the sizes of the initial and optimized image.</p>
+<h4 id="using-optipng">Using OptiPNG</h4>
+<p>Download and install <a href="https://sourceforge.net/projects/optipng/" translate="no">OptiPNG</a>.</p>
+<p>OptiPNG is a command-line tool that you can invoke from the Qt Design Studio project folder (or any folder that contains your project). To optimize a screenshot, enter the following command (here, from the Qt Design Studio project folder):</p>
+<pre class="cpp plain" translate="no">
+ optipng -o 7 -strip all doc/images/&lt;screenshot_name&gt;
+</pre>
+<h3 id="creating-gif-videos">Creating GIF Videos</h3>
+<p>Sometimes it is easier to explain how something works by recording a short GIF video. You can use any tool you like, for example <a href="https://www.screentogif.com/" translate="no">ScreenToGif</a>. GIF videos are typically bigger than screenshots, so try to make them as short and to the point as you can.</p>
+<p>Use the <code translate="no">\image</code> command to add GIF files to the documentation.</p>
+<h3 id="linking-to-youtube-videos">Linking to Youtube Videos</h3>
+<p>You can use the <code translate="no">\youtube</code> macro to link to a video on Youtube. The HTML docs show a thumbnail of the video with a play button.</p>
+<p>The support for the macro is defined in the <code translate="no">qtcreator\doc\config\macros.qdocconf</code> and <code translate="no">qtcreator\doc\config\macros-online.qdocconf</code> files. To use the macro, you need to save a thumbnail of the video in <code translate="no">qtcreator\doc\qtcreator\images\extraimages\images</code>.</p>
+<p>You can use the following URL to open the thumbnail image in a browser: <code translate="no">https://img.youtube.com/vi/&lt;ID&gt;/0.jpg</code>. The <i>&lt;ID&gt;</i> is the ID of the video on Youtube. For example, if the URL to the video is <code translate="no">https://www.youtube.com/watch?v=9ihYeC0YJ0M&amp;feature=youtu.be</code>, the ID is <code translate="no">9ihYeC0YJ0M</code>. Save the image file as <code translate="no">9ihYeC0YJ0M.jpg</code>.</p>
+<p>You must add the filename of the thumbnail file to <code translate="no">qtcreator-extraimages.qdocconf</code> and <code translate="no">qtdesignstudio-extraimages.qdocconf</code> files in the <code translate="no">\qtcreator\doc\qtcreator\images\extraimages</code> folder.</p>
+<p>If you'll only link to the video from the Qt Design Studio Manual or the Qt Design Studio Manual, you'll only need to add the thumbnail filename to the <code translate="no">extraimages.qdocconf</code> file for that project.</p>
+<p>For example, to enable linking to a video with the thumbnail filename <code translate="no">9ihYeC0YJ0M.jpg</code> in the Qt Design Studio Manual, the <code translate="no">qtdesignstudio-extraimages.qdocconf</code> file should contain the filename:</p>
+<pre class="cpp" translate="no">
+ {HTML<span class="operator">.</span>extraimages<span class="operator">,</span>qhp<span class="operator">.</span>qtdesignstudio<span class="operator">.</span>extraFiles} <span class="operator">+</span><span class="operator">=</span> \
+     images<span class="operator">/</span>commercial<span class="operator">.</span>png \
+     images<span class="operator">/</span><span class="number">9ihYeC0YJ0M.jpg</span>
+</pre>
+<p>To add a link to the video in text, you would write:</p>
+<pre class="cpp" translate="no">
+ \youtube <span class="number">9ihYeC0YJ0M</span>
+</pre>
+<div class="admonition note">
+<p><b>Note: </b>Leave out the filename extension when referring to the thumbnail.</p>
+</div>
+<h2 id="building-documentation">Building Documentation</h2>
+<p>You use QDoc to build the documentation. Build the documentation before submitting any documentation patches, to check its structure, contents, and the validity of the QDoc commands. The error messages that QDoc issues are generally very useful for troubleshooting.</p>
+<h3 id="setting-up-documentation-builds">Setting Up Documentation Builds</h3>
+<p>You can use an installed Qt version to build the documentation. The content and formatting of documentation are separated in QDoc. The documentation configuration, style sheets, and templates have changed over time, so they differ between Qt and Qt Design Studio versions.</p>
+<p>The templates to use are defined by the <code translate="no">qt5/qtbase/doc/global/qt-html-templates-offline.qdocconf</code> and <code translate="no">qt5/qtbase/doc/global/qt-html-templates-online.qdocconf</code> configuration file. They are fetched from Qt sources by adding the following lines to the qdocconf file:</p>
+<ul>
+<li><code translate="no">include ($QT_INSTALL_DOCS/global/qt-html-templates-offline.qdocconf)</code> for help files</li>
+<li><code translate="no">include ($QT_INSTALL_DOCS/global/qt-html-templates-online.qdocconf)</code> for publishing on the web</li>
+</ul>
+<div class="admonition note">
+<p><b>Note: </b>If the styles look wrong to you when reading help files in Qt Design Studio or Qt Assistant, you might be using the <a href="https://doc.qt.io/qt/qtextbrowser.html" translate="no">QTextBrowser</a> as the help engine backend instead of litehtml. For more information, see <a href="https://doc.qt.io/qtcreator/creator-help.html#selecting-the-help-viewer-backend" translate="no">Selecting the Help Viewer Backend</a>.</p>
+</div>
+<p>To build documentation for the sources from the <code translate="no">qtcreator</code> master branch, use build scripts defined in the doc.pri file. You can build the docs using either the offline or online style. The offline style is used for generating HTML files included in help files (.qch), whereas the online style is used at <a href="https://doc.qt.io/qtcreator/index.html" translate="no">doc.qt.io</a>.</p>
+<h4 id="using-cmake">Using CMake</h4>
+<p>When using CMake, the docs are built in the Qt Design Studio <i>build folder</i> or a separate doc build folder, not in the project folder.</p>
+<p>To get the correct product name and version when building Qt Design Studio Manual, you must run CMake with the branding option. The branding data is located in the Qt Design Studio (private) repository, <code translate="no">tqtc-plugin-qtquickdesigner</code>.</p>
+<p>To build docs with CMake in a separate doc build folder:</p>
+<ol class="1" type="1"><li>Create a folder for the built docs and switch to it. For example, <code translate="no">C:\dev\qtc-doc-build</code>.</li>
+<li>In the doc build folder, enter the following command:<pre class="cpp plain" translate="no">
+ cmake -DWITH_DOCS=ON &quot;-DCMAKE_PREFIX_PATH=&lt;path_to_qt&gt;&quot; &lt;path_to_qtcreator_src&gt;
+</pre>
+<p>For example (all on one line):</p>
+<pre class="cpp plain" translate="no">
+ C:\dev\qtc-doc-build&gt;cmake -DWITH_DOCS=ON
+     &quot;-DCMAKE_PREFIX_PATH=C:\Qt\6.4.0\msvc2019_64&quot;
+     C:\dev\qtc-super\qtcreator
+</pre>
+</li>
+<li>To also build Extending Qt Design Studio Manual, add the following option: <code translate="no">-DBUILD_DEVELOPER_DOCS=ON</code></li>
+<li>To also build the Qt Design Studio Manual, add the following option: <code translate="no">&quot;-DCMAKE_MODULE_PATH=&lt;absolute_path_to_qtquickdesignerrepo&gt;/studiodata/branding/&quot;</code><p>For example:</p>
+<pre class="cpp plain" translate="no">
+ C:\dev\qtc-doc-build&gt;cmake -DWITH_DOCS=ON -DBUILD_DEVELOPER_DOCS=ON
+     &quot;-DCMAKE_MODULE_PATH=C:\dev\tqtc-plugin-qtquickdesigner\studiodata\branding&quot;
+     &quot;-DCMAKE_PREFIX_PATH=C:\Qt\6.4.0\msvc2019_64&quot;
+     C:\dev\qtc-super\qtcreator
+</pre>
+</li>
+<li>To build the docs using the online style, use the following option instead of <code translate="no">-DWITH_DOCS=ON</code>: <code translate="no">-DWITH_ONLINE_DOCS=ON</code><p>For example:</p>
+<pre class="cpp plain" translate="no">
+ C:\dev\qtc-doc-build&gt;cmake -DWITH_ONLINE_DOCS=ON
+     -DBUILD_DEVELOPER_DOCS=ON
+     &quot;-DCMAKE_MODULE_PATH=C:\dev\tqtc-plugin-qtquickdesigner\studiodata\branding&quot;
+     &quot;-DCMAKE_PREFIX_PATH=C:\Qt\6.4.0\msvc2019_64&quot;
+     C:\dev\qtc-super\qtcreator
+</pre>
+<div class="admonition note">
+<p><b>Note: </b>If you already ran CMake <code translate="no">-DWITH_DOCS=ON</code> in a folder and want to switch to only online docs in that folder, you need to turn the offline docs off again:</p>
+</div>
+<pre class="cpp plain" translate="no">
+ cmake -DWITH_DOCS=OFF -DWITH_ONLINE_DOCS=ON
+</pre>
+</li>
+<li>Enter the following doc build command to build both HTML docs and the help files (.qch):<pre class="cpp plain" translate="no">
+ cmake --build . --target docs
+</pre>
+</li>
+<li>Alternatively, to build only the HTML docs, enter:<pre class="cpp plain" translate="no">
+ cmake --build . --target html_docs
+</pre>
+</li>
+</ol>
+<div class="admonition note">
+<p><b>Note: </b>You can enter <code translate="no">cmake-gui</code> to open the graphical CMake configuration tool, where you can select build options.</p>
+</div>
+<p>The HTML files for the documentation are generated in the following folders:</p>
+<ul>
+<li><code translate="no">doc/html/qtcreator</code></li>
+<li><code translate="no">doc/html/qtcreator-dev</code></li>
+<li><code translate="no">doc/html/qtdesignstudio</code></li>
+<li><code translate="no">doc/html/qtcreator-online</code></li>
+<li><code translate="no">doc/html/qtcreator-dev-online</code></li>
+<li><code translate="no">doc/html/qtdesignstudio-online</code></li>
+</ul>
+<p>The help files (<code translate="no">.qch</code>) are generated in the <code translate="no">share/doc/qtcreator</code> folder or in the <code translate="no">&lt;application_name&gt;.app/Contents/Resources/doc\</code> folder on macOS.</p>
+<p>You can view the HTML files in a browser and the help files in the Qt Design Studio <b translate="no">Help</b> mode. For more information about adding the help files to Qt Design Studio, see <a href="http://doc.qt.io/qtcreator/creator-help.html#adding-external-documentation" translate="no">Add external documentation</a>.</p>
+<h3 id="additional-build-commands">Additional Build Commands</h3>
+<p>Besides <code translate="no">docs</code> and <code translate="no">html_docs</code>, you can use the following build targets:</p>
+<ul>
+<li><code translate="no">html_docs_&lt;doc_config_file_name&gt;</code> - build the document (qtcreator/ qtcreator-dev/qtdesignstudio) in help format, but do not generate a help file (.qch)</li>
+<li><code translate="no">html_docs_&lt;doc_config_file_name&gt;-online</code> - build the document (qtcreator/qtcreator-dev/qtdesignstudio) in online format</li>
+<li><code translate="no">qch_docs_&lt;doc_config_file_name&gt;</code> - build the document (qtcreator/ qtcreator-dev/qtdesignstudio) in help format and generate a help file</li>
+</ul>
+</div>
+<!-- @@@qtcreator-documentation.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="external-tool-spec.html">External Tool Specification Files</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="coding-style.html">Qt Creator Coding Rules</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

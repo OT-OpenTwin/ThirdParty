@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-timeline-view.qdoc -->
+  <title>Timeline | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Timeline</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="qtquick-transition-editor.html" />
+  <link rel="next" href="qtquick-curve-editor.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="qtquick-transition-editor.html">Transitions</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtquick-curve-editor.html">Curves</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#navigating-in-timeline">Navigating in Timeline</a></li>
+<li class="level1"><a href="#zooming-in-timeline">Zooming in Timeline</a></li>
+<li class="level1"><a href="#setting-keyframe-track-color">Setting Keyframe Track Color</a></li>
+<li class="level1"><a href="#timeline-toolbar">Timeline Toolbar</a></li>
+<li class="level1"><a href="#keyframe-track-icons">Keyframe Track Icons</a></li>
+<li class="level1"><a href="#timeline-context-menu">Timeline Context Menu</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Timeline</h1>
+<!-- $$$qtquick-timeline-view.html-description -->
+<div class="descr" id="details">
+<p>You can use the timeline and keyframe based editor in the <b translate="no">Timeline</b> view to animate the properties of <a href="studio-terms.html#glossary-component" translate="no">components</a>. The view is empty until you create a timeline.</p>
+<p class="centerAlign"><img src="images/studio-timeline-empty.png" alt="&quot;Empty Timeline view&quot;" /></p><p>Select the <img src="images/plus.png" alt="" /> (<b translate="no">Add Timeline</b>) button to <a href="studio-timeline.html#creating-a-timeline" translate="no">create a timeline</a> and specify settings for it in the <b translate="no">Timeline Settings</b> dialog.</p>
+<p class="centerAlign"><img src="images/studio-timeline-settings.png" alt="&quot;Timeline Settings dialog&quot;" /></p><p>When you select <b translate="no">Close</b>, the <b translate="no">Timeline</b> view appears. It now displays a <a href="qtquick-timeline-view.html#timeline-toolbar" translate="no">toolbar</a> and a ruler but no keyframe tracks.</p>
+<p class="centerAlign"><img src="images/studio-timeline-no-tracks.webp" alt="&quot;Timeline view without keyframe tracks&quot;" /></p><p>To animate component properties in the <b translate="no">Timeline</b> view, you must <a href="studio-timeline.html#setting-keyframe-values" translate="no">insert keyframes</a> for them. In the <a href="qtquick-properties-view.html" translate="no">Properties</a> view, select <img src="images/action-icon.png" alt="" /> (<b translate="no">Actions</b>) &gt; <b translate="no">Insert Keyframe</b> for a property that you want to animate. A keyframe track is generated for each component that you insert keyframes for.</p>
+<p class="centerAlign"><img src="images/studio-timeline-with-empty-tracks.webp" alt="&quot;Timeline view with a property&quot;" /></p><p>You can now select <img src="images/local_record_keyframes.png" alt="" /> to <a href="studio-timeline.html#setting-keyframe-values" translate="no">record changes</a> in component properties while you <a href="qtquick-timeline-view.html#navigating-in-timeline" translate="no">navigate the timeline</a>.</p>
+<p>The following video shows how to insert keyframes for component properties and to animate them in <b translate="no">Timeline</b>:</p>
+<div class="video">
+<a href="https://www.youtube.com/watch/?v=V3Po15bNErw">
+<img src="images/V3Po15bNErw.jpg" title="Click to play in a browser" /></a>
+</div>
+<p>To try it yourself, follow the <a href="qtdesignstudio-loginui4-example.html" translate="no">Log In UI - Timeline</a> tutorial.</p>
+<p>For more information about creating timeline animations, see <a href="studio-timeline.html" translate="no">Creating Timeline Animations</a>.</p>
+<h2 id="navigating-in-timeline">Navigating in Timeline</h2>
+<p class="centerAlign"><img src="images/studio-timeline.webp" alt="&quot;Timeline view&quot;" /></p><p>You can navigate the timeline in the following ways:</p>
+<ul>
+<li>Drag the playhead (1) to a frame.</li>
+<li>Click on the ruler (2) to move to a frame.</li>
+<li>Select the <b translate="no">To Start (Home)</b>, <b translate="no">Previous (,)</b>, <b translate="no">Next (.)</b>, or <b translate="no">To End (End)</b> buttons (3), or use the keyboard shortcuts to move to the first, previous, next, or last frame on the timeline.</li>
+<li>Enter the number of a frame in the current keyframe field (4) to move to that frame.</li>
+<li>Select the <b translate="no">Previous</b> and <b translate="no">Next</b> buttons next to a property name on the timeline (5) to move to the previous or next keyframe for that property.</li>
+</ul>
+<h2 id="zooming-in-timeline">Zooming in Timeline</h2>
+<p>Use the slider on the toolbar to set the zooming level in the <b translate="no">Timeline</b> view. Select the <img src="images/zoom_small.png" alt="" /> and <img src="images/zoom_big.png" alt="" /> buttons to zoom out of or into the view.</p>
+<h2 id="setting-keyframe-track-color">Setting Keyframe Track Color</h2>
+<p>To change the color of a keyframe track, select <b translate="no">Override Color</b> in the context menu, and then select a color in the <a href="qtquick-properties.html#picking-colors" translate="no">color picker</a>. To reset the color, select <b translate="no">Reset Color</b>.</p>
+<p class="centerAlign"><img src="images/studio-timeline-keyframe-track-colors.webp" alt="&quot;Keyframe track colors in Timeline&quot;" /></p><h2 id="timeline-toolbar">Timeline Toolbar</h2>
+<p>The <b translate="no">Timeline</b> toolbar contains the following buttons and fields.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Button/Field</th><th >Action</th><th >Read More</th></tr></thead>
+<tr valign="top" class="odd"><td ><img src="images/settings.png" alt="" /></td><td >Opens the <b translate="no">Timeline Settings</b> dialog for editing timeline settings.</td><td ><a href="studio-timeline.html#creating-a-timeline" translate="no">Creating a Timeline</a></td></tr>
+<tr valign="top" class="even"><td >Timeline ID</td><td >Displays the ID of the current timeline.</td><td ><a href="studio-timeline.html#creating-a-timeline" translate="no">Creating a Timeline</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/to_first_frame.png" alt="" /></td><td ><b translate="no">To Start (Home)</b> moves to the first frame on the timeline.</td><td ><a href="qtquick-timeline-view.html#navigating-in-timeline" translate="no">Navigating in Timeline</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/back_one_frame.png" alt="" /></td><td ><b translate="no">Previous (,)</b> moves to the previous frame on the timeline.</td><td ><a href="qtquick-timeline-view.html#navigating-in-timeline" translate="no">Navigating in Timeline</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/start_playback.png" alt="" /></td><td ><b translate="no">Play (Space)</b> previews the animation.</td><td ><a href="studio-timeline.html#viewing-the-animation" translate="no">Viewing the Animation</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/forward_one_frame.png" alt="" /></td><td ><b translate="no">Next (.)</b> moves to the next frame on the timeline.</td><td ><a href="qtquick-timeline-view.html#navigating-in-timeline" translate="no">Navigating in Timeline</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/to_last_frame.png" alt="" /></td><td ><b translate="no">To End (End)</b> moves to the last frame on the timeline.</td><td ><a href="qtquick-timeline-view.html#navigating-in-timeline" translate="no">Navigating in Timeline</a></td></tr>
+<tr valign="top" class="even"><td >Current Keyframe</td><td >Displays the frame that the playhead is currently on. Enter a number in the field to move the playhead to the respective frame.</td><td ><a href="qtquick-timeline-view.html#navigating-in-timeline" translate="no">Navigating in Timeline</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/global_record_keyframes.png" alt="" /></td><td >Records changes in keyframe values.</td><td ><a href="studio-timeline.html#setting-keyframe-values" translate="no">Setting Keyframe Values</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/curve_editor.png" alt="" /></td><td >Opens <b translate="no">Easing Curve Editor</b> for attaching an easing curve to the selected transition.</td><td ><a href="qtquick-editing-easing-curves.html" translate="no">Editing Easing Curves</a></td></tr>
+<tr valign="top" class="odd"><td >Start Frame</td><td >Specifies the first frame of the timeline. Negative values are allowed. The difference between the start frame and the end frame determines the duration of the animation.</td><td ><a href="studio-timeline.html#creating-a-timeline" translate="no">Creating a Timeline</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/zoomOut.png" alt="" /></td><td ><b translate="no">Zoom Out</b> (<b>Ctrl+-</b>) zooms out of the view.</td><td ><a href="qtquick-timeline-view.html#zooming-in-timeline" translate="no">Zooming in Timeline</a></td></tr>
+<tr valign="top" class="odd"><td >Slider</td><td >Sets the zooming level.</td><td ><a href="qtquick-timeline-view.html#zooming-in-timeline" translate="no">Zooming in Timeline</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/zoomIn.png" alt="" /></td><td ><b translate="no">Zoom In</b> (<b>Ctrl++</b>) zooms into the view.</td><td ><a href="qtquick-timeline-view.html#zooming-in-timeline" translate="no">Zooming in Timeline</a></td></tr>
+<tr valign="top" class="odd"><td >End Frame</td><td >Specifies the last frame of the timeline. The difference between the start frame and the end frame determines the duration of the animation, so if the start frame is 0, the end frame equals the duration.</td><td ><a href="studio-timeline.html#creating-a-timeline" translate="no">Creating a Timeline</a></td></tr>
+<tr valign="top" class="even"><td >State Name</td><td >Displays the name of the current state.</td><td ><a href="studio-timeline.html#binding-animations-to-states" translate="no">Binding Animations to States</a></td></tr>
+</table></div>
+<h2 id="keyframe-track-icons">Keyframe Track Icons</h2>
+<p>Each keyframe track can contain the following buttons and markers.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Button/Icon</th><th >Action</th><th >Read More</th></tr></thead>
+<tr valign="top" class="odd"><td ><img src="images/previous_keyframe.png" alt="" /></td><td >Jumps to the previous frame on the timeline.</td><td ><a href="studio-timeline.html#setting-keyframe-values" translate="no">Setting Keyframe Values</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/next_keyframe.png" alt="" /></td><td >Jumps to the next frame on the timeline.</td><td ><a href="studio-timeline.html#setting-keyframe-values" translate="no">Setting Keyframe Values</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/local_record_keyframes.png" alt="" /></td><td >Records changes in keyframe values for a particular property.</td><td ><a href="studio-timeline.html#setting-keyframe-values" translate="no">Setting Keyframe Values</a> <span id="keyframe-marker"></span></td></tr>
+<tr valign="top" class="even"><td ><img src="images/keyframe.png" alt="" /></td><td >Indicates the type of easing curve attached to the keyframe. When a keyframe track is selected, the keyframe markers on it turn gray, and when a keyframe itself is selected, its marker turns brown:<ul>
+<li><img src="images/keyframe_linear_active.png" alt="" /> - linear easing curve</li>
+<li><img src="images/keyframe_manualbezier_active.png" alt="" /> - manually set Bezier curve</li>
+<li><img src="images/keyframe_autobezier_active.png" alt="" /> - automatically set Bezier curve</li>
+<li><img src="images/keyframe_lineartobezier_active.png" alt="" /> - linear-to-Bezier curve</li>
+</ul>
+</td><td ><a href="qtquick-editing-easing-curves.html" translate="no">Editing Easing Curves</a></td></tr>
+</table></div>
+<h2 id="timeline-context-menu">Timeline Context Menu</h2>
+<p>The following table summarizes the context menu items available for each keyframe track for a component, property, or keyframe marker and provides links to more information about them.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >To Learn About</th><th >Go To</th></tr></thead>
+<tr valign="top" class="odd"><td >Delete All Keyframes</td><td ><a href="studio-timeline.html#deleting-keyframes" translate="no">Deleting Keyframes</a></td></tr>
+<tr valign="top" class="even"><td >Add Keyframes at Current Frame</td><td ><a href="studio-timeline.html#setting-keyframe-values" translate="no">Setting Keyframe Values</a></td></tr>
+<tr valign="top" class="odd"><td >Copy All Keyframes</td><td ><a href="studio-timeline.html#copying-keyframes" translate="no">Copying Keyframes</a></td></tr>
+<tr valign="top" class="even"><td >Paste Keyframes</td><td ><a href="studio-timeline.html#copying-keyframes" translate="no">Copying Keyframes</a></td></tr>
+<tr valign="top" class="odd"><td >Remove Property</td><td ><a href="studio-timeline.html#setting-keyframe-values" translate="no">Setting Keyframe Values</a></td></tr>
+<tr valign="top" class="even"><td >Delete Keyframe</td><td ><a href="studio-timeline.html#deleting-keyframes" translate="no">Deleting Keyframes</a></td></tr>
+<tr valign="top" class="odd"><td >Edit Easing Curve</td><td ><a href="qtquick-editing-easing-curves.html" translate="no">Editing Easing Curves</a></td></tr>
+<tr valign="top" class="even"><td >Edit Keyframe</td><td ><a href="studio-timeline.html#editing-keyframe-values" translate="no">Editing Keyframe Values</a></td></tr>
+<tr valign="top" class="odd"><td >Override Color</td><td ><a href="qtquick-timeline-view.html#setting-keyframe-track-color" translate="no">Setting Keyframe Track Color</a></td></tr>
+<tr valign="top" class="even"><td >Reset Color</td><td ><a href="qtquick-timeline-view.html#setting-keyframe-track-color" translate="no">Setting Keyframe Track Color</a></td></tr>
+</table></div>
+</div>
+<!-- @@@qtquick-timeline-view.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="qtquick-transition-editor.html">Transitions</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtquick-curve-editor.html">Curves</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

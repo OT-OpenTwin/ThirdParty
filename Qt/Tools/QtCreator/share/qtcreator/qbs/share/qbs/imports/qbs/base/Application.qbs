@@ -29,7 +29,7 @@
 ****************************************************************************/
 
 NativeBinary {
-    type: isForAndroid && !consoleApplication ? ["android.apk"] : ["application"]
+    type: isForAndroid && !consoleApplication ? ["android.package"] : ["application"]
 
     property bool usesNativeCode
 
@@ -60,10 +60,18 @@ NativeBinary {
     installDir: isBundle ? "Applications" : "bin"
 
     Group {
-        condition: install
-        fileTagsFilter: isBundle ? "bundle.content" : "application";
+        condition: install && _installable
+        fileTagsFilter: isBundle ? "bundle.content" : "application"
         qbs.install: true
         qbs.installDir: installDir
         qbs.installSourceBase: isBundle ? destinationDirectory : outer
+    }
+
+    Group {
+        condition: installDebugInformation && _installable
+        fileTagsFilter: ["debuginfo_app"]
+        qbs.install: true
+        qbs.installDir: debugInformationInstallDir
+        qbs.installSourceBase: destinationDirectory
     }
 }

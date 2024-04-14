@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
 <!-- creator-projects-opening.qdoc -->
-  <title>Opening Projects | Qt Creator Manual</title>
+  <title>Open projects | Qt Creator Manual</title>
   <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
   <script type="text/javascript">
     document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
@@ -22,54 +21,73 @@
 </head>
 <body>
 <div class="header" id="qtdocheader">
-  <div class="main">
+    <div class="main">
     <div class="main-rounded">
-      <div class="navigationbar">
-        <table><tr>
-<td ><a href="index.html">Qt Creator Manual</a></td><td >Opening Projects</td></tr></table><table class="buildversion"><tr>
-<td id="buildversion" width="100%" align="right"><a href="index.html">Qt Creator Manual 4.9&#x2e;1</a></td>
-        </tr></table>
-      </div>
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Open projects</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
     </div>
+</div>
 <div class="content">
 <div class="line">
 <div class="content mainContent">
-  <link rel="prev" href="creator-project-creating.html" />
-  <link rel="next" href="creator-project-qmake-libraries.html" />
+  <link rel="prev" href="creator-how-tos.html" />
 <p class="naviNextPrevious headerNavi">
-<a class="prevPage" href="creator-project-creating.html">Creating Projects</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-project-qmake-libraries.html">Adding Libraries to Projects</a>
-</p><p/>
-<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
-<h1 class="title">Opening Projects</h1>
-<span class="subtitle"></span>
-<!-- $$$creator-project-opening.html-description -->
-<div class="descr"> <a name="details"></a>
-<p>Qt Creator stores information that it needs to build projects in a .user file. If Qt Creator cannot find the file when you open an existing project, it prompts you to enter the information. If you created the project by using another Qt Creator instance, Qt Creator asks whether you want to use the old settings. The settings are specific to the development environment, and should not be copied from one environment to another. Therefore, we recommend that you click <b>No</b> and enter the information again in the <b>Configure Project</b> tab.</p>
-<p>The <b>Configure Project</b> tab displays a list of <a href="creator-glossary.html#glossary-buildandrun-kit">kits</a> for building and running projects, that are installed on the development PC and configured in <b>Tools</b> &gt; <b>Options</b> &gt; <b>Kits</b>. Select the kits that you want to build and run the project with.</p>
-<p class="centerAlign"><img src="images/qtcreator-open-project-kits.png" alt="&quot;Configure Project tab&quot;" /></p><p>Even if you do not intend to build the project, the C++ and QML code models need a Qt version and compiler to offer code completion. To specify them, select the <b>Options</b> link, or select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Kits</b>.</p>
-<p>Qt for Python projects rely on the <a href="creator-language-servers.html">experimental language server client</a> for code completion, highlighting, and other useful features.</p>
-<p>If Qt Creator cannot find an existing build for a particular <a href="creator-glossary.html#glossary-buildandrun-kit">kit</a>, it starts out from a clean slate, and creates new debug and release build configurations in the specified directory. Qt Creator suggests a name and location for the directory that you can change.</p>
-<p>If you have built the project before, Qt Creator can use the existing build configuration to make the exact same build as found in the directory available to Qt Creator. To import a build, specify a directory in the <b>Import Build from</b> section and select <b>Import</b>.</p>
-<p>You can edit the build configuration later. For more information, see <a href="creator-build-settings.html#editing-build-configurations">Editing Build Configurations</a>.</p>
-<p>To open a project:</p>
-<ol class="1" type="1"><li>Select <b>File</b> &gt; <b>Open File or Project</b> (<b>Ctrl+O</b> or <b>Cmd+O</b> on macOS) and select the project file for the project to open: <i>.pro</i> (qmake), <i>CMakeLists.txt</i> (CMake), <i>.qbs</i> (Qbs), <i>pyproject</i> (Python), or <i>Makefile.am</i> (Autotools, experimental).</li>
-<li>In the <b>Configure Project</b> tab, select kits for building and running your project, and click <b>Configure Project</b>.</li>
-</ol>
-<p>You can use the following keyboard shortcuts to open projects, depending on the mode you are currently in:</p>
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
 <ul>
-<li>In all modes, select <b>Ctrl+O</b> (<b>Cmd+O</b> on macOS) to open the <b>Open File</b> dialog, where you can select a project file to open a project.</li>
-<li>In all modes, except the <b>Help</b> mode, select <b>Ctrl+Shift+O</b> (<b>Cmd+Shift+O</b> on macOS) to open the <b>Load Project</b> dialog, where you can select a project file to open a project.</li>
-<li>In the <b>Welcome</b> mode, <b>Projects</b> tab, select <b>Ctrl+Shift+number</b> (<b>Cmd+Shift+number</b> on macOS), where the number is the number of a project in the list of recently opened projects.</li>
+<li class="level1"><a href="#re-configure-projects">Re-configure projects</a></li>
+<li class="level1"><a href="#import-builds">Import builds</a></li>
+<li class="level1"><a href="#show-progress-information">Show progress information</a></li>
 </ul>
-<p>Qt Creator parses all the source files in the project and performs a semantic analysis to build up the information that it needs for functions such as navigation and finding usages. A progress bar is displayed during parsing. To show or hide detailed progress information, select <b>Toggle Progress Details</b> (1).</p>
-<p class="centerAlign"><img src="images/creator-toggle-progress-bar.png" alt="&quot;Toggle Progress Details button&quot;" /></p></div>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Open projects</h1>
+<!-- $$$creator-project-opening.html-description -->
+<div class="descr" id="details">
+<p>To open a project, open the project file for the project: <i>CMakeLists.txt</i> (CMake), <i>.pro</i> (qmake), <i>.qbs</i> (Qbs), <i>meson.build</i> (Meson), <i>pyproject</i> (Python), or <i>Makefile.am</i> (Autotools, experimental).</p>
+<p>You can open a project in the following ways:</p>
+<ul>
+<li>Select <b translate="no">File</b> &gt; <b translate="no">Open File or Project</b>.</li>
+<li>In the <b translate="no">Welcome</b> mode, <b translate="no">Projects</b> tab, select <b translate="no">Open Project</b> (1).<p class="centerAlign"><img src="images/qtcreator-welcome-open-projects.webp" alt="{Ways to open projects in the Welcome mode Projects tab}" /></p></li>
+<li>In the <b translate="no">Projects</b> tab, select a project in the list of recently opened projects (2).</li>
+<li>In the <a href="creator-projects-view.html" translate="no">Projects</a> view, right-click to open a context menu and select <b translate="no">Load Project</b> to open the <b translate="no">Load Project</b> dialog, where you can select a project file.</li>
+<li>Use the following keyboard shortcuts, depending on the mode you are currently in:<ul>
+<li>In all modes, press <b>Ctrl+O</b> (<b>Cmd+O</b> on macOS) to open the <b translate="no">Open File</b> dialog, where you can select a project file.</li>
+<li>On Windows and Linux, in all modes except the <b translate="no">Help</b> mode, press <b>Ctrl+Shift+O</b> to open the <b translate="no">Load Project</b> dialog.</li>
+<li>In the <b translate="no">Welcome</b> mode, <b translate="no">Projects</b> tab, press <b>Ctrl+Shift+number</b> (<b>Cmd+Shift+number</b> on macOS), where the number is the number of a project in the list of recently opened projects (3).</li>
+</ul>
+</li>
+</ul>
+<h2 id="re-configure-projects">Re-configure projects</h2>
+<p>Qt Creator stores information that it needs to build projects in a .user file. If Qt Creator cannot find the file when you open an existing project, it prompts you to enter the information.</p>
+<p>If you used another Qt Creator instance to create the project, Qt Creator asks whether you want to use the old settings. The settings are specific to the development environment, and you should not copy them from one environment to another. Therefore, we recommend that you select <b translate="no">No</b> and enter the information again in the <b translate="no">Configure Project</b> tab.</p>
+<p>To re-configure projects:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Configure Project</b> tab, select <a href="creator-glossary.html#glossary-buildandrun-kit" translate="no">kits</a> for building and running your project.<p class="centerAlign"><img src="images/qtcreator-open-project-kits.png" alt="{Configure Project tab}" /></p></li>
+<li>Select <b translate="no">Configure Project</b>.</li>
+</ol>
+<p>The <b translate="no">Configure Project</b> tab displays a list of kits that you install on the development PC and configure in <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Kits</b>.</p>
+<p>Even if you do not intend to build the project, the C++ and QML code models need a Qt version and compiler to offer code completion. To specify them, select the <b translate="no">Preferences</b> link, or select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Kits</b>.</p>
+<p>Qt for Python projects rely on the <a href="creator-language-servers.html" translate="no">language server client</a> for code completion, highlighting, and other useful features.</p>
+<p>If Qt Creator cannot find an existing build for a particular kit, it starts out from a clean slate and creates new debug and release build configurations in the specified directory. Qt Creator suggests a name and location for the directory that you can change.</p>
+<h2 id="import-builds">Import builds</h2>
+<p>If you have built the project before, Qt Creator can use the existing build configuration to make the exact same build available to you. To import a build, specify a directory in the <b translate="no">Import Build From</b> section of the <b translate="no">Configure Project</b> tab and select <b translate="no">Import</b>.</p>
+<p>You can edit the build configuration later. For more information, see <a href="creator-build-settings.html#edit-build-configurations" translate="no">Edit build configurations</a>.</p>
+<h2 id="show-progress-information">Show progress information</h2>
+<p>Qt Creator parses all the source files in the project and performs a semantic analysis to build up the information that it needs for functions such as navigation and finding usages. A progress bar is displayed during parsing.</p>
+<p>To show or hide detailed progress information, select <b translate="no">Toggle Progress Details</b> (1).</p>
+<p class="centerAlign"><img src="images/qtcreator-toggle-progress-bar.webp" alt="{Toggle Progress Details button}" /></p><p>You can drag the progress bar to another position. The position is saved for later. Select the <img src="images/pin.png" alt="" /> (<b translate="no">Pin</b>) button to pin the progress bar back to the toggle button.</p>
+</div>
+<p><b>See also </b><a href="creator-how-to-activate-kits.html" translate="no">Activate kits for a project</a>, <a href="creator-targets.html" translate="no">Add kits</a>, and <a href="creator-preferences-kits.html#kits-tab" translate="no">Kits</a>.</p>
 <!-- @@@creator-project-opening.html -->
 <p class="naviNextPrevious footerNavi">
-<a class="prevPage" href="creator-project-creating.html">Creating Projects</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-project-qmake-libraries.html">Adding Libraries to Projects</a>
+<a class="prevPage" href="creator-how-tos.html">How To</a>
 </p>
         </div>
        </div>
@@ -78,7 +96,7 @@
 </div>
 <div class="footer">
    <p>
-   <acronym title="Copyright">&copy;</acronym> 2019 The Qt Company Ltd.
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
    Documentation contributions included herein are the copyrights of
    their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
    of their respective owners. </p>

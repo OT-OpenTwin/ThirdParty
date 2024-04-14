@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- rainSnowParticles.qdoc -->
+  <meta name="description" content="Illustrates how to create a rain and snow effect with the Qt Design Studio particle system.">
+  <title>Particle System: Rain and Snow Effect | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="gstutorials.html" translate="no">Tutorials</a></li>
+<li>Particle System: Rain and Snow Effect</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#creating-a-rain-effect">Creating a Rain Effect</a></li>
+<li class="level2"><a href="#adding-a-particle-system-to-your-scene">Adding a Particle System to Your Scene</a></li>
+<li class="level2"><a href="#adjusting-the-behavior-and-apperance-of-the-particle-system">Adjusting the Behavior and Apperance of the Particle System</a></li>
+<li class="level2"><a href="#adjusting-the-size-of-the-emitting-area">Adjusting the Size of the Emitting Area</a></li>
+<li class="level1"><a href="#creating-a-snow-effect">Creating a Snow Effect</a></li>
+<li class="level2"><a href="#turning-the-rain-into-snow">Turning the Rain into Snow</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Particle System: Rain and Snow Effect</h1>
+<!-- $$$rain-snow-particle-effect.html-description -->
+<div class="descr" id="details">
+<p class="centerAlign"><img src="images/snow-particles.png" alt="" /></p><p>The <i>Rain and Snow Effect</i> tutorial illustrates how you can add a rain and a snow effect to your scene using the Qt Design Studio particle system.</p>
+<p>You need to download the starting project for this tutorial from <a href="https://git.qt.io/public-demos/qtdesign-studio/-/tree/master/tutorial%20projects/rain-snow-particles/Start" translate="no">here</a> before you start.</p>
+<p>Download the project and open the <i>faceparticles.qmlproject</i> file in Qt Design Studio to get started.</p>
+<p class="centerAlign"><img src="images/rain-snow-tutorial-start.png" alt="" /></p><h2 id="creating-a-rain-effect">Creating a Rain Effect</h2>
+<h3 id="adding-a-particle-system-to-your-scene">Adding a Particle System to Your Scene</h3>
+<p>To add a particle system, you first need to import the <a href="https://doc.qt.io/qt/qtquick3d-module.html" translate="no">QtQuick3D</a>.Particles3D module to your project:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Component</b> view, select <img src="images/plus.png" alt="" /> .</li>
+<li>Find <a href="https://doc.qt.io/qt/qtquick3d-module.html" translate="no">QtQuick3D</a>.Particles3D and select it to add it to your project.</li>
+<li>From <b translate="no">Components</b>, drag a <b translate="no">Particle System</b> to <b translate="no">scene</b> in <b translate="no">Navigator</b>.</li>
+</ol>
+<p>Now you have added a particle system to your scene.</p>
+<p class="centerAlign"><font color="red">[Missing image rain-snow-tutorial-particle-system]</font></p><h3 id="adjusting-the-behavior-and-apperance-of-the-particle-system">Adjusting the Behavior and Apperance of the Particle System</h3>
+<p>Next, you adjust the position, behavior, and apperance of the particle system to create a simple rain effect:</p>
+<ol class="1" type="1"><li>Adjust the position of the particle system to align with the sphere. In <b translate="no">Navigator</b>, select <i>particleSystem</i> and in <b translate="no">Properties</b>, set <b translate="no">Translation</b> &gt; <b translate="no">Y</b> to 193.</li>
+<li>Set the <i>rain-drop-white-square.png</i> as texture for the particles. From <b translate="no">Assets</b>, drag <i>rain-drop-white-square.png</i> to <i>spriteParticle</i>.</li>
+<li>Adjust the apperance and behavior of the sprite further. In <b translate="no">Properties</b>, set:<ul>
+<li><b translate="no">Particle Scale</b> to 10.</li>
+<li><b translate="no">Max Amount</b> to 1000.</li>
+<li><b translate="no">Color</b> to #91ffffff.</li>
+<li><b translate="no">Fade In Effect</b> to FadeNone.</li>
+<li><b translate="no">Fade Out Effect</b> to FadeNone.</li>
+</ul>
+</li>
+<li>Now you have set the apperance of the particles. Next, adjust the particle emitter. In <b translate="no">Navigator</b>, select <b translate="no">particleEmitter</b>, and in <b translate="no">Properties</b> set:<ul>
+<li><b translate="no">System</b> to particleSystem.</li>
+<li><b translate="no">Emit Rate</b> to 1500.</li>
+<li><b translate="no">Life Span</b> to 100.</li>
+<li><b translate="no">Life Span Variation</b> to 0.</li>
+<li><b translate="no">Particle End Scale</b> to 1.</li>
+<li><b translate="no">Particle Scale Variation</b> to 0,5.</li>
+<li><b translate="no">Particle End Scale Variation</b> to 0,5.</li>
+<li><b translate="no">Particle Rotation</b> &gt; <b translate="no">Variation</b> &gt; <b translate="no">X</b>, <b translate="no">Y</b>, and <b translate="no">Z</b> to 0.</li>
+<li><b translate="no">Particle Rotation</b> &gt; <b translate="no">Velocity Variation</b> &gt; <b translate="no">X</b>, <b translate="no">Y</b>, and <b translate="no">Z</b> to 0.</li>
+<li><b translate="no">Transform</b> &gt; <b translate="no">Translation</b> <b translate="no">Y</b> to -69.</li>
+</ul>
+</li>
+<li>Finally, you set the direction of the particles. In <b translate="no">Navigator</b>, select <b translate="no">dir3d</b> and in <b translate="no">Properties</b> set:<ul>
+<li><b translate="no">Direction</b> &gt; <b translate="no">Y</b> to -500.</li>
+<li><b translate="no">Direction</b> &gt; <b translate="no">Z</b> to 0.</li>
+<li><b translate="no">Direction Variation</b> &gt; <b translate="no">X</b>, <b translate="no">Y</b>, and <b translate="no">Z</b> to 0.</li>
+</ul>
+</li>
+</ol>
+<h3 id="adjusting-the-size-of-the-emitting-area">Adjusting the Size of the Emitting Area</h3>
+<p>By default, the <b translate="no">Particle Emitter</b> emits particles from one point in the scene. In this scene you want to emit particles from a bigger area matching the size of the sphere. To do this, you need to add a <b translate="no">Particle Shape</b> component:</p>
+<ol class="1" type="1"><li>From <b translate="no">Components</b>, drag a <b translate="no">Particle Shape</b> component to <b translate="no">particleSystem</b> in <b translate="no">Navigator</b>.</li>
+<li>In <b translate="no">Navigator</b>, select <b translate="no">particleShape</b>, and in <b translate="no">Properties</b> set:<ul>
+<li><b translate="no">Type</b> to <b translate="no">Sphere</b>.</li>
+<li><b translate="no">Extends</b> <b translate="no">X</b> to 85.</li>
+<li><b translate="no">Extends</b> <b translate="no">Y</b> to 85.</li>
+<li><b translate="no">Extends</b> <b translate="no">Z</b> to 85.</li>
+</ul>
+</li>
+<li>In <b translate="no">Navigator</b>, select <b translate="no">particleEmitter</b>, and in <b translate="no">Particle</b> set <b translate="no">Shape</b> to <b translate="no">particleShape</b>.</li>
+</ol>
+<p class="centerAlign"><img src="images/rain-snow-tutorial-navigator.png" alt="" /></p><p>Now, the rain effect is ready. Press <b>Alt+P</b> to see it in the live preview.</p>
+<h2 id="creating-a-snow-effect">Creating a Snow Effect</h2>
+<p>To make it easy, you can duplicate the particle system you created for the rain effect and adjust the properties to create a snow effect. To do this, first create a new state for the snow effect:</p>
+<ul>
+<li>In <b translate="no">States</b>, select <b translate="no">Create New State</b>.</li>
+</ul>
+<p class="centerAlign"><img src="images/rain-snow-tutorial-states.png" alt="" /></p><h3 id="turning-the-rain-into-snow">Turning the Rain into Snow</h3>
+<ol class="1" type="1"><li>With the new state that you just created selected in <b translate="no">States</b>, in <b translate="no">Navigator</b>, select <b translate="no">spriteParticle</b> and set <b translate="no">Color</b> to #ffffff.</li>
+<li>In <b translate="no">Navigator</b>, select <b translate="no">texture1</b> and set <b translate="no">Source</b> to <i>snowflake.png</i>.</li>
+<li>In <b translate="no">Navigator</b>, select <b translate="no">particleEmitter</b> and set:<ul>
+<li><b translate="no">Emit Rate</b> to 250.</li>
+<li><b translate="no">Life Span</b> to 450.</li>
+<li><b translate="no">Particle Rotation</b> &gt; <b translate="no">Variation</b> &gt; <b translate="no">X</b>, <b translate="no">Y</b>, and <b translate="no">Z</b> to 180.</li>
+<li><b translate="no">Particle Rotation</b> &gt; <b translate="no">Velocity Variation</b> &gt; <b translate="no">X</b>, <b translate="no">Y</b>, and <b translate="no">Z</b> to 200.</li>
+</ul>
+</li>
+<li>In <b translate="no">Navigator</b>, select <b translate="no">particleEmitter</b> &gt; <b translate="no">dir3d</b> and set:<ul>
+<li><b translate="no">Direction</b> &gt; <b translate="no">Y</b> to -100.</li>
+<li><b translate="no">Direction Variation</b> <b translate="no">X</b>, <b translate="no">Y</b>, and <b translate="no">Z</b> to 10.</li>
+</ul>
+</li>
+</ol>
+<p>Now you can run the snow effect in the live preview:</p>
+<ol class="1" type="1"><li>In <b translate="no">States</b> next to <b translate="no">State1</b> select <img src="images/action-icon.png" alt="" /> and select <b translate="no">Set as Default</b>.</li>
+<li>Press <b>Alt+P</b>.</li>
+</ol>
+<p class="centerAlign"><img src="images/rain-snow-tutorial-default-state.png" alt="" /></p></div>
+<p><b>See also </b><a href="studio-3d-particles.html" translate="no">Particles</a>.</p>
+<!-- @@@rain-snow-particle-effect.html -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

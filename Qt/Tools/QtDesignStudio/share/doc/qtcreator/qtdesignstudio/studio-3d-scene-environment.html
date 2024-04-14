@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-scene-environment.qdoc -->
+  <title>Scene Environment | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Scene Environment</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-3d-camera.html" />
+  <link rel="next" href="studio-3d-morph-target.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-3d-camera.html">Cameras</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-morph-target.html">Morph Target</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#setting-the-scene-environment">Setting the Scene Environment</a></li>
+<li class="level1"><a href="#applying-antialiasing">Applying Antialiasing</a></li>
+<li class="level1"><a href="#applying-ambient-occlusion">Applying Ambient Occlusion</a></li>
+<li class="level1"><a href="#setting-the-light-probe">Setting the Light Probe</a></li>
+<li class="level2"><a href="#additional-light-probe-properties-in-qt-5">Additional Light Probe Properties in Qt 5</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Scene Environment</h1>
+<!-- $$$studio-3d-scene-environment.html-description -->
+<div class="descr" id="details">
+<p>You can use the <b translate="no">Scene Environment</b> component to specify how a scene is rendered globally. You can specify settings for antialiasing, scene background, ambient occlusion, and image-based lighting in the <a href="qtquick-properties-view.html" translate="no">Properties</a> view. The <b translate="no">Scene Environment</b> component is available in <b translate="no">Components</b> &gt; <b translate="no">Qt Quick 3D</b>. It is automatically included under the 3D view component in <a href="studio-projects.html" translate="no">projects created</a> using the <b translate="no">Qt Quick 3D Application</b> wizard template.</p>
+<div class="admonition note">
+<p><b>Note: </b>If you select <b translate="no">Qt 5</b> as the <b translate="no">Target Qt Version</b> when <a href="studio-projects.html" translate="no">creating your project</a>, the available properties for this component will be slightly different. The properties may also be situated differently in the <b translate="no">Properties</b> view.</p>
+</div>
+<h2 id="setting-the-scene-environment">Setting the Scene Environment</h2>
+<p>In the <b translate="no">Scene Environment</b> section of the <b translate="no">Properties</b> view, you can specify whether and how the background of the scene should be cleared, specify whether you wish to perform depth-tests on the scene, apply post-processing effects to the scene, and define how colors are tonemapped before the scene is rendered.</p>
+<p class="centerAlign"><img src="images/studio-3d-scene-environment-properties.png" alt="&quot;The Scene Environment properties&quot;" /></p><p>The <b translate="no">Clear color</b> property specifies which color will be used to clear the background of the scene if <b translate="no">Background mode</b> is defined as <b translate="no">Color</b>. Use the <a href="qtquick-properties.html#picking-colors" translate="no">color picker</a> to select the color of your choice.</p>
+<p>The <b translate="no">Background mode</b> property defines whether the background of the scene should be cleared as well as the manner of clearing it. Use the dropdown menu to select one of the available modes:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Background Mode</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >Transparent</td><td >The scene is cleared to be transparent, which is useful for rendering 3D content on top of another item. This mode has no effect when the <b translate="no">View3D</b> component is using <b translate="no">Underlay</b> or <b translate="no">Overlay</b> as the render mode.</td></tr>
+<tr valign="top" class="even"><td >Color</td><td >The scene is cleared with the color specified by the <b translate="no">Clear color</b> property. This mode has no effect when the <b translate="no">View3D</b> component is using the <b translate="no">Underlay</b> or <b translate="no">Overlay</b> as the render mode.</td></tr>
+<tr valign="top" class="odd"><td >SkyBox</td><td >The scene will not be cleared, but instead a <b translate="no">SkyBox</b> or Skydome will be rendered. Define an image as a <b translate="no">SkyBox</b> using the <b translate="no">Image</b> property in the <b translate="no">Light probe</b> section (In Qt 5, the <b translate="no">Light Probe</b> property in the <b translate="no">Image-Based Lighting</b> group.</td></tr>
+</table></div>
+<p>To leave the scene uncleared, select <b translate="no">Unspecified</b> as the <b translate="no">Background mode</b>.</p>
+<p>You can perform depth tests to optimize the scene environment. To skip the depth tests, deselect the <b translate="no">Enable depth test</b> checkbox. Note that skipping the tests can cause rendering errors.</p>
+<p>To have the renderer write to the depth buffer as part of the color pass, deselect the <b translate="no">Enable depth prepass</b> checkbox. Deselecting the checkbox disables the depth prepass on any GPU that uses tiled rendering architecture.</p>
+<p>The <b translate="no">Effect</b> property defines a post-processing effect to the scene. Use the dropdown menu to select one of the effects that will be applied to the entire scene. The order of the effects is significant since the result of each effect is fed to the next.</p>
+<p>The <b translate="no">Tonemap mode</b> property defines how colors are tonemapped before rendering. Select <b translate="no">ToneMapModeLinear</b> to apply linear tonemapping, which gamma corrects colors and returns them in sRGB color space. You can also select <b translate="no">ToneMapModeAces</b> to apply Academy Color Encoding System, <b translate="no">ToneMapModeHejlDawson</b> to apply the Hejl-Dawson tonemapping, or <b translate="no">ToneMapModeFilmic</b> to apply filmic tonemapping.</p>
+<div class="admonition note">
+<p><b>Note: </b>The <b translate="no">Tonemap mode</b> property is not available in Qt 5.</p>
+</div>
+<h2 id="applying-antialiasing">Applying Antialiasing</h2>
+<p>Antialiasing is used to make curved lines smoother on the screen. In the <b translate="no">Antialiasing</b> section of the <b translate="no">Properties</b> view, you can specify the mode and quality of antialiasing and also enable temporal antialiasing and define its strength.</p>
+<p class="centerAlign"><img src="images/studio-3d-scene-environment-antialiasing.png" alt="&quot;The Antialiasing properties&quot;" /></p><p>The <b translate="no">Antialiasing mode</b> property specifies the mode of antialiasing applied when the scene is rendered. Select one of the following modes using the dropdown menu:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Mode of Antialiasing</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >MSAA</td><td >Applies multisample antialiasing. The scene is rendered in a higher resolution and then scaled down to actual resolution.</td></tr>
+<tr valign="top" class="even"><td >NoAA</td><td >No antialiasing is applied.</td></tr>
+<tr valign="top" class="odd"><td >SSAA</td><td >Supersample antialiasing is applied. The edges of geometry are supersampled, resulting in smoother silhouettes. This technique has no effect on the materials inside geometry.</td></tr>
+<tr valign="top" class="even"><td >ProgressiveAA</td><td >Progressive antialiasing is applied. When the content of the scene has stopped moving, the camera is jiggled very slightly between frames, and the result of each new frame is blended with the previous frames. The more frames you accumulate, the better looking the result.</td></tr>
+</table></div>
+<p>The <b translate="no">Antialiasing quality</b> property sets the level of antialiasing applied to the scene. Define the quality of antialiasing as <b translate="no">Medium</b>, <b translate="no">High</b>, or <b translate="no">Very High</b>. The effect of the selected <b translate="no">Antialiasing quality</b> depends on the selected <b translate="no">Antialiasing mode</b>, as you can see from the table below. In the <b translate="no">SSAA</b> mode the selected quality affects the supersampling resolution, in <b translate="no">MSAA</b> it determines the number or samples per pixel, and in <b translate="no">ProgressiveAA</b> it defines the number of frames for final image.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Level of Antialiasing</th><th >Supersampling Resolution used in SSAA</th><th >Number of samples per pixel in MSAA</th><th >Number of frames for final image in ProgressiveAA</th></tr></thead>
+<tr valign="top" class="odd"><td >Medium</td><td >1.2x</td><td >2</td><td >2</td></tr>
+<tr valign="top" class="even"><td >High</td><td >1.5x</td><td >4</td><td >4</td></tr>
+<tr valign="top" class="odd"><td >Very High</td><td >2.0x</td><td >8</td><td >8</td></tr>
+</table></div>
+<div class="admonition note">
+<p><b>Note: </b>With <b translate="no">Antialiasing mode</b> set to <b translate="no">NoAA</b>, <b translate="no">Antialiasing quality</b> does not affect antialiasing.</p>
+</div>
+<p>The <b translate="no">Temporal AA</b> property enables temporal antialiasing. This means that the camera is jiggled very slightly between frames, and the result of each new frame is blended with the previous frame.</p>
+<div class="admonition note">
+<p><b>Note: </b>Temporal antialiasing does not have an effect when the <b translate="no">MSAA</b> mode is used.</p>
+</div>
+<div class="admonition note">
+<p><b>Note: </b>When combined with <b translate="no">ProgressiveAA</b> mode, temporal antialising is used for animations, and <b translate="no">ProgressiveAA</b> is used once animations stop.</p>
+</div>
+<p>The <b translate="no">Temporal AA strength</b> property modifies the amount of temporal movement in antialiasing. This property only has an effect when the <b translate="no">Temporal AA</b> property is set to true.</p>
+<div class="admonition note">
+<p><b>Note: </b>In Qt 5, the antialiasing properties are located in <b translate="no">Properties</b> &gt; <b translate="no">Scene Environment</b>.</p>
+</div>
+<h2 id="applying-ambient-occlusion">Applying Ambient Occlusion</h2>
+<p>Ambient occlusion is a form of approximated global illumination that causes non-directional self-shadowing where objects are close together. You can define the <b translate="no">Strength</b>, <b translate="no">Distance</b>, <b translate="no">Softness</b>, <b translate="no">Sample rate</b>, and <b translate="no">Bias</b> properties in the <b translate="no">Ambient Occlusion</b> section of the <b translate="no">Properties</b> view.</p>
+<p class="centerAlign"><img src="images/studio-3d-scene-environment-ambient-occlusion.png" alt="&quot;The Ambient Occlusion properties&quot;" /></p><p>You can set the strength of the shadows using the <b translate="no">Strength</b> property, which defines the amount of ambient occlusion applied. A value of 100 causes full darkness shadows, while lower values cause the shadowing to appear lighter. A value of 0 disables ambient occlusion entirely, thus improving performance at a cost to the visual realism of 3D objects rendered in the scene. All values other than 0 have the same impact on performance.</p>
+<p>The <b translate="no">Distance</b> property defines roughly how far the ambient occlusion shadows spread away from objects. Greater distances cause increasing impact to performance.</p>
+<p>The <b translate="no">Softness</b> property specifies how smooth the edges of the ambient occlusion shading are. The value set for the property must be between 0.0 and 50.0. To improve smoothness at the risk of sometimes producing obvious patterned artifacts, you can scatter the edges of the ambient occlusion shadow bands by selecting the <b translate="no">Dither</b> check box.</p>
+<div class="admonition note">
+<p><b>Note: </b>Large distances between the clipping planes of your camera may cause problems with ambient occlusion. If you are seeing odd banding in ambient occlusion, try adjusting the value in the <b translate="no">Clip far</b> field in the <a href="studio-3d-camera.html" translate="no">scene camera</a> properties.</p>
+</div>
+<p>The <b translate="no">Sample rate</b> property specifies the number of shades of gray, thus defining the quality of ambient occlusion at the expense of performance.</p>
+<p>The <b translate="no">Bias</b> property defines a cutoff distance preventing objects from exhibiting ambient occlusion at close distances. The higher the value, the greater the distance required between objects before ambient occlusion occurs.</p>
+<div class="admonition note">
+<p><b>Note: </b>If you see ambient occlusion shadowing on objects where there should be no shadowing, increase the value slightly to clip away close results.</p>
+</div>
+<div class="admonition note">
+<p><b>Note: </b>In Qt 5, some the ambient occlusion properties are named slightly differently: <b translate="no">AO strength</b>, <b translate="no">AO distance</b>, <b translate="no">AO softness</b>, <b translate="no">AO dither</b>, and <b translate="no">AO bias</b>.</p>
+</div>
+<h2 id="setting-the-light-probe">Setting the Light Probe</h2>
+<p>In the <b translate="no">Light Probe</b> section of the <b translate="no">Properties</b> view, you can set the <b translate="no">Image</b>, <b translate="no">Exposure</b>, <b translate="no">Horizon</b>, and <b translate="no">Orientation</b> properties for image-based lighting.</p>
+<p class="centerAlign"><img src="images/studio-3d-scene-environment-light-probe.png" alt="&quot;The Light Probe properties&quot;" /></p><p>The <b translate="no">Image</b> property defines an image used to light the scene instead of or in addition to standard lights. The image is preferably a high-dynamic range image or a pre-generated cubemap. Pre-baking provides significant performance improvements at run time because no time is spent on filtering and mipmap generation. If the source is a .hdr or other image, the GPU-based pre-processing happens at run time after loading the image file, which can be potentially time consuming, in particular on embedded and mobile hardware. Therefore, it is strongly recommended that applications pre-process .hdr images at latest at build time, as described here.</p>
+<div class="admonition note">
+<p><b>Note: </b>In Qt 6, using a <b translate="no">Texture</b> component with <b translate="no">Image</b> &gt; <b translate="no">Source</b> is not supported in combination with this property. Pre-filtering of all mip levels for dynamic Qt Quick content is typically not reasonable in practice due to performance implications. In Qt 5, the <b translate="no">Image</b> property is referred to as <b translate="no">Light probe</b>, which defines a texture for overriding or setting an image based lighting texture for use with the skybox of the scene.</p>
+</div>
+<p>The <b translate="no">Exposure</b> property modifies the amount of light emitted by the light probe.</p>
+<p>When defined with increasing values, the <b translate="no">Horizon</b> property adds darkness (black) to the bottom half of the environment, thus forcing the lighting to come predominantly from the top of the image (and removing specific reflections from the lower half). This property is useful for accounting for a ground plane that would have the effect of obscuring the reflection of the light probe from the ground. This is necessary because light probe contributions come directily from the image without consideration for the content of the scene. You can set the value of the <b translate="no">Horizon</b> property between 0.0 and 1.0. Using the default value of the property applies the entire light probe without adjustment.</p>
+<div class="admonition note">
+<p><b>Note: </b>The <b translate="no">Horizon</b> property only affects materials lighting and has no effect on the rendering of the sky box.</p>
+</div>
+<div class="admonition note">
+<p><b>Note: </b>In Qt 5, the <b translate="no">Horizon</b> property is referred to as <b translate="no">Probe horizon</b>.</p>
+</div>
+<p>The <b translate="no">Orientation</b> property defines the orientation of the light probe. Orientation is defined in terms of euler angles in degrees over the x, y, and z axes.</p>
+<h3 id="additional-light-probe-properties-in-qt-5">Additional Light Probe Properties in Qt 5</h3>
+<p>The <b translate="no">Probe Brightness</b> property modifies the amount of light emitted by the light probe.</p>
+<p>When the <b translate="no">Fast IBL</b> (Fast image-based lighting) property is enabled, more shortcuts are taken to approximate the light contribution of the light probe at the expense of quality.</p>
+<p>The value of the <b translate="no">Probe FOV</b> property sets the angle of the image source field of view when using a camera source as the IBL probe.</p>
+</div>
+<!-- @@@studio-3d-scene-environment.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-3d-camera.html">Cameras</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-morph-target.html">Morph Target</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

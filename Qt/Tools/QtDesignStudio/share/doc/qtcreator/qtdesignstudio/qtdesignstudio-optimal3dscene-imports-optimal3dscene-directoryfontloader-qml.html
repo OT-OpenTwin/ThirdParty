@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- Optimal3DScene.qdoc -->
+  <meta name="description" content="Contains project files for the Optimal 3D Scene.">
+  <title>Optimal 3D Scene | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="studioexamples.html" translate="no">Examples</a></li>
+<li>Optimal 3D Scene</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<h1 class="title">Optimal 3D Scene</h1>
+<pre class="qml" translate="no">
+ <span class="comment">// Copyright (C) 2019 The Qt Company Ltd.</span>
+ <span class="comment">// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only</span>
+
+ import QtQuick 2.12
+ import Qt.labs.folderlistmodel 2.12
+
+ <span class="type"><a href="https://doc.qt.io/qt/qml-qtqml-qtobject.html" translate="no">QtObject</a></span> {
+     <span class="name">id</span>: <span class="name">loader</span>
+
+     property <span class="type"><a href="https://doc.qt.io/qt/qml-url.html" translate="no">url</a></span> <span class="name">fontDirectory</span>: <span class="name">Qt</span>.<span class="name">resolvedUrl</span>(<span class="string">&quot;../../&quot;</span> <span class="operator">+</span> <span class="name">relativeFontDirectory</span>)
+     property <span class="type"><a href="https://doc.qt.io/qt/qml-string.html" translate="no">string</a></span> <span class="name">relativeFontDirectory</span>: <span class="string">&quot;fonts&quot;</span>
+
+     <span class="keyword">function </span><span class="name">loadFont</span>(url) {
+         var fontLoader = <span class="name">Qt</span>.<span class="name">createQmlObject</span>(<span class="string">'import QtQuick 2.12; FontLoader { source: &quot;'</span> <span class="operator">+</span> <span class="name">url</span> <span class="operator">+</span> <span class="string">'&quot;; }'</span>,
+                                             <span class="name">loader</span>,
+                                             <span class="string">&quot;dynamicFontLoader&quot;</span>);
+     }
+
+     property <span class="type"><a href="https://doc.qt.io/qt/qml-qt-labs-folderlistmodel-folderlistmodel.html" translate="no">FolderListModel</a></span> <span class="name">folderModel</span>: <span class="name">FolderListModel</span> {
+         <span class="name">id</span>: <span class="name">folderModel</span>
+         <span class="name">folder</span>: <span class="name">loader</span>.<span class="name">fontDirectory</span>
+         <span class="name">nameFilters</span>: [ <span class="string">&quot;*.ttf&quot;</span>, <span class="string">&quot;*.otf&quot;</span> ]
+         <span class="name">showDirs</span>: <span class="number">false</span>
+
+         <span class="name">onStatusChanged</span>: {
+             <span class="keyword">if</span> (<span class="name">folderModel</span>.<span class="name">status</span> <span class="operator">==</span> <span class="name">FolderListModel</span>.<span class="name">Ready</span>) {
+                 var i
+                 <span class="keyword">for</span> (<span class="name">i</span> <span class="operator">=</span> <span class="number">0</span>; <span class="name">i</span> <span class="operator">&lt;</span> <span class="name">count</span>; i++) {
+                     <span class="name">loadFont</span>(<span class="name">folderModel</span>.<span class="name">get</span>(<span class="name">i</span>, <span class="string">&quot;fileURL&quot;</span>))
+                 }
+             }
+         }
+     }
+ }
+</pre>

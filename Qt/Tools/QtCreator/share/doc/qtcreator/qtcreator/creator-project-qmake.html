@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
 <!-- creator-projects-qt-versions.qdoc -->
-  <title>Adding Qt Versions | Qt Creator Manual</title>
+  <title>Add Qt versions | Qt Creator Manual</title>
   <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
   <script type="text/javascript">
     document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
@@ -22,70 +21,81 @@
 </head>
 <body>
 <div class="header" id="qtdocheader">
-  <div class="main">
+    <div class="main">
     <div class="main-rounded">
-      <div class="navigationbar">
-        <table><tr>
-<td ><a href="index.html">Qt Creator Manual</a></td><td >Adding Qt Versions</td></tr></table><table class="buildversion"><tr>
-<td id="buildversion" width="100%" align="right"><a href="index.html">Qt Creator Manual 4.9&#x2e;1</a></td>
-        </tr></table>
-      </div>
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Add Qt versions</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
     </div>
+</div>
 <div class="content">
 <div class="line">
 <div class="content mainContent">
-  <link rel="prev" href="creator-targets.html" />
-  <link rel="next" href="creator-tool-chains.html" />
+  <link rel="prev" href="creator-how-tos.html" />
 <p class="naviNextPrevious headerNavi">
-<a class="prevPage" href="creator-targets.html">Adding Kits</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-tool-chains.html">Adding Compilers</a>
-</p><p/>
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
 <div class="sidebar">
 <div class="toc">
-<h3><a name="toc">Contents</a></h3>
+<h3 id="toc">Contents</h3>
 <ul>
-<li class="level1"><a href="#setting-up-new-qt-versions">Setting Up New Qt Versions</a></li>
-<li class="level1"><a href="#troubleshooting-qt-installations">Troubleshooting Qt Installations</a></li>
-<li class="level1"><a href="#minimum-requirements">Minimum Requirements</a></li>
+<li class="level1"><a href="#register-installed-qt-versions">Register installed Qt versions</a></li>
+<li class="level1"><a href="#set-up-new-qt-versions">Set up new Qt versions</a></li>
+<li class="level1"><a href="#register-documentation">Register documentation</a></li>
+<li class="level1"><a href="#troubleshoot-qt-installations">Troubleshoot Qt installations</a></li>
+<li class="level1"><a href="#minimum-requirements">Minimum requirements</a></li>
 </ul>
 </div>
 <div class="sidebar-content" id="sidebar-content"></div></div>
-<h1 class="title">Adding Qt Versions</h1>
-<span class="subtitle"></span>
+<h1 class="title">Add Qt versions</h1>
 <!-- $$$creator-project-qmake.html-description -->
-<div class="descr"> <a name="details"></a>
-<p>Qt Creator allows you to have multiple versions of Qt installed on your development PC and use different versions to build your projects. For example, <a href="creator-glossary.html#glossary-device">device</a> manufacturers provide special Qt versions for developing applications for their devices.</p>
-<p>Qt Creator automatically detects the Qt versions that are registered by your system or by installers. To view detailed information for each Qt version, select it in the list and select <b>Details</b> in the <b>Qt version for</b> section. To add Qt versions, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Kits</b> &gt; <b>Qt Versions</b>.</p>
-<p>You specify the Qt version to use for each <a href="creator-glossary.html#glossary-buildandrun-kit">kit</a> for building and running your projects in <b>Tools</b> &gt; <b>Options</b> &gt; <b>Kits</b>.</p>
-<a name="setting-up-new-qt-versions"></a>
-<h2 id="setting-up-new-qt-versions">Setting Up New Qt Versions</h2>
+<div class="descr" id="details">
+<p>You can install multiple versions of Qt on the development PC and use them to build your projects. For example, <a href="creator-glossary.html#glossary-device" translate="no">device</a> manufacturers offer special Qt versions for developing applications for their devices.</p>
+<p>To view the installed Qt versions, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Kits</b> &gt; <b translate="no">Qt Versions</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-qt-versions.png" alt="{Qt Versions tab in Kit preferences}" /></p><p>To view detailed information about each Qt version, select it in the list and select <b translate="no">Details</b> in the <b translate="no">Qt version for</b> section.</p>
+<p>To remove invalid Qt versions, select <b translate="no">Clean Up</b>.</p>
+<h2 id="register-installed-qt-versions">Register installed Qt versions</h2>
+<p>You can link to a Qt that Qt Online Installer installed to automatically detect the installed Qt versions. However, you cannot link to a Qt that the system installed with some other package manager, such as your Linux distribution, brew on macOS, or Chocolatey on Windows, nor a self-built Qt. In those cases, select <b translate="no">Add</b> in the <b translate="no">Qt Versions</b> tab to add the Qt version manually, as instructed in <a href="creator-project-qmake.html#set-up-new-qt-versions" translate="no">Set up new Qt versions</a>.</p>
+<p>To link to a Qt installation:</p>
+<ol class="1" type="1"><li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Kits</b> &gt; <b translate="no">Qt Versions</b> &gt; <b translate="no">Link with Qt</b>.<p class="centerAlign"><img src="images/qtcreator-link-with-qt.png" alt="{Choose Qt Installation dialog}" /></p></li>
+<li>In the <b translate="no">Qt installation path</b> field, enter the path to the directory where you installed Qt.</li>
+<li>Select <b translate="no">Link with Qt</b> to automatically register Qt versions and kits in the Qt installation directory.</li>
+<li>Select <b translate="no">Restart Now</b> to restart Qt Creator.</li>
+</ol>
+<p>To remove the automatically detected Qt versions from the list, select <b translate="no">Remove Link</b>.</p>
+<p>If the <b translate="no">Qt Versions</b> tab does not show a Qt version under <b translate="no">Auto-detected</b>, set it up manually.</p>
+<p>You specify the Qt version to use for each <a href="creator-glossary.html#glossary-buildandrun-kit" translate="no">kit</a> for building and running your projects in <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Kits</b>.</p>
+<h2 id="set-up-new-qt-versions">Set up new Qt versions</h2>
 <p>To add a Qt version:</p>
-<ol class="1" type="1"><li>Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Kits</b> &gt; <b>Qt Versions</b> &gt; <b>Add</b>.</li>
-<li>Select the qmake executable for the Qt version that you want to add.</li>
-<li>Select the Qt version to view and edit it.<p class="centerAlign"><img src="images/qtcreator-qt4-qtversions-add.png" alt="" /></p></li>
-<li>In the <b>Version name</b> field, edit the name that Qt Creator suggests for the Qt version.</li>
-<li>In the <b>qmake location</b> field, you can change the qmake location.</li>
-<li>If the Qt version is for QNX, enter the path to your installed QNX SDK in the <b>QNX SDK</b> field.</li>
+<ol class="1" type="1"><li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Kits</b> &gt; <b translate="no">Qt Versions</b> &gt; <b translate="no">Add</b>.</li>
+<li>Select the qmake executable for the Qt version to add.</li>
+<li>Select the Qt version to view and edit it.</li>
+<li>In the <b translate="no">Name</b> field, edit the name that Qt Creator suggests for the Qt version.</li>
+<li>In the <b translate="no">qmake path</b> field, you can change the qmake location.</li>
+<li>If the Qt version is for QNX, enter the path to the QNX SDK in the <b translate="no">QNX SDK</b> field.</li>
 </ol>
-<a name="troubleshooting-qt-installations"></a>
-<h2 id="troubleshooting-qt-installations">Troubleshooting Qt Installations</h2>
+<p>To remove a Qt version that you added manually, select it in the <b translate="no">Manual</b> list and then select <b translate="no">Remove</b>.</p>
+<h2 id="register-documentation">Register documentation</h2>
+<p>By default, Qt Creator registers only the latest available version of the documentation for each installed Qt module.</p>
+<p>To register the documentation sets of all installed Qt versions, choose <b translate="no">All</b> from the <b translate="no">Register documentation</b> list. To register no Qt documentation at all, choose <b translate="no">None</b>. The default behavior is <b translate="no">Highest Version Only</b>.</p>
+<h2 id="troubleshoot-qt-installations">Troubleshoot Qt installations</h2>
 <p>If Qt Creator detects problems in the installation of a Qt version, it displays warnings and errors beside the name of the Qt version in the list. Select the Qt version to see more information about the issue and suggestions for fixing it.</p>
-<p>To determine whether a particular Qt version is installed correctly, Qt Creator calls <code>qmake -query</code> and checks that the directories referenced in the output exist. When Qt Creator complains about the installation of a self-built Qt version, try running <code>make install</code> in the build directory to actually install Qt into the configured location. If you installed Qt using the Qt installer, run the Qt maintenance tool to check for updates or to reinstall the Qt version.</p>
-<a name="minimum-requirements"></a>
-<h2 id="minimum-requirements">Minimum Requirements</h2>
-<p>If your build of Qt is incomplete but you still want to use <a href="http://doc.qt.io/qt-5/qmake-manual.html">QMake</a> as build system, you need to ensure the following minimum requirements to be able to use that setup with Qt Creator.</p>
-<ol class="1" type="1"><li>qmake is an executable that understands the -query command line argument.</li>
-<li>The bin and include directories have to exist. Qt Creator fetches these directories by running <code>qmake -query</code>.</li>
-<li>The mkspecs directory should be complete enough to parse .pro files.</li>
+<p>To verify the installation of a particular Qt version, Qt Creator calls <code translate="no">qmake -query</code> and checks that the directories referenced in the output exist. When Qt Creator complains about the installation of a self-built Qt version, try running <code translate="no">make install</code> in the build directory to actually install Qt into the configured location. If you installed Qt using the Qt Installer, run Qt Maintenance Tool to check for updates or to reinstall the Qt version.</p>
+<h2 id="minimum-requirements">Minimum requirements</h2>
+<p>If your build of Qt is incomplete but you still want to use qmake as build system, you need to ensure the following minimum requirements to use that setup with Qt Creator.</p>
+<ol class="1" type="1"><li>qmake is an executable that understands the <code translate="no">-query</code> command-line argument.</li>
+<li>The <code translate="no">bin</code> and <code translate="no">include</code> directories have to exist. Qt Creator fetches these directories by running <code translate="no">qmake -query</code>.</li>
+<li>The <code translate="no">mkspecs</code> directory should be complete enough to parse .pro files.</li>
 </ol>
-<p>If your Qt version has no libQtCore.so, Qt Creator is unable to detect the ABI.</p>
+<p>If your Qt version has no <code translate="no">libQtCore.so</code>, Qt Creator cannot detect the ABI.</p>
 </div>
+<p><b>See also </b><a href="creator-preferences-kits.html#kits-tab" translate="no">Kits</a>.</p>
 <!-- @@@creator-project-qmake.html -->
 <p class="naviNextPrevious footerNavi">
-<a class="prevPage" href="creator-targets.html">Adding Kits</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-tool-chains.html">Adding Compilers</a>
+<a class="prevPage" href="creator-how-tos.html">How To</a>
 </p>
         </div>
        </div>
@@ -94,7 +104,7 @@
 </div>
 <div class="footer">
    <p>
-   <acronym title="Copyright">&copy;</acronym> 2019 The Qt Company Ltd.
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
    Documentation contributions included herein are the copyrights of
    their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
    of their respective owners. </p>

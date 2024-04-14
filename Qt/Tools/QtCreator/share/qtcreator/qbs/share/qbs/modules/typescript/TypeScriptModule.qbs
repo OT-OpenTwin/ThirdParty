@@ -129,7 +129,7 @@ Module {
 
         var preValidator = new ModUtils.PropertyValidator("nodejs");
         preValidator.addCustomValidator("interpreterFileName", nodejs.interpreterFileName, function (value) {
-            return value === "node" + (qbs.hostOS.contains("windows") ? ".exe" : "");
+            return value === "node" + FileInfo.executableSuffix();
         }, interpreterMessage);
         preValidator.addCustomValidator("interpreterFilePath", nodejs.interpreterFilePath, function (value) {
             return value.endsWith(nodejs.interpreterFileName);

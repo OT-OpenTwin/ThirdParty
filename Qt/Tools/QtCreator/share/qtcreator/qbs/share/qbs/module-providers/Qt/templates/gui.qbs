@@ -1,6 +1,6 @@
 import qbs.FileInfo
 import qbs.ModUtils
-import '../QtModule.qbs' as QtModule
+import qbs.Utilities
 
 QtModule {
     qtModuleName: "Gui"
@@ -22,10 +22,12 @@ QtModule {
         }
 
         prepare: {
-            var cmd = new Command(ModUtils.moduleProperty(product, "binPath") + '/'
-                                  + ModUtils.moduleProperty(product, "uicName"),
-                                  [input.filePath, '-o', output.filePath])
-            cmd.description = 'uic ' + input.fileName;
+            var uicPath = Utilities.versionCompare(product.Qt.gui.version, "6.1") < 0
+                    ? product.Qt.core.binPath + '/' + product.Qt.gui.uicName
+                    : product.Qt.core.libExecPath + '/' + product.Qt.gui.uicName;
+
+            var cmd = new Command(uicPath, [input.filePath, '-o', output.filePath]);
+            cmd.description = 'generating ' + output.fileName;
             cmd.highlight = 'codegen';
             return cmd;
         }
@@ -50,8 +52,13 @@ QtModule {
     libFilePathRelease: @libFilePathRelease@
     pluginTypes: @pluginTypes@
 
+    cpp.entryPoint: qbs.targetOS.containsAny(["ios", "tvos"])
+                      && Utilities.versionCompare(version, "5.6.0") >= 0
+                  ? "_qt_main_wrapper"
+                  : undefined
+
     cpp.defines: @defines@
-    cpp.includePaths: @includes@
+    cpp.systemIncludePaths: @includes@
     cpp.libraryPaths: @libraryPaths@
 
     Properties {

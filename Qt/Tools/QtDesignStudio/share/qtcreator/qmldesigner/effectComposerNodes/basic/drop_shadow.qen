@@ -1,0 +1,105 @@
+{
+    "QEN": {
+        "description": "The DropShadow effect blurs the alpha channel of the input, colorizes the result and places it behind the source object to create a soft shadow.",
+        "fragmentCode": [
+            "@requires BlurHelper",
+            "@main",
+            "{",
+            "    float shadow = texture(iSource, dsTexCoord).a * dsBlurWeight1[0];",
+            "    shadow += texture(iSourceBlur1, dsTexCoord).a * dsBlurWeight1[1];",
+            "#if (BLUR_HELPER_MAX_LEVEL > 2)",
+            "    shadow += texture(iSourceBlur2, dsTexCoord).a * dsBlurWeight1[2];",
+            "#endif",
+            "#if (BLUR_HELPER_MAX_LEVEL > 8)",
+            "    shadow += texture(iSourceBlur3, dsTexCoord).a * dsBlurWeight1[3];",
+            "#endif",
+            "#if (BLUR_HELPER_MAX_LEVEL > 16)",
+            "    shadow += texture(iSourceBlur4, dsTexCoord).a * dsBlurWeight2[0];",
+            "#endif",
+            "#if (BLUR_HELPER_MAX_LEVEL > 32)",
+            "    shadow += texture(iSourceBlur5, dsTexCoord).a * dsBlurWeight2[1];",
+            "#endif",
+            "",
+            "    shadow *= dropShadowColor.a;",
+            "    float saa = (1.0 - fragColor.a) * (1.0 - shadow);",
+            "    fragColor.rgb = mix(dropShadowColor.rgb * shadow, fragColor.rgb, fragColor.a + saa);",
+            "    fragColor.a = 1.0 - saa;",
+            "}"
+        ],
+        "name": "Drop Shadow",
+        "properties": [
+            {
+                "defaultValue": "0",
+                "description": "Sets the amount of blur (radius) applied to the shadow.\n\nThe value ranges from 0.0 (no blur) to 1.0 (full blur).\n\nThe amount of blur is also affected by the Blur Helper Multiplier property.",
+                "maxValue": "1",
+                "minValue": "0",
+                "name": "dropShadowBlurAmount",
+                "displayName": "Blur Amount",
+                "type": "float"
+            },
+            {
+                "defaultValue": "0, 0, 0, 1",
+                "description": "Sets the color of the shadow.",
+                "name": "dropShadowColor",
+                "displayName": "Color",
+                "type": "color"
+            },
+            {
+                "defaultValue": "1",
+                "description": "Sets the size of the shadow.",
+                "maxValue": "1.2",
+                "minValue": "0.8",
+                "name": "dropShadowScale",
+                "displayName": "Scale",
+                "type": "float"
+            },
+            {
+                "defaultValue": "10",
+                "description": "Sets the horizontal position of the shadow.",
+                "maxValue": "30",
+                "minValue": "-30",
+                "name": "dropShadowHorizontalOffset",
+                "displayName": "Horizontal Offset",
+                "type": "float"
+            },
+            {
+                "defaultValue": "10",
+                "description": "Sets the vertical position of the shadow.",
+                "maxValue": "30",
+                "minValue": "-30",
+                "name": "dropShadowVerticalOffset",
+                "displayName": "Vertical Offset",
+                "type": "float"
+            }
+        ],
+        "version": 1,
+        "vertexCode": [
+            "out vec2 dsTexCoord;",
+            "out vec4 dsBlurWeight1;",
+            "out vec2 dsBlurWeight2;",
+            "",
+            "float dsBlurWeight(float v) {",
+            "    return max(0.0, min(1.0, 1.0 - v * 2.0));",
+            "}",
+            "",
+            "@main",
+            "float shadowBlurLod = sqrt(dropShadowBlurAmount * (BLUR_HELPER_MAX_LEVEL / 64.0)) * 1.2 - 0.2;",
+            "float sbw1 = dsBlurWeight(abs(shadowBlurLod - 0.1));",
+            "float sbw2 = dsBlurWeight(abs(shadowBlurLod - 0.3));",
+            "float sbw3 = dsBlurWeight(abs(shadowBlurLod - 0.5));",
+            "float sbw4 = dsBlurWeight(abs(shadowBlurLod - 0.7));",
+            "float sbw5 = dsBlurWeight(abs(shadowBlurLod - 0.9));",
+            "float sbw6 = dsBlurWeight(abs(shadowBlurLod - 1.1));",
+            "",
+            "float sbsum = sbw1 + sbw2 + sbw3 + sbw4 + sbw5 + sbw6;",
+            "dsBlurWeight1 = vec4(sbw1 / sbsum, sbw2 / sbsum, sbw3 / sbsum, sbw4 / sbsum);",
+            "dsBlurWeight2 = vec2(sbw5 / sbsum, sbw6 / sbsum);",
+            "",
+            "vec2 shadowOffset = vec2(dropShadowHorizontalOffset / iResolution.x, dropShadowVerticalOffset / iResolution.y);",
+            "vec2 shadowCenterOffset = vec2((dropShadowScale - 1.0) * 0.5, (dropShadowScale - 1.0) * 0.5);",
+            "dsTexCoord = qt_MultiTexCoord0 - shadowOffset;",
+            "dsTexCoord = (dsTexCoord * (2.0 - dropShadowScale)) + shadowCenterOffset;",
+            ""
+        ]
+    }
+}

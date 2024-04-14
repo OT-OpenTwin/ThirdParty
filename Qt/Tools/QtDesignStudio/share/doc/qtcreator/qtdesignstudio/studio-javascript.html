@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-javascript.qdoc -->
+  <title>Simulating Application Logic | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Simulating Application Logic</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="qtquick-placeholder-data.html" />
+  <link rel="next" href="studio-simulink.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="qtquick-placeholder-data.html">Loading Placeholder Data</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-simulink.html">Simulating Dynamic Systems</a>
+</p>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Simulating Application Logic</h1>
+<!-- $$$studio-javascript.html-description -->
+<div class="descr" id="details">
+<p>You can use JavaScript to simulate application logic that brings your UI to life.</p>
+<p>You will need the following files:</p>
+<ul>
+<li>Component file (.qml) that will specify the API of the UI</li>
+<li>JavaScript file that generates mock data for the UI. For more information about using JavaScript, see <a href="https://doc.qt.io/qt/qtqml-javascript-topic.html" translate="no">Integrating QML and JavaScript</a>.</li>
+<li>Module definition file (<i>qmldir</i>) that declares the component (QML type) you specify in the UI file. For more information, see <a href="https://doc.qt.io/qt/qtqml-modules-qmldir.html" translate="no">Module Definition qmldir Files</a>.</li>
+</ul>
+<p>Here, you will create a component based on the <a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a> class that will be registered as a singleton type. This enables the use of global property values in the UI.</p>
+<p>To create the necessary files:</p>
+<ol class="1" type="1"><li>In the File Explorer, create a new folder for the mock data inside the <i>imports</i> folder in your project folder (for example, <i>Data</i>).<div class="admonition note">
+<p><b>Note: </b>Make sure to capitalize the <i>Data</i> folder name because you will need to import it as a component later, and component names must be capitalized.</p>
+</div>
+<div class="admonition note">
+<p><b>Note: </b>If you place this folder somewhere else in the project, you will need to add the path to the list of imports. To do this, in Qt Design Studio, open the project file (.qmlproject) to add the path to the list of plugin directories passed to the QML runtime. For example, if you placed the <i>Data</i> folder inside another folder called <i>backend</i> in the root of your project, you would add the following:</p>
+</div>
+<pre class="cpp" translate="no">
+ importPaths: <span class="operator">[</span> <span class="string">&quot;imports&quot;</span><span class="operator">,</span> <span class="string">&quot;backend&quot;</span> <span class="operator">]</span>
+</pre>
+</li>
+<li>Select <b translate="no">File</b> &gt; <b translate="no">New File</b> &gt; <b translate="no">Qt Quick Files</b> &gt; <b translate="no">Qt Quick File</b> &gt; <b translate="no">Choose</b> to add a Qt Quick file that will specify the API of the UI.</li>
+<li>Follow the instructions of the wizard to create the Qt Quick file in the data folder. In these instructions, the file is called <i>Values.qml</i>.<div class="admonition note">
+<p><b>Note: </b>Make sure to capitalize the filename because it will become a custom component.</p>
+</div>
+</li>
+<li>Select <b translate="no">File</b> &gt; <b translate="no">New File</b> &gt; <b translate="no">JavaScript</b> &gt; <b translate="no">JavaScript File</b> &gt; <b translate="no">Choose</b> to create a JavaScript file that generates mock data for the UI.</li>
+<li>Follow the instructions of the wizard to create the JavaScript file in the Data folder. In these instructions, the file is called <i>simulation.js</i>.</li>
+<li>Delete the template text in JavaScript file and save the file.</li>
+<li>In a text editor such as Notepad, create a module definition file called <i>qmldir</i> with the following contents and place it in the data directory:<pre class="cpp" translate="no">
+ singleton Values <span class="number">1.0</span> Values<span class="operator">.</span>qml
+</pre>
+</li>
+<li>Open <i>Values.qml</i> in the <a href="qtquick-text-editor.html" translate="no">Code</a> view for editing.</li>
+<li>Add the following code to the top of the file to register the <a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a>-derived class that you will use to expose the global properties as a singleton type:<pre class="cpp" translate="no">
+ pragma Singleton
+</pre>
+</li>
+<li>Add the following import statement to import the <i>simulation.js</i> file to use the functionality that it provides:<pre class="cpp" translate="no">
+ import <span class="string">&quot;simulation.js&quot;</span> as JS
+</pre>
+</li>
+<li>Replace the default Item declaration with the following code to create a <a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a>-derived class that will list the global properties you want to simulate and their default values:<pre class="cpp" translate="no">
+ <span class="type"><a href="https://doc.qt.io/qt/qml-qtqml-qtobject.html" translate="no">QtObject</a></span> {
+     id: values
+
+     <span class="comment">// property values to simulate</span>
+     property <span class="type">int</span> name1: <span class="number">5</span>
+     property string name2: <span class="string">&quot;foo&quot;</span>
+     property real name3: <span class="number">2.5</span>
+
+ }
+</pre>
+</li>
+<li>Add the following code to use a <a href="https://doc.qt.io/qt/qml-qtqml-timer.html" translate="no">Timer</a> component to specify a range of values for the property:<pre class="cpp" translate="no">
+ property Timer name1Timer: Timer{
+     running: <span class="keyword">true</span>
+     repeat: <span class="keyword">true</span>
+     onTriggered: JS<span class="operator">.</span>name1Timer()
+     interval: <span class="number">10</span>
+ }
+</pre>
+<p>This will execute the function defined for <code translate="no">onTriggered</code> every 10 ms. Within your javascript functions you can perform the necessary actions to simulate the behavior you need. Review <a href="https://doc.qt.io/qt/qtqml-javascript-imports.html" translate="no">Importing JavaScript Resources in QML</a> for more details.</p>
+<div class="admonition note">
+<p><b>Note: </b>You must add the JavaScript method <code translate="no">name1Timer()</code> to the JavaScript file. You have the option of adding this JavaScript code directly within the <code translate="no">onTriggered</code> handler as well.</p>
+</div>
+</li>
+<li>Open the .ui.qml file of the Component that will use the simulated data and add the following code to the top of the file in order to import the Data folder as a QML module:<pre class="cpp" translate="no">
+ import Data <span class="number">1.0</span>
+</pre>
+</li>
+<li>Returning to the <b translate="no">2D</b> view, locate the property that should be bound to the simulated values. Select <img src="images/action-icon.png" alt="" /> and <b translate="no">Set Binding</b> for the property and enter the simulated Value property. For example, you would set the following expression to bind to the example <code translate="no">name1</code> property:<pre class="cpp" translate="no">
+ Values<span class="operator">.</span>name1
+</pre>
+</li>
+</ol>
+</div>
+<!-- @@@studio-javascript.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="qtquick-placeholder-data.html">Loading Placeholder Data</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-simulink.html">Simulating Dynamic Systems</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

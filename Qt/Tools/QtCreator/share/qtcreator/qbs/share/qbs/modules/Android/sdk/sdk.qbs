@@ -50,6 +50,16 @@ Module {
         environmentPaths: (ndkDir ? [ndkDir] : []).concat(base)
     }
 
+    Probes.PathProbe {
+        id: bundletoolProbe
+        platformSearchPaths: [sdkDir]
+        names: ["bundletool-all"]
+        nameSuffixes: ["-0.11.0.jar", "-0.12.0.jar", "-0.13.0.jar", "-0.13.3.jar", "-0.13.4.jar",
+            "-0.14.0.jar", "-0.15.0.jar", "-1.0.0.jar", "-1.1.0.jar", "-1.2.0.jar", "-1.3.0.jar",
+            "-1.4.0.jar", "-1.5.0.jar", "-1.6.0.jar", "-1.6.1.jar", "-1.7.0.jar", "-1.7.1.jar",
+            "-1.8.0.jar"]
+    }
+
     property path sdkDir: sdkProbe.path
     property path ndkDir: ndkProbe.path
     property path ndkSamplesDir: ndkProbe.samplesDir
@@ -59,56 +69,69 @@ Module {
     property int buildToolsVersionMinor: buildToolsVersionParts[1]
     property int buildToolsVersionPatch: buildToolsVersionParts[2]
     property string platform: sdkProbe.platform
+    property string minimumVersion: "21"
+    property string targetVersion: platformVersion.toString()
+
+    property path bundletoolFilePath: bundletoolProbe.filePath
 
     // Product-specific properties and files
-    property string packageName: product.name
+    property string packageName: {
+        var idx = product.name.indexOf(".")
+        if (idx > 0 && idx < product.name.length)
+            return product.name;
+        return "com.example." + product.name;
+    }
+    property int versionCode
+    property string versionName
     property string apkBaseName: packageName
     property bool automaticSources: true
     property bool legacyLayout: false
-    property string sourceSetDir: legacyLayout
+    property path sourceSetDir: legacyLayout
                                 ? product.sourceDirectory
                                 : FileInfo.joinPaths(product.sourceDirectory, "src/main")
-    property string resourcesDir: FileInfo.joinPaths(sourceSetDir, "res")
-    property string assetsDir: FileInfo.joinPaths(sourceSetDir, "assets")
-    property string sourcesDir: FileInfo.joinPaths(sourceSetDir, legacyLayout ? "src" : "java")
+    property path resourcesDir: FileInfo.joinPaths(sourceSetDir, "res")
+    property path assetsDir: FileInfo.joinPaths(sourceSetDir, "assets")
+    property path sourcesDir: FileInfo.joinPaths(sourceSetDir, legacyLayout ? "src" : "java")
     property string manifestFile: defaultManifestFile
     readonly property string defaultManifestFile: FileInfo.joinPaths(sourceSetDir,
                                                                    "AndroidManifest.xml")
 
     property bool _enableRules: !product.multiplexConfigurationId && !!packageName
 
+    property bool _bundledInAssets: true
+
     Group {
         name: "java sources"
-        condition: Android.sdk.automaticSources
-        prefix: Android.sdk.sourcesDir + '/'
+        condition: product.Android.sdk.automaticSources
+        prefix: FileInfo.resolvePath(product.sourceDirectory, product.Android.sdk.sourcesDir + '/')
         files: "**/*.java"
     }
 
     Group {
         name: "android resources"
-        condition: Android.sdk.automaticSources
+        condition: product.Android.sdk.automaticSources
         fileTags: ["android.resources"]
-        prefix: Android.sdk.resourcesDir + '/'
+        prefix: FileInfo.resolvePath(product.sourceDirectory, product.Android.sdk.resourcesDir + '/')
         files: "**/*"
     }
 
     Group {
         name: "android assets"
-        condition: Android.sdk.automaticSources
+        condition: product.Android.sdk.automaticSources
         fileTags: ["android.assets"]
-        prefix: Android.sdk.assetsDir + '/'
+        prefix: FileInfo.resolvePath(product.sourceDirectory, product.Android.sdk.assetsDir + '/')
         files: "**/*"
     }
 
     Group {
         name: "manifest"
-        condition: Android.sdk.automaticSources
+        condition: product.Android.sdk.automaticSources
         fileTags: ["android.manifest"]
-        files: Android.sdk.manifestFile
-               && Android.sdk.manifestFile !== Android.sdk.defaultManifestFile
-               ? [Android.sdk.manifestFile]
-               : (File.exists(Android.sdk.defaultManifestFile)
-                  ? [Android.sdk.defaultManifestFile] : [])
+        files: product.Android.sdk.manifestFile
+               && product.Android.sdk.manifestFile !== product.Android.sdk.defaultManifestFile
+               ? [product.Android.sdk.manifestFile]
+               : (File.exists(product.Android.sdk.defaultManifestFile)
+                  ? [product.Android.sdk.defaultManifestFile] : [])
     }
 
 
@@ -129,10 +152,30 @@ Module {
     }
 
     property path buildToolsDir: FileInfo.joinPaths(sdkDir, "build-tools", buildToolsVersion)
-    property path aaptFilePath: FileInfo.joinPaths(buildToolsDir, "aapt")
+    property string aaptName: "aapt2"
+    PropertyOptions {
+        name: "aaptName"
+        allowedValues: ["aapt", "aapt2"]
+    }
+    property path aaptFilePath: FileInfo.joinPaths(buildToolsDir, aaptName)
+    readonly property bool _enableAapt2: aaptName === "aapt2"
+    property string packageType: "apk"
+    PropertyOptions {
+        name: "packageType"
+        allowedValues: ["apk", "aab"]
+    }
+    readonly property bool _generateAab: packageType == "aab"
+
     property path apksignerFilePath: FileInfo.joinPaths(buildToolsDir, "apksigner")
     property path aidlFilePath: FileInfo.joinPaths(buildToolsDir, "aidl")
     property path dxFilePath: FileInfo.joinPaths(buildToolsDir, "dx")
+    property path d8FilePath: FileInfo.joinPaths(buildToolsDir, "d8")
+    property string dexCompilerName: "d8"
+    PropertyOptions {
+        name: "dexCompilerName"
+        allowedValues: ["dx", "d8"]
+    }
+    readonly property bool _useD8: dexCompilerName === "d8"
     property path zipalignFilePath: FileInfo.joinPaths(buildToolsDir, "zipalign")
     property path androidJarFilePath: FileInfo.joinPaths(sdkDir, "platforms", platform,
                                                          "android.jar")
@@ -141,21 +184,21 @@ Module {
     property path generatedJavaFilesBaseDir: FileInfo.joinPaths(product.buildDirectory, "gen")
     property path generatedJavaFilesDir: FileInfo.joinPaths(generatedJavaFilesBaseDir,
                                          (packageName || "").split('.').join('/'))
-    property string apkContentsDir: FileInfo.joinPaths(product.buildDirectory, "bin")
-    property string debugKeyStorePath: FileInfo.joinPaths(
-                                           Environment.getEnv(qbs.hostOS.contains("windows")
-                                                              ? "USERPROFILE" : "HOME"),
-                                           ".android", "debug.keystore")
-    property bool useApksigner: buildToolsVersion && Utilities.versionCompare(
-                                    buildToolsVersion, "24.0.3") >= 0
+    property path compiledResourcesDir: FileInfo.joinPaths(product.buildDirectory,
+                                                           "compiled_resources")
+    property string packageContentsDir: FileInfo.joinPaths(product.buildDirectory, packageType)
     property stringList aidlSearchPaths
 
     Depends { name: "java"; condition: _enableRules }
+    Depends { name: "codesign"; condition: _enableRules }
     Properties {
         condition: _enableRules
         java.languageVersion: platformJavaVersion
         java.runtimeVersion: platformJavaVersion
         java.bootClassPaths: androidJarFilePath
+        codesign.apksignerFilePath: apksignerFilePath
+        codesign._packageName: apkBaseName + (_generateAab ? ".aab" : ".apk")
+        codesign.useApksigner: !_generateAab
     }
 
     validate: {
@@ -167,6 +210,19 @@ Module {
                                        + "ANDROID_HOME environment variable to a valid "
                                        + "Android SDK location.");
         }
+        if (!bundletoolFilePath && _generateAab) {
+            throw ModUtils.ModuleError("Could not find Android bundletool at the following "
+                                       + "location:\n\t" + Android.sdk.sdkDir
+                                       + "\nInstall the Android bundletool to the above location, "
+                                       + "or set the Android.sdk.bundletoolFilePath property.\n"
+                                       + "Android bundletool can be downloaded from "
+                                       + "https://github.com/google/bundletool");
+        }
+        if (Utilities.versionCompare(buildToolsVersion, "24.0.3") < 0) {
+            throw ModUtils.ModuleError("Version of Android SDK build tools too old. This version "
+                                       + "is " + buildToolsVersion + " and minimum version is "
+                                       + "24.0.3. Please update the Android SDK.")
+        }
     }
 
     FileTagger {
@@ -177,36 +233,6 @@ Module {
     FileTagger {
         patterns: ["*.aidl"]
         fileTags: ["android.aidl"]
-    }
-
-    FileTagger {
-        patterns: ["*.keystore"]
-        fileTags: ["android.keystore"]
-    }
-
-    // Typically there is a debug keystore in ~/.android/debug.keystore which gets created
-    // by the native build tools the first time a build is done. However, we don't want to create it
-    // ourselves, because writing to a location outside the qbs build directory is both polluting
-    // and has the potential for race conditions. So we'll instruct the user what to do.
-    Group {
-        name: "Android debug keystore"
-        files: {
-            if (!File.exists(Android.sdk.debugKeyStorePath)) {
-                throw ModUtils.ModuleError("Could not find an Android debug keystore at " +
-                      Android.sdk.debugKeyStorePath + ". " +
-                      "If you are developing for Android on this machine for the first time and " +
-                      "have never built an application using the native Gradle / Android Studio " +
-                      "tooling, this is normal. You must create the debug keystore now using the " +
-                      "following command, in order to continue:\n\n" +
-                      SdkUtils.createDebugKeyStoreCommandString(java.keytoolFilePath,
-                                                                Android.sdk.debugKeyStorePath) +
-                      "\n\n" +
-                      "See the following URL for more information: " +
-                      "https://developer.android.com/studio/publish/app-signing.html#debug-mode");
-            }
-            return [Android.sdk.debugKeyStorePath];
-        }
-        fileTags: ["android.keystore"]
     }
 
     Parameter {
@@ -229,15 +255,15 @@ Module {
             for (var i = 0; i < (aidlSearchPaths ? aidlSearchPaths.length : 0); ++i)
                 args.push("-I" + aidlSearchPaths[i]);
             args.push(input.filePath, output.filePath);
-            cmd = new Command(aidl, args);
-            cmd.description = "Processing " + input.fileName;
+            var cmd = new Command(aidl, args);
+            cmd.description = "processing " + input.fileName;
             return [cmd];
         }
     }
 
     property bool customManifestProcessing: false
     Group {
-        condition: !Android.sdk.customManifestProcessing
+        condition: !product.Android.sdk.customManifestProcessing
         fileTagsFilter: "android.manifest_processed"
         fileTags: "android.manifest_final"
     }
@@ -250,7 +276,7 @@ Module {
         }
         prepare: {
             var cmd = new JavaScriptCommand();
-            cmd.description = "Ensuring correct package name in Android manifest file";
+            cmd.description = "ensuring correct package name in Android manifest file";
             cmd.sourceCode = function() {
                 var manifestData = new Xml.DomDocument();
                 manifestData.load(input.filePath);
@@ -266,7 +292,48 @@ Module {
                             + "'com.mycompany.myproduct' pattern."
                 }
                 rootElem.setAttribute("package", packageName);
+                if (product.Android.sdk.versionCode !== undefined)
+                    rootElem.setAttribute("android:versionCode", product.Android.sdk.versionCode);
+                if (product.Android.sdk.versionName !== undefined)
+                    rootElem.setAttribute("android:versionName", product.Android.sdk.versionName);
 
+                if (product.Android.sdk._bundledInAssets) {
+                    // Remove <meta-data android:name="android.app.bundled_in_assets_resource_id"
+                    // android:resource="@array/bundled_in_assets"/>
+                    // custom AndroidManifest.xml because assets are in rcc files for qt >= 5.14
+                    var appElem = rootElem.firstChild("application");
+                    if (!appElem || !appElem.isElement() || appElem.tagName() != "application")
+                         throw "No application tag found in '" + input.filePath + "'.";
+                    var activityElem = appElem.firstChild("activity");
+                    if (!activityElem || !activityElem.isElement() ||
+                        activityElem.tagName() != "activity")
+                         throw "No activity tag found in '" + input.filePath + "'.";
+                    var metaDataElem = activityElem.firstChild("meta-data");
+                    while (metaDataElem && metaDataElem.isElement()) {
+                        if (SdkUtils.elementHasBundledAttributes(metaDataElem)) {
+                            var elemToRemove = metaDataElem;
+                            metaDataElem = metaDataElem.nextSibling("meta-data");
+                            activityElem.removeChild(elemToRemove);
+                        } else {
+                            metaDataElem = metaDataElem.nextSibling("meta-data");
+                        }
+                    }
+                }
+
+                var usedSdkElem = rootElem.firstChild("uses-sdk");
+                if (!usedSdkElem || !usedSdkElem.isElement()) {
+                    usedSdkElem = manifestData.createElement("uses-sdk");
+                    rootElem.appendChild(usedSdkElem);
+                } else {
+                    if (!usedSdkElem.isElement())
+                        throw "Tag uses-sdk is not an element in '" + input.filePath + "'.";
+                }
+                usedSdkElem.setAttribute("android:minSdkVersion",
+                                         product.Android.sdk.minimumVersion);
+                usedSdkElem.setAttribute("android:targetSdkVersion",
+                                         product.Android.sdk.targetVersion);
+
+                rootElem.appendChild(usedSdkElem);
                 manifestData.save(output.filePath, 4);
             }
             return cmd;
@@ -274,7 +341,7 @@ Module {
     }
 
     Rule {
-        condition: _enableRules
+        condition: _enableRules && !_enableAapt2
         multiplex: true
         inputs: ["android.resources", "android.assets", "android.manifest_final"]
 
@@ -297,6 +364,52 @@ Module {
     }
 
     Rule {
+        condition: _enableRules && _enableAapt2
+        inputs: ["android.resources"]
+        outputArtifacts: {
+            var outputs = [];
+            var resources = inputs["android.resources"];
+            for (var i = 0; i < resources.length; ++i) {
+                var filePath = resources[i].filePath;
+                var resourceFileName = SdkUtils.generateAapt2ResourceFileName(filePath);
+                var compiledName = FileInfo.joinPaths(product.Android.sdk.compiledResourcesDir,
+                                                      resourceFileName);
+                outputs.push({filePath: compiledName, fileTags: "android.resources_compiled"});
+            }
+            return outputs;
+        }
+        outputFileTags: ["android.resources_compiled"]
+
+        prepare: SdkUtils.prepareAapt2CompileResource.apply(SdkUtils, arguments)
+    }
+
+    Rule {
+        condition: _enableRules && _enableAapt2
+        multiplex: true
+        inputs: ["android.resources_compiled", "android.assets", "android.manifest_final"]
+        outputFileTags: ["java.java", "android.apk_resources"]
+        outputArtifacts: {
+            var artifacts = [];
+            artifacts.push({
+                filePath: product.Android.sdk.apkBaseName + (product.Android.sdk._generateAab ?
+                              ".apk_aab" : ".apk_apk"),
+                fileTags: ["android.apk_resources"]
+            });
+            var resources = inputs["android.resources_compiled"];
+            if (resources && resources.length) {
+                artifacts.push({
+                    filePath: FileInfo.joinPaths(product.Android.sdk.generatedJavaFilesDir,
+                                                 "R.java"),
+                    fileTags: ["java.java"]
+                });
+            }
+
+            return artifacts;
+        }
+        prepare: SdkUtils.prepareAapt2Link.apply(SdkUtils, arguments)
+    }
+
+    Rule {
         condition: _enableRules
         multiplex: true
 
@@ -308,7 +421,7 @@ Module {
 
         prepare: {
             var cmd = new JavaScriptCommand();
-            cmd.description = "Generating BuildConfig.java";
+            cmd.description = "generating BuildConfig.java";
             cmd.sourceCode = function() {
                 var debugValue = product.qbs.buildVariant === "debug" ? "true" : "false";
                 var ofile = new TextFile(output.filePath, TextFile.WriteOnly);
@@ -326,9 +439,12 @@ Module {
         condition: _enableRules
         multiplex: true
         inputs: ["java.class"]
-        inputsFromDependencies: ["java.jar"]
+        inputsFromDependencies: ["java.jar", "bundled_jar"]
         Artifact {
-            filePath: FileInfo.joinPaths(product.Android.sdk.apkContentsDir, "classes.dex")
+            filePath: product.Android.sdk._generateAab ?
+                          FileInfo.joinPaths(product.Android.sdk.packageContentsDir, "dex",
+                                             "classes.dex") :
+                          FileInfo.joinPaths(product.Android.sdk.packageContentsDir, "classes.dex")
             fileTags: ["android.dex"]
         }
         prepare: SdkUtils.prepareDex.apply(SdkUtils, arguments)
@@ -340,8 +456,10 @@ Module {
         inputsFromDependencies: inputTags
         inputs: product.aggregate ? [] : inputTags
         Artifact {
-            filePath: FileInfo.joinPaths(product.Android.sdk.apkContentsDir, "lib",
-                                         input.Android.ndk.abi, input.fileName)
+            filePath: FileInfo.joinPaths(product.Android.sdk.packageContentsDir, "lib",
+                                         input.Android.ndk.abi, product.Android.sdk._archInName ?
+                                             input.baseName + "_" + input.Android.ndk.abi + ".so" :
+                                             input.fileName)
             fileTags: "android.nativelibrary_deployed"
         }
         prepare: {
@@ -355,46 +473,14 @@ Module {
     Rule {
         condition: _enableRules
         multiplex: true
-        property stringList inputTags: "android.gdbserver"
-        inputsFromDependencies: inputTags
-        inputs: product.aggregate ? [] : inputTags
-        outputFileTags: "android.gdbserver_deployed"
-        outputArtifacts: {
-            var deploymentData = SdkUtils.gdbserverOrStlDeploymentData(product, inputs,
-                                                                       "gdbserver");
-            var outputs = [];
-            for (i = 0; i < deploymentData.outputFilePaths.length; ++i) {
-                outputs.push({filePath: deploymentData.outputFilePaths[i],
-                              fileTags: "android.gdbserver_deployed"});
-            }
-            return outputs;
-        }
-        prepare: {
-            var cmd = new JavaScriptCommand;
-            cmd.description = "deploying gdbserver binaries";
-            cmd.sourceCode = function() {
-                var deploymentData = SdkUtils.gdbserverOrStlDeploymentData(product, inputs,
-                                                                           "gdbserver");
-                for (var i = 0; i < deploymentData.uniqueInputs.length; ++i) {
-                    File.copy(deploymentData.uniqueInputs[i].filePath,
-                              deploymentData.outputFilePaths[i]);
-                }
-            };
-            return cmd;
-        }
-    }
-
-    Rule {
-        condition: _enableRules
-        multiplex: true
         property stringList inputTags: "android.stl"
         inputsFromDependencies: inputTags
         inputs: product.aggregate ? [] : inputTags
         outputFileTags: "android.stl_deployed"
         outputArtifacts: {
-            var deploymentData = SdkUtils.gdbserverOrStlDeploymentData(product, inputs, "stl");
+            var deploymentData = SdkUtils.stlDeploymentData(product, inputs, "stl");
             var outputs = [];
-            for (i = 0; i < deploymentData.outputFilePaths.length; ++i) {
+            for (var i = 0; i < deploymentData.outputFilePaths.length; ++i) {
                 outputs.push({filePath: deploymentData.outputFilePaths[i],
                               fileTags: "android.stl_deployed"});
             }
@@ -402,10 +488,10 @@ Module {
         }
         prepare: {
             var cmds = [];
-            var deploymentData = SdkUtils.gdbserverOrStlDeploymentData(product, inputs);
+            var deploymentData = SdkUtils.stlDeploymentData(product, inputs);
             for (var i = 0; i < deploymentData.uniqueInputs.length; ++i) {
                 var input = deploymentData.uniqueInputs[i];
-                var stripArgs = ["--strip-unneeded", "-o", deploymentData.outputFilePaths[i],
+                var stripArgs = ["--strip-all", "-o", deploymentData.outputFilePaths[i],
                                  input.filePath];
                 var cmd = new Command(input.cpp.stripPath, stripArgs);
                 cmd.description = "deploying " + input.fileName;
@@ -416,17 +502,47 @@ Module {
     }
 
     Rule {
-        condition: _enableRules
+        condition: _enableRules && !_enableAapt2 && !_generateAab
         multiplex: true
         inputs: [
             "android.resources", "android.assets", "android.manifest_final",
-            "android.dex", "android.gdbserver_deployed", "android.stl_deployed",
-            "android.nativelibrary_deployed", "android.keystore"
+            "android.dex", "android.stl_deployed",
+            "android.nativelibrary_deployed"
         ]
         Artifact {
-            filePath: product.Android.sdk.apkBaseName + ".apk"
-            fileTags: "android.apk"
+            filePath: product.Android.sdk.apkBaseName + ".apk_unsigned"
+            fileTags: "android.package_unsigned"
         }
         prepare: SdkUtils.prepareAaptPackage.apply(SdkUtils, arguments)
+    }
+
+    Rule {
+        condition: _enableRules && _enableAapt2 && !_generateAab
+        multiplex: true
+        inputs: [
+            "android.apk_resources", "android.manifest_final",
+            "android.dex", "android.stl_deployed",
+            "android.nativelibrary_deployed"
+        ]
+        Artifact {
+            filePath: product.Android.sdk.apkBaseName + ".apk_unsigned"
+            fileTags: "android.package_unsigned"
+        }
+        prepare: SdkUtils.prepareApkPackage.apply(SdkUtils, arguments)
+    }
+
+    Rule {
+        condition: _enableRules && _enableAapt2 && _generateAab
+        multiplex: true
+        inputs: [
+            "android.apk_resources", "android.manifest_final",
+            "android.dex", "android.stl_deployed",
+            "android.nativelibrary_deployed"
+        ]
+        Artifact {
+            filePath: product.Android.sdk.apkBaseName + ".aab_unsigned"
+            fileTags: "android.package_unsigned"
+        }
+        prepare: SdkUtils.prepareBundletoolPackage.apply(SdkUtils, arguments)
     }
 }

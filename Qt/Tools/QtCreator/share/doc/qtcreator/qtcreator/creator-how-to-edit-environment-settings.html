@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-projects-settings-environment.qdoc -->
+  <title>Edit environment settings | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Edit environment settings</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Edit environment settings</h1>
+<!-- $$$creator-how-to-edit-environment-settings.html-description -->
+<div class="descr" id="details">
+<p>You can change the environment variable values for build or run environments either for a particular project or globally:</p>
+<ul>
+<li>To change values globally, go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Environment</b> &gt; <b translate="no">System</b>, and select <b translate="no">Change</b> in <b translate="no">Environment</b>.</li>
+<li>To change values for a project, select <b translate="no">Edit</b> or <b translate="no">Add</b> in the <a href="creator-how-set-project-environment.html#change-the-environment-for-a-project" translate="no">project</a>, <a href="creator-how-set-project-environment.html#specify-the-build-environment" translate="no">build</a>, or <a href="creator-how-set-project-environment.html#specify-the-run-environment" translate="no">run</a> environment settings.</li>
+</ul>
+<p class="centerAlign"><img src="images/qtcreator-edit-environment.webp" alt="{Edit Environment dialog}" /></p><p>Use the following syntax to enter environment variable names and values: <code translate="no">&lt;VARIABLE&gt;=&lt;VALUE&gt;</code>.</p>
+<p>To remove a variable value from the environment, enter the variable name. For example, <code translate="no">TEST</code> sets the value of the <code translate="no">TEST</code> variable empty when building or running the project.</p>
+<p>To add a variable value to the environment, enter the variable name and value, separated by the equals sign. For example, the following line prepends the <code translate="no">/opt/bin</code> folder to the existing PATH:</p>
+<ul>
+<li>On Windows: <code translate="no">PATH=C:\opt\bin;${PATH}</code></li>
+<li>On Linux: <code translate="no">PATH=/opt/bin:${PATH}</code></li>
+</ul>
+<p>To add or remove several variables, place them on separate lines. The order is important. If you remove a value on a line, you cannot refer to it on the following lines. However, you can remove a value after you have referred to it on an earlier line.</p>
+<p>To temporarily disable a variable, add a hash character (#) to the beginning of the line.</p>
+</div>
+<p><b>See also </b><a href="creator-how-set-project-environment.html" translate="no">Specify the environment for projects</a>, <a href="creator-build-settings.html" translate="no">Configure projects for building</a>, <a href="creator-run-settings.html" translate="no">Configure projects for running</a>, and <a href="creator-how-to-use-qtc-variables.html" translate="no">Use Qt Creator variables</a>.</p>
+<!-- @@@creator-how-to-edit-environment-settings.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

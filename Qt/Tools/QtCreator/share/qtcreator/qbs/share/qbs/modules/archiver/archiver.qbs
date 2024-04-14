@@ -30,6 +30,7 @@
 
 import qbs.Environment
 import qbs.File
+import qbs.Host
 import qbs.FileInfo
 import qbs.Probes
 
@@ -53,7 +54,7 @@ Module {
         names: ["7z"]
         platformSearchPaths: {
             var paths = base;
-            if (qbs.hostOS.contains("windows")) {
+            if (Host.os().includes("windows")) {
                 var env32 = Environment.getEnv("PROGRAMFILES(X86)");
                 var env64 = Environment.getEnv("PROGRAMFILES");
                 if (env64 === env32 && env64.endsWith(" (x86)"))
@@ -211,7 +212,7 @@ Module {
                     args.push("-0");
                 } else {
                     compression = compression === "bz2" ? "bzip2" : compression;
-                    if (["store", "deflate", "bzip2"].contains(compression))
+                    if (["store", "deflate", "bzip2"].includes(compression))
                         args.push("-Z", compression);
 
                     if (compressionLevel)
@@ -220,7 +221,7 @@ Module {
 
                 args.push("-r", output.filePath, ".", "-i@" + input.filePath);
                 args = args.concat(product.moduleProperty("archiver", "flags"));
-            } else if (["tar", "zip", "jar"].contains(binaryName)) {
+            } else if (["tar", "zip", "jar"].includes(binaryName)) {
                 throw binaryName + ": unrecognized archive type: '" + type + "'";
             } else if (binaryName) {
                 throw "unrecognized archive tool: '" + binaryName + "'";
@@ -229,7 +230,7 @@ Module {
             }
 
             var archiverCommand = new Command(binary, args);
-            archiverCommand.description = "Creating archive file " + output.fileName;
+            archiverCommand.description = "creating archive file " + output.fileName;
             archiverCommand.highlight = "linker";
             archiverCommand.workingDirectory
                     = product.moduleProperty("archiver", "workingDirectory");

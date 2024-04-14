@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- tasktree.cpp -->
+  <meta name="description" content="GroupItem represents the basic element that may be a part of any Group.">
+  <title>GroupItem Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="taskingsolution-module.html" translate="no">TaskingSolution</a></li>
+<li>GroupItem</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">GroupItem Class</h1>
+<span class="small-subtitle" translate="no">class <a href="tasking.html" translate="no">Tasking</a>::GroupItem</span>
+<!-- $$$GroupItem-brief -->
+<p>GroupItem represents the basic element that may be a part of any <a href="tasking-group.html" translate="no">Group</a>. <a href="#details">More...</a></p>
+<!-- @@@GroupItem -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;solutions/tasking/tasktree.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherited By:</td><td class="memItemRight bottomAlign"> <p><a href="tasking-customtask.html" translate="no">Tasking::CustomTask</a> and <a href="tasking-group.html" translate="no">Tasking::Group</a></p>
+</td></tr>
+</table></div>
+<ul>
+<li><a href="tasking-groupitem-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="tasking-groupitem.html#GroupEndHandler-typedef" translate="no">GroupEndHandler</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="tasking-groupitem.html#GroupSetupHandler-typedef" translate="no">GroupSetupHandler</a></b></td></tr>
+</table></div>
+<!-- $$$GroupItem-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>GroupItem is a basic element that may be a part of any <a href="tasking-group.html" translate="no">Group</a>. It encapsulates the functionality provided by any GroupItem's subclass. It is a value type and it is safe to copy the GroupItem instance, even when it is originally created via the subclass' constructor.</p>
+<p>There are four main kinds of GroupItem:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >GroupItem Kind</th><th >Brief Description</th></tr></thead>
+<tr valign="top" class="odd"><td ><a href="tasking-customtask.html" translate="no">CustomTask</a></td><td >Defines asynchronous task type and task's start, done, and error handlers. Aliased with a unique task name, such as, <code translate="no">ConcurrentCallTask&lt;ResultType&gt;</code> or NetworkQueryTask. Asynchronous tasks are the main reason for using a task tree.</td></tr>
+<tr valign="top" class="even"><td >Group</td><td >A container for other group items. Since the group is of the GroupItem type, it's possible to nest it inside another group. The group is seen by its parent as a single asynchronous task.</td></tr>
+<tr valign="top" class="odd"><td >Storage</td><td >Enables the child tasks of a group to exchange data. When Storage is placed inside a group, the task tree instantiates the storage object just before the group is entered, and destroys it just after the group is finished.</td></tr>
+<tr valign="top" class="even"><td >Other group control items</td><td >The items returned by <a href="tasking.html#parallelLimit" translate="no">parallelLimit</a>() or <a href="tasking.html#workflowPolicy" translate="no">workflowPolicy</a>() influence the group's behavior. The items returned by <a href="tasking.html#onGroupSetup" translate="no">onGroupSetup</a>(), <a href="tasking.html#onGroupDone" translate="no">onGroupDone</a>() or <a href="tasking.html#onGroupError" translate="no">onGroupError</a>() define custom handlers called when the group starts or ends execution.</td></tr>
+</table></div>
+</div>
+<!-- @@@GroupItem -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$GroupEndHandler -->
+<h3 class="fn" translate="no" id="GroupEndHandler-typedef"><code translate="no">[alias] </code>GroupItem::<span class="name">GroupEndHandler</span></h3>
+<p>Type alias for <code translate="no">std::function&lt;void()&gt;</code>.</p>
+<p>The GroupEndHandler is used when constructing the <a href="tasking.html#onGroupDone" translate="no">onGroupDone</a>() and <a href="tasking.html#onGroupError" translate="no">onGroupError</a>() elements. Any function with the above signature, when passed as a group done or error handler, will be called by the running task tree when the group ends with success or an error, respectively.</p>
+<p><b>See also </b><a href="tasking.html#onGroupDone" translate="no">onGroupDone</a>() and <a href="tasking.html#onGroupError" translate="no">onGroupError</a>().</p>
+<!-- @@@GroupEndHandler -->
+<!-- $$$GroupSetupHandler -->
+<h3 class="fn" translate="no" id="GroupSetupHandler-typedef"><code translate="no">[alias] </code>GroupItem::<span class="name">GroupSetupHandler</span></h3>
+<p>Type alias for <code translate="no">std::function&lt;SetupResult()&gt;</code>.</p>
+<p>The GroupSetupHandler is used when constructing the <a href="tasking.html#onGroupSetup" translate="no">onGroupSetup</a>() element. Any function with the above signature, when passed as a group setup handler, will be called by the running task tree when the group execution starts.</p>
+<p>The return value of the handler instructs the running group on how to proceed after the handler's invocation is finished. The default return value of <a href="tasking.html#SetupResult-enum" translate="no">SetupResult::Continue</a> instructs the group to continue running, i.e. to start executing its child tasks. The return value of <a href="tasking.html#SetupResult-enum" translate="no">SetupResult::StopWithDone</a> or <a href="tasking.html#SetupResult-enum" translate="no">SetupResult::StopWithError</a> instructs the group to skip the child tasks' execution and finish immediately with success or an error, respectively.</p>
+<p>When the return type is either <a href="tasking.html#SetupResult-enum" translate="no">SetupResult::StopWithDone</a> of <a href="tasking.html#SetupResult-enum" translate="no">SetupResult::StopWithError</a>, the group's done or error handler (if provided) is called synchronously immediately afterwards.</p>
+<div class="admonition note">
+<p><b>Note: </b>Even if the group setup handler returns <a href="tasking.html#SetupResult-enum" translate="no">StopWithDone</a> or <a href="tasking.html#SetupResult-enum" translate="no">StopWithError</a>, one of the group's done or error handlers is invoked. This behavior differs from that of task handlers and might change in the future.</p>
+</div>
+<p>The <a href="tasking.html#onGroupSetup" translate="no">onGroupSetup</a>() accepts also functions in the shortened form of <code translate="no">std::function&lt;void()&gt;</code>, i.e. the return value is void. In this case it's assumed that the return value is <a href="tasking.html#SetupResult-enum" translate="no">SetupResult::Continue</a> by default.</p>
+<p><b>See also </b><a href="tasking.html#onGroupSetup" translate="no">onGroupSetup</a>().</p>
+<!-- @@@GroupSetupHandler -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

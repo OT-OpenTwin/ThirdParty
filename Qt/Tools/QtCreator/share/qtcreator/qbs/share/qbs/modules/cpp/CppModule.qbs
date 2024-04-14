@@ -29,10 +29,11 @@
 ****************************************************************************/
 
 // base for Cpp modules
+import qbs.FileInfo
 import qbs.ModUtils
 import qbs.Utilities
 import qbs.WindowsUtils
-
+import "cpp.js" as Cpp
 import "setuprunenv.js" as SetupRunEnv
 
 Module {
@@ -104,7 +105,7 @@ Module {
                         to the compiler. if undefined, compiler defaults will be used."
     }
 
-    property string minimumIosVersion
+    property string minimumIosVersion: qbs.architecture == "armv7a" ? "6.0" : undefined
     PropertyOptions {
         name: "minimumIosVersion"
         description: "a version number in the format [major].[minor] indicating the earliest \
@@ -120,7 +121,7 @@ Module {
                         defaults will be used."
     }
 
-    property string minimumTvosVersion
+    property string minimumTvosVersion: "6.0"
     PropertyOptions {
         name: "minimumTvosVersion"
         description: "a version number in the format [major].[minor] indicating the earliest \
@@ -128,7 +129,7 @@ Module {
                         defaults will be used."
     }
 
-    property string minimumAndroidVersion
+    property string minimumAndroidVersion // not used, undocumented
     PropertyOptions {
         name: "minimumAndroidVersion"
         description: "a version number in the format [major].[minor] indicating the earliest \
@@ -136,13 +137,19 @@ Module {
                         version which is then written to AndroidManifest.xml."
     }
 
-    property string maximumAndroidVersion
+    property string maximumAndroidVersion // not used, undocumented
     PropertyOptions {
         name: "maximumAndroidVersion"
         description: "a version number in the format [major].[minor] indicating the latest \
                         version of Android that the product should run on. this value is converted into an SDK \
                         version which is then written to AndroidManifest.xml. if undefined, no upper limit will \
                         be set."
+    }
+
+    property string toolchainInstallPath
+    PropertyOptions {
+        name: "toolchainInstallPath"
+        description: "a path to the directory where the toolchain executable files are located."
     }
 
     property pathList includePaths
@@ -173,12 +180,19 @@ Module {
     property string executablePrefix: ""
     property string staticLibrarySuffix: ""
     property string dynamicLibrarySuffix: ""
+    property string archSuffix: ""
     property string loadableModuleSuffix: ""
     property string executableSuffix: ""
     property string debugInfoSuffix: ""
     property string debugInfoBundleSuffix: ""
     property string variantSuffix: ""
     property string dynamicLibraryImportSuffix: ".lib"
+    property string objectSuffix: ".o"
+    property string linkerMapSuffix: ".map"
+    property string compilerListingSuffix: ".lst"
+    property string assemblerListingSuffix: ".lst"
+    property string resourceSuffix: ".res"
+    property string precompiledHeaderSuffix
     property bool createSymlinks: true
     property stringList dynamicLibraries // list of names, will be linked with -lname
     property stringList staticLibraries // list of static library files
@@ -191,6 +205,34 @@ Module {
     property bool useRPathLink
     property string rpathLinkFlag
     property bool discardUnusedData
+    property bool removeDuplicateLibraries: true
+
+    property string defineFlag
+    property string includeFlag
+    property string systemIncludeFlag
+    property string preincludeFlag
+    property string libraryDependencyFlag
+    property string libraryPathFlag
+    property string linkerScriptFlag
+
+    property stringList knownArchitectures: []
+    property var toolchainDetails
+    property string compilerExtension: FileInfo.executableSuffix()
+
+    property string linkerMode: "automatic"
+    PropertyOptions {
+        name: "linkerMode"
+        allowedValues: ["automatic", "manual"]
+        description: "Controls whether to automatically use an appropriate compiler frontend "
+            + "in place of the system linker when linking binaries. The default is \"automatic\", "
+            + "which chooses either the C++ compiler, C compiler, or system linker specified by "
+            + "the linkerName/linkerPath properties, depending on the type of object files "
+            + "present on the linker command line. \"manual\" allows you to explicitly specify "
+            + "the linker using the linkerName/linkerPath properties, and allows linker flags "
+            + "passed to the linkerFlags and platformLinkerFlags properties to be escaped "
+            + "manually (using -Wl or -Xlinker) instead of automatically based on the selected "
+            + "linker."
+    }
 
     property stringList assemblerFlags
     PropertyOptions {
@@ -251,6 +293,24 @@ Module {
         description: "additional compiler driver flags used for linking only"
     }
 
+    property bool generateLinkerMapFile: false
+    PropertyOptions {
+        name: "generateLinkerMapFile"
+        description: "generate linker map file"
+    }
+
+    property bool generateCompilerListingFiles: false
+    PropertyOptions {
+        name: "generateCompilerListingFiles"
+        description: "generate compiler listing files"
+    }
+
+    property bool generateAssemblerListingFiles: false
+    PropertyOptions {
+        name: "generateAssemblerListingFiles"
+        description: "generate assembler listing files"
+    }
+
     property bool positionIndependentCode: true
     PropertyOptions {
         name: "positionIndependentCode"
@@ -280,14 +340,12 @@ Module {
     property stringList cLanguageVersion
     PropertyOptions {
         name: "cLanguageVersion"
-        allowedValues: ["c89", "c99", "c11"]
         description: "The version of the C standard with which the code must comply."
     }
 
     property stringList cxxLanguageVersion
     PropertyOptions {
         name: "cxxLanguageVersion"
-        allowedValues: ["c++98", "c++11", "c++14", "c++17"]
         description: "The version of the C++ standard with which the code must comply."
     }
 
@@ -350,13 +408,14 @@ Module {
     property bool combineObjcSources: false
     property bool combineObjcxxSources: false
 
+    // Those are set internally by different cpp module implementations
     property stringList targetAssemblerFlags
     property stringList targetDriverFlags
     property stringList targetLinkerFlags
 
     property bool _skipAllChecks: false // Internal
 
-    property bool validateTargetTriple: true
+    property bool validateTargetTriple: true // undocumented
 
     // TODO: The following four rules could use a convenience base item if rule properties
     //       were available in Artifact items and prepare scripts.
@@ -454,40 +513,53 @@ Module {
         fileTags: ["hpp"]
     }
 
-    validate: {
-        var validator = new ModUtils.PropertyValidator("cpp");
-        validator.setRequiredProperty("architecture", architecture,
-                                      "you might want to re-run 'qbs-setup-toolchains'");
-        validator.addCustomValidator("architecture", architecture, function (value) {
-            return !architecture || architecture === Utilities.canonicalArchitecture(architecture);
-        }, "'" + architecture + "' is invalid. You must use the canonical name '" +
-        Utilities.canonicalArchitecture(architecture) + "'");
-        validator.setRequiredProperty("endianness", endianness);
-        validator.setRequiredProperty("compilerDefinesByLanguage", compilerDefinesByLanguage);
-        validator.setRequiredProperty("compilerVersion", compilerVersion);
-        validator.setRequiredProperty("compilerVersionMajor", compilerVersionMajor);
-        validator.setRequiredProperty("compilerVersionMinor", compilerVersionMinor);
-        validator.setRequiredProperty("compilerVersionPatch", compilerVersionPatch);
-        validator.addVersionValidator("compilerVersion", compilerVersion, 3, 3);
-        validator.addRangeValidator("compilerVersionMajor", compilerVersionMajor, 1);
-        validator.addRangeValidator("compilerVersionMinor", compilerVersionMinor, 0);
-        validator.addRangeValidator("compilerVersionPatch", compilerVersionPatch, 0);
-        if (minimumWindowsVersion) {
-            validator.addVersionValidator("minimumWindowsVersion", minimumWindowsVersion, 2, 2);
-            validator.addCustomValidator("minimumWindowsVersion", minimumWindowsVersion, function (v) {
-                return !v || v === WindowsUtils.canonicalizeVersion(v);
-            }, "'" + minimumWindowsVersion + "' is invalid. Did you mean '" +
-            WindowsUtils.canonicalizeVersion(minimumWindowsVersion) + "'?");
-        }
-        validator.validate();
+    property var validateFunc: {
+        return function() {
+            var validator = new ModUtils.PropertyValidator("cpp");
+            validator.setRequiredProperty("architecture", architecture,
+                                          "you might want to re-run 'qbs-setup-toolchains'");
+            validator.addCustomValidator("architecture", architecture, function (value) {
+                return !architecture || architecture === Utilities.canonicalArchitecture(architecture);
+            }, "'" + architecture + "' is invalid. You must use the canonical name '" +
+            Utilities.canonicalArchitecture(architecture) + "'");
+            validator.setRequiredProperty("endianness", endianness);
+            validator.setRequiredProperty("compilerDefinesByLanguage", compilerDefinesByLanguage);
+            validator.setRequiredProperty("compilerVersion", compilerVersion);
+            validator.setRequiredProperty("compilerVersionMajor", compilerVersionMajor);
+            validator.setRequiredProperty("compilerVersionMinor", compilerVersionMinor);
+            validator.setRequiredProperty("compilerVersionPatch", compilerVersionPatch);
+            validator.addVersionValidator("compilerVersion", compilerVersion, 3, 3);
+            validator.addRangeValidator("compilerVersionMajor", compilerVersionMajor, 1);
+            validator.addRangeValidator("compilerVersionMinor", compilerVersionMinor, 0);
+            validator.addRangeValidator("compilerVersionPatch", compilerVersionPatch, 0);
+            if (minimumWindowsVersion) {
+                validator.addVersionValidator("minimumWindowsVersion", minimumWindowsVersion, 2, 2);
+                validator.addCustomValidator("minimumWindowsVersion", minimumWindowsVersion, function (v) {
+                    return !v || v === WindowsUtils.canonicalizeVersion(v);
+                }, "'" + minimumWindowsVersion + "' is invalid. Did you mean '" +
+                WindowsUtils.canonicalizeVersion(minimumWindowsVersion) + "'?");
+            }
+            validator.validate();
 
-        if (minimumWindowsVersion && !WindowsUtils.isValidWindowsVersion(minimumWindowsVersion)) {
-            console.warn("Unknown Windows version '" + minimumWindowsVersion
-                + "'; expected one of: "
-                + WindowsUtils.knownWindowsVersions().map(function (a) {
-                    return '"' + a + '"'; }).join(", ")
-                + ". See https://docs.microsoft.com/en-us/windows/desktop/SysInfo/operating-system-version");
+            if (minimumWindowsVersion && !WindowsUtils.isValidWindowsVersion(minimumWindowsVersion)) {
+                console.warn("Unknown Windows version '" + minimumWindowsVersion
+                    + "'; expected one of: "
+                    + WindowsUtils.knownWindowsVersions().map(function (a) {
+                        return '"' + a + '"'; }).join(", ")
+                    + ". See https://docs.microsoft.com/en-us/windows/desktop/SysInfo/operating-system-version");
+            }
+
+            if (knownArchitectures && knownArchitectures.length > 0) {
+                var isSupported = Cpp.supportsArchitecture(qbs.architecture, knownArchitectures);
+                if (!isSupported) {
+                    throw ModUtils.ModuleError("Unsupported architecture: '" + qbs.architecture + "'");
+                }
+            }
         }
+    }
+
+    validate: {
+        return validateFunc();
     }
 
     setupRunEnvironment: {

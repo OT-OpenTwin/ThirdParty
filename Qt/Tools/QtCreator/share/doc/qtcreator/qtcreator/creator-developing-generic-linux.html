@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
 <!-- linuxdev.qdoc -->
-  <title>Connecting Embedded Linux Devices | Qt Creator Manual</title>
+  <title>Connecting Remote Linux Devices | Qt Creator Manual</title>
   <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
   <script type="text/javascript">
     document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
@@ -22,28 +21,31 @@
 </head>
 <body>
 <div class="header" id="qtdocheader">
-  <div class="main">
+    <div class="main">
     <div class="main-rounded">
-      <div class="navigationbar">
-        <table><tr>
-<td ><a href="index.html">Qt Creator Manual</a></td><td >Connecting Embedded Linux Devices</td></tr></table><table class="buildversion"><tr>
-<td id="buildversion" width="100%" align="right"><a href="index.html">Qt Creator Manual 4.9&#x2e;1</a></td>
-        </tr></table>
-      </div>
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li><a href="creator-overview.html" translate="no">Developing with Qt Creator</a></li>
+<li><a href="creator-connecting-mobile.html" translate="no">Connecting Devices</a></li>
+<li>Connecting Remote Linux Devices</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
     </div>
+</div>
 <div class="content">
 <div class="line">
 <div class="content mainContent">
-  <link rel="prev" href="creator-developing-baremetal.html" />
-  <link rel="next" href="creator-developing-ios.html" />
+  <link rel="prev" href="creator-developing-qnx.html" />
+  <link rel="next" href="creator-setup-webassembly.html" />
 <p class="naviNextPrevious headerNavi">
-<a class="prevPage" href="creator-developing-baremetal.html">Connecting Bare Metal Devices</a>
+<a class="prevPage" href="creator-developing-qnx.html">Connecting QNX Devices</a>
 <span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-developing-ios.html">Connecting iOS Devices</a>
-</p><p/>
+<a class="nextPage" href="creator-setup-webassembly.html">Building Applications for the Web</a>
+</p>
 <div class="sidebar">
 <div class="toc">
-<h3><a name="toc">Contents</a></h3>
+<h3 id="toc">Contents</h3>
 <ul>
 <li class="level2"><a href="#configuring-ssh-connections">Configuring SSH Connections</a></li>
 <li class="level2"><a href="#generating-ssh-keys">Generating SSH Keys</a></li>
@@ -51,71 +53,76 @@
 </ul>
 </div>
 <div class="sidebar-content" id="sidebar-content"></div></div>
-<h1 class="title">Connecting Embedded Linux Devices</h1>
-<span class="subtitle"></span>
+<h1 class="title">Connecting Remote Linux Devices</h1>
 <!-- $$$creator-developing-generic-linux.html-description -->
-<div class="descr"> <a name="details"></a>
-<p>You can connect embedded Linux devices to the development PC to run, debug, and analyze applications built for them from Qt Creator.</p>
-<p>If you have a tool chain for building applications for embedded Linux devices installed on the development PC, you can add it to Qt Creator. You can then select a <a href="creator-glossary.html#glossary-buildandrun-kit">kit</a> with <b>Embedded Linux</b> device type to build applications for and run them on embedded Linux devices.</p>
-<p>To be able to run and debug applications on embedded Linux devices, you must add devices and select them in the Qt Creator <a href="creator-glossary.html#glossary-buildandrun-kit">kit</a>.</p>
-<p>You use a wizard to create the connections. You can edit the settings later in <b>Tools</b> &gt; <b>Options</b> &gt; <b>Devices</b> &gt; <b>Devices</b>.</p>
-<p class="centerAlign"><img src="images/qtcreator-linux-device-configurations.png" alt="&quot;Devices dialog&quot;" /></p><p>You can protect the connections between Qt Creator and a device by using an <a href="https://www.openssh.com/">OpenSSH</a> connection. OpenSSH is a connectivity tool for remote login using the SSH protocol. The OpenSSH suite is not delivered with Qt Creator, so you must download it and install it on the development PC. Then, you must configure the paths to the tools in Qt Creator. For more information, see <a href="creator-developing-generic-linux.html#configuring-ssh-connections">Configuring SSH Connections</a>.</p>
-<p>You need either a password or an SSH public and private key pair for authentication. If you do not have an SSH key, you can use the ssh-keygen tool to create it in Qt Creator. For more information, see <a href="creator-developing-generic-linux.html#generating-ssh-keys">Generating SSH Keys</a>.</p>
-<p>To configure connections between Qt Creator and an embedded Linux device and to specify build and run settings for the device:</p>
+<div class="descr" id="details">
+<p>You can connect generic Linux devices to the development PC to run, debug, and analyze applications built for them from Qt Creator.</p>
+<p>If you have a tool chain for building applications for embedded Linux devices installed on the development PC, you can add it to Qt Creator. You can then select a <a href="creator-glossary.html#glossary-buildandrun-kit" translate="no">kit</a> with the device type <b translate="no">Remote Linux Device</b> to build applications for and run them on the devices.</p>
+<p>To be able to run and debug applications on remote Linux devices, you must add devices and select them in the Qt Creator <a href="creator-glossary.html#glossary-buildandrun-kit" translate="no">kit</a>.</p>
+<p>You use a wizard to create the connections. You can edit the settings later in <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Devices</b> &gt; <b translate="no">Devices</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-preferences-devices-remote-linux.webp" alt="&quot;Remote Linux Device in the Devices tab&quot;" /></p><p>You can protect the connections between Qt Creator and a device by using an <a href="https://www.openssh.com/" translate="no">OpenSSH</a> connection. OpenSSH is a connectivity tool for remote login using the SSH protocol. The OpenSSH suite is not delivered with Qt Creator, so you must download it and install it on the development PC. Then, you must configure the paths to the tools in Qt Creator. For more information, see <a href="creator-developing-generic-linux.html#configuring-ssh-connections" translate="no">Configuring SSH Connections</a>.</p>
+<p>You need either a password or an SSH public and private key pair for authentication. If you do not have an SSH key, you can use the ssh-keygen tool to create it in Qt Creator. For more information, see <a href="creator-developing-generic-linux.html#generating-ssh-keys" translate="no">Generating SSH Keys</a>.</p>
+<div class="admonition note">
+<p><b>Note: </b>Qt Creator does not store passwords, so if you use password authentication, you may need to enter the password on every connection to the device, or, if caching is enabled, at every Qt Creator restart.</p>
+</div>
+<p>To configure connections between Qt Creator and a remote Linux device and to specify build and run settings for the device:</p>
 <ol class="1" type="1"><li>Make sure that your device can be reached via an IP address.</li>
-<li>Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Kits</b> &gt; <b>Qt Versions</b> &gt; <b>Add</b> to add the Qt version for embedded Linux.</li>
-<li>Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Kits</b> &gt; <b>Compilers</b> &gt; <b>Add</b> to add the compiler for building the applications.</li>
-<li>To deploy applications and run them remotely on devices, specify parameters for accessing the devices:<ol class="1" type="1"><li>Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Devices</b> &gt; <b>Devices</b> &gt; <b>Add</b> &gt; <b>Generic Linux Device</b> &gt; <b>Start Wizard</b>.<p class="centerAlign"><img src="images/qtcreator-screenshot-devconf-linux.png" alt="&quot;Connection Data wizard&quot;" /></p></li>
-<li>In the <b>The name to identify this configuration</b> field, enter a name for the connection.</li>
-<li>In the <b>The device's host name or IP address</b> field, enter the host name or IP address of the device. This value will be available in the variable <code>%{Device:HostAddress}</code>.</li>
-<li>In the <b>The username to log into the device</b> field, enter the username to log into the device and run the application as. This value will be available in the variable <code>%{Device:UserName}</code>.</li>
-<li>In the <b>The authentication type</b> field, select <b>Default</b> to use the currently displayed private key file for authentication. Select <b>Specific Key</b> to use some other key, and enter the path to the file that contains the private key in the field below. This value will be available in the variable <code>%{Device:PrivateKeyFile}</code>.</li>
-<li>Click <b>Next</b> to create the connection.</li>
+<li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Kits</b> &gt; <b translate="no">Qt Versions</b> &gt; <b translate="no">Add</b> to add the Qt version for embedded Linux.</li>
+<li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Kits</b> &gt; <b translate="no">Compilers</b> &gt; <b translate="no">Add</b> to add the compiler for building the applications.</li>
+<li>To deploy applications and run them remotely on devices, specify parameters for accessing the devices:<ol class="a" type="a"><li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Devices</b> &gt; <b translate="no">Devices</b> &gt; <b translate="no">Add</b> &gt; <b translate="no">Remote Linux Device</b> &gt; <b translate="no">Start Wizard</b>.<p class="centerAlign"><img src="images/qtcreator-preferences-devices-remote-linux-connection.webp" alt="&quot;Connection Data wizard&quot;" /></p></li>
+<li>In <b translate="no">The name to identify this configuration</b>, enter a name for the connection.</li>
+<li>In <b translate="no">The device's host name or IP address</b>, enter the host name or IP address of the device. This value will be available in the variable <code translate="no">%{Device:HostAddress}</code>.</li>
+<li>In <b translate="no">The device's SSH port number</b>, enter the port number to use for SSH connections. This value will be available in the variable <code translate="no">%{Device:SshPort}</code>.</li>
+<li>In <b translate="no">The username to log into the device</b>, enter the username to log into the device and run the application as. This value will be available in the variable <code translate="no">%{Device:UserName}</code>.</li>
+<li>Select <b translate="no">Next</b> to open the <b translate="no">Key Deployment</b> dialog.<p class="centerAlign"><img src="images/qtcreator-preferences-devices-remote-linux-key-deployment.webp" alt="&quot;Key Deployment dialog&quot;" /></p></li>
+<li>In <b translate="no">Private key file</b>, select a private key file to use for authentication. This value will be available in the variable <code translate="no">%{Device:PrivateKeyFile}</code>.</li>
+<li>If you do not have a public-private key pair, select <b translate="no">Create New Key Pair</b>. For more information, see <a href="creator-developing-generic-linux.html#generating-ssh-keys" translate="no">Generating SSH Keys</a>.</li>
+<li>Select <b translate="no">Deploy Public Key</b> to copy the public key to the device.</li>
+<li>Select <b translate="no">Next</b> to create the connection.</li>
 </ol>
-<p>All of these parameters can be edited later, as well as additional ones that the wizard does not show because there are sensible default values. One of these is the SSH port number, which is available in the variable <code>%{Device:SshPort}</code>.</p>
+<p>All of these parameters can be edited later, as well as additional ones that the wizard does not show because there are sensible default values.</p>
+<p>To add a device without using the wizard, select <b translate="no">Add Remote Linux Device</b> in the pull-down menu of the <b translate="no">Add</b> button.</p>
 </li>
-<li>Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Kits</b> &gt; <b>Add</b> to add a kit for building for the device. Select the Qt version, compiler, and device that you added above, and choose <b>Generic Linux Device</b> for the device type.</li>
+<li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Kits</b> &gt; <b translate="no">Add</b> to add a kit for building for the device. Select the Qt version, compiler, and device that you added above, and select <b translate="no">Remote Linux Device</b> in <b translate="no">Run device type</b>.<p>To build on the remote device, select <b translate="no">Remote Linux Device</b> also in <b translate="no">Build device</b>.</p>
+</li>
 <li>To specify build settings:<ol class="1" type="1"><li>Open a project for an application you want to develop for the device.</li>
-<li>Select <b>Projects</b> &gt; <b>Build &amp; Run</b> to enable the kit that you specified above.</li>
+<li>Select <b translate="no">Projects</b> &gt; <b translate="no">Build &amp; Run</b> to enable the kit that you specified above.</li>
 </ol>
 </li>
-<li>Select <b>Run</b> to specify run settings. Usually, you can use the default settings.<p>When you run the project, Qt Creator deploys the application as specified by the deploy steps. By default, Qt Creator copies the application files to the device. For more information, see <a href="creator-deployment-embedded-linux.html">Deploying Applications to Embedded Linux Devices</a>.</p>
+<li>Select <b translate="no">Run</b> to specify run settings. Usually, you can use the default settings.<p>When you run the project, Qt Creator deploys the application as specified by the deploy steps. By default, Qt Creator copies the application files to the device. For more information, see <a href="creator-deployment-embedded-linux.html" translate="no">Deploying to Remote Linux</a>.</p>
 </li>
 </ol>
-<a name="configuring-ssh-connections"></a>
-<h3 >Configuring SSH Connections</h3>
+<h3 id="configuring-ssh-connections">Configuring SSH Connections</h3>
 <p>SSH connections are established via an OpenSSH client running in master mode, if possible. Connection sharing is enabled by default to allow sharing multiple sessions over a single SSH connection. This way, a connection is only established once and then re-used by subsequent run and deploy procedures, saving connection setup overhead particularly with embedded devices. Because connection sharing is not supported on Windows, a new SSH connection is created for each deploy or run procedure.</p>
-<p>To create SSH connections, you must install the <a href="https://www.openssh.com/">OpenSSH</a> suite, which includes the ssh, sftp, and ssh-keygen tools on the development PC.</p>
-<p>To tell Qt Creator where it can find the tools, specify the paths to the directories where the tools are installed in <b>Tools</b> &gt; <b>Options</b> &gt; <b>Devices</b> &gt; <b>SSH</b>:</p>
-<p class="centerAlign"><img src="images/qtcreator-ssh-options.png" alt="" /></p><ul>
-<li>Deselect the <b>Enable connection sharing</b> check box to create a new SSH connection for each deploy and run procedure. This option is grayed on Windows, where connection sharing is not supported.</li>
-<li>In the <b>Connection sharing timeout</b> field, specify the timeout for reusing the SSH connection in minutes.</li>
-<li>In the <b>Path to ssh executable</b> field, enter the path to the directory where the OpenSSH executable is installed.</li>
-<li>In the <b>Path to sftp executable</b> field, enter the path to the directory where the SFTP executable is installed.</li>
-<li>In the <b>Path to ssh-askpass executable</b> field, enter the path to the directory where the ssh-askpass executable is installed. Usually, you can use the default path that points to the implementation of the tool delivered with Qt Creator, qtc-askpass.</li>
-<li>In the <b>Path to ssh-keygen executable</b> field, enter the path to the directory where the ssh-keygen executable is installed.</li>
+<p>To create SSH connections, you must install the <a href="https://www.openssh.com/" translate="no">OpenSSH</a> suite, which includes the ssh, sftp, and ssh-keygen tools on the development PC.</p>
+<p>To tell Qt Creator where it can find the tools, specify the paths to the directories where the tools are installed in <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Devices</b> &gt; <b translate="no">SSH</b>:</p>
+<p class="centerAlign"><img src="images/qtcreator-ssh-options.png" alt="&quot;SSH preferences&quot;" /></p><ul>
+<li>Deselect the <b translate="no">Enable connection sharing</b> check box to create a new SSH connection for each deploy and run procedure. This option is grayed on Windows, where connection sharing is not supported.</li>
+<li>In the <b translate="no">Connection sharing timeout</b> field, specify the timeout for reusing the SSH connection in minutes.</li>
+<li>In the <b translate="no">Path to ssh executable</b> field, enter the path to the directory where the OpenSSH executable is installed.</li>
+<li>In the <b translate="no">Path to sftp executable</b> field, enter the path to the directory where the SFTP executable is installed.</li>
+<li>In the <b translate="no">Path to ssh-askpass executable</b> field, enter the path to the directory where the ssh-askpass executable is installed. Usually, you can use the default path that points to the implementation of the tool delivered with Qt Creator, qtc-askpass.</li>
+<li>In the <b translate="no">Path to ssh-keygen executable</b> field, enter the path to the directory where the ssh-keygen executable is installed.</li>
 </ul>
-<a name="generating-ssh-keys"></a>
-<h3 >Generating SSH Keys</h3>
+<h3 id="generating-ssh-keys">Generating SSH Keys</h3>
 <p>If you do not have an SSH public and private key pair, you can generate it in Qt Creator. The connection wizard can create the key pair for you, or you can create it separately.</p>
 <p>You can specify key length and the key algorithm, RSA or ECDSA. If you only use the keys to protect connections to the emulator or device, you can use the default values.</p>
-<ol class="1" type="1"><li>Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Devices</b> &gt; <b>Devices</b> &gt; <b>Create New</b>.<p class="centerAlign"><img src="images/qtcreator-ssh-key-configuration.png" alt="&quot;SSH Key Configuration dialog&quot;" /></p></li>
-<li>In the <b>Private key file</b> field, select the location to save the private key.<p>The <b>Public key file</b> field displays the location to save the corresponding public key.</p>
+<ol class="1" type="1"><li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Devices</b> &gt; <b translate="no">Devices</b> &gt; <b translate="no">Create New</b>.<p class="centerAlign"><img src="images/qtcreator-ssh-key-configuration.png" alt="&quot;SSH Key Configuration dialog&quot;" /></p></li>
+<li>In the <b translate="no">Private key file</b> field, select the location to save the private key.<p>The <b translate="no">Public key file</b> field displays the location to save the corresponding public key.</p>
 </li>
-<li>Select <b>Generate And Save Key Pair</b> to generate and save the keys at the specified locations.</li>
+<li>Select <b translate="no">Generate And Save Key Pair</b> to generate and save the keys at the specified locations.</li>
 </ol>
-<a name="managing-device-processes"></a>
-<h3 >Managing Device Processes</h3>
-<p>You can view processes running on devices and kill them. Select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Devices</b> &gt; <b>Devices</b> &gt; <b>Show Running Processes</b>.</p>
-<p>You can filter the processes by name or ID in the <b>List of Processes</b> dialog.</p>
-<p>To update the process list, select <b>Update List</b>.</p>
-<p>To kill a process, select it in the list, and then select <b>Kill Process</b>.</p>
+<h3 id="managing-device-processes">Managing Device Processes</h3>
+<p>You can view processes running on devices and kill them. Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Devices</b> &gt; <b translate="no">Devices</b> &gt; <b translate="no">Show Running Processes</b>.</p>
+<p>You can filter the processes by name or ID in the <b translate="no">List of Processes</b> dialog.</p>
+<p>To update the process list, select <b translate="no">Update List</b>.</p>
+<p>To kill a process, select it in the list, and then select <b translate="no">Kill Process</b>.</p>
 </div>
 <!-- @@@creator-developing-generic-linux.html -->
 <p class="naviNextPrevious footerNavi">
-<a class="prevPage" href="creator-developing-baremetal.html">Connecting Bare Metal Devices</a>
+<a class="prevPage" href="creator-developing-qnx.html">Connecting QNX Devices</a>
 <span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-developing-ios.html">Connecting iOS Devices</a>
+<a class="nextPage" href="creator-setup-webassembly.html">Building Applications for the Web</a>
 </p>
         </div>
        </div>
@@ -124,7 +131,7 @@
 </div>
 <div class="footer">
    <p>
-   <acronym title="Copyright">&copy;</acronym> 2019 The Qt Company Ltd.
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
    Documentation contributions included herein are the copyrights of
    their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
    of their respective owners. </p>

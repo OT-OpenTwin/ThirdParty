@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-app-tutorial.qdoc -->
+  <meta name="description" content="How to create a Qt Quick Application in the Edit mode.">
+  <title>Creating a Qt Quick Application | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Creating a Qt Quick Application</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-tutorials.html" />
+  <link rel="next" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-tutorials.html">Tutorials</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-how-tos.html">How To</a>
+</p>
+<h1 class="title">Creating a Qt Quick Application</h1>
+<pre class="qml" translate="no">
+ <span class="comment">// Copyright (C) 2021 The Qt Company Ltd.</span>
+ <span class="comment">// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause</span>
+
+ import QtQuick
+
+ <span class="type">Rectangle</span> {
+     <span class="name">id</span>: <span class="name">page</span>
+     <span class="name">anchors</span>.fill: <span class="name">parent</span>
+     <span class="name">color</span>: <span class="string">&quot;#ffffff&quot;</span>
+
+     <span class="type">Image</span> {
+         <span class="name">id</span>: <span class="name">icon</span>
+         <span class="name">x</span>: <span class="number">20</span>
+         <span class="name">y</span>: <span class="number">20</span>
+         <span class="name">source</span>: <span class="string">&quot;qt-logo.png&quot;</span>
+     }
+
+     <span class="type">Rectangle</span> {
+         <span class="name">id</span>: <span class="name">topLeftRect</span>
+         <span class="name">width</span>: <span class="number">55</span>
+         <span class="name">height</span>: <span class="number">41</span>
+         <span class="name">color</span>: <span class="string">&quot;#00ffffff&quot;</span>
+         <span class="name">border</span>.color: <span class="string">&quot;#808080&quot;</span>
+         <span class="name">anchors</span>.left: <span class="name">parent</span>.<span class="name">left</span>
+         <span class="name">anchors</span>.top: <span class="name">parent</span>.<span class="name">top</span>
+         <span class="name">anchors</span>.leftMargin: <span class="number">20</span>
+         <span class="name">anchors</span>.topMargin: <span class="number">20</span>
+
+         <span class="type">MouseArea</span> {
+             <span class="name">id</span>: <span class="name">mouseArea</span>
+             <span class="name">anchors</span>.fill: <span class="name">parent</span>
+
+             <span class="type">Connections</span> {
+                 <span class="name">target</span>: <span class="name">mouseArea</span>
+                 <span class="keyword">function </span><span class="name">onClicked</span>()
+                 {
+                     <span class="name">page</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;State1&quot;</span>
+                 }
+             }
+         }
+     }
+
+     <span class="type">Rectangle</span> {
+         <span class="name">id</span>: <span class="name">middleRightRect</span>
+         <span class="name">width</span>: <span class="number">55</span>
+         <span class="name">height</span>: <span class="number">41</span>
+         <span class="name">color</span>: <span class="string">&quot;#00ffffff&quot;</span>
+         <span class="name">border</span>.color: <span class="string">&quot;#808080&quot;</span>
+         <span class="name">anchors</span>.verticalCenter: <span class="name">parent</span>.<span class="name">verticalCenter</span>
+         <span class="name">anchors</span>.right: <span class="name">parent</span>.<span class="name">right</span>
+         <span class="name">anchors</span>.rightMargin: <span class="number">20</span>
+         <span class="type">MouseArea</span> {
+             <span class="name">id</span>: <span class="name">mouseArea1</span>
+             <span class="name">anchors</span>.fill: <span class="name">parent</span>
+
+             <span class="type">Connections</span> {
+                 <span class="name">target</span>: <span class="name">mouseArea1</span>
+                 <span class="keyword">function </span><span class="name">onClicked</span>()
+                 {
+                     <span class="name">page</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;State2&quot;</span>
+                 }
+             }
+         }
+     }
+
+     <span class="type">Rectangle</span> {
+         <span class="name">id</span>: <span class="name">bottomLeftRect</span>
+         <span class="name">width</span>: <span class="number">55</span>
+         <span class="name">height</span>: <span class="number">41</span>
+         <span class="name">color</span>: <span class="string">&quot;#00ffffff&quot;</span>
+         <span class="name">border</span>.color: <span class="string">&quot;#808080&quot;</span>
+         <span class="name">anchors</span>.left: <span class="name">parent</span>.<span class="name">left</span>
+         <span class="name">anchors</span>.bottom: <span class="name">parent</span>.<span class="name">bottom</span>
+         <span class="name">anchors</span>.bottomMargin: <span class="number">20</span>
+         <span class="name">anchors</span>.leftMargin: <span class="number">20</span>
+         <span class="type">MouseArea</span> {
+             <span class="name">id</span>: <span class="name">mouseArea2</span>
+             <span class="name">anchors</span>.fill: <span class="name">parent</span>
+
+             <span class="type">Connections</span> {
+                 <span class="name">target</span>: <span class="name">mouseArea2</span>
+                 <span class="keyword">function </span><span class="name">onClicked</span>()
+                 {
+                     <span class="name">page</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;State3&quot;</span>
+                 }
+             }
+         }
+     }
+
+     <span class="name">states</span>: [
+         <span class="type">State</span> {
+             <span class="name">name</span>: <span class="string">&quot;State1&quot;</span>
+         },
+         <span class="type">State</span> {
+             <span class="name">name</span>: <span class="string">&quot;State2&quot;</span>
+
+             <span class="type">PropertyChanges</span> {
+                 <span class="name">target</span>: <span class="name">icon</span>
+                 <span class="name">x</span>: <span class="name">middleRightRect</span>.<span class="name">x</span>
+                 <span class="name">y</span>: <span class="name">middleRightRect</span>.<span class="name">y</span>
+             }
+         },
+         <span class="type">State</span> {
+             <span class="name">name</span>: <span class="string">&quot;State3&quot;</span>
+
+             <span class="type">PropertyChanges</span> {
+                 <span class="name">target</span>: <span class="name">icon</span>
+                 <span class="name">x</span>: <span class="name">bottomLeftRect</span>.<span class="name">x</span>
+                 <span class="name">y</span>: <span class="name">bottomLeftRect</span>.<span class="name">y</span>
+             }
+         }
+     ]
+
+     <span class="name">transitions</span>: [
+         <span class="type">Transition</span> {
+             <span class="name">id</span>: <span class="name">toState1</span>
+             <span class="type">ParallelAnimation</span> {
+                 <span class="type">SequentialAnimation</span> {
+                     <span class="type">PauseAnimation</span> {
+                         <span class="name">duration</span>: <span class="number">0</span>
+                     }
+
+                     <span class="type">PropertyAnimation</span> {
+                         <span class="name">target</span>: <span class="name">icon</span>
+                         <span class="name">property</span>: <span class="string">&quot;y&quot;</span>
+                         <span class="name">duration</span>: <span class="number">200</span>
+                     }
+                 }
+
+                 <span class="type">SequentialAnimation</span> {
+                     <span class="type">PauseAnimation</span> {
+                         <span class="name">duration</span>: <span class="number">0</span>
+                     }
+
+                     <span class="type">PropertyAnimation</span> {
+                         <span class="name">target</span>: <span class="name">icon</span>
+                         <span class="name">property</span>: <span class="string">&quot;x&quot;</span>
+                         <span class="name">duration</span>: <span class="number">200</span>
+                     }
+                 }
+             }
+             <span class="name">to</span>: <span class="string">&quot;State1&quot;</span>
+             <span class="name">from</span>: <span class="string">&quot;State2,State3&quot;</span>
+         },
+         <span class="type">Transition</span> {
+             <span class="name">id</span>: <span class="name">toState2</span>
+             <span class="type">ParallelAnimation</span> {
+                 <span class="type">SequentialAnimation</span> {
+                     <span class="type">PauseAnimation</span> {
+                         <span class="name">duration</span>: <span class="number">0</span>
+                     }
+
+                     <span class="type">PropertyAnimation</span> {
+                         <span class="name">target</span>: <span class="name">icon</span>
+                         <span class="name">property</span>: <span class="string">&quot;y&quot;</span>
+                         <span class="name">easing</span>.type: <span class="name">Easing</span>.<span class="name">OutBounce</span>
+                         <span class="name">duration</span>: <span class="number">1006</span>
+                     }
+                 }
+
+                 <span class="type">SequentialAnimation</span> {
+                     <span class="type">PauseAnimation</span> {
+                         <span class="name">duration</span>: <span class="number">0</span>
+                     }
+
+                     <span class="type">PropertyAnimation</span> {
+                         <span class="name">target</span>: <span class="name">icon</span>
+                         <span class="name">property</span>: <span class="string">&quot;x&quot;</span>
+                         <span class="name">easing</span>.type: <span class="name">Easing</span>.<span class="name">OutBounce</span>
+                         <span class="name">duration</span>: <span class="number">1006</span>
+                     }
+                 }
+             }
+             <span class="name">to</span>: <span class="string">&quot;State2&quot;</span>
+             <span class="name">from</span>: <span class="string">&quot;State1,State3&quot;</span>
+         },
+         <span class="type">Transition</span> {
+             <span class="name">id</span>: <span class="name">toState3</span>
+             <span class="type">ParallelAnimation</span> {
+                 <span class="type">SequentialAnimation</span> {
+                     <span class="type">PauseAnimation</span> {
+                         <span class="name">duration</span>: <span class="number">0</span>
+                     }
+
+                     <span class="type">PropertyAnimation</span> {
+                         <span class="name">target</span>: <span class="name">icon</span>
+                         <span class="name">property</span>: <span class="string">&quot;y&quot;</span>
+                         <span class="name">easing</span>.type: <span class="name">Easing</span>.<span class="name">InOutQuad</span>
+                         <span class="name">duration</span>: <span class="number">2000</span>
+                     }
+                 }
+
+                 <span class="type">SequentialAnimation</span> {
+                     <span class="type">PauseAnimation</span> {
+                         <span class="name">duration</span>: <span class="number">0</span>
+                     }
+
+                     <span class="type">PropertyAnimation</span> {
+                         <span class="name">target</span>: <span class="name">icon</span>
+                         <span class="name">property</span>: <span class="string">&quot;x&quot;</span>
+                         <span class="name">easing</span>.type: <span class="name">Easing</span>.<span class="name">InOutQuad</span>
+                         <span class="name">duration</span>: <span class="number">2000</span>
+                     }
+                 }
+             }
+             <span class="name">to</span>: <span class="string">&quot;State3&quot;</span>
+             <span class="name">from</span>: <span class="string">&quot;State1,State2&quot;</span>
+         }
+     ]
+ }
+</pre>

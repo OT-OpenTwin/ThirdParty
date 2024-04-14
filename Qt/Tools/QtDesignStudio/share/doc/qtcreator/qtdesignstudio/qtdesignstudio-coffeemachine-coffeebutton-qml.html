@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- coffeemachine.qdoc -->
+  <meta name="description" content="Illustrates how to use the timeline and states to animate transitions in a UI.">
+  <title>Coffee Machine | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="studioexamples.html" translate="no">Examples</a></li>
+<li>Coffee Machine</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<h1 class="title">Coffee Machine</h1>
+<pre class="qml" translate="no">
+ <span class="comment">// Copyright (C) 2019 The Qt Company Ltd.</span>
+ <span class="comment">// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause</span>
+
+ import QtQuick 2.4
+ import QtQuick.Controls 2.0
+ import QtQuick.Layouts 1.3
+ import CoffeeMachine 1.0
+
+ <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-image.html" translate="no">Image</a></span> {
+     <span class="name">id</span>: <span class="name">root</span>
+     <span class="name">source</span>: <span class="string">&quot;images/icons/coffees/Cappuccino.png&quot;</span>
+     signal <span class="type">clicked</span>
+
+     property <span class="type"><a href="https://doc.qt.io/qt/qml-int.html" translate="no">int</a></span> <span class="name">duration</span>: <span class="number">250</span>
+     property <span class="type">alias</span> <span class="name">text</span>: <span class="name">label</span>.<span class="name">text</span>
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-mousearea.html" translate="no">MouseArea</a></span> {
+         <span class="name">anchors</span>.fill: <span class="name">parent</span>
+         <span class="name">onClicked</span>: <span class="name">root</span>.<span class="name">clicked</span>()
+         <span class="name">onPressed</span>: {
+             <span class="name">glow</span>.<span class="name">visible</span> <span class="operator">=</span> <span class="number">true</span>
+             <span class="name">animation1</span>.<span class="name">start</span>()
+             <span class="name">animation2</span>.<span class="name">start</span>()
+         }
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-rectangle.html" translate="no">Rectangle</a></span> {
+         <span class="name">id</span>: <span class="name">glow</span>
+         <span class="name">visible</span>: <span class="number">false</span>
+
+         <span class="name">width</span>: <span class="number">250</span>
+         <span class="name">height</span>: <span class="number">250</span>
+         <span class="name">color</span>: <span class="string">&quot;#00000000&quot;</span>
+         <span class="name">radius</span>: <span class="number">125</span>
+         <span class="name">scale</span>: <span class="number">1.05</span>
+         <span class="name">border</span>.color: <span class="string">&quot;#ffffff&quot;</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-controls-label.html" translate="no">Label</a></span> {
+         <span class="name">id</span>: <span class="name">label</span>
+         <span class="name">x</span>: <span class="number">292</span>
+         <span class="name">y</span>: <span class="number">252</span>
+         <span class="name">text</span>: <span class="name">qsTr</span>(<span class="string">&quot;Label&quot;</span>)
+         <span class="name">anchors</span>.horizontalCenter: <span class="name">parent</span>.<span class="name">horizontalCenter</span>
+         <span class="name">color</span>: <span class="string">&quot;#443224&quot;</span>
+         <span class="name">font</span>.family: <span class="name">Constants</span>.<span class="name">fontFamily</span>
+         <span class="name">font</span>.pixelSize: <span class="number">28</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertyanimation.html" translate="no">PropertyAnimation</a></span> {
+         <span class="name">target</span>: <span class="name">glow</span>
+         <span class="name">id</span>: <span class="name">animation1</span>
+         <span class="name">duration</span>: <span class="name">root</span>.<span class="name">duration</span>
+         <span class="name">loops</span>: <span class="number">1</span>
+         <span class="name">from</span>: <span class="number">1.05</span>
+         <span class="name">to</span>: <span class="number">1.2</span>
+         <span class="name">property</span>: <span class="string">&quot;scale&quot;</span>
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-parallelanimation.html" translate="no">ParallelAnimation</a></span> {
+         <span class="name">id</span>: <span class="name">animation2</span>
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-sequentialanimation.html" translate="no">SequentialAnimation</a></span> {
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertyanimation.html" translate="no">PropertyAnimation</a></span> {
+                 <span class="name">target</span>: <span class="name">glow</span>
+                 <span class="name">duration</span>: <span class="name">root</span>.<span class="name">duration</span>
+                 <span class="name">loops</span>: <span class="number">1</span>
+                 <span class="name">from</span>: <span class="number">0.2</span>
+                 <span class="name">to</span>: <span class="number">1.0</span>
+                 <span class="name">property</span>: <span class="string">&quot;opacity&quot;</span>
+             }
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertyanimation.html" translate="no">PropertyAnimation</a></span> {
+                 <span class="name">target</span>: <span class="name">glow</span>
+                 <span class="name">duration</span>: <span class="name">root</span>.<span class="name">duration</span>
+                 <span class="name">loops</span>: <span class="number">1</span>
+                 <span class="name">from</span>: <span class="number">1.0</span>
+                 <span class="name">to</span>: <span class="number">0.0</span>
+                 <span class="name">property</span>: <span class="string">&quot;opacity&quot;</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertyaction.html" translate="no">PropertyAction</a></span> {
+                 <span class="name">target</span>: <span class="name">glow</span>
+                 <span class="name">property</span>: <span class="string">&quot;visible&quot;</span>
+                 <span class="name">value</span>: <span class="number">false</span>
+             }
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-sequentialanimation.html" translate="no">SequentialAnimation</a></span> {
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertyaction.html" translate="no">PropertyAction</a></span> {
+                 <span class="name">target</span>: <span class="name">glow</span>
+                 <span class="name">property</span>: <span class="string">&quot;border.width&quot;</span>
+                 <span class="name">value</span>: <span class="number">20</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-pauseanimation.html" translate="no">PauseAnimation</a></span> {
+                 <span class="name">duration</span>: <span class="number">200</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertyanimation.html" translate="no">PropertyAnimation</a></span> {
+                 <span class="name">target</span>: <span class="name">glow</span>
+                 <span class="name">duration</span>: <span class="name">root</span>.<span class="name">duration</span>
+                 <span class="name">loops</span>: <span class="number">1</span>
+                 <span class="name">from</span>: <span class="number">20</span>
+                 <span class="name">to</span>: <span class="number">10</span>
+                 <span class="name">property</span>: <span class="string">&quot;border.width&quot;</span>
+             }
+         }
+     }
+
+ }
+</pre>

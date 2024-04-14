@@ -93,6 +93,16 @@ var XcodeArchSpecsReader = (function () {
     return XcodeArchSpecsReader;
 }());
 
+function platformInfo(platformInfoPlist) {
+    var propertyList = new PropertyList();
+    try {
+        propertyList.readFromFile(platformInfoPlist);
+        return propertyList.toObject();
+    } finally {
+        propertyList.clear();
+    }
+}
+
 function sdkInfoList(sdksPath) {
     var sdkInfo = [];
     var sdks = File.directoryEntries(sdksPath, File.Dirs | File.NoDotAndDotDot);
@@ -100,6 +110,9 @@ function sdkInfoList(sdksPath) {
         // SDK directory name must contain a version number;
         // we don't want the versionless iPhoneOS.sdk directory for example
         if (!sdks[i].match(/[0-9]+/))
+            continue;
+
+        if (sdks[i].startsWith("DriverKit") || sdks[i].startsWith("AssetRuntime"))
             continue;
 
         var settingsPlist = FileInfo.joinPaths(sdksPath, sdks[i], "SDKSettings.plist");
@@ -111,7 +124,7 @@ function sdkInfoList(sdksPath) {
                 if (!plist || !plist["CanonicalName"] || !plist["Version"])
                     return false;
 
-                var re = /^([0-9]+)\.([0-9]+)$/;
+                var re = /^[0-9]+\.[0-9]+(\.[0-9]+)?$/;
                 return plist["Version"].match(re);
             }
 
@@ -129,19 +142,7 @@ function sdkInfoList(sdksPath) {
     }
 
     // Sort by SDK version number
-    sdkInfo.sort(function (a, b) {
-        var re = /^([0-9]+)\.([0-9]+)$/;
-        a = a["Version"].match(re);
-        if (a)
-            a = {major: a[1], minor: a[2]};
-        b = b["Version"].match(re);
-        if (b)
-            b = {major: b[1], minor: b[2]};
-
-        if (a.major === b.major)
-            return a.minor - b.minor;
-        return a.major - b.major;
-    });
+    sdkInfo.sort(function (a, b) { return Utilities.versionCompare(a["Version"], b["Version"]); });
 
     return sdkInfo;
 }
@@ -178,7 +179,7 @@ function findSigningIdentities(security, searchString) {
 }
 
 function provisioningProfilePlistContents(filePath) {
-    if (filePath === undefined)
+    if (filePath === undefined || !File.exists(filePath))
         return undefined;
 
     var plist = new PropertyList();
@@ -190,14 +191,52 @@ function provisioningProfilePlistContents(filePath) {
     }
 }
 
-function archsSpecsPath(version, targetOS, platformType, platformPath, devicePlatformPath) {
+function boolFromSdkOrPlatform(varName, sdkProps, platformProps, defaultValue) {
+    var values = [(sdkProps || {})[varName], (platformProps || {})[varName]];
+    for (var i = 0; i < values.length; ++i) {
+        if (values[i] === "YES")
+            return true;
+        if (values[i] === "NO")
+            return false;
+    }
+    return defaultValue;
+}
+
+function archsSpecsPath(version, targetOS, platformType, platformPath, devicePlatformPath,
+                        developerPath) {
+    if (Utilities.versionCompare(version, "13.3") >= 0) {
+        var pluginsDir;
+        if (Utilities.versionCompare(version, "15.3") >= 0) {
+            pluginsDir = FileInfo.joinPaths(developerPath, "..",
+                "SharedFrameworks", "XCBuild.framework", "PlugIns", "XCBBuildService.bundle",
+                "Contents", "PlugIns");
+        } else if (Utilities.versionCompare(version, "14.3") >= 0) {
+            pluginsDir = FileInfo.joinPaths(developerPath, "Library", "Xcode", "Plug-ins");
+        } else {
+            pluginsDir = FileInfo.joinPaths(developerPath, "..", "PlugIns");
+        }
+        var baseDir = FileInfo.joinPaths(pluginsDir,
+                                         "XCBSpecifications.ideplugin", "Contents", "Resources");
+
+        var baseName = targetOS.includes("macos") ? "MacOSX Architectures"
+                : targetOS.includes("ios-simulator") ? "iOS Simulator"
+                : targetOS.includes("ios") ? "iOS Device"
+                : targetOS.includes("tvos-simulator") ? "tvOS Simulator"
+                : targetOS.includes("tvos") ? "tvOS Device"
+                : targetOS.includes("watchos-simulator") ? "watchOS Simulator" : "watchOS Device";
+        return FileInfo.joinPaths(baseDir, baseName + ".xcspec");
+    }
     var _specsPluginBaseName;
+    if (Utilities.versionCompare(version, "12") >= 0) {
+        if (targetOS.includes("macos"))
+            _specsPluginBaseName = "OSX";
+    }
     if (Utilities.versionCompare(version, "7") >= 0) {
-        if (targetOS.contains("ios"))
+        if (targetOS.includes("ios"))
             _specsPluginBaseName = "iOSPlatform";
-        if (targetOS.contains("tvos"))
+        if (targetOS.includes("tvos"))
             _specsPluginBaseName = "AppleTV";
-        if (targetOS.contains("watchos"))
+        if (targetOS.includes("watchos"))
             _specsPluginBaseName = "Watch";
     }
 
@@ -208,8 +247,8 @@ function archsSpecsPath(version, targetOS, platformType, platformPath, devicePla
                                  "Resources")
             : FileInfo.joinPaths(platformPath, "Developer", "Library", "Xcode", "Specifications");
 
-    var _archSpecsFileBaseName = targetOS.contains("ios")
-            ? (targetOS.contains("ios-simulator") ? "iPhone Simulator " : "iPhoneOS")
+    var _archSpecsFileBaseName = targetOS.includes("ios")
+            ? (targetOS.includes("ios-simulator") ? "iPhone Simulator " : "iPhoneOS")
             : DarwinTools.applePlatformDirectoryName(targetOS, platformType) + " ";
 
     if (_specsPluginBaseName) {

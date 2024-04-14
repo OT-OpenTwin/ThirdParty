@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-quick-fixes.qdoc -->
+  <title>Apply quick fixes | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Apply quick fixes</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#create-functions">Create functions</a></li>
+<li class="level2"><a href="#implement-member-functions">Implement member functions</a></li>
+<li class="level2"><a href="#insert-virtual-functions">Insert virtual functions</a></li>
+<li class="level2"><a href="#create-getters-and-setters">Create getters and setters</a></li>
+<li class="level2"><a href="#generate-constructors">Generate constructors</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Apply quick fixes</h1>
+<!-- $$$creator-editor-quick-fixes.html-description -->
+<div class="descr" id="details">
+<p>To apply quick fixes while refactoring code, select them in a context menu in the code editor. The fixes available depend on the position of the cursor in the code editor.</p>
+<ol class="1" type="1"><li>To apply quick fixes:<ul>
+<li>In C++ code, right-click an operand, conditional statement, string, or name.</li>
+<li>In QML code, right-click an item ID or name.</li>
+</ul>
+</li>
+<li>In the context menu, go to <b translate="no">Refactoring</b> and then select a quick fix.</li>
+</ol>
+<p>Or, press <b>Alt+Enter</b> to open a context menu that has quick fixes available in the current cursor position.</p>
+<p>By default, the refactored files are saved automatically. To turn off this feature, go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Environment</b> &gt; <b translate="no">System</b> and select <b translate="no">Auto-save files after refactoring</b>.</p>
+<h2 id="create-functions">Create functions</h2>
+<p>Apply quick fixes to implement member functions, insert virtual functions of base classes, create getter and setter functions, and generate constructors. Specify settings for generating the functions either globally for all projects or separately for each project in the <a href="creator-configuring-projects.html" translate="no">build and run</a> settings of the project.</p>
+<h3 id="implement-member-functions">Implement member functions</h3>
+<p>Apply the <b translate="no">Create Implementations for Member Functions</b> quick fix to create implementations for all member functions in one go. In the <b translate="no">Member Function Implementations</b> dialog, specify whether the member functions are generated inline or outside the class.</p>
+<p class="centerAlign"><img src="images/qtcreator-refactoring-member-function-implementations.png" alt="&quot;Implement Member Functions dialog&quot;" /></p><h3 id="insert-virtual-functions">Insert virtual functions</h3>
+<p>Apply the <b translate="no">Insert Virtual Functions of Base Classes</b> quick fix to insert declarations and the corresponding definitions inside or outside the class or in an implementation file (if it exists).</p>
+<p class="centerAlign"><img src="images/qtcreator-refactoring-virtual-function-dialog.png" alt="&quot;Insert Virtual Functions dialog&quot;" /></p><p>Select the functions to insert in the list of available functions. Filter the list and hide reimplemented functions from it.</p>
+<p>You can add <i>virtual</i> or the <i>override</i> equivalent to the function declaration.</p>
+<h3 id="create-getters-and-setters">Create getters and setters</h3>
+<p>Apply the <b translate="no">Create Getter and Setter Member Functions</b> quick fix to create either both getter and setter member functions for member variables or only a getter or setter.</p>
+<p class="centerAlign"><img src="images/qtcreator-refactoring-getters-and-setters.png" alt="&quot;Getters and Setters dialog&quot;" /></p><h3 id="generate-constructors">Generate constructors</h3>
+<p>Apply the <b translate="no">Generate Constructor</b> quick fix to create a public, protected, or private constructor for a class. Select the class members to initialize in the constructor. Drag the parameters to specify their order in the constructor.</p>
+<p class="centerAlign"><img src="images/qtcreator-refactoring-constructor.png" alt="&quot;Constructor dialog&quot;" /></p></div>
+<p><b>See also </b><a href="creator-editor-how-to-find-symbols.html" translate="no">Find symbols</a>, <a href="creator-how-to-specify-settings-for-quick-fixes.html" translate="no">Specify settings for quick fixes</a>, <a href="creator-reference-preferences-cpp-quick-fixes.html" translate="no">Quick Fixes</a>, <a href="creator-reference-cpp-quick-fixes.html" translate="no">C++ Quick Fixes</a>, <a href="creator-how-to-rename-symbols.html" translate="no">Rename symbols</a>, and <a href="creator-reference-qml-quick-fixes.html" translate="no">QML Quick Fixes</a>.</p>
+<!-- @@@creator-editor-quick-fixes.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

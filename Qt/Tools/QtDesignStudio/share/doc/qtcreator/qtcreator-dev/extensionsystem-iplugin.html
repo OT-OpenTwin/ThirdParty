@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- iplugin.cpp -->
+  <meta name="description" content="The IPlugin class is an abstract base class that must be implemented once for each plugin.">
+  <title>IPlugin Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>IPlugin</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">IPlugin Class</h1>
+<span class="small-subtitle" translate="no">class <a href="extensionsystem.html" translate="no">ExtensionSystem</a>::IPlugin</span>
+<!-- $$$IPlugin-brief -->
+<p>The IPlugin class is an abstract base class that must be implemented once for each plugin. <a href="#details">More...</a></p>
+<!-- @@@IPlugin -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;extensionsystem/iplugin.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a></td></tr>
+</table></div>
+<ul>
+<li><a href="extensionsystem-iplugin-members.html">List of all members, including inherited members</a></li>
+<li><a href="extensionsystem-iplugin-obsolete.html">Deprecated members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-iplugin.html#ShutdownFlag-enum" translate="no">ShutdownFlag</a></b> { SynchronousShutdown, AsynchronousShutdown }</td></tr>
+</table></div>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual ExtensionSystem::IPlugin::ShutdownFlag </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-iplugin.html#aboutToShutdown" translate="no">aboutToShutdown</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-iplugin.html#delayedInitialize" translate="no">delayedInitialize</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-iplugin.html#extensionsInitialized" translate="no">extensionsInitialized</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-iplugin.html#initialize" translate="no">initialize</a></b>(const QStringList &amp;<i>arguments</i>, QString *<i>errorString</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QObject *</td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-iplugin.html#remoteCommand" translate="no">remoteCommand</a></b>(const QStringList &amp;<i>options</i>, const QString &amp;<i>workingDirectory</i>, const QStringList &amp;<i>arguments</i>)</td></tr>
+</table></div>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-iplugin.html#asynchronousShutdownFinished" translate="no">asynchronousShutdownFinished</a></b>()</td></tr>
+</table></div>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-iplugin.html#addTestCreator" translate="no">addTestCreator</a></b>(const ExtensionSystem::TestCreator &amp;<i>creator</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-iplugin.html#initialize-1" translate="no">initialize</a></b>()</td></tr>
+</table></div>
+<!-- $$$IPlugin-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>A plugin needs to provide meta data in addition to the actual plugin library, so the plugin manager can find the plugin, resolve its dependencies, and load it. For more information, see <a href="plugin-meta-data.html" translate="no">Plugin Meta Data</a>.</p>
+<p>Plugins must provide one implementation of the IPlugin class, located in a library that matches the <code translate="no">name</code> attribute given in their meta data. The IPlugin implementation must be exported and made known to Qt's plugin system, using the <code translate="no">Q_PLUGIN_METADATA</code> macro with an IID set to <code translate="no">&quot;org.qt-project.Qt.QtCreatorPlugin&quot;</code>.</p>
+<p>For more information, see <a href="plugin-lifecycle.html" translate="no">Plugin Life Cycle</a>.</p>
+</div>
+<!-- @@@IPlugin -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$ShutdownFlag$$$SynchronousShutdown$$$AsynchronousShutdown -->
+<h3 class="fn" translate="no" id="ShutdownFlag-enum">enum IPlugin::<span class="name">ShutdownFlag</span></h3>
+<p>This enum type holds whether the plugin is shut down synchronously or asynchronously.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">ExtensionSystem::IPlugin::SynchronousShutdown</code></td><td class="topAlign tblval"><code translate="no">0</code></td><td class="topAlign">The plugin is shut down synchronously.</td></tr>
+<tr><td class="topAlign"><code translate="no">ExtensionSystem::IPlugin::AsynchronousShutdown</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">The plugin needs to perform asynchronous actions before it shuts down.</td></tr>
+</table></div>
+<!-- @@@ShutdownFlag -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$aboutToShutdown[overload1]$$$aboutToShutdown -->
+<h3 class="fn" translate="no" id="aboutToShutdown"><code translate="no">[virtual] </code><span class="type"><a href="extensionsystem-iplugin.html#ShutdownFlag-enum" translate="no">ExtensionSystem::IPlugin::ShutdownFlag</a></span> IPlugin::<span class="name">aboutToShutdown</span>()</h3>
+<p>Called during a shutdown sequence in the same order as initialization before the plugins get deleted in reverse order.</p>
+<p>This function should be used to disconnect from other plugins, hide all UI, and optimize shutdown in general. If a plugin needs to delay the real shutdown for a while, for example if it needs to wait for external processes to finish for a clean shutdown, the plugin can return <a href="extensionsystem-iplugin.html#ShutdownFlag-enum" translate="no">IPlugin::AsynchronousShutdown</a> from this function. This will keep the main event loop running after the aboutToShutdown() sequence has finished, until all plugins requesting asynchronous shutdown have sent the <a href="extensionsystem-iplugin.html#asynchronousShutdownFinished" translate="no">asynchronousShutdownFinished</a>() signal.</p>
+<p>The default implementation of this function does nothing and returns <a href="extensionsystem-iplugin.html#ShutdownFlag-enum" translate="no">IPlugin::SynchronousShutdown</a>.</p>
+<p>Returns <a href="extensionsystem-iplugin.html#ShutdownFlag-enum" translate="no">IPlugin::AsynchronousShutdown</a> if the plugin needs to perform asynchronous actions before shutdown.</p>
+<p><b>See also </b><a href="extensionsystem-iplugin.html#asynchronousShutdownFinished" translate="no">asynchronousShutdownFinished</a>().</p>
+<!-- @@@aboutToShutdown -->
+<!-- $$$addTestCreator[overload1]$$$addTestCreatorconstExtensionSystem::TestCreator& -->
+<h3 class="fn" translate="no" id="addTestCreator"><code translate="no">[protected] </code><span class="type">void</span> IPlugin::<span class="name">addTestCreator</span>(const <span class="type">ExtensionSystem::TestCreator</span> &amp;<i>creator</i>)</h3>
+<p>Registers a function object that creates a test object with the owner <i translate="no">creator</i>.</p>
+<p>The created objects are meant to be passed on to <a href="https://doc.qt.io/qt/qtest.html#qExec" translate="no">QTest::qExec</a>().</p>
+<p>The function objects will be called if the user starts Qt Design Studio with <code translate="no">-test PluginName</code> or <code translate="no">-test all</code>.</p>
+<p>The ownership of the created object is transferred to the plugin.</p>
+<!-- @@@addTestCreator -->
+<!-- $$$asynchronousShutdownFinished[overload1]$$$asynchronousShutdownFinished -->
+<h3 class="fn" translate="no" id="asynchronousShutdownFinished"><code translate="no">[signal] </code><span class="type">void</span> IPlugin::<span class="name">asynchronousShutdownFinished</span>()</h3>
+<p>Sent by the plugin implementation after an asynchronous shutdown is ready to proceed with the shutdown sequence.</p>
+<p><b>See also </b><a href="extensionsystem-iplugin.html#aboutToShutdown" translate="no">aboutToShutdown</a>().</p>
+<!-- @@@asynchronousShutdownFinished -->
+<!-- $$$delayedInitialize[overload1]$$$delayedInitialize -->
+<h3 class="fn" translate="no" id="delayedInitialize"><code translate="no">[virtual] </code><span class="type">bool</span> IPlugin::<span class="name">delayedInitialize</span>()</h3>
+<p>Called after all plugins' <a href="extensionsystem-iplugin.html#extensionsInitialized" translate="no">extensionsInitialized</a>() function has been called, and after the <code translate="no">delayedInitialize()</code> function of plugins that depend on this plugin have been called.</p>
+<p>The plugins' <code translate="no">delayedInitialize()</code> functions are called after the application is already running, with a few milliseconds delay to application startup, and between individual <code translate="no">delayedInitialize()</code> function calls. To avoid unnecessary delays, a plugin should return <code translate="no">true</code> from the function if it actually implements it, to indicate that the next plugins' <code translate="no">delayedInitialize()</code> call should be delayed a few milliseconds to give input and paint events a chance to be processed.</p>
+<p>This function can be used if a plugin needs to do non-trivial setup that doesn't necessarily need to be done directly at startup, but still should be done within a short time afterwards. This can decrease the perceived plugin or application startup time a lot, with very little effort.</p>
+<p><b>See also </b><a href="extensionsystem-iplugin.html#initialize-1" translate="no">initialize</a>() and <a href="extensionsystem-iplugin.html#extensionsInitialized" translate="no">extensionsInitialized</a>().</p>
+<!-- @@@delayedInitialize -->
+<!-- $$$extensionsInitialized[overload1]$$$extensionsInitialized -->
+<h3 class="fn" translate="no" id="extensionsInitialized"><code translate="no">[virtual] </code><span class="type">void</span> IPlugin::<span class="name">extensionsInitialized</span>()</h3>
+<p>Called after the <a href="extensionsystem-iplugin.html#initialize-1" translate="no">initialize</a>() function has been called, and after both the <a href="extensionsystem-iplugin.html#initialize-1" translate="no">initialize</a>() and <code translate="no">extensionsInitialized()</code> functions of plugins that depend on this plugin have been called.</p>
+<p>In this function, the plugin can assume that plugins that depend on this plugin are fully <i>up and running</i>. It is a good place to look in the global object pool for objects that have been provided by weakly dependent plugins.</p>
+<p><b>See also </b><a href="extensionsystem-iplugin.html#initialize-1" translate="no">initialize</a>() and <a href="extensionsystem-iplugin.html#delayedInitialize" translate="no">delayedInitialize</a>().</p>
+<!-- @@@extensionsInitialized -->
+<!-- $$$initialize[overload1]$$$initializeconstQStringList&QString* -->
+<h3 class="fn" translate="no" id="initialize"><code translate="no">[virtual] </code><span class="type">bool</span> IPlugin::<span class="name">initialize</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstringlist.html" translate="no">QStringList</a></span> &amp;<i>arguments</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> *<i>errorString</i>)</h3>
+<p>Called after the plugin has been loaded and the <a href="extensionsystem-iplugin.html" translate="no">IPlugin</a> instance has been created.</p>
+<p>The initialize functions of plugins that depend on this plugin are called after the initialize function of this plugin has been called with <i translate="no">arguments</i>. Plugins should initialize their internal state in this function.</p>
+<p>Returns whether initialization succeeds. If it does not, <i translate="no">errorString</i> should be set to a user-readable message describing the reason.</p>
+<p><b>See also </b><a href="extensionsystem-iplugin.html#extensionsInitialized" translate="no">extensionsInitialized</a>() and <a href="extensionsystem-iplugin.html#delayedInitialize" translate="no">delayedInitialize</a>().</p>
+<!-- @@@initialize -->
+<!-- $$$initialize$$$initialize -->
+<h3 class="fn" translate="no" id="initialize-1"><code translate="no">[virtual protected] </code><span class="type">void</span> IPlugin::<span class="name">initialize</span>()</h3>
+<p>This function is called as the default implementation of <code translate="no">initialize(const QStringList &amp;arguments, QString *errorString)</code> and can be overwritten instead of the full-args version in cases the parameters are not used by the implementation and there is no error to report.</p>
+<p><b>See also </b><a href="extensionsystem-iplugin.html#extensionsInitialized" translate="no">extensionsInitialized</a>() and <a href="extensionsystem-iplugin.html#delayedInitialize" translate="no">delayedInitialize</a>().</p>
+<!-- @@@initialize -->
+<!-- $$$remoteCommand[overload1]$$$remoteCommandconstQStringList&constQString&constQStringList& -->
+<h3 class="fn" translate="no" id="remoteCommand"><code translate="no">[virtual] </code><span class="type"><a href="https://doc.qt.io/qt/qobject.html#QObject" translate="no">QObject</a></span> *IPlugin::<span class="name">remoteCommand</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstringlist.html" translate="no">QStringList</a></span> &amp;<i>options</i>, const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>workingDirectory</i>, const <span class="type"><a href="https://doc.qt.io/qt/qstringlist.html" translate="no">QStringList</a></span> &amp;<i>arguments</i>)</h3>
+<p>When Qt Design Studio is executed with the <code translate="no">-client</code> argument while another Qt Design Studio instance is running, this function of the plugin is called in the running instance.</p>
+<p>The <i translate="no">workingDirectory</i> argument specifies the working directory of the calling process. For example, if you're in a directory, and you execute <code translate="no">qtcreator -client file.cpp</code>, the working directory of the calling process is passed to the running instance and <code translate="no">file.cpp</code> is transformed into an absolute path starting from this directory.</p>
+<p>Plugin-specific arguments are passed in <i translate="no">options</i>, while the rest of the arguments are passed in <i translate="no">arguments</i>.</p>
+<p>Returns a <a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a> that blocks the command until it is destroyed, if <code translate="no">-block</code> is used.</p>
+<!-- @@@remoteCommand -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

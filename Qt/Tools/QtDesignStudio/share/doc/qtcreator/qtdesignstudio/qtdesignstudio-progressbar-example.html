@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- progressbar.qdoc -->
+  <meta name="description" content="Illustrates how to use timelines to create an animated progress bar.">
+  <title>Progress Bar | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="studioexamples.html" translate="no">Examples</a></li>
+<li>Progress Bar</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#creating-the-progress-bar">Creating the Progress Bar</a></li>
+<li class="level1"><a href="#animating-progress-bar-elements">Animating Progress Bar Elements</a></li>
+<li class="level2"><a href="#adding-color-animation">Adding Color Animation</a></li>
+<li class="level2"><a href="#animating-the-indicator">Animating the Indicator</a></li>
+<li class="level1"><a href="#creating-a-reusable-component">Creating a Reusable Component</a></li>
+<li class="level1"><a href="#exporting-properties">Exporting Properties</a></li>
+<li class="level1"><a href="#animating-progress-bar-instances">Animating Progress Bar Instances</a></li>
+<li class="level1"><a href="#specifying-easing-curves">Specifying Easing Curves</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Progress Bar</h1>
+<!-- $$$progressbar-brief -->
+<p>Illustrates how to use timelines to create an animated progress bar.</p>
+<!-- @@@progressbar -->
+<!-- $$$progressbar-description -->
+<div class="descr" id="details">
+<p class="centerAlign"><img src="images/progressbar.png" alt="&quot;Progress Bar example application&quot;" /></p><p><i>Progress Bar</i> animates rectangles and numbers using timelines.</p>
+<h4 id="creating-the-progress-bar">Creating the Progress Bar</h4>
+<p>First, we create an empty project, as described in <a href="studio-projects.html" translate="no">Creating Projects</a>. For the purposes of this example, we call the project <i>progressbar</i>.</p>
+<p>In this example, we use two overlapping instances of the preset <a href="quick-shapes.html#basic-rectangle" translate="no">Rectangle</a> component and an instance of the preset <a href="quick-text.html" translate="no">Text</a> component to create the progress bar. There is also a preset <a href="quick-controls.html#progress-bar-control" translate="no">Progress Bar</a> component available in <b translate="no">Components</b> &gt; <b translate="no">Qt Quick Controls</b>.</p>
+<p>In the <b translate="no">Design</b> mode, we drag-and-drop a <b translate="no">Rectangle</b> from <b translate="no">Components</b> &gt; <b translate="no">Default Components</b> &gt; <b translate="no">Basic</b> to the <a href="qtquick-form-editor.html" translate="no">2D</a> view and modify its size to create the background for the progress bar. We change its ID to <i>pb_back</i> in <a href="qtquick-properties-view.html" translate="no">Properties</a>.</p>
+<p>We want to be able to control the background rectangle and the text label that was added by the project wizard, so we will use an <b translate="no">Item</b> component for that. We drag-and-drop the Item from <b translate="no">Components</b> &gt; <b translate="no">Default Components</b> &gt; <b translate="no">Basic</b> to the <b translate="no">2D</b> view and change its ID to <i>root</i> in <b translate="no">Properties</b>.</p>
+<p>To make the background and text children of the Item, we drag-and-drop them to the Item in <a href="qtquick-navigator.html" translate="no">Navigator</a>. This enables us to use the anchor buttons in <b translate="no">Properties</b> &gt; <b translate="no">Layout</b> to anchor them to their parent. We anchor the background to its parent on all edges, with a 30-pixel margin at the top to leave space for the text. We then anchor the text to the top of the Item.</p>
+<p class="centerAlign"><img src="images/progressbar-rectangle.png" alt="&quot;Progress bar background in the 2D view&quot;" /></p><p>We now drag-and-drop another rectangle on top of the background rectangle in <b translate="no">Navigator</b> and change its ID to <i>pb_front</i> in <b translate="no">Properties</b>. We then anchor the left, top, and bottom of the indicator to its parent with 5-pixel margins. We leave the right side free because its value needs to change for the animation.</p>
+<p>For more information about creating and positioning components, see <a href="quick-components.html" translate="no">Using Components</a> and <a href="qtquick-positioning.html" translate="no">Scalable Layouts</a>.</p>
+<h4 id="animating-progress-bar-elements">Animating Progress Bar Elements</h4>
+<p>The text label will indicate the progress in numbers and changing color, while the indicator rectangle will indicate it by getting wider and changing color. To animate the label and indicator, we'll add timelines in the <a href="qtquick-timeline-view.html" translate="no">Timeline</a> view.</p>
+<p>For more information about using the timeline, see <a href="studio-timeline.html" translate="no">Creating Timeline Animations</a>.</p>
+<h5 id="adding-color-animation">Adding Color Animation</h5>
+<p>First, we add a color animation to the <i>root</i> component in the <i>Root.qml</i> file. We select the <img src="images/plus.png" alt="" /> button to add a 100-frame timeline to root. You can use the default values for all other fields.</p>
+<p class="centerAlign"><img src="images/progressbar-timeline-settings.png" alt="&quot;Timeline settings&quot;" /></p><p>To start recording a color animation on the timeline, we check that the playhead is at frame 0 and then select the <img src="images/recordfill.png" alt="" /> (<b translate="no">Auto Key (K)</b>) button (or press <b>k</b>).</p>
+<p class="centerAlign"><img src="images/progressbar-timeline.png" alt="&quot;Color animation timeline&quot;" /></p><p>We then set the color at frame 0 to green (<i>#8de98d</i>) in <b translate="no">Properties</b> &gt; <b translate="no">Text</b> &gt; <b translate="no">Text Color</b>. We can either <a href="qtquick-properties.html#picking-colors" translate="no">pick a color</a> from the color selector or use the <b translate="no">Set Binding</b> command in the <img src="images/action-icon.png" alt="" /> (<b translate="no">Actions</b>) menu to open the <b translate="no">Binding Editor</b>.</p>
+<p>We then move the playhead to frame 50 and set the text color to red (<i>#de4f4f</i>). Finally, we move the playhead to frame 100 and set the color to yellow (<i>#f0c861</i>).</p>
+<p>When we deselect the record button to stop recording the timeline, the new timeline appears in the view.</p>
+<p>We can drag the playhead along the timeline to see the color animation.</p>
+<h5 id="animating-the-indicator">Animating the Indicator</h5>
+<p>We select <i>pb_front</i> in <b translate="no">Navigator</b> and then select the record button again to animate the width of the indicator. At frame 0, we set the width to 0 in <b translate="no">Properties</b> &gt; <b translate="no">Geometry - 2D</b> &gt; <b translate="no">Size</b>. We then move the playhead to 100 frames and set the width to 590.</p>
+<p class="centerAlign"><img src="images/progressbar-timeline-indicator.png" alt="&quot;Indicator timeline&quot;" /></p><p>We will now copy the color animation from the text label to the indicator. First, we right-click the text component in the <b translate="no">Timeline</b> view to open a context menu and select <b translate="no">Copy All Keyframes</b> to copy the keyframe values we specified for the text label.</p>
+<p>Next, we select the indicator in the <b translate="no">Navigator</b>, and then select <b translate="no">Insert Keyframes for Item</b> to paste the keyframe values to the indicator.</p>
+<p class="centerAlign"><img src="images/progressbar-timeline-indicator-color.png" alt="&quot;Indicator timeline with color animation&quot;" /></p><p>When we move the playhead, we can see that the color animation is also applied to the indicator.</p>
+<h4 id="creating-a-reusable-component">Creating a Reusable Component</h4>
+<p>We want the progress bar to be reusable, so we'll move it to a separate component file. To make sure that the component will contain the timeline, we select <b translate="no">Filter Tree</b> in <b translate="no">Navigator</b> and then deselect the <b translate="no">Show Only Visible Items</b> check box to show the timeline component in <b translate="no">Navigator</b>. We then move the timeline component to <i>root</i> to have it moved as a part of the root component.</p>
+<p>Now we can right-click root to open a context menu and select <b translate="no">Move Component into Separate File</b>. We can see the properties that will be available from outside of the component.</p>
+<p class="centerAlign"><img src="images/progressbar-move-component.png" alt="&quot;Move Component into Separate File dialog&quot;" /></p><h4 id="exporting-properties">Exporting Properties</h4>
+<p>We now select the root component in <b translate="no">Navigator</b>, and then select <b translate="no">Go into Component</b> in the context menu to open <i>Root.qml</i> in the <b translate="no">2D</b> view.</p>
+<p>We want to be able to use the keyframe value as the value of the text label, so we will export it as a <a href="qtquick-navigator.html#adding-property-aliases" translate="no">property alias</a>. We select <i>timeline</i> in <b translate="no">Navigator</b> and then <b translate="no">Properties</b> &gt; <b translate="no">Timeline</b> &gt; <b translate="no">Current frame</b> &gt; <b translate="no">Actions</b> &gt; <b translate="no">Export Property as Alias</b>.</p>
+<p class="centerAlign"><img src="images/progressbar-root-export-property.png" alt="&quot;Export keyframe group as a property&quot;" /></p><p>When we select <i>root</i> in <b translate="no">Navigator</b>, we can see the <i>timelineCurrentFrame</i> property on the <b translate="no">Bindings</b> tab in the <a href="qtquick-connection-view.html" translate="no">Connections</a> view. <b translate="no">Bindings</b>. We double-click it to change its name to <i>progress</i>.</p>
+<p class="centerAlign"><img src="images/progressbar-bindings-progress.png" alt="&quot;Connections View Bindings tab&quot;" /></p><p>We will bind some JavaScript to the value of the text label to turn it into a running number that reflects the number of the keyframe on the timeline. We select the text label in <b translate="no">Navigator</b> and then select <b translate="no">Properties</b> &gt; <b translate="no">Text</b> &gt; <b translate="no">Set Binding</b> to open the <b translate="no">Binding Editor</b>. We set <code translate="no">Math.round(root.progress)</code> as the value of the text label.</p>
+<p>When we move back to the top-level file, we can see that the number of the current keyframe (0) is displayed as the value of the text label.</p>
+<h4 id="animating-progress-bar-instances">Animating Progress Bar Instances</h4>
+<p>We want to experiment with different start and end values and easing curves, so we copy-paste the progress bar instance twice in the top-level file. We use a column layout to lay out the progress bar instances.</p>
+<p>We can now add timelines for each progress bar instance, with different settings. We select the <img src="images/plus.png" alt="" /> button to add a 4000-frame timeline to the first progress bar instance (<i>root</i>). We select the <b translate="no">Continuous</b> check box so that the animation will loop.</p>
+<p>In <b translate="no">Properties</b> &gt; <b translate="no">Root</b>, we can see the <b translate="no">progress</b> property that we can animate. If we had called the component and property something else, we would see the names we gave them here.</p>
+<p>With the playhead in the first frame, we select the record button and give the <b translate="no">progress</b> property the initial value of <i>5</i>. We then move the playhead to frame 2000 and give it the value of <i>95</i>. We continue to the last frame and set the value back to <i>5</i> to have a smooth looping animation.</p>
+<p>When we select the <b translate="no">Show Live Preview</b> button on the <b translate="no">2D</b> view toolbar, we see a running number and moving progress indicator of the animated progress bar instance.</p>
+<p class="centerAlign"><img src="images/progressbar-animated.png" alt="" /></p><p>We now change the settings of the other two progress bar instances. We make one of the indicators move from right to left by starting from frame 100. When all our progress bar instances have been animated, we'll continue by specifying easing curves for them.</p>
+<p>For more information about previewing UIs, see <a href="creator-live-preview.html" translate="no">Validating with Target Hardware</a>.</p>
+<h4 id="specifying-easing-curves">Specifying Easing Curves</h4>
+<p>We can add custom easing curves to every keyframe in the animations. First, we select the keyframe to add the easing curve to, and then select <b translate="no">Edit Easing Curve</b> in the context menu. We can select several keyframes simultaneously if we want to use the same easing curve for them.</p>
+<p>We select the easing curve in the <b translate="no">Easing Curve Editor</b>.</p>
+<p class="centerAlign"><img src="images/studio-easing-curve-editor.png" alt="&quot;Easing Curve Editor&quot;" /></p><p>When we apply easing curves to animations, the shape of the keyframe marker changes from <img src="images/keyframe_linear_active.png" alt="" /> to <img src="images/keyframe_manualbezier_active.png" alt="" /> .</p>
+<p>For more information, see <a href="qtquick-editing-easing-curves.html" translate="no">Editing Easing Curves</a>.</p>
+<p>Files:</p>
+<ul>
+<li><a href="qtdesignstudio-progressbar-progressbar-pro.html" translate="no">progressbar/progressbar.pro</a></li>
+<li><a href="qtdesignstudio-progressbar-qml-qrc.html" translate="no">progressbar/qml.qrc</a></li>
+<li><a href="qtdesignstudio-progressbar-qml-progressbar-qmlproject.html" translate="no">progressbar/qml/ProgressBar.qmlproject</a></li>
+<li><a href="qtdesignstudio-progressbar-qml-progressbar-ui-qml.html" translate="no">progressbar/qml/ProgressBar.ui.qml</a></li>
+<li><a href="qtdesignstudio-progressbar-qml-root-qml.html" translate="no">progressbar/qml/Root.qml</a></li>
+</ul>
+<p>Images:</p>
+<ul>
+<li><a href="images/used-in-examples/progressbar/qml/built-with-Qt_Large.png" translate="no">progressbar/qml/built-with-Qt_Large.png</a></li>
+</ul>
+</div>
+<!-- @@@progressbar -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

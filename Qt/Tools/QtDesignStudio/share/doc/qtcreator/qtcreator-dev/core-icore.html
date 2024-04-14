@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- icore.cpp -->
+  <meta name="description" content="The ICore class allows access to the different parts that make up the basic functionality of Qt Design Studio.">
+  <title>ICore Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>ICore</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">ICore Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::ICore</span>
+<!-- $$$ICore-brief -->
+<p>The ICore class allows access to the different parts that make up the basic functionality of Qt Design Studio. <a href="#details">More...</a></p>
+<!-- @@@ICore -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/icore.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a></td></tr>
+</table></div>
+<ul>
+<li><a href="core-icore-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> enum class </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#ContextPriority-enum" translate="no">ContextPriority</a></b> { High, Low }</td></tr>
+</table></div>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#contextAboutToChange" translate="no">contextAboutToChange</a></b>(const QList&lt;Core::IContext *&gt; &amp;<i>context</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#contextChanged" translate="no">contextChanged</a></b>(const Core::Context &amp;<i>context</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#coreAboutToClose" translate="no">coreAboutToClose</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#coreAboutToOpen" translate="no">coreAboutToOpen</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#coreOpened" translate="no">coreOpened</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#saveSettingsRequested" translate="no">saveSettingsRequested</a></b>(Core::ICore::SaveSettingsReason <i>reason</i>)</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#addAdditionalContext" translate="no">addAdditionalContext</a></b>(const Core::Context &amp;<i>context</i>, Core::ICore::ContextPriority <i>priority</i> = ContextPriority::Low)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#addContextObject" translate="no">addContextObject</a></b>(Core::IContext *<i>context</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#addPreCloseListener" translate="no">addPreCloseListener</a></b>(const std::function&lt;bool ()&gt; &amp;<i>listener</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#cacheResourcePath" translate="no">cacheResourcePath</a></b>(const QString &amp;<i>rel</i> = {})</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::IContext *</td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#contextObject" translate="no">contextObject</a></b>(QWidget *<i>widget</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::IContext *</td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#currentContextObject" translate="no">currentContextObject</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QWidget *</td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#currentContextWidget" translate="no">currentContextWidget</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QWidget *</td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#dialogParent" translate="no">dialogParent</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::InfoBar *</td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#infoBar" translate="no">infoBar</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#installerResourcePath" translate="no">installerResourcePath</a></b>(const QString &amp;<i>rel</i> = {})</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::ICore *</td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#instance" translate="no">instance</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#isNewItemDialogRunning" translate="no">isNewItemDialogRunning</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#libexecPath" translate="no">libexecPath</a></b>(const QString &amp;<i>rel</i> = {})</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QMainWindow *</td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#mainWindow" translate="no">mainWindow</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#msgShowOptionsDialog" translate="no">msgShowOptionsDialog</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#msgShowOptionsDialogToolTip" translate="no">msgShowOptionsDialogToolTip</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QWidget *</td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#newItemDialog" translate="no">newItemDialog</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QPrinter *</td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#printer" translate="no">printer</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#raiseWindow" translate="no">raiseWindow</a></b>(QWidget *<i>widget</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#registerWindow" translate="no">registerWindow</a></b>(QWidget *<i>window</i>, const Core::Context &amp;<i>context</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#removeAdditionalContext" translate="no">removeAdditionalContext</a></b>(const Core::Context &amp;<i>context</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#removeContextObject" translate="no">removeContextObject</a></b>(Core::IContext *<i>context</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#resourcePath" translate="no">resourcePath</a></b>(const QString &amp;<i>rel</i> = {})</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#restart" translate="no">restart</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::QtcSettings *</td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#settings" translate="no">settings</a></b>(QSettings::Scope <i>scope</i> = QSettings::UserScope)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#showNewItemDialog" translate="no">showNewItemDialog</a></b>(const QString &amp;<i>title</i>, const QList&lt;Core::IWizardFactory *&gt; &amp;<i>factories</i>, const Utils::FilePath &amp;<i>defaultLocation</i> = {}, const QVariantMap &amp;<i>extraVariables</i> = {})</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#showOptionsDialog" translate="no">showOptionsDialog</a></b>(const Utils::Id <i>page</i>, QWidget *<i>parent</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#showWarningWithOptions" translate="no">showWarningWithOptions</a></b>(const QString &amp;<i>title</i>, const QString &amp;<i>text</i>, const QString &amp;<i>details</i> = QString(), Utils::Id <i>settingsId</i> = {}, QWidget *<i>parent</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#updateAdditionalContexts" translate="no">updateAdditionalContexts</a></b>(const Core::Context &amp;<i>remove</i>, const Core::Context &amp;<i>add</i>, Core::ICore::ContextPriority <i>priority</i> = ContextPriority::Low)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#userInterfaceLanguage" translate="no">userInterfaceLanguage</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#userResourcePath" translate="no">userResourcePath</a></b>(const QString &amp;<i>rel</i> = {})</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-icore.html#versionString" translate="no">versionString</a></b>()</td></tr>
+</table></div>
+<!-- $$$ICore-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>You should never create a subclass of this interface. The one and only instance is created by the Core plugin. You can access this instance from your plugin through <a href="core-icore.html#instance" translate="no">instance</a>().</p>
+</div>
+<!-- @@@ICore -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$ContextPriority$$$High$$$Low -->
+<h3 class="fn" translate="no" id="ContextPriority-enum">enum class ICore::<span class="name">ContextPriority</span></h3>
+<p>This enum defines the priority of additional contexts.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Core::ICore::ContextPriority::High</code></td><td class="topAlign tblval"><code translate="no">0</code></td><td class="topAlign">Additional contexts that have higher priority than contexts from <a href="core-icontext.html" translate="no">Core::IContext</a> instances.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::ICore::ContextPriority::Low</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">Additional contexts that have lower priority than contexts from <a href="core-icontext.html" translate="no">Core::IContext</a> instances.</td></tr>
+</table></div>
+<p><b>See also </b><a href="core-icore.html#updateAdditionalContexts" translate="no">Core::ICore::updateAdditionalContexts</a>().</p>
+<!-- @@@ContextPriority -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$addAdditionalContext[overload1]$$$addAdditionalContextconstCore::Context&Core::ICore::ContextPriority -->
+<h3 class="fn" translate="no" id="addAdditionalContext"><code translate="no">[static] </code><span class="type">void</span> ICore::<span class="name">addAdditionalContext</span>(const <span class="type"><a href="core-context.html" translate="no">Core::Context</a></span> &amp;<i>context</i>, <span class="type"><a href="core-icore.html#ContextPriority-enum" translate="no">Core::ICore::ContextPriority</a></span> <i>priority</i> = ContextPriority::Low)</h3>
+<p>Adds <i translate="no">context</i> with <i translate="no">priority</i> to the list of active additional contexts.</p>
+<p><b>See also </b><a href="core-icore.html#updateAdditionalContexts" translate="no">updateAdditionalContexts</a>().</p>
+<!-- @@@addAdditionalContext -->
+<!-- $$$addContextObject[overload1]$$$addContextObjectCore::IContext* -->
+<h3 class="fn" translate="no" id="addContextObject"><code translate="no">[static] </code><span class="type">void</span> ICore::<span class="name">addContextObject</span>(<span class="type"><a href="core-icontext.html" translate="no">Core::IContext</a></span> *<i>context</i>)</h3>
+<p>Adds <i translate="no">context</i> to the list of registered <a href="core-icontext.html" translate="no">IContext</a> instances. Whenever the <a href="core-icontext.html" translate="no">IContext</a>'s <a href="core-icontext.html#widget" translate="no">widget</a> is in the application focus widget's parent hierarchy, its <a href="core-icontext.html#context" translate="no">context</a> is added to the list of active contexts.</p>
+<p><b>See also </b><a href="core-icore.html#removeContextObject" translate="no">removeContextObject</a>(), <a href="core-icore.html#updateAdditionalContexts" translate="no">updateAdditionalContexts</a>(), <a href="core-icore.html#currentContextObject" translate="no">currentContextObject</a>(), and <a href="actionmanager.html" translate="no">The Action Manager and Commands</a>.</p>
+<!-- @@@addContextObject -->
+<!-- $$$addPreCloseListener[overload1]$$$addPreCloseListenerconststd::function<bool()>& -->
+<h3 class="fn" translate="no" id="addPreCloseListener"><code translate="no">[static] </code><span class="type">void</span> ICore::<span class="name">addPreCloseListener</span>(const <span class="type">std::function</span>&lt;<span class="type">bool</span> ()&gt; &amp;<i>listener</i>)</h3>
+<p>Provides a hook for plugins to veto on closing the application.</p>
+<p>When the application window requests a close, all listeners are called. If one of the <i translate="no">listener</i> calls returns <code translate="no">false</code>, the process is aborted and the event is ignored. If all calls return <code translate="no">true</code>, <a href="core-icore.html#coreAboutToClose" translate="no">coreAboutToClose</a>() is emitted and the event is accepted or performed.</p>
+<!-- @@@addPreCloseListener -->
+<!-- $$$cacheResourcePath[overload1]$$$cacheResourcePathconstQString& -->
+<h3 class="fn" translate="no" id="cacheResourcePath"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> ICore::<span class="name">cacheResourcePath</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>rel</i> = {})</h3>
+<p>Returns a writable path for the relative path <i translate="no">rel</i> that can be used for persistent cache files.</p>
+<!-- @@@cacheResourcePath -->
+<!-- $$$contextAboutToChange[overload1]$$$contextAboutToChangeconstQList<Core::IContext*>& -->
+<h3 class="fn" translate="no" id="contextAboutToChange"><code translate="no">[signal] </code><span class="type">void</span> ICore::<span class="name">contextAboutToChange</span>(const <span class="type"><a href="https://doc.qt.io/qt/qlist.html" translate="no">QList</a></span>&lt;<span class="type"><a href="core-icontext.html" translate="no">Core::IContext</a></span> *&gt; &amp;<i>context</i>)</h3>
+<p>Indicates that a new <i translate="no">context</i> will shortly become the current context (meaning that its widget got focus).</p>
+<!-- @@@contextAboutToChange -->
+<!-- $$$contextChanged[overload1]$$$contextChangedconstCore::Context& -->
+<h3 class="fn" translate="no" id="contextChanged"><code translate="no">[signal] </code><span class="type">void</span> ICore::<span class="name">contextChanged</span>(const <span class="type"><a href="core-context.html" translate="no">Core::Context</a></span> &amp;<i>context</i>)</h3>
+<p>Indicates that a new <i translate="no">context</i> just became the current context. This includes the context from the focus object as well as the additional context.</p>
+<!-- @@@contextChanged -->
+<!-- $$$contextObject[overload1]$$$contextObjectQWidget* -->
+<h3 class="fn" translate="no" id="contextObject"><code translate="no">[static] </code><span class="type"><a href="core-icontext.html" translate="no">Core::IContext</a></span> *ICore::<span class="name">contextObject</span>(<span class="type"><a href="https://doc.qt.io/qt/qwidget.html" translate="no">QWidget</a></span> *<i>widget</i>)</h3>
+<p>Returns the registered <a href="core-icontext.html" translate="no">IContext</a> instance for the specified <i translate="no">widget</i>, if any.</p>
+<!-- @@@contextObject -->
+<!-- $$$coreAboutToClose[overload1]$$$coreAboutToClose -->
+<h3 class="fn" translate="no" id="coreAboutToClose"><code translate="no">[signal] </code><span class="type">void</span> ICore::<span class="name">coreAboutToClose</span>()</h3>
+<p>Enables plugins to perform some pre-end-of-life actions.</p>
+<p>The application is guaranteed to shut down after this signal is emitted. It is there as an addition to the usual plugin lifecycle functions, namely <code translate="no">IPlugin::aboutToShutdown()</code>, just for convenience.</p>
+<!-- @@@coreAboutToClose -->
+<!-- $$$coreAboutToOpen[overload1]$$$coreAboutToOpen -->
+<h3 class="fn" translate="no" id="coreAboutToOpen"><code translate="no">[signal] </code><span class="type">void</span> ICore::<span class="name">coreAboutToOpen</span>()</h3>
+<p>Indicates that all plugins have been loaded and the main window is about to be shown.</p>
+<!-- @@@coreAboutToOpen -->
+<!-- $$$coreOpened[overload1]$$$coreOpened -->
+<h3 class="fn" translate="no" id="coreOpened"><code translate="no">[signal] </code><span class="type">void</span> ICore::<span class="name">coreOpened</span>()</h3>
+<p>Indicates that all plugins have been loaded and the main window is shown.</p>
+<!-- @@@coreOpened -->
+<!-- $$$currentContextObject[overload1]$$$currentContextObject -->
+<h3 class="fn" translate="no" id="currentContextObject"><code translate="no">[static] </code><span class="type"><a href="core-icontext.html" translate="no">Core::IContext</a></span> *ICore::<span class="name">currentContextObject</span>()</h3>
+<p>Returns the top level <a href="core-icontext.html" translate="no">IContext</a> of the current context, or <code translate="no">nullptr</code> if there is none.</p>
+<p><b>See also </b><a href="core-icore.html#updateAdditionalContexts" translate="no">updateAdditionalContexts</a>(), <a href="core-icore.html#addContextObject" translate="no">addContextObject</a>(), and <a href="actionmanager.html" translate="no">The Action Manager and Commands</a>.</p>
+<!-- @@@currentContextObject -->
+<!-- $$$currentContextWidget[overload1]$$$currentContextWidget -->
+<h3 class="fn" translate="no" id="currentContextWidget"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qwidget.html" translate="no">QWidget</a></span> *ICore::<span class="name">currentContextWidget</span>()</h3>
+<p>Returns the widget of the top level <a href="core-icontext.html" translate="no">IContext</a> of the current context, or <code translate="no">nullptr</code> if there is none.</p>
+<p><b>See also </b><a href="core-icore.html#currentContextObject" translate="no">currentContextObject</a>().</p>
+<!-- @@@currentContextWidget -->
+<!-- $$$dialogParent[overload1]$$$dialogParent -->
+<h3 class="fn" translate="no" id="dialogParent"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qwidget.html" translate="no">QWidget</a></span> *ICore::<span class="name">dialogParent</span>()</h3>
+<p>Returns a widget pointer suitable to use as parent for QDialogs.</p>
+<!-- @@@dialogParent -->
+<!-- $$$infoBar[overload1]$$$infoBar -->
+<h3 class="fn" translate="no" id="infoBar"><code translate="no">[static] </code><span class="type">Utils::InfoBar</span> *ICore::<span class="name">infoBar</span>()</h3>
+<p>Returns a central InfoBar that is shown in Qt Design Studio's main window. Use for notifying the user of something without interrupting with dialog. Use sparingly.</p>
+<!-- @@@infoBar -->
+<!-- $$$installerResourcePath[overload1]$$$installerResourcePathconstQString& -->
+<h3 class="fn" translate="no" id="installerResourcePath"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> ICore::<span class="name">installerResourcePath</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>rel</i> = {})</h3>
+<p>Returns the path, based on the relative path <i translate="no">rel</i>, to resources written by the installer, for example pre-defined kits and toolchains.</p>
+<!-- @@@installerResourcePath -->
+<!-- $$$instance[overload1]$$$instance -->
+<h3 class="fn" translate="no" id="instance"><code translate="no">[static] </code><span class="type"><a href="core-icore.html" translate="no">Core::ICore</a></span> *ICore::<span class="name">instance</span>()</h3>
+<p>Returns the pointer to the instance. Only use for connecting to signals.</p>
+<!-- @@@instance -->
+<!-- $$$isNewItemDialogRunning[overload1]$$$isNewItemDialogRunning -->
+<h3 class="fn" translate="no" id="isNewItemDialogRunning"><code translate="no">[static] </code><span class="type">bool</span> ICore::<span class="name">isNewItemDialogRunning</span>()</h3>
+<p>Returns whether the new item dialog is currently open.</p>
+<!-- @@@isNewItemDialogRunning -->
+<!-- $$$libexecPath[overload1]$$$libexecPathconstQString& -->
+<h3 class="fn" translate="no" id="libexecPath"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> ICore::<span class="name">libexecPath</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>rel</i> = {})</h3>
+<p>Returns the path, based on the relative path <i translate="no">rel</i>, to the command line tools that are included in the Qt Design Studio installation.</p>
+<!-- @@@libexecPath -->
+<!-- $$$mainWindow[overload1]$$$mainWindow -->
+<h3 class="fn" translate="no" id="mainWindow"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qmainwindow.html" translate="no">QMainWindow</a></span> *ICore::<span class="name">mainWindow</span>()</h3>
+<p>Returns the main window of the application.</p>
+<p>For dialog parents use <a href="core-icore.html#dialogParent" translate="no">dialogParent</a>().</p>
+<p><b>See also </b><a href="core-icore.html#dialogParent" translate="no">dialogParent</a>().</p>
+<!-- @@@mainWindow -->
+<!-- $$$msgShowOptionsDialog[overload1]$$$msgShowOptionsDialog -->
+<h3 class="fn" translate="no" id="msgShowOptionsDialog"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> ICore::<span class="name">msgShowOptionsDialog</span>()</h3>
+<p>Returns the text to use on buttons that open the options dialog.</p>
+<p><b>See also </b><a href="core-icore.html#showOptionsDialog" translate="no">showOptionsDialog</a>() and <a href="core-icore.html#msgShowOptionsDialogToolTip" translate="no">msgShowOptionsDialogToolTip</a>().</p>
+<!-- @@@msgShowOptionsDialog -->
+<!-- $$$msgShowOptionsDialogToolTip[overload1]$$$msgShowOptionsDialogToolTip -->
+<h3 class="fn" translate="no" id="msgShowOptionsDialogToolTip"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> ICore::<span class="name">msgShowOptionsDialogToolTip</span>()</h3>
+<p>Returns the tool tip to use on buttons that open the options dialog.</p>
+<p><b>See also </b><a href="core-icore.html#showOptionsDialog" translate="no">showOptionsDialog</a>() and <a href="core-icore.html#msgShowOptionsDialog" translate="no">msgShowOptionsDialog</a>().</p>
+<!-- @@@msgShowOptionsDialogToolTip -->
+<!-- $$$newItemDialog[overload1]$$$newItemDialog -->
+<h3 class="fn" translate="no" id="newItemDialog"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qwidget.html" translate="no">QWidget</a></span> *ICore::<span class="name">newItemDialog</span>()</h3>
+<p>Returns the currently open new item dialog widget, or <code translate="no">nullptr</code> if there is none.</p>
+<p><b>See also </b><a href="core-icore.html#isNewItemDialogRunning" translate="no">isNewItemDialogRunning</a>() and <a href="core-icore.html#showNewItemDialog" translate="no">showNewItemDialog</a>().</p>
+<!-- @@@newItemDialog -->
+<!-- $$$printer[overload1]$$$printer -->
+<h3 class="fn" translate="no" id="printer"><code translate="no">[static] </code><span class="type">QPrinter</span> *ICore::<span class="name">printer</span>()</h3>
+<p>Returns the application's printer object.</p>
+<p>Always use this printer object for printing, so the different parts of the application re-use its settings.</p>
+<!-- @@@printer -->
+<!-- $$$raiseWindow[overload1]$$$raiseWindowQWidget* -->
+<h3 class="fn" translate="no" id="raiseWindow"><code translate="no">[static] </code><span class="type">void</span> ICore::<span class="name">raiseWindow</span>(<span class="type"><a href="https://doc.qt.io/qt/qwidget.html" translate="no">QWidget</a></span> *<i>widget</i>)</h3>
+<p>Raises and activates the window for <i translate="no">widget</i>. This contains workarounds for X11.</p>
+<!-- @@@raiseWindow -->
+<!-- $$$registerWindow[overload1]$$$registerWindowQWidget*constCore::Context& -->
+<h3 class="fn" translate="no" id="registerWindow"><code translate="no">[static] </code><span class="type">void</span> ICore::<span class="name">registerWindow</span>(<span class="type"><a href="https://doc.qt.io/qt/qwidget.html" translate="no">QWidget</a></span> *<i>window</i>, const <span class="type"><a href="core-context.html" translate="no">Core::Context</a></span> &amp;<i>context</i>)</h3>
+<p>Registers a <i translate="no">window</i> with the specified <i translate="no">context</i>. Registered windows are shown in the <b translate="no">Window</b> menu and get registered for the various window related actions, like the minimize, zoom, fullscreen and close actions.</p>
+<p>Whenever the application focus is in <i translate="no">window</i>, its <i translate="no">context</i> is made active.</p>
+<!-- @@@registerWindow -->
+<!-- $$$removeAdditionalContext[overload1]$$$removeAdditionalContextconstCore::Context& -->
+<h3 class="fn" translate="no" id="removeAdditionalContext"><code translate="no">[static] </code><span class="type">void</span> ICore::<span class="name">removeAdditionalContext</span>(const <span class="type"><a href="core-context.html" translate="no">Core::Context</a></span> &amp;<i>context</i>)</h3>
+<p>Removes <i translate="no">context</i> from the list of active additional contexts.</p>
+<p><b>See also </b><a href="core-icore.html#updateAdditionalContexts" translate="no">updateAdditionalContexts</a>().</p>
+<!-- @@@removeAdditionalContext -->
+<!-- $$$removeContextObject[overload1]$$$removeContextObjectCore::IContext* -->
+<h3 class="fn" translate="no" id="removeContextObject"><code translate="no">[static] </code><span class="type">void</span> ICore::<span class="name">removeContextObject</span>(<span class="type"><a href="core-icontext.html" translate="no">Core::IContext</a></span> *<i>context</i>)</h3>
+<p>Unregisters a <i translate="no">context</i> object from the list of registered <a href="core-icontext.html" translate="no">IContext</a> instances. <a href="core-icontext.html" translate="no">IContext</a> instances are automatically removed when they are deleted.</p>
+<p><b>See also </b><a href="core-icore.html#addContextObject" translate="no">addContextObject</a>(), <a href="core-icore.html#updateAdditionalContexts" translate="no">updateAdditionalContexts</a>(), and <a href="core-icore.html#currentContextObject" translate="no">currentContextObject</a>().</p>
+<!-- @@@removeContextObject -->
+<!-- $$$resourcePath[overload1]$$$resourcePathconstQString& -->
+<h3 class="fn" translate="no" id="resourcePath"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> ICore::<span class="name">resourcePath</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>rel</i> = {})</h3>
+<p>Returns the absolute path for the relative path <i translate="no">rel</i> that is used for resources like project templates and the debugger macros.</p>
+<p>This abstraction is needed to avoid platform-specific code all over the place, since on macOS, for example, the resources are part of the application bundle.</p>
+<p><b>See also </b><a href="core-icore.html#userResourcePath" translate="no">userResourcePath</a>().</p>
+<!-- @@@resourcePath -->
+<!-- $$$restart[overload1]$$$restart -->
+<h3 class="fn" translate="no" id="restart"><code translate="no">[static] </code><span class="type">void</span> ICore::<span class="name">restart</span>()</h3>
+<p>Restarts Qt Design Studio and restores the last session.</p>
+<!-- @@@restart -->
+<!-- $$$saveSettingsRequested[overload1]$$$saveSettingsRequestedCore::ICore::SaveSettingsReason -->
+<h3 class="fn" translate="no" id="saveSettingsRequested"><code translate="no">[signal] </code><span class="type">void</span> ICore::<span class="name">saveSettingsRequested</span>(<span class="type">Core::ICore::SaveSettingsReason</span> <i>reason</i>)</h3>
+<p>Signals that the user has requested that the global settings should be saved to disk for a <i translate="no">reason</i>.</p>
+<p>At the moment that happens when the application is closed, and on <b translate="no">Save All</b>.</p>
+<!-- @@@saveSettingsRequested -->
+<!-- $$$settings[overload1]$$$settingsQSettings::Scope -->
+<h3 class="fn" translate="no" id="settings"><code translate="no">[static] </code><span class="type"><a href="utils-qtcsettings.html" translate="no">Utils::QtcSettings</a></span> *ICore::<span class="name">settings</span>(<span class="type"><a href="https://doc.qt.io/qt/qsettings.html#Scope-enum" translate="no">QSettings::Scope</a></span> <i>scope</i> = QSettings::UserScope)</h3>
+<p>Returns the application's main settings object.</p>
+<p>You can use it to retrieve or set application-wide settings (in contrast to session or project specific settings).</p>
+<p>If <i translate="no">scope</i> is <code translate="no">QSettings::UserScope</code> (the default), the settings will be read from the user's settings, with a fallback to global settings provided with Qt Design Studio.</p>
+<p>If <i translate="no">scope</i> is <code translate="no">QSettings::SystemScope</code>, only the installation settings shipped with the current version of Qt Design Studio will be read. This functionality exists for internal purposes only.</p>
+<p><b>See also </b>settingsDatabase().</p>
+<!-- @@@settings -->
+<!-- $$$showNewItemDialog[overload1]$$$showNewItemDialogconstQString&constQList<Core::IWizardFactory*>&constUtils::FilePath&constQVariantMap& -->
+<h3 class="fn" translate="no" id="showNewItemDialog"><code translate="no">[static] </code><span class="type">void</span> ICore::<span class="name">showNewItemDialog</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>title</i>, const <span class="type"><a href="https://doc.qt.io/qt/qlist.html" translate="no">QList</a></span>&lt;<span class="type"><a href="core-iwizardfactory.html" translate="no">Core::IWizardFactory</a></span> *&gt; &amp;<i>factories</i>, const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>defaultLocation</i> = {}, const <span class="type"><a href="https://doc.qt.io/qt/qvariant.html#QVariantMap-typedef" translate="no">QVariantMap</a></span> &amp;<i>extraVariables</i> = {})</h3>
+<p>Opens a dialog where the user can choose from a set of <i translate="no">factories</i> that create new files or projects.</p>
+<p>The <i translate="no">title</i> argument is shown as the dialog title. The path where the files will be created (if the user does not change it) is set in <i translate="no">defaultLocation</i>. Defaults to <a href="core-documentmanager.html#projectsDirectory" translate="no">DocumentManager::projectsDirectory</a>() or <a href="core-documentmanager.html#fileDialogLastVisitedDirectory" translate="no">DocumentManager::fileDialogLastVisitedDirectory</a>(), depending on wizard kind.</p>
+<p>Additional variables for the wizards are set in <i translate="no">extraVariables</i>.</p>
+<p><b>See also </b><a href="core-documentmanager.html" translate="no">Core::DocumentManager</a>, <a href="core-icore.html#isNewItemDialogRunning" translate="no">isNewItemDialogRunning</a>(), and <a href="core-icore.html#newItemDialog" translate="no">newItemDialog</a>().</p>
+<!-- @@@showNewItemDialog -->
+<!-- $$$showOptionsDialog[overload1]$$$showOptionsDialogconstUtils::IdQWidget* -->
+<h3 class="fn" translate="no" id="showOptionsDialog"><code translate="no">[static] </code><span class="type">bool</span> ICore::<span class="name">showOptionsDialog</span>(const <span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>page</i>, <span class="type"><a href="https://doc.qt.io/qt/qwidget.html" translate="no">QWidget</a></span> *<i>parent</i> = nullptr)</h3>
+<p>Opens the options dialog on the specified <i translate="no">page</i>. The dialog's <i translate="no">parent</i> defaults to <a href="core-icore.html#dialogParent" translate="no">dialogParent</a>(). If the dialog is already shown when this method is called, it is just switched to the specified <i translate="no">page</i>.</p>
+<p>Returns whether the user accepted the dialog.</p>
+<p><b>See also </b><a href="core-icore.html#msgShowOptionsDialog" translate="no">msgShowOptionsDialog</a>() and <a href="core-icore.html#msgShowOptionsDialogToolTip" translate="no">msgShowOptionsDialogToolTip</a>().</p>
+<!-- @@@showOptionsDialog -->
+<!-- $$$showWarningWithOptions[overload1]$$$showWarningWithOptionsconstQString&constQString&constQString&Utils::IdQWidget* -->
+<h3 class="fn" translate="no" id="showWarningWithOptions"><code translate="no">[static] </code><span class="type">bool</span> ICore::<span class="name">showWarningWithOptions</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>title</i>, const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>text</i>, const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>details</i> = QString(), <span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>settingsId</i> = {}, <span class="type"><a href="https://doc.qt.io/qt/qwidget.html" translate="no">QWidget</a></span> *<i>parent</i> = nullptr)</h3>
+<p>Creates a message box with <i translate="no">parent</i> that contains a <b translate="no">Configure</b> button for opening the settings page specified by <i translate="no">settingsId</i>.</p>
+<p>The dialog has <i translate="no">title</i> and displays the message <i translate="no">text</i> and detailed information specified by <i translate="no">details</i>.</p>
+<p>Use this function to display configuration errors and to point users to the setting they should fix.</p>
+<p>Returns <code translate="no">true</code> if the user accepted the settings dialog.</p>
+<p><b>See also </b><a href="core-icore.html#showOptionsDialog" translate="no">showOptionsDialog</a>().</p>
+<!-- @@@showWarningWithOptions -->
+<!-- $$$updateAdditionalContexts[overload1]$$$updateAdditionalContextsconstCore::Context&constCore::Context&Core::ICore::ContextPriority -->
+<h3 class="fn" translate="no" id="updateAdditionalContexts"><code translate="no">[static] </code><span class="type">void</span> ICore::<span class="name">updateAdditionalContexts</span>(const <span class="type"><a href="core-context.html" translate="no">Core::Context</a></span> &amp;<i>remove</i>, const <span class="type"><a href="core-context.html" translate="no">Core::Context</a></span> &amp;<i>add</i>, <span class="type"><a href="core-icore.html#ContextPriority-enum" translate="no">Core::ICore::ContextPriority</a></span> <i>priority</i> = ContextPriority::Low)</h3>
+<p>Removes the contexts specified by <i translate="no">remove</i> from the list of active additional contexts, and adds the contexts specified by <i translate="no">add</i> with <i translate="no">priority</i>.</p>
+<p>The additional contexts are not associated with an <a href="core-icontext.html" translate="no">IContext</a> instance.</p>
+<p>High priority additional contexts have higher priority than the contexts added by <a href="core-icontext.html" translate="no">IContext</a> instances, low priority additional contexts have lower priority than the contexts added by <a href="core-icontext.html" translate="no">IContext</a> instances.</p>
+<p><b>See also </b><a href="core-icore.html#addContextObject" translate="no">addContextObject</a>() and <a href="actionmanager.html" translate="no">The Action Manager and Commands</a>.</p>
+<!-- @@@updateAdditionalContexts -->
+<!-- $$$userInterfaceLanguage[overload1]$$$userInterfaceLanguage -->
+<h3 class="fn" translate="no" id="userInterfaceLanguage"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> ICore::<span class="name">userInterfaceLanguage</span>()</h3>
+<p>Returns the locale string for the user interface language that is currently configured in Qt Design Studio. Use this to install your plugin's translation file with <a href="https://doc.qt.io/qt/qtranslator.html" translate="no">QTranslator</a>.</p>
+<!-- @@@userInterfaceLanguage -->
+<!-- $$$userResourcePath[overload1]$$$userResourcePathconstQString& -->
+<h3 class="fn" translate="no" id="userResourcePath"><code translate="no">[static] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> ICore::<span class="name">userResourcePath</span>(const <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> &amp;<i>rel</i> = {})</h3>
+<p>Returns the absolute path for the relative path <i translate="no">rel</i> in the users directory that is used for resources like project templates.</p>
+<p>Use this function for finding the place for resources that the user may write to, for example, to allow for custom palettes or templates.</p>
+<p><b>See also </b><a href="core-icore.html#resourcePath" translate="no">resourcePath</a>().</p>
+<!-- @@@userResourcePath -->
+<!-- $$$versionString[overload1]$$$versionString -->
+<h3 class="fn" translate="no" id="versionString"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> ICore::<span class="name">versionString</span>()</h3>
+<p>Returns a string with the IDE's name and version, in the form &quot;Qt Design Studio X.Y.Z&quot;. Use this for &quot;Generated by&quot; strings and similar tasks.</p>
+<!-- @@@versionString -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

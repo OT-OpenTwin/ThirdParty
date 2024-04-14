@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- layoutbuilder.cpp -->
+  <meta name="description" content="The LayoutItem class represents widgets, layouts, and aggregate items for use in conjunction with layout builders.">
+  <title>LayoutItem Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>LayoutItem</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">LayoutItem Class</h1>
+<span class="small-subtitle" translate="no">class <a href="layouting.html" translate="no">Layouting</a>::LayoutItem</span>
+<!-- $$$LayoutItem-brief -->
+<p>The LayoutItem class represents widgets, layouts, and aggregate items for use in conjunction with layout builders. <a href="#details">More...</a></p>
+<!-- @@@LayoutItem -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;LayoutItem&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="layouting-layoutitem-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="layouting-layoutitem.html#LayoutItem" translate="no">LayoutItem</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="layouting-layoutitem.html#addItem" translate="no">addItem</a></b>(const Layouting::LayoutItem &amp;<i>item</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="layouting-layoutitem.html#addItems" translate="no">addItems</a></b>(const Layouting::LayoutItems &amp;<i>items</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="layouting-layoutitem.html#addRow" translate="no">addRow</a></b>(const Layouting::LayoutItems &amp;<i>items</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="layouting-layoutitem.html#attachTo" translate="no">attachTo</a></b>(QWidget *<i>w</i>) const</td></tr>
+</table></div>
+<!-- $$$LayoutItem-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Layout items are typically implicitly constructed when adding items to a <code translate="no">LayoutBuilder</code> instance using <code translate="no">LayoutBuilder::addItem()</code> or <code translate="no">LayoutBuilder::addItems()</code> and never stored in user code.</p>
+</div>
+<!-- @@@LayoutItem -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$LayoutItem[overload1]$$$LayoutItem -->
+<h3 class="fn" translate="no" id="LayoutItem">LayoutItem::<span class="name">LayoutItem</span>()</h3>
+<p>Constructs a layout item instance representing an empty cell.</p>
+<!-- @@@LayoutItem -->
+<!-- $$$addItem[overload1]$$$addItemconstLayouting::LayoutItem& -->
+<h3 class="fn" translate="no" id="addItem"><span class="type">void</span> LayoutItem::<span class="name">addItem</span>(const <span class="type"><a href="layouting-layoutitem.html" translate="no">Layouting::LayoutItem</a></span> &amp;<i>item</i>)</h3>
+<p>Adds the layout item <i translate="no">item</i> as sub items.</p>
+<!-- @@@addItem -->
+<!-- $$$addItems[overload1]$$$addItemsconstLayouting::LayoutItems& -->
+<h3 class="fn" translate="no" id="addItems"><span class="type">void</span> LayoutItem::<span class="name">addItems</span>(const <span class="type">Layouting::LayoutItems</span> &amp;<i>items</i>)</h3>
+<p>Adds the layout items <i translate="no">items</i> as sub items.</p>
+<!-- @@@addItems -->
+<!-- $$$addRow[overload1]$$$addRowconstLayouting::LayoutItems& -->
+<h3 class="fn" translate="no" id="addRow"><span class="type">void</span> LayoutItem::<span class="name">addRow</span>(const <span class="type">Layouting::LayoutItems</span> &amp;<i>items</i>)</h3>
+<p>Starts a new row containing <i translate="no">items</i>. The row can be further extended by other items using <code translate="no">addItem()</code> or <code translate="no">addItems()</code>.</p>
+<p><b>See also </b><a href="layouting-layoutitem.html#addItem" translate="no">addItem</a>() and <a href="layouting-layoutitem.html#addItems" translate="no">addItems</a>().</p>
+<!-- @@@addRow -->
+<!-- $$$attachTo[overload1]$$$attachToQWidget* -->
+<h3 class="fn" translate="no" id="attachTo"><span class="type">void</span> LayoutItem::<span class="name">attachTo</span>(<span class="type">QWidget</span> *<i>w</i>) const</h3>
+<p>Attaches the constructed layout to the provided QWidget <i translate="no">w</i>.</p>
+<p>This operation can only be performed once per LayoutBuilder instance.</p>
+<!-- @@@attachTo -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

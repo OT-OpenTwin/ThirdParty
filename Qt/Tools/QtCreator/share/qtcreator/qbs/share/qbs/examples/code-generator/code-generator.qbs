@@ -47,7 +47,6 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-import qbs
 
 Project {
     // A code generator that outputs a "Hello World" C++ program.
@@ -55,10 +54,15 @@ Project {
         name: "hwgen"
         consoleApplication: true
         files: ["hwgen.cpp"]
+        Properties {
+            condition: qbs.toolchain.contains("gcc") || qbs.toolchain.contains("clang-cl")
+            cpp.cxxFlags: ["-Wno-deprecated-declarations"]
+        }
     }
 
     // Generate and build a hello-world application.
     CppApplication {
+        condition: qbs.targetPlatform === qbs.hostPlatform
         name: "hello-world"
         Depends { name: "hwgen" }
         Rule {

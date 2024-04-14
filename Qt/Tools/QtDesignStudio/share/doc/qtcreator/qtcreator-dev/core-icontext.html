@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- icontext.cpp -->
+  <meta name="description" content="The IContext class associates a widget with a context list and context help.">
+  <title>IContext Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>IContext</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">IContext Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::IContext</span>
+<!-- $$$IContext-brief -->
+<p>The IContext class associates a widget with a context list and context help. <a href="#details">More...</a></p>
+<!-- @@@IContext -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/icontext.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherited By:</td><td class="memItemRight bottomAlign"> <p><a href="core-ieditor.html" translate="no">Core::IEditor</a> and <a href="core-imode.html" translate="no">Core::IMode</a></p>
+</td></tr>
+</table></div>
+<ul>
+<li><a href="core-icontext-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-icontext.html#HelpCallback-typedef" translate="no">HelpCallback</a></b></td></tr>
+</table></div>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-icontext.html#IContext" translate="no">IContext</a></b>(QObject *<i>parent</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Core::Context </td><td class="memItemRight bottomAlign"><b><a href="core-icontext.html#context" translate="no">context</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-icontext.html#contextHelp" translate="no">contextHelp</a></b>(const Core::IContext::HelpCallback &amp;<i>callback</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-icontext.html#setContext" translate="no">setContext</a></b>(const Core::Context &amp;<i>context</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-icontext.html#setContextHelp" translate="no">setContextHelp</a></b>(const Core::HelpItem &amp;<i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-icontext.html#setWidget" translate="no">setWidget</a></b>(QWidget *<i>widget</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QWidget *</td><td class="memItemRight bottomAlign"><b><a href="core-icontext.html#widget" translate="no">widget</a></b>() const</td></tr>
+</table></div>
+<!-- $$$IContext-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>An instance of IContext must be registered with <a href="core-icore.html#addContextObject" translate="no">Core::ICore::addContextObject</a>() to have an effect. For many subclasses of IContext, like <a href="core-ieditor.html" translate="no">Core::IEditor</a> and <a href="core-imode.html" translate="no">Core::IMode</a>, this is done automatically. But instances of IContext can be created manually to associate a context and context help for an arbitrary widget, too. IContext instances are automatically unregistered when they are deleted. Use <a href="core-icore.html#removeContextObject" translate="no">Core::ICore::removeContextObject</a>() if you need to unregister an IContext instance manually.</p>
+<p>Whenever the widget is part of the application wide focus widget's parent chain, the associated context list is made active. This makes actions active that were registered for any of the included context IDs. If the user requests context help, the top-most IContext instance in the focus widget's parent hierarchy is asked to provide it.</p>
+<p>See <a href="actionmanager.html" translate="no">The Action Manager and Commands</a> for an overview of how contexts are used for managing actions.</p>
+</div>
+<p><b>See also </b><a href="core-icore.html" translate="no">Core::ICore</a>, <a href="core-context.html" translate="no">Core::Context</a>, <a href="core-actionmanager.html" translate="no">Core::ActionManager</a>, and <a href="actionmanager.html" translate="no">The Action Manager and Commands</a>.</p>
+<!-- @@@IContext -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$HelpCallback -->
+<h3 class="fn" translate="no" id="HelpCallback-typedef"><code translate="no">[alias] </code>IContext::<span class="name">HelpCallback</span></h3>
+<p>The HelpCallback class defines the callback function that is used to report the help item to show when the user requests context help.</p>
+<!-- @@@HelpCallback -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$IContext[overload1]$$$IContextQObject* -->
+<h3 class="fn" translate="no" id="IContext">IContext::<span class="name">IContext</span>(<span class="type"><a href="https://doc.qt.io/qt/qobject.html#QObject" translate="no">QObject</a></span> *<i>parent</i> = nullptr)</h3>
+<p>Creates an IContext with an optional <i translate="no">parent</i>.</p>
+<!-- @@@IContext -->
+<!-- $$$context[overload1]$$$context -->
+<h3 class="fn" translate="no" id="context"><code translate="no">[virtual] </code><span class="type"><a href="core-context.html" translate="no">Core::Context</a></span> IContext::<span class="name">context</span>() const</h3>
+<p>Returns the context list associated with this <a href="core-icontext.html" translate="no">IContext</a>.</p>
+<p><b>See also </b><a href="core-icontext.html#setContext" translate="no">setContext</a>().</p>
+<!-- @@@context -->
+<!-- $$$contextHelp[overload1]$$$contextHelpconstCore::IContext::HelpCallback& -->
+<h3 class="fn" translate="no" id="contextHelp"><code translate="no">[virtual] </code><span class="type">void</span> IContext::<span class="name">contextHelp</span>(const <span class="type"><a href="core-icontext.html#HelpCallback-typedef" translate="no">Core::IContext::HelpCallback</a></span> &amp;<i>callback</i>) const</h3>
+<p>Called when the user requests context help and this <a href="core-icontext.html" translate="no">IContext</a> is the top-most in the application focus widget's parent hierarchy. Implementations must call the passed <i translate="no">callback</i> with the resulting help item. The default implementation returns an help item with the help ID that was set with <a href="core-icontext.html#setContextHelp" translate="no">setContextHelp</a>().</p>
+<p><b>See also </b><a href="core-icontext.html#setContextHelp" translate="no">setContextHelp</a>().</p>
+<!-- @@@contextHelp -->
+<!-- $$$setContext[overload1]$$$setContextconstCore::Context& -->
+<h3 class="fn" translate="no" id="setContext"><code translate="no">[virtual] </code><span class="type">void</span> IContext::<span class="name">setContext</span>(const <span class="type"><a href="core-context.html" translate="no">Core::Context</a></span> &amp;<i>context</i>)</h3>
+<p>Sets the context list associated with this <a href="core-icontext.html" translate="no">IContext</a> to <i translate="no">context</i>.</p>
+<p><b>See also </b><a href="core-icontext.html#context" translate="no">context</a>().</p>
+<!-- @@@setContext -->
+<!-- $$$setContextHelp[overload1]$$$setContextHelpconstCore::HelpItem& -->
+<h3 class="fn" translate="no" id="setContextHelp"><code translate="no">[virtual] </code><span class="type">void</span> IContext::<span class="name">setContextHelp</span>(const <span class="type">Core::HelpItem</span> &amp;<i>id</i>)</h3>
+<p>Sets the context help item associated with this <a href="core-icontext.html" translate="no">IContext</a> to <i translate="no">id</i>.</p>
+<p><b>See also </b><a href="core-icontext.html#contextHelp" translate="no">contextHelp</a>().</p>
+<!-- @@@setContextHelp -->
+<!-- $$$setWidget[overload1]$$$setWidgetQWidget* -->
+<h3 class="fn" translate="no" id="setWidget"><code translate="no">[virtual] </code><span class="type">void</span> IContext::<span class="name">setWidget</span>(<span class="type"><a href="https://doc.qt.io/qt/qwidget.html" translate="no">QWidget</a></span> *<i>widget</i>)</h3>
+<p>Sets the widget associated with this <a href="core-icontext.html" translate="no">IContext</a> to <i translate="no">widget</i>.</p>
+<p><b>See also </b><a href="core-icontext.html#widget" translate="no">widget</a>().</p>
+<!-- @@@setWidget -->
+<!-- $$$widget[overload1]$$$widget -->
+<h3 class="fn" translate="no" id="widget"><code translate="no">[virtual] </code><span class="type"><a href="https://doc.qt.io/qt/qwidget.html" translate="no">QWidget</a></span> *IContext::<span class="name">widget</span>() const</h3>
+<p>Returns the widget associated with this <a href="core-icontext.html" translate="no">IContext</a>.</p>
+<p><b>See also </b><a href="core-icontext.html#setWidget" translate="no">setWidget</a>().</p>
+<!-- @@@widget -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

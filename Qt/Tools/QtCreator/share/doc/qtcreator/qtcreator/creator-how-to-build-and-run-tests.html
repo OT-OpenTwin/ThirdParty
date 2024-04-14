@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-autotest.qdoc -->
+  <title>Build and run tests | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Build and run tests</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#select-tests-to-run">Select tests to run</a></li>
+<li class="level1"><a href="#run-and-debug-tests-from-code-editor">Run and debug tests from code editor</a></li>
+<li class="level1"><a href="#turn-on-build-system-based-tests">Turn on build system based tests</a></li>
+<li class="level1"><a href="#locate-qt-test-data-tags">Locate Qt Test data tags</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Build and run tests</h1>
+<!-- $$$creator-how-to-build-and-run-tests.html-description -->
+<div class="descr" id="details">
+<p>To build and run tests:</p>
+<ol class="1" type="1"><li>Open a project that has tests.</li>
+<li>In the <b translate="no">Tests</b> view, select the tests to run.</li>
+<li>In the <b translate="no">Test Results</b> view, select:<ul>
+<li><img src="images/run_small.png" alt="" /> (<b translate="no">Run All Tests</b>) to run all tests.</li>
+<li><img src="images/qtcreator-run-selected-tests.png" alt="" /> (<b translate="no">Run Selected Tests</b>) to run the selected tests.</li>
+<li><img src="images/qtcreator-run-failed-tests.png" alt="" /> (<b translate="no">Run Failed Tests</b>) to re-run the tests which failed in the last run. Depending on the framework, this may select more tests if it is impossible to distinguish or to fully address the test.</li>
+<li><img src="images/qtcreator-run-tests-in-current-file.png" alt="" /> (<b translate="no">Run Tests for Current File</b>) to run the tests in the file currently open in the code editor.</li>
+</ul>
+</li>
+</ol>
+<p>By default, Qt Creator builds a project before deploying and running it. To run all tests without building and deploying them again, select <b translate="no">Run All Tests Without Deployment</b> in the context menu. To run the selected tests without deployment, select <b translate="no">Run Selected Tests Without Deployment</b>.</p>
+<p>You can run tests also from the context menu in the <b translate="no">Tests</b> view or by going to <b translate="no">Tools</b> &gt; <b translate="no">Tests</b>.</p>
+<div class="admonition note">
+<p><b>Note: </b>If you enable both build system based and code based tests, you may run tests twice when selecting <b translate="no">Run All Tests</b> or <b translate="no">Run Selected Tests</b>. This happens if the tests can be found by the code based test frameworks and are registered as test with the build system.</p>
+</div>
+<p>If a test takes more than a minute to execute, the default timeout might stop the test execution. To increase the timeout, go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Testing</b> &gt; <b translate="no">General</b>.</p>
+<h2 id="select-tests-to-run">Select tests to run</h2>
+<p>The <b translate="no">Tests</b> view shows all the tests found for the currently active test frameworks in the current project. Select the test cases to run.</p>
+<p class="centerAlign"><img src="images/qtcreator-tests-view.png" alt="" /></p><p>If a Qt Quick test case does not have a name, it is marked <b translate="no">Unnamed</b> in the list. <b translate="no">Run All Tests</b> executes unnamed test cases. You cannot select or deselect them.</p>
+<p>Qt Creator scans the project for tests when you open the project and updates the test list for the currently active test frameworks when you edit tests. To refresh the view, select <b translate="no">Rescan Tests</b> in the context menu.</p>
+<p>To show or hide init and cleanup or data functions in the <b translate="no">Tests</b> view, select <img src="images/filtericon.png" alt="" /> (<b translate="no">Filter Test Tree</b>), and then select <b translate="no">Show Init and Cleanup Functions</b> or <b translate="no">Show Data Functions</b>. Double-click a function in the list to open its source code in the code editor.</p>
+<p>The <b translate="no">Tests</b> view lists test cases in alphabetic, case insensitive order. To list them in the order in which they appear in the source code, select <img src="images/leafsort.png" alt="" /> (<b translate="no">Sort Naturally</b>).</p>
+<h2 id="run-and-debug-tests-from-code-editor">Run and debug tests from code editor</h2>
+<p>You can run and debug tests in the file currently open in the code editor. To run all tests in the open file, go to <b translate="no">Tools</b> &gt; <b translate="no">Tests</b> &gt; <b translate="no">Run Tests for Current File</b>.</p>
+<div class="admonition note">
+<p><b>Note: </b>Available only for code based test frameworks.</p>
+</div>
+<p>To run the test currently selected in the open file, select <b translate="no">Run Test Under Cursor</b> in the context menu.</p>
+<div class="admonition note">
+<p><b>Note: </b>Available only for code based test frameworks.</p>
+</div>
+<p>To debug the currently selected test, select <b translate="no">Debug Test Under Cursor</b> in the context menu.</p>
+<div class="admonition note">
+<p><b>Note: </b>Availability for build system based tests depends on the build system tool's abilities.</p>
+</div>
+<h2 id="turn-on-build-system-based-tests">Turn on build system based tests</h2>
+<p>By default, Qt Creator does not handle build system based tests to avoid interference with code based parsers. To turn on build system based tests, select the respective test tool in <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Testing</b> &gt; <b translate="no">General</b>.</p>
+<p>The detection of tests is usually much faster for build system based tests as this normally does not involve scanning or parsing. The information in the tests tree is usually more detailed when using code based tests.</p>
+<p>If you turn on both code based and build system based tests, you may duplicate tests inside the tests tree.</p>
+<h2 id="locate-qt-test-data-tags">Locate Qt Test data tags</h2>
+<p>To locate Qt Test data tags:</p>
+<ol class="1" type="1"><li>Press <b>Ctrl+K</b> (<b>Cmd+K</b> on macOS) to activate the locator.</li>
+<li>Enter <code translate="no">qdt</code>, followed by a space.</li>
+</ol>
+</div>
+<p><b>See also </b><a href="creator-how-tos.html#test" translate="no">How To: Test</a>, <a href="creator-how-to-select-build-system.html" translate="no">Select the build system</a>, <a href="creator-preferences-testing.html" translate="no">Testing</a>, and <a href="creator-test-results.html" translate="no">Test Results</a>.</p>
+<!-- @@@creator-how-to-build-and-run-tests.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

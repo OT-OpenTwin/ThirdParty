@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-coding-edit-mode.qdoc -->
+  <title>Move between files | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Move between files</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#locate-files">Locate files</a></li>
+<li class="level1"><a href="#locate-files-from-global-file-system-index">Locate files from global file system index</a></li>
+<li class="level1"><a href="#browse-location-history">Browse location history</a></li>
+<li class="level1"><a href="#navigate-with-the-keyboard">Navigate with the keyboard</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Move between files</h1>
+<!-- $$$creator-how-to-move-between-open-files.html-description -->
+<div class="descr" id="details">
+<p>The editor toolbar shows the name of the file that is currently open (1) in the editor.</p>
+<p class="centerAlign"><img src="images/qtcreator-editor-open-files.webp" alt="{Current file shown on Edit mode toolbar}" /></p><p>Use the locator, <a href="creator-reference.html#sidebar-views" translate="no">sidebar views</a>, <b translate="no">Window</b> menu items, <a href="creator-keyboard-shortcuts.html#general-keyboard-shortcuts" translate="no">keyboard shortcuts</a>, or <a href="creator-coding-navigating.html#editor-toolbar" translate="no">editor toolbar</a> to move between files.</p>
+<h2 id="locate-files">Locate files</h2>
+<p>Activate the locator to find files in the local file system or on connected devices. By default, the locator shows open documents and all files from all projects. The file system filter (<code translate="no">f</code>) shows all files in the same folder as the currently open file, and you can navigate the file system from there. Also, you can switch to another device root.</p>
+<p>For example, to open a QML file called <i>HelloWorld.qml</i> in the currently open project using the locator:</p>
+<ol class="1" type="1"><li>Press <b>Ctrl+K</b> to activate the locator.</li>
+<li>Start typing the filename.<p class="centerAlign"><img src="images/qtcreator-locator-open.webp" alt="{List of files in the locator}" /></p></li>
+<li>Use the arrow keys to move to the filename in the list and press <b>Enter</b>.<p>The file opens in the editor.</p>
+</li>
+<li>To move to a line in the file, enter the line number in the locator.</li>
+</ol>
+<p>Filters locating files also accept paths, such as <code translate="no">tools/*main.cpp</code>. If the path to a file is very long, it might not fit into the locator window. To view the full path, press <b>Alt</b> when the filename is selected or drag the right edge of the locator to make it wider.</p>
+<p>If the locator does not find some files, see <a href="creator-how-to-specify-project-contents.html" translate="no">Specify project contents</a> for how to make them known to the locator.</p>
+<h2 id="locate-files-from-global-file-system-index">Locate files from global file system index</h2>
+<p>You can install tools such as Spotlight, Locate, or Everything and use them to locate files from a global file system index. Use the <code translate="no">md</code> locator filter to locate the files.</p>
+<p>To use the sorting from the selected tool instead of from Qt Creator, deselect the <b translate="no">Sort results</b> check box in the <code translate="no">md</code> locator filter configuration.</p>
+<p class="centerAlign"><img src="images/qtcreator-locator-filter-edit-md.webp" alt="{Filter Configuration dialog}" /></p><h2 id="browse-location-history">Browse location history</h2>
+<p>To browse backward or forward through your location history, click <img src="images/prev.png" alt="" /> (<b translate="no">Go Back</b>) and <img src="images/next.png" alt="" /> (<b translate="no">Go Forward</b>) on the editor toolbar.</p>
+<p>To return to the last location where you made a change, go to <b translate="no">Window</b> &gt; <b translate="no">Go to Last Edit</b>.</p>
+<h2 id="navigate-with-the-keyboard">Navigate with the keyboard</h2>
+<p>Use keyboard shortcuts:</p>
+<ul>
+<li>To quickly move between currently open files, press <b>Ctrl+Tab</b>.</li>
+<li>To move forward in the location history, press <b>Alt+Right</b> (<b>Cmd+Opt+Right</b> on macOS).</li>
+<li>To move backward, press <b>Alt+Left</b> (<b>Cmd+Opt+Left</b> on macOS). For example, after you use the <b translate="no">Locator</b> to jump to a symbol in the same file, press <b>Alt+Left</b> to jump back to your original location in that file.</li>
+</ul>
+</div>
+<p><b>See also </b><a href="creator-how-tos.html#edit-code" translate="no">How To: Edit Code</a>, <a href="creator-coding-navigating.html" translate="no">Edit Mode</a>, <a href="creator-editor-locator.html" translate="no">Navigate with locator</a>, <a href="creator-file-system-view.html" translate="no">File System</a>, and <a href="creator-projects-view.html" translate="no">Projects</a>.</p>
+<!-- @@@creator-how-to-move-between-open-files.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

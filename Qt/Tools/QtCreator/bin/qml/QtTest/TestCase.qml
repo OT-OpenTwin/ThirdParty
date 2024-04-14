@@ -1,47 +1,10 @@
-/****************************************************************************
-**
-** Copyright (C) 2016 The Qt Company Ltd.
-** Contact: https://www.qt.io/licensing/
-**
-** This file is part of the test suite of the Qt Toolkit.
-**
-** $QT_BEGIN_LICENSE:LGPL$
-** Commercial License Usage
-** Licensees holding valid commercial Qt licenses may use this file in
-** accordance with the commercial license agreement provided with the
-** Software or, alternatively, in accordance with the terms contained in
-** a written agreement between you and The Qt Company. For licensing terms
-** and conditions see https://www.qt.io/terms-conditions. For further
-** information use the contact form at https://www.qt.io/contact-us.
-**
-** GNU Lesser General Public License Usage
-** Alternatively, this file may be used under the terms of the GNU Lesser
-** General Public License version 3 as published by the Free Software
-** Foundation and appearing in the file LICENSE.LGPL3 included in the
-** packaging of this file. Please review the following information to
-** ensure the GNU Lesser General Public License version 3 requirements
-** will be met: https://www.gnu.org/licenses/lgpl-3.0.html.
-**
-** GNU General Public License Usage
-** Alternatively, this file may be used under the terms of the GNU
-** General Public License version 2.0 or (at your option) the GNU General
-** Public license version 3 or any later version approved by the KDE Free
-** Qt Foundation. The licenses are as published by the Free Software
-** Foundation and appearing in the file LICENSE.GPL2 and LICENSE.GPL3
-** included in the packaging of this file. Please review the following
-** information to ensure the GNU General Public License requirements will
-** be met: https://www.gnu.org/licenses/gpl-2.0.html and
-** https://www.gnu.org/licenses/gpl-3.0.html.
-**
-** $QT_END_LICENSE$
-**
-****************************************************************************/
+// Copyright (C) 2016 The Qt Company Ltd.
+// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 
 import QtQuick 2.0
 import QtQuick.Window 2.0 // used for qtest_verifyItem
 import QtTest 1.2
 import "testlogger.js" as TestLogger
-import Qt.test.qtestroot 1.0
 
 /*!
     \qmltype TestCase
@@ -198,7 +161,7 @@ import Qt.test.qtestroot 1.0
     }
     \endcode
 
-    The mousePress(), mouseRelease(), mouseClick(), mouseDoubleClick(), mouseDoubleClickSequence()
+    The mousePress(), mouseRelease(), mouseClick(), mouseDoubleClickSequence()
     and mouseMove() methods can be used to simulate mouse events in a
     similar fashion.
 
@@ -261,6 +224,81 @@ import Qt.test.qtestroot 1.0
     of \l Component, the \l createTemporaryObject() function can be used.
 
     \sa {QtTest::SignalSpy}{SignalSpy}, {Qt Quick Test}
+
+    \section1 Separating tests from application logic
+
+    In most cases, you would want to separate your tests from the application
+    logic by splitting them into different projects and linking them.
+
+    For example, you could have the following project structure:
+
+    \badcode
+    .
+    | — CMakeLists.txt
+    | — src
+    |  | — main.cpp
+    | — qml
+    |  | — main.qml
+    | — modules
+    |  | — MyModule
+    |     | — MyButton.qml
+    |     | — CMakeLists.txt
+    | — tests
+       | — UnitQMLTests
+          | — tst_testqml.qml
+          | — main.cpp
+          | — setup.cpp
+          | — setup.h
+    \endcode
+
+    Now, to test the \c modules/MyModule/MyButton.qml, create a library for
+    \c MyModule in \c modules/MyModule/CMakeLists.txt and link it to your
+    test project, \c tests/UnitQMLTests/CMakeLists.txt:
+
+    \if defined(onlinedocs)
+        \tab {build-qt-app}{tab-cmake-add-library}{modules/MyModule/MyButton.qml}{checked}
+        \tab {build-qt-app}{tab-cmake-link-against-library}{tests/UnitQMLTests/CMakeLists.txt}{}
+        \tabcontent {tab-cmake-add-library}
+    \else
+        \section1 Add library
+    \endif
+    \dots
+    \snippet modules_MyModule_CMakeLists.txt add library
+    \dots
+    \if defined(onlinedocs)
+        \endtabcontent
+        \tabcontent {tab-cmake-link-against-library}
+    \else
+        \section1 Link against library
+    \endif
+    \dots
+    \snippet tests_UnitQMLTests_CMakeLists.txt link against library
+    \dots
+    \if defined(onlinedocs)
+        \endtabcontent
+    \endif
+
+    Then, in your \c tests/UnitQMLTests/tst_testqml.qml, you can import your
+    \c modules/MyModule/MyButton.qml:
+
+    \if defined(onlinedocs)
+        \tab {test-qml}{tab-qml-import}{tests/UnitQMLTests/tst_testqml.qml}{checked}
+        \tab {test-qml}{tab-qml-my-button}{modules/MyModule/MyButton.qml}{}
+        \tabcontent {tab-qml-import}
+    \else
+        \section1 Import QML
+    \endif
+    \snippet tests_UnitQMLTests_tst_testqml.qml import
+    \if defined(onlinedocs)
+        \endtabcontent
+        \tabcontent {tab-qml-my-button}
+    \else
+        \section1 Define QML button
+    \endif
+    \snippet modules_MyModule_MyButton.qml define
+    \if defined(onlinedocs)
+        \endtabcontent
+    \endif
 */
 
 
@@ -443,8 +481,8 @@ Item {
         displays the optional \a message.  Similar to \c{QVERIFY(condition)}
         or \c{QVERIFY2(condition, message)} in C++.
     */
-    function verify(cond, msg) {
-        if (arguments.length > 2)
+    function verify(cond, msg, ...args) {
+        if (args.length > 0)
             qtest_fail("More than two arguments given to verify(). Did you mean tryVerify() or tryCompare()?", 1)
 
         if (msg === undefined)
@@ -518,6 +556,102 @@ Item {
 
         if (!qtest_results.verify(expressionFunction(), msg, util.callerFile(), util.callerLine()))
             throw new Error("QtQuickTest::fail")
+    }
+
+    /*!
+        \since 5.13
+        \qmlmethod bool TestCase::isPolishScheduled(object itemOrWindow)
+
+        If \a itemOrWindow is an \l Item, this function returns \c true if
+        \l {QQuickItem::}{updatePolish()} has not been called on it since the
+        last call to \l {QQuickItem::}{polish()}, otherwise returns \c false.
+
+        Since Qt 6.5, if \a itemOrWindow is a \l Window, this function returns
+        \c true if \l {QQuickItem::}{updatePolish()} has not been called on any
+        item it manages since the last call to \l {QQuickItem::}{polish()} on
+        those items, otherwise returns \c false.
+
+        When assigning values to properties in QML, any layouting the item
+        must do as a result of the assignment might not take effect immediately,
+        but can instead be postponed until the item is polished. For these cases,
+        you can use this function to ensure that items have been polished
+        before the execution of the test continues. For example:
+
+        \code
+            verify(isPolishScheduled(item))
+            verify(waitForItemPolished(item))
+        \endcode
+
+        Without the call to \c isPolishScheduled() above, the
+        call to \c waitForItemPolished() might see that no polish
+        was scheduled and therefore pass instantly, assuming that
+        the item had already been polished. This function
+        makes it obvious why an item wasn't polished and allows tests to
+        fail early under such circumstances.
+
+        \sa waitForPolish(), QQuickItem::polish(), QQuickItem::updatePolish()
+    */
+    function isPolishScheduled(itemOrWindow) {
+        if (!itemOrWindow || typeof itemOrWindow !== "object") {
+            qtest_results.fail("Argument must be a valid Item or Window; actual type is " + typeof itemOrWindow,
+                util.callerFile(), util.callerLine())
+            throw new Error("QtQuickTest::fail")
+        }
+
+        return qtest_results.isPolishScheduled(itemOrWindow)
+    }
+
+    /*!
+        \since 5.13
+        \deprecated [6.5] Use \l waitForPolish() instead.
+        \qmlmethod bool waitForItemPolished(object item, int timeout = 5000)
+
+        Waits for \a timeout milliseconds or until
+        \l {QQuickItem::}{updatePolish()} has been called on \a item.
+
+        Returns \c true if \c updatePolish() was called on \a item within
+        \a timeout milliseconds, otherwise returns \c false.
+
+        \sa isPolishScheduled(), QQuickItem::polish(), QQuickItem::updatePolish()
+    */
+    function waitForItemPolished(item, timeout) {
+        return waitForPolish(item, timeout)
+    }
+
+    /*!
+        \since 6.5
+        \qmlmethod bool waitForPolish(object windowOrItem, int timeout = 5000)
+
+        If \a windowOrItem is an Item, this functions waits for \a timeout
+        milliseconds or until \c isPolishScheduled(windowOrItem) returns \c false.
+        Returns \c true if \c isPolishScheduled(windowOrItem) returns \c false within
+        \a timeout milliseconds, otherwise returns \c false.
+
+        If \c windowOrItem is a Window, this functions waits for \c timeout
+        milliseconds or until \c isPolishScheduled() returns \c false for
+        all items managed by the window. Returns \c true if
+        \c isPolishScheduled() returns \c false for all items within
+        \a timeout milliseconds, otherwise returns \c false.
+
+        \sa isPolishScheduled(), QQuickItem::polish(), QQuickItem::updatePolish()
+    */
+    function waitForPolish(windowOrItem, timeout) {
+        if (!windowOrItem || typeof windowOrItem !== "object") {
+            qtest_results.fail("First argument must be a valid Item or Window; actual type is " + typeof windowOrItem,
+                util.callerFile(), util.callerLine())
+            throw new Error("QtQuickTest::fail")
+        }
+
+        if (timeout !== undefined && typeof(timeout) != "number") {
+            qtest_results.fail("Second argument must be a number; actual type is " + typeof timeout,
+                util.callerFile(), util.callerLine())
+            throw new Error("QtQuickTest::fail")
+        }
+
+        if (!timeout)
+            timeout = 5000
+
+        return qtest_results.waitForPolish(windowOrItem, timeout)
     }
 
     /*!
@@ -598,6 +732,9 @@ Item {
                 util.callerFile(), util.callerLine());
             throw new Error("QtQuickTest::fail");
         }
+
+        if (parent === undefined)
+            parent = null
 
         var object = component.createObject(parent, properties ? properties : ({}));
         qtest_temporaryObjects.push(object);
@@ -850,12 +987,12 @@ Item {
 
         Additionally, the returned image object has the following methods:
         \list
-        \li red(x, y) Returns the red channel value of the pixel at \a x, \a y position
-        \li green(x, y) Returns the green channel value of the pixel at \a x, \a y position
-        \li blue(x, y) Returns the blue channel value of the pixel at \a x, \a y position
-        \li alpha(x, y) Returns the alpha channel value of the pixel at \a x, \a y position
-        \li pixel(x, y) Returns the color value of the pixel at \a x, \a y position
-        \li equals(image) Returns \c true if this image is identical to \a image -
+        \li \c {red(x, y)} Returns the red channel value of the pixel at \e x, \e y position
+        \li \c {green(x, y)} Returns the green channel value of the pixel at \e x, \e y position
+        \li \c {blue(x, y)} Returns the blue channel value of the pixel at \e x, \e y position
+        \li \c {alpha(x, y)} Returns the alpha channel value of the pixel at \e x, \e y position
+        \li \c {pixel(x, y)} Returns the color value of the pixel at \e x, \e y position
+        \li \c {equals(image)} Returns \c true if this image is identical to \e image -
             see \l QImage::operator== (since 5.6)
 
         For example:
@@ -869,7 +1006,8 @@ Item {
         var newImage = grabImage(rect);
         verify(!newImage.equals(image));
         \endcode
-        \li save(path) Saves the image to the given \a path. If the image cannot
+
+        \li \c {save(path)} Saves the image to the given \e path. If the image cannot
         be saved, an exception will be thrown. (since 5.10)
 
         This can be useful to perform postmortem analysis on failing tests, for
@@ -886,8 +1024,6 @@ Item {
         \endcode
 
         \endlist
-
-        \sa
     */
     function grabImage(item) {
         return qtest_results.grabImage(item);
@@ -961,17 +1097,18 @@ Item {
 
         \sa compare(), SignalSpy::wait()
     */
-    function tryCompare(obj, prop, value, timeout, msg) {
-        if (arguments.length == 1 || (typeof(prop) != "string" && typeof(prop) != "number")) {
+    function tryCompare(obj, prop, ...args) {
+        if (typeof(prop) != "string" && typeof(prop) != "number") {
             qtest_results.fail("A property name as string or index is required for tryCompare",
                         util.callerFile(), util.callerLine())
             throw new Error("QtQuickTest::fail")
         }
-        if (arguments.length == 2) {
+        if (args.length == 0) {
             qtest_results.fail("A value is required for tryCompare",
                         util.callerFile(), util.callerLine())
             throw new Error("QtQuickTest::fail")
         }
+        let [value, timeout, msg] = args
         if (timeout !== undefined && typeof(timeout) != "number") {
             qtest_results.fail("timeout should be a number",
                         util.callerFile(), util.callerLine())
@@ -1066,7 +1203,7 @@ Item {
         \qmlmethod TestCase::warn(message)
 
         Prints \a message as a warning message.  Similar to
-        \c{QWARN(message)} in C++.
+        \c{qWarning(message)} in C++.
 
         \sa ignoreWarning()
     */
@@ -1111,6 +1248,58 @@ Item {
     }
 
     /*!
+        \qmlmethod TestCase::failOnWarning(message)
+        \since 6.3
+
+        Appends a test failure to the test log for each warning that matches
+        \a message. The test function will continue execution when a failure
+        is added.
+
+        \a message can be either a string, or a regular expression providing a
+        pattern of messages. In the latter case, for each warning encountered,
+        the first pattern that matches will cause a failure, and the remaining
+        patterns will be ignored.
+
+        All patterns are cleared at the end of each test function.
+
+        For example, the following snippet will fail a test if a warning with
+        the text "Something bad happened" is produced:
+        \qml
+        failOnWarning("Something bad happened")
+        \endqml
+
+        The following snippet will fail a test if any warning matching the
+        given pattern is encountered:
+        \qml
+        failOnWarning(/[0-9]+ bad things happened/)
+        \endqml
+
+        To fail every test that triggers a given warning, pass a suitable regular
+        expression to this function in \l init():
+
+        \qml
+        function init() {
+            failOnWarning(/.?/)
+        }
+        \endqml
+
+        \note Despite being a JavaScript RegExp object, it will not be
+        interpreted as such; instead, the pattern will be passed to \l
+        QRegularExpression.
+
+        \note ignoreMessage() takes precedence over this function, so any
+        warnings that match a pattern given to both \c ignoreMessage() and \c
+        failOnWarning() will be ignored.
+
+        \sa QTest::failOnWarning(), warn()
+    */
+    function failOnWarning(msg) {
+        if (msg === undefined)
+            msg = ""
+        qtest_results.failOnWarning(msg)
+    }
+
+    /*!
         \qmlmethod TestCase::wait(ms)
 
         Waits for \a ms milliseconds while processing Qt events.
@@ -1152,7 +1341,7 @@ Item {
     /*!
         \qmlmethod TestCase::keyPress(key, modifiers = Qt.NoModifier, delay = -1)
 
-        Simulates pressing a \a key with an optional \a modifier on the currently
+        Simulates pressing a \a key with optional \a modifiers on the currently
         focused item.  If \a delay is larger than 0, the test will wait for
         \a delay milliseconds.
 
@@ -1180,7 +1369,7 @@ Item {
     /*!
         \qmlmethod TestCase::keyRelease(key, modifiers = Qt.NoModifier, delay = -1)
 
-        Simulates releasing a \a key with an optional \a modifier on the currently
+        Simulates releasing a \a key with optional \a modifiers on the currently
         focused item.  If \a delay is larger than 0, the test will wait for
         \a delay milliseconds.
 
@@ -1206,7 +1395,7 @@ Item {
     /*!
         \qmlmethod TestCase::keyClick(key, modifiers = Qt.NoModifier, delay = -1)
 
-        Simulates clicking of \a key with an optional \a modifier on the currently
+        Simulates clicking of \a key with optional \a modifiers on the currently
         focused item.  If \a delay is larger than 0, the test will wait for
         \a delay milliseconds.
 
@@ -1252,7 +1441,7 @@ Item {
     /*!
         \qmlmethod TestCase::mousePress(item, x = item.width / 2, y = item.height / 2, button = Qt.LeftButton, modifiers = Qt.NoModifier, delay = -1)
 
-        Simulates pressing a mouse \a button with an optional \a modifier
+        Simulates pressing a mouse \a button with optional \a modifiers
         on an \a item.  The position is defined by \a x and \a y.
         If \a x or \a y are not defined the position will be the center of \a item.
         If \a delay is specified, the test will wait for the specified amount of
@@ -1263,7 +1452,7 @@ Item {
         If \a item is obscured by another item, or a child of \a item occupies
         that position, then the event will be delivered to the other item instead.
 
-        \sa mouseRelease(), mouseClick(), mouseDoubleClick(), mouseDoubleClickSequence(), mouseMove(), mouseDrag(), mouseWheel()
+        \sa mouseRelease(), mouseClick(), mouseDoubleClickSequence(), mouseMove(), mouseDrag(), mouseWheel()
     */
     function mousePress(item, x, y, button, modifiers, delay) {
         if (!qtest_verifyItem(item, "mousePress"))
@@ -1286,7 +1475,7 @@ Item {
     /*!
         \qmlmethod TestCase::mouseRelease(item, x = item.width / 2, y = item.height / 2, button = Qt.LeftButton, modifiers = Qt.NoModifier, delay = -1)
 
-        Simulates releasing a mouse \a button with an optional \a modifier
+        Simulates releasing a mouse \a button with optional \a modifiers
         on an \a item.  The position of the release is defined by \a x and \a y.
         If \a x or \a y are not defined the position will be the center of \a item.
         If \a delay is specified, the test will wait for the specified amount of
@@ -1297,7 +1486,7 @@ Item {
         If \a item is obscured by another item, or a child of \a item occupies
         that position, then the event will be delivered to the other item instead.
 
-        \sa mousePress(), mouseClick(), mouseDoubleClick(), mouseDoubleClickSequence(), mouseMove(), mouseDrag(), mouseWheel()
+        \sa mousePress(), mouseClick(), mouseDoubleClickSequence(), mouseMove(), mouseDrag(), mouseWheel()
     */
     function mouseRelease(item, x, y, button, modifiers, delay) {
         if (!qtest_verifyItem(item, "mouseRelease"))
@@ -1320,7 +1509,7 @@ Item {
     /*!
         \qmlmethod TestCase::mouseDrag(item, x, y, dx, dy, button = Qt.LeftButton, modifiers = Qt.NoModifier, delay = -1)
 
-        Simulates dragging the mouse on an \a item with \a button pressed and an optional \a modifier.
+        Simulates dragging the mouse on an \a item with \a button pressed and optional \a modifiers
         The initial drag position is defined by \a x and \a y,
         and drag distance is defined by \a dx and \a dy. If \a delay is specified,
         the test will wait for the specified amount of milliseconds before releasing the button.
@@ -1330,7 +1519,7 @@ Item {
         If \a item is obscured by another item, or a child of \a item occupies
         that position, then the event will be delivered to the other item instead.
 
-        \sa mousePress(), mouseClick(), mouseDoubleClick(), mouseDoubleClickSequence(), mouseMove(), mouseRelease(), mouseWheel()
+        \sa mousePress(), mouseClick(), mouseDoubleClickSequence(), mouseMove(), mouseRelease(), mouseWheel()
     */
     function mouseDrag(item, x, y, dx, dy, button, modifiers, delay) {
         if (!qtest_verifyItem(item, "mouseDrag"))
@@ -1349,19 +1538,23 @@ Item {
         // Divide dx and dy to have intermediate mouseMove while dragging
         // Fractions of dx/dy need be superior to the dragThreshold
         // to make the drag works though
-        var ddx = Math.round(dx/3)
-        if (ddx < (util.dragThreshold + 1))
-            ddx = 0
-        var ddy = Math.round(dy/3)
-        if (ddy < (util.dragThreshold + 1))
-            ddy = 0
+        var intermediateDx = Math.round(dx/3)
+        if (Math.abs(intermediateDx) < (util.dragThreshold + 1))
+            intermediateDx = 0
+        var intermediateDy = Math.round(dy/3)
+        if (Math.abs(intermediateDy) < (util.dragThreshold + 1))
+            intermediateDy = 0
 
         mousePress(item, x, y, button, modifiers, delay)
-        //trigger dragging
-        mouseMove(item, x + util.dragThreshold + 1, y + util.dragThreshold + 1, moveDelay, button)
-        if (ddx > 0 || ddy > 0) {
-            mouseMove(item, x + ddx, y + ddy, moveDelay, button)
-            mouseMove(item, x + 2*ddx, y + 2*ddy, moveDelay, button)
+
+        // Trigger dragging by dragging past the drag threshold, but making sure to only drag
+        // along a certain axis if a distance greater than zero was given for that axis.
+        var dragTriggerXDistance = dx > 0 ? (util.dragThreshold + 1) : 0
+        var dragTriggerYDistance = dy > 0 ? (util.dragThreshold + 1) : 0
+        mouseMove(item, x + dragTriggerXDistance, y + dragTriggerYDistance, moveDelay, button)
+        if (intermediateDx !== 0 || intermediateDy !== 0) {
+            mouseMove(item, x + intermediateDx, y + intermediateDy, moveDelay, button)
+            mouseMove(item, x + 2*intermediateDx, y + 2*intermediateDy, moveDelay, button)
         }
         mouseMove(item, x + dx, y + dy, moveDelay, button)
         mouseRelease(item, x + dx, y + dy, button, modifiers, delay)
@@ -1370,7 +1563,7 @@ Item {
     /*!
         \qmlmethod TestCase::mouseClick(item, x = item.width / 2, y = item.height / 2, button = Qt.LeftButton, modifiers = Qt.NoModifier, delay = -1)
 
-        Simulates clicking a mouse \a button with an optional \a modifier
+        Simulates clicking a mouse \a button with optional \a modifiers
         on an \a item.  The position of the click is defined by \a x and \a y.
         If \a x and \a y are not defined the position will be the center of \a item.
         If \a delay is specified, the test will wait for the specified amount of
@@ -1381,7 +1574,7 @@ Item {
         If \a item is obscured by another item, or a child of \a item occupies
         that position, then the event will be delivered to the other item instead.
 
-        \sa mousePress(), mouseRelease(), mouseDoubleClick(), mouseDoubleClickSequence(), mouseMove(), mouseDrag(), mouseWheel()
+        \sa mousePress(), mouseRelease(), mouseDoubleClickSequence(), mouseMove(), mouseDrag(), mouseWheel()
     */
     function mouseClick(item, x, y, button, modifiers, delay) {
         if (!qtest_verifyItem(item, "mouseClick"))
@@ -1402,44 +1595,10 @@ Item {
     }
 
     /*!
-        \qmlmethod TestCase::mouseDoubleClick(item, x = item.width / 2, y = item.height / 2, button = Qt.LeftButton, modifiers = Qt.NoModifier, delay = -1)
-
-        Simulates double-clicking a mouse \a button with an optional \a modifier
-        on an \a item.  The position of the click is defined by \a x and \a y.
-        If \a x and \a y are not defined the position will be the center of \a item.
-        If \a delay is specified, the test will wait for the specified amount of
-        milliseconds before pressing and before releasing the button.
-
-        The position given by \a x and \a y is transformed from the co-ordinate
-        system of \a item into window co-ordinates and then delivered.
-        If \a item is obscured by another item, or a child of \a item occupies
-        that position, then the event will be delivered to the other item instead.
-
-        \sa mouseDoubleClickSequence(), mousePress(), mouseRelease(), mouseClick(), mouseMove(), mouseDrag(), mouseWheel()
-    */
-    function mouseDoubleClick(item, x, y, button, modifiers, delay) {
-        if (!qtest_verifyItem(item, "mouseDoubleClick"))
-            return
-
-        if (button === undefined)
-            button = Qt.LeftButton
-        if (modifiers === undefined)
-            modifiers = Qt.NoModifier
-        if (delay == undefined)
-            delay = -1
-        if (x === undefined)
-            x = item.width / 2
-        if (y === undefined)
-            y = item.height / 2
-        if (!qtest_events.mouseDoubleClick(item, x, y, button, modifiers, delay))
-            qtest_fail("window not shown", 2)
-    }
-
-    /*!
         \qmlmethod TestCase::mouseDoubleClickSequence(item, x = item.width / 2, y = item.height / 2, button = Qt.LeftButton, modifiers = Qt.NoModifier, delay = -1)
 
         Simulates the full sequence of events generated by double-clicking a mouse
-        \a button with an optional \a modifier on an \a item.
+        \a button with optional \a modifiers on an \a item.
 
         This method reproduces the sequence of mouse events generated when a user makes
         a double click: Press-Release-Press-DoubleClick-Release.
@@ -1456,7 +1615,7 @@ Item {
 
         This QML method was introduced in Qt 5.5.
 
-        \sa mouseDoubleClick(), mousePress(), mouseRelease(), mouseClick(), mouseMove(), mouseDrag(), mouseWheel()
+        \sa mousePress(), mouseRelease(), mouseClick(), mouseMove(), mouseDrag(), mouseWheel()
     */
     function mouseDoubleClickSequence(item, x, y, button, modifiers, delay) {
         if (!qtest_verifyItem(item, "mouseDoubleClickSequence"))
@@ -1477,18 +1636,21 @@ Item {
     }
 
     /*!
-        \qmlmethod TestCase::mouseMove(item, x, y, delay = -1)
+        \qmlmethod TestCase::mouseMove(item, x = item.width / 2, y = item.height / 2, delay = -1, buttons = Qt.NoButton)
 
         Moves the mouse pointer to the position given by \a x and \a y within
-        \a item.  If a \a delay (in milliseconds) is given, the test will wait
-        before moving the mouse pointer.
+        \a item, while holding \a buttons if given. Since Qt 6.0, if \a x and
+        \a y are not defined, the position will be the center of \a item.
+
+        If a \a delay (in milliseconds) is given, the test will wait before
+        moving the mouse pointer.
 
         The position given by \a x and \a y is transformed from the co-ordinate
         system of \a item into window co-ordinates and then delivered.
         If \a item is obscured by another item, or a child of \a item occupies
         that position, then the event will be delivered to the other item instead.
 
-        \sa mousePress(), mouseRelease(), mouseClick(), mouseDoubleClick(), mouseDoubleClickSequence(), mouseDrag(), mouseWheel()
+        \sa mousePress(), mouseRelease(), mouseClick(), mouseDoubleClickSequence(), mouseDrag(), mouseWheel()
     */
     function mouseMove(item, x, y, delay, buttons) {
         if (!qtest_verifyItem(item, "mouseMove"))
@@ -1498,6 +1660,10 @@ Item {
             delay = -1
         if (buttons == undefined)
             buttons = Qt.NoButton
+        if (x === undefined)
+            x = item.width / 2
+        if (y === undefined)
+            y = item.height / 2
         if (!qtest_events.mouseMove(item, x, y, delay, buttons))
             qtest_fail("window not shown", 2)
     }
@@ -1505,7 +1671,7 @@ Item {
     /*!
         \qmlmethod TestCase::mouseWheel(item, x, y, xDelta, yDelta, button = Qt.LeftButton, modifiers = Qt.NoModifier, delay = -1)
 
-        Simulates rotating the mouse wheel on an \a item with \a button pressed and an optional \a modifier.
+        Simulates rotating the mouse wheel on an \a item with \a button pressed and optional \a modifiers.
         The position of the wheel event is defined by \a x and \a y.
         If \a delay is specified, the test will wait for the specified amount of milliseconds before releasing the button.
 
@@ -1516,7 +1682,7 @@ Item {
 
         The \a xDelta and \a yDelta contain the wheel rotation distance in eighths of a degree. see \l QWheelEvent::angleDelta() for more details.
 
-        \sa mousePress(), mouseClick(), mouseDoubleClick(), mouseDoubleClickSequence(), mouseMove(), mouseRelease(), mouseDrag(), QWheelEvent::angleDelta()
+        \sa mousePress(), mouseClick(), mouseDoubleClickSequence(), mouseMove(), mouseRelease(), mouseDrag(), QWheelEvent::angleDelta()
     */
     function mouseWheel(item, x, y, xDelta, yDelta, buttons, modifiers, delay) {
         if (!qtest_verifyItem(item, "mouseWheel"))
@@ -1541,7 +1707,7 @@ Item {
 
         \since 5.9
 
-        Begins a sequence of touch events through a simulated QTouchDevice::TouchScreen.
+        Begins a sequence of touch events through a simulated touchscreen (QPointingDevice).
         Events are delivered to the window containing \a item.
 
         The returned object is used to enumerate events to be delivered through a single
@@ -1563,7 +1729,7 @@ Item {
 
             TestCase {
                 name: "ItemTests"
-                when: area.pressed
+                when: windowShown
                 id: test1
 
                 function test_touch() {
@@ -1576,7 +1742,7 @@ Item {
         }
         \endcode
 
-        \sa TouchEventSequence::press(), TouchEventSequence::move(), TouchEventSequence::release(), TouchEventSequence::stationary(), TouchEventSequence::commit(), QTouchDevice::TouchScreen
+        \sa TouchEventSequence::press(), TouchEventSequence::move(), TouchEventSequence::release(), TouchEventSequence::stationary(), TouchEventSequence::commit(), QInputDevice::DeviceType
     */
 
     function touchEvent(item) {
@@ -1774,7 +1940,15 @@ Item {
 
     /*! \internal */
     function qtest_run() {
-        if (TestLogger.log_start_test()) {
+        if (!when || completed || running || !qtest_componentCompleted)
+            return;
+
+        if (!TestLogger.log_can_start_test(qtest_testId)) {
+            console.error("Interleaved test execution detected. This shouldn't happen")
+            return;
+        }
+
+        if (TestLogger.log_start_test(qtest_testId)) {
             qtest_results.reset()
             qtest_results.testCaseName = name
             qtest_results.startLogging()
@@ -1945,8 +2119,8 @@ Item {
     onWhenChanged: {
         if (when != qtest_prevWhen) {
             qtest_prevWhen = when
-            if (when && !completed && !running && qtest_componentCompleted)
-                qtest_run()
+            if (when)
+                TestSchedule.testCases.push(testCase)
         }
     }
 
@@ -1966,7 +2140,7 @@ Item {
         if (optional)
             TestLogger.log_optional_test(qtest_testId)
         qtest_prevWhen = when
-        if (when && !completed && !running)
-            qtest_run()
+        if (when)
+            TestSchedule.testCases.push(testCase)
     }
 }

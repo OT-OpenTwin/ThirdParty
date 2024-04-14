@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- Optimal3DScene.qdoc -->
+  <meta name="description" content="Contains project files for the Optimal 3D Scene.">
+  <title>Optimal 3D Scene | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="studioexamples.html" translate="no">Examples</a></li>
+<li>Optimal 3D Scene</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<h1 class="title">Optimal 3D Scene</h1>
+<pre class="qml" translate="no">
+ <span class="comment">// Copyright (C) 2020 The Qt Company Ltd.</span>
+ <span class="comment">// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause</span>
+
+ import QtQuick 2.12
+ import QtQuick3D 1.15
+ import Optimal3DScene 1.0
+ import Quick3DAssets.High 1.0
+ import Quick3DAssets.Low 1.0
+ import Quick3DAssets.Merged 1.0
+ import QtQuick 2.15
+ import Quick3DAssets.VertexColor 1.0
+
+ <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-rectangle.html" translate="no">Rectangle</a></span> {
+     <span class="name">width</span>: <span class="name">Constants</span>.<span class="name">width</span>
+     <span class="name">height</span>: <span class="name">Constants</span>.<span class="name">height</span>
+
+     <span class="name">color</span>: <span class="name">Constants</span>.<span class="name">backgroundColor</span>
+     property <span class="type">alias</span> <span class="name">high</span>: <span class="name">high</span>
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-view3d.html" translate="no">View3D</a></span> {
+         <span class="name">id</span>: <span class="name">view3D</span>
+         <span class="name">x</span>: <span class="number">0</span>
+         <span class="name">y</span>: <span class="number">0</span>
+         <span class="name">width</span>: <span class="number">1280</span>
+         <span class="name">height</span>: <span class="number">720</span>
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-sceneenvironment.html" translate="no">SceneEnvironment</a></span> {
+             <span class="name">id</span>: <span class="name">sceneEnvironment</span>
+             <span class="name">antialiasingQuality</span>: <span class="name">SceneEnvironment</span>.<span class="name">High</span>
+             <span class="name">antialiasingMode</span>: <span class="name">SceneEnvironment</span>.<span class="name">MSAA</span>
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-node.html" translate="no">Node</a></span> {
+             <span class="name">id</span>: <span class="name">scenelow</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-perspectivecamera.html" translate="no">PerspectiveCamera</a></span> {
+                 <span class="name">id</span>: <span class="name">camera</span>
+                 <span class="name">x</span>: <span class="number">0</span>
+                 <span class="name">y</span>: <span class="number">501.999</span>
+                 <span class="name">z</span>: <span class="number">953.07697</span>
+             }
+
+             <span class="type">Low</span> {
+                 <span class="name">id</span>: <span class="name">low</span>
+                 <span class="name">eulerRotation</span>.z: <span class="number">0.00001</span>
+                 <span class="name">eulerRotation</span>.y: -<span class="number">135</span>
+                 <span class="name">eulerRotation</span>.x: <span class="number">0.00002</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-pointlight.html" translate="no">PointLight</a></span> {
+                 <span class="name">id</span>: <span class="name">lightPoint</span>
+                 <span class="name">x</span>: <span class="number">0</span>
+                 <span class="name">y</span>: <span class="number">888.433</span>
+                 <span class="name">castsShadow</span>: <span class="number">true</span>
+                 <span class="name">brightness</span>: <span class="number">400</span>
+                 <span class="name">quadraticFade</span>: <span class="number">0.01318</span>
+                 <span class="name">z</span>: -<span class="number">0.00007</span>
+             }
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-node.html" translate="no">Node</a></span> {
+             <span class="name">id</span>: <span class="name">scenehigh</span>
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-perspectivecamera.html" translate="no">PerspectiveCamera</a></span> {
+                 <span class="name">id</span>: <span class="name">camera1</span>
+                 <span class="name">x</span>: <span class="number">0</span>
+                 <span class="name">y</span>: <span class="number">501.999</span>
+                 <span class="name">z</span>: <span class="number">953.07697</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-pointlight.html" translate="no">PointLight</a></span> {
+                 <span class="name">id</span>: <span class="name">lightPoint1</span>
+                 <span class="name">x</span>: <span class="number">0</span>
+                 <span class="name">y</span>: <span class="number">888.433</span>
+                 <span class="name">brightness</span>: <span class="number">400</span>
+                 <span class="name">castsShadow</span>: <span class="number">true</span>
+                 <span class="name">z</span>: -<span class="number">0.00007</span>
+                 <span class="name">quadraticFade</span>: <span class="number">0.01318</span>
+             }
+
+             <span class="type">High</span> {
+                 <span class="name">id</span>: <span class="name">high</span>
+                 <span class="name">eulerRotation</span>.y: -<span class="number">135</span>
+             }
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-node.html" translate="no">Node</a></span> {
+             <span class="name">id</span>: <span class="name">scenecombined</span>
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-perspectivecamera.html" translate="no">PerspectiveCamera</a></span> {
+                 <span class="name">id</span>: <span class="name">camera2</span>
+                 <span class="name">x</span>: <span class="number">0</span>
+                 <span class="name">y</span>: <span class="number">501.999</span>
+                 <span class="name">z</span>: <span class="number">953.07697</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-pointlight.html" translate="no">PointLight</a></span> {
+                 <span class="name">id</span>: <span class="name">lightPoint2</span>
+                 <span class="name">x</span>: <span class="number">0</span>
+                 <span class="name">y</span>: <span class="number">888.433</span>
+                 <span class="name">brightness</span>: <span class="number">350</span>
+                 <span class="name">castsShadow</span>: <span class="number">true</span>
+                 <span class="name">z</span>: -<span class="number">0.00007</span>
+                 <span class="name">quadraticFade</span>: <span class="number">0.01318</span>
+             }
+
+             <span class="type">Merged</span> {
+                 <span class="name">id</span>: <span class="name">merged</span>
+                 <span class="name">eulerRotation</span>.y: -<span class="number">135</span>
+             }
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-node.html" translate="no">Node</a></span> {
+             <span class="name">id</span>: <span class="name">scenevertexcolor</span>
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-perspectivecamera.html" translate="no">PerspectiveCamera</a></span> {
+                 <span class="name">id</span>: <span class="name">camera3</span>
+                 <span class="name">x</span>: <span class="number">0</span>
+                 <span class="name">y</span>: <span class="number">501.999</span>
+                 <span class="name">z</span>: <span class="number">953.07697</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-pointlight.html" translate="no">PointLight</a></span> {
+                 <span class="name">id</span>: <span class="name">lightPoint3</span>
+                 <span class="name">x</span>: <span class="number">0</span>
+                 <span class="name">y</span>: <span class="number">888.433</span>
+                 <span class="name">brightness</span>: <span class="number">350</span>
+                 <span class="name">castsShadow</span>: <span class="number">true</span>
+                 <span class="name">z</span>: -<span class="number">0.00007</span>
+                 <span class="name">quadraticFade</span>: <span class="number">0.01318</span>
+             }
+
+             <span class="type">VertexColor</span> {
+                 <span class="name">id</span>: <span class="name">vertexColor</span>
+                 <span class="name">eulerRotation</span>.y: -<span class="number">135</span>
+             }
+         }
+         <span class="name">environment</span>: <span class="name">sceneEnvironment</span>
+     }
+ }
+
+ <span class="comment">/*##^##
+ Designer {
+     D{i:0;active3dScene:10;formeditorZoom:0.6600000262260437}D{i:3;invisible:true}D{i:7;invisible:true}
+ D{i:11;invisible:true}
+ }
+ ##^##*/</span>
+</pre>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qt-design-viewer-navigation.qdoc -->
+  <title>Creating a Single Page Navigation Web Application | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Creating a Single Page Navigation Web Application</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="qt-design-viewer.html" />
+  <link rel="next" href="studio-exporting-and-importing.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="qt-design-viewer.html">Sharing Applications Online</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-exporting-and-importing.html">Asset Creation with Other Tools</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#setting-up-the-project">Setting up the Project</a></li>
+<li class="level1"><a href="#adding-components">Adding Components</a></li>
+<li class="level1"><a href="#creating-the-pages">Creating the Pages</a></li>
+<li class="level1"><a href="#organizing-the-pages">Organizing the Pages</a></li>
+<li class="level1"><a href="#creating-the-navigation">Creating the Navigation</a></li>
+<li class="level1"><a href="#previewing-the-application">Previewing the application</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Creating a Single Page Navigation Web Application</h1>
+<!-- $$$design-viewer-single-page-navigation.html-description -->
+<div class="descr" id="details">
+<p>This example explains how you can create a single page navigation web application suitable to run in Qt Design Viewer. In this project, you create the structure and navigation for the web application.</p>
+<h2 id="setting-up-the-project">Setting up the Project</h2>
+<p>To set up the project:</p>
+<ol class="1" type="1"><li>In Qt Design Studio, create a new project where you set:<ul>
+<li><b translate="no">Preset</b> to <b translate="no">Desktop</b> &gt; <b translate="no">Launcher</b>.</li>
+<li><b translate="no">Resolution</b> to 1024 x 768.</li>
+<li><b translate="no">Target Version</b> to 6.2.</li>
+</ul>
+</li>
+<li>In <b translate="no">Navigator</b>:<ul>
+<li>Select and delete <i>Text</i>.</li>
+<li>Select <i>Rectangle</i> and in <b translate="no">Properties</b>, set <b translate="no">Fill color</b> to #ffffff.</li>
+</ul>
+</li>
+</ol>
+<h2 id="adding-components">Adding Components</h2>
+<p>Next, add the needed components to create the structure for your web application.</p>
+<p>Add the <b translate="no"><a href="https://doc.qt.io/qt/qtquick-module.html" translate="no">QtQuick</a> Layouts</b> module:</p>
+<ol class="1" type="1"><li>In <b translate="no">Components</b>, select <img src="images/plus.png" alt="" /></li>
+<li>Select <b translate="no"><a href="https://doc.qt.io/qt/qtquick-module.html" translate="no">QtQuick</a>.Layouts</b>.</li>
+</ol>
+<p>To add the structure for the web application, drag and drop the following components from <b translate="no">Components</b> to <i>rectangle</i> in <b translate="no">Navigator</b>.</p>
+<ul>
+<li><b translate="no">Rectangle</b><ul>
+<li><b translate="no">Rectangle</b><ul>
+<li><b translate="no">Row</b><ul>
+<li><b translate="no">Button</b></li>
+<li><b translate="no">Button</b></li>
+<li><b translate="no">Button</b></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><b translate="no">Flickable</b><ul>
+<li><b translate="no">ColumnLayout</b></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="centerAlign"><img src="images/web-navigation-components.png" alt="" /></p><h2 id="creating-the-pages">Creating the Pages</h2>
+<p>Next, create the separate pages for your web application. In this example, you create pages for <i>Home</i>, <i>About Us</i>, and <i>Contact Us</i>.</p>
+<p>You create each page as a separate component and then add it to the main application.</p>
+<p>To create the first page:</p>
+<ol class="1" type="1"><li>Go to <b translate="no">File</b> &gt; <b translate="no">New File</b>.</li>
+<li>On the <b translate="no">Qt Quick Files</b> tab, select <b translate="no">Qt Quick File</b>.</li>
+<li>Select <b translate="no">Choose</b> and enter a name, for example, <i>Page1</i>.</li>
+<li>Set <b translate="no">Root Item</b> to <i>Rectangle</i>.</li>
+</ol>
+<p class="centerAlign"><img src="images/web-navigation-new-file.png" alt="" /></p><p>When you have created the new page, select <i>rectangle</i> in <b translate="no">Navigator</b>, and in the <b translate="no">Properties</b> view:</p>
+<ul>
+<li>Set <b translate="no">Size</b> &gt; <b translate="no">H</b> to 1024.</li>
+<li>Next to <b translate="no">Size</b> &gt; <b translate="no">W</b>, select <img src="images/action-icon.png" alt="" /> and select <b translate="no">Reset</b>.</li>
+</ul>
+<p>Next, create a header for the page:</p>
+<ol class="1" type="1"><li>From <b translate="no">Components</b>, drag a <b translate="no">Text</b> component to <i>Rectangle</i> in <b translate="no">Navigator</b>.</li>
+<li>In <b translate="no">Properties</b>, go to the <b translate="no">Text</b> tab and set:<ul>
+<li><b translate="no">Text</b> to <i>Welcome</i>.</li>
+<li><b translate="no">Style Name</b> to Bold.</li>
+<li><b translate="no">Size</b> to 32 px.</li>
+</ul>
+</li>
+<li>On the <b translate="no">Layout</b> tab set the anchors and margins to:<ul>
+<li>Top, 100</li>
+<li>Left, 50</li>
+</ul>
+<p class="centerAlign"><img src="images/web-navigation-page-margins.png" alt="" /></p></li>
+</ol>
+<p>Now, with the first page done, create two more pages in the same way. For these pages, set the text to <i>About Us</i> and <i>Contact Us</i> respectively.</p>
+<p>You can change the file that you are working on from the drop-down menu in the toolbar. Now, select <i>Screen01.ui.qml</i> from this menu to go back to your main page.</p>
+<p class="centerAlign"><img src="images/web-navigation-change-file.png" alt="" /></p><p>You can see the pages you created under <b translate="no">My Components</b> in the <b translate="no">Components</b> view. To edit a component, right-click it in <b translate="no">Components</b> and select <b translate="no">Edit Component</b></p>
+<p class="centerAlign"><img src="images/web-navigation-page-components.png" alt="" /></p><h2 id="organizing-the-pages">Organizing the Pages</h2>
+<p>To organize the pages vertically:</p>
+<ol class="1" type="1"><li>From <b translate="no">Components</b>, drag each of the pages to <i>columnLayout</i> in <b translate="no">Navigator</b>.<p class="centerAlign"><img src="images/web-navigation-components-2.png" alt="" /></p></li>
+<li>Select <i>columnLayout</i> in Navigator and in <b translate="no">Properties</b>:<ul>
+<li>Next to <b translate="no">Size</b> &gt; <b translate="no">W</b> and <b translate="no">Size</b> &gt; <b translate="no">H</b>, select <img src="images/action-icon.png" alt="" /> and select <b translate="no">Reset</b>.</li>
+<li>Set <b translate="no">Column Spacing</b> to 0.</li>
+</ul>
+</li>
+<li>Select <i>flickable</i> in <b translate="no">Navigator</b>, and in <b translate="no">Properties</b>:<ul>
+<li>Next to <b translate="no">Size</b> &gt; <b translate="no">W</b> and <b translate="no">Size</b> &gt; <b translate="no">H</b>, select <img src="images/action-icon.png" alt="" /> and select <b translate="no">Reset</b>.</li>
+<li>Set <b translate="no">Content size</b> &gt; <b translate="no">H</b> to 3072.</li>
+<li>On the <b translate="no">Layout</b> tab, select <b translate="no">Fill parent component</b>.</li>
+</ul>
+</li>
+</ol>
+<p>You must also create a scrollbar to scroll the web application. You create vertical and horizontal scrollbars that are visible only when the content doesn't fit in the window, similar to web browser scrollbars.</p>
+<p>To create the scrollbar, go to the <b translate="no">Code</b> view and enter the scrollbar code inside the <i>Flickable</i> component:</p>
+<pre class="cpp" translate="no">
+ Flickable {
+   id: flickable
+   anchors<span class="operator">.</span>fill: parent
+   contentHeight: <span class="number">3072</span>
+  ScrollBar<span class="operator">.</span>vertical: ScrollBar {
+       policy: flickable<span class="operator">.</span>contentHeight <span class="operator">&gt;</span> flickable<span class="operator">.</span>height <span class="operator">?</span> ScrollBar<span class="operator">.</span>AlwaysOn : ScrollBar<span class="operator">.</span>AlwaysOff
+       width: <span class="number">20</span>
+   }
+   ScrollBar<span class="operator">.</span>horizontal: ScrollBar {
+       policy: flickable<span class="operator">.</span>contentWidth <span class="operator">&gt;</span> flickable<span class="operator">.</span>width <span class="operator">?</span> ScrollBar<span class="operator">.</span>AlwaysOn : ScrollBar<span class="operator">.</span>AlwaysOff
+       height: <span class="number">20</span>
+   }
+   <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+</pre>
+<p>To align the scrollbar to the right and bottom side of the window, set the height and width of the main rectangle so that it adapts to the window size.</p>
+<ol class="1" type="1"><li>In <b translate="no">Navigator</b>, select <i>Rectangle</i>.</li>
+<li>In <b translate="no">Properties</b>, select <img src="images/action-icon-binding.png" alt="" /> next to <b translate="no">Width</b> and select <b translate="no">Set Binding</b>.</li>
+<li>Enter <code translate="no">Window.width</code><p class="centerAlign"><img src="images/web-navigation-size-binding.png" alt="" /></p></li>
+<li>Repeat step 2 and 3 for <b translate="no">Height</b> and set the value to <code translate="no">Window.height</code>.</li>
+</ol>
+<h2 id="creating-the-navigation">Creating the Navigation</h2>
+<p>The final step is to create the navigation for the web page. To do this, use the buttons that you created earlier.</p>
+<p>First, create an animation to use when scrolling between the different pages:</p>
+<ol class="1" type="1"><li>From <b translate="no">Components</b>, drag a <b translate="no">Number Animation</b> to <i>Rectangle</i> in <b translate="no">Navigator</b>.</li>
+<li>In <b translate="no">Properties</b>, set:<ul>
+<li><b translate="no">Target</b> to <i>flickable</i>.</li>
+<li><b translate="no">Property</b> to <i>contentY</i>.</li>
+<li><b translate="no">Duration</b> to <i>200</i>.</li>
+</ul>
+</li>
+</ol>
+<p>Next, connect the buttons to the number animation to scroll the content vertically to the correct place.</p>
+<ol class="1" type="1"><li>In <b translate="no">Navigator</b>, select <i>rectangle</i> and in <b translate="no">Properties</b> set:<ul>
+<li><b translate="no">Height</b> to 40.</li>
+<li><b translate="no">Fill color</b> to #e0e0e0.</li>
+<li><b translate="no">Z stack</b> to 1.</li>
+</ul>
+</li>
+<li>Select <img src="images/action-icon-binding.png" alt="" /> next to <b translate="no">Width</b> and select <b translate="no">Set Binding</b>.</li>
+<li>Enter <code translate="no">parent.width</code>.<p class="centerAlign"><img src="images/web-navigation-size-binding-2.png" alt="" /></p></li>
+<li>In <b translate="no">Navigator</b>:<ol class="1" type="1"><li>Select <i>Button</i> and on the <b translate="no">Button</b> tab in <b translate="no">Properties</b>, set <b translate="no">Text</b> to <i>Home</i>.</li>
+<li>Select <i>Button1</i> and on the <b translate="no">Button</b> tab in <b translate="no">Properties</b>, set <b translate="no">Name</b> to <i>About Us</i>.</li>
+<li>Select <i>Button2</i> and on the <b translate="no">Button</b> tab in <b translate="no">Properties</b>, set <b translate="no">Name</b> to <i>Contact Us</i>.</li>
+</ol>
+</li>
+<li>In <b translate="no">Code</b>, enter <i>connections</i> for each of the buttons to run the number animation when pressed.<pre class="cpp" translate="no">
+ Button {
+           id: button
+           text: qsTr(<span class="string">&quot;Home&quot;</span>)
+           Connections {
+               target: button
+
+               onPressed: {
+                   numberAnimation<span class="operator">.</span>to <span class="operator">=</span> <span class="number">0</span>
+                   numberAnimation<span class="operator">.</span>start()
+               }
+           }
+       }
+
+       Button {
+           id: button1
+           text: qsTr(<span class="string">&quot;About Us&quot;</span>)
+           Connections {
+               target: button1
+
+               onPressed: {
+                   numberAnimation<span class="operator">.</span>to <span class="operator">=</span> <span class="number">1024</span>
+                   numberAnimation<span class="operator">.</span>start()
+               }
+           }
+       }
+
+       Button {
+           id: button2
+           text: qsTr(<span class="string">&quot;Contact Us&quot;</span>)
+           Connections {
+               target: button2
+
+               onPressed: {
+                   numberAnimation<span class="operator">.</span>to <span class="operator">=</span> <span class="number">2048</span>
+                   numberAnimation<span class="operator">.</span>start()
+               }
+           }
+       }
+</pre>
+</li>
+</ol>
+<h2 id="previewing-the-application">Previewing the application</h2>
+<p>To preview your application in the live preview, select <b>Alt</b> + <b>P</b>. You can also go to <b translate="no">File</b> &gt; <b translate="no">Share Application Online</b> to share and preview your application in a web browser.</p>
+</div>
+<!-- @@@design-viewer-single-page-navigation.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="qt-design-viewer.html">Sharing Applications Online</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-exporting-and-importing.html">Asset Creation with Other Tools</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- loginui1.qdoc -->
+  <meta name="description" content="Illustrates how to use wizard templates to create a simple UI that contains a text label, images, and push buttons.">
+  <title>Log In UI - Components | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="gstutorials.html" translate="no">Tutorials</a></li>
+<li>Log In UI - Components</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="next" href="qtdesignstudio-loginui2-example.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="nextPage" href="qtdesignstudio-loginui2-example.html">Log In UI - Positioning</a>
+</p>
+<h1 class="title">Log In UI - Components</h1>
+<pre class="qml" translate="no">
+ <span class="comment">// Copyright (C) 2018 The Qt Company Ltd.</span>
+ <span class="comment">// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only</span>
+
+ import QtQuick
+ import QtQuick.Studio.EventSimulator 1.0
+ import QtQuick.Studio.EventSystem 1.0
+
+ <span class="type"><a href="https://doc.qt.io/qt/qml-qtqml-qtobject.html" translate="no">QtObject</a></span> {
+     <span class="name">id</span>: <span class="name">simulator</span>
+     property <span class="type"><a href="https://doc.qt.io/qt/qml-bool.html" translate="no">bool</a></span> <span class="name">active</span>: <span class="number">true</span>
+
+     property <span class="type"><a href="https://doc.qt.io/qt/qml-qtqml-timer.html" translate="no">Timer</a></span> <span class="name">__timer</span>: <span class="name">Timer</span> {
+         <span class="name">id</span>: <span class="name">timer</span>
+         <span class="name">interval</span>: <span class="number">100</span>
+         <span class="name">onTriggered</span>: {
+             <span class="name">EventSimulator</span>.<span class="name">show</span>()
+         }
+     }
+
+     <span class="name">Component</span>.onCompleted: {
+         <span class="name">EventSystem</span>.<span class="name">init</span>(<span class="name">Qt</span>.<span class="name">resolvedUrl</span>(<span class="string">&quot;EventListModel.qml&quot;</span>))
+         <span class="keyword">if</span> (<span class="name">simulator</span>.<span class="name">active</span>)
+             <span class="name">timer</span>.<span class="name">start</span>()
+     }
+ }
+</pre>

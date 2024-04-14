@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-axivion.qdoc -->
+  <title>Prevent code erosion | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Prevent code erosion</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#view-issue-counts">View issue counts</a></li>
+<li class="level1"><a href="#filter-issues">Filter issues</a></li>
+<li class="level1"><a href="#jump-to-issues-in-the-editor">Jump to issues in the editor</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Prevent code erosion</h1>
+<!-- $$$creator-axivion.html-description -->
+<div class="descr" id="details">
+<p><a href="https://www.axivion.com/en/products/axivion-suite/" translate="no">Axivion Suite</a> is a tool suite for protecting software from erosion. With static code analysis, architecture analysis, and code-smells-detection, you can:</p>
+<ul>
+<li>Check the source code for potential runtime errors.</li>
+<li>Use metrics to generate quantitative information about the internal quality of the source code.</li>
+<li>Run style checks to achieve compliance with coding guidelines.</li>
+<li>Detect both duplicates and similar pieces of code in the source code.</li>
+<li>Recognize cyclical dependencies at different levels.</li>
+<li>Detect unreachable code.</li>
+</ul>
+<p>Connect to an Axivion dashboard server from Qt Creator to view results of code analysis.</p>
+<div class="admonition note">
+<p><b>Note: </b>Enable the Axivion plugin to use it.</p>
+</div>
+<p>To use the plugin, you must set up a project in the Axivion dashboard server and link to it from Qt Creator. You can then see found issues in the <b translate="no">Edit</b> mode, issues in the <b translate="no">Axivion</b> dashboard, and issue details in the <b translate="no">Axivion</b> sidebar view.</p>
+<p>The editor shows found issues as inline annotations. Hover the mouse over an annotation to bring up a tool tip with a short description of the issue.</p>
+<p class="centerAlign"><img src="images/qtcreator-axivion-annotation.webp" alt="{Annotation popup}" /></p><p>Select <img src="images/info.png" alt="" /> to view detailed information about the issue in the <b translate="no">Axivion</b> sidebar view.</p>
+<p class="centerAlign"><img src="images/qtcreator-axivion-view-rule.webp" alt="{Axivion sidebar view}" /></p><h2 id="view-issue-counts">View issue counts</h2>
+<p>To view the issue counts, select <img src="images/home.png" alt="" /> (<b translate="no">Show Dashboard</b>) in the <b translate="no">Axivion</b> dashboard.</p>
+<p class="centerAlign"><img src="images/qtcreator-axivion-view.webp" alt="{Axivion dashboard}" /></p><p>The <b translate="no">Axivion</b> dashboard lists the numbers of the following types of issues that Axivion found in the linked project:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Icon</th><th >Type</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td ><img src="images/axivion-av.png" alt="" /></td><td ><b translate="no">AV</b></td><td >Architecture violations, such as hidden dependencies.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/axivion-cl.png" alt="" /></td><td ><b translate="no">CL</b></td><td >Clones, such as duplicates and similar pieces of code.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/axivion-cy.png" alt="" /></td><td ><b translate="no">CY</b></td><td >Cyclic dependencies, such as call, component, and include cycles.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/axivion-de.png" alt="" /></td><td ><b translate="no">DE</b></td><td >Dead entities are callable entities in the source code that cannot be reached from the entry points of the system under analysis.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/axivion-mv.png" alt="" /></td><td ><b translate="no">MV</b></td><td >Violations of metrics based on lines and tokens, nesting, cyclomatic complexity, control flow, and so on.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/axivion-sv.png" alt="" /></td><td ><b translate="no">SV</b></td><td >Style violations, such as deviations from the naming or coding conventions.</td></tr>
+</table></div>
+<p>To clear the view, select <img src="images/clean_pane_small.png" alt="" /> (<b translate="no">Clear</b>).</p>
+<p>To view issues, select <img src="images/zoom.png" alt="" /> (<b translate="no">Search for Issues</b>).</p>
+<h2 id="filter-issues">Filter issues</h2>
+<p class="centerAlign"><img src="images/qtcreator-axivion-issue-search.webp" alt="{Issues in Axivion view}" /></p><p>To filter issues, select:</p>
+<ul>
+<li>The icon of an issue type.</li>
+<li>Two analyzed versions to compare. Select <b translate="no">EMPTY</b> to see issues from the version you select in the right-side version box.</li>
+<li><img src="images/arrowup.png" alt="" /> to see only added issues.</li>
+<li><img src="images/arrowdown.png" alt="" /> to see only removed issues.</li>
+<li>The owner of the issue. Select <b translate="no">ANYBODY</b> to see all issues, <b translate="no">NOBODY</b> to see issues that are not associated with a user, or a user name to see issues owned by a particular user.</li>
+<li>Path patterns to show issues in the files in the directories that match the pattern.</li>
+</ul>
+<p>The information you see depends on the issue type. Double-click an issue to see more information about it in the <b translate="no">Axivion</b> sidebar view.</p>
+<h2 id="jump-to-issues-in-the-editor">Jump to issues in the editor</h2>
+<p>Typically, the details for cycles and clones show several paths. To view the issues in the editor:</p>
+<ul>
+<li>Click in a location column (that shows a file or line) to open the respective location (if it can be found).</li>
+<li>Click in other columns to open the first link in the issue details. Usually, it leads to the <b translate="no">Left location</b> or <b translate="no">Source location</b>.</li>
+</ul>
+<p>The easiest way to jump to the <b translate="no">Right location</b> is to select the link in the details or in the <b translate="no">Right Path</b> or <b translate="no">Target Path</b> column.</p>
+</div>
+<p><b>See also </b><a href="creator-how-to-enable-plugins.html" translate="no">Enable and disable plugins</a>, <a href="creator-link-axivion-dashboards.html" translate="no">Link projects to Axivion dashboards</a>, and <a href="creator-preferences-axivion.html" translate="no">Axivion</a>.</p>
+<!-- @@@creator-axivion.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-autotest.qdoc -->
+  <title>Create Qt Quick tests | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Create Qt Quick tests</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Create Qt Quick tests</h1>
+<!-- $$$creator-how-to-create-qtquick-tests.html-description -->
+<div class="descr" id="details">
+<p>Qt Creator integrates the Qt Quick Test unit test framework for Qt Quick applications, where you write test cases as JavaScript functions.</p>
+<p>To create a Qt Quick test:</p>
+<ol class="1" type="1"><li>Go to <b translate="no">File</b> &gt; <b translate="no">New Project</b> &gt; <b translate="no">Test Project</b>.</li>
+<li>Select <b translate="no">Qt Quick Test Project</b> &gt; <b translate="no">Choose</b>.</li>
+<li>In the <b translate="no">Project and Test Information</b> dialog, specify settings for the project and test.<p class="centerAlign"><img src="images/qtcreator-new-project-qtquick-test.webp" alt="{Project and Test Information - Qt Quick Test}" /></p></li>
+<li>In <b translate="no">Test case name</b>, enter a name for the test case.</li>
+<li>Select <b translate="no">Generate setup code</b> to execute C++ code before running any of the QML tests. The testing framework will call slots and invocable functions, as described in <a href="https://doc.qt.io/qt/qtquicktest-index.html#executing-c-before-qml-tests" translate="no">Executing C++ Before QML Tests</a>.</li>
+<li>Select <b translate="no">Generate initialization and cleanup code</b> to add functions to your test that the testing framework executes to initialize and clean up the test.</li>
+<li>In <b translate="no">Build system</b>, select the build system to use for building the project: CMake, qmake, or Qbs.</li>
+</ol>
+<p>Qt Creator creates the test in the specified project directory. Edit the .cpp file to add private slots for each test function in your test.</p>
+</div>
+<p><b>See also </b><a href="creator-how-tos.html#test" translate="no">How To: Test</a>, <a href="creator-how-to-select-build-system.html" translate="no">Select the build system</a>, <a href="creator-preferences-testing.html" translate="no">Testing</a>, and <a href="creator-test-results.html" translate="no">Test Results</a>.</p>
+<!-- @@@creator-how-to-create-qtquick-tests.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

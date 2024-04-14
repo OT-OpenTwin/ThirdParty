@@ -29,6 +29,7 @@
 ****************************************************************************/
 
 import "path-probe.js" as PathProbeConfigure
+import qbs.Host
 import qbs.ModUtils
 
 Probe {
@@ -36,15 +37,13 @@ Probe {
     property stringList names
     property stringList nameSuffixes
     property var nameFilter
-    property pathList pathPrefixes
+    property var candidateFilter
+    property varList selectors
     property pathList searchPaths
     property stringList pathSuffixes
-    property pathList platformSearchPaths: hostOS.contains("unix") ? ['/usr', '/usr/local'] : []
-    property pathList platformPaths
+    property pathList platformSearchPaths: Host.os().contains("unix") ? ['/usr', '/usr/local'] : []
     property stringList environmentPaths
     property stringList platformEnvironmentPaths
-    property stringList hostOS: qbs.hostOS
-    property string pathListSeparator: qbs.pathListSeparator
 
     // Output
     property stringList candidatePaths
@@ -52,21 +51,22 @@ Probe {
     property string filePath
     property string fileName
 
+    property varList allResults
+
     configure: {
-        if (pathPrefixes)
-            console.warn("PathProbe.pathPrefixes is deprecated, use searchPaths instead");
-        if (platformPaths)
-            console.warn("PathProbe.platformPaths is deprecated, use platformSearchPaths instead");
-        var _searchPaths = ModUtils.concatAll(pathPrefixes, searchPaths);
-        var _platformSearchPaths = ModUtils.concatAll(platformPaths, platformSearchPaths);
-        var result = PathProbeConfigure.configure(names, nameSuffixes, nameFilter, _searchPaths,
-                                                  pathSuffixes, _platformSearchPaths,
-                                                  environmentPaths, platformEnvironmentPaths,
-                                                  pathListSeparator);
-        found = result.found;
-        candidatePaths = result.candidatePaths;
-        path = result.path;
-        filePath = result.filePath;
-        fileName = result.fileName;
+        var results = PathProbeConfigure.configure(selectors, names, nameSuffixes, nameFilter,
+                                                   candidateFilter, searchPaths, pathSuffixes,
+                                                   platformSearchPaths, environmentPaths,
+                                                   platformEnvironmentPaths);
+        found = results.found;
+        allResults = results.files;
+
+        if (allResults.length === 1) {
+            var result = allResults[0];
+            candidatePaths = result.candidatePaths;
+            path = result.path;
+            filePath = result.filePath;
+            fileName = result.fileName;
+        }
     }
 }

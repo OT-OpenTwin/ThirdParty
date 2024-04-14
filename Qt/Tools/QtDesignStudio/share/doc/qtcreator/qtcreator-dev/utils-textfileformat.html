@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- textfileformat.cpp -->
+  <meta name="description" content="The TextFileFormat class describes the format of a text file and provides autodetection.">
+  <title>TextFileFormat Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>TextFileFormat</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">TextFileFormat Class</h1>
+<span class="small-subtitle" translate="no">class <a href="utils.html" translate="no">Utils</a>::TextFileFormat</span>
+<!-- $$$TextFileFormat-brief -->
+<p>The TextFileFormat class describes the format of a text file and provides autodetection. <a href="#details">More...</a></p>
+<!-- @@@TextFileFormat -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;TextFileFormat&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="utils-textfileformat-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-textfileformat.html#decode" translate="no">decode</a></b>(const QByteArray &amp;<i>data</i>, QString *<i>target</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-textfileformat.html#decode-1" translate="no">decode</a></b>(const QByteArray &amp;<i>data</i>, QStringList *<i>target</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="utils-textfileformat.html#writeFile" translate="no">writeFile</a></b>(const Utils::FilePath &amp;<i>filePath</i>, QString <i>plainText</i>, QString *<i>errorString</i>) const</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> QByteArray </td><td class="memItemRight bottomAlign"><b><a href="utils-textfileformat.html#decodingErrorSample" translate="no">decodingErrorSample</a></b>(const QByteArray &amp;<i>data</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::TextFileFormat </td><td class="memItemRight bottomAlign"><b><a href="utils-textfileformat.html#detect" translate="no">detect</a></b>(const QByteArray &amp;<i>data</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::TextFileFormat::ReadResult </td><td class="memItemRight bottomAlign"><b><a href="utils-textfileformat.html#readFile" translate="no">readFile</a></b>(const Utils::FilePath &amp;<i>filePath</i>, const QTextCodec *<i>defaultCodec</i>, QStringList *<i>plainTextList</i>, Utils::TextFileFormat *<i>format</i>, QString *<i>errorString</i>, QByteArray *<i>decodingErrorSample</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::TextFileFormat::ReadResult </td><td class="memItemRight bottomAlign"><b><a href="utils-textfileformat.html#readFile-1" translate="no">readFile</a></b>(const Utils::FilePath &amp;<i>filePath</i>, const QTextCodec *<i>defaultCodec</i>, QString *<i>plainText</i>, Utils::TextFileFormat *<i>format</i>, QString *<i>errorString</i>, QByteArray *<i>decodingErrorSample</i> = nullptr)</td></tr>
+</table></div>
+<!-- $$$TextFileFormat-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The format comprises</p>
+<ul>
+<li>Encoding represented by a pointer to a QTextCodec</li>
+<li>Presence of an UTF8 Byte Order Marker (BOM)</li>
+<li>Line feed storage convention</li>
+</ul>
+<p>The class also provides convenience functions to read text files and return them as strings or string lists and to write out files.</p>
+</div>
+<!-- @@@TextFileFormat -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$decode[overload1]$$$decodeconstQByteArray&QString* -->
+<h3 class="fn" translate="no" id="decode"><span class="type">bool</span> TextFileFormat::<span class="name">decode</span>(const <span class="type"><a href="https://doc.qt.io/qt/qbytearray.html" translate="no">QByteArray</a></span> &amp;<i>data</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> *<i>target</i>) const</h3>
+<p>Returns <i translate="no">data</i> decoded to a plain string, <i translate="no">target</i>.</p>
+<!-- @@@decode -->
+<!-- $$$decode$$$decodeconstQByteArray&QStringList* -->
+<h3 class="fn" translate="no" id="decode-1"><span class="type">bool</span> TextFileFormat::<span class="name">decode</span>(const <span class="type"><a href="https://doc.qt.io/qt/qbytearray.html" translate="no">QByteArray</a></span> &amp;<i>data</i>, <span class="type"><a href="https://doc.qt.io/qt/qstringlist.html" translate="no">QStringList</a></span> *<i>target</i>) const</h3>
+<p>Returns <i translate="no">data</i> decoded to a list of strings, <i translate="no">target</i>.</p>
+<p>Intended for use with progress bars loading large files.</p>
+<!-- @@@decode -->
+<!-- $$$decodingErrorSample[overload1]$$$decodingErrorSampleconstQByteArray& -->
+<h3 class="fn" translate="no" id="decodingErrorSample"><code translate="no">[static] </code><span class="type"><a href="https://doc.qt.io/qt/qbytearray.html" translate="no">QByteArray</a></span> TextFileFormat::<span class="name">decodingErrorSample</span>(const <span class="type"><a href="https://doc.qt.io/qt/qbytearray.html" translate="no">QByteArray</a></span> &amp;<i>data</i>)</h3>
+<p>Returns a piece of text specified by <i translate="no">data</i> suitable as display for an encoding error.</p>
+<!-- @@@decodingErrorSample -->
+<!-- $$$detect[overload1]$$$detectconstQByteArray& -->
+<h3 class="fn" translate="no" id="detect"><code translate="no">[static] </code><span class="type"><a href="utils-textfileformat.html" translate="no">Utils::TextFileFormat</a></span> TextFileFormat::<span class="name">detect</span>(const <span class="type"><a href="https://doc.qt.io/qt/qbytearray.html" translate="no">QByteArray</a></span> &amp;<i>data</i>)</h3>
+<p>Detects the format of text <i translate="no">data</i>.</p>
+<!-- @@@detect -->
+<!-- $$$readFile[overload1]$$$readFileconstUtils::FilePath&constQTextCodec*QStringList*Utils::TextFileFormat*QString*QByteArray* -->
+<h3 class="fn" translate="no" id="readFile"><code translate="no">[static] </code><span class="type">Utils::TextFileFormat::ReadResult</span> TextFileFormat::<span class="name">readFile</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>, const <span class="type">QTextCodec</span> *<i>defaultCodec</i>, <span class="type"><a href="https://doc.qt.io/qt/qstringlist.html" translate="no">QStringList</a></span> *<i>plainTextList</i>, <span class="type"><a href="utils-textfileformat.html" translate="no">Utils::TextFileFormat</a></span> *<i>format</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> *<i>errorString</i>, <span class="type"><a href="https://doc.qt.io/qt/qbytearray.html" translate="no">QByteArray</a></span> *<i>decodingErrorSample</i> = nullptr)</h3>
+<p>Reads a text file from <i translate="no">filePath</i> into a list of strings, <i translate="no">plainTextList</i> using <i translate="no">defaultCodec</i> and text file format <i translate="no">format</i>.</p>
+<p>Returns whether decoding was possible without errors. If errors occur, returns an error message, <i translate="no">errorString</i> and a sample error, <i translate="no">decodingErrorSample</i>.</p>
+<!-- @@@readFile -->
+<!-- $$$readFile$$$readFileconstUtils::FilePath&constQTextCodec*QString*Utils::TextFileFormat*QString*QByteArray* -->
+<h3 class="fn" translate="no" id="readFile-1"><code translate="no">[static] </code><span class="type">Utils::TextFileFormat::ReadResult</span> TextFileFormat::<span class="name">readFile</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>, const <span class="type">QTextCodec</span> *<i>defaultCodec</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> *<i>plainText</i>, <span class="type"><a href="utils-textfileformat.html" translate="no">Utils::TextFileFormat</a></span> *<i>format</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> *<i>errorString</i>, <span class="type"><a href="https://doc.qt.io/qt/qbytearray.html" translate="no">QByteArray</a></span> *<i>decodingErrorSample</i> = nullptr)</h3>
+<p>Reads a text file from <i translate="no">filePath</i> into a string, <i translate="no">plainText</i> using <i translate="no">defaultCodec</i> and text file format <i translate="no">format</i>.</p>
+<p>Returns whether decoding was possible without errors.</p>
+<!-- @@@readFile -->
+<!-- $$$writeFile[overload1]$$$writeFileconstUtils::FilePath&QStringQString* -->
+<h3 class="fn" translate="no" id="writeFile"><span class="type">bool</span> TextFileFormat::<span class="name">writeFile</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> <i>plainText</i>, <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> *<i>errorString</i>) const</h3>
+<p>Writes out a text file to <i translate="no">filePath</i> into a string, <i translate="no">plainText</i>.</p>
+<p>Returns whether decoding was possible without errors. If errors occur, returns an error message, <i translate="no">errorString</i>.</p>
+<!-- @@@writeFile -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -30,13 +30,14 @@
 
 var FileInfo = require("qbs.FileInfo");
 var Process = require("qbs.Process");
+var Rcc = require("rcc.js");
 
-function scanQrc(qrcFilePath) {
+function scanQrc(product, qrcFilePath) {
     var absInputDir = FileInfo.path(qrcFilePath);
     var result = [];
     var process = new Process();
     try {
-        var rcc = FileInfo.joinPaths(product.Qt.core.binPath, 'rcc' + product.cpp.executableSuffix);
+        var rcc = FileInfo.joinPaths(Rcc.fullPath(product) + FileInfo.executableSuffix());
         var exitCode = process.exec(rcc, ["--list", qrcFilePath], true);
         for (;;) {
             var line = process.readLine();
@@ -65,13 +66,14 @@ function qtQuickResourceFileOutputName(fileName) {
     return fileName.replace(/\.qrc$/, "_qtquickcompiler.qrc");
 }
 
-function contentFromQrc(qrcFilePath) {
-    var filesInQrc = scanQrc(qrcFilePath);
+function contentFromQrc(product, qrcFilePath) {
+    var supportsFiltering = product.Qt.quick._supportsQmlJsFiltering;
+    var filesInQrc = scanQrc(product, qrcFilePath);
     var qmlJsFiles = filesInQrc.filter(function (filePath) {
-        return (/\.(js|qml)$/).test(filePath);
+        return (/\.(mjs|js|qml)$/).test(filePath);
     } );
     var content = {};
-    if (filesInQrc.length - qmlJsFiles.length > 0) {
+    if (!supportsFiltering || filesInQrc.length - qmlJsFiles.length > 0) {
         content.newQrcFileName = qtQuickResourceFileOutputName(input.fileName);
     }
     content.qmlJsFiles = qmlJsFiles.map(function (filePath) {

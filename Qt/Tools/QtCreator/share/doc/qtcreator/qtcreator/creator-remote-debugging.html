@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-debugger.qdoc -->
+  <title>Remote Debugging | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li><a href="creator-overview.html" translate="no">Developing with Qt Creator</a></li>
+<li><a href="creator-debugging.html" translate="no">Debugging</a></li>
+<li>Remote Debugging</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-debugger-examining-data.html" />
+  <link rel="next" href="creator-debugger-preferences.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-debugger-examining-data.html">Examining Data</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-debugger-preferences.html">Debugger Preferences</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#using-gdb">Using GDB</a></li>
+<li class="level1"><a href="#using-cdb">Using CDB</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Remote Debugging</h1>
+<!-- $$$creator-remote-debugging.html-description -->
+<div class="descr" id="details">
+<p>Qt Creator makes remote debugging easy. In general, the remote debugging setup consist of a probe running on the remote machine and a counterpart running on the host side. The probe is either integrated into the running process (e.g&#x2e; for QML debugging) or runs a separate process (e.g&#x2e; when using GDB server on embedded Linux). The host side typically consists of Qt Creator itself, often with the help of an external process, such as GDB or CDB.</p>
+<p>While this setup might look daunting, it is mostly invisible to the user of Qt Creator. To start debugging on a remote target with the necessary helper processes running, select the corresponding <a href="creator-glossary.html#glossary-buildandrun-kit" translate="no">kit</a> in <b translate="no">Projects</b> &gt; <b translate="no">Build &amp; Run</b>, and then select a function to start remote debugging in the <b translate="no">Debug</b> &gt; <b translate="no">Start Debugging</b> menu.</p>
+<p>Special use cases, such as attaching to a running process on the target, might still require manual setup.</p>
+<h2 id="using-gdb">Using GDB</h2>
+<p>When debugging on a target supported by GDB server, a local GDB process talks to a GDB server running on the remote machine that controls the process to be debugged.</p>
+<p>The GDB server process is started on the remote machines by passing a port number and the executable:</p>
+<pre class="cpp" translate="no">
+ gdbserver :<span class="number">1234</span> <span class="operator">&lt;</span>executable<span class="operator">&gt;</span>
+</pre>
+<p>It then typically responds:</p>
+<pre class="cpp" translate="no">
+ Process bin<span class="operator">/</span>qtcreator created; pid <span class="operator">=</span> <span class="number">5159</span>
+ Listening on port <span class="number">1234</span>
+</pre>
+<p>On the local machine that runs Qt Creator:</p>
+<ol class="1" type="1"><li>Select <b translate="no">Debug</b> &gt; <b translate="no">Start Debugging</b> &gt; <b translate="no">Attach to Running Debug Server</b>.<p class="centerAlign"><img src="images/qtcreator-debugger-attach-to-running-debug-server.png" alt="" /></p></li>
+<li>In the <b translate="no">Kit</b> field, select the build and run kit to use for building the project.</li>
+<li>In the <b translate="no">Server port</b> field, enter the name of the remote machine and the port number to use.</li>
+<li>In the <b translate="no">Local executable</b> field, specify the path to the application executable on the local machine.</li>
+<li>In the <b translate="no">Command line arguments</b> field, specify command line arguments to be passed to the executable.</li>
+<li>In the <b translate="no">Working directory</b> field, specify the working directory. It defaults to the directory of the build result.</li>
+<li>Select the <b translate="no">Run in terminal</b> check box for console applications.</li>
+<li>Select the <b translate="no">Break at &quot;main&quot;</b> check box to stop the debugger at the main function.</li>
+<li>Select the <b translate="no">Use target extended-remote to connect</b> check box to create the connection in the <code translate="no">target extended-remote mode</code>. In this mode, when the debugged application exits or you detach from it, the debugger remains connected to the target. You can rerun the application, attach to a running application, or use monitor commands specific to the target. For example, GDB does not exit unless it was invoked using the <code translate="no">--once</code> option, but you can make it exit by using the <code translate="no">monitor exit</code> command.</li>
+<li>In the <b translate="no">Override SysRoot</b> field, specify the path to the <code translate="no">sysroot</code> to use instead of the default <code translate="no">sysroot</code>.</li>
+<li>In the <b translate="no">Init commands</b> field, enter the commands to execute immediately after the connection to a target has been established.</li>
+<li>In the <b translate="no">Reset commands</b> field, enter the commands to execute when resetting the connection to a target.</li>
+<li>In the <b translate="no">Debug information</b> field, specify the location for storing debug information. You cannot use an empty path.</li>
+<li>In the <b translate="no">Override server channel</b> field, specify a communication channel to use, such as a serial line or custom port.</li>
+<li>In the <b translate="no">Recent</b> field, you can select a recent configuration to use.</li>
+<li>Select <b translate="no">OK</b> to start debugging.</li>
+</ol>
+<p>By default, a non-responsive GDB process is terminated after 20 seconds. To increase the timeout in the <b translate="no">GDB timeout</b> field, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Debugger</b> &gt; <b translate="no">GDB</b>. For more information about settings that you can specify to manage the GDB process, see <a href="creator-debugger-preferences.html#specifying-gdb-settings" translate="no">Specifying GDB Settings</a>.</p>
+<p>For more information about connecting with <code translate="no">target extended-remote</code> mode in GDB, see <a href="https://sourceware.org/gdb/onlinedocs/gdb/Connecting.html" translate="no">Debugging with GDB: Connecting to a Remote Target</a>.</p>
+<h2 id="using-cdb">Using CDB</h2>
+<p>In remote mode, the local CDB process talks to a CDB process that runs on the remote machine. The process is started with special command-line options that switch it into server mode. The remote CDB process must load the Qt Creator CDB extension library that is shipped with Qt Creator:</p>
+<ol class="1" type="1"><li>Install the <i>Debugging Tools for Windows</i> on the remote machine. The installation folder has the CDB command-line executable (<code translate="no">cdb.exe</code>).</li>
+<li>Copy the Qt Creator CDB extension library and the dependencies from the Qt installation directory to a new folder on the remote machine (32 or 64 bit version depending on the version of the Debugging Tools for Windows used):<ul>
+<li><code translate="no">\lib\qtcreatorcdbext32</code> (32 bit)</li>
+<li><code translate="no">\lib\qtcreatorcdbext64</code> (64 bit)</li>
+</ul>
+</li>
+<li>Set the _NT_DEBUGGER_EXTENSION_PATH environment variable to point to that folder.</li>
+<li>To use TCP/IP as communication protocol, launch remote CDB as follows:<pre class="cpp" translate="no">
+ cdb<span class="operator">.</span>exe <span class="operator">-</span>server tcp:port<span class="operator">=</span><span class="number">1234</span> <span class="operator">&lt;</span>executable<span class="operator">&gt;</span>
+</pre>
+</li>
+<li>On the local machine running Qt Creator, select <b translate="no">Debug</b> &gt; <b translate="no">Start Debugging</b> &gt; <b translate="no">Attach to Remote CDB Session</b>.</li>
+<li>In the <b translate="no">Connection</b> field enter the connection parameters. For example, for TCP/IP:<pre class="cpp" translate="no">
+ Server:Port
+</pre>
+<p>If you chose some other protocol, specify one of the alternative formats:</p>
+<pre class="cpp" translate="no">
+ tcp:server<span class="operator">=</span>Server<span class="operator">,</span>port<span class="operator">=</span>Port<span class="operator">[</span><span class="operator">,</span>password<span class="operator">=</span>Password<span class="operator">]</span><span class="operator">[</span><span class="operator">,</span>ipversion<span class="operator">=</span><span class="number">6</span><span class="operator">]</span>
+ tcp:clicon<span class="operator">=</span>Server<span class="operator">,</span>port<span class="operator">=</span>Port<span class="operator">[</span><span class="operator">,</span>password<span class="operator">=</span>Password<span class="operator">]</span><span class="operator">[</span><span class="operator">,</span>ipversion<span class="operator">=</span><span class="number">6</span><span class="operator">]</span>
+ npipe:server<span class="operator">=</span>Server<span class="operator">,</span>pipe<span class="operator">=</span>PipeName<span class="operator">[</span><span class="operator">,</span>password<span class="operator">=</span>Password<span class="operator">]</span>
+ com:port<span class="operator">=</span>COMPort<span class="operator">,</span>baud<span class="operator">=</span>BaudRate<span class="operator">,</span>channel<span class="operator">=</span>COMChannel<span class="operator">[</span><span class="operator">,</span>password<span class="operator">=</span>Password<span class="operator">]</span>
+ spipe:proto<span class="operator">=</span>Protocol<span class="operator">,</span>{certuser<span class="operator">=</span>Cert<span class="operator">|</span>machuser<span class="operator">=</span>Cert}<span class="operator">,</span>server<span class="operator">=</span>Server<span class="operator">,</span>pipe<span class="operator">=</span>PipeName<span class="operator">[</span><span class="operator">,</span>password<span class="operator">=</span>Password<span class="operator">]</span>
+ ssl:proto<span class="operator">=</span>Protocol<span class="operator">,</span>{certuser<span class="operator">=</span>Cert<span class="operator">|</span>machuser<span class="operator">=</span>Cert}<span class="operator">,</span>server<span class="operator">=</span>Server<span class="operator">,</span>port<span class="operator">=</span>Socket<span class="operator">[</span><span class="operator">,</span>password<span class="operator">=</span>Password<span class="operator">]</span>
+ ssl:proto<span class="operator">=</span>Protocol<span class="operator">,</span>{certuser<span class="operator">=</span>Cert<span class="operator">|</span>machuser<span class="operator">=</span>Cert}<span class="operator">,</span>clicon<span class="operator">=</span>Server<span class="operator">,</span>port<span class="operator">=</span>Socket<span class="operator">[</span><span class="operator">,</span>password<span class="operator">=</span>Password<span class="operator">]</span>
+</pre>
+</li>
+<li>Click <b translate="no">OK</b> to start debugging.</li>
+</ol>
+<p>To specify settings for managing the CDB process, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Debugger</b> &gt; <b translate="no">CDB</b>. For more information, see <a href="creator-debugger-preferences.html#specifying-cdb-settings" translate="no">Specifying CDB Settings</a>.</p>
+</div>
+<!-- @@@creator-remote-debugging.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-debugger-examining-data.html">Examining Data</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-debugger-preferences.html">Debugger Preferences</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

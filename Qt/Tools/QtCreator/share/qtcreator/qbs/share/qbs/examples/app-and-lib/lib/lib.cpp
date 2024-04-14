@@ -48,7 +48,7 @@
 **
 ****************************************************************************/
 
-#include <stdio.h>
+#include <cstdio>
 
 #ifndef CRUCIAL_DEFINE
 #   error CRUCIAL_DEFINE not defined
@@ -56,6 +56,6 @@
 
 int bla()
 {
-    puts("Hello World!");
+    std::puts("Hello World!");
     return 2;
 }

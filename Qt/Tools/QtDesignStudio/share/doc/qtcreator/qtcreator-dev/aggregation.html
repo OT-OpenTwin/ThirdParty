@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- aggregate.cpp -->
+  <meta name="description" content="The Aggregation namespace contains support for bundling related components, so that each component exposes the properties and behavior of the other components to the outside.">
+  <title>Aggregation Namespace | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li>Aggregation Namespace</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#classes">Classes</a></li>
+<li class="level1"><a href="#functions">Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">Aggregation Namespace</h1>
+<!-- $$$Aggregation-brief -->
+<p>The Aggregation namespace contains support for bundling related components, so that each component exposes the properties and behavior of the other components to the outside. <a href="#details">More...</a></p>
+<!-- @@@Aggregation -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;Aggregation&gt;</span></td></tr>
+</table></div>
+<h2 id="classes">Classes</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="aggregation-aggregate.html" translate="no">Aggregate</a></b></td></tr>
+</table></div>
+<h2 id="functions">Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> T *</td><td class="memItemRight bottomAlign"><b><a href="aggregation-aggregate.html#query" translate="no">query</a></b>(QObject *<i>obj</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;T *&gt; </td><td class="memItemRight bottomAlign"><b><a href="aggregation-aggregate.html#query_all" translate="no">query_all</a></b>(QObject *<i>obj</i>)</td></tr>
+</table></div>
+<!-- $$$Aggregation-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Components that are bundled into an aggregate can be <i>cast</i> to each other and have a coupled life cycle. See the documentation of <a href="aggregation-aggregate.html" translate="no">Aggregation::Aggregate</a> for details and examples.</p>
+</div>
+<!-- @@@Aggregation -->
+<div class="classes">
+<h2>Classes</h2>
+<h3> class <a href="aggregation-aggregate.html">Aggregate</a></h3><!-- $$$Aggregate-brief -->
+<p>The Aggregate class defines a collection of related components that can be viewed as a unit. <a href="aggregation-aggregate.html#details">More...</a></p>
+<!-- @@@Aggregate -->
+</div>
+<div class="func">
+<h2>Function Documentation</h2>
+<!-- $$$query[overload1]$$$queryQObject* -->
+<h3 class="fn" translate="no" id="query">template &lt;typename T&gt; <span class="type">T</span> *<span class="name">query</span>(<span class="type"><a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a></span> *<i>obj</i>)</h3>
+<p>Performs a dynamic cast that is aware of a possible aggregate that <i translate="no">obj</i> might belong to. If <i translate="no">obj</i> itself is of the requested type, it is simply cast and returned. Otherwise, if <i translate="no">obj</i> belongs to an aggregate, all its components are checked. If it doesn't belong to an aggregate, null is returned.</p>
+<p><b>See also </b><a href="aggregation-aggregate.html#component" translate="no">Aggregate::component</a>().</p>
+<!-- @@@query -->
+<!-- $$$query_all[overload1]$$$query_allQObject* -->
+<h3 class="fn" translate="no" id="query_all">template &lt;typename T&gt; <span class="type"><a href="https://doc.qt.io/qt/qlist.html" translate="no">QList</a></span>&lt;<span class="type">T</span> *&gt; <span class="name">query_all</span>(<span class="type"><a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a></span> *<i>obj</i>)</h3>
+<p>If <i translate="no">obj</i> belongs to an aggregate, all components that can be cast to the given type are returned. Otherwise, <i translate="no">obj</i> is returned if it is of the requested type.</p>
+<p><b>See also </b><a href="aggregation-aggregate.html#components" translate="no">Aggregate::components</a>().</p>
+<!-- @@@query_all -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

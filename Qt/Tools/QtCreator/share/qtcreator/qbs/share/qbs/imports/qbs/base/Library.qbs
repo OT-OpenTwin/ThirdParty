@@ -34,4 +34,61 @@ NativeBinary {
             return ["staticlibrary"];
         return ["dynamiclibrary"].concat(isForAndroid ? ["android.nativelibrary"] : []);
     }
+
+    readonly property bool isDynamicLibrary: type.contains("dynamiclibrary")
+    readonly property bool isStaticLibrary: type.contains("staticlibrary")
+    readonly property bool isLoadableModule: type.contains("loadablemodule")
+
+    installDir: {
+        if (isBundle)
+            return "Library/Frameworks";
+        if (isDynamicLibrary)
+            return qbs.targetOS.contains("windows") ? "bin" : "lib";
+        if (isStaticLibrary)
+            return "lib";
+    }
+
+    property bool installImportLib: false
+    property string importLibInstallDir: "lib"
+
+    Group {
+        condition: install && _installable
+        fileTagsFilter: {
+            if (isBundle)
+                return ["bundle.content"];
+            if (isDynamicLibrary)
+                return ["dynamiclibrary", "dynamiclibrary_symlink"];
+            if (isStaticLibrary)
+                return ["staticlibrary"];
+            if (isLoadableModule)
+                return ["loadablemodule"];
+            return [];
+        }
+        qbs.install: true
+        qbs.installDir: installDir
+        qbs.installSourceBase: isBundle ? destinationDirectory : outer
+    }
+
+    Group {
+        condition: installImportLib
+                   && type.contains("dynamiclibrary")
+                   && _installable
+        fileTagsFilter: "dynamiclibrary_import"
+        qbs.install: true
+        qbs.installDir: importLibInstallDir
+    }
+
+    Group {
+        condition: installDebugInformation && _installable
+        fileTagsFilter: {
+            if (isDynamicLibrary)
+                return ["debuginfo_dll"];
+            else if (isLoadableModule)
+                return ["debuginfo_loadablemodule"];
+            return [];
+        }
+        qbs.install: true
+        qbs.installDir: debugInformationInstallDir
+        qbs.installSourceBase: destinationDirectory
+    }
 }

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- progressindicator.cpp -->
+  <meta name="description" content="The ProgressIndicatorPainter class is the painting backend for the ProgressIndicator class.">
+  <title>ProgressIndicatorPainter Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li>ProgressIndicatorPainter</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">ProgressIndicatorPainter Class</h1>
+<span class="small-subtitle" translate="no">class <a href="utils.html" translate="no">Utils</a>::ProgressIndicatorPainter</span>
+<!-- $$$ProgressIndicatorPainter-brief -->
+<p>The ProgressIndicatorPainter class is the painting backend for the <a href="utils-progressindicator.html" translate="no">ProgressIndicator</a> class. <a href="#details">More...</a></p>
+<!-- @@@ProgressIndicatorPainter -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;ProgressIndicatorPainter&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="utils-progressindicatorpainter-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="utils-progressindicatorpainter.html#ProgressIndicatorPainter" translate="no">ProgressIndicatorPainter</a></b>(Utils::ProgressIndicatorSize <i>size</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::ProgressIndicatorSize </td><td class="memItemRight bottomAlign"><b><a href="utils-progressindicatorpainter.html#indicatorSize" translate="no">indicatorSize</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-progressindicatorpainter.html#paint" translate="no">paint</a></b>(QPainter &amp;<i>painter</i>, const QRect &amp;<i>rect</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-progressindicatorpainter.html#setIndicatorSize" translate="no">setIndicatorSize</a></b>(Utils::ProgressIndicatorSize <i>size</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-progressindicatorpainter.html#setUpdateCallback" translate="no">setUpdateCallback</a></b>(const Utils::ProgressIndicatorPainter::UpdateCallback &amp;<i>cb</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QSize </td><td class="memItemRight bottomAlign"><b><a href="utils-progressindicatorpainter.html#size" translate="no">size</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-progressindicatorpainter.html#startAnimation" translate="no">startAnimation</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-progressindicatorpainter.html#stopAnimation" translate="no">stopAnimation</a></b>()</td></tr>
+</table></div>
+<!-- $$$ProgressIndicatorPainter-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>You can use it to paint a circular, endlessly animated progress indicator directly onto a <a href="https://doc.qt.io/qt/qpaintdevice.html" translate="no">QPaintDevice</a>, for example, if you want to show a progress indicator where you cannot use a <a href="https://doc.qt.io/qt/qwidget.html" translate="no">QWidget</a>.</p>
+</div>
+<!-- @@@ProgressIndicatorPainter -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$ProgressIndicatorPainter[overload1]$$$ProgressIndicatorPainterUtils::ProgressIndicatorSize -->
+<h3 class="fn" translate="no" id="ProgressIndicatorPainter">ProgressIndicatorPainter::<span class="name">ProgressIndicatorPainter</span>(<span class="type"><a href="utils.html#ProgressIndicatorSize-enum" translate="no">Utils::ProgressIndicatorSize</a></span> <i>size</i>)</h3>
+<p>Constructs a progress indicator painter for the indicator <i translate="no">size</i>.</p>
+<p><b>See also </b><a href="utils-progressindicatorpainter.html#setUpdateCallback" translate="no">setUpdateCallback</a>.</p>
+<!-- @@@ProgressIndicatorPainter -->
+<!-- $$$indicatorSize[overload1]$$$indicatorSize -->
+<h3 class="fn" translate="no" id="indicatorSize"><span class="type"><a href="utils.html#ProgressIndicatorSize-enum" translate="no">Utils::ProgressIndicatorSize</a></span> ProgressIndicatorPainter::<span class="name">indicatorSize</span>() const</h3>
+<p>Returns the current indicator size. Use <a href="utils-progressindicatorpainter.html#size" translate="no">size</a> to get the resulting pixel size.</p>
+<p><b>See also </b><a href="utils-progressindicatorpainter.html#setIndicatorSize" translate="no">setIndicatorSize</a>.</p>
+<!-- @@@indicatorSize -->
+<!-- $$$paint[overload1]$$$paintQPainter&constQRect& -->
+<h3 class="fn" translate="no" id="paint"><span class="type">void</span> ProgressIndicatorPainter::<span class="name">paint</span>(<span class="type"><a href="https://doc.qt.io/qt/qpainter.html" translate="no">QPainter</a></span> &amp;<i>painter</i>, const <span class="type"><a href="https://doc.qt.io/qt/qrect.html" translate="no">QRect</a></span> &amp;<i>rect</i>) const</h3>
+<p>Paints the progress indicator centered in the <i translate="no">rect</i> on the given <i translate="no">painter</i>.</p>
+<p><b>See also </b><a href="utils-progressindicatorpainter.html#size" translate="no">size</a>.</p>
+<!-- @@@paint -->
+<!-- $$$setIndicatorSize[overload1]$$$setIndicatorSizeUtils::ProgressIndicatorSize -->
+<h3 class="fn" translate="no" id="setIndicatorSize"><span class="type">void</span> ProgressIndicatorPainter::<span class="name">setIndicatorSize</span>(<span class="type"><a href="utils.html#ProgressIndicatorSize-enum" translate="no">Utils::ProgressIndicatorSize</a></span> <i>size</i>)</h3>
+<p>Changes the size of the progress indicator to <i translate="no">size</i>. Users of the class need to adapt their painting or layouting code to the change in resulting pixel size.</p>
+<p><b>See also </b><a href="utils-progressindicatorpainter.html#indicatorSize" translate="no">indicatorSize</a> and <a href="utils-progressindicatorpainter.html#size" translate="no">size</a>.</p>
+<!-- @@@setIndicatorSize -->
+<!-- $$$setUpdateCallback[overload1]$$$setUpdateCallbackconstUtils::ProgressIndicatorPainter::UpdateCallback& -->
+<h3 class="fn" translate="no" id="setUpdateCallback"><span class="type">void</span> ProgressIndicatorPainter::<span class="name">setUpdateCallback</span>(const <span class="type">Utils::ProgressIndicatorPainter::UpdateCallback</span> &amp;<i>cb</i>)</h3>
+<p>Sets the callback <i translate="no">cb</i> that is called whenever the progress indicator needs a repaint, because its animation progressed. The callback is a void function taking no parameters, and should usually trigger a <a href="https://doc.qt.io/qt/qwidget.html#update" translate="no">QWidget::update</a> on the widget that does the actual painting.</p>
+<!-- @@@setUpdateCallback -->
+<!-- $$$size[overload1]$$$size -->
+<h3 class="fn" translate="no" id="size"><span class="type"><a href="https://doc.qt.io/qt/qsize.html" translate="no">QSize</a></span> ProgressIndicatorPainter::<span class="name">size</span>() const</h3>
+<p>Returns the size of the progress indicator in device independent pixels.</p>
+<p><b>See also </b><a href="utils-progressindicatorpainter.html#setIndicatorSize" translate="no">setIndicatorSize</a> and <a href="utils-progressindicatorpainter.html#paint" translate="no">paint</a>.</p>
+<!-- @@@size -->
+<!-- $$$startAnimation[overload1]$$$startAnimation -->
+<h3 class="fn" translate="no" id="startAnimation"><span class="type">void</span> ProgressIndicatorPainter::<span class="name">startAnimation</span>()</h3>
+<p>Starts the progress indicator animation.</p>
+<p><b>See also </b><a href="utils-progressindicatorpainter.html#setUpdateCallback" translate="no">setUpdateCallback</a> and <a href="utils-progressindicatorpainter.html#stopAnimation" translate="no">stopAnimation</a>.</p>
+<!-- @@@startAnimation -->
+<!-- $$$stopAnimation[overload1]$$$stopAnimation -->
+<h3 class="fn" translate="no" id="stopAnimation"><span class="type">void</span> ProgressIndicatorPainter::<span class="name">stopAnimation</span>()</h3>
+<p>Stops the progress indicator animation.</p>
+<p><b>See also </b><a href="utils-progressindicatorpainter.html#setUpdateCallback" translate="no">setUpdateCallback</a> and <a href="utils-progressindicatorpainter.html#startAnimation" translate="no">startAnimation</a>.</p>
+<!-- @@@stopAnimation -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

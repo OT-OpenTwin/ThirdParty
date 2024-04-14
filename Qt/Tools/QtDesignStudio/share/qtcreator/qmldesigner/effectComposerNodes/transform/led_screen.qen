@@ -1,0 +1,66 @@
+{
+    "QEN": {
+        "description": "Creates ledscreen effect of the source item. Note: Uses source item texture so this node should be used in the beginning of node tree and nodes with color operations applied after it.",
+        "fragmentCode": [
+            "@main",
+            "{",
+            "    const float maxLedSize = ledScreenLedSize;",
+            "    vec2 center = floor(fragCoord / maxLedSize) * maxLedSize + maxLedSize * 0.5;",
+            "    vec3 ledColor = texture(iSource, center / iResolution.xy).rgb;",
+            "    float ledSize;",
+            "    if (ledScreenSizeFromColor) {",
+            "        vec3 sizeColorMultiplier = vec3(0.8, 0.4, 0.2);",
+            "        ledSize = clamp(dot(ledColor, maxLedSize * sizeColorMultiplier), 0.1, maxLedSize);",
+            "    } else {",
+            "        ledSize = maxLedSize;",
+            "    }",
+            "",
+            "    float alpha = 0.0;",
+            "    if (ledSize > 2.0) {",
+            "        float dist = distance(center, fragCoord) * 2.0;",
+            "        alpha = smoothstep(1.0, 0.5, dist / ledSize);",
+            "    }",
+            "",
+            "    if (ledScreenColorFromSource)",
+            "        fragColor.rgb = ledColor.rgb * alpha;",
+            "    else",
+            "        fragColor.rgb = vec3(alpha) * ledScreenLedColor.rgb;",
+            "",
+            "}"
+        ],
+        "name": "Led Screen",
+        "properties": [
+            {
+                "defaultValue": "true",
+                "description": "When this is true, the size of the led is determined by its color.",
+                "name": "ledScreenSizeFromColor",
+                "displayName": "Size From Color",
+                "type": "bool"
+            },
+            {
+                "defaultValue": "true",
+                "description": "When this is true, the color of the led is determined by the color of the source item.",
+                "name": "ledScreenColorFromSource",
+                "displayName": "Color From Source",
+                "type": "bool"
+            },
+            {
+                "defaultValue": "20",
+                "description": "Size of a single led in pixels.",
+                "maxValue": "50",
+                "minValue": "4",
+                "name": "ledScreenLedSize",
+                "displayName": "Led Size",
+                "type": "float"
+            },
+            {
+                "defaultValue": "1, 1, 1, 1",
+                "description": "Color of the leds. This is used only when not using color from source item.",
+                "name": "ledScreenLedColor",
+                "displayName": "Led Color",
+                "type": "color"
+            }
+        ],
+        "version": 1
+    }
+}

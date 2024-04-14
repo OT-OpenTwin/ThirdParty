@@ -31,17 +31,18 @@
 import qbs.Environment
 import qbs.File
 import qbs.FileInfo
+import qbs.Host
 import "../../../modules/Android/sdk/utils.js" as SdkUtils
 import "../../../modules/Android/android-utils.js" as AndroidUtils
 
-BinaryProbe {
+PathProbe {
     environmentPaths: Environment.getEnv("ANDROID_HOME")
     platformSearchPaths: {
-        if (qbs.hostOS.contains("windows"))
+        if (Host.os().contains("windows"))
             return [FileInfo.joinPaths(Environment.getEnv("LOCALAPPDATA"), "Android", "sdk")];
-        if (qbs.hostOS.contains("macos"))
+        if (Host.os().contains("macos"))
             return [FileInfo.joinPaths(Environment.getEnv("HOME"), "Library", "Android", "sdk")];
-        if (qbs.hostOS.contains("linux"))
+        if (Host.os().contains("linux"))
             return [FileInfo.joinPaths(Environment.getEnv("HOME"), "Android", "Sdk")];
     }
 
@@ -53,21 +54,17 @@ BinaryProbe {
     property string platform
 
     configure: {
-        var suffixes = nameSuffixes || [""];
         var i, allPaths = (environmentPaths || []).concat(platformSearchPaths || []);
         candidatePaths = allPaths;
         for (i in allPaths) {
-            for (var j in suffixes) {
-                if (File.exists(FileInfo.joinPaths(allPaths[i],
-                                                   "tools", "android" + suffixes[j]))) {
-                    path = allPaths[i];
-                    buildToolsVersions = SdkUtils.availableBuildToolsVersions(path)
-                    buildToolsVersion = buildToolsVersions[buildToolsVersions.length - 1];
-                    platforms = AndroidUtils.availablePlatforms(path)
-                    platform = platforms[platforms.length - 1];
-                    found = true;
-                    return;
-                }
+            if (File.exists(FileInfo.joinPaths(allPaths[i], "build-tools"))) {
+                path = allPaths[i];
+                buildToolsVersions = SdkUtils.availableBuildToolsVersions(path)
+                buildToolsVersion = buildToolsVersions[buildToolsVersions.length - 1];
+                platforms = AndroidUtils.availablePlatforms(path)
+                platform = platforms[platforms.length - 1];
+                found = true;
+                return;
             }
         }
     }

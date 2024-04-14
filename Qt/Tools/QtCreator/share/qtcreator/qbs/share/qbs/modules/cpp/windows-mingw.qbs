@@ -28,118 +28,47 @@
 **
 ****************************************************************************/
 
+import qbs.File
+import qbs.FileInfo
 import qbs.ModUtils
-import qbs.TextFile
 import qbs.Utilities
-import qbs.WindowsUtils
 
+import 'cpp.js' as Cpp
 import "setuprunenv.js" as SetupRunEnv
 
-GenericGCC {
-    condition: qbs.targetOS.contains("windows") &&
-               qbs.toolchain && qbs.toolchain.contains("mingw")
+MingwBaseModule {
+    condition: qbs.targetOS.includes("windows") &&
+               qbs.toolchain && qbs.toolchain.includes("mingw")
     priority: 0
-    staticLibraryPrefix: "lib"
-    staticLibrarySuffix: ".a"
-    dynamicLibrarySuffix: ".dll"
-    executableSuffix: ".exe"
-    debugInfoSuffix: ".debug"
-    imageFormat: "pe"
-    windowsApiCharacterSet: "unicode"
-    platformDefines: base.concat(WindowsUtils.characterSetDefines(windowsApiCharacterSet))
-                         .concat("WIN32")
+
     probeEnv: buildEnv
 
-    Properties {
-        condition: product.multiplexByQbsProperties.contains("buildVariants")
-                   && qbs.buildVariants && qbs.buildVariants.length > 1
-                   && qbs.buildVariant !== "release"
-                   && product.type.containsAny(["staticlibrary", "dynamiclibrary"])
-        variantSuffix: "d"
+    property string windresName: "windres" + compilerExtension
+    property path windresPath: {
+        var filePath = toolchainPathPrefix + windresName;
+        if (!File.exists(filePath))
+            filePath = FileInfo.joinPaths(toolchainInstallPath, windresName);
+        return filePath;
     }
 
-    property string windresName: 'windres'
-    property path windresPath: { return toolchainPathPrefix + windresName }
-
     setupBuildEnvironment: {
-        var v = new ModUtils.EnvironmentVariable("PATH", product.qbs.pathListSeparator, true);
+        var v = new ModUtils.EnvironmentVariable("PATH", FileInfo.pathListSeparator(), true);
         v.prepend(product.cpp.toolchainInstallPath);
         v.set();
     }
 
     setupRunEnvironment: {
-        var v = new ModUtils.EnvironmentVariable("PATH", product.qbs.pathListSeparator, true);
+        var v = new ModUtils.EnvironmentVariable("PATH", FileInfo.pathListSeparator(), true);
         v.prepend(product.cpp.toolchainInstallPath);
         v.set();
         SetupRunEnv.setupRunEnvironment(product, config);
     }
 
-    FileTagger {
-        patterns: ["*.manifest"]
-        fileTags: ["native.pe.manifest"]
-    }
-
-    Rule {
-        inputs: ["native.pe.manifest"]
-        multiplex: true
-
-        outputFileTags: ["rc"]
-        outputArtifacts: {
-            if (product.type.containsAny(["application", "dynamiclibrary"])) {
-                return [{
-                    filePath: input.completeBaseName + ".rc",
-                    fileTags: ["rc"]
-                }];
-            }
-            return [];
-        }
-
-        prepare: {
-            var inputList = inputs["native.pe.manifest"];
-            // TODO: Emulate manifest merging like Microsoft's mt.exe tool does
-            if (inputList.length !== 1) {
-                throw("The MinGW toolchain does not support manifest merging; " +
-                      "you may only specify a single manifest file to embed into your assembly.");
-            }
-
-            var cmd = new JavaScriptCommand();
-            cmd.silent = true;
-            cmd.productType = product.type;
-            cmd.inputFilePath = inputList[0].filePath;
-            cmd.outputFilePath = output.filePath;
-            cmd.sourceCode = function() {
-                var tf;
-                try {
-                    tf = new TextFile(outputFilePath, TextFile.WriteOnly);
-                    if (productType.contains("application"))
-                        tf.write("1 "); // CREATEPROCESS_MANIFEST_RESOURCE_ID
-                    else if (productType.contains("dynamiclibrary"))
-                        tf.write("2 "); // ISOLATIONAWARE_MANIFEST_RESOURCE_ID
-                    tf.write("24 "); // RT_MANIFEST
-                    tf.writeLine(Utilities.cStringQuote(inputFilePath));
-                } finally {
-                    if (tf)
-                        tf.close();
-                }
-            };
-            return [cmd];
-        }
-    }
-
-    FileTagger {
-        patterns: ["*.rc"]
-        fileTags: ["rc"]
-    }
-
     Rule {
         inputs: ["rc"]
         auxiliaryInputs: ["hpp"]
-
-        Artifact {
-            filePath: Utilities.getHash(input.baseDir) + "/" + input.completeBaseName + "_res.o"
-            fileTags: ["obj"]
-        }
-
+        outputFileTags: Cpp.resourceCompilerOutputTags()
+        outputArtifacts: Cpp.resourceCompilerOutputArtifacts(input)
         prepare: {
             var platformDefines = input.cpp.platformDefines;
             var defines = input.cpp.defines;
@@ -164,6 +93,7 @@ GenericGCC {
                 args.push(systemIncludePaths[i]);
             }
 
+            args.push("-O", "coff"); // Set COFF format explicitly.
             args = args.concat(['-i', input.filePath, '-o', output.filePath]);
             var cmd = new Command(product.cpp.windresPath, args);
             cmd.description = 'compiling ' + input.fileName;

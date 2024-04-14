@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-production-quality-animation.qdoc -->
+  <title>Production Quality | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Production Quality</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="qtquick-editing-easing-curves.html" />
+  <link rel="next" href="qtquick-optimizing-designs.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="qtquick-editing-easing-curves.html">Editing Easing Curves</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtquick-optimizing-designs.html">Optimizing Designs</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#fps-refresh-rate">FPS Refresh Rate</a></li>
+<li class="level1"><a href="#profiling-ui-code">Profiling UI Code</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Production Quality</h1>
+<!-- $$$qtquick-production-quality-animation.html-description -->
+<div class="descr" id="details">
+<p>After the wireframing and prototyping phases, you can use previewing and profiling tools to fine-tune your UI for production.</p>
+<p>How to achieve production quality motion in UIs:</p>
+<ul>
+<li>Preview the UI to check the FPS refresh rate.</li>
+<li>Profile the UI code to find causes for slowness, unresponsiveness, and stuttering.</li>
+</ul>
+<h2 id="fps-refresh-rate">FPS Refresh Rate</h2>
+<p>As a general rule, animators strive to allow the rendering engine to achieve a consistent 60 frames-per-second (FPS) refresh rate. 60 FPS means that there is approximately 16 milliseconds between each frame in which processing can be done, which includes the processing required to upload the draw primitives to the graphics hardware.</p>
+<p>The frames-per-second (FPS) refresh rate of animations is displayed in the <b translate="no">FPS</b> field on the <a href="creator-using-qt-quick-designer.html#summary-of-main-toolbar-actions" translate="no">toolbar</a> in the <b translate="no">Design</b> mode.</p>
+<p>To improve the FPS rate, application developers should:</p>
+<ul>
+<li>Use asynchronous, event-driven programming wherever possible.</li>
+<li>Use worker threads to do significant processing.</li>
+<li>Never manually spin the event loop.</li>
+<li>Never spend more than a couple of milliseconds per frame within blocking functions to avoid skipped frames, which negatively affect the user experience.</li>
+</ul>
+<p>For more information about previewing UIs on devices, see <a href="creator-live-preview.html" translate="no">Validating with Target Hardware</a>.</p>
+<h2 id="profiling-ui-code">Profiling UI Code</h2>
+<p>You can use <a href="creator-qml-performance-monitor.html" translate="no">QML Profiler</a> that is integrated into Qt Design Studio to find causes for typical performance problems in your UI. For example, your UI might be slow, unresponsive, or stuttering. Typically, such problems are caused by executing too much JavaScript in too few frames. All JavaScript must return before the GUI thread can proceed, and frames are delayed or dropped if the GUI thread is not ready.</p>
+<p>In general, knowing where time is spent in a UI enables you to focus on problem areas that actually exist, rather than problem areas that potentially exist.</p>
+<p>Determining which bindings are being run the most often or which functions your application is spending the most time on enables you to decide whether you need to optimize the problem areas, or redesign some implementation details of your application so that the performance is improved. Attempting to optimize code without profiling is likely to result in very minor rather than significant performance improvements.</p>
+<p>For more information, see <a href="creator-qml-performance-monitor.html" translate="no">Profiling QML Applications</a>.</p>
+</div>
+<!-- @@@qtquick-production-quality-animation.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="qtquick-editing-easing-curves.html">Editing Easing Curves</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtquick-optimizing-designs.html">Optimizing Designs</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

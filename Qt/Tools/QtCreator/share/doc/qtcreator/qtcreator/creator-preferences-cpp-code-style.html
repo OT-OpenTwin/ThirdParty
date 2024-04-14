@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-preferences-cpp-code-style.qdoc -->
+  <meta name="description" content="Set global code style for C++ files.">
+  <title>C++ Code Style | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>C++ Code Style</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-reference.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#using-built-in-indenter">Using Built-In Indenter</a></li>
+<li class="level2"><a href="#specifying-settings-for-content">Specifying Settings for Content</a></li>
+<li class="level2"><a href="#specifying-settings-for-braces">Specifying Settings for Braces</a></li>
+<li class="level2"><a href="#specifying-settings-for-switch-statements">Specifying Settings for Switch Statements</a></li>
+<li class="level2"><a href="#specifying-alignment">Specifying Alignment</a></li>
+<li class="level2"><a href="#binding-pointers-and-references">Binding Pointers and References</a></li>
+<li class="level1"><a href="#creating-clangformat-files-from-command-line">Creating ClangFormat Files from Command Line</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">C++ Code Style</h1>
+<!-- $$$creator-preferences-cpp-code-style.html-description -->
+<div class="descr" id="details">
+<p>Qt Creator uses the Clang <a href="https://clang.llvm.org/docs/LibFormat.html" translate="no">LibFormat</a> library to automatically format and indent C++ code. It enforces a coding style for a project or the whole organization.</p>
+<p>To specify global indentation settings for the C++ editor:</p>
+<ol class="1" type="1"><li>Go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">C++</b>.<p class="centerAlign"><img src="images/qtcreator-code-style-clang-format-global.webp" alt="{Code Style preferences}" /></p></li>
+<li>In <b translate="no">Formatting mode</b>, select:<ul>
+<li><b translate="no">Indenting Only</b> to only indent code.</li>
+<li><b translate="no">Full Formatting</b> to use the <b>Ctrl+I</b> keyboard shortcut to format code instead of indenting.</li>
+<li><b translate="no">Use Built-In Indenter</b> to turn off ClangFormat.</li>
+</ul>
+</li>
+<li>Select <b translate="no">Ignore files greater than</b> to make parsing faster by ignoring big files. Specify the maximum size of files to parse.</li>
+<li>To apply the formatting while you type, select <b translate="no">Format while typing</b>.</li>
+<li>To apply the formatting to the edited code when you save the file, select <b translate="no">Format edited code on file save</b>.</li>
+<li>To change the ClangFormat style globally for all projects, select <b translate="no">Use custom settings</b>.</li>
+<li>In <b translate="no">Custom settings</b>, select the settings to change, and then select <b translate="no">Copy</b>.</li>
+<li>Give a name to the settings, and select <b translate="no">OK</b>.</li>
+<li>In <b translate="no">ClangFormat</b>, edit the <a href="https://clang.llvm.org/docs/ClangFormatStyleOptions.html" translate="no">ClangFormat Style Options</a>. The live preview shows how the preferences change the indentation. If you enter invalid values, you see warning messages.</li>
+</ol>
+<h2 id="using-built-in-indenter">Using Built-In Indenter</h2>
+<p class="centerAlign"><img src="images/qtcreator-code-style-built-in-indenter.webp" alt="{Code Style preferences for built-in indenter}" /></p><p>If you select <b translate="no">Use Built-In Indenter</b> in <b translate="no">Formatting mode</b>, you can specify how to:</p>
+<ul>
+<li>Interpret the <b>Tab</b> and <b>Backspace</b> key presses.</li>
+<li>Indent the contents of classes, functions, blocks, and namespaces.</li>
+<li>Indent braces in classes, namespaces, enums, functions, and blocks.</li>
+<li>Control switch statements and their contents.</li>
+<li>Align continuation lines.</li>
+<li>Bind pointers (*) and references (&amp;) in types and declarations to identifiers, type names, or left or right <code translate="no">const</code> or <code translate="no">volatile</code> keywords.</li>
+</ul>
+<h3 id="specifying-settings-for-content">Specifying Settings for Content</h3>
+<p>You can indent public, protected, and private statements and declarations related to them within classes.</p>
+<p>You can also indent statements within functions and blocks and declarations within namespaces.</p>
+<p class="centerAlign"><img src="images/qtcreator-code-style-content.png" alt="{Content preferences}" /></p><h3 id="specifying-settings-for-braces">Specifying Settings for Braces</h3>
+<p>You can indent class, namespace, enum and function declarations and code blocks.</p>
+<p class="centerAlign"><img src="images/qtcreator-code-style-braces.png" alt="{Braces preferences}" /></p><h3 id="specifying-settings-for-switch-statements">Specifying Settings for Switch Statements</h3>
+<p>You can indent case or default statements, or statements or blocks related to them within switch statements.</p>
+<p class="centerAlign"><img src="images/qtcreator-code-style-switch.png" alt="{Switch preferences}" /></p><h3 id="specifying-alignment">Specifying Alignment</h3>
+<p>To align continuation lines to tokens after assignments, such as <code translate="no">=</code> or <code translate="no">+=</code>, select <b translate="no">Align after assignments</b>. You can specify additional settings for aligning continuation lines in the <b translate="no">General</b> tab.</p>
+<p>You can also add spaces to conditional statements, so that they are not aligned with the following line. Usually, this only affects <code translate="no">if</code> statements.</p>
+<p class="centerAlign"><img src="images/qtcreator-code-style-alignment.png" alt="{Alignment preferences}" /></p><h3 id="binding-pointers-and-references">Binding Pointers and References</h3>
+<p>To bind pointers (<code translate="no">*</code>) and references (<code translate="no">&amp;</code>) in types and declarations to identifiers, type names, or left or right <code translate="no">const</code> or <code translate="no">volatile</code> keywords, select the check boxes in the <b translate="no">Pointers and References</b> tab.</p>
+<p>The <code translate="no">*</code> and <code translate="no">&amp;</code> characters are automatically bound to identifiers of pointers to functions and pointers to arrays.</p>
+<p class="centerAlign"><img src="images/qtcreator-pointers-references.png" alt="{Pointers and References preferences}" /></p><h2 id="creating-clangformat-files-from-command-line">Creating ClangFormat Files from Command Line</h2>
+<p>You can create <code translate="no">.clang-format</code> files that have the configuration options of a certain predefined style from the command line. For example, to create a format file for the LLVM style, enter the following command:</p>
+<pre class="cpp plain" translate="no">
+ clang-format -style=llvm -dump-config &gt; .clang-format
+</pre>
+</div>
+<p><b>See also </b><a href="creator-indenting-code.html" translate="no">Indent text or code</a>, <a href="creator-code-style-settings.html" translate="no">Specify code style</a>, <a href="creator-preferences-text-editor-behavior.html" translate="no">Behavior</a>, <a href="creator-preferences-qtquick-code-style.html" translate="no">Qt Quick Code Style</a>, and <a href="creator-preferences-nim.html" translate="no">Nim</a>.</p>
+<!-- @@@creator-preferences-cpp-code-style.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- featureprovider.cpp -->
+  <meta name="description" content="The IFeatureProvider class defines an interface to manage features for wizards.">
+  <title>IFeatureProvider Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>IFeatureProvider</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">IFeatureProvider Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::IFeatureProvider</span>
+<!-- $$$IFeatureProvider-brief -->
+<p>The IFeatureProvider class defines an interface to manage features for wizards. <a href="#details">More...</a></p>
+<!-- @@@IFeatureProvider -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/featureprovider.h&gt;</span></td></tr>
+</table></div>
+<!-- $$$IFeatureProvider-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The features provided by an object in the object pool implementing IFeatureProvider will be respected by wizards implementing <a href="core-iwizardfactory.html" translate="no">IWizardFactory</a>.</p>
+<p>This feature set, provided by all instances of IFeatureProvider in the object pool, is checked against <code translate="no">IWizardFactory::requiredFeatures()</code> and only if all required features are available, the wizard is displayed when creating a new file or project.</p>
+<p>If you created JSON-based wizards, the feature set is checked against the <code translate="no">featuresRequired</code> setting that is described in <a href="https://doc.qt.io/qtcreator/creator-project-wizards.html" translate="no">Adding New Custom Wizards</a> in the Qt Design Studio Manual.</p>
+<p>The QtSupport plugin creates an instance of IFeatureProvider and provides Qt specific features for the available versions of Qt.</p>
+</div>
+<p><b>See also </b><a href="core-iwizardfactory.html" translate="no">Core::IWizardFactory</a>.</p>
+<!-- @@@IFeatureProvider -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

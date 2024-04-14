@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-debugger-settings.qdoc -->
+  <title>Debugger Preferences | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li><a href="creator-overview.html" translate="no">Developing with Qt Creator</a></li>
+<li><a href="creator-debugging.html" translate="no">Debugging</a></li>
+<li>Debugger Preferences</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-remote-debugging.html" />
+  <link rel="next" href="creator-debugging-helpers.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-remote-debugging.html">Remote Debugging</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-debugging-helpers.html">Using Debugging Helpers</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#mapping-source-paths">Mapping Source Paths</a></li>
+<li class="level1"><a href="#specifying-gdb-settings">Specifying GDB Settings</a></li>
+<li class="level2"><a href="#extended-gdb-settings">Extended GDB Settings</a></li>
+<li class="level1"><a href="#specifying-cdb-settings">Specifying CDB Settings</a></li>
+<li class="level1"><a href="#setting-cdb-paths-on-windows">Setting CDB Paths on Windows</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Debugger Preferences</h1>
+<!-- $$$creator-debugger-preferences.html-description -->
+<div class="descr" id="details">
+<p>To specify settings for managing debugger processes, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Debugger</b>. In the <b translate="no">General</b> tab,you can specify settings that are common to all debuggers.</p>
+<p class="centerAlign"><img src="images/qtcreator-debugger-general-options.png" alt="&quot;Debugger General preferences&quot;" /></p><p>You can customize the appearance and behavior of the debug views, <a href="creator-breakpoints-view.html#specifying-breakpoint-settings" translate="no">specify settings for breakpoints</a>, and map source paths to target paths.</p>
+<p>You can view debug output in the <a href="creator-debugger-log-view.html" translate="no">Debugger Log</a> view. However, in some Linux distributions, such as Arch Linux, debug output is sent to the system log. To override this behavior, select the <b translate="no">Force logging to console</b> check box. This sets <code translate="no">QT_LOGGING_TO_CONSOLE=1</code> in the environment of the debugged application, which effectively prevents storing debug output in system logs.</p>
+<h2 id="mapping-source-paths">Mapping Source Paths</h2>
+<p>To enable the debugger to step into the code and display the source code when using a copy of the source tree at a location different from the one at which the libraries were built, you can map source paths to target paths.</p>
+<p>To automatically map the source paths to a Qt version that has not been patched, select <b translate="no">Add Qt Sources</b> and browse to the location of the Qt source files.</p>
+<p>To manually map the source paths to target paths:</p>
+<ol class="1" type="1"><li>In <b translate="no">Source Paths Mapping</b>, select <b translate="no">Add</b> to add an entry to the path list.</li>
+<li>In the <b translate="no">Source path</b> field, specify the source path in the debug information of the executable as reported by the debugger.</li>
+<li>In the <b translate="no">Target path</b> field, specify the actual location of the source tree on the local machine.</li>
+</ol>
+<h2 id="specifying-gdb-settings">Specifying GDB Settings</h2>
+<p>To specify settings for managing the GDB process, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Debugger</b> &gt; <b translate="no">GDB</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-preferences-debugger-gdb.webp" alt="{GDB preferences}" /></p><p>To specify a timeout for terminating non-responsive GDB processes, set the number of seconds to wait in the <b translate="no">GDB timeout</b> field. The default value of 20 seconds should be sufficient for most applications, but if loading big libraries or listing source files takes much longer than that on slow machines, you should increase the value.</p>
+<p>To compress several steps into one step for less noisy debugging when stepping into code, select the <b translate="no">Skip known frames when stepping</b> check box. For example, the atomic reference counting code is skipped, and a single <i>Step Into</i> for a signal emission ends up directly in the slot connected to it.</p>
+<p>To display a message box as soon as your application receives a signal, such as SIGSEGV, during debugging, select the <b translate="no">Show a message box when receiving a signal</b> check box.</p>
+<p>GDB allows setting breakpoints on source lines for which no code was generated. In such situations, the breakpoint is shifted to the next source code line for which the code was actually generated. To reflect such temporary changes by moving the breakpoint markers in the source code editor, select the <b translate="no">Adjust breakpoint locations</b> check box.</p>
+<p>To specify whether the dynamic or the static type of objects will be displayed, select the <b translate="no">Use dynamic object type for display</b> check box. Keep in mind that choosing the dynamic type might be slower.</p>
+<p>To allow reading the user's default .gdbinit file on debugger startup, select the <b translate="no">Load .gdbinit file on startup</b> check box.</p>
+<p>To use the default GDB pretty printers installed in your system or linked to the libraries your application uses, select the <b translate="no">Load system GDB pretty printers</b> check box.</p>
+<p>By default, GDB shows AT&amp;T style disassembly. To switch to the Intel style, select the <b translate="no">Use Intel style disassembly</b> check box.</p>
+<p>To have GDB automatically save a copy of its symbol index in a cache on disk and retrieve it from there when loading the same binary in the future, select the <b translate="no">Use automatic symbol cache</b> check box.</p>
+<p>To execute GDB commands after GDB has been started, but before the debugged application is started or attached, and before the debugging helpers are initialized, enter them in the <b translate="no">Additional Startup Commands</b> field.</p>
+<p>To execute GDB commands after GDB has successfully attached to remote targets, enter them in the <b translate="no">Additional Attach Commands</b> field. You can add commands to further set up the target here, such as <code translate="no">monitor reset</code> or <code translate="no">load</code>.</p>
+<p>To execute simple Python commands, prefix them with <code translate="no">python</code>. To execute sequences of Python commands spanning multiple lines, prepend the block with <code translate="no">python</code> on a separate line, and append <code translate="no">end</code> on a separate line. To execute arbitrary Python scripts, use <code translate="no">python execfile('/path/to/script.py')</code>.</p>
+<h3 id="extended-gdb-settings">Extended GDB Settings</h3>
+<p>The settings in the <b translate="no">Extended</b> group give access to advanced or experimental functions of GDB. Enabling them may negatively impact your debugging experience, so use them with care.</p>
+<p>To use asynchronous mode to control the inferior, select the respective check box.</p>
+<p>To add common paths to locations of debug information, such as <code translate="no">/usr/src/debug</code>, when starting GDB, select the <b translate="no">Use common locations for debug information</b> check box.</p>
+<p>To stop when <code translate="no">qWarning</code>, <code translate="no">qFatal</code>, or <code translate="no">abort</code> is called, select the respective check box.</p>
+<p>To enable stepping backwards, select the <b translate="no">Enable reverse debugging</b> check box. This feature is very slow and unstable on the GDB side. It exhibits unpredictable behavior when going backwards over system calls and is very likely to destroy your debugging session.</p>
+<p>To keep debugging all children after a fork, select the <b translate="no">Debug all child processes</b> check box.</p>
+<h2 id="specifying-cdb-settings">Specifying CDB Settings</h2>
+<p>To specify settings for managing the CDB process, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Debugger</b> &gt; <b translate="no">CDB</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-cdb-options.png" alt="&quot;CDB preferences&quot;" /></p><p>You can specify additional arguments for starting CDB in the <b translate="no">Additional arguments</b> field.</p>
+<p>If a console application does not start up properly in the configured console and the subsequent attach fails, you can diagnose the issue by using CDB's native console. Select the <b translate="no">Use CDB console</b> check box to override the console set in the Windows system environment variables. Note that the native console does not prompt on application exit.</p>
+<p>To automatically add a breakpoint on the <code translate="no">CrtCbgReport()</code> function, select the <b translate="no">Stop when CrtCbgReport() is called</b> check box. This catches runtime error messages caused by <code translate="no">assert()</code>, for example.</p>
+<p>In the <b translate="no">Break on</b> group, specify whether the debugger should break on C++ exceptions, on thread creation or exit, on loading or unloading the specified <a href="creator-modules-view.html" translate="no">application modules</a>, or on the specified output.</p>
+<p>To disable first-chance break on access violation exceptions, select the <b translate="no">Ignore first chance access violations</b> check box. The second occurrence of an access violation will break into the debugger.</p>
+<p>CDB enables setting breakpoints in comments or on source lines for which no code was generated. In such situations, the breakpoint is shifted to the next source code line for which the code was actually generated. To reflect such temporary changes by moving the breakpoint markers in the source code editor, select the <b translate="no">Correct breakpoint location</b> check box. For more information, see <a href="creator-breakpoints-view.html" translate="no">Setting Breakpoints</a>.</p>
+<p>To use the abstraction layer of Python Dumper classes to create a description of data items in the <b translate="no">Locals</b> and <b translate="no">Expressions</b> views, select the <b translate="no">Use Python dumper</b> check box. For more information, see <a href="creator-debugging-helpers.html#debugging-helper-implementation" translate="no">Debugging Helper Implementation</a>.</p>
+<p>To display information about first-chance and second-chance exceptions in <a href="creator-reference-issues-view.html" translate="no">Issues</a>, select the check boxes in the <b translate="no">Add Exceptions to Issues View</b> group.</p>
+<h2 id="setting-cdb-paths-on-windows">Setting CDB Paths on Windows</h2>
+<p>To obtain debugging information for the operating system libraries for debugging Windows applications, add the Microsoft Symbol Server to the symbol search path of the debugger:</p>
+<ol class="1" type="1"><li>Select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Debugger</b> &gt; <b translate="no">CDB Paths</b>.<p class="centerAlign"><img src="images/qtcreator-debugger-cdb-paths.png" alt="" /></p></li>
+<li>In the <b translate="no">Symbol Paths</b> group, select <b translate="no">Insert</b>.</li>
+<li>Select the directory where you want to store the cached information. Use a subfolder in a temporary directory, such as <code translate="no">C:\temp\symbolcache</code>.</li>
+<li>Select <b translate="no">OK</b>.</li>
+</ol>
+<div class="admonition note">
+<p><b>Note: </b>Populating the cache might take a long time on a slow network connection.</p>
+</div>
+<p>To use the Source Server infrastructure for fetching missing source files directly from version control or the web, enter the following string in the <b translate="no">Source Paths</b> field: <code translate="no">srv*</code>.</p>
+</div>
+<!-- @@@creator-debugger-preferences.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-remote-debugging.html">Remote Debugging</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-debugging-helpers.html">Using Debugging Helpers</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

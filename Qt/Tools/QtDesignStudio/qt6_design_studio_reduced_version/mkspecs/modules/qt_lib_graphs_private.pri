@@ -1,0 +1,11 @@
+QT.graphs_private.VERSION = 6.6.2
+QT.graphs_private.name = QtGraphs
+QT.graphs_private.module =
+QT.graphs_private.libs = $$QT_MODULE_LIB_BASE
+QT.graphs_private.includes = $$QT_MODULE_INCLUDE_BASE/QtGraphs/6.6.2 $$QT_MODULE_INCLUDE_BASE/QtGraphs/6.6.2/QtGraphs
+QT.graphs_private.frameworks = 
+QT.graphs_private.depends = quick3d_private quick3druntimerender_private graphs
+QT.graphs_private.uses = 
+QT.graphs_private.module_config = v2 internal_module
+QT.graphs_private.enabled_features = 
+QT.graphs_private.disabled_features = 

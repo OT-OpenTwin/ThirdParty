@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-loader-3d.qdoc -->
+  <title>Loader3D | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Loader3D</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-3d-repeater-3d.html" />
+  <link rel="next" href="quick-component-instances.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-3d-repeater-3d.html">Repeater3D</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-component-instances.html">Creating Component Instances</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#loader3d-properties">Loader3D Properties</a></li>
+<li class="level2"><a href="#active">Active</a></li>
+<li class="level2"><a href="#source">Source</a></li>
+<li class="level2"><a href="#source-component">Source Component</a></li>
+<li class="level2"><a href="#asynchronous">Asynchronous</a></li>
+<li class="level1"><a href="#setting-the-loader3d-to-load-a-qml-file">Setting the Loader3D to Load a QML File</a></li>
+<li class="level1"><a href="#setting-the-loader3d-to-load-a-component3d-component">Setting the Loader3D to Load a Component3D Component</a></li>
+<li class="level1"><a href="#setting-the-visibility-of-loading-components">Setting the Visibility of Loading Components</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Loader3D</h1>
+<!-- $$$studio-3d-loader-3d.html-description -->
+<div class="descr" id="details">
+<div class="admonition note">
+<p><b>Note: </b>The <b translate="no">Loader3D</b> component is released as a tech preview feature in Qt Design Studio 2.2, and its functionality will be improved in future releases.</p>
+</div>
+<p><b translate="no">Loader3D</b> is a loader component used to dynamically load 3D components. It can load a QML file using the <b translate="no">Source</b> property or a component using the <b translate="no">Source component</b> property. <b translate="no">Loader3D</b> is useful for delaying the creation of a component until it is required, for example, when a component should be created on demand or when a component should not be created unnecessarily for performance reasons.</p>
+<p>For more information, see the <a href="https://doc.qt.io/qt/qml-qtquick3d-loader3d.html" translate="no">Loader3D QML type</a> in the <b translate="no">Qt Quick 3D</b> documentation.</p>
+<h2 id="loader3d-properties">Loader3D Properties</h2>
+<h3 id="active">Active</h3>
+<p>The <b translate="no">Active</b> property is set to <b translate="no">true</b> by default, which makes the <b translate="no">Loader3D</b> currently active. Setting <b translate="no">Active</b> to <b translate="no">false</b> makes <b translate="no">Loader3D</b> inactive. If you change the <b translate="no">Source</b> or <b translate="no">Source component</b> of an inactive <b translate="no">Loader3D</b>, the component will not be instantiated until <b translate="no">Loader3D</b> is made active. Setting <b translate="no">Loader3D</b> inactive will also cause any item loaded by the loader to be released, but this will not affect the files or components defined as <b translate="no">Source</b> or <b translate="no">Source component</b>.</p>
+<h3 id="source">Source</h3>
+<p>The <b translate="no">Source</b> property defines the URL of the 3D component to instantiate. To unload the currently loaded object, set this property to an empty string or set the <b translate="no">Source component</b> to undefined. Setting <b translate="no">Source</b> to a new URL will also cause the item created by the previous URL to be unloaded.</p>
+<h3 id="source-component">Source Component</h3>
+<p>The <b translate="no">Source Component</b> property defines the component for <b translate="no">Loader3D</b> to instantiate. Currently, you need to define the <b translate="no">Source component</b> in the <a href="qtquick-text-editor.html" translate="no">Code</a> view.</p>
+<h3 id="asynchronous">Asynchronous</h3>
+<p>The <b translate="no">Asynchronous</b> property defines whether the component will be instantiated asynchronously. This property is set to <b translate="no">false</b> by default. When used in conjunction with the source property, loading and compilation will be performed in a background thread. Loading asynchronously creates the objects declared by the component across multiple frames and reduces the likelihood of glitches in animation. Setting the value of <b translate="no">Asynchronous</b> to <b translate="no">false</b> while an asynchronous load is in progress will force immediate synchronous completion. This allows an asynchronous loading to begin and then forces completion if the <b translate="no">Loader3D</b> content must be accessed before the asynchronous loading is completed.</p>
+<h2 id="setting-the-loader3d-to-load-a-qml-file">Setting the Loader3D to Load a QML File</h2>
+<p>To add a <a href="https://doc.qt.io/qt/qml-qtquick3d-loader3d.html" translate="no">Loader3D</a> component and set it to load a QML file:</p>
+<ol class="1" type="1"><li>From <b translate="no">Components</b>, drag a <a href="https://doc.qt.io/qt/qml-qtquick3d-loader3d.html" translate="no">Loader3D</a> component to <i>scene</i> in the <b translate="no">Navigator</b> or <b translate="no">3D</b> view.</li>
+<li>In <b translate="no">Navigator</b>, select <i>loader3D</i>.<p class="centerAlign"><img src="images/loader3d-navigator.png" alt="" /></p></li>
+<li>In <b translate="no">Properties</b>, select <b translate="no">Source</b> and select a QML file.<p class="centerAlign"><img src="images/loader3d-select-source.png" alt="" /></p></li>
+</ol>
+<h2 id="setting-the-loader3d-to-load-a-component3d-component">Setting the Loader3D to Load a Component3D Component</h2>
+<p>To add a <a href="https://doc.qt.io/qt/qml-qtquick3d-loader3d.html" translate="no">Loader3D</a> component and set it to load a Component3D component:</p>
+<ol class="1" type="1"><li>From <b translate="no">Components</b>, drag a <a href="https://doc.qt.io/qt/qml-qtquick3d-loader3d.html" translate="no">Loader3D</a> Component to <i>scene</i> in the <b translate="no">Navigator</b> or <b translate="no">3D</b> view.</li>
+<li>From <b translate="no">Components</b>, drag a Component3D component to <i>scene</i> in <b translate="no">Navigator</b>.</li>
+<li>In <b translate="no">Navigator</b>, select the filter icon and clear <b translate="no">Show Only Visible Components</b>. This makes the Component3D component visible in <b translate="no">Navigator</b>.<p class="centerAlign"><img src="images/navigator-show-all-loader.png" alt="" /></p></li>
+<li>In <b translate="no">Navigator</b>, select <i>loader3D</i>.</li>
+<li>In <b translate="no">Properties</b>, select <b translate="no">Source Component</b> and select <i>component3D</i>.<p class="centerAlign"><img src="images/loader3d-select-source-component.png" alt="" /></p></li>
+</ol>
+<h2 id="setting-the-visibility-of-loading-components">Setting the Visibility of Loading Components</h2>
+<p>To avoid seeing the components loading progressively, set the <b translate="no">Visibility</b> property for <b translate="no">Loader3D</b> appropriately in <b translate="no">Binding Editor</b>:</p>
+<ol class="1" type="1"><li>In <b translate="no">Properties</b> &gt; <b translate="no">Loader3D</b>, select the <b translate="no">Asynchronous</b> check box.<p class="centerAlign"><img src="images/loader3d-visibility.png" alt="" /></p></li>
+<li>In <b translate="no">Visibility</b>, select <img src="images/action-icon.png" alt="" /> to open the actions menu, and then select <b translate="no">Set Binding</b>.</li>
+<li>Type <code translate="no">status === Loader3D.Ready</code> into <b translate="no">Binding Editor</b>.<p class="centerAlign"><img src="images/studio-3d-loader3d-binding-editor.png" alt="&quot;Setting Visibility in Binding Editor&quot;" /></p></li>
+<li>Select <b translate="no">OK</b>.</li>
+</ol>
+</div>
+<!-- @@@studio-3d-loader-3d.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-3d-repeater-3d.html">Repeater3D</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-component-instances.html">Creating Component Instances</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

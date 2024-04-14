@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-vcs.qdoc -->
+  <title>Use common VCS functions | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Use common VCS functions</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#add-files">Add files</a></li>
+<li class="level1"><a href="#view-diff-output">View diff output</a></li>
+<li class="level1"><a href="#view-versioning-history-and-change-details">View versioning history and change details</a></li>
+<li class="level1"><a href="#annotate-files">Annotate files</a></li>
+<li class="level1"><a href="#commit-changes">Commit changes</a></li>
+<li class="level1"><a href="#revert-changes">Revert changes</a></li>
+<li class="level1"><a href="#view-status">View status</a></li>
+<li class="level1"><a href="#update-the-working-tree">Update the working tree</a></li>
+<li class="level1"><a href="#delete-files">Delete files</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Use common VCS functions</h1>
+<!-- $$$creator-how-to-use-common-vcs-functions.html-description -->
+<div class="descr" id="details">
+<p>The <b translate="no">Tools</b> menu has a submenu for each supported version control system. This section describes using the functions that are available for all the supported version control systems. The additional functions and options available for a particular version control system are described in separate topics.</p>
+<p>The <b translate="no">Version Control</b> view displays the commands that are executed, a timestamp, and the relevant output. Select <b translate="no">View</b> &gt; <b translate="no">Output</b> &gt; <b translate="no">Version Control</b> to open the view.</p>
+<p class="centerAlign"><img src="images/qtcreator-vcs-pane.png" alt="" /></p><h2 id="add-files">Add files</h2>
+<p>When you create a new file or a new project, the wizard displays a page asking whether the files should be added to a version control system. This happens when the parent directory or the project is already under version control and the system supports the concept of adding files, for example, Perforce and Subversion. Alternatively, you can add files later by using the version control tool menus.</p>
+<h2 id="view-diff-output">View diff output</h2>
+<p>All version control systems have menu options to <i>diff</i> the current file or project: to compare it with the latest version stored in the repository and to display the differences. In Qt Creator, a diff is displayed in a read-only editor. If the file is accessible, you can double-click on a selected diff chunk and Qt Creator opens an editor displaying the file, scrolled to the line in question.</p>
+<p class="centerAlign"><img src="images/qtcreator-vcs-diff.png" alt="" /></p><p>With Git, Mercurial, and Subversion, the diff is displayed side-by-side in a <a href="creator-diff-editor.html" translate="no">diff editor</a> by default. To use the inline diff view instead, select the <b translate="no">Switch to Text Diff Editor</b> (1) option from the toolbar. In the inline diff view, you can use context menu commands to apply, revert, stage, and unstage chunks or selected lines, as well as send chunks to a code pasting service.</p>
+<h2 id="view-versioning-history-and-change-details">View versioning history and change details</h2>
+<p>Display the versioning history of a file by selecting <b translate="no">Log</b> or <b translate="no">Filelog</b>. Typically, the log output has the date, commit message, and a change or revision identifier.</p>
+<h2 id="annotate-files">Annotate files</h2>
+<p>To open annotation views, select <b translate="no">Annotate</b> or <b translate="no">Blame</b>. They show the lines of the file and the identifier of the change the lines originate from. Click the change identifier to see a detailed description of the change.</p>
+<p>To show the annotation of a previous version, right-click on the version identifier at the beginning of a line and choose one of the revisions shown at the bottom of the context menu. This allows you to navigate through the history of the file and obtain previous versions of it. It also works for Git and Mercurial using SHA-1.</p>
+<p>The same context menu is available when right-clicking on a version identifier in the file log view of a single file.</p>
+<h2 id="commit-changes">Commit changes</h2>
+<p>Once you have finished making changes, submit them to the version control system by choosing <b translate="no">Commit</b> or <b translate="no">Submit</b>. Qt Creator displays a commit page that has a text editor where you can enter your commit message and a checkable list of modified files to include.</p>
+<h2 id="revert-changes">Revert changes</h2>
+<p>All supported version control systems support reverting your project to known states. This functionality is generally called <i>reverting</i>.</p>
+<p>The changes discarded depend on the version control system.</p>
+<p>A version control system can replace the <b translate="no">Revert</b> menu option with other options.</p>
+<h2 id="view-status">View status</h2>
+<p>You can select <b translate="no">Status</b> to view the status of the project or repository.</p>
+<h2 id="update-the-working-tree">Update the working tree</h2>
+<p>You can select <b translate="no">Update</b> to update your working tree with the latest changes from the branch. Some version control systems allow you to choose between updating the current project and updating all projects.</p>
+<h2 id="delete-files">Delete files</h2>
+<p>You can select <b translate="no">Delete</b> to delete obsolete files from the repository.</p>
+</div>
+<p><b>See also </b><a href="creator-vcs-bazaar.html" translate="no">Bazaar</a>, <a href="creator-vcs-clearcase.html" translate="no">ClearCase</a>, <a href="creator-vcs-cvs.html" translate="no">CVS</a>, <a href="creator-vcs-fossil.html" translate="no">Fossil</a>, <a href="creator-vcs-git.html" translate="no">Git</a>, <a href="creator-vcs-gitlab.html" translate="no">GitLab</a>, <a href="creator-vcs-mercurial.html" translate="no">Mercurial</a>, <a href="creator-vcs-perforce.html" translate="no">Perforce</a>, <a href="creator-vcs-subversion.html" translate="no">Subversion</a>, <a href="creator-how-to-set-up-vcs.html" translate="no">Set up version control systems</a>, and <a href="creator-version-control.html" translate="no">Version Control Systems</a>.</p>
+<!-- @@@creator-how-to-use-common-vcs-functions.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- actionmanager.qdoc -->
+  <title>The Action Manager and Commands | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li>The Action Manager and Commands</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#command">Command</a></li>
+<li class="level1"><a href="#contexts">Contexts</a></li>
+<li class="level2"><a href="#using-icontext">Using IContext</a></li>
+<li class="level2"><a href="#manually-managing-contexts">Manually Managing Contexts</a></li>
+<li class="level1"><a href="#registering-actions">Registering Actions</a></li>
+<li class="level1"><a href="#summary">Summary</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">The Action Manager and Commands</h1>
+<!-- $$$actionmanager.html-description -->
+<div class="descr" id="details">
+<p>Qt Design Studio provides a central options page for managing shortcuts for actions in <b translate="no">Edit</b> &gt; <b translate="no">Preferences</b> &gt; <b translate="no">Environment</b> &gt; <b translate="no">Keyboard</b>. Plugins must tell Qt Design Studio about the actions they provide, so they can appear in the options. Also some actions, like <b translate="no">Edit</b> &gt; <b translate="no">Undo</b>, need to be dispatched to different plugins depending on the context which the user is currently in, for example a text editor, or a UI design component. The <a href="core-actionmanager.html" translate="no">Core::ActionManager</a> and <a href="core-command.html" translate="no">Core::Command</a> classes are used to manage this.</p>
+<p>The action manager contains a list of <a href="core-command.html" translate="no">Core::Command</a> instances. Each command represents an entry in the keyboard shortcut settings.</p>
+<p>A command also manages which actual <a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a> is currently represented by the command, depending on context. For this, a command has its own <a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a> which is accessible via <a href="core-command.html#action" translate="no">Core::Command::action</a>(), and should be used when adding the command to the UI like the menu and tool buttons. This <a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a> delegates its <code translate="no">triggered()</code> and <code translate="no">toggled()</code> signals to the currently active <a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a>.</p>
+<p class="centerAlign"><img src="images/actionmanager.png" alt="" /></p><h2 id="command">Command</h2>
+<p>The class <a href="core-command.html" translate="no">Core::Command</a> represents an action with a shortcut that can be set by the user in the settings, and can be delegated to an actual <a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a> in a plugin, depending on context.</p>
+<p>A command is referred to by its unique ID. Plugins use the ID when registering an action for the command in a specified context with <a href="core-actionmanager.html#registerAction" translate="no">Core::ActionManager::registerAction</a>(). That method returns a <a href="core-command.html" translate="no">Core::Command</a> instance that is then used to further configure the action. If multiple QActions are registered for the same command (the same ID), they must be registered for different contexts. The ID is also used for grouping in the options page: everything up to the first dot in the ID is used as the category, under which to show the command.</p>
+<p>By default, the options page shows the text of the currently active <a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a> in addition to the ID. If that does not fit the purpose well, you can set a different display text with <a href="core-command.html#setDescription" translate="no">Core::Command::setDescription</a>().</p>
+<p>Use the command's <a href="core-command.html#setDefaultKeySequence" translate="no">Core::Command::setDefaultKeySequence</a>() method to set the default key sequence that is used if the user doesn't customize it. The shortcut on the <a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a> that you register with <a href="core-actionmanager.html#registerAction" translate="no">Core::ActionManager::registerAction</a>() is never used, so do not set that.</p>
+<p><a href="core-command.html#action" translate="no">Core::Command::action</a>() returns the action that should be used for UI and user interaction. Add this to menus and tool buttons. You should never set properties like the enabled or visibility state on this <a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a> directly. It is managed by the action manager and reflects the state of the currently active <a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a> in some plugin.</p>
+<p>The <a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a> that you registered in the action manager is for your internal purposes. Use that to connect your logic to the <a href="https://doc.qt.io/qt/qaction.html#triggered" translate="no">QAction::triggered</a>() signal, and to set the enabled and visibility state. <a href="core-command.html#action" translate="no">Core::Command::action</a>() will reflect these changes, if your <a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a> is active, determined by the active context. For performance reasons the action text, tool tip and icon are not updated by default. They are only copied from the first <a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a> registered for the command. Set the corresponding <a href="core-command.html#CommandAttribute-enum" translate="no">Core::Command::CommandAttribute</a> if you need dynamic updates of these properties.</p>
+<h2 id="contexts">Contexts</h2>
+<p>When plugins register a <a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a> for a command, they need to provide a <a href="core-context.html" translate="no">Core::Context</a>. Which of the registered QActions for a command is currently active is decided via an ordered list of current contexts.</p>
+<p>Contexts are collected from multiple sources:</p>
+<ul>
+<li>Global context. This is a context that is always active, with lowest priority order.</li>
+<li>Application focus. Instances of <a href="https://doc.qt.io/qt/qwidget.html" translate="no">QWidget</a> can be associated to a context via <a href="core-icontext.html" translate="no">Core::IContext</a>. All contexts from the current focus widget up the widget hierarchy are added to the current context.</li>
+<li>Manually managed contexts. Contexts can be added and removed manually via ICore::updateAdditionalContexts().</li>
+</ul>
+<h3 id="using-icontext">Using IContext</h3>
+<p><a href="core-icontext.html" translate="no">Core::IContext</a> is a separate object that associates the <a href="https://doc.qt.io/qt/qwidget.html" translate="no">QWidget</a> from <a href="core-icontext.html#widget" translate="no">Core::IContext::widget</a>() with the context <a href="core-icontext.html#context" translate="no">Core::IContext::context</a>().</p>
+<p>To associate a widget with a context, create a <a href="core-icontext.html" translate="no">Core::IContext</a> instance, set the widget and context on it, and register it with <a href="core-icore.html#addContextObject" translate="no">Core::ICore::addContextObject</a>(). Whenever your widget is in the parent chain of the application focus widget, the context that you specified will be active as well.</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">auto</span> contextObj <span class="operator">=</span> <span class="keyword">new</span> Core<span class="operator">::</span>IContext(<span class="keyword">this</span>);
+ contextObj<span class="operator">-</span><span class="operator">&gt;</span>setWidget(myWidget);
+ contextObj<span class="operator">-</span><span class="operator">&gt;</span>setContext(myContext);
+ Core<span class="operator">::</span>ICore<span class="operator">::</span>addContextObject(contextObj);
+</pre>
+<p>IContext instances are automatically unregistered when they are deleted. Use <a href="core-icore.html#removeContextObject" translate="no">Core::ICore::removeContextObject</a>() if you need to unregister an IContext instance manually.</p>
+<p>Some constructs in Qt Design Studio automatically have an associated context, like <a href="core-ieditor.html" translate="no">Core::IEditor</a> and <a href="core-imode.html" translate="no">Core::IMode</a>.</p>
+<h3 id="manually-managing-contexts">Manually Managing Contexts</h3>
+<p>If you want a context to be active or inactive independently of the application focus, you can add and remove contexts manually with <a href="core-icore.html#updateAdditionalContexts" translate="no">Core::ICore::updateAdditionalContexts</a>(), <a href="core-icore.html#addAdditionalContext" translate="no">Core::ICore::addAdditionalContext</a>() and <a href="core-icore.html#removeAdditionalContext" translate="no">Core::ICore::removeAdditionalContext</a>(). Prefer <a href="core-icore.html#updateAdditionalContexts" translate="no">Core::ICore::updateAdditionalContexts</a>() if you need to remove and add contexts, to avoid overhead introduced by removing and adding contexts in separate calls.</p>
+<h2 id="registering-actions">Registering Actions</h2>
+<p>Prefer registering actions in your plugin's <a href="extensionsystem-iplugin.html#initialize-1" translate="no">ExtensionSystem::IPlugin::initialize</a>() method. This way any plugin depending on your plugin has access to these actions.</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">namespace</span> Constants {
+ <span class="keyword">const</span> <span class="type">char</span> ACTION_ID<span class="operator">[</span><span class="operator">]</span> <span class="operator">=</span> <span class="string">&quot;Example.Action&quot;</span>;
+ } <span class="comment">// Constants</span>
+
+ <span class="type">bool</span> ExamplePlugin<span class="operator">::</span>initialize(<span class="keyword">const</span> <span class="type"><a href="https://doc.qt.io/qt/qstringlist.html" translate="no">QStringList</a></span> <span class="operator">&amp;</span>arguments<span class="operator">,</span> <span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> <span class="operator">*</span>errorString)
+ {
+     <span class="comment">// some other setup ...</span>
+
+     <span class="type"><a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a></span> <span class="operator">*</span>action <span class="operator">=</span> <span class="keyword">new</span> <span class="type"><a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a></span>(tr(<span class="string">&quot;Example Action&quot;</span>)<span class="operator">,</span> <span class="keyword">this</span>);
+     Core<span class="operator">::</span>Command <span class="operator">*</span>cmd <span class="operator">=</span> Core<span class="operator">::</span>ActionManager<span class="operator">::</span>registerAction(action<span class="operator">,</span> Constants<span class="operator">::</span>ACTION_ID<span class="operator">,</span>
+                                             Core<span class="operator">::</span>Context(Core<span class="operator">::</span>Constants<span class="operator">::</span>C_GLOBAL));
+     cmd<span class="operator">-</span><span class="operator">&gt;</span>setDefaultKeySequence(<span class="type"><a href="https://doc.qt.io/qt/qkeysequence.html" translate="no">QKeySequence</a></span>(tr(<span class="string">&quot;Ctrl+Alt+Meta+A&quot;</span>)));
+     connect(action<span class="operator">,</span> <span class="operator">&amp;</span><span class="type"><a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a></span><span class="operator">::</span>triggered<span class="operator">,</span> <span class="keyword">this</span><span class="operator">,</span> <span class="operator">[</span><span class="keyword">this</span><span class="operator">]</span> {
+         <span class="comment">// do something</span>
+     });
+
+     <span class="comment">// more setup ...</span>
+
+     <span class="keyword">return</span> <span class="keyword">true</span>;
+ }
+</pre>
+<p>This snippet sets up a sample action with the ID <code translate="no">ACTION_ID</code> that is always active (specified by the context <code translate="no">Core::Constants::C_GLOBAL</code>), and gives it the keyboard shortcut <code translate="no">Ctrl+Alt+Meta+A</code>. The <code translate="no">QAction *action</code> that is registered for the global context for the action is owned by the plugin. Connect to this <a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a>'s triggered signal, and manage the action's state by calling the corresponding methods on this <a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a> instance.</p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Use <a href="core-actionmanager.html#registerAction" translate="no">Core::ActionManager::registerAction</a>() to register your own <a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a> for a command with the specified ID.</li>
+<li>If multiple QActions are registered for the same command, they need to be registered for different contexts.</li>
+<li>Use <a href="core-command.html#setDefaultKeySequence" translate="no">Core::Command::setDefaultKeySequence</a>(), do <i>not</i> use <a href="https://doc.qt.io/qt/qaction.html#setShortcut" translate="no">QAction::setShortcut</a>().</li>
+<li>Use <a href="core-command.html#action" translate="no">Core::Command::action</a>() for user-facing purposes, such as menus and tool buttons.</li>
+<li>Use your own <a href="https://doc.qt.io/qt/qaction.html" translate="no">QAction</a> to set properties like text and icon, and to connect your application logic.</li>
+</ul>
+</div>
+<!-- @@@actionmanager.html -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

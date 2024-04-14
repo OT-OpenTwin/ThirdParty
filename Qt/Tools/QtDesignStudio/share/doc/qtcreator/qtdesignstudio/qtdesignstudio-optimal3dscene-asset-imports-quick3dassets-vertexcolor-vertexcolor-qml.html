@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- Optimal3DScene.qdoc -->
+  <meta name="description" content="Contains project files for the Optimal 3D Scene.">
+  <title>Optimal 3D Scene | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="studioexamples.html" translate="no">Examples</a></li>
+<li>Optimal 3D Scene</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<h1 class="title">Optimal 3D Scene</h1>
+<pre class="qml" translate="no">
+ <span class="comment">// Copyright (C) 2020 The Qt Company Ltd.</span>
+ <span class="comment">// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause</span>
+
+ import QtQuick 2.15
+ import QtQuick3D 1.15
+
+ <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-node.html" translate="no">Node</a></span> {
+     <span class="name">id</span>: <span class="name">rootNode</span>
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-model.html" translate="no">Model</a></span> {
+         <span class="name">id</span>: <span class="name">roomBaseLow_005</span>
+         <span class="name">eulerRotation</span>.x: -<span class="number">90</span>
+         <span class="name">scale</span>.x: <span class="number">800</span>
+         <span class="name">scale</span>.y: <span class="number">800</span>
+         <span class="name">scale</span>.z: <span class="number">800</span>
+         <span class="name">source</span>: <span class="string">&quot;meshes/roomBaseLow_005.mesh&quot;</span>
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-defaultmaterial.html" translate="no">DefaultMaterial</a></span> {
+             <span class="name">id</span>: <span class="name">vert_material</span>
+             <span class="name">diffuseColor</span>: <span class="string">&quot;#ffa3a3a3&quot;</span>
+         }
+         <span class="name">materials</span>: [
+             <span class="name">vert_material</span>
+         ]
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-pointlight.html" translate="no">PointLight</a></span> {
+         <span class="name">id</span>: <span class="name">point</span>
+         <span class="name">x</span>: <span class="number">2355.4</span>
+         <span class="name">y</span>: -<span class="number">1009.92</span>
+         <span class="name">z</span>: <span class="number">2002.04</span>
+         <span class="name">eulerRotation</span>.x: <span class="number">90</span>
+         <span class="name">quadraticFade</span>: <span class="number">3.2e-07</span>
+     }
+ }
+
+ <span class="comment">/*##^##
+ Designer {
+     D{i:0;active3dScene:0}
+ }
+ ##^##*/</span>
+</pre>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- ilocatorfilter.cpp -->
+  <meta name="description" content="The ILocatorFilter class adds a locator filter.">
+  <title>ILocatorFilter Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>ILocatorFilter</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#public-slots">Public Slots</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#static-protected-members">Static Protected Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">ILocatorFilter Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::ILocatorFilter</span>
+<!-- $$$ILocatorFilter-brief -->
+<p>The ILocatorFilter class adds a locator filter. <a href="#details">More...</a></p>
+<!-- @@@ILocatorFilter -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/locator/ilocatorfilter.h&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="core-ilocatorfilter-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> enum class </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#MatchLevel-enum" translate="no">MatchLevel</a></b> { Best, Better, Good, Normal, Count }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#Priority-enum" translate="no">Priority</a></b> { Highest, High, Medium, Low }</td></tr>
+</table></div>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#ILocatorFilter" translate="no">ILocatorFilter</a></b>(QObject *<i>parent</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Id </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#actionId" translate="no">actionId</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#description" translate="no">description</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#displayName" translate="no">displayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Id </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#id" translate="no">id</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#isConfigurable" translate="no">isConfigurable</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#isEnabled" translate="no">isEnabled</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#isHidden" translate="no">isHidden</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#isIncludedByDefault" translate="no">isIncludedByDefault</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#openConfigDialog" translate="no">openConfigDialog</a></b>(QWidget *<i>parent</i>, bool &amp;<i>needsRefresh</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::ILocatorFilter::Priority </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#priority" translate="no">priority</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#restoreState" translate="no">restoreState</a></b>(const QByteArray &amp;<i>state</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QByteArray </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#saveState" translate="no">saveState</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#setDefaultIncludedByDefault" translate="no">setDefaultIncludedByDefault</a></b>(bool <i>includedByDefault</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#setDefaultShortcutString" translate="no">setDefaultShortcutString</a></b>(const QString &amp;<i>shortcut</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#setDescription" translate="no">setDescription</a></b>(const QString &amp;<i>description</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#setDisplayName" translate="no">setDisplayName</a></b>(const QString &amp;<i>displayString</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#setIncludedByDefault" translate="no">setIncludedByDefault</a></b>(bool <i>includedByDefault</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#setShortcutString" translate="no">setShortcutString</a></b>(const QString &amp;<i>shortcut</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#shortcutString" translate="no">shortcutString</a></b>() const</td></tr>
+</table></div>
+<h2 id="public-slots">Public Slots</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#setEnabled" translate="no">setEnabled</a></b>(bool <i>enabled</i>)</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Qt::CaseSensitivity </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#caseSensitivity" translate="no">caseSensitivity</a></b>(const QString &amp;<i>str</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QRegularExpression </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#createRegExp" translate="no">createRegExp</a></b>(const QString &amp;<i>text</i>, Qt::CaseSensitivity <i>caseSensitivity</i> = Qt::CaseInsensitive, bool <i>multiWord</i> = false)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> LocatorFilterEntry::HighlightInfo </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#highlightInfo" translate="no">highlightInfo</a></b>(const QRegularExpressionMatch &amp;<i>match</i>, LocatorFilterEntry::HighlightInfo::DataType <i>dataType</i> = LocatorFilterEntry::HighlightInfo::DisplayName)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#msgConfigureDialogTitle" translate="no">msgConfigureDialogTitle</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#msgIncludeByDefault" translate="no">msgIncludeByDefault</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#msgIncludeByDefaultToolTip" translate="no">msgIncludeByDefaultToolTip</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#msgPrefixLabel" translate="no">msgPrefixLabel</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#msgPrefixToolTip" translate="no">msgPrefixToolTip</a></b>()</td></tr>
+</table></div>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#openConfigDialog-1" translate="no">openConfigDialog</a></b>(QWidget *<i>parent</i>, QWidget *<i>additionalWidget</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> std::optional&lt;Tasking::GroupItem&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#refreshRecipe" translate="no">refreshRecipe</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#restoreState-1" translate="no">restoreState</a></b>(const QJsonObject &amp;<i>object</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#saveState-1" translate="no">saveState</a></b>(QJsonObject &amp;<i>object</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#setConfigurable" translate="no">setConfigurable</a></b>(bool <i>configurable</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#setHidden" translate="no">setHidden</a></b>(bool <i>hidden</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#setId" translate="no">setId</a></b>(Utils::Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#setPriority" translate="no">setPriority</a></b>(Core::ILocatorFilter::Priority <i>priority</i>)</td></tr>
+</table></div>
+<h2 id="static-protected-members">Static Protected Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-ilocatorfilter.html#isOldSetting" translate="no">isOldSetting</a></b>(const QByteArray &amp;<i>state</i>)</td></tr>
+</table></div>
+<!-- $$$ILocatorFilter-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The filter is added to <b translate="no">Tools</b> &gt; <b translate="no">Locate</b>.</p>
+</div>
+<!-- @@@ILocatorFilter -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$MatchLevel$$$Best$$$Better$$$Good$$$Normal$$$Count -->
+<h3 class="fn" translate="no" id="MatchLevel-enum">enum class ILocatorFilter::<span class="name">MatchLevel</span></h3>
+<p>This enum value holds the level for ordering the results based on how well they match the search criteria.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Core::ILocatorFilter::MatchLevel::Best</code></td><td class="topAlign tblval"><code translate="no">0</code></td><td class="topAlign">The result is the best match for the regular expression.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::ILocatorFilter::MatchLevel::Better</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">&nbsp;</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::ILocatorFilter::MatchLevel::Good</code></td><td class="topAlign tblval"><code translate="no">2</code></td><td class="topAlign">&nbsp;</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::ILocatorFilter::MatchLevel::Normal</code></td><td class="topAlign tblval"><code translate="no">3</code></td><td class="topAlign">&nbsp;</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::ILocatorFilter::MatchLevel::Count</code></td><td class="topAlign tblval"><code translate="no">4</code></td><td class="topAlign">The result has the highest number of matches for the regular expression.</td></tr>
+</table></div>
+<!-- @@@MatchLevel -->
+<!-- $$$Priority$$$Highest$$$High$$$Medium$$$Low -->
+<h3 class="fn" translate="no" id="Priority-enum">enum ILocatorFilter::<span class="name">Priority</span></h3>
+<p>This enum value holds the priority that is used for ordering the results when multiple filters are used.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Core::ILocatorFilter::Highest</code></td><td class="topAlign tblval"><code translate="no">0</code></td><td class="topAlign">The results for this filter are placed above the results for filters that have other priorities.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::ILocatorFilter::High</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">&nbsp;</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::ILocatorFilter::Medium</code></td><td class="topAlign tblval"><code translate="no">2</code></td><td class="topAlign">The default value.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::ILocatorFilter::Low</code></td><td class="topAlign tblval"><code translate="no">3</code></td><td class="topAlign">The results for this filter are placed below the results for filters that have other priorities.</td></tr>
+</table></div>
+<!-- @@@Priority -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$ILocatorFilter[overload1]$$$ILocatorFilterQObject* -->
+<h3 class="fn" translate="no" id="ILocatorFilter">ILocatorFilter::<span class="name">ILocatorFilter</span>(<span class="type">QObject</span> *<i>parent</i> = nullptr)</h3>
+<p>Constructs a locator filter with <i translate="no">parent</i>. Call from subclasses.</p>
+<!-- @@@ILocatorFilter -->
+<!-- $$$actionId[overload1]$$$actionId -->
+<h3 class="fn" translate="no" id="actionId"><span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> ILocatorFilter::<span class="name">actionId</span>() const</h3>
+<p>Returns the filter's action ID.</p>
+<!-- @@@actionId -->
+<!-- $$$caseSensitivity[overload1]$$$caseSensitivityconstQString& -->
+<h3 class="fn" translate="no" id="caseSensitivity"><code translate="no">[static] </code><span class="type">Qt::CaseSensitivity</span> ILocatorFilter::<span class="name">caseSensitivity</span>(const <span class="type">QString</span> &amp;<i>str</i>)</h3>
+<p>Returns whether a case sensitive or case insensitive search should be performed for the search term <i translate="no">str</i>.</p>
+<!-- @@@caseSensitivity -->
+<!-- $$$createRegExp[overload1]$$$createRegExpconstQString&Qt::CaseSensitivitybool -->
+<h3 class="fn" translate="no" id="createRegExp"><code translate="no">[static] </code><span class="type">QRegularExpression</span> ILocatorFilter::<span class="name">createRegExp</span>(const <span class="type">QString</span> &amp;<i>text</i>, <span class="type">Qt::CaseSensitivity</span> <i>caseSensitivity</i> = Qt::CaseInsensitive, <span class="type">bool</span> <i>multiWord</i> = false)</h3>
+<p>Creates the search term <i translate="no">text</i> as a regular expression with case sensitivity set to <i translate="no">caseSensitivity</i>. Pass true to <i translate="no">multiWord</i> if the pattern is expected to contain spaces.</p>
+<!-- @@@createRegExp -->
+<!-- $$$description[overload1]$$$description -->
+<h3 class="fn" translate="no" id="description"><span class="type">QString</span> ILocatorFilter::<span class="name">description</span>() const</h3>
+<p>Returns a longer, human-readable description of what the filter does.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#setDescription" translate="no">setDescription</a>().</p>
+<!-- @@@description -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" translate="no" id="displayName"><span class="type">QString</span> ILocatorFilter::<span class="name">displayName</span>() const</h3>
+<p>Returns the filter's translated display name.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#setDisplayName" translate="no">setDisplayName</a>().</p>
+<!-- @@@displayName -->
+<!-- $$$highlightInfo[overload1]$$$highlightInfoconstQRegularExpressionMatch&LocatorFilterEntry::HighlightInfo::DataType -->
+<h3 class="fn" translate="no" id="highlightInfo"><code translate="no">[static] </code><span class="type">LocatorFilterEntry::HighlightInfo</span> ILocatorFilter::<span class="name">highlightInfo</span>(const <span class="type">QRegularExpressionMatch</span> &amp;<i>match</i>, <span class="type">LocatorFilterEntry::HighlightInfo::DataType</span> <i>dataType</i> = LocatorFilterEntry::HighlightInfo::DisplayName)</h3>
+<p>Returns information for highlighting the results of matching the regular expression, specified by <i translate="no">match</i>, for the data of the type <i translate="no">dataType</i>.</p>
+<!-- @@@highlightInfo -->
+<!-- $$$id[overload1]$$$id -->
+<h3 class="fn" translate="no" id="id"><span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> ILocatorFilter::<span class="name">id</span>() const</h3>
+<p>Returns the filter's unique ID.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#setId" translate="no">setId</a>().</p>
+<!-- @@@id -->
+<!-- $$$isConfigurable[overload1]$$$isConfigurable -->
+<h3 class="fn" translate="no" id="isConfigurable"><span class="type">bool</span> ILocatorFilter::<span class="name">isConfigurable</span>() const</h3>
+<p>Returns whether a configuration dialog is available for this filter.</p>
+<p>The default is <code translate="no">true</code>.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#setConfigurable" translate="no">setConfigurable</a>().</p>
+<!-- @@@isConfigurable -->
+<!-- $$$isEnabled[overload1]$$$isEnabled -->
+<h3 class="fn" translate="no" id="isEnabled"><span class="type">bool</span> ILocatorFilter::<span class="name">isEnabled</span>() const</h3>
+<p>Returns whether the filter is currently available. Disabled filters are neither visible in menus nor included in searches, even when the search is prefixed with their shortcut string.</p>
+<p>The default is <code translate="no">true</code>.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#setEnabled" translate="no">setEnabled</a>().</p>
+<!-- @@@isEnabled -->
+<!-- $$$isHidden[overload1]$$$isHidden -->
+<h3 class="fn" translate="no" id="isHidden"><span class="type">bool</span> ILocatorFilter::<span class="name">isHidden</span>() const</h3>
+<p>Returns whether the filter should be hidden in the <b translate="no">Locator filters</b> filter, menus, and locator settings.</p>
+<p>The default is <code translate="no">false</code>.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#setHidden" translate="no">setHidden</a>().</p>
+<!-- @@@isHidden -->
+<!-- $$$isIncludedByDefault[overload1]$$$isIncludedByDefault -->
+<h3 class="fn" translate="no" id="isIncludedByDefault"><span class="type">bool</span> ILocatorFilter::<span class="name">isIncludedByDefault</span>() const</h3>
+<p>Returns whether using the shortcut string is required to use this filter. The default is <code translate="no">false</code>.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#shortcutString" translate="no">shortcutString</a>() and <a href="core-ilocatorfilter.html#setIncludedByDefault" translate="no">setIncludedByDefault</a>().</p>
+<!-- @@@isIncludedByDefault -->
+<!-- $$$isOldSetting[overload1]$$$isOldSettingconstQByteArray& -->
+<h3 class="fn" translate="no" id="isOldSetting"><code translate="no">[static protected] </code><span class="type">bool</span> ILocatorFilter::<span class="name">isOldSetting</span>(const <span class="type">QByteArray</span> &amp;<i>state</i>)</h3>
+<p>Returns if <i translate="no">state</i> must be restored via pre-4.15 settings reading.</p>
+<!-- @@@isOldSetting -->
+<!-- $$$msgConfigureDialogTitle[overload1]$$$msgConfigureDialogTitle -->
+<h3 class="fn" translate="no" id="msgConfigureDialogTitle"><code translate="no">[static] </code><span class="type">QString</span> ILocatorFilter::<span class="name">msgConfigureDialogTitle</span>()</h3>
+<p>Specifies a title for configuration dialogs.</p>
+<!-- @@@msgConfigureDialogTitle -->
+<!-- $$$msgIncludeByDefault[overload1]$$$msgIncludeByDefault -->
+<h3 class="fn" translate="no" id="msgIncludeByDefault"><code translate="no">[static] </code><span class="type">QString</span> ILocatorFilter::<span class="name">msgIncludeByDefault</span>()</h3>
+<p>Specifies a label for the include by default input field in configuration dialogs.</p>
+<!-- @@@msgIncludeByDefault -->
+<!-- $$$msgIncludeByDefaultToolTip[overload1]$$$msgIncludeByDefaultToolTip -->
+<h3 class="fn" translate="no" id="msgIncludeByDefaultToolTip"><code translate="no">[static] </code><span class="type">QString</span> ILocatorFilter::<span class="name">msgIncludeByDefaultToolTip</span>()</h3>
+<p>Specifies a tooltip for the include by default input field in configuration dialogs.</p>
+<!-- @@@msgIncludeByDefaultToolTip -->
+<!-- $$$msgPrefixLabel[overload1]$$$msgPrefixLabel -->
+<h3 class="fn" translate="no" id="msgPrefixLabel"><code translate="no">[static] </code><span class="type">QString</span> ILocatorFilter::<span class="name">msgPrefixLabel</span>()</h3>
+<p>Specifies a label for the prefix input field in configuration dialogs.</p>
+<!-- @@@msgPrefixLabel -->
+<!-- $$$msgPrefixToolTip[overload1]$$$msgPrefixToolTip -->
+<h3 class="fn" translate="no" id="msgPrefixToolTip"><code translate="no">[static] </code><span class="type">QString</span> ILocatorFilter::<span class="name">msgPrefixToolTip</span>()</h3>
+<p>Specifies a tooltip for the prefix input field in configuration dialogs.</p>
+<!-- @@@msgPrefixToolTip -->
+<!-- $$$openConfigDialog[overload1]$$$openConfigDialogQWidget*bool& -->
+<h3 class="fn" translate="no" id="openConfigDialog"><code translate="no">[virtual] </code><span class="type">bool</span> ILocatorFilter::<span class="name">openConfigDialog</span>(<span class="type">QWidget</span> *<i>parent</i>, <span class="type">bool</span> &amp;<i>needsRefresh</i>)</h3>
+<p>Opens a dialog for the <i translate="no">parent</i> widget that allows the user to configure various aspects of the filter. Called when the user requests to configure the filter.</p>
+<p>Set <i translate="no">needsRefresh</i> to <code translate="no">true</code>, if a refresh should be done after closing the dialog. Return <code translate="no">false</code> if the user canceled the dialog.</p>
+<p>The default implementation allows changing the shortcut and whether the filter is included by default.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#refreshRecipe" translate="no">refreshRecipe</a>().</p>
+<!-- @@@openConfigDialog -->
+<!-- $$$openConfigDialog$$$openConfigDialogQWidget*QWidget* -->
+<h3 class="fn" translate="no" id="openConfigDialog-1"><code translate="no">[protected] </code><span class="type">bool</span> ILocatorFilter::<span class="name">openConfigDialog</span>(<span class="type">QWidget</span> *<i>parent</i>, <span class="type">QWidget</span> *<i>additionalWidget</i>)</h3>
+<p>Shows the standard configuration dialog with options for the prefix string and for <a href="core-ilocatorfilter.html#isIncludedByDefault" translate="no">isIncludedByDefault</a>(). The <i translate="no">additionalWidget</i> is added at the top. Ownership of <i translate="no">additionalWidget</i> stays with the caller, but its parent is reset to <code translate="no">nullptr</code>.</p>
+<p>Returns <code translate="no">false</code> if the user canceled the dialog.</p>
+<!-- @@@openConfigDialog -->
+<!-- $$$priority[overload1]$$$priority -->
+<h3 class="fn" translate="no" id="priority"><span class="type"><a href="core-ilocatorfilter.html#Priority-enum" translate="no">Core::ILocatorFilter::Priority</a></span> ILocatorFilter::<span class="name">priority</span>() const</h3>
+<p>Returns the priority that is used for ordering the results when multiple filters are used.</p>
+<p>The default is <a href="core-ilocatorfilter.html#Priority-enum" translate="no">ILocatorFilter::Medium</a>.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#setPriority" translate="no">setPriority</a>().</p>
+<!-- @@@priority -->
+<!-- $$$refreshRecipe[overload1]$$$refreshRecipe -->
+<h3 class="fn" translate="no" id="refreshRecipe"><code translate="no">[protected] </code><span class="type">std::optional</span>&lt;<span class="type"><a href="tasking-groupitem.html" translate="no">Tasking::GroupItem</a></span>&gt; ILocatorFilter::<span class="name">refreshRecipe</span>() const</h3>
+<p>Returns the refresh recipe for refreshing cached data. By default, the locator filter has no recipe set, so that it won't be refreshed.</p>
+<!-- @@@refreshRecipe -->
+<!-- $$$restoreState[overload1]$$$restoreStateconstQByteArray& -->
+<h3 class="fn" translate="no" id="restoreState"><code translate="no">[virtual] </code><span class="type">void</span> ILocatorFilter::<span class="name">restoreState</span>(const <span class="type">QByteArray</span> &amp;<i>state</i>)</h3>
+<p>Restores the <i translate="no">state</i> of the filter from data previously created by <a href="core-ilocatorfilter.html#saveState" translate="no">saveState</a>().</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#saveState" translate="no">saveState</a>().</p>
+<!-- @@@restoreState -->
+<!-- $$$restoreState$$$restoreStateconstQJsonObject& -->
+<h3 class="fn" translate="no" id="restoreState-1"><code translate="no">[virtual protected] </code><span class="type">void</span> ILocatorFilter::<span class="name">restoreState</span>(const <span class="type">QJsonObject</span> &amp;<i>object</i>)</h3>
+<p>Reads the filter settings and state from the JSON <i translate="no">object</i></p>
+<p>The default implementation does nothing.</p>
+<p>Implementations should read their custom settings from the <i translate="no">object</i>, resetting any missing setting to its default value.</p>
+<!-- @@@restoreState -->
+<!-- $$$saveState[overload1]$$$saveState -->
+<h3 class="fn" translate="no" id="saveState"><code translate="no">[virtual] </code><span class="type">QByteArray</span> ILocatorFilter::<span class="name">saveState</span>() const</h3>
+<p>Returns data that can be used to restore the settings for this filter (for example at startup). By default, adds the base settings (shortcut string, included by default) and calls saveState() with a JSON object where subclasses should write their custom settings.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#restoreState" translate="no">restoreState</a>().</p>
+<!-- @@@saveState -->
+<!-- $$$saveState$$$saveStateQJsonObject& -->
+<h3 class="fn" translate="no" id="saveState-1"><code translate="no">[virtual protected] </code><span class="type">void</span> ILocatorFilter::<span class="name">saveState</span>(<span class="type">QJsonObject</span> &amp;<i>object</i>) const</h3>
+<p>Saves the filter settings and state to the JSON <i translate="no">object</i>.</p>
+<p>The default implementation does nothing.</p>
+<p>Implementations should write key-value pairs to the <i translate="no">object</i> for their custom settings that changed from the default. Default values should never be saved.</p>
+<!-- @@@saveState -->
+<!-- $$$setConfigurable[overload1]$$$setConfigurablebool -->
+<h3 class="fn" translate="no" id="setConfigurable"><code translate="no">[protected] </code><span class="type">void</span> ILocatorFilter::<span class="name">setConfigurable</span>(<span class="type">bool</span> <i>configurable</i>)</h3>
+<p>Sets whether the filter provides a configuration dialog to <i translate="no">configurable</i>. Most filters should at least provide the default dialog.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#isConfigurable" translate="no">isConfigurable</a>().</p>
+<!-- @@@setConfigurable -->
+<!-- $$$setDefaultIncludedByDefault[overload1]$$$setDefaultIncludedByDefaultbool -->
+<h3 class="fn" translate="no" id="setDefaultIncludedByDefault"><span class="type">void</span> ILocatorFilter::<span class="name">setDefaultIncludedByDefault</span>(<span class="type">bool</span> <i>includedByDefault</i>)</h3>
+<p>Sets the default setting for whether using the shortcut string is required to use this filter to <i translate="no">includedByDefault</i>.</p>
+<p>Call for example from the constructor of subclasses.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#isIncludedByDefault" translate="no">isIncludedByDefault</a>().</p>
+<!-- @@@setDefaultIncludedByDefault -->
+<!-- $$$setDefaultShortcutString[overload1]$$$setDefaultShortcutStringconstQString& -->
+<h3 class="fn" translate="no" id="setDefaultShortcutString"><span class="type">void</span> ILocatorFilter::<span class="name">setDefaultShortcutString</span>(const <span class="type">QString</span> &amp;<i>shortcut</i>)</h3>
+<p>Sets the default <i translate="no">shortcut</i> string that can be used to explicitly choose this filter in the locator input field. Call for example from the constructor of subclasses.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#shortcutString" translate="no">shortcutString</a>().</p>
+<!-- @@@setDefaultShortcutString -->
+<!-- $$$setDescription[overload1]$$$setDescriptionconstQString& -->
+<h3 class="fn" translate="no" id="setDescription"><span class="type">void</span> ILocatorFilter::<span class="name">setDescription</span>(const <span class="type">QString</span> &amp;<i>description</i>)</h3>
+<p>Sets the longer, human-readable <i translate="no">description</i> of what the filter does.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#description" translate="no">description</a>().</p>
+<!-- @@@setDescription -->
+<!-- $$$setDisplayName[overload1]$$$setDisplayNameconstQString& -->
+<h3 class="fn" translate="no" id="setDisplayName"><span class="type">void</span> ILocatorFilter::<span class="name">setDisplayName</span>(const <span class="type">QString</span> &amp;<i>displayString</i>)</h3>
+<p>Sets the translated display name of this filter to <i translate="no">displayString</i>.</p>
+<p>Subclasses must set the display name in their constructor.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#displayName" translate="no">displayName</a>().</p>
+<!-- @@@setDisplayName -->
+<!-- $$$setEnabled[overload1]$$$setEnabledbool -->
+<h3 class="fn" translate="no" id="setEnabled"><code translate="no">[slot] </code><span class="type">void</span> ILocatorFilter::<span class="name">setEnabled</span>(<span class="type">bool</span> <i>enabled</i>)</h3>
+<p>Sets whether the filter is currently available to <i translate="no">enabled</i>.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#isEnabled" translate="no">isEnabled</a>().</p>
+<!-- @@@setEnabled -->
+<!-- $$$setHidden[overload1]$$$setHiddenbool -->
+<h3 class="fn" translate="no" id="setHidden"><code translate="no">[protected] </code><span class="type">void</span> ILocatorFilter::<span class="name">setHidden</span>(<span class="type">bool</span> <i>hidden</i>)</h3>
+<p>Sets the filter in the <b translate="no">Locator filters</b> filter, menus, and locator settings to <i translate="no">hidden</i>. Call in the constructor of subclasses.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#isHidden" translate="no">isHidden</a>().</p>
+<!-- @@@setHidden -->
+<!-- $$$setId[overload1]$$$setIdUtils::Id -->
+<h3 class="fn" translate="no" id="setId"><code translate="no">[protected] </code><span class="type">void</span> ILocatorFilter::<span class="name">setId</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>id</i>)</h3>
+<p>Sets the filter's unique <i translate="no">id</i>. Subclasses must set the ID in their constructor.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#id" translate="no">id</a>().</p>
+<!-- @@@setId -->
+<!-- $$$setIncludedByDefault[overload1]$$$setIncludedByDefaultbool -->
+<h3 class="fn" translate="no" id="setIncludedByDefault"><span class="type">void</span> ILocatorFilter::<span class="name">setIncludedByDefault</span>(<span class="type">bool</span> <i>includedByDefault</i>)</h3>
+<p>Sets whether using the shortcut string is required to use this filter to <i translate="no">includedByDefault</i>. Use <a href="core-ilocatorfilter.html#setDefaultIncludedByDefault" translate="no">setDefaultIncludedByDefault</a>() if you want to set the default value instead.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#isIncludedByDefault" translate="no">isIncludedByDefault</a>() and <a href="core-ilocatorfilter.html#setDefaultIncludedByDefault" translate="no">setDefaultIncludedByDefault</a>().</p>
+<!-- @@@setIncludedByDefault -->
+<!-- $$$setPriority[overload1]$$$setPriorityCore::ILocatorFilter::Priority -->
+<h3 class="fn" translate="no" id="setPriority"><code translate="no">[protected] </code><span class="type">void</span> ILocatorFilter::<span class="name">setPriority</span>(<span class="type"><a href="core-ilocatorfilter.html#Priority-enum" translate="no">Core::ILocatorFilter::Priority</a></span> <i>priority</i>)</h3>
+<p>Sets the <i translate="no">priority</i> of results of this filter in the result list.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#priority" translate="no">priority</a>().</p>
+<!-- @@@setPriority -->
+<!-- $$$setShortcutString[overload1]$$$setShortcutStringconstQString& -->
+<h3 class="fn" translate="no" id="setShortcutString"><span class="type">void</span> ILocatorFilter::<span class="name">setShortcutString</span>(const <span class="type">QString</span> &amp;<i>shortcut</i>)</h3>
+<p>Sets the current shortcut string of the filter to <i translate="no">shortcut</i>. Use <a href="core-ilocatorfilter.html#setDefaultShortcutString" translate="no">setDefaultShortcutString</a>() if you want to set the default shortcut string instead.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#shortcutString" translate="no">shortcutString</a>() and <a href="core-ilocatorfilter.html#setDefaultShortcutString" translate="no">setDefaultShortcutString</a>().</p>
+<!-- @@@setShortcutString -->
+<!-- $$$shortcutString[overload1]$$$shortcutString -->
+<h3 class="fn" translate="no" id="shortcutString"><span class="type">QString</span> ILocatorFilter::<span class="name">shortcutString</span>() const</h3>
+<p>Specifies a shortcut string that can be used to explicitly choose this filter in the locator input field by preceding the search term with the shortcut string and a whitespace.</p>
+<p>The default value is an empty string.</p>
+<p><b>See also </b><a href="core-ilocatorfilter.html#setShortcutString" translate="no">setShortcutString</a>().</p>
+<!-- @@@shortcutString -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
 <!-- creator-vcs-perforce.qdoc -->
-  <title>Using Perforce | Qt Creator Manual</title>
+  <meta name="description" content="Additional Perforce functions.">
+  <title>Perforce | Qt Creator Manual</title>
   <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
   <script type="text/javascript">
     document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
@@ -22,56 +22,54 @@
 </head>
 <body>
 <div class="header" id="qtdocheader">
-  <div class="main">
+    <div class="main">
     <div class="main-rounded">
-      <div class="navigationbar">
-        <table><tr>
-<td ><a href="index.html">Qt Creator Manual</a></td><td >Using Perforce</td></tr></table><table class="buildversion"><tr>
-<td id="buildversion" width="100%" align="right"><a href="index.html">Qt Creator Manual 4.9&#x2e;1</a></td>
-        </tr></table>
-      </div>
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Perforce</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
     </div>
+</div>
 <div class="content">
 <div class="line">
 <div class="content mainContent">
-  <link rel="prev" href="creator-vcs-mercurial.html" />
-  <link rel="next" href="creator-vcs-subversion.html" />
+  <link rel="prev" href="creator-reference.html" />
 <p class="naviNextPrevious headerNavi">
-<a class="prevPage" href="creator-vcs-mercurial.html">Using Mercurial</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-vcs-subversion.html">Using Subversion</a>
-</p><p/>
+<a class="prevPage" href="creator-reference.html">Reference</a>
+</p>
 <div class="sidebar">
 <div class="toc">
-<h3><a name="toc">Contents</a></h3>
+<h3 id="toc">Contents</h3>
 <ul>
 <li class="level1"><a href="#configuring-perforce">Configuring Perforce</a></li>
 <li class="level1"><a href="#editing-files">Editing Files</a></li>
 </ul>
 </div>
 <div class="sidebar-content" id="sidebar-content"></div></div>
-<h1 class="title">Using Perforce</h1>
-<span class="subtitle"></span>
+<h1 class="title">Perforce</h1>
 <!-- $$$creator-vcs-perforce.html-description -->
-<div class="descr"> <a name="details"></a>
+<div class="descr" id="details">
 <p>Perforce is a fast software configuration management system developed by Perforce Software.</p>
-<p>Since Qt Creator 4.9, the Perforce plugin is disabled by default. To enable it, select <b>Help</b> &gt; <b>About Plugins</b> &gt; <b>Version Control</b> &gt; <b>Perforce</b>, and then restart Qt Creator.</p>
-<a name="configuring-perforce"></a>
-<h2 id="configuring-perforce">Configuring Perforce</h2>
-<p>In the Perforce options, you can specify workspace details: <b>P4 user</b>, <b>P4 client</b>, and <b>P4 port</b>. To specify the details individually for several projects, use configuration files instead. Create a <code>p4config.txt</code> configuration file for each project in the top level project directory.</p>
-<a name="editing-files"></a>
-<h2 id="editing-files">Editing Files</h2>
-<p>In addition to the standard version control system functions described in <a href="creator-version-control.html#using-common-functions">Using Common Functions</a>, you can select <b>Tools</b> &gt; <b>Perforce</b> &gt; <b>Edit File</b> to open a file for editing within the client workspace. By default, files are automatically opened for editing. To disable this feature, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Version Control</b> &gt; <b>Perforce</b>, and then deselect the <b>Automatically open files when editing</b> check box.</p>
-<p>To list files that are open for editing, select <b>Tools</b> &gt; <b>Perforce</b> &gt; <b>Opened</b>.</p>
-<p>To group files for commit, select <b>Tools</b> &gt; <b>Perforce</b> &gt; <b>Pending Changes</b>.</p>
-<p>To view information about changelists and the files in them, select <b>Tools</b> &gt; <b>Perforce</b> &gt; <b>Describe</b>.</p>
-<p>By default, you are prompted to confirm that you want to submit changes. To suppress the prompt, select <b>Tools</b> &gt; <b>Options</b> &gt; <b>Version Control</b> &gt; <b>Perforce</b>, and then deselect the <b>Prompt on submit</b> check box.</p>
+<div class="admonition note">
+<p><b>Note: </b>Enable the Perforce plugin to use it.</p>
 </div>
+<h2 id="configuring-perforce">Configuring Perforce</h2>
+<p>To set Perforce preferences, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Version Control</b> &gt; <b translate="no">Perforce</b>:</p>
+<p class="centerAlign"><img src="images/qtcreator-preferences-vcs-perforce.webp" alt="{Perforce preferences}" /></p><p>In <b translate="no">P4 command</b>, set the path to the command-line client executable.</p>
+<p>Set workspace details in <b translate="no">P4 user</b>, <b translate="no">P4 client</b>, and <b translate="no">P4 port</b>.</p>
+<p>To specify the details individually for several projects, use configuration files instead. Create a <code translate="no">p4config.txt</code> configuration file for each project in the top level project directory, and run <code translate="no">p4 set P4CONFIG=p4config.txt</code> once. You must deselect the <b translate="no">Environment Variables</b> check box.</p>
+<h2 id="editing-files">Editing Files</h2>
+<p>In addition to the standard version control system functions described in <a href="creator-how-to-use-common-vcs-functions.html" translate="no">Use common VCS Functions</a>, you can select <b translate="no">Tools</b> &gt; <b translate="no">Perforce</b> &gt; <b translate="no">Edit File</b> to open a file for editing within the client workspace. By default, files are automatically opened for editing. To disable this feature, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Version Control</b> &gt; <b translate="no">Perforce</b>, and then deselect the <b translate="no">Automatically open files when editing</b> check box.</p>
+<p>To list files that are open for editing, select <b translate="no">Tools</b> &gt; <b translate="no">Perforce</b> &gt; <b translate="no">Opened</b>.</p>
+<p>To group files for commit, select <b translate="no">Tools</b> &gt; <b translate="no">Perforce</b> &gt; <b translate="no">Pending Changes</b>.</p>
+<p>To view information about change lists and the files in them, select <b translate="no">Tools</b> &gt; <b translate="no">Perforce</b> &gt; <b translate="no">Describe</b>.</p>
+</div>
+<p><b>See also </b><a href="creator-how-to-enable-plugins.html" translate="no">Enable and disable plugins</a>, <a href="creator-how-to-set-up-vcs.html" translate="no">Set up version control systems</a>, <a href="creator-how-to-use-common-vcs-functions.html" translate="no">Use common VCS functions</a>, and <a href="creator-version-control.html" translate="no">Version Control Systems</a>.</p>
 <!-- @@@creator-vcs-perforce.html -->
 <p class="naviNextPrevious footerNavi">
-<a class="prevPage" href="creator-vcs-mercurial.html">Using Mercurial</a>
-<span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-vcs-subversion.html">Using Subversion</a>
+<a class="prevPage" href="creator-reference.html">Reference</a>
 </p>
         </div>
        </div>
@@ -80,7 +78,7 @@
 </div>
 <div class="footer">
    <p>
-   <acronym title="Copyright">&copy;</acronym> 2019 The Qt Company Ltd.
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
    Documentation contributions included herein are the copyrights of
    their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
    of their respective owners. </p>

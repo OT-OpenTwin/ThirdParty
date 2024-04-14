@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- studio-translations.qdoc -->
+  <title>Translations | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Translations</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="qtquick-states-view.html" />
+  <link rel="next" href="qtquick-timeline-view.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="qtquick-states-view.html">States</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtquick-timeline-view.html">Timeline</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#summary-of-translations-view-buttons">Summary of Translations View Buttons</a></li>
+<li class="level1"><a href="#importing-and-exporting-translations">Importing and Exporting Translations</a></li>
+<li class="level2"><a href="#importing-translations">Importing Translations</a></li>
+<li class="level1"><a href="#generating-qt-translation-source-files">Generating Qt Translation Source Files</a></li>
+<li class="level1"><a href="#running-translation-test-for-a-single-document">Running Translation Test for a Single Document</a></li>
+<li class="level1"><a href="#running-translation-test-for-several-documents">Running Translation Test for Several Documents</a></li>
+<li class="level1"><a href="#exporting-translations-in-other-ways">Exporting Translations in Other Ways</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Translations</h1>
+<!-- $$$studio-translations.html-description -->
+<div class="descr" id="details">
+<p>The <b translate="no">Translations</b> view is included in the <a href="https://www.qt.io/pricing" translate="no">Qt Design Studio Enterprise license</a>.</p>
+<p>You handle translations and multi-language support in the <b translate="no">Translations</b> view.</p>
+<p class="centerAlign"><img src="images/studio-translations-view.png" alt="&quot;Translations view&quot;" /></p><h2 id="summary-of-translations-view-buttons">Summary of Translations View Buttons</h2>
+<p>The <b translate="no">Translations</b> view contains the following buttons.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Button</th><th >Function</th><th >Read More</th></tr></thead>
+<tr valign="top" class="odd"><td ><img src="images/select-languages.png" alt="" /></td><td >Select which languages you want your project to support.</td><td ></td></tr>
+<tr valign="top" class="even"><td ><img src="images/export-json-translations.png" alt="" /></td><td >Export all your translations to a JSON file.</td><td ><a href="studio-translations.html#importing-and-exporting-translations" translate="no">Importing and Exporting Translations</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/import-json-translations.png" alt="" /></td><td >Import translations from a JSON file.</td><td ><a href="studio-translations.html#importing-and-exporting-translations" translate="no">Importing and Exporting Translations</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/generate-translation-files.png" alt="" /></td><td >Generate Qt compiled translation source files (<i>.qm</i>) and Qt translation source files (<i>.ts</i>).</td><td ><a href="studio-translations.html#generating-qt-translation-source-files" translate="no">Generating Qt Translation Source Files</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/project-translation-test.png" alt="" /></td><td >Run translation test for several documents and create a test report.</td><td ><a href="studio-translations.html#running-translation-test-for-several-documents" translate="no">Running Translation Test for Several Documents</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/qml-translation-test.png" alt="" /></td><td >Run translation test for the currently open document. This test shows translation warnings in the <b translate="no">2D</b> view and creates a test report.</td><td ><a href="studio-translations.html#running-translation-test-for-a-single-document" translate="no">Running Translation Test for a Single Document</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/export-translations.png" alt="" /></td><td >Export all translations used in your project or all translations currently visible in your UI.</td><td ><a href="studio-translations.html#exporting-translations-in-other-ways" translate="no">Exporting Translations in Other Ways</a></td></tr>
+</table></div>
+<h2 id="importing-and-exporting-translations">Importing and Exporting Translations</h2>
+<p>You can import and export translations using JSON files.</p>
+<p>Below is an example of a JSON translation file:</p>
+<pre class="cpp" translate="no">
+ {
+     <span class="string">&quot;translatables&quot;</span>: <span class="operator">[</span>
+         {
+             <span class="string">&quot;trId&quot;</span>: <span class="string">&quot;translation_password&quot;</span><span class="operator">,</span>
+             <span class="string">&quot;translations&quot;</span>: <span class="operator">[</span>
+                 {
+                     <span class="string">&quot;language&quot;</span>: <span class="string">&quot;en&quot;</span><span class="operator">,</span>
+                     <span class="string">&quot;translation&quot;</span>: <span class="string">&quot;Password&quot;</span>
+                 }<span class="operator">,</span>
+                 {
+                     <span class="string">&quot;language&quot;</span>: <span class="string">&quot;fi&quot;</span><span class="operator">,</span>
+                     <span class="string">&quot;translation&quot;</span>: <span class="string">&quot;Salasana&quot;</span>
+                 }
+             <span class="operator">]</span>
+         }
+     <span class="operator">]</span>
+ }
+</pre>
+<h3 id="importing-translations">Importing Translations</h3>
+<p>To import a JSON translation file to your Qt Design Studio project:</p>
+<ul>
+<li>In the <b translate="no">Translation</b> view in Qt Design Studio, select <img src="images/import-json-translations.png" alt="" /> and open the JSON file.</li>
+</ul>
+<p>Matching <code translate="no">qsTrId</code> text strings are translated. For example, if you have specified the following translation ID in the JSON file:</p>
+<pre class="cpp" translate="no">
+ <span class="string">&quot;trId&quot;</span>: <span class="string">&quot;translation_password&quot;</span><span class="operator">,</span>
+ <span class="string">&quot;translations&quot;</span>: <span class="operator">[</span>
+     {
+         <span class="string">&quot;language&quot;</span>: <span class="string">&quot;en&quot;</span><span class="operator">,</span>
+         <span class="string">&quot;translation&quot;</span>: <span class="string">&quot;Password&quot;</span>
+     }<span class="operator">,</span>
+     {
+         <span class="string">&quot;language&quot;</span>: <span class="string">&quot;fi&quot;</span><span class="operator">,</span>
+         <span class="string">&quot;translation&quot;</span>: <span class="string">&quot;Salasana&quot;</span>
+     }
+ <span class="operator">]</span>
+</pre>
+<p>the translation applies to all <code translate="no">qsTrId</code> strings with that translation ID in your project.</p>
+<h2 id="generating-qt-translation-source-files">Generating Qt Translation Source Files</h2>
+<p>You need to generate Qt compiled translation source files (<i>.qm</i>) and Qt translation source files (<i>.ts</i>) for your project to have the translations working in the actual application and live preview.</p>
+<p>To generate these files, select <img src="images/generate-translation-files.png" alt="" /> in the <b translate="no">Translations</b> view. The files are generated in <i>&lt;project-folder&gt;/i18n</i>.</p>
+<h2 id="running-translation-test-for-a-single-document">Running Translation Test for a Single Document</h2>
+<p>You can run the translation test to find missing translations and translations where the text exceeds the text element boundaries. Running the test is a quick way to check the translations in the document you have open in the <b translate="no">2D</b> view as it highlights errors in the UI.</p>
+<p>To run the test for the currently open document:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Translations</b> view, select <img src="images/qml-translation-test.png" alt="" /> .</li>
+<li>Select the tests to run and the highlight color for each test:<ul>
+<li><b translate="no">Success</b> highlights translations without any warnings.</li>
+<li><b translate="no">Missing translation</b> highlights translations that are missing for one or more languages.</li>
+<li><b translate="no">Exceeds boundaries</b> highlights translations where the text is too long to fit in the text object.</li>
+</ul>
+<p class="centerAlign"><img src="images/translation-tester.png" alt="" /></p></li>
+<li>Select <b translate="no">Run Tests</b>.</li>
+</ol>
+<p>When the test has completed, you can see the test result highlights in the <b translate="no">2D</b> view.</p>
+<p class="centerAlign"><img src="images/qml-translation-test-result.png" alt="" /></p><p>If the test finds an error, it is highlighted for all languages. For example, if a translation is missing for Swedish, it is also highlighted as missing when you view any other language.</p>
+<p>Running the QML language test generates a report in JSON format. This report is generated in the project root folder with the name <i>translation_report_&lt;ui-file-name&gt;.json</i>.</p>
+<p>Example of QML language test report:</p>
+<pre class="cpp" translate="no">
+ {
+     <span class="string">&quot;components&quot;</span>: <span class="operator">[</span>
+         {
+             <span class="string">&quot;componentPath&quot;</span>: <span class="string">&quot;C:/project-directory/content/Screen01.ui.qml&quot;</span><span class="operator">,</span>
+             <span class="string">&quot;errors&quot;</span>: <span class="operator">[</span>
+                 {
+                     <span class="string">&quot;column&quot;</span>: <span class="number">15</span><span class="operator">,</span>
+                     <span class="string">&quot;errorType&quot;</span>: <span class="string">&quot;Exceeds&quot;</span><span class="operator">,</span>
+                     <span class="string">&quot;line&quot;</span>: <span class="number">45</span>
+                 }<span class="operator">,</span>
+                 {
+                     <span class="string">&quot;column&quot;</span>: <span class="number">15</span><span class="operator">,</span>
+                     <span class="string">&quot;errorType&quot;</span>: <span class="string">&quot;Missing translation&quot;</span><span class="operator">,</span>
+                     <span class="string">&quot;line&quot;</span>: <span class="number">59</span>
+                 }
+             <span class="operator">]</span>
+         }
+     <span class="operator">]</span>
+ }
+</pre>
+<p>The report shows the type of error as well as line and column of the affected text element in the <i>ui.qml</i> file.</p>
+<h2 id="running-translation-test-for-several-documents">Running Translation Test for Several Documents</h2>
+<p>You can run the project translation test on several <i>.ui.qml</i> files at the same time. Qt Design Studio runs the same tests as during the <a href="studio-translations.html#running-translation-test-for-a-single-document" translate="no">Translation Test</a> and generates the same test reports but does not highlight errors in the UI.</p>
+<p>To run the translation test for several documents:</p>
+<ol class="1" type="1"><li>Select <img src="images/project-translation-test.png" alt="" /> in the <b translate="no">Translations</b> view.</li>
+<li>Select the files that you want to include in the test.</li>
+<li>Select <b translate="no">Run Tests</b>.</li>
+</ol>
+<h2 id="exporting-translations-in-other-ways">Exporting Translations in Other Ways</h2>
+<p>Select <img src="images/export-translations.png" alt="" /> in the <b translate="no">Translations</b> view, for alternative ways to export translations:</p>
+<ul>
+<li><b translate="no">Export used translations to JSON</b> exports all translations from the translation database that are currently in use in your project.</li>
+<li><b translate="no">Export current documents translations to JSON</b> exports all translations from the currently open documents in your project.</li>
+</ul>
+</div>
+<!-- @@@studio-translations.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="qtquick-states-view.html">States</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qtquick-timeline-view.html">Timeline</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

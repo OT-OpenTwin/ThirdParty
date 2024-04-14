@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- studio-material-editor.qdoc -->
+  <title>Material Editor and Browser | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Material Editor and Browser</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-3d-editor.html" />
+  <link rel="next" href="quick-components-view.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-3d-editor.html">3D</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-components-view.html">Components</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#working-with-materials">Working with Materials</a></li>
+<li class="level2"><a href="#creating-a-material">Creating a Material</a></li>
+<li class="level2"><a href="#editing-a-material">Editing a Material</a></li>
+<li class="level2"><a href="#assigning-a-material-to-an-object">Assigning a Material to an Object</a></li>
+<li class="level2"><a href="#removing-a-material-from-an-object">Removing a Material from an Object</a></li>
+<li class="level2"><a href="#copying-and-pasting-material-properties">Copying and Pasting Material Properties</a></li>
+<li class="level2"><a href="#using-texture-maps">Using Texture Maps</a></li>
+<li class="level2"><a href="#blending-colors">Blending Colors</a></li>
+<li class="level2"><a href="#lighting-materials">Lighting Materials</a></li>
+<li class="level2"><a href="#self-illuminating-materials">Self-Illuminating Materials</a></li>
+<li class="level2"><a href="#using-highlights-and-reflections">Using Highlights and Reflections</a></li>
+<li class="level2"><a href="#simulating-geometry-displacement">Simulating Geometry Displacement</a></li>
+<li class="level2"><a href="#specifying-material-translucency">Specifying Material Translucency</a></li>
+<li class="level2"><a href="#culling-faces">Culling Faces</a></li>
+<li class="level1"><a href="#working-with-textures">Working with Textures</a></li>
+<li class="level2"><a href="#creating-a-texture">Creating a Texture</a></li>
+<li class="level2"><a href="#applying-a-texture-to-a-material">Applying a Texture to a Material</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Material Editor and Browser</h1>
+<!-- $$$studio-material-editor.html-description -->
+<div class="descr" id="details">
+<p>In the <b translate="no">Material Editor</b> and <b translate="no">Material Browser</b> views, you create and manage materials and textures.</p>
+<p class="centerAlign"><img src="images/material-editor-browser.webp" alt="&quot;Material Editor and Browser&quot;" /></p><h2 id="working-with-materials">Working with Materials</h2>
+<h3 id="creating-a-material">Creating a Material</h3>
+<p>To create a new material, do one of the following:</p>
+<ul>
+<li>In <b translate="no">Material Browser</b>, select <img src="images/plus.png" alt="" /> .</li>
+<li>In <b translate="no">Material Editor</b>, select <img src="images/plus.png" alt="" /> .</li>
+</ul>
+<h3 id="editing-a-material">Editing a Material</h3>
+<p>To edit a material, select it in <b translate="no">Material Browser</b> and edit its properties in <b translate="no">Material Editor</b>. If <b translate="no">Material Editor</b> is closed, open it in one of the following ways:</p>
+<ul>
+<li>In <b translate="no">Navigator</b>, right-click an object that has the material assigned to it and select <b translate="no">Edit Material</b>.</li>
+<li>In <b translate="no">Material Browser</b>, double-click a material.</li>
+</ul>
+<h3 id="assigning-a-material-to-an-object">Assigning a Material to an Object</h3>
+<p>To assign a material to a 3D object in your project, drag the material from <b translate="no">Material Browser</b> to the object in the <b translate="no">Navigator</b> or <b translate="no">3D</b> view.</p>
+<p>Additionally, you can also first select the object in the <b translate="no">Navigator</b> or <b translate="no">3D</b> view, and then do one of the following:</p>
+<ul>
+<li>In <b translate="no">Material Browser</b>, right-click the material and select <b translate="no">Apply to Selected</b>. If there already is any material assigned to the object, you can select whether to replace the material or to add another material to the object.</li>
+<li>In <b translate="no">Material Editor</b>, select <img src="images/apply.png" alt="" /> . This replaces any material already assigned to the object.</li>
+</ul>
+<h3 id="removing-a-material-from-an-object">Removing a Material from an Object</h3>
+<p>To remove an assigned material from an object:</p>
+<ol class="1" type="1"><li>In <b translate="no">Navigator</b>, select the object.</li>
+<li>In <b translate="no">Properties</b>, select <img src="images/close.png" alt="" /> next to the material.<p class="centerAlign"><img src="images/materials-remove-material.png" alt="" /></p></li>
+</ol>
+<h3 id="copying-and-pasting-material-properties">Copying and Pasting Material Properties</h3>
+<p>You can copy properties from one material to another. You can choose if you want to copy all properties or certain property groups.</p>
+<p>To copy material properties from one material to another:</p>
+<ul>
+<li>In <b translate="no">Material Browser</b>, right-click the material that you want to copy properties from.</li>
+<li>Select <b translate="no">Copy properties</b> and then <b translate="no">All</b> or a property group.<p class="centerAlign"><img src="images/material-copy-properties.png" alt="" /></p></li>
+<li>Right-click the material that you want to copy the properties to.</li>
+<li>Select <b translate="no">Paste properties</b>.</li>
+</ul>
+<div class="admonition note">
+<p><b>Note: </b>You can't copy material properties between materials of different material types.</p>
+</div>
+<h3 id="using-texture-maps">Using Texture Maps</h3>
+<p>In Qt Design Studio you can add many different texture maps to your material.</p>
+<p>To add a texture map to a material:</p>
+<ol class="1" type="1"><li>Select the material in <b translate="no">Material Browser</b>.</li>
+<li>From <b translate="no">Assets</b>, drag an image to the correct map field in <b translate="no">Material Editor</b>. For example, to add a diffuse map, drag the image to <b translate="no">Diffuse Map</b> in <b translate="no">Material Editor</b>.</li>
+</ol>
+<h4 id="using-a-reflection-map-for-environmental-mapping">Using a Reflection Map for Environmental Mapping</h4>
+<p>To use a texture for environmental mapping, you need to set the mapping mode to <i>environment</i>.</p>
+<p>To add a reflection map for environmental mapping to a material:</p>
+<ol class="1" type="1"><li>Select the material in <b translate="no">Material Browser</b>.</li>
+<li>From <b translate="no">Assets</b>, drag an image to <b translate="no">Reflection Map</b>.</li>
+<li>In <b translate="no">Navigator</b>, select <img src="images/filtericon.png" alt="" /> and then clear <b translate="no">Show Only Visible Components</b>. Now the texture you just added to the material is visible in <b translate="no">Navigator</b>.<p class="centerAlign"><img src="images/navigator-material-texture.png" alt="" /></p></li>
+<li>In <b translate="no">Navigator</b>, select the texture.</li>
+<li>In <b translate="no">Properties</b>, set <b translate="no">Texture Mapping</b> to <b translate="no">Environment</b>.</li>
+</ol>
+<h3 id="blending-colors">Blending Colors</h3>
+<p>To determine how the colors of a model blend with the colors of the models behind it, set the <b translate="no">Blend mode</b> property. To make opaque objects occlude the objects behind them, select <b translate="no">SourceOver</b>.</p>
+<p>For a lighter result, select <b translate="no">Screen</b> to blend colors using an inverted multiply or <b translate="no">ColorDodge</b> to blend them by inverted division. Color dodge produces an even lighter result than screen.</p>
+<p>For a darker result, select <b translate="no">Multiply</b> to blend colors using a multiply or <b translate="no">ColorBurn</b> to blend them by inverted division, where the result also is inverted. Color burn produces an even darker result than multiply.</p>
+<p>The screen and multiply modes are order-independent, so select them to avoid <i>popping</i>, which can happen when using semi-opaque objects and sorting the back and front faces or models.</p>
+<p>For a result with higher contrast, select <b translate="no">Overlay</b>, which is a mix of the multiply and screen modes.</p>
+<h3 id="lighting-materials">Lighting Materials</h3>
+<p>To set the lighting method for generating a material, use the <b translate="no">Lighting</b> property. Select <b translate="no">Fragment lighting</b> to calculate diffuse and specular lighting for each rendered pixel. Some effects, such as Fresnel or a bump map, require fragment lighting.</p>
+<p>To skip lighting calculation, select <b translate="no">No lighting</b>. This is very fast and quite effective when using image maps that do not need to be shaded by lighting.</p>
+<p>To set the base color for the material, use the <b translate="no">Diffuse Color</b> property. You can either use the color picker or specify a RBG value. Set the diffuse color to black to create purely-specular materials, such as metals or mirrors. To apply a texture to a material, set it as the value of the <b translate="no">Diffuse map</b> property. Using a texture with transparency also applies the alpha channel as an <b translate="no">Opacity map</b>. You can set the opacity of the material independently of the model as the value of the <b translate="no">Opacity</b> property.</p>
+<h3 id="self-illuminating-materials">Self-Illuminating Materials</h3>
+<p>To set the color and amount of self-illumination for a material, use the <b translate="no">Emissive color</b> and <b translate="no">Emissive factor</b> properties. In a scene with black ambient lighting, a material with an emissive factor of 0 is black where the light does not shine on it. Setting the emissive factor to 1 shows the material in its diffuse color instead.</p>
+<p>To use a Texture for specifying the emissive factor for different parts of the material, set the <b translate="no">Emissive map</b> property. Using a grayscale image does not affect the color of the result, while using a color image produces glowing regions with the color affected by the emissive map.</p>
+<h3 id="using-highlights-and-reflections">Using Highlights and Reflections</h3>
+<p>You can control the highlights and reflections on a material by setting the properties in the <b translate="no">Specular</b> group. You can use the color picker or set a RGB value to specify the color used to adjust specular reflections. Use white for no effect.</p>
+<p>To use a color texture to modulate the amount and the color of specularity across the surface of a material, set the <b translate="no">Specular map</b> property. Set the <b translate="no">Specular amount</b> property to specify the strength of specularity. This property does not affect the specular reflection map, but it does affect the amount of reflections from a scene's light probe.</p>
+<div class="admonition note">
+<p><b>Note: </b>Unless your mesh is high-resolution, you may need to use fragment lighting to get good specular highlights from scene lights.</p>
+</div>
+<p>To determine how to calculate specular highlights for lights in the scene, set the <b translate="no">Specular model</b>. In addition to the default mode, you can use the GGX or Ward lighting model.</p>
+<p>To use a Texture for specular highlighting on a material, set the <b translate="no">Reflection map</b> property. When the texture is applied using environmental mapping (not UV mapping), the map appears to be reflecting from the environment as you rotate the model. Specular reflection maps are an easy way to add a high-quality look at a relatively low cost.</p>
+<p>To specify an image to use as the specular reflection map, set the <b translate="no">Light probe</b> property.</p>
+<p>Crisp images cause your material to look very glossy. The more you blur your image, the softer your material appears.</p>
+<p>To decrease head-on reflections (looking directly at the surface) while maintaining reflections seen at grazing angles, set the <b translate="no">Fresnel power</b> property. To select the angles to control, set the <b translate="no">Index of refraction</b> property.</p>
+<p>To control the size of the specular highlights generated from lights and the clarity of reflections in general, set the <b translate="no">Specular roughness</b> property. Larger values increase the roughness, while softening specular highlights and blurring reflections. To control the specular roughness of the material using a Texture, set the <b translate="no">Roughness map property</b>.</p>
+<h3 id="simulating-geometry-displacement">Simulating Geometry Displacement</h3>
+<p>Specify the properties in the <b translate="no">Bump/Normal</b> group to simulate fine geometry displacement across the surface of the material. Set the <b translate="no">Bump map</b> property to use a grayscale texture for the simulation. Brighter pixels indicate raised regions.</p>
+<p>To use an image for simulation, set the <b translate="no">Normal map</b> property. The RGB channels indicate XYZ normal deviations.</p>
+<p>The amount of displacement is controlled by the <b translate="no">Bump amount</b> property.</p>
+<p>Bump and normal maps do not affect the silhouette of a model. To affect the silhouette, set the <b translate="no">Displacement map</b> property. It specifies a grayscale image used to offset the vertices of geometry across the surface of the material. The <b translate="no">Displacement amount</b> property specifies the offset amount.</p>
+<h3 id="specifying-material-translucency">Specifying Material Translucency</h3>
+<p>Set the properties in the <b translate="no">Translucency</b> group to control how much light can pass through the material from behind. To use a grayscale texture, specify it as the value of the <b translate="no">Translucency map</b> property.</p>
+<p>To specify the amount of light wrap for the translucency map, set the <b translate="no">Diffuse light wrap</b> property. A value of 0 does not wrap the light at all, while a value of 1 wraps the light all around the object.</p>
+<p>To specify the amount of falloff for the translucency based on the angle of the normals of the object to the light source, set the <b translate="no">Translucency falloff</b> property.</p>
+<h3 id="culling-faces">Culling Faces</h3>
+<p>Set the <b translate="no">Culling mode</b> property to determine whether the front and back faces of a model are rendered. Culling modes check whether the points in the polygon appear in clockwise or counter-clockwise order when projected onto the screen. If front-facing polygons have a clockwise winding, but the polygon projected on the screen has a counter-clockwise winding, the projected polygon is rotated to face away from the camera and is not rendered. Culling makes rendering objects quicker and more efficient by reducing the number of polygons to draw.</p>
+<h2 id="working-with-textures">Working with Textures</h2>
+<span id="creating-texture-material-browser"></span><h3 id="creating-a-texture">Creating a Texture</h3>
+<p>To create a new texture, do one of the following in <b translate="no">Material Browser</b>:</p>
+<ul>
+<li>Select <img src="images/plus.png" alt="" /> in the <b translate="no">Textures</b> section.</li>
+<li>Right-click anywhere in the <b translate="no">Textures</b> section and select <b translate="no">Create new texture</b>.</li>
+</ul>
+<div class="admonition note">
+<p><b>Note: </b>You can also create textures from the <a href="quick-assets.html" translate="no">Assets</a> or <a href="studio-texture-editor.html" translate="no">Texture Editor</a> views.</p>
+</div>
+<h3 id="applying-a-texture-to-a-material">Applying a Texture to a Material</h3>
+<p>To apply a texture to a material, select the material in <b translate="no">Material Browser</b> and do one of the following:</p>
+<ul>
+<li>Right-click the texture and select <b translate="no">Apply to selected material</b>.</li>
+<li>Drag the texture to a supported property in the <b translate="no">Material Editor</b></li>
+</ul>
+</div>
+<!-- @@@studio-material-editor.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-3d-editor.html">3D</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-components-view.html">Components</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

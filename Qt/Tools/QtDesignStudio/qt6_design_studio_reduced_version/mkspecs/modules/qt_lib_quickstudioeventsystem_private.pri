@@ -1,0 +1,11 @@
+QT.quickstudioeventsystem_private.VERSION = 6.2.4
+QT.quickstudioeventsystem_private.name = QtQuickStudioEventSystem
+QT.quickstudioeventsystem_private.module =
+QT.quickstudioeventsystem_private.libs = $$QT_MODULE_LIB_BASE
+QT.quickstudioeventsystem_private.includes = 
+QT.quickstudioeventsystem_private.frameworks = 
+QT.quickstudioeventsystem_private.depends = quickstudioeventsystem
+QT.quickstudioeventsystem_private.uses = 
+QT.quickstudioeventsystem_private.module_config = v2 internal_module
+QT.quickstudioeventsystem_private.enabled_features = 
+QT.quickstudioeventsystem_private.disabled_features = 

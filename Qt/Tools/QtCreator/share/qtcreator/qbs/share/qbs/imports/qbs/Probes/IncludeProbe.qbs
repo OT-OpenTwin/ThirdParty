@@ -29,7 +29,12 @@
 ****************************************************************************/
 
 PathProbe {
-    pathSuffixes: [ "include" ]
+    platformSearchPaths: qbs.targetOS.contains("unix") ? [
+        "/usr/include",
+        "/usr/local/include",
+        "/include",
+        "/app/include",
+    ] : []
     platformEnvironmentPaths: {
         if (qbs.toolchain.contains('msvc'))
             return [ "INCLUDE" ];

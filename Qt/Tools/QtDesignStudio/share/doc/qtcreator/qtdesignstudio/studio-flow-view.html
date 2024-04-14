@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-app-flows.qdoc -->
+  <title>Adding Flow Views | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Adding Flow Views</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-app-flows.html" />
+  <link rel="next" href="studio-flow-item.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-app-flows.html">Designing Application Flows</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-flow-item.html">Adding Flow Items</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#flow-view-properties">Flow View Properties</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Adding Flow Views</h1>
+<!-- $$$studio-flow-view.html-description -->
+<div class="descr" id="details">
+<p>You can add a flow view to an existing project or create a new project for it, as described in <a href="studio-projects.html" translate="no">Creating Projects</a>.</p>
+<p>To create the flow view, select <b translate="no">File</b> &gt; <b translate="no">New File</b> &gt; <b translate="no">Qt Quick Files</b> &gt; <b translate="no">Flow View</b> and follow the instructions of the wizard.</p>
+<p class="centerAlign"><img src="images/studio-flow-view-create.png" alt="&quot;Create Flow View wizard template&quot;" /></p><p>You only need to select the <b translate="no">Use Event Simulator</b> check box if you want to add an event simulator to the flow view. The event simulator needs the project to be imported to the flow view, so you also need to select the <b translate="no">Use Application Import</b> check box. You need the import also for access to the project <code translate="no">Constants.qml</code> file that contains global settings for the project.</p>
+<p>The flow view properties enable you to adjust the appearance of all the items in the flow: action areas, transition lines, decisions, and wildcards. You can change the global settings for all items by editing flow view properties, or you can select an individual action area or transition line and change the appearance of just that component, including the color, line thickness, dotted or solid lines, and even the curve of the line. This enables you to add extra semantics to the design of the flow diagram itself.</p>
+<p>You can <a href="studio-flow-item.html" translate="no">add flow items</a> to the flow view to design the UI.</p>
+<h2 id="flow-view-properties">Flow View Properties</h2>
+<p>You can specify basic properties for a <b translate="no">Flow View</b> component in the <a href="qtquick-properties.html#type" translate="no">Component</a>, <a href="qtquick-properties.html#2d-geometry" translate="no">Geometry - 2D</a>, and <a href="qtquick-properties.html#visibility" translate="no">Visibility</a> sections in the <a href="qtquick-properties-view.html" translate="no">Properties</a> view. Specify flow view properties in the <b translate="no">Flow View</b> section.</p>
+<p class="centerAlign"><img src="images/studio-flow-view-properties.png" alt="&quot;Flow View component properties&quot;" /></p><p>To specify the <b translate="no">Flow Item</b> that is currently visible in the flow view, set its index in the <b translate="no">Current index</b> field.</p>
+<p>You can use the <a href="qtquick-properties.html#picking-colors" translate="no">color picker</a> to set colors for:</p>
+<ul>
+<li>Transition lines</li>
+<li>Area outlines</li>
+<li>Area fills</li>
+<li>Block items</li>
+</ul>
+<p>You can set some additional global properties for drawing transition lines:</p>
+<p class="centerAlign"><img src="images/studio-flow-view-properties-transition.png" alt="&quot;Flow View transition properties&quot;" /></p><ul>
+<li>In the <b translate="no">Type</b> field, select <b translate="no">Bezier</b> to draw transition lines as bezier curves.</li>
+<li>In the <b translate="no">Radius</b> field, specify the corner radius for default curves.</li>
+<li>In the <b translate="no">Bezier factor</b> field, specify the factor that modifies the positions of the control points used for bezier curves.</li>
+</ul>
+<p>For more information about changing the appearance of a particular action area or transition line, see <a href="studio-flow-action-area.html#flow-action-area-properties" translate="no">Flow Action Area Properties</a> and <a href="studio-flow-action-area.html#flow-transition-properties" translate="no">Flow Transition Properties</a>.</p>
+<p>In the <b translate="no">Layout</b> tab, you can use <a href="qtquick-positioning.html#setting-anchors-and-margins" translate="no">anchors</a> to position the component.</p>
+<p>In the <b translate="no">Advanced</b> section, you can manage the more <a href="qtquick-properties.html#specifying-developer-properties" translate="no">advanced properties</a> of components.</p>
+</div>
+<!-- @@@studio-flow-view.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-app-flows.html">Designing Application Flows</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-flow-item.html">Adding Flow Items</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-visual-effects.qdoc -->
+  <title>2D Effects | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>2D Effects</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="quick-data-models.html" />
+  <link rel="next" href="quick-logic-helpers.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="quick-data-models.html">Lists and Other Data Models</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-logic-helpers.html">Logic Helpers</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#caching-and-borders">Caching and Borders</a></li>
+<li class="level1"><a href="#summary-of-2d-effects">Summary of 2D Effects</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">2D Effects</h1>
+<!-- $$$quick-2d-effects.html-description -->
+<div class="descr" id="details">
+<p>Qt Design Studio provides a set of effects that you can apply to components by dragging-and-dropping them from <b translate="no">Components</b> &gt; <b translate="no">Qt Quick Studio Effects</b> to the component in <a href="qtquick-navigator.html" translate="no">Navigator</a>.</p>
+<p class="centerAlign"><img src="images/studio-2d-effects.png" alt="&quot;Effects tab in Components&quot;" /></p><div class="admonition note">
+<p><b>Note: </b>The availability of effects depends on whether you selected <b translate="no">Qt 5</b> or <b translate="no">Qt 6</b> when <a href="studio-projects.html" translate="no">creating your project</a>.</p>
+</div>
+<p>Effects have one or more source properties for specifying the visual input for which the effect is applied to a component. The altered visual output is then presented in the effect component itself. The source can be another, often hidden, component in the scene. More complex effects can have multiple sources. The source component can be any component, even video or another effect. Pipelining multiple effects together is a simple way to create even more impressive output.</p>
+<p>Each effect has a set of properties that can be used to configure the effect output. They can be animated just like any other properties. The component documentation contains property descriptions and basic usage examples.</p>
+<p>In addition to the effects described in this topic, you can set linear, radial, and conical gradients. For more information, see <a href="qtquick-properties.html#picking-gradients" translate="no">Picking Gradients</a>.</p>
+<h2 id="caching-and-borders">Caching and Borders</h2>
+<p>Specify common properties for 2D effects in the <b translate="no">Caching</b> or <b translate="no">Caching and Border</b> section.</p>
+<p class="centerAlign"><img src="images/studio-2d-effects-caching-and-border.png" alt="&quot;Studio Effects Caching and Border properties&quot;" /></p><p>The <b translate="no">Cached</b> property allows the effect output pixels to be cached in order to improve the rendering performance. Every time the source or effect properties are changed, the pixels in the cache must be updated. Memory consumption is increased because an extra buffer of memory is required for storing the effect output. We recommend that you disable the cache when the source or the effect properties are animated.</p>
+<p>The <b translate="no">Transparent border</b> property determines the blur behavior near the edges of the component, where the pixel blurring is affected by the pixels outside the source edges.</p>
+<p>If the property is set to <code translate="no">true</code>, the pixels outside the source are interpreted as being transparent, which is similar to OpenGL clamp-to-border extension. The blur is expanded slightly outside the effect component area.</p>
+<p>If the property is set to <code translate="no">false</code>, the pixels outside the source are interpreted as containing the same color as the pixels at the edge of the component, which is similar to OpenGL clamp-to-edge behavior. The blur does not expand outside the effect component area.</p>
+<h2 id="summary-of-2d-effects">Summary of 2D Effects</h2>
+<p>The following table summarizes the available effects and contains links to the developer documentation of the inherited component. The Qt 6 column indicates which effects are available for Qt 6 projects.</p>
+<div class="admonition note">
+<p><b>Note: </b>The effects are available when running with OpenGL.</p>
+</div>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Icon</th><th >Effect</th><th >Qt 6</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td ><img src="images/blend-mode-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-blend.html" translate="no">Blend</a></td><td ></td><td >Merges two source components by using a blend mode.<p>The default <b translate="no">Mode</b> is <code translate="no">subtract</code>, where the pixel value from the component specified in the <b translate="no">Foreground source</b> field, which is going to be blended over the source component, is subtracted from the source and written over it.</p>
+<p>For a list of possible <b translate="no">Mode</b> values and examples of their use, see <a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-blend.html#mode-prop" translate="no">Blend.mode</a>.</p>
+</td></tr>
+<tr valign="top" class="even"><td ><img src="images/brightness-contrast-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-brightnesscontrast.html" translate="no">Brightness Contrast</a></td><td ><img src="images/ok.png" alt="" /></td><td >Adjusts <b translate="no">Brightness</b> and <b translate="no">Contrast</b>.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/colourize-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-coloroverlay.html" translate="no">Color Overlay</a></td><td ><img src="images/ok.png" alt="" /></td><td >Alters the colors of the source component by applying an <b translate="no">Overlay color</b>. You can use the color picker to <a href="qtquick-properties.html#picking-colors" translate="no">select the color</a>.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/colourize-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-colorize.html" translate="no">Colorize</a></td><td ><img src="images/ok.png" alt="" /></td><td >Sets the color in the HSL color space by specifying <b translate="no">Hue</b>, <b translate="no">Lightness</b>, and <b translate="no">Saturation</b> values.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/desaturation-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-desaturate.html" translate="no">Desaturation</a></td><td ><img src="images/ok.png" alt="" /></td><td >Reduces the saturation of the colors by the value set in the <b translate="no">Desaturation</b> field. The value ranges from <code translate="no">0.0</code> (no change) to <code translate="no">1.0</code> (desaturated). Desaturated pixel values are calculated as averages of the original RGB component values of the source component.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/directional-blur-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-directionalblur.html" translate="no">Directional Blur</a></td><td ><img src="images/ok.png" alt="" /></td><td >Applies a blur effect to the specified direction. The value of the <b translate="no">Angle</b> field defines the direction of the blur. This effect makes the source component appear to be moving in the direction of the blur. Blur is applied to both sides of each pixel, and therefore setting the direction to <code translate="no">0</code> and <code translate="no">180</code> provides the same result.<p>The value of the <b translate="no">Length</b> field specifies the perceived amount of movement for each pixel. The movement is divided evenly to both sides of each pixel.</p>
+<p>The quality of the blur depends on the value of the <b translate="no">Samples</b> field. If the <b translate="no">Length</b> value is large, more samples are needed to preserve high visual quality.</p>
+</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/displace-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-displace.html" translate="no">Displace</a></td><td ><img src="images/ok.png" alt="" /></td><td >Moves the pixels of the source component according to the displacement map specified in the <b translate="no">Displacement source</b> field.<p>The value of the <b translate="no">Displacement</b> field specifies the scale for the displacement. The larger the scale, the larger the displacement of the pixels. The value set to <code translate="no">0.0</code> causes no displacement. The value of <code translate="no">-1.0</code> sets the inverted maximum shift according to the displacement source value, while <code translate="no">1.0</code> sets the maximum shift.</p>
+</td></tr>
+<tr valign="top" class="even"><td ><img src="images/drop-shadow-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-dropshadow.html" translate="no">Drop Shadow</a></td><td ><img src="images/ok.png" alt="" /></td><td >Generates a soft shadow behind the source component using a gaussian blur. This effect blurs the alpha channel of the input and colorizes the result, which it then places behind the source component to create a soft shadow. You can set the shadow's color in the <b translate="no">Drop shadow color</b> field and change its location in the horizontal (<b translate="no">H</b>) and vertical (<b translate="no">V</b>) <b translate="no">Offset</b> fields.<p>The value of the <b translate="no">Radius</b> field specifies the softness of the shadow. A larger radius causes the edges of the shadow to appear more blurry. The ideal blur is achieved by setting the value of the <b translate="no">Samples</b> field to twice as large as the highest required radius value plus one (<code translate="no">samples = 1 + radius * 2</code>).</p>
+<p>The soft shadow is created by blurring the image live using a gaussian blur, which is a costly operation. Fullscreen gaussian blur with even a moderate number of samples will only run at 60 FPS on high-end graphics hardware.</p>
+</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/fast-blur-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-fastblur.html" translate="no">Fast Blur</a></td><td ><img src="images/ok.png" alt="" /></td><td >Applies a fast blur effect to one or more source components. <b translate="no">Fast Blur</b> offers lower blur quality than <b translate="no">Gaussian Blur</b>, but it is faster to render. This effect softens the source content by blurring it with an algorithm that uses source content downscaling and bilinear filtering. Use this effect if the source content is rapidly changing and the highest possible blur quality is not needed.<p>The value of the <b translate="no">Radius</b> field specifies the distance of the neighboring pixels that affect the blurring of an individual pixel. A larger radius increases the blur effect. The fast blur algorithm may internally reduce the accuracy of the radius in order to provide good rendering performance.</p>
+</td></tr>
+<tr valign="top" class="even"><td ><img src="images/gamma-adjust-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-gammaadjust.html" translate="no">Gamma Adjust</a></td><td ><img src="images/ok.png" alt="" /></td><td >Alters the luminance of the source component. This effect is applied to each pixel according to the curve that is pre-defined as a power-law expression, where the value of the <b translate="no">Gamma</b> field is used as the reciprocal scaling exponent.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/gaussian-blur-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-gaussianblur.html" translate="no">Gaussian Blur</a></td><td ></td><td >Applies a gaussian blur effect to one or more source components. The effect softens the image by blurring it with an algorithm that uses the gaussian function to calculate the effect. The effect produces higher quality than <b translate="no">Fast Blur</b>, but is slower to render. Performing blur live is a costly operation. Fullscreen gaussian blur with even a moderate number of <b translate="no">Samples</b> will only run at 60 FPS on high-end graphics hardware.<p>The value of the <b translate="no">Radius</b> field specifies the distance of the neighboring pixels that affect the blurring of an individual pixel. The value of the <b translate="no">Distance</b> field is a parameter to the gaussian function that is used when calculating neighboring pixel weights for the blurring. A larger deviation causes an image to appear more blurry, but it also reduces the quality of the blur. A very large deviation value causes the effect to look a bit similar to what, for exmple, a box blur algorithm produces. A too small deviation value makes the effect insignificant for the pixels near the radius.</p>
+</td></tr>
+<tr valign="top" class="even"><td ><img src="images/glow-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-glow.html" translate="no">Glow</a></td><td ><img src="images/ok.png" alt="" /></td><td >Generates a halo-like glow around the source component. This effect blurs the alpha channel of the source and colorizes it with <b translate="no">Glow color</b>. It then places the alpha channel behind the source, resulting in a halo or glow around the component. The quality of the blurred edge can be controlled by using the values of the <b translate="no">Samples</b> and <b translate="no">Radius</b> and the strength of the glow can be changed using the value of the <b translate="no">Spread</b> field.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/hue-saturation-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-huesaturation.html" translate="no">Hue Saturation</a></td><td ><img src="images/ok.png" alt="" /></td><td >Alters the source component colors in the HSL color space. This effect is similar to the <b translate="no">Colorize</b> effect, but the <b translate="no">Hue</b> and <b translate="no">Saturation</b> values are handled differently. This effect always shifts these values, as well as the <b translate="no">Lightness</b> value from the original, instead of setting them.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/inner-shadow-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-innershadow.html" translate="no">Inner Shadow</a></td><td ></td><td >Generates a colorized and blurred shadow inside the source using the color that you specify in the <b translate="no">Inner shadow color</b> field.<p>The quality of the shadow can be controlled by the values of the <b translate="no">Samples</b> and <b translate="no">Radius</b> fields. Ideally, the sample value should be twice as large as the highest required radius value. For example, if the radius is animated between <code translate="no">0.0</code> and <code translate="no">4.0</code>, samples should be set to <code translate="no">8</code>.</p>
+<p>The value of the <b translate="no">Spread</b> field specifies how large a part of the shadow color is strengthened near the source edges. The effect produces a high quality shadow image, and therefore the rendering speed of the shadow might not be the highest possible. The rendering speed is reduced especially if the shadow edges are heavily softened. For use cases that require faster rendering speed at the cost of high visual quality, select the <b translate="no">Fast</b> check box.</p>
+</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/levels-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-leveladjust.html" translate="no">Level Adjust</a></td><td ><img src="images/ok.png" alt="" /></td><td >Adjusts color levels in the RGBA color space. This effect adjusts the source component colors separately for each color channel. Source component contrast can be adjusted and color balance altered.<p>The value of the <b translate="no">Gamma</b> field specifies the change factor for how the value of each pixel color channel is altered according to the equation. Setting the gamma values under <code translate="no">QtVector3d(1.0, 1.0, 1.0)</code> makes the image darker, whereas the values above <code translate="no">QtVector3d(1.0, 1.0, 1.0)</code> lighten it. The value ranges from <code translate="no">QtVector3d(0.0, 0.0, 0.0)</code> (darkest) to <code translate="no">inf</code> (lightest).</p>
+<p>You can specify the maximum and minimum <b translate="no">Input</b> and <b translate="no">Output</b> levels for each color channel. <b translate="no">Maximum</b> input sets the white-point, which means that all pixels with a higher value are rendered as white (per color channel). Decreasing this value lightens the light areas. To darken the light areas and to increase the contrast, decrease the value of the <b translate="no">Maximum</b> output field.</p>
+<p>The value of the <b translate="no">Minimum</b> input field sets the minimum input level for each color channel. It sets the black-point, which means that all pixels with a lower value are rendered as black (per color channel). Increasing this value darkens the dark areas. To lighten the dark areas and to reduce the contrast, increase the value of the <b translate="no">Minimum</b> output field.</p>
+</td></tr>
+<tr valign="top" class="even"><td ><img src="images/mask-blur-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-maskedblur.html" translate="no">Masked Blur</a></td><td ></td><td >Softens the image by blurring it. The intensity of the blur can be controlled for each pixel by specifying a <b translate="no">Mask source</b>, so that some parts of the source are blurred more than others.<p>The value of the <b translate="no">Radius</b> field specifies the distance of the neighboring pixels that affect the blurring of an individual pixel.</p>
+<p>The value of the <b translate="no">Samples</b> field specifies, how many samples are taken per pixel when blur calculation is done. Larger samples produce better quality, but are slower to render.</p>
+</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/opacity-mask-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-opacitymask.html" translate="no">Opacity Mask</a></td><td ><img src="images/ok.png" alt="" /></td><td >Masks the source component with another component specified in the <b translate="no">Mask source</b> field. The mask component gets rendered into an intermediate pixel buffer and the alpha values from the result are used to determine the visibility of the source component's pixels in the display.<p>Select the <b translate="no">Invert</b> check box to specify that the resulting opacity is the source alpha multiplied with the inverse of the mask alpha: <code translate="no">As * (1 - Am)</code>. When this property is <code translate="no">false</code>, the resulting opacity is the source alpha multiplied with the mask alpha: <code translate="no">As * Am</code>.</p>
+</td></tr>
+<tr valign="top" class="even"><td ><img src="images/radial-blur-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-radialblur.html" translate="no">Radial Blur</a></td><td ></td><td >Applies a directional blur effect in a circular direction around the component's center point. This effect makes the source component appear to be rotating into the direction of the blur. Other available motionblur effects are <b translate="no">Zoom Blur</b> and <b translate="no">Directional Blur</b>.<p>The value of the <b translate="no">Angle</b> field specifies both the direction of the blur and the level of blurring. The larger the angle, the more blurred the result. The quality of the blur depends on the value or the <b translate="no">Samples</b> field. If the angle is large, more samples are needed to preserve high visual quality.</p>
+</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/recursive-blur-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-recursiveblur.html" translate="no">Recursive Blur</a></td><td ></td><td >Blurs repeatedly, providing a strong blur effect. This effect softens the image by blurring it with an algorithm that uses a recursive feedback loop to blur the source as many times as set in the <b translate="no">Loops</b> field.<p>The value of the <b translate="no">Radius</b> field specifies the distance of the neighboring pixels that affect the blurring of an individual pixel.</p>
+<p>The effect may produce more blurred results than <b translate="no">Fast Blur</b> or <b translate="no">Gaussian Blur</b>, but the result is produced asynchronously and takes more time.</p>
+</td></tr>
+<tr valign="top" class="even"><td ><img src="images/threshold-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-thresholdmask.html" translate="no">Threshold Mask</a></td><td ><img src="images/ok.png" alt="" /></td><td >Masks the source component with another component specified by <b translate="no">Mask source</b>. The value of the <b translate="no">Spread</b> field determines the smoothness of the mask edges near the <b translate="no">Threshold</b> alpha value. Setting spread to <code translate="no">0.0</code> uses the mask with the specified threshold. Setting higher spread values softens the transition from the transparent mask pixels towards opaque mask pixels by adding interpolated values between them.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/zoom-blur-16px.png" alt="" /></td><td ><a href="https://doc.qt.io/qt-5/qml-qtgraphicaleffects-zoomblur.html" translate="no">Zoom Blur</a></td><td ></td><td >Applies a directional blur effect towards source component's center point. This effect makes the source component appear to be moving towards the center point in Z-direction or the camera appear to be zooming rapidly.<p>The value of the <b translate="no">Length</b> field specifies the maximum perceived amount of movement for each pixel. The amount is smaller near the center specified by the horizontal (<b translate="no">H</b>) and vertical (<b translate="no">V</b>) <b translate="no">Offset</b> fields and reaches the specified value at the edges.</p>
+<p>The quality of the blur depends on the value of the <b translate="no">Samples</b> field. If the length value is large, more samples are needed to preserve high visual quality.</p>
+<p>Other available motion blur effects are <b translate="no">Directional Blur</b> and <b translate="no">Radial Blur</b>.</p>
+</td></tr>
+</table></div>
+</div>
+<!-- @@@quick-2d-effects.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="quick-data-models.html">Lists and Other Data Models</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-logic-helpers.html">Logic Helpers</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

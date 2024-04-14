@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-packaging.qdoc -->
+  <title>Packaging Applications | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Packaging Applications</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-crashpad.html" />
+  <link rel="next" href="studio-developer-topics.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-crashpad.html">Reporting Crashes</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-developer-topics.html">Developer Topics</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#adding-resources-to-packages">Adding Resources to Packages</a></li>
+<li class="level1"><a href="#embedding-resources-into-applications">Embedding Resources into Applications</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Packaging Applications</h1>
+<!-- $$$studio-packaging.html-description -->
+<div class="descr" id="details">
+<div class="admonition note">
+<p><b>Note: </b>In this section, you are using advanced menu items. These are not visible by default. To toggle the visibility of advanced menu items, see <a href="creator-quick-tour.html#customizing-the-menu" translate="no">Customizing the Menu</a>.</p>
+</div>
+<p>When you are ready to deliver your application to users or upload it to app stores, you can use Qt Design Studio to create suitable packages that contain all the necessary files, such as fonts, images, components, and modules.</p>
+<h2 id="adding-resources-to-packages">Adding Resources to Packages</h2>
+<p>Qt Design Studio supports the <i>Qt Resource System</i> (QRC), which is a platform-independent mechanism for storing files in the application's executable. This is useful if your application always needs a certain set of files (icons, translation files, and so on) and you don't want to run the risk of losing the files.</p>
+<p>To package your application, select <b translate="no">File</b> &gt; <b translate="no">Export Project</b> &gt; <b translate="no">Generate QRC Resource File</b>. Then select the files to package in the <b translate="no">Add Resources</b> dialog.</p>
+<p class="centerAlign"><img src="images/studio-add-resources.png" alt="&quot;Add Resources dialog&quot;" /></p><p>The dialog displays all the files listed in the project file (.qmlproject) and located in the project folder. Files that are listed in the project file are marked with bold text in the UI, to make it easy to identify the differences between the project file and the resource collection file.</p>
+<p>When you select <b translate="no">OK</b>, Qt Design Studio creates a resource collection file (.qrc) in the project folder.</p>
+<p>If you remove files from the project that you already added to the resource collection file, you can recreate the resource collection file to remove them also from there.</p>
+<h2 id="embedding-resources-into-applications">Embedding Resources into Applications</h2>
+<p>Alternatively, you can embed the resources into your application by selecting <b translate="no">File</b> &gt; <b translate="no">Export Project</b> &gt; <b translate="no">Generate Deployable Package</b>. Select the location for the .qmlrc file, and then select the files to embed in the <b translate="no">Add Resources</b> dialog.</p>
+<p>When you select <b translate="no">OK</b>, Qt Design Studio creates a resource collection file (.qmlrc) in the location you selected.</p>
+</div>
+<!-- @@@studio-packaging.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-crashpad.html">Reporting Crashes</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-developer-topics.html">Developer Topics</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

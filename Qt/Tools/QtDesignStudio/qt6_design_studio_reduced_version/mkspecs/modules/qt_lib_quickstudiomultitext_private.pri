@@ -1,0 +1,11 @@
+QT.quickstudiomultitext_private.VERSION = 6.2.4
+QT.quickstudiomultitext_private.name = QtQuickStudioMultiText
+QT.quickstudiomultitext_private.module =
+QT.quickstudiomultitext_private.libs = $$QT_MODULE_LIB_BASE
+QT.quickstudiomultitext_private.includes = 
+QT.quickstudiomultitext_private.frameworks = 
+QT.quickstudiomultitext_private.depends = quickstudiomultitext
+QT.quickstudiomultitext_private.uses = 
+QT.quickstudiomultitext_private.module_config = v2 internal_module
+QT.quickstudiomultitext_private.enabled_features = 
+QT.quickstudiomultitext_private.disabled_features = 

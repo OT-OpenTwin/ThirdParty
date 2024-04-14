@@ -1,0 +1,11 @@
+QT.qdoccatchgeneratorsprivate_private.VERSION = 6.6.2
+QT.qdoccatchgeneratorsprivate_private.name = QtQDocCatchGeneratorsPrivate
+QT.qdoccatchgeneratorsprivate_private.module =
+QT.qdoccatchgeneratorsprivate_private.libs = $$QT_MODULE_LIB_BASE
+QT.qdoccatchgeneratorsprivate_private.includes = $$QT_MODULE_INCLUDE_BASE/QtQDocCatchGeneratorsPrivate/6.6.2 $$QT_MODULE_INCLUDE_BASE/QtQDocCatchGeneratorsPrivate/6.6.2/QtQDocCatchGeneratorsPrivate
+QT.qdoccatchgeneratorsprivate_private.frameworks = 
+QT.qdoccatchgeneratorsprivate_private.depends = 
+QT.qdoccatchgeneratorsprivate_private.uses = 
+QT.qdoccatchgeneratorsprivate_private.module_config = v2 internal_module
+QT.qdoccatchgeneratorsprivate_private.enabled_features = 
+QT.qdoccatchgeneratorsprivate_private.disabled_features = 

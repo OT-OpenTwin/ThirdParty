@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-live-preview-devices.qdoc -->
+  <title>Previewing on Devices | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li><a href="creator-overview.html" translate="no">Developing with Qt Creator</a></li>
+<li><a href="creator-live-preview.html" translate="no">Validating with Target Hardware</a></li>
+<li>Previewing on Devices</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-live-preview-desktop.html" />
+  <link rel="next" href="qt-design-viewer.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-live-preview-desktop.html">Previewing on Desktop</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qt-design-viewer.html">Previewing in Browsers</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level2"><a href="#previewing-on-android-devices">Previewing on Android Devices</a></li>
+<li class="level2"><a href="#previewing-on-boot2qt-devices">Previewing on Boot2Qt Devices</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Previewing on Devices</h1>
+<!-- $$$creator-live-preview-devices.html-description -->
+<div class="descr" id="details">
+<p>To preview UIs on Android devices, you need to enable USB debugging on them and connect them to your system with a USB cable.</p>
+<p>To preview UIs on Boot2Qt devices, you need to connect the devices to your system with a USB cable, or a wired or wireless connection, depending on the device, and configure connections to them. The necessary kits have been predefined and you only need to enable them for your current project.</p>
+<p><i>Deploy configurations</i> handle the packaging and copying of the necessary files to a location in a device where you want to run the executable at.</p>
+<div class="admonition note">
+<p><b>Note: </b>To preview on a wirelessly connected device, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Devices</b> and connect the device.</p>
+</div>
+<p>To preview a UI on a device:</p>
+<ol class="1" type="1"><li>In <b translate="no">Projects</b> &gt; <b translate="no">Build &amp; Run</b>, enable the kit predefined for the device type (1).</li>
+<li>Select the kit for the device in the kit selector (2).<p class="centerAlign"><img src="images/qtcreator-kit-selector-devices.webp" alt="{Kit selector}" /></p></li>
+<li>Select <b translate="no">Build</b> &gt; <b translate="no">QML Preview</b> or press <b>Alt+P</b>.</li>
+</ol>
+<h3 id="previewing-on-android-devices">Previewing on Android Devices</h3>
+<p>The USB debugging feature on Android devices enables creating connections to the devices from Qt Design Studio and running the preview utility on them.</p>
+<p>Debugging is enabled in different ways on different Android devices. Look for <b translate="no">USB Debugging</b> under <b translate="no">Developer Options</b>. On some devices <b translate="no">Developer Options</b> is hidden and becomes visible when you tap the <b translate="no">Build number</b> field in <b translate="no">Settings</b> &gt; <b translate="no">About</b> several times.</p>
+<p>After you have enabled debugging, connect the Android device to the system with a USB cable.</p>
+<p>The first time you preview a UI on devices, the preview utility is copied to them. This might take some time. Thereafter, previewing will get faster because only the UI files need to be copied to the device.</p>
+<h3 id="previewing-on-boot2qt-devices">Previewing on Boot2Qt Devices</h3>
+<p>You can preview UIs on Boot2Qt devices. For a list of supported devices, see <a href="https://doc.qt.io/Boot2Qt/qtdc-supported-platforms.html" translate="no">Boot2Qt: Supported Target Devices and Development Hosts</a>.</p>
+<p>You must configure the device as instructed in the <a href="https://doc.qt.io/Boot2Qt/b2qt-installation-guides.html" translate="no">Boot2Qt: Installation Guides</a>.</p>
+<div class="admonition note">
+<p><b>Note: </b>At the time of this writing, macOS is not supported as a development host for Boot2Qt. This means that you cannot preview UIs on devices if you are using Qt Creator on macOS. For more information, see <a href="https://doc.qt.io/Boot2Qt/qtdc-supported-platforms.html#supported-development-hosts" translate="no">Boot2Qt: Supported Development Hosts</a>.</p>
+</div>
+</div>
+<!-- @@@creator-live-preview-devices.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-live-preview-desktop.html">Previewing on Desktop</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="qt-design-viewer.html">Previewing in Browsers</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

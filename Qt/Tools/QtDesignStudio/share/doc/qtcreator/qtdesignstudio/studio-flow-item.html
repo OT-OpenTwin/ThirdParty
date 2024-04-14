@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-app-flows.qdoc -->
+  <title>Adding Flow Items | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Adding Flow Items</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-flow-view.html" />
+  <link rel="next" href="studio-flow-action-area.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-flow-view.html">Adding Flow Views</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-flow-action-area.html">Adding Action Areas and Transitions</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#flow-item-properties">Flow Item Properties</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Adding Flow Items</h1>
+<!-- $$$studio-flow-item.html-description -->
+<div class="descr" id="details">
+<p>After you create a <a href="studio-flow-view.html" translate="no">Flow View</a> component, you can use a project wizard template to add a <b translate="no">Flow Item</b> component for each screen in the UI.</p>
+<p>If you <a href="studio-importing-2d.html" translate="no">imported</a> your screen designs from a design tool as individual <a href="studio-terms.html#glossary-component" translate="no">components</a> (<i>.ui.qml</i> files), you can use them as content for flow items. The imported components are listed in <b translate="no">Components</b> &gt; <b translate="no">My Components</b>.</p>
+<p>If you are building your UI from scratch in Qt Design Studio, you must first add components to the flow items to create the screens as you would any components. For more information, see <a href="quick-components.html" translate="no">Using Components</a>. The flow items that you attach the components to are listed under <b translate="no">My Components</b>.</p>
+<p class="centerAlign"><img src="images/studio-flow-item.png" alt="&quot;Custom Flow Item in Components&quot;" /></p><div class="admonition note">
+<p><b>Note: </b>You must use the wizard to create the flow items. After you create a flow view, the <b translate="no">Flow View</b> module is added to <b translate="no">Components</b>. It contains a <b translate="no">Flow Item</b> component that you can use to <a href="studio-flow-states.html" translate="no">apply states to flow items</a>, and that you should use solely for that purpose.</p>
+</div>
+<p>To add flow items:</p>
+<ol class="1" type="1"><li>Select <b translate="no">File</b> &gt; <b translate="no">New File</b> &gt; <b translate="no">Qt Quick Files</b> &gt; <b translate="no">Flow Item</b> and follow the instructions of the wizard to create flow items for each screen in the UI.</li>
+<li>Add content to the flow item in one of the following ways:<ul>
+<li>Drag-and-drop components from <b translate="no">Components</b> to a flow item in the <a href="qtquick-form-editor.html" translate="no">2D</a> view or <a href="qtquick-navigator.html" translate="no">Navigator</a>.</li>
+<li>Drag a screen from <b translate="no">Components</b> &gt; <b translate="no">My Components</b> to a flow item in the <b translate="no">2D</b> view or <b translate="no">Navigator</b>.</li>
+</ul>
+</li>
+<li>In <a href="qtquick-properties-view.html" translate="no">Properties</a>, edit the properties of each flow item.</li>
+</ol>
+<p>You can now drag the flow items from <b translate="no">Components</b> &gt; <b translate="no">My Components</b> to the flow view in the <b translate="no">2D</b> or <b translate="no">Navigator</b> view. When you have all the flow items in place, you can <a href="studio-flow-action-area.html" translate="no">add action areas</a> to them to create transitions between them.</p>
+<h2 id="flow-item-properties">Flow Item Properties</h2>
+<p>You can specify basic properties for a <b translate="no">Flow Item</b> component in the <a href="qtquick-properties.html#type" translate="no">Component</a>, <a href="qtquick-properties.html#2d-geometry" translate="no">Geometry - 2D</a>, and <a href="qtquick-properties.html#visibility" translate="no">Visibility</a> sections in the <b translate="no">Properties</b> view. Specify flow item properties in the <b translate="no">Flow Item</b> section.</p>
+<p class="centerAlign"><img src="images/studio-flow-item-properties.png" alt="&quot;Flow Item properties&quot;" /></p><p>The <b translate="no">State change target</b> and <b translate="no">Target state</b> properties are used to <a href="studio-flow-states.html" translate="no">apply states</a> in flows.</p>
+<p>To include another flow view into a flow view, select the UI file (.ui.qml) that specifies the flow view in the <b translate="no">Loader source</b> field.</p>
+<p>Usually, a flow item is inactive and invisible when it is not currently selected in the flow. Especially, all events from the flow item are ignored. To make a flow item always active, so that another flow item within it can respond to events and trigger the opening of a dialog, for example, select the <b translate="no">Force active</b> check box.</p>
+<p>By default, transitions are drawn from action areas to the target flow item. To draw the transitions from the edges of flow items instead, select the <b translate="no">Join lines</b> check box in the <b translate="no">Transition Lines</b> section.</p>
+<p>In the <b translate="no">Layout</b> tab, you can use <a href="qtquick-positioning.html#setting-anchors-and-margins" translate="no">anchors</a> to position the component.</p>
+<p>In the <b translate="no">Advanced</b> section, you can manage the more <a href="qtquick-properties.html#specifying-developer-properties" translate="no">advanced properties</a> of components.</p>
+</div>
+<!-- @@@studio-flow-item.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-flow-view.html">Adding Flow Views</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-flow-action-area.html">Adding Action Areas and Transitions</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-app-flows.qdoc -->
+  <title>Simulating Conditions | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Simulating Conditions</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-flow-events.html" />
+  <link rel="next" href="studio-flow-states.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-flow-events.html">Simulating Events</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-flow-states.html">Applying States in Flows</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#flow-decision-properties">Flow Decision Properties</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Simulating Conditions</h1>
+<!-- $$$studio-flow-conditions.html-description -->
+<div class="descr" id="details">
+<p>Part of any complex UI is the conditional logic it uses to present its state to users or to collect and process data from various sources. Data can be produced by user interaction from a variety of inputs, such as buttons and controls, sensor readings from arrays of equipment, or general values received from backend or service APIs.</p>
+<p>The <b translate="no">Flow Decision</b> component simulates conditions by displaying a list of options you can choose from when you preview the flow. This enables you to prototype complex interactions before you have access to the physical controls, backend, or sensor data that will be required for the production version.</p>
+<p class="centerAlign"><img src="images/studio-flow-decision.png" alt="&quot;Flow Decision in the 2D view&quot;" /></p><p>To simulate conditions:</p>
+<ol class="1" type="1"><li>Drag a <b translate="no">Flow Decision</b> component from <b translate="no">Components</b> <b translate="no">Flow View</b> to a <a href="studio-flow-view.html" translate="no">flow view</a> in the <a href="qtquick-navigator.html" translate="no">Navigator</a> or <a href="qtquick-form-editor.html" translate="no">2D</a> view.</li>
+<li>Select the flow item where you want the application to start in the <b translate="no">Navigator</b> or <b translate="no">2D</b> view, and then select <b translate="no">Flow</b> &gt; <b translate="no">Set Flow Start</b> in the context menu.</li>
+<li>Create an <a href="studio-flow-action-area.html" translate="no">action area</a> for the component that will trigger the condition and connect it to the flow decision.</li>
+<li>Select the flow decision, and then select <b translate="no">Connect</b> in the context menu to create connections to the flow items that will open depending on whether the condition is met.</li>
+<li>In the <a href="qtquick-properties-view.html" translate="no">Properties</a> view, <b translate="no">Dialog title</b> field, enter a title for the selection dialog that opens when the condition is triggered.</li>
+<li>Select a transition line in the <b translate="no">Navigator</b> or <b translate="no">2D</b> view and add a descriptive text in the <b translate="no">Question</b> field in <b translate="no">Properties</b> to represent a choice in the selection dialog.<p class="centerAlign"><img src="images/studio-flow-transition-properties-question.png" alt="&quot;Flow Transition properties&quot;" /></p></li>
+<li>Press <b>Alt+P</b> to preview the UI.</li>
+<li>Select action areas in the preview, double-click events in the event list, or use the keyboard shortcuts to trigger events.</li>
+</ol>
+<p>Flow decisions are listed in a dialog where you can select which condition is met to see the results.</p>
+<p class="centerAlign"><img src="images/studio-flow-decision-preview.png" alt="&quot;Selection dialog for flow decision&quot;" /></p><h2 id="flow-decision-properties">Flow Decision Properties</h2>
+<p>You can specify basic properties for a <b translate="no">Flow Decision</b> component in the <a href="qtquick-properties.html#type" translate="no">Type</a> and <a href="qtquick-properties.html#id" translate="no">ID</a> fields in the <b translate="no">Component</b> section in the <b translate="no">Properties</b> view. Specify properties for flow decisions in the <b translate="no">Flow Decision</b> section.</p>
+<p class="centerAlign"><img src="images/studio-flow-decision-properties.png" alt="&quot;Flow Decision properties&quot;" /></p><p>In the <b translate="no">Dialog title</b> field, enter a title for the selection dialog that opens when the condition is triggered.</p>
+<p>You can specify the following properties to change the appearance of the flow decision icon <img src="images/flow-decision-icon.png" alt="" /> :</p>
+<ul>
+<li>Select <img src="images/visibility-off.png" alt="" /> to display the ID of the <b translate="no">Flow Decision</b> component in the <a href="qtquick-form-editor.html" translate="no">2D</a> view.</li>
+<li>In the <b translate="no">Label position</b> field, select the corner of the flow decision icon to place the label in.</li>
+<li>In the <b translate="no">Size</b> field, specify the size of the flow decision icon.</li>
+<li>In the <b translate="no">Radius</b> field, specify the radius of the flow decision icon corners.</li>
+</ul>
+<p>You can use the <a href="qtquick-properties.html#picking-colors" translate="no">color picker</a> to set the outline and fill color of the flow decision icon.</p>
+</div>
+<!-- @@@studio-flow-conditions.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-flow-events.html">Simulating Events</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-flow-states.html">Applying States in Flows</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

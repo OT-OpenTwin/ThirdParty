@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- idocument.cpp -->
+  <meta name="description" content="The IDocument class describes a document that can be saved and reloaded.">
+  <title>IDocument Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>IDocument</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+<li class="level2"><a href="#handling-external-modifications">Handling External Modifications</a></li>
+<li class="level2"><a href="#editor-document">Editor Document</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">IDocument Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::IDocument</span>
+<!-- $$$IDocument-brief -->
+<p>The IDocument class describes a document that can be saved and reloaded. <a href="#details">More...</a></p>
+<!-- @@@IDocument -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/idocument.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherited By:</td><td class="memItemRight bottomAlign"> <p><a href="core-basetextdocument.html" translate="no">Core::BaseTextDocument</a></p>
+</td></tr>
+</table></div>
+<ul>
+<li><a href="core-idocument-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#ChangeTrigger-enum" translate="no">ChangeTrigger</a></b> { TriggerInternal, TriggerExternal }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#ChangeType-enum" translate="no">ChangeType</a></b> { TypeContents, TypeRemoved }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> enum class </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#OpenResult-enum" translate="no">OpenResult</a></b> { Success, ReadError, CannotHandle }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#ReloadFlag-enum" translate="no">ReloadFlag</a></b> { FlagReload, FlagIgnore }</td></tr>
+</table></div>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#IDocument" translate="no">IDocument</a></b>(QObject *<i>parent</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#dtor.IDocument" translate="no">~IDocument</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#checkPermissions" translate="no">checkPermissions</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QByteArray </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#contents" translate="no">contents</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#displayName" translate="no">displayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#fallbackSaveAsFileName" translate="no">fallbackSaveAsFileName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Utils::FilePath </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#fallbackSaveAsPath" translate="no">fallbackSaveAsPath</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Utils::FilePath &amp;</td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#filePath" translate="no">filePath</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#formatContents" translate="no">formatContents</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Id </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#id" translate="no">id</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::InfoBar *</td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#infoBar" translate="no">infoBar</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#isFileReadOnly" translate="no">isFileReadOnly</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#isModified" translate="no">isModified</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#isSaveAsAllowed" translate="no">isSaveAsAllowed</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#isSuspendAllowed" translate="no">isSuspendAllowed</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#isTemporary" translate="no">isTemporary</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#mimeType" translate="no">mimeType</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Core::IDocument::OpenResult </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#open" translate="no">open</a></b>(QString *<i>errorString</i>, const Utils::FilePath &amp;<i>filePath</i>, const Utils::FilePath &amp;<i>realFilePath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#preferredDisplayName" translate="no">preferredDisplayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#reload" translate="no">reload</a></b>(QString *<i>errorString</i>, Core::IDocument::ReloadFlag <i>flag</i>, Core::IDocument::ChangeType <i>type</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Core::IDocument::ReloadBehavior </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#reloadBehavior" translate="no">reloadBehavior</a></b>(Core::IDocument::ChangeTrigger <i>trigger</i>, Core::IDocument::ChangeType <i>type</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#save" translate="no">save</a></b>(QString *<i>errorString</i>, const Utils::FilePath &amp;<i>filePath</i> = Utils::FilePath(), bool <i>autoSave</i> = false)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#setContents" translate="no">setContents</a></b>(const QByteArray &amp;<i>contents</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#setFilePath" translate="no">setFilePath</a></b>(const Utils::FilePath &amp;<i>filePath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#setId" translate="no">setId</a></b>(Utils::Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#setMimeType" translate="no">setMimeType</a></b>(const QString &amp;<i>mimeType</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#setPreferredDisplayName" translate="no">setPreferredDisplayName</a></b>(const QString &amp;<i>name</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#setSuspendAllowed" translate="no">setSuspendAllowed</a></b>(bool <i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#setTemporary" translate="no">setTemporary</a></b>(bool <i>temporary</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#shouldAutoSave" translate="no">shouldAutoSave</a></b>() const</td></tr>
+</table></div>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#aboutToReload" translate="no">aboutToReload</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#aboutToSave" translate="no">aboutToSave</a></b>(const Utils::FilePath &amp;<i>filePath</i>, bool <i>autoSave</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#changed" translate="no">changed</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#contentsChanged" translate="no">contentsChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#filePathChanged" translate="no">filePathChanged</a></b>(const Utils::FilePath &amp;<i>oldName</i>, const Utils::FilePath &amp;<i>newName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#mimeTypeChanged" translate="no">mimeTypeChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#reloadFinished" translate="no">reloadFinished</a></b>(bool <i>success</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#saved" translate="no">saved</a></b>(const Utils::FilePath &amp;<i>filePath</i>, bool <i>autoSave</i>)</td></tr>
+</table></div>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-idocument.html#saveImpl" translate="no">saveImpl</a></b>(QString *<i>errorString</i>, const Utils::FilePath &amp;<i>filePath</i> = Utils::FilePath(), bool <i>autoSave</i> = false)</td></tr>
+</table></div>
+<!-- $$$IDocument-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The class has two use cases.</p>
+<h3 id="handling-external-modifications">Handling External Modifications</h3>
+<p>You can implement IDocument and register instances in <a href="core-documentmanager.html" translate="no">DocumentManager</a> to let it handle external modifications of a file. When the file specified with <a href="core-idocument.html#filePath" translate="no">filePath</a>() has changed externally, the <a href="core-documentmanager.html" translate="no">DocumentManager</a> asks the corresponding IDocument instance what to do via <a href="core-idocument.html#reloadBehavior" translate="no">reloadBehavior</a>(). If that returns <code translate="no">IDocument::BehaviorAsk</code>, the user is asked if the file should be reloaded from disk. If the user requests the reload or <a href="core-idocument.html#reloadBehavior" translate="no">reloadBehavior</a>() returns <code translate="no">IDocument::BehaviorSilent</code>, the <a href="core-documentmanager.html" translate="no">DocumentManager</a> calls <a href="core-idocument.html#reload" translate="no">reload</a>() to initiate a reload of the file from disk.</p>
+<p>Core functions: <a href="core-idocument.html#setFilePath" translate="no">setFilePath</a>(), <a href="core-idocument.html#reload" translate="no">reload</a>(), <a href="core-idocument.html#reloadBehavior" translate="no">reloadBehavior</a>().</p>
+<p>If the content of the document can change in Qt Creator, diverging from the content on disk: <a href="core-idocument.html#isModified" translate="no">isModified</a>(), <a href="core-idocument.html#save" translate="no">save</a>(), <a href="core-idocument.html#isSaveAsAllowed" translate="no">isSaveAsAllowed</a>(), <a href="core-idocument.html#fallbackSaveAsPath" translate="no">fallbackSaveAsPath</a>(), <a href="core-idocument.html#fallbackSaveAsFileName" translate="no">fallbackSaveAsFileName</a>().</p>
+<h3 id="editor-document">Editor Document</h3>
+<p>The most common use case for implementing an IDocument subclass is as a document for an <a href="core-ieditor.html" translate="no">IEditor</a> implementation. Multiple editor instances can work on the same document instance, for example if the document is visible in multiple splits simultaneously. So the IDocument subclass should hold all data that is independent from the specific <a href="core-ieditor.html" translate="no">IEditor</a> instance, for example the content and highlighting information.</p>
+<p>Each IDocument subclass is only required to work with the corresponding <a href="core-ieditor.html" translate="no">IEditor</a> subclasses that it was designed to work with.</p>
+<p>An IDocument can either be backed by a file, or solely represent some data in memory. Documents backed by a file are automatically added to the <a href="core-documentmanager.html" translate="no">DocumentManager</a> by the <a href="core-editormanager.html" translate="no">EditorManager</a>.</p>
+<p>Core functions: <a href="core-idocument.html#setId" translate="no">setId</a>(), <a href="core-idocument.html#isModified" translate="no">isModified</a>(), <a href="core-idocument.html#contents" translate="no">contents</a>(), <a href="core-idocument.html#setContents" translate="no">setContents</a>().</p>
+<p>If the content of the document is backed by a file: <a href="core-idocument.html#open" translate="no">open</a>(), <a href="core-idocument.html#save" translate="no">save</a>(), <a href="core-idocument.html#setFilePath" translate="no">setFilePath</a>(), <a href="core-idocument.html#mimeType" translate="no">mimeType</a>(), <a href="core-idocument.html#shouldAutoSave" translate="no">shouldAutoSave</a>(), <a href="core-idocument.html#setSuspendAllowed" translate="no">setSuspendAllowed</a>(), and everything from <a href="core-idocument.html#handling-external-modifications" translate="no">Handling External Modifications</a>.</p>
+<p>If the content of the document is not backed by a file: <a href="core-idocument.html#setPreferredDisplayName" translate="no">setPreferredDisplayName</a>(), <a href="core-idocument.html#setTemporary" translate="no">setTemporary</a>().</p>
+</div>
+<!-- @@@IDocument -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$ChangeTrigger$$$TriggerInternal$$$TriggerExternal -->
+<h3 class="fn" translate="no" id="ChangeTrigger-enum">enum IDocument::<span class="name">ChangeTrigger</span></h3>
+<p>The ChangeTrigger enum describes whether a file was changed from Qt Creator internally or from the outside.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Core::IDocument::TriggerInternal</code></td><td class="topAlign tblval"><code translate="no">0</code></td><td class="topAlign">The file was changed by Qt Creator.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::IDocument::TriggerExternal</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">The file was changed from the outside.</td></tr>
+</table></div>
+<p><b>See also </b><a href="core-idocument.html#reloadBehavior" translate="no">IDocument::reloadBehavior</a>().</p>
+<!-- @@@ChangeTrigger -->
+<!-- $$$ChangeType$$$TypeContents$$$TypeRemoved -->
+<h3 class="fn" translate="no" id="ChangeType-enum">enum IDocument::<span class="name">ChangeType</span></h3>
+<p>The ChangeType enum describes the way in which the file changed.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Core::IDocument::TypeContents</code></td><td class="topAlign tblval"><code translate="no">0</code></td><td class="topAlign">The contents of the file changed.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::IDocument::TypeRemoved</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">The file was removed.</td></tr>
+</table></div>
+<p><b>See also </b><a href="core-idocument.html#reloadBehavior" translate="no">IDocument::reloadBehavior</a>() and <a href="core-idocument.html#reload" translate="no">IDocument::reload</a>().</p>
+<!-- @@@ChangeType -->
+<!-- $$$OpenResult$$$Success$$$ReadError$$$CannotHandle -->
+<h3 class="fn" translate="no" id="OpenResult-enum">enum class IDocument::<span class="name">OpenResult</span></h3>
+<p>The OpenResult enum describes whether a file was successfully opened.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Core::IDocument::OpenResult::Success</code></td><td class="topAlign tblval"><code translate="no">0</code></td><td class="topAlign">The file was read successfully and can be handled by this document type.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::IDocument::OpenResult::ReadError</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">The file could not be opened for reading, either because it does not exist or because of missing permissions.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::IDocument::OpenResult::CannotHandle</code></td><td class="topAlign tblval"><code translate="no">2</code></td><td class="topAlign">This document type could not handle the file content.</td></tr>
+</table></div>
+<!-- @@@OpenResult -->
+<!-- $$$ReloadFlag$$$FlagReload$$$FlagIgnore -->
+<h3 class="fn" translate="no" id="ReloadFlag-enum">enum IDocument::<span class="name">ReloadFlag</span></h3>
+<p>The ReloadFlag enum describes if a file should be reloaded from disk.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Core::IDocument::FlagReload</code></td><td class="topAlign tblval"><code translate="no">0</code></td><td class="topAlign">The file should be reloaded.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::IDocument::FlagIgnore</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">The file should not be reloaded, but the document state should reflect the change.</td></tr>
+</table></div>
+<p><b>See also </b><a href="core-idocument.html#reload" translate="no">IDocument::reload</a>().</p>
+<!-- @@@ReloadFlag -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$IDocument[overload1]$$$IDocumentQObject* -->
+<h3 class="fn" translate="no" id="IDocument">IDocument::<span class="name">IDocument</span>(<span class="type">QObject</span> *<i>parent</i> = nullptr)</h3>
+<p>Creates an IDocument with <i translate="no">parent</i>.</p>
+<div class="admonition note">
+<p><b>Note: </b>Using the <i translate="no">parent</i> for ownership of the document is generally a bad idea if the IDocument is intended for use with <a href="core-ieditor.html" translate="no">IEditor</a>. It is better to use shared ownership in that case.</p>
+</div>
+<!-- @@@IDocument -->
+<!-- $$$~IDocument[overload1]$$$~IDocument -->
+<h3 class="fn" translate="no" id="dtor.IDocument"><code translate="no">[override virtual noexcept] </code>IDocument::<span class="name">~IDocument</span>()</h3>
+<p>Destroys the <a href="core-idocument.html" translate="no">IDocument</a>. If there was an auto save file for this document, it is removed.</p>
+<p><b>See also </b><a href="core-idocument.html#shouldAutoSave" translate="no">shouldAutoSave</a>().</p>
+<!-- @@@~IDocument -->
+<!-- $$$aboutToReload[overload1]$$$aboutToReload -->
+<h3 class="fn" translate="no" id="aboutToReload"><code translate="no">[signal] </code><span class="type">void</span> IDocument::<span class="name">aboutToReload</span>()</h3>
+<p>This signal is emitted before the document is reloaded from the backing file.</p>
+<p><b>See also </b><a href="core-idocument.html#reload" translate="no">reload</a>().</p>
+<!-- @@@aboutToReload -->
+<!-- $$$aboutToSave[overload1]$$$aboutToSaveconstUtils::FilePath&bool -->
+<h3 class="fn" translate="no" id="aboutToSave"><code translate="no">[signal] </code><span class="type">void</span> IDocument::<span class="name">aboutToSave</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>, <span class="type">bool</span> <i>autoSave</i>)</h3>
+<p>This signal is emitted before the document is saved to <i translate="no">filePath</i>.</p>
+<p><i translate="no">autoSave</i> indicates whether this save was triggered by the auto save timer.</p>
+<p><b>See also </b><a href="core-idocument.html#save" translate="no">save</a>().</p>
+<!-- @@@aboutToSave -->
+<!-- $$$changed[overload1]$$$changed -->
+<h3 class="fn" translate="no" id="changed"><code translate="no">[signal] </code><span class="type">void</span> IDocument::<span class="name">changed</span>()</h3>
+<p>This signal is emitted when the document's meta data, like file name or modified state, changes.</p>
+<p><b>See also </b><a href="core-idocument.html#isModified" translate="no">isModified</a>(), <a href="core-idocument.html#filePath" translate="no">filePath</a>(), and <a href="core-idocument.html#displayName" translate="no">displayName</a>().</p>
+<!-- @@@changed -->
+<!-- $$$checkPermissions[overload1]$$$checkPermissions -->
+<h3 class="fn" translate="no" id="checkPermissions"><span class="type">void</span> IDocument::<span class="name">checkPermissions</span>()</h3>
+<p>Updates the cached information about the read-only status of the backing file.</p>
+<!-- @@@checkPermissions -->
+<!-- $$$contents[overload1]$$$contents -->
+<h3 class="fn" translate="no" id="contents"><code translate="no">[virtual] </code><span class="type">QByteArray</span> IDocument::<span class="name">contents</span>() const</h3>
+<p>Returns the current contents of the document. The default implementation returns an empty QByteArray.</p>
+<p><b>See also </b><a href="core-idocument.html#setContents" translate="no">setContents</a>() and <a href="core-idocument.html#contentsChanged" translate="no">contentsChanged</a>().</p>
+<!-- @@@contents -->
+<!-- $$$contentsChanged[overload1]$$$contentsChanged -->
+<h3 class="fn" translate="no" id="contentsChanged"><code translate="no">[signal] </code><span class="type">void</span> IDocument::<span class="name">contentsChanged</span>()</h3>
+<p>This signal is emitted when the document's content changes.</p>
+<p><b>See also </b><a href="core-idocument.html#contents" translate="no">contents</a>().</p>
+<!-- @@@contentsChanged -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" translate="no" id="displayName"><span class="type">QString</span> IDocument::<span class="name">displayName</span>() const</h3>
+<p>Returns the string to display for this document, for example in the <b translate="no">Open Documents</b> view and the documents drop down.</p>
+<p>The display name is one of the following, in order:</p>
+<ol class="1" type="1"><li>Unique display name set by the document model</li>
+<li>Preferred display name set by the owner</li>
+<li>Base name of the document's file name</li>
+</ol>
+<p><b>See also </b><a href="core-idocument.html#setPreferredDisplayName" translate="no">setPreferredDisplayName</a>(), <a href="core-idocument.html#filePath" translate="no">filePath</a>(), and <a href="core-idocument.html#changed" translate="no">changed</a>().</p>
+<!-- @@@displayName -->
+<!-- $$$fallbackSaveAsFileName[overload1]$$$fallbackSaveAsFileName -->
+<h3 class="fn" translate="no" id="fallbackSaveAsFileName"><code translate="no">[virtual] </code><span class="type">QString</span> IDocument::<span class="name">fallbackSaveAsFileName</span>() const</h3>
+<p>Returns a file name to use for the <b translate="no">Save As</b> file dialog in case the document is not backed by a file.</p>
+<p><b>See also </b><a href="core-idocument.html#fallbackSaveAsPath" translate="no">fallbackSaveAsPath</a>().</p>
+<!-- @@@fallbackSaveAsFileName -->
+<!-- $$$fallbackSaveAsPath[overload1]$$$fallbackSaveAsPath -->
+<h3 class="fn" translate="no" id="fallbackSaveAsPath"><code translate="no">[virtual] </code><span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> IDocument::<span class="name">fallbackSaveAsPath</span>() const</h3>
+<p>Returns a path to use for the <b translate="no">Save As</b> file dialog in case the document is not backed by a file.</p>
+<p><b>See also </b><a href="core-idocument.html#fallbackSaveAsFileName" translate="no">fallbackSaveAsFileName</a>().</p>
+<!-- @@@fallbackSaveAsPath -->
+<!-- $$$filePath[overload1]$$$filePath -->
+<h3 class="fn" translate="no" id="filePath">const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;IDocument::<span class="name">filePath</span>() const</h3>
+<p>Returns the absolute path of the file that this document refers to. May be empty for documents that are not backed by a file.</p>
+<p><b>See also </b><a href="core-idocument.html#setFilePath" translate="no">setFilePath</a>().</p>
+<!-- @@@filePath -->
+<!-- $$$filePathChanged[overload1]$$$filePathChangedconstUtils::FilePath&constUtils::FilePath& -->
+<h3 class="fn" translate="no" id="filePathChanged"><code translate="no">[signal] </code><span class="type">void</span> IDocument::<span class="name">filePathChanged</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>oldName</i>, const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>newName</i>)</h3>
+<p>This signal is emitted after the file path changed from <i translate="no">oldName</i> to <i translate="no">newName</i>.</p>
+<p><b>See also </b><a href="core-idocument.html#filePath" translate="no">filePath</a>().</p>
+<!-- @@@filePathChanged -->
+<!-- $$$formatContents[overload1]$$$formatContents -->
+<h3 class="fn" translate="no" id="formatContents"><code translate="no">[virtual] </code><span class="type">void</span> IDocument::<span class="name">formatContents</span>()</h3>
+<p>Formats the contents of the document, if the implementation supports such functionality.</p>
+<!-- @@@formatContents -->
+<!-- $$$id[overload1]$$$id -->
+<h3 class="fn" translate="no" id="id"><span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> IDocument::<span class="name">id</span>() const</h3>
+<p>Returns the ID for this document type.</p>
+<p><b>See also </b><a href="core-idocument.html#setId" translate="no">setId</a>().</p>
+<!-- @@@id -->
+<!-- $$$infoBar[overload1]$$$infoBar -->
+<h3 class="fn" translate="no" id="infoBar"><span class="type">Utils::InfoBar</span> *IDocument::<span class="name">infoBar</span>()</h3>
+<p>Returns the document's Utils::InfoBar, which is shown at the top of an editor.</p>
+<!-- @@@infoBar -->
+<!-- $$$isFileReadOnly[overload1]$$$isFileReadOnly -->
+<h3 class="fn" translate="no" id="isFileReadOnly"><span class="type">bool</span> IDocument::<span class="name">isFileReadOnly</span>() const</h3>
+<p>Returns whether the file backing this document is read-only, or <code translate="no">false</code> if the document is not backed by a file.</p>
+<!-- @@@isFileReadOnly -->
+<!-- $$$isModified[overload1]$$$isModified -->
+<h3 class="fn" translate="no" id="isModified"><code translate="no">[virtual] </code><span class="type">bool</span> IDocument::<span class="name">isModified</span>() const</h3>
+<p>Returns whether the document has been modified after it was loaded from a file.</p>
+<p>The default implementation returns <code translate="no">false</code>. Re-implementations should emit <a href="core-idocument.html#changed" translate="no">changed</a>() when this property changes.</p>
+<p><b>See also </b><a href="core-idocument.html#changed" translate="no">changed</a>().</p>
+<!-- @@@isModified -->
+<!-- $$$isSaveAsAllowed[overload1]$$$isSaveAsAllowed -->
+<h3 class="fn" translate="no" id="isSaveAsAllowed"><code translate="no">[virtual] </code><span class="type">bool</span> IDocument::<span class="name">isSaveAsAllowed</span>() const</h3>
+<p>Returns whether the document may be saved under a different file name.</p>
+<p>The default implementation returns <code translate="no">false</code>.</p>
+<p><b>See also </b><a href="core-idocument.html#save" translate="no">save</a>().</p>
+<!-- @@@isSaveAsAllowed -->
+<!-- $$$isSuspendAllowed[overload1]$$$isSuspendAllowed -->
+<h3 class="fn" translate="no" id="isSuspendAllowed"><span class="type">bool</span> IDocument::<span class="name">isSuspendAllowed</span>() const</h3>
+<p>Returns whether the document may be suspended.</p>
+<p>The <a href="core-editormanager.html" translate="no">EditorManager</a> can automatically suspend editors and its corresponding documents if the document is backed by a file, is not modified, and is not temporary. Suspended <a href="core-ieditor.html" translate="no">IEditor</a> and <a href="core-idocument.html" translate="no">IDocument</a> instances are deleted and removed from memory, but are still visually accessible as if the document was still opened in Qt Creator.</p>
+<p>The default is <code translate="no">false</code>.</p>
+<p><b>See also </b><a href="core-idocument.html#setSuspendAllowed" translate="no">setSuspendAllowed</a>(), <a href="core-idocument.html#isModified" translate="no">isModified</a>(), and <a href="core-idocument.html#isTemporary" translate="no">isTemporary</a>().</p>
+<!-- @@@isSuspendAllowed -->
+<!-- $$$isTemporary[overload1]$$$isTemporary -->
+<h3 class="fn" translate="no" id="isTemporary"><span class="type">bool</span> IDocument::<span class="name">isTemporary</span>() const</h3>
+<p>Returns if the document is temporary, and should for example not be considered when saving or restoring the session state, or added to the recent files list.</p>
+<p>The default is <code translate="no">false</code>.</p>
+<p><b>See also </b><a href="core-idocument.html#setTemporary" translate="no">setTemporary</a>().</p>
+<!-- @@@isTemporary -->
+<!-- $$$mimeType[overload1]$$$mimeType -->
+<h3 class="fn" translate="no" id="mimeType"><span class="type">QString</span> IDocument::<span class="name">mimeType</span>() const</h3>
+<p>Returns the MIME type of the document content, if applicable.</p>
+<p>Subclasses should set this with <a href="core-idocument.html#setMimeType" translate="no">setMimeType</a>() after setting or loading content.</p>
+<p>The default MIME type is empty.</p>
+<p><b>See also </b><a href="core-idocument.html#setMimeType" translate="no">setMimeType</a>() and <a href="core-idocument.html#mimeTypeChanged" translate="no">mimeTypeChanged</a>().</p>
+<!-- @@@mimeType -->
+<!-- $$$mimeTypeChanged[overload1]$$$mimeTypeChanged -->
+<h3 class="fn" translate="no" id="mimeTypeChanged"><code translate="no">[signal] </code><span class="type">void</span> IDocument::<span class="name">mimeTypeChanged</span>()</h3>
+<p>This signal is emitted when the document content's MIME type changes.</p>
+<p><b>See also </b><a href="core-idocument.html#mimeType" translate="no">mimeType</a>().</p>
+<!-- @@@mimeTypeChanged -->
+<!-- $$$open[overload1]$$$openQString*constUtils::FilePath&constUtils::FilePath& -->
+<h3 class="fn" translate="no" id="open"><code translate="no">[virtual] </code><span class="type"><a href="core-idocument.html#OpenResult-enum" translate="no">Core::IDocument::OpenResult</a></span> IDocument::<span class="name">open</span>(<span class="type">QString</span> *<i>errorString</i>, const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>, const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>realFilePath</i>)</h3>
+<p>The open() method is used to load the contents of a file when a document is opened in an editor.</p>
+<p>If the document is opened from an auto save file, <i translate="no">realFilePath</i> is the name of the auto save file that should be loaded, and <i translate="no">filePath</i> is the file name of the resulting file. In that case, the contents of the auto save file should be loaded, the file name of the <a href="core-idocument.html" translate="no">IDocument</a> should be set to <i translate="no">filePath</i>, and the document state be set to modified.</p>
+<p>If the editor is opened from a regular file, <i translate="no">filePath</i> and <i translate="no">filePath</i> are the same.</p>
+<p>Use <i translate="no">errorString</i> to return an error message if this document cannot handle the file contents.</p>
+<p>Returns whether the file was opened and read successfully.</p>
+<p>The default implementation does nothing and returns <a href="core-idocument.html#OpenResult-enum" translate="no">CannotHandle</a>.</p>
+<p><b>See also </b><a href="core-editormanager.html#openEditor" translate="no">EditorManager::openEditor</a>(), <a href="core-idocument.html#shouldAutoSave" translate="no">shouldAutoSave</a>(), and <a href="core-idocument.html#setFilePath" translate="no">setFilePath</a>().</p>
+<!-- @@@open -->
+<!-- $$$preferredDisplayName[overload1]$$$preferredDisplayName -->
+<h3 class="fn" translate="no" id="preferredDisplayName"><span class="type">QString</span> IDocument::<span class="name">preferredDisplayName</span>() const</h3>
+<p>Returns the preferred display name for this document.</p>
+<p>The default preferred display name is empty, which means that the display name is preferably the file name of the file backing this document.</p>
+<p><b>See also </b><a href="core-idocument.html#setPreferredDisplayName" translate="no">setPreferredDisplayName</a>() and <a href="core-idocument.html#displayName" translate="no">displayName</a>().</p>
+<!-- @@@preferredDisplayName -->
+<!-- $$$reload[overload1]$$$reloadQString*Core::IDocument::ReloadFlagCore::IDocument::ChangeType -->
+<h3 class="fn" translate="no" id="reload"><code translate="no">[virtual] </code><span class="type">bool</span> IDocument::<span class="name">reload</span>(<span class="type">QString</span> *<i>errorString</i>, <span class="type"><a href="core-idocument.html#ReloadFlag-enum" translate="no">Core::IDocument::ReloadFlag</a></span> <i>flag</i>, <span class="type"><a href="core-idocument.html#ChangeType-enum" translate="no">Core::IDocument::ChangeType</a></span> <i>type</i>)</h3>
+<p>Reloads the document from the backing file when that changed on disk.</p>
+<p>If <i translate="no">flag</i> is <a href="core-idocument.html#ReloadFlag-enum" translate="no">FlagIgnore</a> the file should not actually be loaded, but the document should reflect the change in its <a href="core-idocument.html#isModified" translate="no">modified state</a>.</p>
+<p>The <i translate="no">type</i> specifies whether only the file permissions changed or if the contents of the file changed.</p>
+<p>Use <i translate="no">errorString</i> to return an error message, if this document cannot handle the file contents.</p>
+<p>Returns if the file was reloaded successfully.</p>
+<p>The default implementation does nothing and returns <code translate="no">true</code>.</p>
+<p>Subclasses should emit <a href="core-idocument.html#aboutToReload" translate="no">aboutToReload</a>() before, and <a href="core-idocument.html#reloadFinished" translate="no">reloadFinished</a>() after reloading the file.</p>
+<p><b>See also </b><a href="core-idocument.html#isModified" translate="no">isModified</a>(), <a href="core-idocument.html#aboutToReload" translate="no">aboutToReload</a>(), <a href="core-idocument.html#reloadFinished" translate="no">reloadFinished</a>(), and <a href="core-idocument.html#changed" translate="no">changed</a>().</p>
+<!-- @@@reload -->
+<!-- $$$reloadBehavior[overload1]$$$reloadBehaviorCore::IDocument::ChangeTriggerCore::IDocument::ChangeType -->
+<h3 class="fn" translate="no" id="reloadBehavior"><code translate="no">[virtual] </code><span class="type">Core::IDocument::ReloadBehavior</span> IDocument::<span class="name">reloadBehavior</span>(<span class="type"><a href="core-idocument.html#ChangeTrigger-enum" translate="no">Core::IDocument::ChangeTrigger</a></span> <i>trigger</i>, <span class="type"><a href="core-idocument.html#ChangeType-enum" translate="no">Core::IDocument::ChangeType</a></span> <i>type</i>) const</h3>
+<p>The reloadBehavior() method is used by the <a href="core-documentmanager.html" translate="no">DocumentManager</a> to ask what to do if the file backing this document has changed on disk.</p>
+<p>The <i translate="no">trigger</i> specifies if the change was triggered by some operation in Qt Creator. The <i translate="no">type</i> specifies if the file changed permissions or contents, or was removed completely.</p>
+<p>Returns whether the user should be asked or the document should be reloaded silently.</p>
+<p>The default implementation requests a silent reload if only the permissions changed or if the contents have changed but the <i translate="no">trigger</i> is internal and the document is not modified.</p>
+<p><b>See also </b><a href="core-idocument.html#isModified" translate="no">isModified</a>().</p>
+<!-- @@@reloadBehavior -->
+<!-- $$$reloadFinished[overload1]$$$reloadFinishedbool -->
+<h3 class="fn" translate="no" id="reloadFinished"><code translate="no">[signal] </code><span class="type">void</span> IDocument::<span class="name">reloadFinished</span>(<span class="type">bool</span> <i>success</i>)</h3>
+<p>This signal is emitted after the document is reloaded from the backing file, or if reloading failed.</p>
+<p>The success state is passed in <i translate="no">success</i>.</p>
+<p><b>See also </b><a href="core-idocument.html#reload" translate="no">reload</a>().</p>
+<!-- @@@reloadFinished -->
+<!-- $$$save[overload1]$$$saveQString*constUtils::FilePath&bool -->
+<h3 class="fn" translate="no" id="save"><span class="type">bool</span> IDocument::<span class="name">save</span>(<span class="type">QString</span> *<i>errorString</i>, const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i> = Utils::FilePath(), <span class="type">bool</span> <i>autoSave</i> = false)</h3>
+<p>Saves the contents of the document to the <i translate="no">filePath</i> on disk. If <i translate="no">filePath</i> is empty <a href="core-idocument.html#filePath" translate="no">filePath</a>() is used.</p>
+<p>If <i translate="no">autoSave</i> is <code translate="no">true</code>, the saving is done for an auto-save, so the document should avoid cleanups or other operations that it does for user-requested saves.</p>
+<p>Use <i translate="no">errorString</i> to return an error message if saving failed.</p>
+<p>Returns whether saving was successful.</p>
+<p>If saving was successful saved is emitted.</p>
+<p><b>See also </b><a href="core-idocument.html#shouldAutoSave" translate="no">shouldAutoSave</a>(), <a href="core-idocument.html#aboutToSave" translate="no">aboutToSave</a>(), <a href="core-idocument.html#saved" translate="no">saved</a>(), and <a href="core-idocument.html#filePath" translate="no">filePath</a>().</p>
+<!-- @@@save -->
+<!-- $$$saveImpl[overload1]$$$saveImplQString*constUtils::FilePath&bool -->
+<h3 class="fn" translate="no" id="saveImpl"><code translate="no">[virtual protected] </code><span class="type">bool</span> IDocument::<span class="name">saveImpl</span>(<span class="type">QString</span> *<i>errorString</i>, const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i> = Utils::FilePath(), <span class="type">bool</span> <i>autoSave</i> = false)</h3>
+<p>Implementation of saving the contents of the document to the <i translate="no">filePath</i> on disk.</p>
+<p>If <i translate="no">autoSave</i> is <code translate="no">true</code>, the saving is done for an auto-save, so the document should avoid cleanups or other operations that it does for user-requested saves.</p>
+<p>Use <i translate="no">errorString</i> to return an error message if saving failed.</p>
+<p>Returns whether saving was successful.</p>
+<p>The default implementation does nothing and returns <code translate="no">false</code>.</p>
+<!-- @@@saveImpl -->
+<!-- $$$saved[overload1]$$$savedconstUtils::FilePath&bool -->
+<h3 class="fn" translate="no" id="saved"><code translate="no">[signal] </code><span class="type">void</span> IDocument::<span class="name">saved</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>, <span class="type">bool</span> <i>autoSave</i>)</h3>
+<p>This signal is emitted after the document was saved to <i translate="no">filePath</i>.</p>
+<p><i translate="no">autoSave</i> indicates whether this save was triggered by the auto save timer.</p>
+<p><b>See also </b><a href="core-idocument.html#save" translate="no">save</a>().</p>
+<!-- @@@saved -->
+<!-- $$$setContents[overload1]$$$setContentsconstQByteArray& -->
+<h3 class="fn" translate="no" id="setContents"><code translate="no">[virtual] </code><span class="type">bool</span> IDocument::<span class="name">setContents</span>(const <span class="type">QByteArray</span> &amp;<i>contents</i>)</h3>
+<p>The setContents() method is for example used by <a href="core-editormanager.html#openEditorWithContents" translate="no">EditorManager::openEditorWithContents</a>() to set the <i translate="no">contents</i> of this document.</p>
+<p>Returns whether setting the contents was successful.</p>
+<p>The default implementation does nothing and returns false.</p>
+<p><b>See also </b><a href="core-idocument.html#contents" translate="no">contents</a>() and <a href="core-editormanager.html#openEditorWithContents" translate="no">EditorManager::openEditorWithContents</a>().</p>
+<!-- @@@setContents -->
+<!-- $$$setFilePath[overload1]$$$setFilePathconstUtils::FilePath& -->
+<h3 class="fn" translate="no" id="setFilePath"><code translate="no">[virtual] </code><span class="type">void</span> IDocument::<span class="name">setFilePath</span>(const <span class="type"><a href="utils-filepath.html" translate="no">Utils::FilePath</a></span> &amp;<i>filePath</i>)</h3>
+<p>Sets the absolute <i translate="no">filePath</i> of the file that backs this document. The default implementation sets the file name and sends the <a href="core-idocument.html#filePathChanged" translate="no">filePathChanged</a>() and <a href="core-idocument.html#changed" translate="no">changed</a>() signals.</p>
+<p><b>See also </b><a href="core-idocument.html#filePath" translate="no">filePath</a>(), <a href="core-idocument.html#filePathChanged" translate="no">filePathChanged</a>(), and <a href="core-idocument.html#changed" translate="no">changed</a>().</p>
+<!-- @@@setFilePath -->
+<!-- $$$setId[overload1]$$$setIdUtils::Id -->
+<h3 class="fn" translate="no" id="setId"><span class="type">void</span> IDocument::<span class="name">setId</span>(<span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> <i>id</i>)</h3>
+<p>Sets the ID for this document type to <i translate="no">id</i>. This is coupled with the corresponding <a href="core-ieditor.html" translate="no">IEditor</a> implementation and the <a href="core-ieditorfactory.html#id" translate="no">id</a>() of the <a href="core-ieditorfactory.html" translate="no">IEditorFactory</a>. If the <a href="core-idocument.html" translate="no">IDocument</a> implementation only works with a single <a href="core-ieditor.html" translate="no">IEditor</a> type, this is preferably set in the IDocuments's constructor.</p>
+<p><b>See also </b><a href="core-idocument.html#id" translate="no">id</a>().</p>
+<!-- @@@setId -->
+<!-- $$$setMimeType[overload1]$$$setMimeTypeconstQString& -->
+<h3 class="fn" translate="no" id="setMimeType"><span class="type">void</span> IDocument::<span class="name">setMimeType</span>(const <span class="type">QString</span> &amp;<i>mimeType</i>)</h3>
+<p>Sets the MIME type of the document content to <i translate="no">mimeType</i>.</p>
+<p><b>See also </b><a href="core-idocument.html#mimeType" translate="no">mimeType</a>().</p>
+<!-- @@@setMimeType -->
+<!-- $$$setPreferredDisplayName[overload1]$$$setPreferredDisplayNameconstQString& -->
+<h3 class="fn" translate="no" id="setPreferredDisplayName"><span class="type">void</span> IDocument::<span class="name">setPreferredDisplayName</span>(const <span class="type">QString</span> &amp;<i>name</i>)</h3>
+<p>Sets the preferred display <i translate="no">name</i> for this document.</p>
+<p><b>See also </b><a href="core-idocument.html#preferredDisplayName" translate="no">preferredDisplayName</a>() and <a href="core-idocument.html#displayName" translate="no">displayName</a>().</p>
+<!-- @@@setPreferredDisplayName -->
+<!-- $$$setSuspendAllowed[overload1]$$$setSuspendAllowedbool -->
+<h3 class="fn" translate="no" id="setSuspendAllowed"><span class="type">void</span> IDocument::<span class="name">setSuspendAllowed</span>(<span class="type">bool</span> <i>value</i>)</h3>
+<p>Sets whether the document may be suspended to <i translate="no">value</i>.</p>
+<p><b>See also </b><a href="core-idocument.html#isSuspendAllowed" translate="no">isSuspendAllowed</a>().</p>
+<!-- @@@setSuspendAllowed -->
+<!-- $$$setTemporary[overload1]$$$setTemporarybool -->
+<h3 class="fn" translate="no" id="setTemporary"><span class="type">void</span> IDocument::<span class="name">setTemporary</span>(<span class="type">bool</span> <i>temporary</i>)</h3>
+<p>Sets whether the document is <i translate="no">temporary</i>.</p>
+<p><b>See also </b><a href="core-idocument.html#isTemporary" translate="no">isTemporary</a>().</p>
+<!-- @@@setTemporary -->
+<!-- $$$shouldAutoSave[overload1]$$$shouldAutoSave -->
+<h3 class="fn" translate="no" id="shouldAutoSave"><code translate="no">[virtual] </code><span class="type">bool</span> IDocument::<span class="name">shouldAutoSave</span>() const</h3>
+<p>Returns whether the document should automatically be saved at a user-defined interval.</p>
+<p>The default implementation returns <code translate="no">false</code>.</p>
+<!-- @@@shouldAutoSave -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

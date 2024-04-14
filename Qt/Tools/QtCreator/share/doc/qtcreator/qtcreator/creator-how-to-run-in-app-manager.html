@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-appman-how-to-run.qdoc -->
+  <title>Run in Qt Application Manager | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Run in Qt Application Manager</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#application-manager-cmake-functions">Application manager CMake functions</a></li>
+<li class="level1"><a href="#customize-the-installation">Customize the installation</a></li>
+<li class="level2"><a href="#automatic-deployment-configuration-selection">Automatic deployment configuration selection</a></li>
+<li class="level2"><a href="#deployment-configuration">Deployment configuration</a></li>
+<li class="level2"><a href="#installation-settings">Installation settings</a></li>
+<li class="level1"><a href="#application-manager-run-settings">Application manager run settings</a></li>
+<li class="level1"><a href="#profile-qt-quick-applications">Profile Qt Quick applications</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Run in Qt Application Manager</h1>
+<!-- $$$creator-how-to-run-in-app-manager.html-description -->
+<div class="descr" id="details">
+<p>If you have set up <a href="https://doc.qt.io/QtApplicationManager/" translate="no">Qt Application Manager</a>, you can deploy, run, and debug applications on the desktop, remote generic SSH Linux targets, or <a href="creator-embedded-platforms.html#boot2qt" translate="no">Boot2Qt devices</a>. The applications can be either <i>built-in applications</i> or <i>third-party applications</i>. The former are part of the System UI or the base installation, while the latter are dynamically installed, updated, and uninstalled.</p>
+<div class="admonition note">
+<p><b>Note: </b>Enable the experimental Application Manager plugin to use it.</p>
+</div>
+<p>To build a Qt Application Manager project, deploy it, and run selected apps in the System UI:</p>
+<ol class="1" type="1"><li>Open an application manager project.</li>
+<li>In <b translate="no">Projects</b> &gt; <b translate="no">Build &amp; Run</b>, select a kit that specifies the Qt version and the device to use.</li>
+<li>Go to <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Devices</b> and specify a connection to the device.</li>
+<li>In <b translate="no">Projects</b> &gt; <b translate="no">Build &amp; Run</b>, specify settings for deploying and running the application with the selected kit.</li>
+<li>In the kit selector, select <img src="images/run_small.png" alt="" /> for the run target.</li>
+</ol>
+<p>You can see command-line output in the <a href="creator-reference-application-output-view.html" translate="no">Application Output</a> view. You can start, stop, and debug applications from there.</p>
+<p>On Linux, running a multi-process application starts a new process that you can stop. If the application uses a runtime of the type <code translate="no">qml-inprocess</code>, or you are running on Windows or macOS, you cannot debug it as an individual process. However, you can debug it as a part of the System UI.</p>
+<p>Debugging works transparently if you set it up for the run target.</p>
+<h2 id="application-manager-cmake-functions">Application manager CMake functions</h2>
+<p>Since Qt 6.7, when using CMake as the build system, use the following functions in the CMakeLists.txt file to indicate, which applications to create as built-in packages and which to create as installable packages:</p>
+<ul>
+<li><a href="https://doc-snapshots.qt.io/applicationmanager-dev/cmake-qt6-am-create-builtin-package.html" translate="no">qt6_am_create_builtin_package</a></li>
+<li><a href="https://doc-snapshots.qt.io/applicationmanager-dev/cmake-qt6-am-create-installable-package.html" translate="no">qt6_am_create_installable_package</a></li>
+</ul>
+<h2 id="customize-the-installation">Customize the installation</h2>
+<p>To change the settings for deploying and running the application with the selected kit, go to <b translate="no">Projects</b> and select <b translate="no">Build &amp; Run</b> &gt; <b translate="no">Run</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-appman-deploy-settings.webp" alt="{Deploy to application manager}" /></p><h3 id="automatic-deployment-configuration-selection">Automatic deployment configuration selection</h3>
+<p>In an application manager project, the targets need different deployment mechanisms. The System UI is deployed with the <i>default deployment configuration</i>, while all application manager packages use an <i>automatic application manager deploy configuration</i>, which deploys only the package itself when an installable package should be started.</p>
+<p>The appropriate deployment configuration is automatically selected when the current run configuration changes.</p>
+<h3 id="deployment-configuration">Deployment configuration</h3>
+<p>In <b translate="no">Method</b>, <b translate="no">Automatic Application Manager Deploy Configuration</b> adds the necessary CMake and tool arguments, as well as <b translate="no">Targets</b> to the effective <b translate="no">Build</b> command. You can select the targets in the kit selector to deploy and run applications on them.</p>
+<p class="centerAlign"><img src="images/qtcreator-appman-kit-selector.webp" alt="{Automatically generated run targets in the kit selector}" /></p><h3 id="installation-settings">Installation settings</h3>
+<p>In <b translate="no">Install Application Manager Package</b>, you can customize the <code translate="no">install-package</code> command.</p>
+<p>Qt Creator uses the compiler from the kit (toolchain) to build the application. Then, it installs the application package into the target system using the <b translate="no">Controller</b> executable that must be running on the target. It is delivered with Qt Application Manager.</p>
+<p>In <b translate="no">Command line arguments</b>, the <code translate="no">--acknowledge</code> argument automatically acknowledges the installation. If the System UI implemented a confirmation dialog, you can remove this flag to show the dialog to the user when installing the package.</p>
+<p>To install some other package, select <b translate="no">Customize step</b>, and then enter the path to the package file in <b translate="no">Package file</b>.</p>
+<h2 id="application-manager-run-settings">Application manager run settings</h2>
+<p>To specify settings for running applications, go to <b translate="no">Projects</b> &gt; <b translate="no">Run Settings</b>.</p>
+<p class="centerAlign"><img src="images/qtcreator-appman-run-settings.webp" alt="{Run in Qt Application Manager}" /></p><p>The following table summarizes the run settings for each application.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Setting</th><th >Value</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Controller</b></td><td >The path to the controller that installs the application package into the target system.<p>When you run applications on a Boot2Qt device, you can see the device ID here.</p>
+</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Application ID</b></td><td >The ID of the <code translate="no">ApplicationManager</code> application.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Document URL</b></td><td >The URL is passed to the started application, which can use it to start an action, such as opening the passed file URL.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Application Manager instance ID</b></td><td >The name of this application manager instance. Only useful if you are running multiple instances at the same time and you need to address them from the controller. A unique number is appended to this ID to disambiguate instances with the same ID.<p>If you have several application manager instances running, you can override the instance ID in the <code translate="no">config.yaml</code> file.</p>
+</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Default instance</b></td><td >Always communicates with the default instance.</td></tr>
+</table></div>
+<h2 id="profile-qt-quick-applications">Profile Qt Quick applications</h2>
+<p>You can use the <a href="creator-qml-performance-monitor.html" translate="no">QML Profiler</a> to find causes for typical performance problems in your Qt Quick applications, such as slowness and unresponsive, stuttering user interfaces. You cannot profile an in-process runtime as an individual process.</p>
+</div>
+<p><b>See also </b><a href="creator-how-to-activate-kits.html" translate="no">Activate kits for a project</a>, <a href="creator-developing-b2qt.html" translate="no">Connecting Boot2Qt Devices</a>, <a href="creator-developing-generic-linux.html" translate="no">Connecting Remote Linux Devices</a>, <a href="creator-how-to-enable-plugins.html" translate="no">Enable and disable plugins</a>, <a href="creator-running-targets.html" translate="no">Run on many platforms</a>, <a href="creator-debugging.html" translate="no">Debugging</a>, and <a href="creator-qml-performance-monitor.html" translate="no">Profiling QML Applications</a>.</p>
+<!-- @@@creator-how-to-run-in-app-manager.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

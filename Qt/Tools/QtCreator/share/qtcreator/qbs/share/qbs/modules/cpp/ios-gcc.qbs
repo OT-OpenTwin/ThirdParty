@@ -31,27 +31,36 @@
 import qbs.DarwinTools
 import qbs.File
 import qbs.FileInfo
+import qbs.Host
 import qbs.ModUtils
 import qbs.Utilities
 
 DarwinGCC {
     priority: 1
-    condition: qbs.targetOS.contains('ios') &&
-               qbs.toolchain && qbs.toolchain.contains('gcc')
+    condition: qbs.targetOS.includes('ios') &&
+               qbs.toolchain && qbs.toolchain.includes('gcc')
 
+    minimumIosVersion: {
+        if (Host.architecture() == "armv7a")
+            return "6.0";
+        // XCode 12 requres version (at least 8.0) to be present in the -target triplet
+        // when compiling for ios-simulator
+        if (xcode.present && Utilities.versionCompare(xcode.version, "12.0") >= 0)
+            return "8.0";
+    }
     targetSystem: "ios" + (minimumIosVersion || "")
 
     minimumDarwinVersion: minimumIosVersion
-    minimumDarwinVersionCompilerFlag: qbs.targetOS.contains("ios-simulator")
+    minimumDarwinVersionCompilerFlag: qbs.targetOS.includes("ios-simulator")
                                       ? "-mios-simulator-version-min"
                                       : "-miphoneos-version-min"
-    minimumDarwinVersionLinkerFlag: qbs.targetOS.contains("ios-simulator")
+    minimumDarwinVersionLinkerFlag: qbs.targetOS.includes("ios-simulator")
                                     ? "-ios_simulator_version_min"
                                     : "-iphoneos_version_min"
 
     libcxxAvailable: base
-                     && minimumDarwinVersion
-                     && Utilities.versionCompare(minimumDarwinVersion, "5") >= 0
+                     && (!minimumDarwinVersion
+                         || Utilities.versionCompare(minimumDarwinVersion, "5") >= 0)
 
     platformObjcFlags: base.concat(simulatorObjcFlags)
     platformObjcxxFlags: base.concat(simulatorObjcFlags)
@@ -60,13 +69,13 @@ DarwinGCC {
     readonly property stringList simulatorObjcFlags: {
         // default in Xcode and also required for building 32-bit Simulator binaries with ARC
         // since the default ABI version is 0 for 32-bit targets
-        return qbs.targetOS.contains("ios-simulator")
+        return qbs.targetOS.includes("ios-simulator")
                 ? ["-fobjc-abi-version=2", "-fobjc-legacy-dispatch"]
                 : [];
     }
 
     Rule {
-        condition: !product.qbs.targetOS.contains("ios-simulator")
+        condition: !product.qbs.targetOS.includes("ios-simulator")
         inputsFromDependencies: ["bundle.content"]
 
         Artifact {

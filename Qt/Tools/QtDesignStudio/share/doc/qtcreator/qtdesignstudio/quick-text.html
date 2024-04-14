@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-text.qdoc -->
+  <title>Text | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Text</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="quick-shapes.html" />
+  <link rel="next" href="quick-images.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="quick-shapes.html">Shapes</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-images.html">Images</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#using-rich-text">Using Rich Text</a></li>
+<li class="level1"><a href="#marking-strings-for-translation">Marking Strings for Translation</a></li>
+<li class="level1"><a href="#character-properties">Character Properties</a></li>
+<li class="level1"><a href="#text-alignment">Text Alignment</a></li>
+<li class="level1"><a href="#text-and-style-colors">Text and Style Colors</a></li>
+<li class="level1"><a href="#advanced-text-properties">Advanced Text Properties</a></li>
+<li class="level1"><a href="#advanced-font-properties">Advanced Font Properties</a></li>
+<li class="level1"><a href="#text-input">Text Input</a></li>
+<li class="level2"><a href="#entering-passwords">Entering Passwords</a></li>
+<li class="level2"><a href="#entering-text">Entering Text</a></li>
+<li class="level2"><a href="#selecting-text">Selecting Text</a></li>
+<li class="level2"><a href="#focus">Focus</a></li>
+<li class="level2"><a href="#tabs-and-margins">Tabs and Margins</a></li>
+<li class="level1"><a href="#padding">Padding</a></li>
+<li class="level1"><a href="#placeholder-text">Placeholder Text</a></li>
+<li class="level1"><a href="#summary-of-text-components">Summary of Text Components</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Text</h1>
+<!-- $$$quick-text.html-description -->
+<div class="descr" id="details">
+<p>You can use several different text components to add read-only or editable text to a UI, such as titles or labels and text input fields with placeholder text. The <b translate="no">Text</b> component adds formatted text, the <b translate="no">Text Edit</b> component adds a multiline line edit, and the <b translate="no">Text Input</b> component adds a single editable line field.</p>
+<p>You can select the font to use and specify extensive properties for each text string, such as size in points or pixels, style name, emphasis, alignment, and spacing.</p>
+<p>For more information, watch the following video:</p>
+<div class="video">
+<a href="https://www.youtube.com/watch/?v=yOUdg1o2KJM">
+<img src="images/yOUdg1o2KJM.jpg" title="Click to play in a browser" /></a>
+</div>
+<p>To create a label with a background, use the <b translate="no">Label</b> component available in <b translate="no">Components</b> &gt; <b translate="no">Qt Quick Controls</b>. The module also contains components for creating <b translate="no">Text Field</b> and <b translate="no">Text Area</b> controls. They differ from the basic components in that a common style is applied to them and that you can specify placeholder text for them.</p>
+<h2 id="using-rich-text">Using Rich Text</h2>
+<p>You can use rich text in the <b translate="no">Text</b> and <b translate="no">Text Input</b> components. To open the rich text editor, select the <img src="images/edit.png" alt="" /> (<b translate="no">Edit</b>) button in <b translate="no">Properties</b> &gt; <b translate="no">Character</b> &gt; <b translate="no">Text</b>.</p>
+<p class="centerAlign"><img src="images/qtquick-text-rtf.gif" alt="&quot;Editing text in the rich text editor&quot;" /></p><p>In the rich text editor, you can:</p>
+<ul>
+<li>Emphasize text</li>
+<li>Create hyperlinks</li>
+<li>Align text</li>
+<li>Create bulleted and numbered lists</li>
+<li>Specify text color</li>
+<li>Select text font</li>
+<li>Set font size</li>
+<li>Create tables</li>
+</ul>
+<p class="centerAlign"><img src="images/qtquick-rtf-editor.png" alt="&quot;Text formatted as rich text in the editor&quot;" /></p><h2 id="marking-strings-for-translation">Marking Strings for Translation</h2>
+<p>To support translators, mark the strings that should be translated. In <b translate="no">Properties</b> &gt; <b translate="no">Character</b> &gt; <b translate="no">Text</b>, select <b translate="no">tr</b>.</p>
+<p class="centerAlign"><img src="images/qmldesigner-text-property-tr.png" alt="&quot;tr button in Character section&quot;" /></p><p>By default, the text string is enclosed in a <code translate="no">qsTr()</code> call.</p>
+<p class="centerAlign"><img src="images/qml-translate.png" alt="&quot;Text marked for translation&quot;" /></p><p>If you use text IDs instead of plain text, change the default call to <code translate="no">qsTrId()</code>. Select <b translate="no">Edit</b> &gt; <b translate="no">Preferences</b> &gt; <b translate="no">Qt Quick</b> &gt; <b translate="no">Qt Quick Designer</b>, and then select the <b translate="no">qsTrId()</b> radio button in the <b translate="no">Internationalization</b> group. For more information, see <a href="https://doc.qt.io/qt/linguist-id-based-i18n.html" translate="no">Text ID based translations</a>.</p>
+<p>To preserve the context when editing the text or to change the context by setting a binding on the text property, change the default call to <code translate="no">qsTranslate()</code> by selecting the <b translate="no">qsTranslate()</b> radio button.</p>
+<p>For more information, see <a href="https://doc.qt.io/qt/i18n-source-translation.html#mark-strings-for-translation" translate="no">Mark Strings for Translation</a>.</p>
+<h2 id="character-properties">Character Properties</h2>
+<p>You can set font properties in the <b translate="no">Character</b> section in <b translate="no">Properties</b>. For each string that you enter in the <b translate="no">Text</b> field, you can select the font to use in the <b translate="no">Font</b> field and specify the size, emphasis, aligment, and spacing of the text. Specify the font size in either points or pixels in the <b translate="no">Size</b> field.</p>
+<p class="centerAlign"><img src="images/qtquick-designer-text-properties.png" alt="&quot;Character properties&quot;" /></p><p>To display custom fonts in the list of available fonts in the <b translate="no">Font</b> field, you need to first add them to <a href="quick-assets.html" translate="no">Assets</a>:</p>
+<ol class="1" type="1"><li>Select <b translate="no">Assets</b> &gt; <img src="images/plus.png" alt="" /> .</li>
+<li>Select the font file, and then select <b translate="no">Open</b>.</li>
+<li>Select the location where the file will be saved in the <b translate="no">Add Resources</b> dialog.</li>
+<li>Select <b translate="no">OK</b>.</li>
+</ol>
+<p>In the <b translate="no">Weight</b> field, you can select the font weight from a list of predefined values that range between extra-light and extra-bold. You can also use the buttons in the <b translate="no">Emphasis</b> group to format text by making it bold, italic, underlined, or strikethrough.</p>
+<p>If you set a style name in the <b translate="no">Style name</b> field, the font is matched against the style name instead of the values set in the <b translate="no">Weight</b> and <b translate="no">Emphasis</b> fields.</p>
+<p>The value of the <b translate="no">Word spacing</b> field changes the default spacing between individual words, whereas the value of the <b translate="no">Letter spacing</b> field changes the spacing between individual letters in a word. A positive value increases the spacing by a corresponding amount of pixels, while a negative value decreases it.</p>
+<p>The value of the <b translate="no">Line height</b> field sets the line height for the text. In the <b translate="no">Line height mode</b> field in the <b translate="no">Text Extras</b> section, select <b translate="no">FixedHeight</b> to set the line height in pixels or <b translate="no">ProportionalHeight</b> (default) to set the spacing proportionally to the line (as a multiplier). For example, set to 2 for double spacing.</p>
+<h2 id="text-alignment">Text Alignment</h2>
+<p>You can align text components horizontally and vertically. By default, text is vertically aligned to the top. Horizontal alignment follows the natural alignment of the text. By default, left-to-right text like English is aligned to the left side of the text area, whereas right-to-left text like Arabic is aligned to the right side of the text area.</p>
+<p>You can align text to the left, right, top, or bottom, and center it horizontally or vertically. You can justify horizontal text.</p>
+<p>For a single line of text, the size of the text is the area of the text. In this common case, all alignments are equivalent. To center a text in its parent, use <a href="qtquick-positioning.html#setting-anchors-and-margins" translate="no">anchoring</a> or bind the width of the text component to that of the parent. For more information, see <a href="qtquick-positioning.html#setting-bindings" translate="no">Setting Bindings</a>.</p>
+<h2 id="text-and-style-colors">Text and Style Colors</h2>
+<p>You can set the color of the text itself and a secondary color used by text styles.</p>
+<p>For the <b translate="no">Text Edit</b> and <b translate="no">Text Input</b> components, you can also set the color of selected text and the text highlight color that is used behind selections in the <b translate="no">Selected text color</b> and <b translate="no">Selection color</b> fields.</p>
+<p>For the <b translate="no">Text Field</b> and <b translate="no">Text Area</b> controls, you can also set the color of the <a href="quick-text.html#placeholder-text" translate="no">placeholder text</a>.</p>
+<p>For more information about selecting colors, see <a href="qtquick-properties.html#picking-colors" translate="no">Picking Colors</a>. You can only set solid colors for text components.</p>
+<h2 id="advanced-text-properties">Advanced Text Properties</h2>
+<p>The height and width of a text component are determined automatically depending on the values of the properties you set, to accommodate the length of the string that you specify in the <b translate="no">Text</b> field and the font size, for example. You can specify additional properties for formatting text in the <b translate="no">Text Extras</b> section.</p>
+<p class="centerAlign"><img src="images/qtquick-properties-text-extras.png" alt="&quot;Text Extras section&quot;" /></p><p>The value of the <b translate="no">Size mode</b> field specifies how the font size of the displayed text is determined. Select <b translate="no">FixedSize</b> to use the size specified in the <b translate="no">Size</b> field in the <b translate="no">Character</b> section in pixels or points.</p>
+<p>Select <b translate="no">HorizontalFit</b> or <b translate="no">VerticalFit</b> to use the largest size up to the size specified that fits the width or height of the component. Select <b translate="no">Fit</b> to use the largest size up to the size specified that fits within the width and height of the component. The font size of fitted text has a minimum bound specified by the <b translate="no">Min size</b> field and maximum bound specified by the <b translate="no">Size</b> field.</p>
+<h4 id="wrapping-and-eliding-text">Wrapping and Eliding Text</h4>
+<p>In the <b translate="no">Wrap mode</b> field, you can wrap the text to the text component's width. The text will only wrap if you set an explicit width for the text component. By default, text is not wrapped. Select <b translate="no">WordWrap</b> to restrict wrapping to word boundaries only. Select <b translate="no">WrapAnywhere</b> to enable wrapping at any point on a line, even if it occurs in the middle of a word. Select <b translate="no">Wrap</b> to wrap at a word boundary, if possible, or at the appropriate point on the line, even in the middle of a word.</p>
+<p>You can use the <b translate="no">Elide</b> property with the <b translate="no">Wrap</b> option to fit a single line of plain text to a set width. Select <b translate="no">ElideRight</b>, and set the <b translate="no">Max line count</b> or the text component height (in the <b translate="no">H</b> field). If you set both, the maximum line count will apply unless the lines do not fit in the height allowed.</p>
+<p>If the text is a multi-length string, and you set the <b translate="no">Elide</b> property value to something else than <b translate="no">ElideNone</b>, the first string that fits will be used, otherwise the last will be elided.</p>
+<p>Multi-length strings are ordered from longest to shortest, separated by the Unicode <i>String Terminator</i> character <code translate="no">U009C</code>.</p>
+<h4 id="formatting-text">Formatting Text</h4>
+<p>Text can be either in plain text or rich text format, depending on the value you set in the <b translate="no">Format</b> field. If you select <b translate="no">AutoText</b> and the first line of text contains an HTML tag, the text is treated as rich text. Rich text supports a subset of HTML 4 described on the <a href="https://doc.qt.io/qt/richtext-html-subset.html" translate="no">Supported HTML Subset</a>. Note that plain text offers better performance than rich text.</p>
+<h4 id="rendering-text">Rendering Text</h4>
+<p>In the <b translate="no">Render type</b> field, you can override the default rendering type for a text component. Select <b translate="no">NativeRendering</b> if you prefer text to look native on the target platform and do not require advanced features such as <a href="qtquick-properties.html#managing-2d-transformations" translate="no">transformation</a> of the text. Using rotation or scaling in combination with native rendering leads to poor and sometimes pixelated results.</p>
+<p>If you select <b translate="no">NativeRendering</b>, you can set the hinting preference in the <b translate="no">Hinting</b> field in the <b translate="no">Font Extras</b> section:</p>
+<ul>
+<li><b translate="no">PreferDefaultHinting</b> uses the default hinting level for the target platform.</li>
+<li><b translate="no">PreferNoHinting</b> renders text without hinting the outlines of the glyphs, if possible.</li>
+<li><b translate="no">PreferVerticalHinting</b> renders text with no horizontal hinting, but aligns glyphs to the pixel grid in the vertical direction, if possible.</li>
+<li><b translate="no">PreferFullHinting</b> renders text with hinting in both horizontal and vertical directions.</li>
+</ul>
+<div class="admonition note">
+<p><b>Note: </b>This property only describes a preference, as the full range of hinting levels are not supported on all of Qt's supported platforms.</p>
+</div>
+<h2 id="advanced-font-properties">Advanced Font Properties</h2>
+<p>You can specify additional properties for fonts in the <b translate="no">Font Extras</b> section.</p>
+<p class="centerAlign"><img src="images/qtquick-properties-font-extras.png" alt="&quot;Font Extras section&quot;" /></p><p>In the <b translate="no">Capitalization</b> field, select <b translate="no">MixedCase</b> for normal text rendering where no capitalization changes are applied. You can also set the text in all upper or lower case, or use small caps. The <b translate="no">Capitalize</b> option renders the first character of each word as an uppercase character.</p>
+<p>You can set the font style in the <b translate="no">Style</b> field to <b translate="no">Outline</b>, <b translate="no">Raised</b>, or <b translate="no">Sunken</b>. The color that you pick in the <b translate="no">Style color</b> field is used as the outline color for outlined text, and as the shadow color for raised or sunken text.</p>
+<p>To use kerning when drawing text with the selected font, select the <b translate="no">Auto kerning</b> check box.</p>
+<p>Sometimes, a font will apply complex rules to a set of characters in order to display them correctly. In some writing systems, such as Brahmic scripts, this is required in order for the text to be legible but in others, such as Latin script, it is merely a cosmetic feature. Such features are disabled by default to improve performance. If they are required, select the <b translate="no">Prefer shaping</b> check box.</p>
+<span id="text-edit"></span><h2 id="text-input">Text Input</h2>
+<p>You can use the <b translate="no">Text Edit</b> and <b translate="no">Text Input</b> components to add text fields where users can enter text.</p>
+<p>The <b translate="no">Text Input</b> component displays a single line of editable plain text, whereas the <b translate="no">Text Edit</b> component displays a block of editable, formatted text. Both components are used to accept text input.</p>
+<p class="centerAlign"><img src="images/qtquick-designer-text-input-properties.png" alt="&quot;Text input field properties&quot;" /></p><h3 id="entering-passwords">Entering Passwords</h3>
+<p>You can set properties for <b translate="no">Text Input</b> components that make them suitable for entering passwords.</p>
+<p>In the <b translate="no">Input mask</b> field, you can create an input mask that contains mask and meta characters and separators between them. When created or cleared, the text edit or input is filled with a copy of the input mask string, where the meta characters have been removed, and the mask characters have been replaced with the blank character. For example, in an input field for an IP address, you could use the following mask (with the underscore as the blank character): <code translate="no">000.000.000.000;_</code>. For more information about creating input masks, see the documentation for <a href="https://doc.qt.io/qt/qlineedit.html#inputMask-prop" translate="no">QLineEdit::inputMask</a>.</p>
+<p>In the <b translate="no">Echo mode</b> field, select <b translate="no">Password</b> to display platform-dependent password mask characters instead of the actual characters that users enter. Select <b translate="no">PasswordEchoOnEdit</b> to display characters as users enter them. The mask character is displayed in the <b translate="no">Password character</b> field.</p>
+<h3 id="entering-text">Entering Text</h3>
+<p>You can specify how users can enter text into text edit or input fields.</p>
+<p>In the <b translate="no">Maximum length</b> field, set the maximum number of characters that users can enter.</p>
+<p>The value of the <b translate="no">Auto scroll</b> check box determines whether the text edit or input should scroll when the text is longer than the width of the field.</p>
+<p>If the <b translate="no">Overwrite mode</b> check box is selected, existing text is overwritten, character-for-character by new text. Otherwise, new text is inserted at the cursor position, displacing existing text. By default, new text does not overwrite existing text.</p>
+<p>To prevent users from changing the text, select the <b translate="no">Read only</b> check box.</p>
+<h3 id="selecting-text">Selecting Text</h3>
+<p>In the <b translate="no">Selection mode</b> field, you can specify whether individual characters or whole words are selected when selecting text with a pointer device.</p>
+<p>Select the <b translate="no">Select by mouse</b> check box to enable users to use the mouse to select text in some platform-specific way. For some platforms this may not be an appropriate interaction because it may conflict with how the text needs to behave inside a <b translate="no">Flickable</b> component, for example.</p>
+<p>For a <b translate="no">Text Edit</b> component, you can select the <b translate="no">Select by keyboard</b> check box to enable users to use the keyboard to select text even if the edit field is read-only. If this property is set to <code translate="no">false</code>, users cannot use the keyboard to select text even if it is editable.</p>
+<h3 id="focus">Focus</h3>
+<p>The value of the <b translate="no">Focus on press</b> check box determines whether the text edit or input should gain active focus on a mouse press.</p>
+<p>By default, the cursor becomes visible when the text edit or input gains active focus, so that other properties can be bound to whether the cursor is currently shown. Because the value of the <b translate="no">Cursor visible</b> property gets set and unset automatically, any value you set yourself may be overwritten.</p>
+<p>If the <b translate="no">Persistent selection</b> check box is selected, a text edit or input keeps its selection when active focus moves to another component.</p>
+<h3 id="tabs-and-margins">Tabs and Margins</h3>
+<p>You can specify additional properties for formatting a block of text in a <b translate="no">Text Edit</b> component.</p>
+<p class="centerAlign"><img src="images/qtquick-designer-text-edit-properties.png" alt="&quot;Text edit properties&quot;" /></p><p>In the <b translate="no">Tab stop distance</b> field, set the default distance, in device units, between tab stops.</p>
+<p>In the <b translate="no">Text margin</b> field, set the margin around the text in pixels.</p>
+<h2 id="padding">Padding</h2>
+<p>The values of the properties in the <b translate="no">Padding</b> section specify the padding around the content. The individual padding properties adopt the value of the <b translate="no">Global</b> field, unless you set them explicitly.</p>
+<p class="centerAlign"><img src="images/qtquick-properties-text-padding.png" alt="&quot;Padding section&quot;" /></p><div class="admonition note">
+<p><b>Note: </b>If you explicitly set the width or height of a text edit or input, ensure that it is large enough to accommodate the padding values. If the text does not have enough vertical or horizontal space in which to be rendered, it will appear clipped.</p>
+</div>
+<h2 id="placeholder-text">Placeholder Text</h2>
+<p>For <b translate="no">Text Field</b> and <b translate="no">Text Area</b> controls, you can specify text to display in a field before users enter text into it. Specify the text in the <b translate="no">Placeholder text</b> field and its color in the <b translate="no">Placeholder color</b> field.</p>
+<p class="centerAlign"><img src="images/qtquick-properties-text-field.png" alt="&quot;Placeholder text settings&quot;" /></p><p>Select the <b translate="no">Hover</b> check box to enable the text field to accept hover events.</p>
+<h2 id="summary-of-text-components">Summary of Text Components</h2>
+<p>The following table lists the components that you can use to add text to UIs. The <i>Location</i> column contains the tab name where you can find the component in <b translate="no">Components</b>. The <i>MCU</i> column indicates which components are supported on MCUs.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Icon</th><th >Name</th><th >Location</th><th >MCU</th><th >Purpose</th></tr></thead>
+<tr valign="top" class="odd"><td ><img src="images/label-icon16.png" alt="" /></td><td ><a href="https://doc.qt.io/qt/qml-qtquick-controls-label.html" translate="no">Label</a></td><td >Qt Quick Controls</td><td ></td><td >A text label with inherited styling and font.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/text-icon16.png" alt="" /></td><td ><a href="https://doc.qt.io/qt/qml-qtquick-text.html" translate="no">Text</a></td><td >Default Components - Basic</td><td ><img src="images/ok.png" alt="" /></td><td >Formatted read-only text.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/textarea-icon16.png" alt="" /></td><td ><a href="https://doc.qt.io/qt/qml-qtquick-controls-textarea.html" translate="no">Text Area</a></td><td >Qt Quick Controls</td><td ></td><td >Multiple lines of editable formatted text.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/text-edit-icon16.png" alt="" /></td><td ><a href="https://doc.qt.io/qt/qml-qtquick-textedit.html" translate="no">Text Edit</a></td><td >Default Components - Basic</td><td ></td><td >A single line of editable formatted text that can be validated.</td></tr>
+<tr valign="top" class="odd"><td ><img src="images/textfield-icon16.png" alt="" /></td><td ><a href="https://doc.qt.io/qt/qml-qtquick-controls-textfield.html" translate="no">Text Field</a></td><td >Qt Quick Controls</td><td ></td><td >A single line of editable plain text.</td></tr>
+<tr valign="top" class="even"><td ><img src="images/text-input-icon16.png" alt="" /></td><td ><a href="https://doc.qt.io/qt/qml-qtquick-textinput.html" translate="no">Text Input</a></td><td >Default Components - Basic</td><td ></td><td >A single line of editable plain text that can be validated.</td></tr>
+</table></div>
+</div>
+<!-- @@@quick-text.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="quick-shapes.html">Shapes</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-images.html">Images</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

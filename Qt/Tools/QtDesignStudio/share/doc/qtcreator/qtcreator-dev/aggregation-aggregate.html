@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- aggregate.cpp -->
+  <meta name="description" content="The Aggregate class defines a collection of related components that can be viewed as a unit.">
+  <title>Aggregate Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>Aggregate</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#related-non-members">Related Non-Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">Aggregate Class</h1>
+<span class="small-subtitle" translate="no">class <a href="aggregation.html" translate="no">Aggregation</a>::Aggregate</span>
+<!-- $$$Aggregate-brief -->
+<p>The Aggregate class defines a collection of related components that can be viewed as a unit. <a href="#details">More...</a></p>
+<!-- @@@Aggregate -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;aggregation/aggregate.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a></td></tr>
+</table></div>
+<ul>
+<li><a href="aggregation-aggregate-members.html">List of all members, including inherited members</a></li>
+</ul>
+<p><b>Note:</b> All functions in this class are <a href="https://doc.qt.io/qt/threads-reentrancy.html" translate="no">thread-safe</a>.</p>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="aggregation-aggregate.html#Aggregate" translate="no">Aggregate</a></b>(QObject *<i>parent</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="aggregation-aggregate.html#dtor.Aggregate" translate="no">~Aggregate</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="aggregation-aggregate.html#add" translate="no">add</a></b>(QObject *<i>component</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> T *</td><td class="memItemRight bottomAlign"><b><a href="aggregation-aggregate.html#component" translate="no">component</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;T *&gt; </td><td class="memItemRight bottomAlign"><b><a href="aggregation-aggregate.html#components" translate="no">components</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="aggregation-aggregate.html#remove" translate="no">remove</a></b>(QObject *<i>component</i>)</td></tr>
+</table></div>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="aggregation-aggregate.html#changed" translate="no">changed</a></b>()</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Aggregation::Aggregate *</td><td class="memItemRight bottomAlign"><b><a href="aggregation-aggregate.html#parentAggregate" translate="no">parentAggregate</a></b>(QObject *<i>obj</i>)</td></tr>
+</table></div>
+<h2 id="related-non-members">Related Non-Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> T *</td><td class="memItemRight bottomAlign"><b><a href="aggregation-aggregate.html#query" translate="no">query</a></b>(QObject *<i>obj</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;T *&gt; </td><td class="memItemRight bottomAlign"><b><a href="aggregation-aggregate.html#query_all" translate="no">query_all</a></b>(QObject *<i>obj</i>)</td></tr>
+</table></div>
+<!-- $$$Aggregate-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>An aggregate is a collection of components that are handled as a unit, such that each component exposes the properties and behavior of the other components in the aggregate to the outside. Specifically that means:</p>
+<ul>
+<li>They can be <i>cast</i> to each other (using <a href="aggregation-aggregate.html#query" translate="no">query</a>() and <a href="aggregation-aggregate.html#query_all" translate="no">query_all</a>() functions).</li>
+<li>Their life cycle is coupled. That is, whenever one is deleted, all of them are.</li>
+</ul>
+<p>Components can be of any <a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a> derived type.</p>
+<p>You can use an aggregate to simulate multiple inheritance by aggregation. Assuming we have the following code:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">using</span> <span class="keyword">namespace</span> Aggregation;
+ <span class="keyword">class</span> MyInterface : <span class="keyword">public</span> <span class="type"><a href="https://doc.qt.io/qt/qobject.html#QObject" translate="no">QObject</a></span> { <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span> };
+ <span class="keyword">class</span> MyInterfaceEx : <span class="keyword">public</span> <span class="type"><a href="https://doc.qt.io/qt/qobject.html#QObject" translate="no">QObject</a></span> { <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span> };
+ <span class="operator">[</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">]</span>
+ MyInterface <span class="operator">*</span>object <span class="operator">=</span> <span class="keyword">new</span> MyInterface; <span class="comment">// this is single inheritance</span>
+</pre>
+<p>The query function works like a <a href="https://doc.qt.io/qt/qobject.html#qobject_cast" translate="no">qobject_cast</a>() with normal objects:</p>
+<pre class="cpp" translate="no">
+ Q_ASSERT(query<span class="operator">&lt;</span>MyInterface<span class="operator">&gt;</span>(object) <span class="operator">=</span><span class="operator">=</span> object);
+ Q_ASSERT(query<span class="operator">&lt;</span>MyInterfaceEx<span class="operator">&gt;</span>(object) <span class="operator">=</span><span class="operator">=</span> <span class="number">0</span>);
+</pre>
+<p>If we want <code translate="no">object</code> to also implement the class <code translate="no">MyInterfaceEx</code>, but don't want to or cannot use multiple inheritance, we can do it at any point using an aggregate:</p>
+<pre class="cpp" translate="no">
+ MyInterfaceEx <span class="operator">*</span>objectEx <span class="operator">=</span> <span class="keyword">new</span> MyInterfaceEx;
+ Aggregate <span class="operator">*</span>aggregate <span class="operator">=</span> <span class="keyword">new</span> Aggregate;
+ aggregate<span class="operator">-</span><span class="operator">&gt;</span>add(object);
+ aggregate<span class="operator">-</span><span class="operator">&gt;</span>add(objectEx);
+</pre>
+<p>The aggregate bundles the two objects together. If we have any part of the collection we get all parts:</p>
+<pre class="cpp" translate="no">
+ Q_ASSERT(query<span class="operator">&lt;</span>MyInterface<span class="operator">&gt;</span>(object) <span class="operator">=</span><span class="operator">=</span> object);
+ Q_ASSERT(query<span class="operator">&lt;</span>MyInterfaceEx<span class="operator">&gt;</span>(object) <span class="operator">=</span><span class="operator">=</span> objectEx);
+ Q_ASSERT(query<span class="operator">&lt;</span>MyInterface<span class="operator">&gt;</span>(objectEx) <span class="operator">=</span><span class="operator">=</span> object);
+ Q_ASSERT(query<span class="operator">&lt;</span>MyInterfaceEx<span class="operator">&gt;</span>(objectEx) <span class="operator">=</span><span class="operator">=</span> objectEx);
+</pre>
+<p>The following deletes all three: <code translate="no">object</code>, <code translate="no">objectEx</code> and <code translate="no">aggregate</code>:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">delete</span> objectEx;
+ <span class="comment">// or delete object;</span>
+ <span class="comment">// or delete aggregate;</span>
+</pre>
+<p>Aggregation-aware code never uses <a href="https://doc.qt.io/qt/qobject.html#qobject_cast" translate="no">qobject_cast</a>(). It always uses Aggregation::query(), which behaves like a <a href="https://doc.qt.io/qt/qobject.html#qobject_cast" translate="no">qobject_cast</a>() as a fallback.</p>
+</div>
+<!-- @@@Aggregate -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Aggregate[overload1]$$$AggregateQObject* -->
+<h3 class="fn" translate="no" id="Aggregate">Aggregate::<span class="name">Aggregate</span>(<span class="type"><a href="https://doc.qt.io/qt/qobject.html#QObject" translate="no">QObject</a></span> *<i>parent</i> = nullptr)</h3>
+<p>Creates a new aggregate with the given <i translate="no">parent</i>. The parent is directly passed to the <a href="https://doc.qt.io/qt/qobject.html" translate="no">QObject</a> part of the class and is not used beside that.</p>
+<!-- @@@Aggregate -->
+<!-- $$$~Aggregate[overload1]$$$~Aggregate -->
+<h3 class="fn" translate="no" id="dtor.Aggregate"><code translate="no">[override virtual] </code>Aggregate::<span class="name">~Aggregate</span>()</h3>
+<p>Deleting the aggregate automatically deletes all its components.</p>
+<!-- @@@~Aggregate -->
+<!-- $$$add[overload1]$$$addQObject* -->
+<h3 class="fn" translate="no" id="add"><span class="type">void</span> Aggregate::<span class="name">add</span>(<span class="type"><a href="https://doc.qt.io/qt/qobject.html#QObject" translate="no">QObject</a></span> *<i>component</i>)</h3>
+<p>Adds the <i translate="no">component</i> to the aggregate. You cannot add a component that is part of a different aggregate or an aggregate itself.</p>
+<p><b>See also </b><a href="aggregation-aggregate.html#remove" translate="no">remove</a>().</p>
+<!-- @@@add -->
+<!-- $$$changed[overload1]$$$changed -->
+<h3 class="fn" translate="no" id="changed"><code translate="no">[signal] </code><span class="type">void</span> Aggregate::<span class="name">changed</span>()</h3>
+<p>This signal is emitted when a component is added to or removed from an aggregate.</p>
+<p><b>See also </b><a href="aggregation-aggregate.html#add" translate="no">add</a>() and <a href="aggregation-aggregate.html#remove" translate="no">remove</a>().</p>
+<!-- @@@changed -->
+<!-- $$$component[overload1]$$$component -->
+<h3 class="fn" translate="no" id="component">template &lt;typename T&gt; <span class="type">T</span> *Aggregate::<span class="name">component</span>()</h3>
+<p>Template function that returns the component with the given type, if there is one. If there are multiple components with that type, a random one is returned.</p>
+<p><b>See also </b><a href="aggregation-aggregate.html#components" translate="no">Aggregate::components</a>() and <a href="aggregation-aggregate.html#add" translate="no">add</a>().</p>
+<!-- @@@component -->
+<!-- $$$components[overload1]$$$components -->
+<h3 class="fn" translate="no" id="components">template &lt;typename T&gt; <span class="type"><a href="https://doc.qt.io/qt/qlist.html" translate="no">QList</a></span>&lt;<span class="type">T</span> *&gt; Aggregate::<span class="name">components</span>()</h3>
+<p>Template function that returns all components with the given type, if there are any.</p>
+<p><b>See also </b><a href="aggregation-aggregate.html#component" translate="no">Aggregate::component</a>() and <a href="aggregation-aggregate.html#add" translate="no">add</a>().</p>
+<!-- @@@components -->
+<!-- $$$parentAggregate[overload1]$$$parentAggregateQObject* -->
+<h3 class="fn" translate="no" id="parentAggregate"><code translate="no">[static] </code><span class="type"><a href="aggregation-aggregate.html" translate="no">Aggregation::Aggregate</a></span> *Aggregate::<span class="name">parentAggregate</span>(<span class="type"><a href="https://doc.qt.io/qt/qobject.html#QObject" translate="no">QObject</a></span> *<i>obj</i>)</h3>
+<p>Returns the aggregate object of <i translate="no">obj</i> if there is one. Otherwise returns 0.</p>
+<!-- @@@parentAggregate -->
+<!-- $$$remove[overload1]$$$removeQObject* -->
+<h3 class="fn" translate="no" id="remove"><span class="type">void</span> Aggregate::<span class="name">remove</span>(<span class="type"><a href="https://doc.qt.io/qt/qobject.html#QObject" translate="no">QObject</a></span> *<i>component</i>)</h3>
+<p>Removes the <i translate="no">component</i> from the aggregate.</p>
+<p><b>See also </b><a href="aggregation-aggregate.html#add" translate="no">add</a>().</p>
+<!-- @@@remove -->
+</div>
+<div class="relnonmem">
+<h2>Related Non-Members</h2>
+<!-- $$$query[overload1]$$$queryQObject* -->
+<h3 class="fn" translate="no" id="query">template &lt;typename T&gt; <span class="type">T</span> *<span class="name">query</span>(<span class="type"><a href="https://doc.qt.io/qt/qobject.html#QObject" translate="no">QObject</a></span> *<i>obj</i>)</h3>
+<p>Performs a dynamic cast that is aware of a possible aggregate that <i translate="no">obj</i> might belong to. If <i translate="no">obj</i> itself is of the requested type, it is simply cast and returned. Otherwise, if <i translate="no">obj</i> belongs to an aggregate, all its components are checked. If it doesn't belong to an aggregate, null is returned.</p>
+<p><b>See also </b><a href="aggregation-aggregate.html#component" translate="no">Aggregate::component</a>().</p>
+<!-- @@@query -->
+<!-- $$$query_all[overload1]$$$query_allQObject* -->
+<h3 class="fn" translate="no" id="query_all">template &lt;typename T&gt; <span class="type"><a href="https://doc.qt.io/qt/qlist.html" translate="no">QList</a></span>&lt;<span class="type">T</span> *&gt; <span class="name">query_all</span>(<span class="type"><a href="https://doc.qt.io/qt/qobject.html#QObject" translate="no">QObject</a></span> *<i>obj</i>)</h3>
+<p>If <i translate="no">obj</i> belongs to an aggregate, all components that can be cast to the given type are returned. Otherwise, <i translate="no">obj</i> is returned if it is of the requested type.</p>
+<p><b>See also </b><a href="aggregation-aggregate.html#components" translate="no">Aggregate::components</a>().</p>
+<!-- @@@query_all -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

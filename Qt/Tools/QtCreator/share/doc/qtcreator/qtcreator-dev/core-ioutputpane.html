@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- ioutputpane.cpp -->
+  <meta name="description" content="The IOutputPane class is an interface for providing Output panes.">
+  <title>IOutputPane Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>IOutputPane</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#public-slots">Public Slots</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">IOutputPane Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::IOutputPane</span>
+<!-- $$$IOutputPane-brief -->
+<p>The IOutputPane class is an interface for providing <b translate="no">Output</b> panes. <a href="#details">More...</a></p>
+<!-- @@@IOutputPane -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;coreplugin/ioutputpane.h&gt;</span></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Inherited By:</td><td class="memItemRight bottomAlign"> <p><a href="core-searchresultwindow.html" translate="no">Core::SearchResultWindow</a></p>
+</td></tr>
+</table></div>
+<ul>
+<li><a href="core-ioutputpane-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#Flag-enum" translate="no">Flag</a></b> { NoModeSwitch, ModeSwitch, WithFocus, EnsureSizeHint }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> flags </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#Flag-enum" translate="no">Flags</a></b></td></tr>
+</table></div>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#IOutputPane" translate="no">IOutputPane</a></b>(QObject *<i>parent</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#canFocus" translate="no">canFocus</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#canNavigate" translate="no">canNavigate</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#canNext" translate="no">canNext</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#canPrevious" translate="no">canPrevious</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#clearContents" translate="no">clearContents</a></b>() = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#displayName" translate="no">displayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#goToNext" translate="no">goToNext</a></b>() = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#goToPrev" translate="no">goToPrev</a></b>() = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#hasFocus" translate="no">hasFocus</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Id </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#id" translate="no">id</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QWidget *</td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#outputWidget" translate="no">outputWidget</a></b>(QWidget *<i>parent</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#priorityInStatusBar" translate="no">priorityInStatusBar</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#setFocus" translate="no">setFocus</a></b>() = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QList&lt;QWidget *&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#toolBarWidgets" translate="no">toolBarWidgets</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#visibilityChanged" translate="no">visibilityChanged</a></b>(bool <i>visible</i>)</td></tr>
+</table></div>
+<h2 id="public-slots">Public Slots</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#flash" translate="no">flash</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#hide" translate="no">hide</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#navigateStateChanged" translate="no">navigateStateChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#popup" translate="no">popup</a></b>(int <i>flags</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#setIconBadgeNumber" translate="no">setIconBadgeNumber</a></b>(int <i>number</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#toggle" translate="no">toggle</a></b>(int <i>flags</i>)</td></tr>
+</table></div>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#flashButton" translate="no">flashButton</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#hidePage" translate="no">hidePage</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#navigateStateUpdate" translate="no">navigateStateUpdate</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#setBadgeNumber" translate="no">setBadgeNumber</a></b>(int <i>number</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#showPage" translate="no">showPage</a></b>(int <i>flags</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#togglePage" translate="no">togglePage</a></b>(int <i>flags</i>)</td></tr>
+</table></div>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#setDisplayName" translate="no">setDisplayName</a></b>(const QString &amp;<i>name</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#setId" translate="no">setId</a></b>(const Utils::Id &amp;<i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-ioutputpane.html#setPriorityInStatusBar" translate="no">setPriorityInStatusBar</a></b>(int <i>priority</i>)</td></tr>
+</table></div>
+<!-- $$$IOutputPane-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+</div>
+<!-- @@@IOutputPane -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$Flag$$$NoModeSwitch$$$ModeSwitch$$$WithFocus$$$EnsureSizeHint -->
+<h3 class="flags" id="Flag-enum">enum IOutputPane::<span class="name">Flag</span><br/>flags IOutputPane::<span class="name">Flags</span></h3>
+<p>This enum type controls the behavior of the output pane when it is requested to show itself.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">Core::IOutputPane::NoModeSwitch</code></td><td class="topAlign tblval"><code translate="no">0</code></td><td class="topAlign">Does not switch between the modes.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::IOutputPane::ModeSwitch</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">Does switch between the modes.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::IOutputPane::WithFocus</code></td><td class="topAlign tblval"><code translate="no">2</code></td><td class="topAlign">Sets focus if <a href="core-ioutputpane.html#canFocus" translate="no">canFocus</a> returns true.</td></tr>
+<tr><td class="topAlign"><code translate="no">Core::IOutputPane::EnsureSizeHint</code></td><td class="topAlign tblval"><code translate="no">4</code></td><td class="topAlign">Ensures the use of the minimum size.</td></tr>
+</table></div>
+<p>The Flags type is a typedef for <a href="">QFlags</a>&lt;Flag&gt;. It stores an OR combination of Flag values.</p>
+<!-- @@@Flag -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$IOutputPane[overload1]$$$IOutputPaneQObject* -->
+<h3 class="fn" translate="no" id="IOutputPane">IOutputPane::<span class="name">IOutputPane</span>(<span class="type">QObject</span> *<i>parent</i> = nullptr)</h3>
+<p>Constructs an output pane as the child of <i translate="no">parent</i>.</p>
+<!-- @@@IOutputPane -->
+<!-- $$$canFocus[overload1]$$$canFocus -->
+<h3 class="fn" translate="no" id="canFocus"><code translate="no">[pure virtual] </code><span class="type">bool</span> IOutputPane::<span class="name">canFocus</span>() const</h3>
+<p>Returns <code translate="no">true</code> when the output pane can be focused right now (for example, the search result window does not want to be focused if there are no results).</p>
+<!-- @@@canFocus -->
+<!-- $$$canNavigate[overload1]$$$canNavigate -->
+<h3 class="fn" translate="no" id="canNavigate"><code translate="no">[pure virtual] </code><span class="type">bool</span> IOutputPane::<span class="name">canNavigate</span>() const</h3>
+<p>Determines whether the output pane's navigation buttons can be enabled. When this returns <code translate="no">false</code>, the buttons are disabled and cannot be enabled.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#canNext" translate="no">IOutputPane::canNext</a>() and <a href="core-ioutputpane.html#canPrevious" translate="no">IOutputPane::canPrevious</a>().</p>
+<!-- @@@canNavigate -->
+<!-- $$$canNext[overload1]$$$canNext -->
+<h3 class="fn" translate="no" id="canNext"><code translate="no">[pure virtual] </code><span class="type">bool</span> IOutputPane::<span class="name">canNext</span>() const</h3>
+<p>Determines whether the <b translate="no">Next</b> button in the output pane is enabled. Is overwritten when <code translate="no">canNavigate()</code> returns <code translate="no">false</code>.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#canNavigate" translate="no">IOutputPane::canNavigate</a>(), <a href="core-ioutputpane.html#canPrevious" translate="no">IOutputPane::canPrevious</a>(), and <a href="core-ioutputpane.html#goToNext" translate="no">IOutputPane::goToNext</a>().</p>
+<!-- @@@canNext -->
+<!-- $$$canPrevious[overload1]$$$canPrevious -->
+<h3 class="fn" translate="no" id="canPrevious"><code translate="no">[pure virtual] </code><span class="type">bool</span> IOutputPane::<span class="name">canPrevious</span>() const</h3>
+<p>Determines whether the <b translate="no">Previous</b> button in the output pane is enabled. Is overwritten when <code translate="no">canNavigate()</code> returns <code translate="no">false</code>.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#canNavigate" translate="no">IOutputPane::canNavigate</a>(), <a href="core-ioutputpane.html#canNext" translate="no">IOutputPane::canNext</a>(), and <a href="core-ioutputpane.html#goToPrev" translate="no">IOutputPane::goToPrev</a>().</p>
+<!-- @@@canPrevious -->
+<!-- $$$clearContents[overload1]$$$clearContents -->
+<h3 class="fn" translate="no" id="clearContents"><code translate="no">[pure virtual] </code><span class="type">void</span> IOutputPane::<span class="name">clearContents</span>()</h3>
+<p>Is called on selecting the clear button.</p>
+<!-- @@@clearContents -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" translate="no" id="displayName"><span class="type">QString</span> IOutputPane::<span class="name">displayName</span>() const</h3>
+<p>Returns the translated display name of the output pane.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#setDisplayName" translate="no">setDisplayName</a>().</p>
+<!-- @@@displayName -->
+<!-- $$$flash[overload1]$$$flash -->
+<h3 class="fn" translate="no" id="flash"><code translate="no">[slot] </code><span class="type">void</span> IOutputPane::<span class="name">flash</span>()</h3>
+<p>Emits the signal <code translate="no">flashButton()</code>.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#flashButton" translate="no">IOutputPane::flashButton</a>().</p>
+<!-- @@@flash -->
+<!-- $$$flashButton[overload1]$$$flashButton -->
+<h3 class="fn" translate="no" id="flashButton"><code translate="no">[signal] </code><span class="type">void</span> IOutputPane::<span class="name">flashButton</span>()</h3>
+<p>Makes the status bar button belonging to the output pane flash.</p>
+<!-- @@@flashButton -->
+<!-- $$$goToNext[overload1]$$$goToNext -->
+<h3 class="fn" translate="no" id="goToNext"><code translate="no">[pure virtual] </code><span class="type">void</span> IOutputPane::<span class="name">goToNext</span>()</h3>
+<p>Is called on selecting the <b translate="no">Next</b> button.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#canNext" translate="no">IOutputPane::canNext</a>().</p>
+<!-- @@@goToNext -->
+<!-- $$$goToPrev[overload1]$$$goToPrev -->
+<h3 class="fn" translate="no" id="goToPrev"><code translate="no">[pure virtual] </code><span class="type">void</span> IOutputPane::<span class="name">goToPrev</span>()</h3>
+<p>Is called on selecting the <b translate="no">Previous</b> button.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#canPrevious" translate="no">IOutputPane::canPrevious</a>().</p>
+<!-- @@@goToPrev -->
+<!-- $$$hasFocus[overload1]$$$hasFocus -->
+<h3 class="fn" translate="no" id="hasFocus"><code translate="no">[pure virtual] </code><span class="type">bool</span> IOutputPane::<span class="name">hasFocus</span>() const</h3>
+<p>Returns <code translate="no">true</code> when the output pane has focus.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#canFocus" translate="no">IOutputPane::canFocus</a>().</p>
+<!-- @@@hasFocus -->
+<!-- $$$hide[overload1]$$$hide -->
+<h3 class="fn" translate="no" id="hide"><code translate="no">[slot] </code><span class="type">void</span> IOutputPane::<span class="name">hide</span>()</h3>
+<p>Emits the signal <code translate="no">hidePage()</code>.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#hidePage" translate="no">IOutputPane::hidePage</a>().</p>
+<!-- @@@hide -->
+<!-- $$$hidePage[overload1]$$$hidePage -->
+<h3 class="fn" translate="no" id="hidePage"><code translate="no">[signal] </code><span class="type">void</span> IOutputPane::<span class="name">hidePage</span>()</h3>
+<p>Hides the output pane.</p>
+<!-- @@@hidePage -->
+<!-- $$$id[overload1]$$$id -->
+<h3 class="fn" translate="no" id="id"><span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> IOutputPane::<span class="name">id</span>() const</h3>
+<p>Returns the ID of the output pane.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#setId" translate="no">setId</a>().</p>
+<!-- @@@id -->
+<!-- $$$navigateStateChanged[overload1]$$$navigateStateChanged -->
+<h3 class="fn" translate="no" id="navigateStateChanged"><code translate="no">[slot] </code><span class="type">void</span> IOutputPane::<span class="name">navigateStateChanged</span>()</h3>
+<p>Emits the signal <code translate="no">navigateStateUpdate()</code>.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#navigateStateUpdate" translate="no">IOutputPane::navigateStateUpdate</a>().</p>
+<!-- @@@navigateStateChanged -->
+<!-- $$$navigateStateUpdate[overload1]$$$navigateStateUpdate -->
+<h3 class="fn" translate="no" id="navigateStateUpdate"><code translate="no">[signal] </code><span class="type">void</span> IOutputPane::<span class="name">navigateStateUpdate</span>()</h3>
+<p>Notifies the output pane manager that the state of <a href="core-ioutputpane.html#canNext" translate="no">canNext</a>, <a href="core-ioutputpane.html#canPrevious" translate="no">canPrevious</a>, or <a href="core-ioutputpane.html#canNavigate" translate="no">canNavigate</a> has changed and the buttons need to be updated.</p>
+<!-- @@@navigateStateUpdate -->
+<!-- $$$outputWidget[overload1]$$$outputWidgetQWidget* -->
+<h3 class="fn" translate="no" id="outputWidget"><code translate="no">[pure virtual] </code><span class="type">QWidget</span> *IOutputPane::<span class="name">outputWidget</span>(<span class="type">QWidget</span> *<i>parent</i>)</h3>
+<p>Returns the output widget (as the child of <i translate="no">parent</i>) for the output pane.</p>
+<!-- @@@outputWidget -->
+<!-- $$$popup[overload1]$$$popupint -->
+<h3 class="fn" translate="no" id="popup"><code translate="no">[slot] </code><span class="type">void</span> IOutputPane::<span class="name">popup</span>(<span class="type">int</span> <i>flags</i>)</h3>
+<p>Emits the signal <code translate="no">showPage(int flags)</code> with the given parameter <i translate="no">flags</i>.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#showPage" translate="no">IOutputPane::showPage</a>().</p>
+<!-- @@@popup -->
+<!-- $$$priorityInStatusBar[overload1]$$$priorityInStatusBar -->
+<h3 class="fn" translate="no" id="priorityInStatusBar"><span class="type">int</span> IOutputPane::<span class="name">priorityInStatusBar</span>() const</h3>
+<p>Determines the position of the output pane on the status bar and the default visibility.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#setPriorityInStatusBar" translate="no">setPriorityInStatusBar</a>().</p>
+<!-- @@@priorityInStatusBar -->
+<!-- $$$setBadgeNumber[overload1]$$$setBadgeNumberint -->
+<h3 class="fn" translate="no" id="setBadgeNumber"><code translate="no">[signal] </code><span class="type">void</span> IOutputPane::<span class="name">setBadgeNumber</span>(<span class="type">int</span> <i>number</i>)</h3>
+<p>Displays <i translate="no">number</i> in the status bar button belonging to the output pane (for example, number of issues on building).</p>
+<!-- @@@setBadgeNumber -->
+<!-- $$$setDisplayName[overload1]$$$setDisplayNameconstQString& -->
+<h3 class="fn" translate="no" id="setDisplayName"><code translate="no">[protected] </code><span class="type">void</span> IOutputPane::<span class="name">setDisplayName</span>(const <span class="type">QString</span> &amp;<i>name</i>)</h3>
+<p>Sets the translated display name of the output pane to <i translate="no">name</i>.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#displayName" translate="no">displayName</a>().</p>
+<!-- @@@setDisplayName -->
+<!-- $$$setFocus[overload1]$$$setFocus -->
+<h3 class="fn" translate="no" id="setFocus"><code translate="no">[pure virtual] </code><span class="type">void</span> IOutputPane::<span class="name">setFocus</span>()</h3>
+<p>Gives focus to the output pane window.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#hasFocus" translate="no">hasFocus</a>().</p>
+<!-- @@@setFocus -->
+<!-- $$$setIconBadgeNumber[overload1]$$$setIconBadgeNumberint -->
+<h3 class="fn" translate="no" id="setIconBadgeNumber"><code translate="no">[slot] </code><span class="type">void</span> IOutputPane::<span class="name">setIconBadgeNumber</span>(<span class="type">int</span> <i>number</i>)</h3>
+<p>Emits the signal <code translate="no">setBadgeNumber(int number)</code> with the given parameter <i translate="no">number</i>.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#setBadgeNumber" translate="no">IOutputPane::setBadgeNumber</a>().</p>
+<!-- @@@setIconBadgeNumber -->
+<!-- $$$setId[overload1]$$$setIdconstUtils::Id& -->
+<h3 class="fn" translate="no" id="setId"><code translate="no">[protected] </code><span class="type">void</span> IOutputPane::<span class="name">setId</span>(const <span class="type"><a href="utils-id.html" translate="no">Utils::Id</a></span> &amp;<i>id</i>)</h3>
+<p>Sets the ID of the output pane to <i translate="no">id</i>. This is used for persisting the visibility state.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#id" translate="no">id</a>().</p>
+<!-- @@@setId -->
+<!-- $$$setPriorityInStatusBar[overload1]$$$setPriorityInStatusBarint -->
+<h3 class="fn" translate="no" id="setPriorityInStatusBar"><code translate="no">[protected] </code><span class="type">void</span> IOutputPane::<span class="name">setPriorityInStatusBar</span>(<span class="type">int</span> <i>priority</i>)</h3>
+<p>Sets the position of the output pane on the status bar and the default visibility to <i translate="no">priority</i>.</p>
+<ul>
+<li>higher numbers are further to the front</li>
+<li>&gt;= 0 are shown in status bar by default</li>
+<li>&lt; 0 are not shown in status bar by default</li>
+</ul>
+<p><b>See also </b><a href="core-ioutputpane.html#priorityInStatusBar" translate="no">priorityInStatusBar</a>().</p>
+<!-- @@@setPriorityInStatusBar -->
+<!-- $$$showPage[overload1]$$$showPageint -->
+<h3 class="fn" translate="no" id="showPage"><code translate="no">[signal] </code><span class="type">void</span> IOutputPane::<span class="name">showPage</span>(<span class="type">int</span> <i>flags</i>)</h3>
+<p>Shows the output pane. The parameter <i translate="no">flags</i> controls the behavior.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#Flag-enum" translate="no">IOutputPane::Flags</a>.</p>
+<!-- @@@showPage -->
+<!-- $$$toggle[overload1]$$$toggleint -->
+<h3 class="fn" translate="no" id="toggle"><code translate="no">[slot] </code><span class="type">void</span> IOutputPane::<span class="name">toggle</span>(<span class="type">int</span> <i>flags</i>)</h3>
+<p>Emits the signal <code translate="no">togglePage(int flags)</code> with the given parameter <i translate="no">flags</i>.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#togglePage" translate="no">IOutputPane::togglePage</a>().</p>
+<!-- @@@toggle -->
+<!-- $$$togglePage[overload1]$$$togglePageint -->
+<h3 class="fn" translate="no" id="togglePage"><code translate="no">[signal] </code><span class="type">void</span> IOutputPane::<span class="name">togglePage</span>(<span class="type">int</span> <i>flags</i>)</h3>
+<p>Toggles the hide and show states of the output pane. The parameter <i translate="no">flags</i> controls the behavior.</p>
+<p><b>See also </b><a href="core-ioutputpane.html#hidePage" translate="no">IOutputPane::hidePage</a>(), <a href="core-ioutputpane.html#showPage" translate="no">IOutputPane::showPage</a>(), and <a href="core-ioutputpane.html#Flag-enum" translate="no">IOutputPane::Flags</a>.</p>
+<!-- @@@togglePage -->
+<!-- $$$toolBarWidgets[overload1]$$$toolBarWidgets -->
+<h3 class="fn" translate="no" id="toolBarWidgets"><code translate="no">[virtual] </code><span class="type">QList</span>&lt;<span class="type">QWidget</span> *&gt; IOutputPane::<span class="name">toolBarWidgets</span>() const</h3>
+<p>Returns the toolbar widgets for the output pane.</p>
+<!-- @@@toolBarWidgets -->
+<!-- $$$visibilityChanged[overload1]$$$visibilityChangedbool -->
+<h3 class="fn" translate="no" id="visibilityChanged"><code translate="no">[virtual] </code><span class="type">void</span> IOutputPane::<span class="name">visibilityChanged</span>(<span class="type">bool</span> <i>visible</i>)</h3>
+<p>Gets called when the visibility is changed. <i translate="no">visible</i> is <code translate="no">true</code> when the output pane is now visible or <code translate="no">false</code> otherwise.</p>
+<!-- @@@visibilityChanged -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

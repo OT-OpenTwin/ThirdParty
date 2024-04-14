@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- loginui4.qdoc -->
+  <meta name="description" content="Illustrates how to use the timeline and states to animate UI components.">
+  <title>Log In UI - Timeline | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="gstutorials.html" translate="no">Tutorials</a></li>
+<li>Log In UI - Timeline</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="qtdesignstudio-loginui3-example.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="qtdesignstudio-loginui3-example.html">Log In UI - States</a>
+</p>
+<h1 class="title">Log In UI - Timeline</h1>
+<pre class="cpp" translate="no">
+ import QmlProject
+
+ Project {
+     mainFile: &quot;content/App.qml&quot;
+
+     /* Include .qml, .js, and image files from current directory and subdirectories */
+     QmlFiles {
+         directory: &quot;content&quot;
+     }
+
+     JavaScriptFiles {
+         directory: &quot;content&quot;
+     }
+
+     ImageFiles {
+         directory: &quot;content&quot;
+     }
+
+     Files {
+         filter: &quot;*.conf&quot;
+         files: [&quot;qtquickcontrols2.conf&quot;]
+     }
+
+     Files {
+         filter: &quot;qmldir&quot;
+         directory: &quot;.&quot;
+     }
+
+     Files {
+         filter: &quot;*.ttf;*.otf&quot;
+     }
+
+     Files {
+         filter: &quot;*.wav;*.mp3&quot;
+     }
+
+     Files {
+         filter: &quot;*.mp4&quot;
+     }
+
+     Files {
+         filter: &quot;*.glsl;*.glslv;*.glslf;*.vsh;*.fsh;*.vert;*.frag&quot;
+     }
+
+     Files {
+         filter: &quot;*.mesh&quot;
+         directory: &quot;asset_imports&quot;
+     }
+
+     Environment {
+         QT_QUICK_CONTROLS_CONF: &quot;qtquickcontrols2.conf&quot;
+         QT_AUTO_SCREEN_SCALE_FACTOR: &quot;1&quot;
+         QT_LOGGING_RULES: &quot;qt.qml.connections=false&quot;
+         QT_ENABLE_HIGHDPI_SCALING: &quot;0&quot;
+         /* Useful for debugging
+        QSG_VISUALIZE=batches
+        QSG_VISUALIZE=clip
+        QSG_VISUALIZE=changes
+        QSG_VISUALIZE=overdraw
+        */
+     }
+
+     qt6Project: true
+
+     /* List of plugin directories passed to QML runtime */
+     importPaths: [ &quot;imports&quot;, &quot;asset_imports&quot; ]
+
+     /* Required for deployment */
+     targetDirectory: &quot;/opt/Loginui1&quot;
+
+     qdsVersion: &quot;3.0&quot;
+
+     /* If any modules the project imports require widgets (e.g. QtCharts), widgetApp must be true */
+     widgetApp: true
+ }
+</pre>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- animationTutorial.qdoc -->
+  <meta name="description" content="Illustrates how to create timeline animations and bind them to properties in Qt Design Studio.">
+  <title>Timeline Animation Tutorial | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="gstutorials.html" translate="no">Tutorials</a></li>
+<li>Timeline Animation Tutorial</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#running-the-tutorial-project">Running the Tutorial Project</a></li>
+<li class="level1"><a href="#creating-a-timeline-animation">Creating a Timeline Animation</a></li>
+<li class="level2"><a href="#adding-a-timeline-and-an-animation">Adding a Timeline and an Animation</a></li>
+<li class="level2"><a href="#adding-keyframes">Adding Keyframes</a></li>
+<li class="level2"><a href="#controlling-the-running-state-of-the-animation">Controlling the Running State of the Animation</a></li>
+<li class="level1"><a href="#creating-a-timeline-and-binding-it-to-a-property">Creating a Timeline and Binding it to a Property</a></li>
+<li class="level2"><a href="#adding-a-timeline-inside-a-component">Adding a Timeline Inside a Component</a></li>
+<li class="level2"><a href="#adding-keyframes">Adding Keyframes</a></li>
+<li class="level2"><a href="#controlling-the-animation-with-a-slider">Controlling the Animation with a Slider</a></li>
+<li class="level1"><a href="#previewing">Previewing</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Timeline Animation Tutorial</h1>
+<!-- $$$animation-tutorial.html-description -->
+<div class="descr" id="details">
+<p class="centerAlign"><img src="images/animation-tutorial.gif" alt="" /></p><p>The <i>Timeline Animation</i> tutorial illustrates how to create timeline animations and bind them to properties in Qt Design Studio. First you create a keyframe animation which you control the running state of with a switch in the UI. Next, you create another keyframe animation where you use a slider in the UI to control the position of the playhead.</p>
+<p>The starting point of this tutorial is the Animation Tutorial project, you can download it from <a href="https://git.qt.io/public-demos/qtdesign-studio/-/tree/master/tutorial%20projects/animation-tutorial/AnimationTutorial/Start" translate="no">here</a>.</p>
+<p>You can download the completed project from <a href="https://git.qt.io/public-demos/qtdesign-studio/-/tree/master/tutorial%20projects/animation-tutorial/AnimationTutorial/Completed" translate="no">here</a>.</p>
+<p>This tutorial requires that you know the basics of Qt Design Studio, see <a href="studio-getting-started.html" translate="no">Getting Started</a>.</p>
+<h2 id="running-the-tutorial-project">Running the Tutorial Project</h2>
+<p>To open the tutorial project in Qt Design Studio, open the <i>.qmlproject</i> file located in the root folder of the downloaded project.</p>
+<h2 id="creating-a-timeline-animation">Creating a Timeline Animation</h2>
+<p>First, you create an animation where the ball bearing continuously rotates around its Y axis.</p>
+<h3 id="adding-a-timeline-and-an-animation">Adding a Timeline and an Animation</h3>
+<p>To add a timeline to your project:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Timeline</b> view, select <img src="images/plus.png" alt="" /> . This creates a timeline and one animation.</li>
+<li>On the <b translate="no">Animation Settings</b> tab in the <b translate="no">Timeline Settings</b> dialog:<ul>
+<li>Set <b translate="no">Duration</b> to 7500. This sets the duration of the animation in milliseconds.</li>
+<li>Select <b translate="no">Contiunous</b>. This sets the animation to start over again when it reaches the end.</li>
+</ul>
+<p class="centerAlign"><img src="images/animation-tutorial-timeline-1.png" alt="" /></p></li>
+<li>Select <b translate="no">Close</b>.</li>
+</ol>
+<p>You can see the timeline in the <b translate="no">Timeline</b> and <b translate="no">Navigator</b> views.</p>
+<h3 id="adding-keyframes">Adding Keyframes</h3>
+<p>Next, you add keyframes to animate the rotation of the ball bearing:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Navigator</b> view, select <i>ballbearing1</i>.</li>
+<li>In the <b translate="no">Properties</b> view, select <img src="images/action-icon.png" alt="" /> (Actions) next to <b translate="no">Rotation</b> &gt; <b translate="no">Y</b>.</li>
+<li>Select <b translate="no">Insert Keyframe</b>.<p class="centerAlign"><img src="images/animation-tutorial-insert-keyframe.png" alt="" /></p></li>
+<li>In the <b translate="no">Timeline</b> view, select the <b translate="no">Per Property Recording</b> button to start recording property changes.<p class="centerAlign"><img src="images/animation-tutorial-per-property-recording.png" alt="" /></p></li>
+<li>In the <b translate="no">Timeline</b> view, move the playhead to the end of the animation (frame 1000).</li>
+<li>In the <b translate="no">Properties</b> view, set <b translate="no">Rotation</b> &gt; <b translate="no">Z</b> to 360. This creates a second keyframe.</li>
+<li>Select the <b translate="no">Per Property Recording</b> button to end the per property recording. To preview the animation, drag the playhead along the timeline.</li>
+</ol>
+<h3 id="controlling-the-running-state-of-the-animation">Controlling the Running State of the Animation</h3>
+<p>There is a toggle switch in the UI of this project. To use this switch to control the running state of the animation:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Navigator</b> view, select <i>timelineAnimation</i>.</li>
+<li>In the <b translate="no">Connections</b> view, go to the <b translate="no">Bindings</b> tab.</li>
+<li>Select <img src="images/plus.png" alt="" /> to create a binding.</li>
+<li>For the binding you created, set:<ul>
+<li><b translate="no">Property</b> to <i>paused</i>.</li>
+<li><b translate="no">Source Item</b> to <i>switch1</i>.</li>
+<li><b translate="no">Source Property</b> to <i>checked</i>.</li>
+</ul>
+<p class="centerAlign"><img src="images/animation-tutorial-binding.png" alt="" /></p></li>
+</ol>
+<p>You can preview the animation and try the toggle switch in the live preview. To run the live preview, select <b>Alt</b> + <b>P</b>.</p>
+<h2 id="creating-a-timeline-and-binding-it-to-a-property">Creating a Timeline and Binding it to a Property</h2>
+<p>Next, you create the exploded view animation of the ball bearing. You don't want this animation to run automatically but instead you want to control it with a slider in the UI.</p>
+<h3 id="adding-a-timeline-inside-a-component">Adding a Timeline Inside a Component</h3>
+<p>You create this animation inside the ball bearing component, to do this:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Navigator</b> view, select <i>ballBearing1</i>.</li>
+<li>Select <b>F2</b> to go into the component.</li>
+<li>In the <b translate="no">Timeline</b> view, select <img src="images/plus.png" alt="" /> to add a timeline and open the <b translate="no">Timeline Settings</b> dialog.</li>
+<li>Select <img src="images/minus.png" alt="" /> next to the <b translate="no">Animation Settings</b> tab to remove the animation in this timeline. You do not need an animation when you bind the timeline to a property.</li>
+<li>Select <b translate="no">Close</b>.</li>
+</ol>
+<p class="centerAlign"><img src="images/animation-tutorial-timeline-2.png" alt="" /></p><h3 id="adding-keyframes">Adding Keyframes</h3>
+<p>Now, you add keyframes for the different parts of the ball bearing:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Navigator</b> view, select <i>inner_race</i>.</li>
+<li>In the <b translate="no">Properties</b> view, select <img src="images/action-icon.png" alt="" /> (Actions) next to <b translate="no">Translation</b> &gt; <b translate="no">Y</b>.</li>
+<li>Select <b translate="no">Insert Keyframe</b>.</li>
+<li>In the <b translate="no">Timeline</b> view, select the <b translate="no">Per Property Recording</b> button to start recording property changes.</li>
+<li>In the <b translate="no">Timeline</b> view, move the playhead to the end of the animation (frame 1000).</li>
+<li>In the <b translate="no">Properties</b> view, set <b translate="no">Translation</b> &gt; <b translate="no">Y</b> to 0,50.</li>
+<li>Select the <b translate="no">Per Property Recording</b> button to end the per property recording.</li>
+<li>Next, you set the keyframe values for the other parts of the ball bearing. For the following parts, set the <b translate="no">Translation</b> &gt; <b translate="no">Y</b> value for frame 1000:<ul>
+<li><i>balls</i> to 1,00.</li>
+<li><i>retainer</i> to 1,50.</li>
+<li><i>shield_left</i> to 1,80.</li>
+<li><i>shield_right</i> to -0,30.</li>
+</ul>
+<p class="centerAlign"><img src="images/animation-tutorial-ballbearing-animation.png" alt="" /></p></li>
+</ol>
+<p>You can preview the animation by dragging the playhead in the <b translate="no">Timeline</b> view.</p>
+<h3 id="controlling-the-animation-with-a-slider">Controlling the Animation with a Slider</h3>
+<p>Now, you use the slider on the main screen to control the exploded view animation that you created.</p>
+<p>To do this, you first need to define a property for the slider:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Navigator</b> view, select <i>Node</i>.</li>
+<li>On the <b translate="no">Properties</b> tab in the <b translate="no">Connections</b> view, select <img src="images/plus.png" alt="" /> .</li>
+<li>In the <b translate="no">Property Type</b> field, enter <i>Item</i>. This field is a drop-down list, but you can also type text.</li>
+<li>In the <b translate="no">Property Value</b> field, enter <i>null</i>.</li>
+</ol>
+<p class="centerAlign"><img src="images/animation-tutorial-property.png" alt="" /></p><p>Next, you set the property you just created to control the timeline animation:</p>
+<ol class="1" type="1"><li>In the <b translate="no">Timeline</b> view, select <img src="images/animation.png" alt="" /> .</li>
+<li>In the <b translate="no">Expression binding field</b>, enter <code translate="no">property0.value</code>.</li>
+<li>Select <b translate="no">Close</b>.</li>
+</ol>
+<p>Next, you go out from the component back to the main project and bind the property to the slider:</p>
+<ol class="1" type="1"><li>In the toolbar, select the <i>Screen01.ui.qml</i> breadcrumb.<p class="centerAlign"><img src="images/animation-tutorial-breadcrumb.png" alt="" /></p></li>
+<li>In the <b translate="no">Navigator</b> view, select <i>ballbearing1</i>.</li>
+<li>In the <b translate="no">Connections</b> view, go to the <b translate="no">Bindings</b> tab.</li>
+<li>Select <img src="images/plus.png" alt="" /> .</li>
+<li>For the binding you just created:<ul>
+<li>Set <b translate="no">Source Item</b> to <i>slider</i>.</li>
+<li>Remove the value from <b translate="no">Source Property</b>.</li>
+</ul>
+<p class="centerAlign"><img src="images/animation-tutorial-binding-2.png" alt="" /></p></li>
+</ol>
+<h2 id="previewing">Previewing</h2>
+<p>Now, the animations are done. To preview and test your application, select <b>Alt</b> + <b>P</b>.</p>
+</div>
+<p><b>See also </b><a href="studio-timeline.html" translate="no">Creating Timeline Animations</a>.</p>
+<!-- @@@animation-tutorial.html -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

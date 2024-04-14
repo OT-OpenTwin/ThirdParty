@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- pluginspec.cpp -->
+  <meta name="description" content="The PluginDependency class contains the name and required compatible version number of a plugin's dependency.">
+  <title>PluginDependency Struct | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>PluginDependency</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-variables">Public Variables</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">PluginDependency Struct</h1>
+<span class="small-subtitle" translate="no">struct <a href="extensionsystem.html" translate="no">ExtensionSystem</a>::PluginDependency</span>
+<!-- $$$PluginDependency-brief -->
+<p>The PluginDependency class contains the name and required compatible version number of a plugin's dependency. <a href="#details">More...</a></p>
+<!-- @@@PluginDependency -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;extensionsystem/pluginspec.h&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="extensionsystem-plugindependency-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-plugindependency.html#Type-enum" translate="no">Type</a></b> { Required, Optional, Test }</td></tr>
+</table></div>
+<h2 id="public-variables">Public Variables</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-plugindependency.html#name-var" translate="no">name</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ExtensionSystem::PluginDependency::Type </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-plugindependency.html#type-var" translate="no">type</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="extensionsystem-plugindependency.html#version-var" translate="no">version</a></b></td></tr>
+</table></div>
+<!-- $$$PluginDependency-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>This reflects the data of a dependency object in the plugin's meta data. The name and version are used to resolve the dependency. That is, a plugin with the given name and plugin <code translate="no">compatibility version &lt;= dependency version &lt;= plugin version</code> is searched for.</p>
+<p>See also <a href="extensionsystem-iplugin.html" translate="no">ExtensionSystem::IPlugin</a> for more information about plugin dependencies and version matching.</p>
+</div>
+<!-- @@@PluginDependency -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$Type$$$Required$$$Optional$$$Test -->
+<h3 class="fn" translate="no" id="Type-enum">enum PluginDependency::<span class="name">Type</span></h3>
+<p>Whether the dependency is required or optional.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code translate="no">ExtensionSystem::PluginDependency::Required</code></td><td class="topAlign tblval"><code translate="no">0</code></td><td class="topAlign">Dependency needs to be there.</td></tr>
+<tr><td class="topAlign"><code translate="no">ExtensionSystem::PluginDependency::Optional</code></td><td class="topAlign tblval"><code translate="no">1</code></td><td class="topAlign">Dependency is not necessarily needed. You need to make sure that the plugin is able to load without this dependency installed, so for example you may not link to the dependency's library.</td></tr>
+<tr><td class="topAlign"><code translate="no">ExtensionSystem::PluginDependency::Test</code></td><td class="topAlign tblval"><code translate="no">2</code></td><td class="topAlign">Dependency needs to be force-loaded for running tests of the plugin.</td></tr>
+</table></div>
+<!-- @@@Type -->
+</div>
+<div class="vars">
+<h2>Member Variable Documentation</h2>
+<!-- $$$name -->
+<h3 class="fn" translate="no" id="name-var"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> PluginDependency::<span class="name">name</span></h3>
+<p>String identifier of the plugin.</p>
+<!-- @@@name -->
+<!-- $$$type -->
+<h3 class="fn" translate="no" id="type-var"><span class="type"><a href="extensionsystem-plugindependency.html#Type-enum" translate="no">ExtensionSystem::PluginDependency::Type</a></span> PluginDependency::<span class="name">type</span></h3>
+<p>Defines whether the dependency is required or optional.</p>
+<p><b>See also </b><a href="extensionsystem-plugindependency.html#Type-enum" translate="no">ExtensionSystem::PluginDependency::Type</a>.</p>
+<!-- @@@type -->
+<!-- $$$version -->
+<h3 class="fn" translate="no" id="version-var"><span class="type"><a href="https://doc.qt.io/qt/qstring.html" translate="no">QString</a></span> PluginDependency::<span class="name">version</span></h3>
+<p>Version string that a plugin must match to fill this dependency.</p>
+<!-- @@@version -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

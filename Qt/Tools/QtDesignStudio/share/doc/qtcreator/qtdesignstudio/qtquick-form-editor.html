@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-form-editor.qdoc -->
+  <title>2D | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>2D</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-using-qt-quick-designer.html" />
+  <link rel="next" href="studio-3d-editor.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-using-qt-quick-designer.html">Design Views</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-editor.html">3D</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#summary-of-2d-view-buttons">Summary of 2D View Buttons</a></li>
+<li class="level1"><a href="#moving-components">Moving Components</a></li>
+<li class="level1"><a href="#resizing-2d-components">Resizing 2D Components</a></li>
+<li class="level1"><a href="#rotating-2d-components">Rotating 2D Components</a></li>
+<li class="level1"><a href="#zooming">Zooming</a></li>
+<li class="level1"><a href="#snapping-to-parent-and-sibling-components">Snapping to Parent and Sibling Components</a></li>
+<li class="level1"><a href="#hiding-component-boundaries">Hiding Component Boundaries</a></li>
+<li class="level1"><a href="#previewing-component-size">Previewing Component Size</a></li>
+<li class="level1"><a href="#specifying-canvas-size">Specifying Canvas Size</a></li>
+<li class="level1"><a href="#setting-canvas-color">Setting Canvas Color</a></li>
+<li class="level1"><a href="#refreshing-2d-view-contents">Refreshing 2D View Contents</a></li>
+<li class="level1"><a href="#context-menu">Context Menu</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">2D</h1>
+<!-- $$$qtquick-form-editor.html-description -->
+<div class="descr" id="details">
+<p>You design applications in the <b translate="no">2D</b> view by opening component files and placing instances of <a href="quick-components-view.html#component-types" translate="no">2D components</a> and <a href="quick-assets.html" translate="no">assets</a> into them.</p>
+<p class="centerAlign"><img src="images/qmldesigner-form-editor.png" alt="&quot;The 2D view&quot;" /></p><p>When you select component instances in the <b translate="no">2D</b> view, markers appear around their edges and in their corners. Depending on the shape of the cursor, you can apply the following actions to the component instances by dragging them:</p>
+<ul>
+<li><a href="qtquick-form-editor.html#moving-components" translate="no">Move</a></li>
+<li><a href="qtquick-form-editor.html#resizing-2d-components" translate="no">Resize</a></li>
+<li><a href="qtquick-form-editor.html#rotating-2d-components" translate="no">Rotate</a></li>
+</ul>
+<h2 id="summary-of-2d-view-buttons">Summary of 2D View Buttons</h2>
+<p>The <b translate="no">2D</b> view toolbar contains the following buttons and fields.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Button/Field</th><th >Tooltip</th><th >Read More</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Override Width</b></td><td >Shows a preview of the component using the specified width.</td><td ><a href="qtquick-form-editor.html#previewing-component-size" translate="no">Previewing Component Size</a></td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Override Height</b></td><td >Shows a preview of the component using the specified height.</td><td ><a href="qtquick-form-editor.html#previewing-component-size" translate="no">Previewing Component Size</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/canvas-color.png" alt="" /></td><td >Sets the color of the <b translate="no">2D</b> view working area.</td><td ><a href="qtquick-form-editor.html#setting-canvas-color" translate="no">Setting Canvas Color</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/zoomIn.png" alt="" /></td><td >Zooms in.</td><td ><a href="qtquick-form-editor.html#zooming" translate="no">Zooming</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/zoomOut.png" alt="" /></td><td >Zooms out.</td><td ><a href="qtquick-form-editor.html#zooming" translate="no">Zooming</a></td></tr>
+<tr valign="top" class="even"><td >Zoom level</td><td >Sets the zoom level that you select from the list.</td><td ><a href="qtquick-form-editor.html#zooming" translate="no">Zooming</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/zoomAll.png" alt="" /></td><td >Zooms to fit all content.</td><td ><a href="qtquick-form-editor.html#zooming" translate="no">Zooming</a></td></tr>
+<tr valign="top" class="even"><td ><img src="images/zoomSelection.png" alt="" /></td><td >Zooms to fit the current selection.</td><td ><a href="qtquick-form-editor.html#zooming" translate="no">Zooming</a></td></tr>
+<tr valign="top" class="odd"><td ><img src="images/reset.png" alt="" /></td><td >Refreshes the contents of the <b translate="no">2D</b> view.</td><td ><a href="qtquick-form-editor.html#refreshing-2d-view-contents" translate="no">Refreshing 2D View Contents</a></td></tr>
+</table></div>
+<h2 id="moving-components">Moving Components</h2>
+<p>When the move cursor is displayed, you can move the selected component instance to any position in the <b translate="no">2D</b> view.</p>
+<p class="centerAlign"><img src="images/qmldesigner-form-editor-move-cursor.png" alt="&quot;Move cursor in the 2D view&quot;" /></p><p>For more information about alternative ways of positioning component instances in UIs, see <a href="qtquick-positioning.html" translate="no">Scalable Layouts</a>.</p>
+<h2 id="resizing-2d-components">Resizing 2D Components</h2>
+<p>When the resize cursor is displayed, you can drag the markers to resize component instances.</p>
+<p class="centerAlign"><img src="images/qtquick-designer-scaling-items.png" alt="&quot;The 2D view&quot;" /></p><p>To have the resizing done from the center of the selected component instance rather than from its edges, press <b>Alt</b> (or <b>Opt</b> on macOS).</p>
+<p>To preserve the image aspect ratio while resizing when using the corner markers, press <b>Shift</b>. This also works on component instances that are anchored using left, right, top, or bottom anchors.</p>
+<p>To both resize from the center of the component instance and preserve the aspect ratio, press <b>Alt+Shift</b> (or <b>Opt+Shift</b> on macOS).</p>
+<p>For more information about alternative ways to specify the size of a component or component instance in a UI, see <a href="qtquick-properties.html#2d-geometry" translate="no">2D Geometry</a>.</p>
+<h2 id="rotating-2d-components">Rotating 2D Components</h2>
+<p>When the rotation cursor <img src="images/rotation-cursor.png" alt="" /> is displayed in one of the corners of a component instance, you can drag clockwise or counter-clockwise to freely rotate the component instance around its origin.</p>
+<p class="centerAlign"><img src="images/qtquick-designer-rotating-items.png" alt="&quot;2D rotation tool&quot;" /></p><p>Additionally, press <b>Shift</b> or <b>Alt</b> (or <b>Opt</b> on macOS) to rotate component instances in steps of 5 or 45 degrees, respectively.</p>
+<p>You can set the <a href="qtquick-properties.html#managing-2d-transformations" translate="no">origin</a> in <a href="qtquick-properties-view.html" translate="no">Properties</a> &gt; <b translate="no">Geometry - 2D</b> &gt; <b translate="no">Origin</b>. There, you can also enter the value of the <b translate="no">Rotation</b> property in degrees.</p>
+<h2 id="zooming">Zooming</h2>
+<p>You can use the zoom buttons on the toolbar to zoom into and out of the <b translate="no">2D</b> view or select the zoom level as a percentage from a list. More buttons are availabe for zooming to fit all content in the view or zooming to fit the currently selected component instances.</p>
+<p class="centerAlign"><img src="images/qmldesigner-zooming.gif" alt="&quot;Zooming in the 2D view&quot;" /></p><h2 id="snapping-to-parent-and-sibling-components">Snapping to Parent and Sibling Components</h2>
+<p>You can use snapping to align component instances in the <b translate="no">2D</b> view. With snapping turned on, all component instances snap to their parent and siblings. If you use snapping with anchors, anchors are created when you snap a component to another.</p>
+<p>To turn on snapping, right-click in the <b translate="no">2D</b> view and select <b translate="no">Snapping</b> &gt; <b translate="no">Snap with Anchors</b> or <b translate="no">Snap without Anchors</b>.</p>
+<p>Snapping lines automatically appear to help you position the component instances.</p>
+<p>Choose <b translate="no">Edit</b> &gt; <b translate="no">Preferences</b> &gt; <b translate="no">Qt Quick</b> &gt; <b translate="no">Qt Quick Designer</b> to specify settings for snapping. In the <b translate="no">Parent component padding</b> field, specify the distance in pixels between the parent and the snapping lines. In the <b translate="no">Sibling component spacing</b> field, specify the distance in pixels between siblings and the snapping lines.</p>
+<p class="centerAlign"><img src="images/qtquick-designer-options.png" alt="&quot;Qt Quick Designer preferences&quot;" /></p><p>The following image shows the snapping lines (1) when <b translate="no">Parent component padding</b> is set to 5 pixels.</p>
+<p class="centerAlign"><img src="images/qmldesigner-snap-margins.png" alt="&quot;Snapping lines on canvas&quot;" /></p><p>For alternative ways of aligning and distributing component instances by using the <a href="qtquick-properties-view.html" translate="no">Properties</a> view, see <a href="qtquick-positioning.html#aligning-and-distributing-components" translate="no">Aligning and Distributing Components</a>.</p>
+<h2 id="hiding-component-boundaries">Hiding Component Boundaries</h2>
+<p>The <b translate="no">2D</b> view displays the boundaries of component instances. To hide them, right-click in the <b translate="no">2D</b> view and select <b translate="no">Show Bounds</b> from the context menu.</p>
+<h2 id="previewing-component-size">Previewing Component Size</h2>
+<p>The width and height of the root component in a UI file determine the size of the component. You can reuse components, such as buttons, in different sizes in other UI files and design UIs for use with different device profiles, screen resolution, or screen orientation. The component size might also be zero (0,0) if its final size is determined by <a href="qtquick-positioning.html#setting-bindings" translate="no">property bindings</a>.</p>
+<p>To experiment with different component sizes, enter values in the <b translate="no">Override Width</b> and <b translate="no">Override Height</b> fields (1) on the toolbar. The changes are displayed in the <b translate="no">2D</b> view (2) and in the <b translate="no">States</b> view (3), but the property values are not changed permanently in the UI file. You can permanently change the property values in the <b translate="no">Properties</b> view (4).</p>
+<p class="centerAlign"><img src="images/qmldesigner-preview-size.png" alt="&quot;Component width and height&quot;" /></p><p>To set the initial size of the root component, select <b translate="no">Edit</b> &gt; <b translate="no">Preferences</b> &gt; <b translate="no">Qt Quick</b> &gt; <b translate="no">Qt Quick Designer</b> and specify the component width and height in the <b translate="no">Root Component Init Size</b> group.</p>
+<h2 id="specifying-canvas-size">Specifying Canvas Size</h2>
+<p>To change the canvas size, select <b translate="no">Edit</b> &gt; <b translate="no">Preferences</b> &gt; <b translate="no">Qt Quick</b> &gt; <b translate="no">Qt Quick Designer</b> and specify the canvas width and height in the <b translate="no">Canvas</b> group.</p>
+<h2 id="setting-canvas-color">Setting Canvas Color</h2>
+<p>If you set the background of the root component transparent, the color of the working area can make it difficult to see the component instance you are working on. To make component instances more visible, you can select the canvas color in the <img src="images/canvas-color.png" alt="" /> list. By default, the color is transparent. Setting the canvas color does not affect the background color of your root component or component instances in any way.</p>
+<p class="centerAlign"><img src="images/qmldesigner-canvas-color.png" alt="&quot;Transparent canvas color for a transparent component instance&quot;" /></p><h2 id="refreshing-2d-view-contents">Refreshing 2D View Contents</h2>
+<p>When you open a UI file, the component defined in the file and the component instances it contains are drawn in the <b translate="no">2D</b> view. When you edit component instance properties in <a href="qtquick-properties-view.html" translate="no">Properties</a>, the code and its representation in the <b translate="no">2D</b> view might get out of sync. For example, when you change the position of a component instance within a column or a row, the new position might not be displayed correctly in the <b translate="no">2D</b> view.</p>
+<p>To refresh the contents of the <b translate="no">2D</b> view, press <b>R</b> or select the <img src="images/reset.png" alt="" /> (<b translate="no">Reset View</b>) button.</p>
+<h2 id="context-menu">Context Menu</h2>
+<p>The following table summarizes the <b translate="no">Navigator</b> and <b translate="no">2D</b> views context menu items and provides links to more information about them.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >To Learn About</th><th >Go To</th></tr></thead>
+<tr valign="top" class="odd"><td >Arrange</td><td ><a href="qtquick-navigator.html#arranging-components" translate="no">Arranging Components</a></td></tr>
+<tr valign="top" class="even"><td >Edit</td><td ><a href="qtquick-navigator.html#showing-and-hiding-components" translate="no">Showing and Hiding Components</a></td></tr>
+<tr valign="top" class="odd"><td >Anchors</td><td ><a href="qtquick-positioning.html#setting-anchors-and-margins" translate="no">Setting Anchors and Margins</a></td></tr>
+<tr valign="top" class="even"><td >Group</td><td ><a href="qtquick-positioning.html#organizing-components" translate="no">Organizing Components</a></td></tr>
+<tr valign="top" class="odd"><td >Position</td><td ><a href="qtquick-positioning.html#using-positioners" translate="no">Using Positioners</a></td></tr>
+<tr valign="top" class="even"><td >Layout</td><td ><a href="qtquick-positioning.html#using-layouts" translate="no">Using Layouts</a></td></tr>
+<tr valign="top" class="odd"><td >Stacked Container</td><td ><a href="quick-data-models.html" translate="no">Lists and Other Data Models</a></td></tr>
+<tr valign="top" class="even"><td >Timeline</td><td ><a href="studio-timeline.html#creating-a-timeline" translate="no">Creating a Timeline</a></td></tr>
+<tr valign="top" class="odd"><td >Event List</td><td ><a href="studio-flow-events.html" translate="no">Simulating Events</a></td></tr>
+<tr valign="top" class="even"><td >Edit Color</td><td ><a href="qtquick-properties.html#editing-properties-inline" translate="no">Editing Properties Inline</a></td></tr>
+<tr valign="top" class="odd"><td >Edit Annotation</td><td ><a href="qtquick-annotations.html" translate="no">Annotating Designs</a></td></tr>
+<tr valign="top" class="even"><td >Merge File with Template</td><td ><a href="quick-components-creating.html#merging-files-with-templates" translate="no">Merging Files with Templates</a></td></tr>
+<tr valign="top" class="odd"><td >Move Component Instances into Separate Files</td><td ><a href="quick-components-creating.html#turning-component-instances-into-custom-components" translate="no">Turning Component Instances into Custom Components</a></td></tr>
+<tr valign="top" class="even"><td >Add New Signal Handler</td><td >Adding Signal Handlers</td></tr>
+<tr valign="top" class="odd"><td >Go to Implementation</td><td ><a href="creator-quick-ui-forms.html#using-ui-files" translate="no">Using UI Files</a></td></tr>
+<tr valign="top" class="even"><td >Edit Component</td><td ><a href="qtquick-navigator.html#moving-within-components" translate="no">Moving Within Components</a></td></tr>
+</table></div>
+</div>
+<!-- @@@qtquick-form-editor.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-using-qt-quick-designer.html">Design Views</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-editor.html">3D</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

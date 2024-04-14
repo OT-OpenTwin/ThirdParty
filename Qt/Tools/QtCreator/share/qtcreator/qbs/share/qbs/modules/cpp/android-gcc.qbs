@@ -39,52 +39,36 @@ import 'gcc.js' as Gcc
 LinuxGCC {
     Depends { name: "Android.ndk" }
 
-    condition: qbs.targetOS.contains("android") &&
-               qbs.toolchain && qbs.toolchain.contains("gcc")
+    condition: qbs.targetOS.includes("android") && qbs.toolchain && qbs.toolchain.includes("llvm")
     priority: 2
-    rpaths: [rpathOrigin]
+    rpaths: []
 
-    property string toolchainDir: {
-        if (qbs.toolchain && qbs.toolchain.contains("clang")) {
-            return Utilities.versionCompare(Android.ndk.version, "10") <= 0
-                    ? "llvm-" + Android.ndk.toolchainVersionNumber : "llvm";
+    // toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/x86_64-linux-android
+    cxxLanguageVersion: "c++14"
+
+    property string archLibsDir:  {
+        switch (qbs.architecture) {
+        case "arm64":
+            return "aarch64";
+        case "armv7a":
+            return "arm";
+        case "x86_64":
+            return qbs.architecture;
+        case "x86":
+            return "i686";
         }
-        return NdkUtils.getBinutilsPath(Android.ndk, toolchainTriple + "-")
     }
+    property string targetDir: "android" + (["armeabi", "armeabi-v7a"].includes(Android.ndk.abi) ? "eabi" : "")
+    property string triple: [archLibsDir, targetSystem, targetDir].join("-")
+    property string libsDir: FileInfo.joinPaths(sysroot, "usr", "lib", triple);
 
-    property string cxxStlBaseDir: FileInfo.joinPaths(Android.ndk.ndkDir, "sources", "cxx-stl")
-    property string gabiBaseDir: FileInfo.joinPaths(cxxStlBaseDir, "gabi++")
-    property string stlPortBaseDir: FileInfo.joinPaths(cxxStlBaseDir, "stlport")
-    property string gnuStlBaseDir: FileInfo.joinPaths(cxxStlBaseDir, "gnu-libstdc++",
-                                                      Android.ndk.toolchainVersionNumber)
-    property string llvmStlBaseDir: FileInfo.joinPaths(cxxStlBaseDir, "llvm-libc++")
-    property string stlBaseDir: {
-        if (Android.ndk.appStl.startsWith("gabi++_"))
-            return gabiBaseDir;
-        else if (Android.ndk.appStl.startsWith("stlport_"))
-            return stlPortBaseDir;
-        else if (Android.ndk.appStl.startsWith("gnustl_"))
-            return gnuStlBaseDir;
-        else if (Android.ndk.appStl.startsWith("c++_"))
-            return llvmStlBaseDir;
-        return undefined;
-    }
-
-    property string stlLibsDir: {
-        if (stlBaseDir) {
-            var infix = Android.ndk.abi;
-            if (Android.ndk.armMode === "thumb" && !Android.ndk.haveUnifiedStl)
-                infix = FileInfo.joinPaths(infix, "thumb");
-            return FileInfo.joinPaths(stlBaseDir, "libs", infix);
-        }
-        return undefined;
-    }
-
-    property string sharedStlFilePath: (stlLibsDir && Android.ndk.appStl.endsWith("_shared"))
-        ? FileInfo.joinPaths(stlLibsDir, dynamicLibraryPrefix + Android.ndk.appStl + dynamicLibrarySuffix)
+    property string sharedStlFilePath: (libsDir && Android.ndk.appStl.endsWith("_shared"))
+        ? FileInfo.joinPaths(libsDir, dynamicLibraryPrefix + Android.ndk.appStl + dynamicLibrarySuffix)
         : undefined
-    property string staticStlFilePath: (stlLibsDir && Android.ndk.appStl.endsWith("_static"))
-        ? FileInfo.joinPaths(stlLibsDir, staticLibraryPrefix + Android.ndk.appStl + staticLibrarySuffix)
+    property string staticStlFilePath: (libsDir && Android.ndk.appStl.endsWith("_static"))
+        ? FileInfo.joinPaths(libsDir, Android.ndk.platformVersion,
+                             NdkUtils.stlFileName(staticLibraryPrefix, Android.ndk,
+                                                  staticLibrarySuffix))
         : undefined
 
     Group {
@@ -94,31 +78,17 @@ LinuxGCC {
         fileTags: "android.stl"
     }
 
-    Group {
-        name: "gdbserver"
-        condition: qbs.buildVariant !== "release" && product.cpp.shouldLink
-        files: FileInfo.joinPaths(Android.ndk.ndkDir, "prebuilt",
-                                  "android-" + NdkUtils.abiNameToDirName(Android.ndk.abi),
-                                  "gdbserver", "gdbserver")
-        fileTags: "android.gdbserver"
-    }
-
     toolchainInstallPath: FileInfo.joinPaths(Android.ndk.ndkDir, "toolchains",
-                                             toolchainDir, "prebuilt",
+                                             "llvm", "prebuilt",
                                              Android.ndk.hostArch, "bin")
 
     property string toolchainTriple: [targetAbi === "androideabi" ? "arm" : targetArch,
                                       targetSystem, targetAbi].join("-")
 
-    toolchainPrefix: {
-        if (qbs.toolchain && qbs.toolchain.contains("clang"))
-            return undefined;
-        return toolchainTriple + "-";
-    }
+    internalVersion: undefined
+    toolchainPrefix: undefined
 
     machineType: {
-        if (Android.ndk.abi === "armeabi")
-            return "armv5te";
         if (Android.ndk.abi === "armeabi-v7a")
             return "armv7-a";
     }
@@ -128,87 +98,45 @@ LinuxGCC {
     enableExceptions: Android.ndk.appStl !== "system"
     enableRtti: Android.ndk.appStl !== "system"
 
-    commonCompilerFlags: NdkUtils.commonCompilerFlags(qbs.toolchain, qbs.buildVariant,
-                                                      Android.ndk.abi, Android.ndk.armMode)
+    commonCompilerFlags: NdkUtils.commonCompilerFlags(qbs.toolchain, qbs.buildVariant, Android.ndk)
 
-    linkerFlags: NdkUtils.commonLinkerFlags(Android.ndk.abi)
-
-    platformDriverFlags: ["-no-canonical-prefixes"]
-
-    libraryPaths: {
-        var prefix = FileInfo.joinPaths(sysroot, "usr");
-        var paths = [];
-        if (Android.ndk.abi === "mips64" || Android.ndk.abi === "x86_64") // no lib64 for arm64-v8a
-            paths.push(FileInfo.joinPaths(prefix, "lib64"));
-        paths.push(FileInfo.joinPaths(prefix, "lib"));
-        return paths;
+    linkerFlags: NdkUtils.commonLinkerFlags(Android.ndk);
+    driverLinkerFlags: {
+        var flags = ["-fuse-ld=lld", "-Wl,--exclude-libs,libgcc.a", "-nostdlib++"];
+        // See https://android.googlesource.com/platform/ndk/+/ndk-release-r21/docs/BuildSystemMaintainers.md#Unwinding
+        if (Android.ndk.abi === "armeabi-v7a") {
+            flags = flags.concat(["-Wl,--exclude-libs,libgcc_real.a"]);
+            if (Android.ndk.appStl.startsWith("c++"))
+                flags = flags.concat(["-Wl,--exclude-libs,libunwind.a"]);
+        }
+        return flags;
     }
+
+    platformDriverFlags: ["-fdata-sections", "-ffunction-sections", "-funwind-tables",
+                          "-fstack-protector-strong", "-no-canonical-prefixes"]
 
     dynamicLibraries: {
         var libs = ["c", "m"];
         if (sharedStlFilePath)
-            libs.push(sharedStlFilePath);
+            libs.push(FileInfo.joinPaths(libsDir, Android.ndk.platformVersion,
+                                         NdkUtils.stlFileName(dynamicLibraryPrefix, Android.ndk,
+                                                              dynamicLibrarySuffix)));
         return libs;
     }
-    staticLibraries: {
-        var libs = ["gcc"];
-        if (staticStlFilePath) {
-            libs.push(staticStlFilePath);
-            if (Android.ndk.appStl === "c++_static") {
-                var libAbi = FileInfo.joinPaths(stlLibsDir, "libc++abi.a");
-                if (File.exists(libAbi))
-                    libs.push(libAbi);
-            }
-        }
-        return libs;
-    }
-    systemIncludePaths: {
-        var includes = [];
-        if (Android.ndk.useUnifiedHeaders) {
-            // Might not be needed with Clang in a future NDK release
-            includes.push(FileInfo.joinPaths(sysroot, "usr", "include", toolchainTriple));
-        }
-        if (Android.ndk.appStl === "system") {
-            includes.push(FileInfo.joinPaths(cxxStlBaseDir, "system", "include"));
-        } else if (Android.ndk.appStl.startsWith("gabi++")) {
-            includes.push(FileInfo.joinPaths(gabiBaseDir, "include"));
-        } else if (Android.ndk.appStl.startsWith("stlport")) {
-            includes.push(FileInfo.joinPaths(stlPortBaseDir, "stlport"));
-        } else if (Android.ndk.appStl.startsWith("gnustl")) {
-            includes.push(FileInfo.joinPaths(gnuStlBaseDir, "include"));
-            includes.push(FileInfo.joinPaths(gnuStlBaseDir, "libs", Android.ndk.abi, "include"));
-            includes.push(FileInfo.joinPaths(gnuStlBaseDir, "include", "backward"));
-        } else if (Android.ndk.appStl.startsWith("c++_")) {
-            if (Utilities.versionCompare(Android.ndk.version, "13") >= 0) {
-                includes.push(FileInfo.joinPaths(llvmStlBaseDir, "include"));
-                includes.push(FileInfo.joinPaths(llvmStlBaseDir + "abi", "include"));
-            } else {
-                includes.push(FileInfo.joinPaths(llvmStlBaseDir, "libcxx", "include"));
-                includes.push(FileInfo.joinPaths(llvmStlBaseDir + "abi", "libcxxabi", "include"));
-            }
-        }
-        return includes;
-    }
-    defines: {
-        var list = ["ANDROID"];
-        if (Android.ndk.useUnifiedHeaders) {
-            // Might be superseded by an -mandroid-version or similar Clang compiler flag in future
-            list.push("__ANDROID_API__=" + Android.ndk.platformVersion);
-        }
-        return list;
-    }
-    binutilsPath: FileInfo.joinPaths(Android.ndk.ndkDir, "toolchains",
-                                     NdkUtils.getBinutilsPath(Android.ndk, toolchainTriple + "-"),
-                                     "prebuilt", Android.ndk.hostArch, "bin");
-    binutilsPathPrefix: Gcc.pathPrefix(binutilsPath, toolchainTriple + "-")
-    driverFlags: qbs.toolchain.contains("clang")
-                 ? ["-gcc-toolchain", FileInfo.path(binutilsPath)].concat(base || []) : base
-    syslibroot: FileInfo.joinPaths(Android.ndk.ndkDir, "platforms",
-                                   Android.ndk.platform, "arch-"
-                                   + NdkUtils.abiNameToDirName(Android.ndk.abi))
-    sysroot: !Android.ndk.useUnifiedHeaders
-             ? syslibroot
-             : FileInfo.joinPaths(Android.ndk.ndkDir, "sysroot")
+    staticLibraries: staticStlFilePath
+
+    // When using ndk r19c, llvm doesn't add sysroot/usr/include/c++/v1 to the path
+    // But it works starting with ndk r20b
+    systemIncludePaths: (Utilities.versionCompare(Android.ndk.version, "20") < 0) ?
+                            FileInfo.joinPaths(sysroot, "usr", "include", "c++", "v1") : []
+
+    defines: ["ANDROID", "__ANDROID__"]
+
+    binutilsPath: FileInfo.joinPaths(Android.ndk.ndkDir, "toolchains", "llvm", "prebuilt",
+                                     Android.ndk.hostArch, "bin");
+    binutilsPathPrefix: FileInfo.joinPaths(binutilsPath, "llvm-")
+    sysroot: FileInfo.joinPaths(Android.ndk.ndkDir, "toolchains", "llvm", "prebuilt",
+                                Android.ndk.hostArch, "sysroot")
 
     targetArch: {
         switch (qbs.architecture) {
@@ -222,18 +150,13 @@ LinuxGCC {
             return qbs.architecture;
         case "x86":
             return "i686";
-        case "mips":
-        case "mipsel":
-            return "mipsel";
-        case "mips64":
-        case "mips64el":
-            return "mips64el";
         }
     }
 
-    targetVendor: "none"
+    target: [targetArch, targetSystem, targetAbi].join("-")
     targetSystem: "linux"
-    targetAbi: "android" + (["armeabi", "armeabi-v7a"].contains(Android.ndk.abi) ? "eabi" : "")
+    targetAbi: "android" + (["armeabi", "armeabi-v7a"].includes(Android.ndk.abi) ? "eabi" : "") +
+               Android.ndk.platformVersion
 
     endianness: "little"
 
@@ -245,9 +168,9 @@ LinuxGCC {
             fileTags: "android.nativelibrary"
         }
         prepare: {
-            var stripArgs = ["--strip-unneeded", "-o", output.filePath, input.filePath];
+            var stripArgs = ["--strip-all", "-o", output.filePath, input.filePath];
             var stripCmd = new Command(product.cpp.stripPath, stripArgs);
-            stripCmd.description = "Stripping unneeded symbols from " + input.fileName;
+            stripCmd.description = "stripping unneeded symbols from " + input.fileName;
             return stripCmd;
         }
     }

@@ -31,14 +31,12 @@
 import qbs.File
 
 GenericGCC {
-    condition: qbs.toolchain && qbs.toolchain.contains("gcc")
-               && qbs.targetOS && qbs.targetOS.contains("unix")
+    condition: qbs.toolchain && qbs.toolchain.includes("gcc")
+               && qbs.targetOS.includes("unix")
     priority: -50
 
-    staticLibraryPrefix: "lib"
     dynamicLibraryPrefix: "lib"
     loadableModulePrefix: "lib"
-    staticLibrarySuffix: ".a"
     dynamicLibrarySuffix: ".so"
     debugInfoSuffix: ".debug"
     imageFormat: "elf"

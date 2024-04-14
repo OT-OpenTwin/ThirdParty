@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- washingMachineUI.qdoc -->
+  <meta name="description" content="Illustrates how to create a UI that can be run both on the desktop and on MCUs.">
+  <title>Washing Machine UI | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="studioexamples.html" translate="no">Examples</a></li>
+<li>Washing Machine UI</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<h1 class="title">Washing Machine UI</h1>
+<pre class="qml" translate="no">
+ <span class="comment">// Copyright (C) 2021 The Qt Company Ltd.</span>
+ <span class="comment">// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause</span>
+
+ import QtQuick 2.15
+
+ <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-item.html" translate="no">Item</a></span> {
+     <span class="name">id</span>: <span class="name">root</span>
+     <span class="name">state</span>: <span class="string">&quot;start&quot;</span>
+
+     <span class="name">width</span>: <span class="number">480</span>
+     <span class="name">height</span>: <span class="number">272</span>
+
+     <span class="type">StartScreen</span> {
+         <span class="name">id</span>: <span class="name">startScreen</span>
+
+         <span class="name">visible</span>: <span class="number">true</span>
+
+         <span class="name">onStartClicked</span>: {
+             <span class="name">root</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;presets&quot;</span>
+         }
+
+         <span class="name">onSettingsClicked</span>: {
+             <span class="name">root</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;settings&quot;</span>
+         }
+     }
+
+     <span class="type">SettingsScreen</span> {
+         <span class="name">id</span>: <span class="name">settingsScreen</span>
+
+         <span class="name">visible</span>: <span class="number">false</span>
+
+         <span class="name">onSettingsClosed</span>: {
+             <span class="name">root</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;start&quot;</span>
+         }
+     }
+
+     <span class="type">PresetsScreen</span> {
+         <span class="name">id</span>: <span class="name">presetsScreen</span>
+
+         <span class="name">visible</span>: <span class="number">false</span>
+
+         <span class="name">onStartRun</span>: {
+             <span class="name">root</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;running&quot;</span>
+             <span class="name">runningScreen</span>.<span class="name">startRun</span>()
+         }
+
+         <span class="name">onCancelPresets</span>: {
+             <span class="name">root</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;start&quot;</span>
+         }
+     }
+
+     <span class="type">RunningScreen</span> {
+         <span class="name">id</span>: <span class="name">runningScreen</span>
+
+         <span class="name">runDuration</span>: <span class="name">presetsScreen</span>.<span class="name">runDuration</span>
+         <span class="name">visible</span>: <span class="number">false</span>
+
+         <span class="name">onRunFinished</span>: {
+             <span class="name">root</span>.<span class="name">state</span> <span class="operator">=</span> <span class="string">&quot;start&quot;</span>
+         }
+     }
+
+     <span class="name">states</span>: [
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;start&quot;</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">startScreen</span>
+                 <span class="name">visible</span>: <span class="number">true</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">settingsScreen</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">presetsScreen</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">runningScreen</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+                 <span class="name">activated</span>: <span class="number">false</span>
+             }
+         },
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;settings&quot;</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">startScreen</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">settingsScreen</span>
+                 <span class="name">visible</span>: <span class="number">true</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">presetsScreen</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">runningScreen</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+                 <span class="name">activated</span>: <span class="number">false</span>
+             }
+         },
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;presets&quot;</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">startScreen</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">settingsScreen</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">presetsScreen</span>
+                 <span class="name">visible</span>: <span class="number">true</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">runningScreen</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+                 <span class="name">activated</span>: <span class="number">false</span>
+             }
+         },
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-state.html" translate="no">State</a></span> {
+             <span class="name">name</span>: <span class="string">&quot;running&quot;</span>
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">startScreen</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">settingsScreen</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">presetsScreen</span>
+                 <span class="name">visible</span>: <span class="number">false</span>
+             }
+
+             <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick-propertychanges.html" translate="no">PropertyChanges</a></span> {
+                 <span class="name">target</span>: <span class="name">runningScreen</span>
+                 <span class="name">visible</span>: <span class="number">true</span>
+                 <span class="name">activated</span>: <span class="number">true</span>
+             }
+         }
+
+     ]
+ }
+</pre>

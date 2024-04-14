@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-components.qdoc -->
+  <title>Using Components | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Using Components</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-flow-external-events.html" />
+  <link rel="next" href="quick-preset-components.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-flow-external-events.html">Reacting to External Events</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-preset-components.html">Preset Components</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#using-components-economically">Using Components Economically</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Using Components</h1>
+<!-- $$$quick-components.html-description -->
+<div class="descr" id="details">
+<p>A <i>component</i> is a reusable building block for a UI.</p>
+<p>Qt Design Studio comes with <i>preset components</i> that you can use in your UI by creating instances of them. The preset components are similar to <i>Symbols</i> in Sketch or <i>Prefab</i> in Unity.</p>
+<p>Some of the preset components represent simple shapes, text, or images, while others represent complex UI controls with full functionality, such as spin boxes or sliders. You can also add instances of preset <a href="quick-preset-components.html#3d-components" translate="no">3D components</a> to your UIs.</p>
+<p>To build your own components, you can modify the <i>properties</i> of the component instances and combine them.</p>
+<p>A component is specified within one file (with the file extension <i>ui.qml</i> or <i>.qml</i>). For example, a Button component may be defined in <i>Button.ui.qml</i>. Typically, the visual appearance of a component is defined in a <i>UI file</i> (ui.qml). To create component files, you can use <a href="quick-components-creating.html#creating-components-from-scratch" translate="no">wizard templates</a>, or <a href="quick-components-creating.html#turning-component-instances-into-custom-components" translate="no">move component instances into separate component files</a>.</p>
+<p>Select <b translate="no">Components</b> to view the preset components that have been added to your project. If you cannot find the components you need, add the relevant modules to your project, as described in <a href="quick-components-view.html#adding-and-removing-modules" translate="no">Adding and Removing Modules</a>.</p>
+<p class="centerAlign"><img src="images/qtquick-components-tab.png" alt="&quot;Components&quot;" /></p><p>Read more about components:</p>
+<ul>
+<li><a href="quick-preset-components.html" translate="no">Preset Components</a></li>
+<li><a href="quick-component-instances.html" translate="no">Creating Component Instances</a></li>
+<li><a href="quick-components-creating.html" translate="no">Creating Custom Components</a></li>
+</ul>
+<h2 id="using-components-economically">Using Components Economically</h2>
+<p>It is important to understand the performance costs associated with using components.</p>
+<p>To use components efficiently and economically:</p>
+<ul>
+<li>Componentize your design by packaging your resources into reusable components that can be conveniently recombined to suit the needs of your UI.</li>
+<li>Use as few components as necessary. To minimize the number of components, use <a href="qtquick-navigator.html#adding-property-aliases" translate="no">alias properties</a> and <a href="quick-states.html" translate="no">states</a> to create the differences in your component instances. We recommend reusing components instead of duplicating them, so the components do not need to be processed as completely new component types. This reduces loading and compilation time as well as the size of the binary.</li>
+<li>Any content that is data-driven should be exported as a public property (alias property) of the relevant component. For example, a speedometer should have an <code translate="no">int</code> or <code translate="no">real</code> property for speed to which the UI is bound.</li>
+<li>Separate UI from the application logic. Designers should work with the <a href="creator-quick-ui-forms.html" translate="no">UI files</a> (.ui.qml), while developers should work on the corresponding implementation files (.qml) to define their programmatic behaviors or JavaScript. This enables iteration from both the design and development side of the process without the risk of overwriting each other's work.</li>
+</ul>
+</div>
+<!-- @@@quick-components.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-flow-external-events.html">Reacting to External Events</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="quick-preset-components.html">Preset Components</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

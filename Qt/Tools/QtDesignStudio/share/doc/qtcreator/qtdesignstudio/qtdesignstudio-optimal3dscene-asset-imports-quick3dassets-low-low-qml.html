@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- Optimal3DScene.qdoc -->
+  <meta name="description" content="Contains project files for the Optimal 3D Scene.">
+  <title>Optimal 3D Scene | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="studioexamples.html" translate="no">Examples</a></li>
+<li>Optimal 3D Scene</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<h1 class="title">Optimal 3D Scene</h1>
+<pre class="qml" translate="no">
+ <span class="comment">// Copyright (C) 2020 The Qt Company Ltd.</span>
+ <span class="comment">// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause</span>
+
+ import QtQuick 2.15
+ import QtQuick3D 1.15
+
+ <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-node.html" translate="no">Node</a></span> {
+     <span class="name">id</span>: <span class="name">rootNode</span>
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-model.html" translate="no">Model</a></span> {
+         <span class="name">id</span>: <span class="name">ovenLow</span>
+         <span class="name">x</span>: -<span class="number">600</span>
+         <span class="name">z</span>: -<span class="number">300</span>
+         <span class="name">eulerRotation</span>.x: -<span class="number">90</span>
+         <span class="name">scale</span>.x: <span class="number">100</span>
+         <span class="name">scale</span>.y: <span class="number">100</span>
+         <span class="name">scale</span>.z: <span class="number">100</span>
+         <span class="name">source</span>: <span class="string">&quot;meshes/ovenLow.mesh&quot;</span>
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-defaultmaterial.html" translate="no">DefaultMaterial</a></span> {
+             <span class="name">id</span>: <span class="name">oven_material</span>
+             <span class="name">diffuseColor</span>: <span class="string">&quot;#ffa3a3a3&quot;</span>
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-defaultmaterial.html" translate="no">DefaultMaterial</a></span> {
+             <span class="name">id</span>: <span class="name">induction_material</span>
+             <span class="name">diffuseColor</span>: <span class="string">&quot;#ff040404&quot;</span>
+         }
+         <span class="name">materials</span>: [
+             <span class="name">oven_material</span>,
+             <span class="name">induction_material</span>
+         ]
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-model.html" translate="no">Model</a></span> {
+         <span class="name">id</span>: <span class="name">tapLow</span>
+         <span class="name">x</span>: -<span class="number">679.799</span>
+         <span class="name">y</span>: <span class="number">420</span>
+         <span class="name">z</span>: <span class="number">100</span>
+         <span class="name">eulerRotation</span>.x: -<span class="number">90</span>
+         <span class="name">scale</span>.x: <span class="number">100</span>
+         <span class="name">scale</span>.y: <span class="number">100</span>
+         <span class="name">scale</span>.z: <span class="number">100</span>
+         <span class="name">source</span>: <span class="string">&quot;meshes/tapLow.mesh&quot;</span>
+         <span class="name">materials</span>: [
+             <span class="name">oven_material</span>
+         ]
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-model.html" translate="no">Model</a></span> {
+         <span class="name">id</span>: <span class="name">plateLow_002</span>
+         <span class="name">y</span>: <span class="number">424.176</span>
+         <span class="name">z</span>: <span class="number">600</span>
+         <span class="name">eulerRotation</span>.x: -<span class="number">90</span>
+         <span class="name">eulerRotation</span>.y: -<span class="number">19.7049</span>
+         <span class="name">scale</span>.x: <span class="number">100</span>
+         <span class="name">scale</span>.y: <span class="number">100</span>
+         <span class="name">scale</span>.z: <span class="number">100</span>
+         <span class="name">source</span>: <span class="string">&quot;meshes/plateLow_002.mesh&quot;</span>
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-defaultmaterial.html" translate="no">DefaultMaterial</a></span> {
+             <span class="name">id</span>: <span class="name">plate_material</span>
+             <span class="name">diffuseColor</span>: <span class="string">&quot;#ff8fa365&quot;</span>
+         }
+         <span class="name">materials</span>: [
+             <span class="name">plate_material</span>
+         ]
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-model.html" translate="no">Model</a></span> {
+         <span class="name">id</span>: <span class="name">plateLow_001</span>
+         <span class="name">x</span>: -<span class="number">200</span>
+         <span class="name">y</span>: <span class="number">417.734</span>
+         <span class="name">z</span>: <span class="number">600</span>
+         <span class="name">eulerRotation</span>.x: -<span class="number">90</span>
+         <span class="name">scale</span>.x: <span class="number">100</span>
+         <span class="name">scale</span>.y: <span class="number">100</span>
+         <span class="name">scale</span>.z: <span class="number">100</span>
+         <span class="name">source</span>: <span class="string">&quot;meshes/plateLow_001.mesh&quot;</span>
+         <span class="name">materials</span>: [
+             <span class="name">plate_material</span>
+         ]
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-model.html" translate="no">Model</a></span> {
+         <span class="name">id</span>: <span class="name">plateLow</span>
+         <span class="name">y</span>: <span class="number">417.734</span>
+         <span class="name">z</span>: <span class="number">600</span>
+         <span class="name">eulerRotation</span>.x: -<span class="number">90</span>
+         <span class="name">scale</span>.x: <span class="number">100</span>
+         <span class="name">scale</span>.y: <span class="number">100</span>
+         <span class="name">scale</span>.z: <span class="number">100</span>
+         <span class="name">source</span>: <span class="string">&quot;meshes/plateLow.mesh&quot;</span>
+         <span class="name">materials</span>: [
+             <span class="name">plate_material</span>
+         ]
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-model.html" translate="no">Model</a></span> {
+         <span class="name">id</span>: <span class="name">fridgeLow</span>
+         <span class="name">x</span>: <span class="number">300</span>
+         <span class="name">y</span>: <span class="number">0.82016</span>
+         <span class="name">z</span>: <span class="number">600</span>
+         <span class="name">eulerRotation</span>.x: -<span class="number">90</span>
+         <span class="name">scale</span>.x: <span class="number">100</span>
+         <span class="name">scale</span>.y: <span class="number">100</span>
+         <span class="name">scale</span>.z: <span class="number">100</span>
+         <span class="name">source</span>: <span class="string">&quot;meshes/fridgeLow.mesh&quot;</span>
+         <span class="name">materials</span>: [
+             <span class="name">oven_material</span>
+         ]
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-model.html" translate="no">Model</a></span> {
+         <span class="name">id</span>: <span class="name">roofLightLow</span>
+         <span class="name">x</span>: -<span class="number">0.000179373</span>
+         <span class="name">y</span>: <span class="number">1200.82</span>
+         <span class="name">z</span>: -<span class="number">1.67638e-06</span>
+         <span class="name">eulerRotation</span>.x: -<span class="number">90</span>
+         <span class="name">scale</span>.x: <span class="number">100</span>
+         <span class="name">scale</span>.y: <span class="number">100</span>
+         <span class="name">scale</span>.z: <span class="number">100</span>
+         <span class="name">source</span>: <span class="string">&quot;meshes/roofLightLow.mesh&quot;</span>
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-defaultmaterial.html" translate="no">DefaultMaterial</a></span> {
+             <span class="name">id</span>: <span class="name">lamp_material</span>
+             <span class="name">diffuseColor</span>: <span class="string">&quot;#ff0c0c0c&quot;</span>
+         }
+         <span class="name">materials</span>: [
+             <span class="name">lamp_material</span>
+         ]
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-model.html" translate="no">Model</a></span> {
+         <span class="name">id</span>: <span class="name">kitchenTilesLow</span>
+         <span class="name">x</span>: <span class="number">200</span>
+         <span class="name">y</span>: <span class="number">430</span>
+         <span class="name">z</span>: <span class="number">700</span>
+         <span class="name">eulerRotation</span>.x: -<span class="number">90</span>
+         <span class="name">scale</span>.x: <span class="number">100</span>
+         <span class="name">scale</span>.y: <span class="number">100</span>
+         <span class="name">scale</span>.z: <span class="number">100</span>
+         <span class="name">source</span>: <span class="string">&quot;meshes/kitchenTilesLow.mesh&quot;</span>
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-defaultmaterial.html" translate="no">DefaultMaterial</a></span> {
+             <span class="name">id</span>: <span class="name">tiles_material</span>
+             <span class="name">diffuseColor</span>: <span class="string">&quot;#ffcccccc&quot;</span>
+         }
+         <span class="name">materials</span>: [
+             <span class="name">tiles_material</span>
+         ]
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-model.html" translate="no">Model</a></span> {
+         <span class="name">id</span>: <span class="name">sinkCabinLow</span>
+         <span class="name">x</span>: -<span class="number">600</span>
+         <span class="name">z</span>: <span class="number">300</span>
+         <span class="name">eulerRotation</span>.x: -<span class="number">90</span>
+         <span class="name">scale</span>.x: <span class="number">100</span>
+         <span class="name">scale</span>.y: <span class="number">100</span>
+         <span class="name">scale</span>.z: <span class="number">100</span>
+         <span class="name">source</span>: <span class="string">&quot;meshes/sinkCabinLow.mesh&quot;</span>
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-defaultmaterial.html" translate="no">DefaultMaterial</a></span> {
+             <span class="name">id</span>: <span class="name">sink_material</span>
+             <span class="name">diffuseColor</span>: <span class="string">&quot;#ff2d2d2d&quot;</span>
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-defaultmaterial.html" translate="no">DefaultMaterial</a></span> {
+             <span class="name">id</span>: <span class="name">cabinDoor_material</span>
+             <span class="name">diffuseColor</span>: <span class="string">&quot;#ff505050&quot;</span>
+         }
+         <span class="name">materials</span>: [
+             <span class="name">sink_material</span>,
+             <span class="name">oven_material</span>,
+             <span class="name">cabinDoor_material</span>
+         ]
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-model.html" translate="no">Model</a></span> {
+         <span class="name">id</span>: <span class="name">corner</span>
+         <span class="name">x</span>: -<span class="number">600</span>
+         <span class="name">z</span>: <span class="number">600</span>
+         <span class="name">eulerRotation</span>.x: -<span class="number">90</span>
+         <span class="name">scale</span>.x: <span class="number">100</span>
+         <span class="name">scale</span>.y: <span class="number">100</span>
+         <span class="name">scale</span>.z: <span class="number">100</span>
+         <span class="name">source</span>: <span class="string">&quot;meshes/corner.mesh&quot;</span>
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-defaultmaterial.html" translate="no">DefaultMaterial</a></span> {
+             <span class="name">id</span>: <span class="name">cabinTop_material</span>
+             <span class="name">diffuseColor</span>: <span class="string">&quot;#ff121212&quot;</span>
+         }
+         <span class="name">materials</span>: [
+             <span class="name">cabinTop_material</span>,
+             <span class="name">oven_material</span>
+         ]
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-model.html" translate="no">Model</a></span> {
+         <span class="name">id</span>: <span class="name">roomBaseLow</span>
+         <span class="name">eulerRotation</span>.x: -<span class="number">90</span>
+         <span class="name">scale</span>.x: <span class="number">800</span>
+         <span class="name">scale</span>.y: <span class="number">800</span>
+         <span class="name">scale</span>.z: <span class="number">800</span>
+         <span class="name">source</span>: <span class="string">&quot;meshes/roomBaseLow.mesh&quot;</span>
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-defaultmaterial.html" translate="no">DefaultMaterial</a></span> {
+             <span class="name">id</span>: <span class="name">floor_material</span>
+             <span class="name">diffuseColor</span>: <span class="string">&quot;#ff353b2a&quot;</span>
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-defaultmaterial.html" translate="no">DefaultMaterial</a></span> {
+             <span class="name">id</span>: <span class="name">wall_material</span>
+             <span class="name">diffuseColor</span>: <span class="string">&quot;#ff7f85a3&quot;</span>
+         }
+
+         <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-defaultmaterial.html" translate="no">DefaultMaterial</a></span> {
+             <span class="name">id</span>: <span class="name">roof_material</span>
+             <span class="name">diffuseColor</span>: <span class="string">&quot;#ff747474&quot;</span>
+         }
+         <span class="name">materials</span>: [
+             <span class="name">floor_material</span>,
+             <span class="name">wall_material</span>,
+             <span class="name">roof_material</span>
+         ]
+     }
+
+     <span class="type"><a href="https://doc.qt.io/qt/qml-qtquick3d-model.html" translate="no">Model</a></span> {
+         <span class="name">id</span>: <span class="name">cabinsLeftLow</span>
+         <span class="name">x</span>: -<span class="number">100</span>
+         <span class="name">y</span>: <span class="number">238.4</span>
+         <span class="name">z</span>: <span class="number">553.885</span>
+         <span class="name">eulerRotation</span>.x: -<span class="number">90</span>
+         <span class="name">scale</span>.x: <span class="number">100</span>
+         <span class="name">scale</span>.y: <span class="number">100</span>
+         <span class="name">scale</span>.z: <span class="number">100</span>
+         <span class="name">source</span>: <span class="string">&quot;meshes/cabinsLeftLow.mesh&quot;</span>
+         <span class="name">materials</span>: [
+             <span class="name">oven_material</span>,
+             <span class="name">cabinDoor_material</span>,
+             <span class="name">cabinTop_material</span>
+         ]
+     }
+ }
+
+ <span class="comment">/*##^##
+ Designer {
+     D{i:0;active3dScene:0}
+ }
+ ##^##*/</span>
+</pre>

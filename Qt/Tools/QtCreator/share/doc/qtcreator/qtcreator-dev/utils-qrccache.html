@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qrcparser.cpp -->
+  <meta name="description" content="The QrcCache class caches the contents of parsed QRC files.">
+  <title>QrcCache Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>QrcCache</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">QrcCache Class</h1>
+<span class="small-subtitle" translate="no">class <a href="utils.html" translate="no">Utils</a>::QrcCache</span>
+<!-- $$$QrcCache-brief -->
+<p>The QrcCache class caches the contents of parsed QRC files. <a href="#details">More...</a></p>
+<!-- @@@QrcCache -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;QrcCache&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="utils-qrccache-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> QrcParser::ConstPtr </td><td class="memItemRight bottomAlign"><b><a href="utils-qrccache.html#addPath" translate="no">addPath</a></b>(const QString &amp;<i>path</i>, const QString &amp;<i>contents</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-qrccache.html#clear" translate="no">clear</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QrcParser::ConstPtr </td><td class="memItemRight bottomAlign"><b><a href="utils-qrccache.html#parsedPath" translate="no">parsedPath</a></b>(const QString &amp;<i>path</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-qrccache.html#removePath" translate="no">removePath</a></b>(const QString &amp;<i>path</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QrcParser::ConstPtr </td><td class="memItemRight bottomAlign"><b><a href="utils-qrccache.html#updatePath" translate="no">updatePath</a></b>(const QString &amp;<i>path</i>, const QString &amp;<i>contents</i>)</td></tr>
+</table></div>
+<!-- $$$QrcCache-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+</div>
+<p><b>See also </b><a href="utils-qrcparser.html" translate="no">Utils::QrcParser</a>.</p>
+<!-- @@@QrcCache -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$addPath[overload1]$$$addPathconstQString&constQString& -->
+<h3 class="fn" translate="no" id="addPath"><span class="type"><a href="utils-qrcparser.html#ConstPtr-typedef" translate="no">QrcParser::ConstPtr</a></span> QrcCache::<span class="name">addPath</span>(const <span class="type">QString</span> &amp;<i>path</i>, const <span class="type">QString</span> &amp;<i>contents</i>)</h3>
+<p>Parses the QRC file at <i translate="no">path</i> and caches the parser. If <i translate="no">contents</i> is not empty, it is used as the file contents instead of reading it from the file system.</p>
+<p>Returns whether the parsing succeeded.</p>
+<p><b>See also </b><a href="utils-qrcparser.html#errorMessages" translate="no">QrcParser::errorMessages</a>() and <a href="utils-qrcparser.html#parseQrcFile" translate="no">QrcParser::parseQrcFile</a>().</p>
+<!-- @@@addPath -->
+<!-- $$$clear[overload1]$$$clear -->
+<h3 class="fn" translate="no" id="clear"><span class="type">void</span> QrcCache::<span class="name">clear</span>()</h3>
+<p>Clears the contents of the cache.</p>
+<!-- @@@clear -->
+<!-- $$$parsedPath[overload1]$$$parsedPathconstQString& -->
+<h3 class="fn" translate="no" id="parsedPath"><span class="type"><a href="utils-qrcparser.html#ConstPtr-typedef" translate="no">QrcParser::ConstPtr</a></span> QrcCache::<span class="name">parsedPath</span>(const <span class="type">QString</span> &amp;<i>path</i>)</h3>
+<p>Returns the cached QRC parser for the QRC file at <i translate="no">path</i>.</p>
+<!-- @@@parsedPath -->
+<!-- $$$removePath[overload1]$$$removePathconstQString& -->
+<h3 class="fn" translate="no" id="removePath"><span class="type">void</span> QrcCache::<span class="name">removePath</span>(const <span class="type">QString</span> &amp;<i>path</i>)</h3>
+<p>Removes <i translate="no">path</i> from the cache.</p>
+<!-- @@@removePath -->
+<!-- $$$updatePath[overload1]$$$updatePathconstQString&constQString& -->
+<h3 class="fn" translate="no" id="updatePath"><span class="type"><a href="utils-qrcparser.html#ConstPtr-typedef" translate="no">QrcParser::ConstPtr</a></span> QrcCache::<span class="name">updatePath</span>(const <span class="type">QString</span> &amp;<i>path</i>, const <span class="type">QString</span> &amp;<i>contents</i>)</h3>
+<p>Reparses the QRC file at <i translate="no">path</i> and returns the <i translate="no">contents</i> of the file.</p>
+<!-- @@@updatePath -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

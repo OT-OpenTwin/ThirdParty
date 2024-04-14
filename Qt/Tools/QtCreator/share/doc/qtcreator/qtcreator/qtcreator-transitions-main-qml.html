@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-app-tutorial.qdoc -->
+  <meta name="description" content="How to create a Qt Quick Application in the Edit mode.">
+  <title>Creating a Qt Quick Application | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Creating a Qt Quick Application</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-tutorials.html" />
+  <link rel="next" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-tutorials.html">Tutorials</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-how-tos.html">How To</a>
+</p>
+<h1 class="title">Creating a Qt Quick Application</h1>
+<pre class="qml" translate="no">
+ <span class="comment">// Copyright (C) 2021 The Qt Company Ltd.</span>
+ <span class="comment">// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause</span>
+
+ import QtQuick
+
+ <span class="type">Window</span> {
+     <span class="name">width</span>: <span class="number">640</span>
+     <span class="name">height</span>: <span class="number">480</span>
+     <span class="name">visible</span>: <span class="number">true</span>
+     <span class="name">title</span>: <span class="name">qsTr</span>(<span class="string">&quot;Transitions&quot;</span>)
+
+     <span class="type">Page</span> {
+         <span class="name">id</span>: <span class="name">page</span>
+         <span class="name">anchors</span>.fill: <span class="name">parent</span>
+     }
+ }
+</pre>

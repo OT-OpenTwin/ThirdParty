@@ -28,17 +28,15 @@
 **
 ****************************************************************************/
 
-import qbs 1.0
 import qbs.File
 import qbs.FileInfo
-import qbs.ModUtils
-import qbs.PathTools
+import qbs.Host
 import qbs.Probes
-import qbs.Utilities
+import "cpp.js" as Cpp
 import "keil.js" as KEIL
 
 CppModule {
-    condition: qbs.hostOS.contains("windows") && qbs.toolchain && qbs.toolchain.contains("keil")
+    condition: Host.os().includes("windows") && qbs.toolchain && qbs.toolchain.includes("keil")
 
     Probes.BinaryProbe {
         id: compilerPathProbe
@@ -50,137 +48,75 @@ CppModule {
         id: keilProbe
         condition: !_skipAllChecks
         compilerFilePath: compilerPath
+        enableDefinesByLanguage: enableCompilerDefinesByLanguage
     }
 
     qbs.architecture: keilProbe.found ? keilProbe.architecture : original
+    qbs.targetPlatform: "none"
 
     compilerVersionMajor: keilProbe.versionMajor
     compilerVersionMinor: keilProbe.versionMinor
     compilerVersionPatch: keilProbe.versionPatch
     endianness: keilProbe.endianness
 
-    compilerDefinesByLanguage: []
+    compilerDefinesByLanguage: keilProbe.compilerDefinesByLanguage
+    compilerIncludePaths: keilProbe.includePaths
 
-    property string toolchainInstallPath: compilerPathProbe.found
-        ? compilerPathProbe.path : undefined
-
-    property string compilerExtension: qbs.hostOS.contains("windows") ? ".exe" : ""
-
-    property bool generateMapFile: true
-    PropertyOptions {
-        name: "generateMapFile"
-        description: "produce a linker list file (enabled by default)"
-    }
+    toolchainInstallPath: compilerPathProbe.found ? compilerPathProbe.path : undefined
 
     /* Work-around for QtCreator which expects these properties to exist. */
     property string cCompilerName: compilerName
     property string cxxCompilerName: compilerName
 
-    compilerName: {
-        switch (qbs.architecture) {
-        case "mcs51":
-            return "c51" + compilerExtension;
-        case "arm":
-            return "armcc" + compilerExtension;
-        }
-    }
+    compilerName: toolchainDetails.compilerName + compilerExtension
     compilerPath: FileInfo.joinPaths(toolchainInstallPath, compilerName)
 
-    assemblerName: {
-        switch (qbs.architecture) {
-        case "mcs51":
-            return "a51" + compilerExtension;
-        case "arm":
-            return "armasm" + compilerExtension;
-        }
-    }
+    assemblerName: toolchainDetails.assemblerName + compilerExtension
     assemblerPath: FileInfo.joinPaths(toolchainInstallPath, assemblerName)
 
-    linkerName: {
-        switch (qbs.architecture) {
-        case "mcs51":
-            return "bl51" + compilerExtension;
-        case "arm":
-            return "armlink" + compilerExtension;
-        }
-    }
+    linkerName: toolchainDetails.linkerName + compilerExtension
     linkerPath: FileInfo.joinPaths(toolchainInstallPath, linkerName)
 
-    property string archiverName: {
-        switch (qbs.architecture) {
-        case "mcs51":
-            return "lib51" + compilerExtension;
-        case "arm":
-            return "armar" + compilerExtension;
-        }
-    }
+    property string archiverName: toolchainDetails.archiverName + compilerExtension
     property string archiverPath: FileInfo.joinPaths(toolchainInstallPath, archiverName)
+
+    property string disassemblerName: toolchainDetails.disassemblerName + compilerExtension
+    property string disassemblerPath: FileInfo.joinPaths(toolchainInstallPath, disassemblerName)
 
     runtimeLibrary: "static"
 
-    staticLibrarySuffix: {
-        switch (qbs.architecture) {
-        case "mcs51":
-            return ".lib";
-        case "arm":
-            return ".lib";
-        }
-    }
+    staticLibrarySuffix: ".lib"
+    executableSuffix: toolchainDetails.executableSuffix
+    objectSuffix: toolchainDetails.objectSuffix
+    linkerMapSuffix: toolchainDetails.linkerMapSuffix
 
-    executableSuffix: {
-        switch (qbs.architecture) {
-        case "mcs51":
-            return ".abs";
-        case "arm":
-            return ".axf";
-        }
-    }
-
-    property string objectSuffix: {
-        switch (qbs.architecture) {
-        case "mcs51":
-            return ".obj";
-        case "arm":
-            return ".o";
-        }
-    }
-
-    imageFormat: {
-        switch (qbs.architecture) {
-        case "mcs51":
-            // Keil OMF51 or OMF2 Object Module Format (which is an
-            // extension of the original Intel OMF51).
-            return "omf";
-        case "arm":
-            return "elf";
-        }
-    }
+    imageFormat: toolchainDetails.imageFormat
 
     enableExceptions: false
     enableRtti: false
 
+    defineFlag: "-D"
+    includeFlag: "-I"
+    systemIncludeFlag: "-I"
+    preincludeFlag: KEIL.preincludeFlag(compilerPath)
+    libraryDependencyFlag: ""
+    libraryPathFlag: "--userlibpath="
+    linkerScriptFlag: "--scatter"
+
+    toolchainDetails: KEIL.toolchainDetails(qbs)
+
+    knownArchitectures: ["arm", "c166", "mcs251", "mcs51"]
+
     Rule {
         id: assembler
         inputs: ["asm"]
-
-        Artifact {
-            fileTags: ["obj"]
-            filePath: Utilities.getHash(input.baseDir) + "/"
-                      + input.fileName + input.cpp.objectSuffix
-        }
-
-        prepare: KEIL.prepareAssembler.apply(KEIL, arguments);
+        outputFileTags: Cpp.assemblerOutputTags(generateAssemblerListingFiles)
+        outputArtifacts: Cpp.assemblerOutputArtifacts(input)
+        prepare: KEIL.prepareAssembler.apply(KEIL, arguments)
     }
 
     FileTagger {
-        condition: qbs.architecture === "mcs51";
-        patterns: ["*.a51", "*.A51"]
-        fileTags: ["asm"]
-    }
-
-    FileTagger {
-        condition: qbs.architecture === "arm";
-        patterns: "*.s"
+        patterns: ["*.s", "*.a51", ".asm"]
         fileTags: ["asm"]
     }
 
@@ -188,47 +124,19 @@ CppModule {
         id: compiler
         inputs: ["cpp", "c"]
         auxiliaryInputs: ["hpp"]
-
-        Artifact {
-            fileTags: ["obj"]
-            filePath: Utilities.getHash(input.baseDir) + "/"
-                      + input.fileName + input.cpp.objectSuffix
-        }
-
-        prepare: KEIL.prepareCompiler.apply(KEIL, arguments);
+        outputFileTags: Cpp.compilerOutputTags(generateCompilerListingFiles)
+        outputArtifacts: Cpp.compilerOutputArtifacts(input)
+        prepare: KEIL.prepareCompiler.apply(KEIL, arguments)
     }
 
     Rule {
         id: applicationLinker
         multiplex: true
         inputs: ["obj", "linkerscript"]
-
-        outputFileTags: {
-            var tags = ["application"];
-            if (product.moduleProperty("cpp", "generateMapFile"))
-                tags.push("map_file");
-            return tags;
-        }
-        outputArtifacts: {
-            var app = {
-                fileTags: ["application"],
-                filePath: FileInfo.joinPaths(
-                              product.destinationDirectory,
-                              PathTools.applicationFilePath(product))
-            };
-            var artifacts = [app];
-            if (product.cpp.generateMapFile) {
-                artifacts.push({
-                    fileTags: ["map_file"],
-                filePath: FileInfo.joinPaths(
-                              product.destinationDirectory,
-                              product.targetName + ".map")
-                });
-            }
-            return artifacts;
-        }
-
-        prepare:KEIL.prepareLinker.apply(KEIL, arguments);
+        inputsFromDependencies: ["staticlibrary"]
+        outputFileTags: Cpp.applicationLinkerOutputTags(generateLinkerMapFile)
+        outputArtifacts: Cpp.applicationLinkerOutputArtifacts(product)
+        prepare: KEIL.prepareLinker.apply(KEIL, arguments)
     }
 
     Rule {
@@ -236,14 +144,8 @@ CppModule {
         multiplex: true
         inputs: ["obj"]
         inputsFromDependencies: ["staticlibrary"]
-
-        Artifact {
-            fileTags: ["staticlibrary"]
-            filePath: FileInfo.joinPaths(
-                            product.destinationDirectory,
-                            PathTools.staticLibraryFilePath(product))
-        }
-
-        prepare: KEIL.prepareArchiver.apply(KEIL, arguments);
+        outputFileTags: Cpp.staticLibraryLinkerOutputTags()
+        outputArtifacts: Cpp.staticLibraryLinkerOutputArtifacts(product)
+        prepare: KEIL.prepareArchiver.apply(KEIL, arguments)
     }
 }

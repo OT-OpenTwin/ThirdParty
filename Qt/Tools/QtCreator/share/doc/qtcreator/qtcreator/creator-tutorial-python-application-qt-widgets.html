@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-tutorial-python-application-qt-widgets.qdoc -->
+  <meta name="description" content="How to develop a Qt widget-based application with Python.">
+  <title>Creating a Qt for Python Application with Qt Widgets | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Creating a Qt for Python Application with Qt Widgets</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-tutorials.html" />
+  <link rel="next" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-tutorials.html">Tutorials</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#creating-an-empty-window-project">Creating an Empty Window Project</a></li>
+<li class="level1"><a href="#adding-qt-widgets-imports">Adding Qt Widgets Imports</a></li>
+<li class="level1"><a href="#adding-a-widgets-based-ui">Adding a Widgets-Based UI</a></li>
+<li class="level1"><a href="#adding-signals-and-slots">Adding Signals and Slots</a></li>
+<li class="level1"><a href="#adding-a-main-function">Adding a Main Function</a></li>
+<li class="level1"><a href="#instantiating-the-mainwindow-class">Instantiating the MainWindow Class</a></li>
+<li class="level1"><a href="#executing-the-qt-code">Executing the Qt Code</a></li>
+<li class="level1"><a href="#running-the-application">Running the Application</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Creating a Qt for Python Application with Qt Widgets</h1>
+<!-- $$$creator-tutorial-python-application-qt-widgets.html-description -->
+<div class="descr" id="details">
+<p>First, create a Qt for Python application project. Then, edit the boilerplate code to develop a small application that uses Qt widgets to display the text <i>Hello World</i> in several languages.</p>
+<p class="centerAlign"><img src="images/qtcreator-new-qt-for-python-app-widgets-ready.webp" alt="{A small Qt Widgets application}" /></p><p>For more examples of creating Qt for Python applications, see <a href="https://doc.qt.io/qtforpython/tutorials/index.html" translate="no">Qt for Python Examples and Tutorials</a>.</p>
+<h2 id="creating-an-empty-window-project">Creating an Empty Window Project</h2>
+<p>To create a Qt for Python application that has the source file for a main class:</p>
+<ol class="1" type="1"><li>Go to <b translate="no">File</b> &gt; <b translate="no">New Project</b>.</li>
+<li>Select <b translate="no">Application (Qt for Python)</b> &gt; <b translate="no">Empty Window</b> &gt; <b translate="no">Choose</b> to open the <b translate="no">Project Location</b> dialog.<p class="centerAlign"><img src="images/qtcreator-new-qt-for-python-app-widgets-project-location.webp" alt="{Project Location dialog}" /></p></li>
+<li>In <b translate="no">Name</b>, enter the project name. For example, <i>hello_world</i>.</li>
+<li>In <b translate="no">Create in</b>, enter the path for the project files. For example, <code translate="no">C:\Examples</code>.</li>
+<li>Select <b translate="no">Next</b> (on Windows and Linux) or <b translate="no">Continue</b> (on macOS) to open the <b translate="no">Define Class</b> dialog.<p class="centerAlign"><img src="images/qtcreator-new-qt-for-python-app-widgets-define-class.webp" alt="{Define Class dialog}" /></p></li>
+<li>In <b translate="no">Class name</b>, type <b>MyWidget</b> as the class name.</li>
+<li>In <b translate="no">Base class</b>, select <b>QWidget</b> as the base class.<div class="admonition note">
+<p><b>Note: </b>The <b translate="no">Source file</b> field is automatically updated to match the name of the class.</p>
+</div>
+</li>
+<li>In <b translate="no">Project file</b>, enter a name for the project file.</li>
+<li>Select <b translate="no">Next</b> or <b translate="no">Continue</b> to open the <b translate="no">Define Project Details</b> dialog.<p class="centerAlign"><img src="images/qtcreator-new-qt-for-python-app-project-details.webp" alt="{Define Project Details dialog}" /></p></li>
+<li>In <b translate="no">PySide version</b>, select the PySide version of the generated code.</li>
+<li>Select <b translate="no">Next</b> or <b translate="no">Continue</b> to open the <b translate="no">Kit Selection</b> dialog.<p class="centerAlign"><img src="images/qtcreator-new-project-qt-for-python-kit-selection.webp" alt="{Selecting a kit for a Python project}" /></p></li>
+<li>Select Qt for Python kits for building, deploying, and running the project.</li>
+<li>Select <b translate="no">Next</b> or <b translate="no">Continue</b>.</li>
+<li>Review the project settings, and select <b translate="no">Finish</b> (on Windows and Linux) or <b translate="no">Done</b> (on macOS) to create the project.</li>
+</ol>
+<p>The wizard generates the following files:</p>
+<ul>
+<li><code translate="no">hellow_world.pyproject</code>, which lists the files in the Python project.</li>
+<li><code translate="no">mywidget.py</code>, which has some boilerplate code for a class.</li>
+<li><code translate="no">reguirements.txt</code>, which stores the PySide version of the generated code.</li>
+</ul>
+<h2 id="adding-qt-widgets-imports">Adding Qt Widgets Imports</h2>
+<p>The wizard adds the imports to the <code translate="no">mywidget.py</code> source file for access to the QApplication and the base class you selected in the Qt Widgets module, QWidget. In addition, you need to import <code translate="no">random</code> and QtCore for randomly selecting the language of the displayed text and QtWidgets for adding UI elements:</p>
+<pre class="cpp plain" translate="no">
+ import sys
+ import random
+ from PySide6.QtWidgets import QApplication, QWidget
+ from PySide6 import QtCore, QtWidgets
+</pre>
+<h2 id="adding-a-widgets-based-ui">Adding a Widgets-Based UI</h2>
+<p>The wizard adds a main class with the specified name that inherits from the specified base class:</p>
+<pre class="cpp plain" translate="no">
+ class MyWidget(QWidget):
+     def __init__(self, parent=None):
+         super().__init__(parent)
+         ..&#x2e;
+</pre>
+<p>Add button, label, and layout widgets to create UI elements:</p>
+<pre class="cpp plain" translate="no">
+ ..&#x2e;
+ self.hello = [&quot;Hallo Welt&quot;, &quot;Hei maailma&quot;, &quot;Hola Mundo&quot;, &quot;Привет мир&quot;]
+
+ self.button = QtWidgets.QPushButton(&quot;Click me!&quot;)
+ self.text = QtWidgets.QLabel(&quot;Hello World&quot;,
+                              alignment=QtCore.Qt.AlignCenter)
+
+ self.layout = QtWidgets.QVBoxLayout(self)
+ self.layout.addWidget(self.text)
+ self.layout.addWidget(self.button)
+ ..&#x2e;
+</pre>
+<h2 id="adding-signals-and-slots">Adding Signals and Slots</h2>
+<p>Then, add a signal and a slot to implement the random function:</p>
+<pre class="cpp plain" translate="no">
+     ..&#x2e;
+     self.button.clicked.connect(self.magic)
+
+ @QtCore.Slot()
+ def magic(self):
+     self.text.setText(random.choice(self.hello))
+</pre>
+<h2 id="adding-a-main-function">Adding a Main Function</h2>
+<p>The wizard adds a main function, where it creates a QApplication instance. As Qt can receive arguments from the command line, you can pass any arguments to the QApplication object. Usually, you do not need to pass any arguments, and you can use the following approach:</p>
+<pre class="cpp plain" translate="no">
+ if __name__ == &quot;__main__&quot;:
+     app = QApplication(sys.argv)
+     ..&#x2e;
+</pre>
+<h2 id="instantiating-the-mainwindow-class">Instantiating the MainWindow Class</h2>
+<p>The wizard instantiates the <code translate="no">MainWindow</code> class and shows it:</p>
+<pre class="cpp plain" translate="no">
+ ..&#x2e;
+ widget = MyWidget()
+ widget.show()
+ ..&#x2e;
+</pre>
+<h2 id="executing-the-qt-code">Executing the Qt Code</h2>
+<p>Finally, the wizard calls the <code translate="no">app.exec()</code> method to enter the Qt main loop and start executing the Qt code:</p>
+<pre class="cpp plain" translate="no">
+ ..&#x2e;
+ sys.exit(app.exec())
+</pre>
+<h2 id="running-the-application">Running the Application</h2>
+<p>Select the <img src="images/run_small.png" alt="" /> button to run the application.</p>
+</div>
+<p><b>See also </b><a href="creator-tutorial-python-application-qt-quick.html" translate="no">Creating a Qt for Python Application with Qt Quick</a> and <a href="creator-python-development.html" translate="no">Develop Qt for Python Applications</a>.</p>
+<!-- @@@creator-tutorial-python-application-qt-widgets.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-tutorials.html">Tutorials</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

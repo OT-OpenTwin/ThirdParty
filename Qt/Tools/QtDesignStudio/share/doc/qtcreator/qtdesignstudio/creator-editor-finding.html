@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-search.qdoc -->
+  <title>Finding and Replacing | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Finding and Replacing</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-finding-overview.html" />
+  <link rel="next" href="creator-editor-locator.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-finding-overview.html">Finding</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-editor-locator.html">Searching with the Locator</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#advanced-search">Advanced Search</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Finding and Replacing</h1>
+<!-- $$$creator-editor-finding.html-description -->
+<div class="descr" id="details">
+<p>To search through the currently open file:</p>
+<ol class="1" type="1"><li>Press <b>Ctrl+F</b> or select <b translate="no">Edit</b> &gt; <b translate="no">Find/Replace</b> &gt; <b translate="no">Find/Replace</b>.</li>
+<li>In <b translate="no">Find</b>, enter the text you are looking for.<p class="centerAlign"><img src="images/qtcreator-find-incremental.png" alt="" /></p><p>If the text is found, all occurrences are highlighted as you type.</p>
+</li>
+<li>To go to the next occurrence, click <img src="images/next.png" alt="" /> (<b translate="no">Find Next</b>), or press <b>F3</b>. To go to the previous occurrence click <img src="images/prev.png" alt="" /> (<b translate="no">Find Previous</b>), or press <b>Shift+F3</b>.</li>
+<li>To select all found occurrences in a file, select <b translate="no">Select All</b>.</li>
+</ol>
+<p>You can restrict the search in the <b translate="no">Find</b> field by selecting <img src="images/qtcreator-new-search-icon.png" alt="" /> . Select one or several search criteria:</p>
+<ul>
+<li>To make your search case sensitive, select <b translate="no">Case Sensitive</b>.</li>
+<li>To search only whole words, select <b translate="no">Whole Words Only</b>.</li>
+<li>To search using regular expressions, select <b translate="no">Use Regular Expressions</b>. Regular expressions used in Qt Design Studio are modeled on Perl regular expressions. For more information on using regular expressions, see the documentation for the <a href="https://doc.qt.io/qt/qregularexpression.html" translate="no">QRegularExpression</a> Class.</li>
+</ul>
+<div class="admonition note">
+<p><b>Note: </b>If you have selected text before selecting <b translate="no">Find/Replace</b>, the search is conducted within the selection.</p>
+</div>
+<p>To replace occurrences of the existing text, enter the new text in the <b translate="no">Replace with</b> field.</p>
+<ul>
+<li>To replace the selected occurrence and move to the next one, click <b translate="no">Find Next</b> or press <b>Ctrl+=</b>.</li>
+<li>To replace the selected occurrence and move to the previous one, click <b translate="no">Find Previous</b>.</li>
+<li>To replace all occurrences in the file, click <b translate="no">Replace All</b>.</li>
+</ul>
+<p>The <b translate="no">Preserve Case when Replacing</b> option can be selected to preserve the case of the original text when replacing. This option is not compatible with the <b translate="no">Use Regular Expressions</b> search option, and will thus be disabled when regular expressions are used. When the option is used, the case of the occurrence will be conserved, according to the following rules:</p>
+<ul>
+<li>All upper-case occurrences are replaced with the upper-case new text.</li>
+<li>All lower-case occurrences are replaced with the lower-case new text.</li>
+<li>Capitalized occurrences are replaced with the capitalized new text.</li>
+<li>Other occurrences are replaced with the new text as entered.</li>
+<li>If an occurrence and the new text have the same prefix or suffix, then the case of the prefix and/or suffix are preserved, and the other rules are applied on the rest of the occurrence only.</li>
+</ul>
+<p>The locations of search hits, breakpoints, and bookmarks in your document are highlighted on the editor scroll bar. To turn highlighting off, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Text Editor</b> &gt; <b translate="no">Display</b> &gt; <b translate="no">Highlight search results on the scrollbar</b>.</p>
+<p>To search using more advanced options, select <b translate="no">Advanced</b>.</p>
+<h2 id="advanced-search">Advanced Search</h2>
+<p>To search through projects, files on a file system, files in all project directories, or currently open files:</p>
+<ol class="1" type="1"><li>Press <b>Ctrl+Shift+F</b> or select <b translate="no">Edit</b> &gt; <b translate="no">Find/Replace</b> &gt; <b translate="no">Advanced Find</b> &gt; <b translate="no">Open Advanced Find</b>.</li>
+<li>Select the scope of your search:<ul>
+<li><b translate="no">All Projects</b> searches from all currently open projects.<p class="centerAlign"><img src="images/qtcreator-search-allprojects.png" alt="" /></p></li>
+<li><b translate="no">Current Project</b> searches from the project you are currently editing.</li>
+<li><b translate="no">Files in All Project Directories</b> searches from all project directories.</li>
+<li><b translate="no">Files in File System</b> recursively searches from the selected directory.<p class="centerAlign"><img src="images/qtcreator-search-filesystem.png" alt="" /></p><p>In the <b translate="no">Search engine</b> field, select the search engine to use:</p>
+<ul>
+<li>Select <b translate="no">Internal</b> to use the Qt Design Studio search engine.</li>
+<li>Select <b translate="no">Git Grep</b> to use Git to only search tracked files in the Git work tree. To restrict the search to the HEAD, a tag, a local or remote branch, or a commit hash, enter a reference. Leave the field empty to search through the file system.</li>
+</ul>
+</li>
+<li><b translate="no">Current File</b> searches only from the current file.</li>
+<li><b translate="no">Open Documents</b> searches from all open files.</li>
+</ul>
+</li>
+<li>In the <b translate="no">File pattern</b> field, specify file patterns to restrict the search to files that match the pattern. For example, to search for a string only in <code translate="no">.cpp</code> and <code translate="no">.h</code> files, enter <code translate="no">*.cpp,*.h</code>.</li>
+<li>In the <b translate="no">Exclusion pattern</b> field, specify file patterns to omit files from the search.</li>
+<li>Enter the text you are looking for and click <b translate="no">Search</b>.<p class="centerAlign"><img src="images/qtcreator-search-results-matches.webp" alt="{Found matches in Search Results}" /></p><p><a href="creator-reference-search-results-view.html" translate="no">Search Results</a> shows a list of files that have the searched text.</p>
+<ul>
+<li>To see all occurrences in a file, double-click the file name in the list.</li>
+<li>To go to an occurrence, double-click it.</li>
+<li>To repeat the search after you have made changes to the listed files, for example, select <b translate="no">Search Again</b>.</li>
+</ul>
+</li>
+</ol>
+<p>The search results are stored in the search history from which you can select earlier searches.</p>
+<p>To clear the search results, select the <img src="images/clean_pane_small.png" alt="" /> (<b translate="no">Clear</b>) button.</p>
+<p>To expand and collapse the search results, select the <b translate="no">Expand All</b> button.</p>
+<p>To start a new search, select the <img src="images/qtcreator-new-search-icon.png" alt="" /> (<b translate="no">New Search</b>) button.</p>
+<div class="admonition note">
+<p><b>Note: </b>You can use <b translate="no">Advanced Find</b> also to search for symbols. For more information, see <a href="creator-editor-refactoring.html#finding-qml-types" translate="no">Finding QML Types</a>.</p>
+</div>
+</div>
+<!-- @@@creator-editor-finding.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-finding-overview.html">Finding</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-editor-locator.html">Searching with the Locator</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

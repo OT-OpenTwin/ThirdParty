@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- macroexpander.cpp -->
+  <meta name="description" content="The MacroExpander class manages Qt Creator wide variables, that a user can enter into many string settings. The variables are replaced by an actual value when the string is used, similar to how environment variables are expanded by a shell.">
+  <title>MacroExpander Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>MacroExpander</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+<li class="level2"><a href="#variables">Variables</a></li>
+<li class="level2"><a href="#providing-variable-values">Providing Variable Values</a></li>
+<li class="level2"><a href="#providing-and-expanding-parametrized-strings">Providing and Expanding Parametrized Strings</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">MacroExpander Class</h1>
+<span class="small-subtitle" translate="no">class <a href="utils.html" translate="no">Utils</a>::MacroExpander</span>
+<!-- $$$MacroExpander-brief -->
+<p>The MacroExpander class manages Qt Creator wide variables, that a user can enter into many string settings. The variables are replaced by an actual value when the string is used, similar to how environment variables are expanded by a shell. <a href="#details">More...</a></p>
+<!-- @@@MacroExpander -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;MacroExpander&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="utils-macroexpander-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-macroexpander.html#expand" translate="no">expand</a></b>(const QString &amp;<i>stringWithVariables</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-macroexpander.html#registerFileVariables" translate="no">registerFileVariables</a></b>(const QByteArray &amp;<i>prefix</i>, const QString &amp;<i>heading</i>, const Utils::MacroExpander::FileFunction &amp;<i>base</i>, bool <i>visibleInChooser</i> = true)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-macroexpander.html#registerIntVariable" translate="no">registerIntVariable</a></b>(const QByteArray &amp;<i>variable</i>, const QString &amp;<i>description</i>, const Utils::MacroExpander::IntFunction &amp;<i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-macroexpander.html#registerPrefix" translate="no">registerPrefix</a></b>(const QByteArray &amp;<i>prefix</i>, const QString &amp;<i>description</i>, const Utils::MacroExpander::PrefixFunction &amp;<i>value</i>, bool <i>visible</i> = true)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="utils-macroexpander.html#registerVariable" translate="no">registerVariable</a></b>(const QByteArray &amp;<i>variable</i>, const QString &amp;<i>description</i>, const Utils::MacroExpander::StringFunction &amp;<i>value</i>, bool <i>visibleInChooser</i> = true)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-macroexpander.html#value" translate="no">value</a></b>(const QByteArray &amp;<i>variable</i>, bool *<i>found</i> = nullptr) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="utils-macroexpander.html#variableDescription" translate="no">variableDescription</a></b>(const QByteArray &amp;<i>variable</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;QByteArray&gt; </td><td class="memItemRight bottomAlign"><b><a href="utils-macroexpander.html#visibleVariables" translate="no">visibleVariables</a></b>() const</td></tr>
+</table></div>
+<!-- $$$MacroExpander-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<h3 id="variables">Variables</h3>
+<p>Variable names can be basically any string without dollar sign and braces, though it is recommended to only use 7-bit ASCII without special characters and whitespace.</p>
+<p>If there are several variables that contain different aspects of the same object, it is convention to give them the same prefix, followed by a colon and a postfix that describes the aspect. Examples of this are <code translate="no">CurrentDocument:FilePath</code> and <code translate="no">CurrentDocument:Selection</code>.</p>
+<p>When the variable manager is requested to replace variables in a string, it looks for variable names enclosed in %{ and }, like %{CurrentDocument:<a href="utils-filepath.html" translate="no">FilePath</a>}.</p>
+<p>Environment variables are accessible using the %{Env:..&#x2e;} notation. For example, to access the SHELL environment variable, use %{Env:SHELL}.</p>
+<div class="admonition note">
+<p><b>Note: </b>The names of the variables are stored as QByteArray. They are typically 7-bit-clean. In cases where this is not possible, UTF-8 encoding is assumed.</p>
+</div>
+<h3 id="providing-variable-values">Providing Variable Values</h3>
+<p>Plugins can register variables together with a description through <a href="utils-macroexpander.html#registerVariable" translate="no">registerVariable</a>(). A typical setup is to register variables in the Plugin::initialize() function.</p>
+<pre class="cpp" translate="no">
+ <span class="type">bool</span> MyPlugin<span class="operator">::</span>initialize(<span class="keyword">const</span> <span class="type">QStringList</span> <span class="operator">&amp;</span>arguments<span class="operator">,</span> <span class="type">QString</span> <span class="operator">*</span>errorString)
+ {
+     <span class="operator">[</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">]</span>
+     MacroExpander<span class="operator">::</span>registerVariable(
+         <span class="string">&quot;MyVariable&quot;</span><span class="operator">,</span>
+         Tr<span class="operator">::</span>tr(<span class="string">&quot;The current value of whatever I want.&quot;</span>));
+         <span class="operator">[</span><span class="operator">]</span> {
+             <span class="type">QString</span> value;
+             <span class="comment">// do whatever is necessary to retrieve the value</span>
+             <span class="operator">[</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">]</span>
+             <span class="keyword">return</span> value;
+         }
+     );
+     <span class="operator">[</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">]</span>
+ }
+</pre>
+<p>For variables that refer to a file, you should use the convenience function <a href="utils-macroexpander.html#registerFileVariables" translate="no">MacroExpander::registerFileVariables</a>(). The functions take a variable prefix, like <code translate="no">MyFileVariable</code>, and automatically handle standardized postfixes like <code translate="no">:FilePath</code>, <code translate="no">:Path</code> and <code translate="no">:FileBaseName</code>, resulting in the combined variables, such as <code translate="no">MyFileVariable:FilePath</code>.</p>
+<h3 id="providing-and-expanding-parametrized-strings">Providing and Expanding Parametrized Strings</h3>
+<p>Though it is possible to just ask the variable manager for the value of some variable in your code, the preferred use case is to give the user the possibility to parametrize strings, for example for settings.</p>
+<p>(If you ever think about doing the former, think twice. It is much more efficient to just ask the plugin that provides the variable value directly, without going through string conversions, and through the variable manager which will do a large scale poll. To be more concrete, using the example from the Providing Variable Values section: instead of calling <code translate="no">MacroExpander::value(&quot;MyVariable&quot;)</code>, it is much more efficient to just ask directly with <code translate="no">MyPlugin::variableValue()</code>.)</p>
+<h4 id="user-interface">User Interface</h4>
+<p>If the string that you want to parametrize is settable by the user, through a QLineEdit or QTextEdit derived class, you should add a variable chooser to your UI, which allows adding variables to the string by browsing through a list. See <a href="utils-variablechooser.html" translate="no">Utils::VariableChooser</a> for more details.</p>
+<h4 id="expanding-strings">Expanding Strings</h4>
+<p>Expanding variable values in strings is done by &quot;macro expanders&quot;. Utils::AbstractMacroExpander is the base class for these, and the variable manager provides an implementation that expands Qt Creator variables through MacroExpander::macroExpander().</p>
+<p>There are several different ways to expand a string, covering the different use cases, listed here sorted by relevance:</p>
+<ul>
+<li>Using MacroExpander::expandedString(). This is the most comfortable way to get a string with variable values expanded, but also the least flexible one. If this is sufficient for you, use it.</li>
+<li>Using the Utils::expandMacros() functions. These take a string and a macro expander (for which you would use the one provided by the variable manager). Mostly the same as MacroExpander::expandedString(), but also has a variant that does the replacement inline instead of returning a new string.</li>
+<li>Using Utils::CommandLine::expandMacros(). This expands the string while conforming to the quoting rules of the platform it is run on. Use this function with the variable manager's macro expander if your string will be passed as a command line parameter string to an external command.</li>
+<li>Writing your own macro expander that nests the variable manager's macro expander. And then doing one of the above. This allows you to expand additional &quot;local&quot; variables/macros, that do not come from the variable manager.</li>
+</ul>
+</div>
+<!-- @@@MacroExpander -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$expand[overload1]$$$expandconstQString& -->
+<h3 class="fn" translate="no" id="expand"><span class="type">QString</span> MacroExpander::<span class="name">expand</span>(const <span class="type">QString</span> &amp;<i>stringWithVariables</i>) const</h3>
+<p>Returns <i translate="no">stringWithVariables</i> with all variables replaced by their values. See the <a href="utils-macroexpander.html" translate="no">MacroExpander</a> overview documentation for other ways to expand variables.</p>
+<p><b>See also </b><a href="utils-macroexpander.html" translate="no">MacroExpander</a>.</p>
+<!-- @@@expand -->
+<!-- $$$registerFileVariables[overload1]$$$registerFileVariablesconstQByteArray&constQString&constUtils::MacroExpander::FileFunction&bool -->
+<h3 class="fn" translate="no" id="registerFileVariables"><span class="type">void</span> MacroExpander::<span class="name">registerFileVariables</span>(const <span class="type">QByteArray</span> &amp;<i>prefix</i>, const <span class="type">QString</span> &amp;<i>heading</i>, const <span class="type">Utils::MacroExpander::FileFunction</span> &amp;<i>base</i>, <span class="type">bool</span> <i>visibleInChooser</i> = true)</h3>
+<p>Convenience function to register several variables with the same <i translate="no">prefix</i>, that have a file as a value. Takes the prefix and registers variables like <code translate="no">prefix:FilePath</code> and <code translate="no">prefix:Path</code>, with descriptions that start with the given <i translate="no">heading</i>. For example <code translate="no">registerFileVariables(&quot;CurrentDocument&quot;, Tr::tr(&quot;Current Document&quot;))</code> registers variables such as <code translate="no">CurrentDocument:FilePath</code> with description &quot;Current Document: Full path including file name.&quot;</p>
+<p>Takes a function that returns a <a href="utils-filepath.html" translate="no">FilePath</a> as a <i translate="no">base</i>.</p>
+<p>The variable is displayed to users if <i translate="no">visibleInChooser</i> is <code translate="no">true</code>.</p>
+<p><b>See also </b><a href="utils-macroexpander.html#registerVariable" translate="no">registerVariable</a>(), <a href="utils-macroexpander.html#registerIntVariable" translate="no">registerIntVariable</a>(), and <a href="utils-macroexpander.html#registerPrefix" translate="no">registerPrefix</a>().</p>
+<!-- @@@registerFileVariables -->
+<!-- $$$registerIntVariable[overload1]$$$registerIntVariableconstQByteArray&constQString&constUtils::MacroExpander::IntFunction& -->
+<h3 class="fn" translate="no" id="registerIntVariable"><span class="type">void</span> MacroExpander::<span class="name">registerIntVariable</span>(const <span class="type">QByteArray</span> &amp;<i>variable</i>, const <span class="type">QString</span> &amp;<i>description</i>, const <span class="type">Utils::MacroExpander::IntFunction</span> &amp;<i>value</i>)</h3>
+<p>Makes the given integral-valued <i translate="no">variable</i> known to the variable manager, together with a localized <i translate="no">description</i>.</p>
+<p>The <i translate="no">value</i> <code translate="no">IntFunction</code> is called to retrieve the current value of the variable.</p>
+<p><b>See also </b><a href="utils-macroexpander.html#registerVariable" translate="no">registerVariable</a>(), <a href="utils-macroexpander.html#registerFileVariables" translate="no">registerFileVariables</a>(), and <a href="utils-macroexpander.html#registerPrefix" translate="no">registerPrefix</a>().</p>
+<!-- @@@registerIntVariable -->
+<!-- $$$registerPrefix[overload1]$$$registerPrefixconstQByteArray&constQString&constUtils::MacroExpander::PrefixFunction&bool -->
+<h3 class="fn" translate="no" id="registerPrefix"><span class="type">void</span> MacroExpander::<span class="name">registerPrefix</span>(const <span class="type">QByteArray</span> &amp;<i>prefix</i>, const <span class="type">QString</span> &amp;<i>description</i>, const <span class="type">Utils::MacroExpander::PrefixFunction</span> &amp;<i>value</i>, <span class="type">bool</span> <i>visible</i> = true)</h3>
+<p>Makes the given string-valued <i translate="no">prefix</i> known to the variable manager, together with a localized <i translate="no">description</i>.</p>
+<p>The <i translate="no">value</i> <code translate="no">PrefixFunction</code> will be called and gets the full variable name with the prefix stripped as input. It is displayed to users if <i translate="no">visible</i> is <code translate="no">true</code>.</p>
+<p><b>See also </b><a href="utils-macroexpander.html#registerVariable" translate="no">registerVariable</a>(), <a href="utils-macroexpander.html#registerIntVariable" translate="no">registerIntVariable</a>(), and <a href="utils-macroexpander.html#registerFileVariables" translate="no">registerFileVariables</a>().</p>
+<!-- @@@registerPrefix -->
+<!-- $$$registerVariable[overload1]$$$registerVariableconstQByteArray&constQString&constUtils::MacroExpander::StringFunction&bool -->
+<h3 class="fn" translate="no" id="registerVariable"><span class="type">void</span> MacroExpander::<span class="name">registerVariable</span>(const <span class="type">QByteArray</span> &amp;<i>variable</i>, const <span class="type">QString</span> &amp;<i>description</i>, const <span class="type">Utils::MacroExpander::StringFunction</span> &amp;<i>value</i>, <span class="type">bool</span> <i>visibleInChooser</i> = true)</h3>
+<p>Makes the given string-valued <i translate="no">variable</i> known to the variable manager, together with a localized <i translate="no">description</i>.</p>
+<p>The <i translate="no">value</i> <code translate="no">StringFunction</code> is called to retrieve the current value of the variable. It is displayed to users if <i translate="no">visibleInChooser</i> is <code translate="no">true</code>.</p>
+<p><b>See also </b><a href="utils-macroexpander.html#registerFileVariables" translate="no">registerFileVariables</a>(), <a href="utils-macroexpander.html#registerIntVariable" translate="no">registerIntVariable</a>(), and <a href="utils-macroexpander.html#registerPrefix" translate="no">registerPrefix</a>().</p>
+<!-- @@@registerVariable -->
+<!-- $$$value[overload1]$$$valueconstQByteArray&bool* -->
+<h3 class="fn" translate="no" id="value"><span class="type">QString</span> MacroExpander::<span class="name">value</span>(const <span class="type">QByteArray</span> &amp;<i>variable</i>, <span class="type">bool</span> *<i>found</i> = nullptr) const</h3>
+<p>Returns the value of the given <i translate="no">variable</i>. If <i translate="no">found</i> is given, it is set to true if the variable has a value at all, false if not.</p>
+<!-- @@@value -->
+<!-- $$$variableDescription[overload1]$$$variableDescriptionconstQByteArray& -->
+<h3 class="fn" translate="no" id="variableDescription"><span class="type">QString</span> MacroExpander::<span class="name">variableDescription</span>(const <span class="type">QByteArray</span> &amp;<i>variable</i>) const</h3>
+<p>Returns the description that was registered for the <i translate="no">variable</i>.</p>
+<!-- @@@variableDescription -->
+<!-- $$$visibleVariables[overload1]$$$visibleVariables -->
+<h3 class="fn" translate="no" id="visibleVariables"><span class="type">QList</span>&lt;<span class="type">QByteArray</span>&gt; MacroExpander::<span class="name">visibleVariables</span>() const</h3>
+<p>Returns all registered variable names.</p>
+<p><b>See also </b><a href="utils-macroexpander.html#registerVariable" translate="no">registerVariable</a>() and <a href="utils-macroexpander.html#registerFileVariables" translate="no">registerFileVariables</a>().</p>
+<!-- @@@visibleVariables -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

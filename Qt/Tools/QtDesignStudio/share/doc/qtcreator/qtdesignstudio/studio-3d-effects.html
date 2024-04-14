@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtdesignstudio-3d-effects.qdoc -->
+  <title>3D Effects | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>3D Effects</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="studio-3d-materials-types.html" />
+  <link rel="next" href="studio-3d-custom-shaders.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="studio-3d-materials-types.html">3D Materials</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-custom-shaders.html">Custom Shaders</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#available-effects">Available Effects</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">3D Effects</h1>
+<!-- $$$studio-3d-effects.html-description -->
+<div class="descr" id="details">
+<p>Qt Design Studio provides a set of 3D effects, which are visible in the <a href="qtquick-form-editor.html" translate="no">2D</a> view. To apply a visual effect to a scene, drag-and-drop an effect from <b translate="no">Components</b> &gt; <b translate="no">Qt Quick 3D</b> &gt; <b translate="no">Qt Quick 3D Effects</b> to a <b translate="no">SceneEnvironment</b> component in <a href="qtquick-navigator.html" translate="no">Navigator</a>.</p>
+<p>You can use the <a href="https://doc.qt.io/qt/qml-qtquick3d-effect.html" translate="no">Effect</a> component available in <b translate="no">Components</b> &gt; <b translate="no">Qt Quick 3D</b> &gt; <b translate="no">Qt Quick 3D</b> as the base component for creating custom post-processing effects. For more information, see <a href="studio-3d-custom-effects-materials.html" translate="no">Custom Effects and Materials</a> and <a href="studio-3d-custom-shaders.html" translate="no">Custom Shaders</a>.</p>
+<div class="admonition note">
+<p><b>Note: </b>In <b translate="no">Qt 5</b>, the <b translate="no">Effect</b> component is located in <b translate="no">Qt Quick 3D Effects</b> &gt; <b translate="no">Qt Quick 3D Custom Shader Utilities</b>.</p>
+</div>
+<p>You can apply multiple effects to a scene. Select the <b translate="no">Scene Environment</b> component in <b translate="no">Navigator</b> to view the applied effects in <a href="qtquick-properties-view.html" translate="no">Properties</a> &gt; <b translate="no">Scene Environment</b> &gt; <b translate="no">Effect</b>.</p>
+<p>If the effects are not displayed in <a href="quick-components-view.html" translate="no">Components</a>, you should add the <b translate="no">QtQuick3D.Effects</b> module to your project, as described in <a href="quick-components-view.html#adding-and-removing-modules" translate="no">Adding and Removing Modules</a>.</p>
+<p>See the following table for available effects and example images.</p>
+<h2 id="available-effects">Available Effects</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >3D Effect</th><th >Example Image</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >Additive Color Gradient</td><td ><p class="centerAlign"><img src="images/effect-additive-color-gradient.png" alt="&quot;Additive Color Gradient Effect&quot;" /></p></td><td >A gradient with additive color effect that adds a vertical gradient to the whole scene and then additively blends it with all other components in a 3D view. Additive blending adds the pixel values of the gradient and the 3D view, making the result lighter. White areas do not change, and black areas are the same color as the gradient.<p>The <b translate="no">Top Color</b> and <b translate="no">Bottom Color</b> properties specify the colors used for the gradient at the top and bottom parts of the screen.</p>
+</td></tr>
+<tr valign="top" class="even"><td >Blur</td><td ><p class="centerAlign"><img src="images/effect-blur.png" alt="&quot;The Blur effect&quot;" /></p></td><td >A simple one-pass blur.<p>The <b translate="no">Amount</b> property specifies the strength of the blur.</p>
+</td></tr>
+<tr valign="top" class="odd"><td >Brush Strokes</td><td ><p class="centerAlign"><img src="images/effect-brush-strokes.png" alt="&quot;The Brush Strokes effect&quot;" /></p></td><td >A brush strokes noise effect that simulates an artistic painting of the image.<p>The <b translate="no">Noise Sample Texture</b> property specifies the brush noise texture map as a <a href="https://doc.qt.io/qt/qml-qtquick3d-texture.html" translate="no">Texture</a>.</p>
+<p>The <b translate="no">Length</b> property specifies how far to offset the image with the brush.</p>
+<p>The <b translate="no">Size</b> property specifies the scale of the brush. Smaller values result in a finer brush.</p>
+<p>The <b translate="no">Angle</b> property specifies the angle to rotate the brush noise texture.</p>
+</td></tr>
+<tr valign="top" class="even"><td >Chromatic Aberration</td><td ><p class="centerAlign"><img src="images/effect-chromatic-aberration.png" alt="&quot;The Chromatic Aberration effect&quot;" /></p></td><td >A chromatic aberration effect.<p>In real life, chromatic aberration is an optical phenomenon causing color fringes in high contrast areas. These color fringes are caused by different colors refracting at different angles splitting white light into a spectrum, which is referred to as dispersion.</p>
+<p>The <b translate="no">Mask Texture</b> property specifies a grayscale texture to control the position and the strength of the effect. The effect is strongest in white areas and weakest in black areas.</p>
+<p>The <b translate="no">Amount</b> property defines the amount of aberration. A negative value inverses the effect.</p>
+<p>Dispersion scales in relation to the distance from the value of the <b translate="no">Focus Depth</b> property.</p>
+</td></tr>
+<tr valign="top" class="odd"><td >Color Master</td><td ><p class="centerAlign"><img src="images/effect-color-master.png" alt="&quot;The Color Master effect&quot;" /></p></td><td >A color adjustment effect.<p>The <b translate="no">Red Strength</b>, <b translate="no">Green Strength</b> and <b translate="no">Blue Strength</b> properties can be used to adjust each color separately, and the <b translate="no">Saturation</b> property to adjust the strength of the overall saturation of the scene.</p>
+</td></tr>
+<tr valign="top" class="even"><td >Depth Of Field HQ Blur</td><td ><p class="centerAlign"><img src="images/effect-depth-of-field-hq-blur.png" alt="&quot;The Depth of Field HQ Blur effect&quot;" /></p></td><td >A depth-based blur effect that performs a gradient blur on regions of the image based on their deviation from a specified distance from the camera.<p>The <b translate="no">Blur Amount</b> property defines the strength of blur when out of focus.</p>
+<p>The <b translate="no">Focus Distance</b> property specifies the distance from the camera where the content is in perfect focus.</p>
+<p>The <b translate="no">Focus Range</b> property specifies the distance around the <b translate="no">Focus Distance</b> where components are fully in focus. The focus then fades away to fully blurred by the same distance on both the near and far sides.</p>
+</td></tr>
+<tr valign="top" class="odd"><td >Desaturate</td><td ><p class="centerAlign"><img src="images/effect-desaturate.png" alt="&quot;The Desaturate effect&quot;" /></p></td><td >A desaturating effect that decreases the intensity of all colors in the scene.<p>The <b translate="no">Amount</b> property defines the amount of desaturation.</p>
+</td></tr>
+<tr valign="top" class="even"><td >Distortion Ripple</td><td ><p class="centerAlign"><img src="images/effect-distortion-ripple.png" alt="&quot;The Distortion Ripple effect&quot;" /></p></td><td >A distortion effect that adds circular ripples, moving away from the center of the effect.<p>The <b translate="no">Radius</b> specifies the spread between ripples.</p>
+<p>The <b translate="no">Width</b> property specifies the width of a ripple, while <b translate="no">Height</b> defines the amount of distortion.</p>
+<p>The <b translate="no">Phase</b> property specifies the offset of each wave. Animate this property to see the waves move.</p>
+<p>The <b translate="no">Center</b> property defines the focus point of the distortion.</p>
+</td></tr>
+<tr valign="top" class="odd"><td >Distortion Sphere</td><td ><p class="centerAlign"><img src="images/effect-distortion-sphere.png" alt="&quot;The Distortion Sphere effect&quot;" /></p></td><td >A distortion effect that creates a 3D effect of wrapping the scene around a spherical shape.<p>The <b translate="no">Radius</b> property specifies the area of distortion, while <b translate="no">Height</b> defines the amount of distortion.</p>
+<p>The <b translate="no">Center</b> property defines the focus point of the distortion.</p>
+</td></tr>
+<tr valign="top" class="even"><td >Distortion Spiral</td><td ><p class="centerAlign"><img src="images/effect-distortion-spiral.png" alt="&quot;The Distortion Spiral effect&quot;" /></p></td><td >A distortion effect that creates a spiral-shaped distortion.<p>The <b translate="no">Radius</b> property defines the area of distortion, while <b translate="no">Strength</b> defines the amount of distortion.</p>
+<p>The <b translate="no">Center</b> property defines the focus point of the distortion.</p>
+</td></tr>
+<tr valign="top" class="odd"><td >Edge Detect</td><td ><p class="centerAlign"><img src="images/effect-edge-detect.png" alt="&quot;The Edge Detect effect&quot;" /></p></td><td >An edge highlighting effect that turns smooth, unchanging areas of the scene darker, while areas of the scene with sharp color changes are brightened to highlight the edges.<p>The <b translate="no">Strength</b> property defines the strength of the edge highlighting.</p>
+</td></tr>
+<tr valign="top" class="even"><td >Emboss</td><td ><p class="centerAlign"><img src="images/effect-emboss.png" alt="&quot;The Emboss effect&quot;" /></p></td><td >An emboss effect that replaces each pixel either by a highlight or a shadow, depending on the light/dark boundaries on the scene. Low contrast areas are replaced by a gray background. The embossed result represents the rate of color change at each location.<p>The <b translate="no">Amount</b> property defines the strength of the emboss effect.</p>
+</td></tr>
+<tr valign="top" class="odd"><td >Flip</td><td ><p class="centerAlign"><img src="images/effect-flip.png" alt="&quot;The Flip effect&quot;" /></p></td><td >An effect that flips the whole scene either horizontally, vertically, or in both directions.<p>The <b translate="no">Horizontal</b> and <b translate="no">Vertical</b> properties define the direction of the flip.</p>
+</td></tr>
+<tr valign="top" class="even"><td >Fxaa</td><td ><p class="centerAlign"><img src="images/effect-fxaa.png" alt="&quot;The Fxaa effect&quot;" /></p></td><td >A fast approximate anti-aliasing effect that removes some of the artifacts from the image without impacting performance as heavily as super-sampling would. The Fxaa effect is an easy fix for many aliasing problems. It also works with moving images. However, it should be noted that this effect can blur and distort fine text details, and as a screen-space heuristic technique, it can sometimes leave sharp edges that ideally would be anti-aliased.</td></tr>
+<tr valign="top" class="odd"><td >Gaussian Blur</td><td ><p class="centerAlign"><img src="images/effect-gaussian-blur.png" alt="&quot;The Gaussian Blur effect&quot;" /></p></td><td >A two-pass gaussian blur effect that blurs all components in the scene evenly. To keep the effect performant, large blur amount produces a mosaic result instead of smooth blurriness.<p>The <b translate="no">Amount</b> property defines the strength of the blur.</p>
+</td></tr>
+<tr valign="top" class="even"><td >HDR Bloom Tonemap</td><td ><p class="centerAlign"><img src="images/effect-hdr-bloom-tonemap.png" alt="&quot;The HDR Bloom Tonemap effect&quot;" /></p></td><td >A bloom with tonemapping effect that adjusts the gamma and exposure of the high-dynamic range rendered content to achieve the image quality you want. Also applies an adjustable bloom effect to very bright areas (like the sun glinting off a car).<p>The <b translate="no">Gamma</b> property affects the non-linear curve of the lighting. Higher values increase the exposure of mid tones, brightening the image and decreasing the contrast.</p>
+<p>The <b translate="no">Exposure</b> property functions as a linear multiplier on the lighting, thus brightening or darkening the image overall.</p>
+<p>The <b translate="no">Blur Falloff</b> property adjusts the amount of bloom. Lower values result in stronger bloom effect, and higher values make the effect more subtle.</p>
+<p>The <b translate="no">Tonemapping Lerp</b> property defines the strength of the overall bloom effect. There is usually no need to adjust this.</p>
+<p>The bloom effect is applied to areas where the lighting is greater than the <b translate="no">Bloom Threshold</b> value. A value of <code translate="no">1.0</code> corresponds to white in the original render result. Lowering this value causes more areas of the rendered scene to bloom.</p>
+<p>The <b translate="no">Channel Threshold</b> defines the white point for the image. There is usually no need to adjust this.</p>
+</td></tr>
+<tr valign="top" class="odd"><td >Motion Blur</td><td ><p class="centerAlign"><img src="images/effect-motion-blur.png" alt="&quot;The Motion Blur effect&quot;" /></p></td><td >A motion blur effect that creates an apparent streaking for rapidly moving components in the scene.<div class="admonition note">
+<p><b>Note: </b>Only has a visible effect if the background of the scene is set to be transparent in the <b translate="no">Background Mode</b> field of the <b translate="no">Scene Environment</b> component. Otherwise, the clear color of the background hides the blur. For more information, see <a href="studio-3d-scene-environment.html" translate="no">Scene Environment</a>.</p>
+</div>
+<p>The <b translate="no">Fade Amount</b> property defines the fade speed of the trail.</p>
+<p>The <b translate="no">Quality</b> property can be adjusted to specify the quality of the blur. Increasing quality will have impact on performance.</p>
+</td></tr>
+<tr valign="top" class="even"><td >Scatter</td><td ><p class="centerAlign"><img src="images/effect-scatter.png" alt="&quot;The Scatter effect&quot;" /></p></td><td >A noise effect that scatters the pixels in a scene to create a blurry or smeared appearance. Without changing the color of each individual pixel, the effect redistributes the pixels randomly but in the same general area as their original positions.<p>The <b translate="no">Noise Sample Texture</b> functions as the scatter noise texture map.</p>
+<p>The <b translate="no">Amount</b> property defines how much to scatter, while <b translate="no">Direction</b> sets the direction in which to scatter the pixels. Set to <code translate="no">0</code> for both horizontal and vertical, <code translate="no">1</code> for horizontal, and <code translate="no">2</code> for vertical.</p>
+<p>The <b translate="no">Randomize</b> property specifies whether scattering changes at each frame or not.</p>
+</td></tr>
+<tr valign="top" class="odd"><td >S-Curve Tonemap</td><td ><p class="centerAlign"><img src="images/effect-scurve-tonemap.png" alt="&quot;The S-Curve Tonemap effect&quot;" /></p></td><td >A tonemapping effect that maps the colors in the scene to others to approximate the appearance of high-dynamic-range result.<p>The <b translate="no">Shoulder Slope</b> property defines where highlights lose contrast.</p>
+<p>The <b translate="no">Shoulder Emphasis</b> property defines the amount of emphasis of the shoulder.</p>
+<p>The <b translate="no">Toe Slope</b> property defines where shadows lose contrast.</p>
+<p>The <b translate="no">Toe Emphasis</b> property defines the amount of emphasis of the toe.</p>
+<p>The <b translate="no">Contrast Boost</b> property enhances or reduces the overall contrast of the tonemap.</p>
+<p>The <b translate="no">Saturation Level</b> defines the overall saturation level of the tonemap.</p>
+<p>The <b translate="no">Gamma</b> property defines the gamma value of the tonemap.</p>
+<p>The <b translate="no">Use Exposure</b> property specifies whether the <b translate="no">White Point</b> value or the <b translate="no">Exposure</b> value will be used for luminance calculations.</p>
+<p>The <b translate="no">White Point</b> property defines the value for the white point.</p>
+<p>The <b translate="no">Exposure</b> property defines the value for exposure.</p>
+</td></tr>
+<tr valign="top" class="even"><td >Tilt Shift</td><td ><p class="centerAlign"><img src="images/effect-tilt-shift.png" alt="&quot;The Tilt Shift effect&quot;" /></p></td><td >A tilt shift blur effect that simulates depth of field in a simple and performant manner. Instead of blurring based on the depth buffer, it blurs everything except for a horizontal or vertical stripe on the layer.<p>The <b translate="no">Focus Position</b> property specifies the placement of the focus bar in normalized coordinates.</p>
+<p>The <b translate="no">Focus Width</b> property defines a normalized range for Focus Position. Components within this range will be in focus.</p>
+<p>The <b translate="no">Blur Amount</b> property defines the amount of blur. Amounts above 4 may cause artifacts.</p>
+<p>The <b translate="no">Vertical</b> property changes the direction of the effect from horizontal to vertical, while the <b translate="no">Inverted</b> property inverts the blur area, causing the center of the component to become blurred.</p>
+</td></tr>
+<tr valign="top" class="odd"><td >Vignette</td><td ><p class="centerAlign"><img src="images/effect-vignette.png" alt="&quot;The Vignette effect&quot;" /></p></td><td >A vignette effect that reduces brightness towards the periphery of a component.<p>The <b translate="no">Strength</b> property defines the strength of vignetting, while <b translate="no">Radius</b> specifies its size.</p>
+<p>The <b translate="no">Color</b> property defines the color used for the effect.</p>
+</td></tr>
+</table></div>
+</div>
+<!-- @@@studio-3d-effects.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="studio-3d-materials-types.html">3D Materials</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-3d-custom-shaders.html">Custom Shaders</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

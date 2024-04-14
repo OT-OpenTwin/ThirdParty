@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
 <!-- creator-projects-build-run-tutorial.qdoc -->
+  <meta name="description" content="How to build and run a Qt example.">
   <title>Building and Running an Example | Qt Creator Manual</title>
   <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
   <script type="text/javascript">
@@ -22,50 +22,51 @@
 </head>
 <body>
 <div class="header" id="qtdocheader">
-  <div class="main">
+    <div class="main">
     <div class="main-rounded">
-      <div class="navigationbar">
-        <table><tr>
-<td ><a href="index.html">Qt Creator Manual</a></td><td >Building and Running an Example</td></tr></table><table class="buildversion"><tr>
-<td id="buildversion" width="100%" align="right"><a href="index.html">Qt Creator Manual 4.9&#x2e;1</a></td>
-        </tr></table>
-      </div>
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Building and Running an Example</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
     </div>
+</div>
 <div class="content">
 <div class="line">
 <div class="content mainContent">
-  <link rel="prev" href="creator-configuring.html" />
-  <link rel="next" href="creator-tutorials.html" />
+  <link rel="prev" href="creator-tutorials.html" />
+  <link rel="next" href="creator-how-tos.html" />
 <p class="naviNextPrevious headerNavi">
-<a class="prevPage" href="creator-configuring.html">Configuring Qt Creator</a>
+<a class="prevPage" href="creator-tutorials.html">Tutorials</a>
 <span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-tutorials.html">Tutorials</a>
-</p><p/>
+<a class="nextPage" href="creator-how-tos.html">How To</a>
+</p>
 <div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
 <h1 class="title">Building and Running an Example</h1>
-<span class="subtitle"></span>
 <!-- $$$creator-build-example-application.html-description -->
-<div class="descr"> <a name="details"></a>
-<p>You can test that your Qt installation is successful by opening an existing example application project.</p>
-<p>To run an example application on an Android or iOS device, you must set up the development environment for Android or iOS. For more information, see <a href="creator-developing-android.html">Connecting Android Devices</a> and <a href="creator-developing-ios.html">Connecting iOS Devices</a>.</p>
-<p>To run an example application on an embedded device, you must set up Qt for Device Creation on the development host and create connections between the host and devices. For more information, see the <a href="http://doc.qt.io/QtForDeviceCreation/qtee-installation-guide.html">Installation Guide</a> in the <a href="http://doc.qt.io/QtForDeviceCreation/index.html">Qt for Device Creation</a> documentation.</p>
-<ol class="1" type="1"><li>In the <b>Welcome</b> mode, select <b>Examples</b> (1).<p class="centerAlign"><img src="images/qtcreator-gs-build-example-open.png" alt="&quot;Selecting an example&quot;" /></p><p>If no examples are listed, check that a <a href="creator-project-qmake.html">Qt version</a> is installed and configured.</p>
+<div class="descr" id="details">
+<p>To test that your Qt Online Installer installation is successful, open an existing example application project.</p>
+<p>To run an example application on an Android or iOS device, you must set up the development environment for Android or iOS. For more information, see <a href="creator-developing-android.html" translate="no">Connecting Android Devices</a> and <a href="creator-developing-ios.html" translate="no">Connecting iOS Devices</a>.</p>
+<p>To run an example application on a Boot2Qt device, you must set up Boot2Qt on the development host and create connections between the host and devices. For more information, see <a href="https://doc.qt.io/Boot2Qt/b2qt-installation-guides.html" translate="no">Boot2Qt: Installation Guides</a></p>
+<p>If you have <a href="https://doc.qt.io/qtdesignstudio/index.html" translate="no">Qt Design Studio</a> installed, you can open Qt Design Studio examples from Qt Creator in Qt Design Studio.</p>
+<ol class="1" type="1"><li>In the <b translate="no">Welcome</b> mode, select <b translate="no">Examples</b> (1).<p class="centerAlign"><img src="images/qtcreator-examples-open.webp" alt="{Selecting an example}" /></p><p>If you cannot see any examples, check that the list of <a href="creator-project-qmake.html" translate="no">Qt versions</a> (2) is not empty. If you select a Qt for Android or iOS, you can only see the examples that run on Android or iOS.</p>
 </li>
-<li>Select an example in the list of examples.<p>You can also search for examples. Enter the <b>android</b> or <b>ios</b> keyword in the search field (2) to list all the examples tested for Android or iOS. To list examples that you can run on embedded devices, enter the <b>Boot2Qt</b> keyword in the search field (commercial only).</p>
+<li>Select an example in the list of examples.<p>You can also use tags (3) to filter examples. For instance, enter the <b translate="no">Boot2Qt</b> tag (commercial only) in the search field (4) to list examples that you can run on Boot2Qt devices.</p>
 </li>
-<li>To check that the application code can be compiled and linked for a device, click the <b>Kit Selector</b> and select a <a href="creator-glossary.html#glossary-buildandrun-kit">kit</a> for the device.<p class="centerAlign"><img src="images/qtcreator-gs-build-example-kit-selector.png" alt="&quot;Selecting a kit to build with&quot;" /></p><p>If you installed Qt Creator as part of a Qt installation, it should have automatically detected the installed kit. If no kits are available, see <a href="creator-targets.html">Adding Kits</a>.</p>
+<li>To check that you can compile and link the application code for a device, click the <b translate="no">Kit Selector</b> and select a <a href="creator-glossary.html#glossary-buildandrun-kit" translate="no">kit</a> for the device.<p class="centerAlign"><img src="images/qtcreator-examples-kit-selector.webp" alt="{Selecting a kit to build with}" /></p><p>If you installed Qt Creator as part of a Qt installation, it should have automatically detected the installed kit. If you cannot see any kits, see <a href="creator-targets.html" translate="no">Add kits</a>.</p>
 </li>
-<li>Click <img src="images/run_small.png" alt="" /> (<b>Run</b>) to build and run the application.</li>
-<li>To see the compilation progress, press <b>Alt+4</b> to open the <b>Compile Output</b> pane.<p>If build errors occur, check that a Qt version and <a href="creator-tool-chains.html">compiler</a> are installed and configured and that the necessary kits are configured. If you are building for an <a href="creator-developing-android.html">Android device</a> or <a href="creator-developing-ios.html">iOS device</a>, check that the development environment has been set up correctly.</p>
-<p>The <b>Build</b> progress bar on the toolbar turns green when the project is successfully built. The application opens on the device.</p>
+<li>Click <img src="images/run_small.png" alt="" /> (<b translate="no">Run</b>) to build and run the application.</li>
+<li>To see the compilation progress, press <b>Alt+4</b> to open <a href="creator-reference-compile-output-view.html" translate="no">Compile Output</a>.<p>If build errors occur, check that you have a Qt version, a <a href="creator-tool-chains.html" translate="no">compiler</a>, and the necessary kits installed. If you are building for an <a href="creator-developing-android.html" translate="no">Android device</a> or <a href="creator-developing-ios.html" translate="no">iOS device</a>, check that you set up the development environment correctly.</p>
+<p>The <b translate="no">Build</b> progress bar on the toolbar turns green when you build the project successfully. The application opens on the device.</p>
 </li>
 </ol>
 </div>
 <!-- @@@creator-build-example-application.html -->
 <p class="naviNextPrevious footerNavi">
-<a class="prevPage" href="creator-configuring.html">Configuring Qt Creator</a>
+<a class="prevPage" href="creator-tutorials.html">Tutorials</a>
 <span class="naviSeparator">  &#9702;  </span>
-<a class="nextPage" href="creator-tutorials.html">Tutorials</a>
+<a class="nextPage" href="creator-how-tos.html">How To</a>
 </p>
         </div>
        </div>
@@ -74,7 +75,7 @@
 </div>
 <div class="footer">
    <p>
-   <acronym title="Copyright">&copy;</acronym> 2019 The Qt Company Ltd.
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
    Documentation contributions included herein are the copyrights of
    their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
    of their respective owners. </p>

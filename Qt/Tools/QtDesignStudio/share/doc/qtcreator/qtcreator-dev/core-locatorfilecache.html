@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- ilocatorfilter.cpp -->
+  <meta name="description" content="The LocatorFileCache class encapsulates all the responsibilities needed for implementing a cache for file filters.">
+  <title>LocatorFileCache Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="qtcreator-module.html" translate="no">QtCreator</a></li>
+<li>LocatorFileCache</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">LocatorFileCache Class</h1>
+<span class="small-subtitle" translate="no">class <a href="core.html" translate="no">Core</a>::LocatorFileCache</span>
+<!-- $$$LocatorFileCache-brief -->
+<p>The LocatorFileCache class encapsulates all the responsibilities needed for implementing a cache for file filters. <a href="#details">More...</a></p>
+<!-- @@@LocatorFileCache -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;LocatorFileCache&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="core-locatorfilecache-members.html">List of all members, including inherited members</a></li>
+</ul>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-locatorfilecache.html#LocatorFileCache-2" translate="no">LocatorFileCache</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-locatorfilecache.html#invalidate" translate="no">invalidate</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::LocatorMatcherTask </td><td class="memItemRight bottomAlign"><b><a href="core-locatorfilecache.html#matcher" translate="no">matcher</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-locatorfilecache.html#setFilePaths" translate="no">setFilePaths</a></b>(const Utils::FilePaths &amp;<i>filePaths</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-locatorfilecache.html#setFilePathsGenerator" translate="no">setFilePathsGenerator</a></b>(const Core::LocatorFileCache::FilePathsGenerator &amp;<i>generator</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-locatorfilecache.html#setGeneratorProvider" translate="no">setGeneratorProvider</a></b>(const Core::LocatorFileCache::GeneratorProvider &amp;<i>provider</i>)</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Core::LocatorFileCache::FilePathsGenerator </td><td class="memItemRight bottomAlign"><b><a href="core-locatorfilecache.html#filePathsGenerator" translate="no">filePathsGenerator</a></b>(const Utils::FilePaths &amp;<i>filePaths</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FilePaths </td><td class="memItemRight bottomAlign"><b><a href="core-locatorfilecache.html#processFilePaths" translate="no">processFilePaths</a></b>(const QFuture&lt;void&gt; &amp;<i>future</i>, const Utils::FilePaths &amp;<i>filePaths</i>, bool <i>hasPathSeparator</i>, const QRegularExpression &amp;<i>regExp</i>, const Utils::Link &amp;<i>inputLink</i>, LocatorFileCache::MatchedEntries *<i>entries</i>)</td></tr>
+</table></div>
+<!-- $$$LocatorFileCache-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>LocatorFileCache serves as a replacement for the old BaseFileFilter interface.</p>
+</div>
+<!-- @@@LocatorFileCache -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$LocatorFileCache$$$LocatorFileCache -->
+<h3 class="fn" translate="no" id="LocatorFileCache-2">LocatorFileCache::<span class="name">LocatorFileCache</span>()</h3>
+<p>Constructs an invalid cache.</p>
+<p>The cache is considered to be in an invalid state after a call to <a href="core-locatorfilecache.html#invalidate" translate="no">invalidate</a>(), of after a call to <a href="core-locatorfilecache.html#setFilePathsGenerator" translate="no">setFilePathsGenerator</a>() when passed functions was empty.</p>
+<p>It it possible to setup the automatic validator for the cache through the <a href="core-locatorfilecache.html#setGeneratorProvider" translate="no">setGeneratorProvider</a>().</p>
+<p><b>See also </b><a href="core-locatorfilecache.html#invalidate" translate="no">invalidate</a>, <a href="core-locatorfilecache.html#setGeneratorProvider" translate="no">setGeneratorProvider</a>, <a href="core-locatorfilecache.html#setFilePathsGenerator" translate="no">setFilePathsGenerator</a>, and <a href="core-locatorfilecache.html#setFilePaths" translate="no">setFilePaths</a>.</p>
+<!-- @@@LocatorFileCache -->
+<!-- $$$filePathsGenerator[overload1]$$$filePathsGeneratorconstUtils::FilePaths& -->
+<h3 class="fn" translate="no" id="filePathsGenerator"><code translate="no">[static] </code><span class="type">Core::LocatorFileCache::FilePathsGenerator</span> LocatorFileCache::<span class="name">filePathsGenerator</span>(const <span class="type">Utils::FilePaths</span> &amp;<i>filePaths</i>)</h3>
+<p>Adapts the <i translate="no">filePaths</i> list into a LocatorFileCacheGenerator. Useful when implementing GeneratorProvider in case a creation of file paths can't be invoked from the non-main thread.</p>
+<p><b>See also </b><a href="core-locatorfilecache.html#setFilePathsGenerator" translate="no">setFilePathsGenerator</a>().</p>
+<!-- @@@filePathsGenerator -->
+<!-- $$$invalidate[overload1]$$$invalidate -->
+<h3 class="fn" translate="no" id="invalidate"><span class="type">void</span> LocatorFileCache::<span class="name">invalidate</span>()</h3>
+<p>Invalidates the cache.</p>
+<p>In order to validate it, use either <a href="core-locatorfilecache.html#setFilePathsGenerator" translate="no">setFilePathsGenerator</a>() or <a href="core-locatorfilecache.html#setFilePaths" translate="no">setFilePaths</a>(). The cache may be automatically validated if the GeneratorProvider was set through the <a href="core-locatorfilecache.html#setGeneratorProvider" translate="no">setGeneratorProvider</a>().</p>
+<div class="admonition note">
+<p><b>Note: </b>This function invalidates the cache permanently, clearing all the cached data, and removing the stored generator. The stored generator provider is preserved.</p>
+</div>
+<!-- @@@invalidate -->
+<!-- $$$matcher[overload1]$$$matcher -->
+<h3 class="fn" translate="no" id="matcher"><span class="type">Core::LocatorMatcherTask</span> LocatorFileCache::<span class="name">matcher</span>() const</h3>
+<p>Returns the locator matcher task for the cache. The task, when successfully finished, updates this <a href="core-locatorfilecache.html" translate="no">LocatorFileCache</a> instance if needed.</p>
+<p>This method is to be used directly by the FilePaths filters. The FilePaths filter should keep an instance of a <a href="core-locatorfilecache.html" translate="no">LocatorFileCache</a> internally. Ensure the <a href="core-locatorfilecache.html" translate="no">LocatorFileCache</a> instance outlives the running matcher, otherwise the cache won't be updated after the task finished.</p>
+<p>When returned LocatorMatcherTask is being run it checks if this cache is valid. When the cache is invalid, it uses GeneratorProvider to update the cache's FilePathsGenerator and validates the cache. If that failed, the task is not started. When the cache is valid, the running task will reuse cached data for calculating the LocatorMatcherTask's results.</p>
+<p>After a successful run of the task, this cache is updated according to the last search. When this cache started a new search in meantime, the cache was invalidated or even deleted, the update of the cache after a successful run of the task is ignored.</p>
+<!-- @@@matcher -->
+<!-- $$$processFilePaths[overload1]$$$processFilePathsconstQFuture<void>&constUtils::FilePaths&boolconstQRegularExpression&constUtils::Link&LocatorFileCache::MatchedEntries* -->
+<h3 class="fn" translate="no" id="processFilePaths"><code translate="no">[static] </code><span class="type">Utils::FilePaths</span> LocatorFileCache::<span class="name">processFilePaths</span>(const <span class="type"><a href="https://doc.qt.io/qt/qfuture.html" translate="no">QFuture</a></span>&lt;<span class="type">void</span>&gt; &amp;<i>future</i>, const <span class="type">Utils::FilePaths</span> &amp;<i>filePaths</i>, <span class="type">bool</span> <i>hasPathSeparator</i>, const <span class="type"><a href="https://doc.qt.io/qt/qregularexpression.html" translate="no">QRegularExpression</a></span> &amp;<i>regExp</i>, const <span class="type">Utils::Link</span> &amp;<i>inputLink</i>, <span class="type">LocatorFileCache::MatchedEntries</span> *<i>entries</i>)</h3>
+<p>Helper used internally and by SpotlightLocatorFilter.</p>
+<p>To be called from non-main thread. The cancellation is controlled by the passed <i translate="no">future</i>. This function periodically checks for the cancellation state of the <i translate="no">future</i> and returns early when cancellation was detected. Creates lists of matching LocatorFilterEntries categorized by MatcherType. These lists are returned through the <i translate="no">entries</i> argument.</p>
+<p>Returns a list of all matching files.</p>
+<p>This function checks for each file in <i translate="no">filePaths</i> if it matches the passed <i translate="no">regExp</i>. If so, a new entry is created using <i translate="no">hasPathSeparator</i> and <i translate="no">inputLink</i> and it's being added into the <i translate="no">entries</i> argument and the results list.</p>
+<!-- @@@processFilePaths -->
+<!-- $$$setFilePaths[overload1]$$$setFilePathsconstUtils::FilePaths& -->
+<h3 class="fn" translate="no" id="setFilePaths"><span class="type">void</span> LocatorFileCache::<span class="name">setFilePaths</span>(const <span class="type">Utils::FilePaths</span> &amp;<i>filePaths</i>)</h3>
+<p>Wraps the passed <i translate="no">filePaths</i> into a trivial FilePathsGenerator and sets it as a cache's generator.</p>
+<div class="admonition note">
+<p><b>Note: </b>This function invalidates the cache temporarily, clearing all the cached data, and sets it to a valid state with the new generator for the passed <i translate="no">filePaths</i>. The stored generator provider is preserved.</p>
+</div>
+<p><b>See also </b><a href="core-locatorfilecache.html#setGeneratorProvider" translate="no">setGeneratorProvider</a>.</p>
+<!-- @@@setFilePaths -->
+<!-- $$$setFilePathsGenerator[overload1]$$$setFilePathsGeneratorconstCore::LocatorFileCache::FilePathsGenerator& -->
+<h3 class="fn" translate="no" id="setFilePathsGenerator"><span class="type">void</span> LocatorFileCache::<span class="name">setFilePathsGenerator</span>(const <span class="type">Core::LocatorFileCache::FilePathsGenerator</span> &amp;<i>generator</i>)</h3>
+<p>Sets the file path generator.</p>
+<p>The <i translate="no">generator</i> serves for returning the full input list of file paths when the associated LocatorMatherTask is being run in a separate thread. When the computation of the full list of file paths takes a considerable amount of time, this computation may be potentially moved to the separate thread, provided that all the dependent data may be safely passed to the <i translate="no">generator</i> function when this function is being set in the main thread.</p>
+<p>The passed <i translate="no">generator</i> is always called exclusively from the non-main thread when running LocatorMatcherTask returned by <a href="core-locatorfilecache.html#matcher" translate="no">matcher</a>(). It is called when the cached data is empty or when it needs to be regenerated due to a new search which can't reuse the cache from the previous search.</p>
+<p>Generating a new file path list may be a time consuming task. In order to finish the task early when being canceled, the <i>future</i> argument of the FilePathsGenerator may be used. The FilePathsGenerator returns the full list of file paths used for file filter's processing.</p>
+<p>Whenever it is possible to postpone the creation of a file path list so that it may be done safely later from the non-main thread, based on some other reentrant/thread-safe data, this method should be used. The other dependent data should be passed by lambda capture. The body of the passed <i translate="no">generator</i> should take extra care for ensuring that the passed other data via lambda captures are reentrant and the lambda body is thread safe. See the example usage of the generator inside CppIncludesFilter implementation.</p>
+<p>Otherwise, when postponing the creation of file paths list isn't safe, use <a href="core-locatorfilecache.html#setFilePaths" translate="no">setFilePaths</a>() with ready made list, prepared in main thread.</p>
+<div class="admonition note">
+<p><b>Note: </b>This function invalidates the cache, clearing all the cached data, and if the passed generator is non-empty, the cache is set to a valid state. The stored generator provider is preserved.</p>
+</div>
+<p><b>See also </b><a href="core-locatorfilecache.html#filePathsGenerator" translate="no">filePathsGenerator</a>(), <a href="core-locatorfilecache.html#setGeneratorProvider" translate="no">setGeneratorProvider</a>, and <a href="core-locatorfilecache.html#setFilePaths" translate="no">setFilePaths</a>.</p>
+<!-- @@@setFilePathsGenerator -->
+<!-- $$$setGeneratorProvider[overload1]$$$setGeneratorProviderconstCore::LocatorFileCache::GeneratorProvider& -->
+<h3 class="fn" translate="no" id="setGeneratorProvider"><span class="type">void</span> LocatorFileCache::<span class="name">setGeneratorProvider</span>(const <span class="type">Core::LocatorFileCache::GeneratorProvider</span> &amp;<i>provider</i>)</h3>
+<p>Sets the file path generator provider.</p>
+<p>The <i translate="no">provider</i> serves for an automatic validation of the invalid cache by recreating the FilePathsGenerator. The automatic validation happens when the LocatorMatcherTask returned by <a href="core-locatorfilecache.html#matcher" translate="no">matcher</a>() is being started, and the cache is not valid at that moment. In this case the stored <i translate="no">provider</i> is being called.</p>
+<p>The passed <i translate="no">provider</i> function is always called from the main thread. If needed, it is called prior to starting an asynchronous task that collects the locator filter results.</p>
+<p>When this function is called, the cache isn't invalidated. Whenever cache's invalidation happens, e.g. when <a href="core-locatorfilecache.html#invalidate" translate="no">invalidate</a>(), <a href="core-locatorfilecache.html#setFilePathsGenerator" translate="no">setFilePathsGenerator</a>() or <a href="core-locatorfilecache.html#setFilePaths" translate="no">setFilePaths</a>() is called, the stored GeneratorProvider is being preserved. In order to clear the stored GeneratorProvider, call this method with an empty function {}.</p>
+<!-- @@@setGeneratorProvider -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

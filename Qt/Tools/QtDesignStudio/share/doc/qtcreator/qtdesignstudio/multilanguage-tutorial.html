@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- multilanguage.qdoc -->
+  <meta name="description" content="Illustrates how to add support for multiple languages to your project.">
+  <title>Adding Multi-language Support to Your Project | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li><a href="gstutorials.html" translate="no">Tutorials</a></li>
+<li>Adding Multi-language Support to Your Project</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#running-the-tutorial-project">Running the Tutorial Project</a></li>
+<li class="level1"><a href="#json-translation-file">JSON Translation File</a></li>
+<li class="level1"><a href="#preparing-your-project">Preparing Your Project</a></li>
+<li class="level1"><a href="#importing-translations">Importing Translations</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Adding Multi-language Support to Your Project</h1>
+<!-- $$$multilanguage-tutorial.html-description -->
+<div class="descr" id="details">
+<p class="centerAlign"><img src="images/multilanguage-project.png" alt="" /></p><p>The <i>Multi-language Support</i> tutorial illustrates how you can add support for multiple languages to your project. In this tutorial you prepare a simple log in UI for multi-language support and import translations from a JSON file.</p>
+<p>You need to download the starting project for this tutorial from <a href="https://git.qt.io/public-demos/qtdesign-studio/-/tree/master/tutorial%20projects/multi-language%20tutorial/Loginui2" translate="no">here</a> before you start.</p>
+<p>This project consists of a login page with a couple of text elements.</p>
+<p>Additionally, you will use a JSON translation file in this tutorial. Download it from <a href="https://git.qt.io/public-demos/qtdesign-studio/-/tree/master/tutorial%20projects/multi-language" translate="no">here</a>.</p>
+<h2 id="running-the-tutorial-project">Running the Tutorial Project</h2>
+<p>To open the tutorial project in Qt Design Studio, open the <i>.qmlproject</i> file located in the root folder of the downloaded project.</p>
+<h2 id="json-translation-file">JSON Translation File</h2>
+<p>The JSON translation file you are using in this project has the following structure:</p>
+<pre class="cpp" translate="no">
+     {
+     <span class="string">&quot;translatables&quot;</span>: <span class="operator">[</span>
+         {
+             <span class="string">&quot;trId&quot;</span>: <span class="string">&quot;translation_password&quot;</span><span class="operator">,</span>
+             <span class="string">&quot;translations&quot;</span>: <span class="operator">[</span>
+                 {
+                     <span class="string">&quot;language&quot;</span>: <span class="string">&quot;en&quot;</span><span class="operator">,</span>
+                     <span class="string">&quot;translation&quot;</span>: <span class="string">&quot;Password&quot;</span>
+                 }<span class="operator">,</span>
+                 {
+                     <span class="string">&quot;language&quot;</span>: <span class="string">&quot;sv&quot;</span><span class="operator">,</span>
+                     <span class="string">&quot;translation&quot;</span>: <span class="string">&quot;Lösenord&quot;</span>
+                 }
+             <span class="operator">]</span>
+         }<span class="operator">,</span>
+         {
+             <span class="string">&quot;trId&quot;</span>: <span class="string">&quot;translation_account&quot;</span><span class="operator">,</span>
+             <span class="string">&quot;translations&quot;</span>: <span class="operator">[</span>
+                 {
+                     <span class="string">&quot;language&quot;</span>: <span class="string">&quot;en&quot;</span><span class="operator">,</span>
+                     <span class="string">&quot;translation&quot;</span>: <span class="string">&quot;Qt Account&quot;</span>
+                 }<span class="operator">,</span>
+                 {
+                     <span class="string">&quot;language&quot;</span>: <span class="string">&quot;sv&quot;</span><span class="operator">,</span>
+                     <span class="string">&quot;translation&quot;</span>: <span class="string">&quot;Qt Konto&quot;</span>
+                 }
+             <span class="operator">]</span>
+         }<span class="operator">,</span>
+         {
+             <span class="string">&quot;trId&quot;</span>: <span class="string">&quot;translation_createaccount&quot;</span><span class="operator">,</span>
+             <span class="string">&quot;translations&quot;</span>: <span class="operator">[</span>
+                 {
+                     <span class="string">&quot;language&quot;</span>: <span class="string">&quot;en&quot;</span><span class="operator">,</span>
+                     <span class="string">&quot;translation&quot;</span>: <span class="string">&quot;Create Account&quot;</span>
+                 }<span class="operator">,</span>
+                 {
+                     <span class="string">&quot;language&quot;</span>: <span class="string">&quot;sv&quot;</span><span class="operator">,</span>
+                     <span class="string">&quot;translation&quot;</span>: <span class="string">&quot;Skapa Konto&quot;</span>
+                 }
+             <span class="operator">]</span>
+         }<span class="operator">,</span>
+         {
+             <span class="string">&quot;trId&quot;</span>: <span class="string">&quot;translation_login&quot;</span><span class="operator">,</span>
+             <span class="string">&quot;translations&quot;</span>: <span class="operator">[</span>
+                 {
+                     <span class="string">&quot;language&quot;</span>: <span class="string">&quot;en&quot;</span><span class="operator">,</span>
+                     <span class="string">&quot;translation&quot;</span>: <span class="string">&quot;Log In&quot;</span>
+                 }<span class="operator">,</span>
+                 {
+                     <span class="string">&quot;language&quot;</span>: <span class="string">&quot;sv&quot;</span><span class="operator">,</span>
+                     <span class="string">&quot;translation&quot;</span>: <span class="string">&quot;Logga In&quot;</span>
+                 }
+             <span class="operator">]</span>
+         }<span class="operator">,</span>
+         {
+             <span class="string">&quot;trId&quot;</span>: <span class="string">&quot;translation_username&quot;</span><span class="operator">,</span>
+             <span class="string">&quot;translations&quot;</span>: <span class="operator">[</span>
+                 {
+                     <span class="string">&quot;language&quot;</span>: <span class="string">&quot;en&quot;</span><span class="operator">,</span>
+                     <span class="string">&quot;translation&quot;</span>: <span class="string">&quot;Username&quot;</span>
+                 }<span class="operator">,</span>
+                 {
+                     <span class="string">&quot;language&quot;</span>: <span class="string">&quot;sv&quot;</span><span class="operator">,</span>
+                     <span class="string">&quot;translation&quot;</span>: <span class="string">&quot;Användarnamn&quot;</span>
+                 }
+             <span class="operator">]</span>
+         }
+     <span class="operator">]</span>
+ }
+</pre>
+<h2 id="preparing-your-project">Preparing Your Project</h2>
+<p>First, you need to prepare your project for translation:</p>
+<ol class="1" type="1"><li>In <b translate="no">Projects</b>, double-click <i>Screen01.ui.qml</i> to open it.</li>
+<li>All text strings that you want to translate need to be of <code translate="no">qsTrId</code> type. In this project the text strings are of <code translate="no">qsTr</code> type so you need to change them. Open the <b translate="no">Code</b> view, find all five occurrences of <code translate="no">qsTr</code> and replace them with <code translate="no">qsTrId</code>. For example, replace:<pre class="cpp" translate="no">
+ text: qsTr(<span class="string">&quot;Qt Account&quot;</span>)
+</pre>
+<p>with:</p>
+<pre class="cpp" translate="no">
+ text: qsTrId(<span class="string">&quot;Qt Account&quot;</span>)
+</pre>
+</li>
+<li>Next, you need to replace the text value with the text string variable from the translation file for the five text strings you want to translate. For example, replace:<pre class="cpp" translate="no">
+ text: qsTrId(<span class="string">&quot;Qt Account&quot;</span>)
+</pre>
+<p>with:</p>
+<pre class="cpp" translate="no">
+ text: qsTrId(<span class="string">&quot;translation_account&quot;</span>)
+</pre>
+</li>
+</ol>
+<h2 id="importing-translations">Importing Translations</h2>
+<p>Next, you need to import your JSON translation file:</p>
+<ol class="1" type="1"><li>Go to <b translate="no">View</b> &gt; <b translate="no">Views</b> and select <b translate="no">Translations</b> to open the <b translate="no">Translations</b> view. You can drag it to a workspace to dock it.</li>
+<li>In <b translate="no">Translations</b>, select <img src="images/select-languages.png" alt="" /> .</li>
+<li>Select the languages that you want to support in your project, in this case <b translate="no">English - American English</b> and <b translate="no">Swedish - Svenska</b>.</li>
+<li>Set <b translate="no">English - American English</b> as primary language and select <b translate="no">Ok</b>.</li>
+<li>Select <img src="images/import-json-translations.png" alt="" /> and open the <i>ml_translations.json</i> file. Now you can see all your imported translations in the <b translate="no">Translations</b> view.<p class="centerAlign"><img src="images/imported-translations.png" alt="" /></p></li>
+</ol>
+<p>You can select language from the dropdown list on the left side of the <b translate="no">Translations</b> view. Translations for the selected languages will show in the <b translate="no">Translations</b> view as well as in the <b translate="no">2D</b> view.</p>
+<p>You can run translation tests, import, and export translations as described in <a href="studio-translations.html" translate="no">Translations</a>.</p>
+<p>Finally, before you can see your translations in the application or in <b translate="no">Live Preview</b>, you must generate Qt translation source files. To do this, select <img src="images/generate-translation-files.png" alt="" /> in the <b translate="no">Translations</b> view.</p>
+</div>
+<!-- @@@multilanguage-tutorial.html -->
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

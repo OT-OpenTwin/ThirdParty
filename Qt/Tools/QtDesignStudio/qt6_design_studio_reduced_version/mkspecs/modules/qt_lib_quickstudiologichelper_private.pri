@@ -1,0 +1,11 @@
+QT.quickstudiologichelper_private.VERSION = 6.2.4
+QT.quickstudiologichelper_private.name = QtQuickStudioLogicHelper
+QT.quickstudiologichelper_private.module =
+QT.quickstudiologichelper_private.libs = $$QT_MODULE_LIB_BASE
+QT.quickstudiologichelper_private.includes = 
+QT.quickstudiologichelper_private.frameworks = 
+QT.quickstudiologichelper_private.depends = quickstudiologichelper
+QT.quickstudiologichelper_private.uses = 
+QT.quickstudiologichelper_private.module_config = v2 internal_module
+QT.quickstudiologichelper_private.enabled_features = 
+QT.quickstudiologichelper_private.disabled_features = 

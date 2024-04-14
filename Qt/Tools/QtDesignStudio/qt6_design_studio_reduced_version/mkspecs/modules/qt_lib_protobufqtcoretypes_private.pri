@@ -1,0 +1,11 @@
+QT.protobufqtcoretypes_private.VERSION = 6.6.2
+QT.protobufqtcoretypes_private.name = QtProtobufQtCoreTypes
+QT.protobufqtcoretypes_private.module =
+QT.protobufqtcoretypes_private.libs = $$QT_MODULE_LIB_BASE
+QT.protobufqtcoretypes_private.includes = $$QT_MODULE_INCLUDE_BASE/QtProtobufQtCoreTypes/6.6.2 $$QT_MODULE_INCLUDE_BASE/QtProtobufQtCoreTypes/6.6.2/QtProtobufQtCoreTypes
+QT.protobufqtcoretypes_private.frameworks = 
+QT.protobufqtcoretypes_private.depends = protobufqtcoretypes
+QT.protobufqtcoretypes_private.uses = 
+QT.protobufqtcoretypes_private.module_config = v2 internal_module
+QT.protobufqtcoretypes_private.enabled_features = 
+QT.protobufqtcoretypes_private.disabled_features = 

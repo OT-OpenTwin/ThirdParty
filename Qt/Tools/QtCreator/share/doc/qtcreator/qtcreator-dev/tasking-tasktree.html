@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- tasktree.cpp -->
+  <meta name="description" content="The TaskTree class runs an async task tree structure defined in a declarative way.">
+  <title>TaskTree Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Extending Qt Creator Manual</a></li>
+<li><a href="taskingsolution-module.html" translate="no">TaskingSolution</a></li>
+<li>TaskTree</li>
+<li id="buildversion"><a href="index.html" translate="no">Extending Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+<li class="level2"><a href="#root-element-and-tasks">Root Element and Tasks</a></li>
+<li class="level2"><a href="#groups">Groups</a></li>
+<li class="level2"><a href="#task-types">Task Types</a></li>
+<li class="level2"><a href="#task-handlers">Task Handlers</a></li>
+<li class="level2"><a href="#group-handlers">Group Handlers</a></li>
+<li class="level2"><a href="#other-group-elements">Other Group Elements</a></li>
+<li class="level2"><a href="#tasktree-class">TaskTree class</a></li>
+<li class="level2"><a href="#task-adapters">Task Adapters</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title" translate="no">TaskTree Class</h1>
+<span class="small-subtitle" translate="no">class <a href="tasking.html" translate="no">Tasking</a>::TaskTree</span>
+<!-- $$$TaskTree-brief -->
+<p>The TaskTree class runs an async task tree structure defined in a declarative way. <a href="#details">More...</a></p>
+<!-- @@@TaskTree -->
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">  <span class="preprocessor">#include &lt;solutions/tasking/tasktree.h&gt;</span></td></tr>
+</table></div>
+<ul>
+<li><a href="tasking-tasktree-members.html">List of all members, including inherited members</a></li>
+</ul>
+<p><b>Note:</b> All functions in this class are reentrant.</p>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#TaskTree" translate="no">TaskTree</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#TaskTree-1" translate="no">TaskTree</a></b>(const Tasking::Group &amp;<i>recipe</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#dtor.TaskTree" translate="no">~TaskTree</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#asyncCount" translate="no">asyncCount</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#cancel" translate="no">cancel</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#isRunning" translate="no">isRunning</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#onStorageDone" translate="no">onStorageDone</a></b>(const Storage&lt;StorageStruct&gt; &amp;<i>storage</i>, Handler &amp;&amp;<i>handler</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#onStorageSetup" translate="no">onStorageSetup</a></b>(const Storage&lt;StorageStruct&gt; &amp;<i>storage</i>, Handler &amp;&amp;<i>handler</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#progressMaximum" translate="no">progressMaximum</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#progressValue" translate="no">progressValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Tasking::DoneWith </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#runBlocking" translate="no">runBlocking</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Tasking::DoneWith </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#runBlocking-1" translate="no">runBlocking</a></b>(const QFuture&lt;void&gt; &amp;<i>future</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#setRecipe" translate="no">setRecipe</a></b>(const Tasking::Group &amp;<i>recipe</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#start" translate="no">start</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#taskCount" translate="no">taskCount</a></b>() const</td></tr>
+</table></div>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#asyncCountChanged" translate="no">asyncCountChanged</a></b>(int <i>count</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#done" translate="no">done</a></b>(Tasking::DoneWith <i>result</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#progressValueChanged" translate="no">progressValueChanged</a></b>(int <i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#started" translate="no">started</a></b>()</td></tr>
+</table></div>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary" translate="no">
+<tr><td class="memItemLeft rightAlign topAlign"> Tasking::DoneWith </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#runBlocking-2" translate="no">runBlocking</a></b>(const Tasking::Group &amp;<i>recipe</i>, std::chrono::milliseconds <i>timeout</i> = std::chrono::milliseconds::max())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Tasking::DoneWith </td><td class="memItemRight bottomAlign"><b><a href="tasking-tasktree.html#runBlocking-3" translate="no">runBlocking</a></b>(const Tasking::Group &amp;<i>recipe</i>, const QFuture&lt;void&gt; &amp;<i>future</i>, std::chrono::milliseconds <i>timeout</i> = std::chrono::milliseconds::max())</td></tr>
+</table></div>
+<!-- $$$TaskTree-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Use the Tasking namespace to build extensible, declarative task tree structures that contain possibly asynchronous tasks, such as QProcess, NetworkQuery, or ConcurrentCall&lt;ReturnType&gt;. TaskTree structures enable you to create a sophisticated mixture of a parallel or sequential flow of tasks in the form of a tree and to run it any time later.</p>
+<h3 id="root-element-and-tasks">Root Element and Tasks</h3>
+<p>The TaskTree has a mandatory Group root element, which may contain any number of tasks of various types, such as QProcessTask, NetworkQueryTask, or ConcurrentCallTask&lt;ReturnType&gt;:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">using</span> <span class="keyword">namespace</span> Tasking;
+
+ <span class="keyword">const</span> Group root {
+     <span class="type">QProcessTask</span>(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)<span class="operator">,</span>
+     NetworkQueryTask(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)<span class="operator">,</span>
+     ConcurrentCallTask<span class="operator">&lt;</span><span class="type">int</span><span class="operator">&gt;</span>(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)
+ };
+
+ TaskTree <span class="operator">*</span>taskTree <span class="operator">=</span> <span class="keyword">new</span> TaskTree(root);
+ connect(taskTree<span class="operator">,</span> <span class="operator">&amp;</span>TaskTree<span class="operator">::</span>done<span class="operator">,</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>);  <span class="comment">// finish handler</span>
+ taskTree<span class="operator">-</span><span class="operator">&gt;</span>start();
+</pre>
+<p>The task tree above has a top level element of the Group type that contains tasks of the QProcessTask, NetworkQueryTask, and ConcurrentCallTask&lt;int&gt; type. After taskTree-&gt;<a href="tasking-tasktree.html#start" translate="no">start</a>() is called, the tasks are run in a chain, starting with QProcessTask. When the QProcessTask finishes successfully, the NetworkQueryTask task is started. Finally, when the network task finishes successfully, the ConcurrentCallTask&lt;int&gt; task is started.</p>
+<p>When the last running task finishes with success, the task tree is considered to have run successfully and the <a href="tasking-tasktree.html#done" translate="no">done</a>() signal is emitted with <a href="tasking.html#DoneWith-enum" translate="no">DoneWith::Success</a>. When a task finishes with an error, the execution of the task tree is stopped and the remaining tasks are skipped. The task tree finishes with an error and sends the <a href="tasking-tasktree.html#done" translate="no">TaskTree::done</a>() signal with <a href="tasking.html#DoneWith-enum" translate="no">DoneWith::Error</a>.</p>
+<h3 id="groups">Groups</h3>
+<p>The parent of the Group sees it as a single task. Like other tasks, the group can be started and it can finish with success or an error. The Group elements can be nested to create a tree structure:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">const</span> Group root {
+     Group {
+         parallel<span class="operator">,</span>
+         <span class="type">QProcessTask</span>(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)<span class="operator">,</span>
+         ConcurrentCallTask<span class="operator">&lt;</span><span class="type">int</span><span class="operator">&gt;</span>(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)
+     }<span class="operator">,</span>
+     NetworkQueryTask(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)
+ };
+</pre>
+<p>The example above differs from the first example in that the root element has a subgroup that contains the QProcessTask and ConcurrentCallTask&lt;int&gt;. The subgroup is a sibling element of the NetworkQueryTask in the root. The subgroup contains an additional <i>parallel</i> element that instructs its Group to execute its tasks in parallel.</p>
+<p>So, when the tree above is started, the QProcessTask and ConcurrentCallTask&lt;int&gt; start immediately and run in parallel. Since the root group doesn't contain a <i>parallel</i> element, its direct child tasks are run in sequence. Thus, the NetworkQueryTask starts when the whole subgroup finishes. The group is considered as finished when all its tasks have finished. The order in which the tasks finish is not relevant.</p>
+<p>So, depending on which task lasts longer (QProcessTask or ConcurrentCallTask&lt;int&gt;), the following scenarios can take place:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Scenario 1</th><th >Scenario 2</th></tr></thead>
+<tr valign="top" class="odd"><td >Root Group starts</td><td >Root Group starts</td></tr>
+<tr valign="top" class="even"><td >Sub Group starts</td><td >Sub Group starts</td></tr>
+<tr valign="top" class="odd"><td >QProcessTask starts</td><td >QProcessTask starts</td></tr>
+<tr valign="top" class="even"><td >ConcurrentCallTask&lt;int&gt; starts</td><td >ConcurrentCallTask&lt;int&gt; starts</td></tr>
+<tr valign="top" class="odd"><td >...</td><td >...</td></tr>
+<tr valign="top" class="even"><td ><b>QProcessTask finishes</b></td><td ><b>ConcurrentCallTask&lt;int&gt; finishes</b></td></tr>
+<tr valign="top" class="odd"><td >...</td><td >...</td></tr>
+<tr valign="top" class="even"><td ><b>ConcurrentCallTask&lt;int&gt; finishes</b></td><td ><b>QProcessTask finishes</b></td></tr>
+<tr valign="top" class="odd"><td >Sub Group finishes</td><td >Sub Group finishes</td></tr>
+<tr valign="top" class="even"><td >NetworkQueryTask starts</td><td >NetworkQueryTask starts</td></tr>
+<tr valign="top" class="odd"><td >...</td><td >...</td></tr>
+<tr valign="top" class="even"><td >NetworkQueryTask finishes</td><td >NetworkQueryTask finishes</td></tr>
+<tr valign="top" class="odd"><td >Root Group finishes</td><td >Root Group finishes</td></tr>
+</table></div>
+<p>The differences between the scenarios are marked with bold. Three dots mean that an unspecified amount of time passes between previous and next events (a task or tasks continue to run). No dots between events means that they occur synchronously.</p>
+<p>The presented scenarios assume that all tasks run successfully. If a task fails during execution, the task tree finishes with an error. In particular, when QProcessTask finishes with an error while ConcurrentCallTask&lt;int&gt; is still being executed, the ConcurrentCallTask&lt;int&gt; is automatically canceled, the subgroup finishes with an error, the NetworkQueryTask is skipped, and the tree finishes with an error.</p>
+<h3 id="task-types">Task Types</h3>
+<p>Each task type is associated with its corresponding task class that executes the task. For example, a QProcessTask inside a task tree is associated with the QProcess class that executes the process. The associated objects are automatically created, started, and destructed exclusively by the task tree at the appropriate time.</p>
+<p>If a root group consists of five sequential QProcessTask tasks, and the task tree executes the group, it creates an instance of QProcess for the first QProcessTask and starts it. If the QProcess instance finishes successfully, the task tree destructs it and creates a new QProcess instance for the second QProcessTask, and so on. If the first task finishes with an error, the task tree stops creating QProcess instances, and the root group finishes with an error.</p>
+<p>The following table shows examples of task types and their corresponding task classes:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Task Type (Tasking Namespace)</th><th >Associated Task Class</th><th >Brief Description</th></tr></thead>
+<tr valign="top" class="odd"><td >QProcessTask</td><td >QProcess</td><td >Starts process.</td></tr>
+<tr valign="top" class="even"><td >ConcurrentCallTask&lt;ReturnType&gt;</td><td >Tasking::ConcurrentCall&lt;ReturnType&gt;</td><td >Starts asynchronous task, runs in separate thread.</td></tr>
+<tr valign="top" class="odd"><td ><a href="tasking.html#TaskTreeTask-typedef" translate="no">TaskTreeTask</a></td><td ><a href="tasking-tasktree.html" translate="no">Tasking::TaskTree</a></td><td >Starts nested task tree.</td></tr>
+<tr valign="top" class="even"><td >NetworkQueryTask</td><td >NetworkQuery</td><td >Starts network download.</td></tr>
+</table></div>
+<h3 id="task-handlers">Task Handlers</h3>
+<p>Use Task handlers to set up a task for execution and to enable reading the output data from the task when it finishes with success or an error.</p>
+<h4 id="task-s-start-handler">Task's Start Handler</h4>
+<p>When a corresponding task class object is created and before it's started, the task tree invokes an optionally user-provided setup handler. The setup handler should always take a <i>reference</i> to the associated task class object:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">const</span> <span class="keyword">auto</span> onSetup <span class="operator">=</span> <span class="operator">[</span><span class="operator">]</span>(<span class="type">QProcess</span> <span class="operator">&amp;</span>process) {
+     process<span class="operator">.</span>setCommand({<span class="string">&quot;sleep&quot;</span><span class="operator">,</span> {<span class="string">&quot;3&quot;</span>}});
+ };
+ <span class="keyword">const</span> Group root {
+     <span class="type">QProcessTask</span>(onSetup)
+ };
+</pre>
+<p>You can modify the passed QProcess in the setup handler, so that the task tree can start the process according to your configuration. You should not call <code translate="no">process.start();</code> in the setup handler, as the task tree calls it when needed. The setup handler is optional. When used, it must be the first argument of the task's constructor.</p>
+<p>Optionally, the setup handler may return a <a href="tasking.html#SetupResult-enum" translate="no">SetupResult</a>. The returned <a href="tasking.html#SetupResult-enum" translate="no">SetupResult</a> influences the further start behavior of a given task. The possible values are:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th ><a href="tasking.html#SetupResult-enum" translate="no">SetupResult</a> Value</th><th >Brief Description</th></tr></thead>
+<tr valign="top" class="odd"><td >Continue</td><td >The task will be started normally. This is the default behavior when the setup handler doesn't return <a href="tasking.html#SetupResult-enum" translate="no">SetupResult</a> (that is, its return type is void).</td></tr>
+<tr valign="top" class="even"><td ><a href="tasking.html#SetupResult-enum" translate="no">StopWithSuccess</a></td><td >The task won't be started and it will report success to its parent.</td></tr>
+<tr valign="top" class="odd"><td ><a href="tasking.html#SetupResult-enum" translate="no">StopWithError</a></td><td >The task won't be started and it will report an error to its parent.</td></tr>
+</table></div>
+<p>This is useful for running a task only when a condition is met and the data needed to evaluate this condition is not known until previously started tasks finish. In this way, the setup handler dynamically decides whether to start the corresponding task normally or skip it and report success or an error. For more information about inter-task data exchange, see <a href="tasking-storage.html" translate="no">Storage</a>.</p>
+<h4 id="task-s-done-handler">Task's Done Handler</h4>
+<p>When a running task finishes, the task tree invokes an optionally provided done handler. The handler should always take a <code translate="no">const</code> <i>reference</i> to the associated task class object:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">const</span> <span class="keyword">auto</span> onSetup <span class="operator">=</span> <span class="operator">[</span><span class="operator">]</span>(<span class="type">QProcess</span> <span class="operator">&amp;</span>process) {
+     process<span class="operator">.</span>setCommand({<span class="string">&quot;sleep&quot;</span><span class="operator">,</span> {<span class="string">&quot;3&quot;</span>}});
+ };
+ <span class="keyword">const</span> <span class="keyword">auto</span> onDone <span class="operator">=</span> <span class="operator">[</span><span class="operator">]</span>(<span class="keyword">const</span> <span class="type">QProcess</span> <span class="operator">&amp;</span>process<span class="operator">,</span> DoneWith result) {
+     <span class="keyword">if</span> (result <span class="operator">=</span><span class="operator">=</span> DoneWith<span class="operator">::</span>Success)
+         qDebug() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;Success&quot;</span> <span class="operator">&lt;</span><span class="operator">&lt;</span> process<span class="operator">.</span>cleanedStdOut();
+     <span class="keyword">else</span>
+         qDebug() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;Failure&quot;</span> <span class="operator">&lt;</span><span class="operator">&lt;</span> process<span class="operator">.</span>cleanedStdErr();
+ };
+ <span class="keyword">const</span> Group root {
+     <span class="type">QProcessTask</span>(onSetup<span class="operator">,</span> onDone)
+ };
+</pre>
+<p>The done handler may collect output data from QProcess, and store it for further processing or perform additional actions.</p>
+<div class="admonition note">
+<p><b>Note: </b>If the task setup handler returns <a href="tasking.html#SetupResult-enum" translate="no">StopWithSuccess</a> or <a href="tasking.html#SetupResult-enum" translate="no">StopWithError</a>, the done handler is not invoked.</p>
+</div>
+<h3 id="group-handlers">Group Handlers</h3>
+<p>Similarly to task handlers, group handlers enable you to set up a group to execute and to apply more actions when the whole group finishes with success or an error.</p>
+<h4 id="group-s-start-handler">Group's Start Handler</h4>
+<p>The task tree invokes the group start handler before it starts the child tasks. The group handler doesn't take any arguments:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">const</span> <span class="keyword">auto</span> onSetup <span class="operator">=</span> <span class="operator">[</span><span class="operator">]</span> {
+     qDebug() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;Entering the group&quot;</span>;
+ };
+ <span class="keyword">const</span> Group root {
+     onGroupSetup(onSetup)<span class="operator">,</span>
+     <span class="type">QProcessTask</span>(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)
+ };
+</pre>
+<p>The group setup handler is optional. To define a group setup handler, add an <a href="tasking.html#onGroupSetup" translate="no">onGroupSetup</a>() element to a group. The argument of <a href="tasking.html#onGroupSetup" translate="no">onGroupSetup</a>() is a user handler. If you add more than one <a href="tasking.html#onGroupSetup" translate="no">onGroupSetup</a>() element to a group, an assert is triggered at runtime that includes an error message.</p>
+<p>Like the task's start handler, the group start handler may return <a href="tasking.html#SetupResult-enum" translate="no">SetupResult</a>. The returned <a href="tasking.html#SetupResult-enum" translate="no">SetupResult</a> value affects the start behavior of the whole group. If you do not specify a group start handler or its return type is void, the default group's action is <a href="tasking.html#SetupResult-enum" translate="no">SetupResult::Continue</a>, so that all tasks are started normally. Otherwise, when the start handler returns <a href="tasking.html#SetupResult-enum" translate="no">SetupResult::StopWithSuccess</a> or <a href="tasking.html#SetupResult-enum" translate="no">SetupResult::StopWithError</a>, the tasks are not started (they are skipped) and the group itself reports success or failure, depending on the returned value, respectively.</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">const</span> Group root {
+     onGroupSetup(<span class="operator">[</span><span class="operator">]</span> { qDebug() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;Root setup&quot;</span>; })<span class="operator">,</span>
+     Group {
+         onGroupSetup(<span class="operator">[</span><span class="operator">]</span> { qDebug() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;Group 1 setup&quot;</span>; <span class="keyword">return</span> SetupResult<span class="operator">::</span>Continue; })<span class="operator">,</span>
+         <span class="type">QProcessTask</span>(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>) <span class="comment">// Process 1</span>
+     }<span class="operator">,</span>
+     Group {
+         onGroupSetup(<span class="operator">[</span><span class="operator">]</span> { qDebug() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;Group 2 setup&quot;</span>; <span class="keyword">return</span> SetupResult<span class="operator">::</span>StopWithSuccess; })<span class="operator">,</span>
+         <span class="type">QProcessTask</span>(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>) <span class="comment">// Process 2</span>
+     }<span class="operator">,</span>
+     Group {
+         onGroupSetup(<span class="operator">[</span><span class="operator">]</span> { qDebug() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;Group 3 setup&quot;</span>; <span class="keyword">return</span> SetupResult<span class="operator">::</span>StopWithError; })<span class="operator">,</span>
+         <span class="type">QProcessTask</span>(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>) <span class="comment">// Process 3</span>
+     }<span class="operator">,</span>
+     <span class="type">QProcessTask</span>(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>) <span class="comment">// Process 4</span>
+ };
+</pre>
+<p>In the above example, all subgroups of a root group define their setup handlers. The following scenario assumes that all started processes finish with success:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Scenario</th><th >Comment</th></tr></thead>
+<tr valign="top" class="odd"><td >Root Group starts</td><td >Doesn't return <a href="tasking.html#SetupResult-enum" translate="no">SetupResult</a>, so its tasks are executed.</td></tr>
+<tr valign="top" class="even"><td >Group 1 starts</td><td >Returns Continue, so its tasks are executed.</td></tr>
+<tr valign="top" class="odd"><td >Process 1 starts</td><td ></td></tr>
+<tr valign="top" class="even"><td >...</td><td >...</td></tr>
+<tr valign="top" class="odd"><td >Process 1 finishes (success)</td><td ></td></tr>
+<tr valign="top" class="even"><td >Group 1 finishes (success)</td><td ></td></tr>
+<tr valign="top" class="odd"><td >Group 2 starts</td><td >Returns <a href="tasking.html#SetupResult-enum" translate="no">StopWithSuccess</a>, so Process 2 is skipped and Group 2 reports success.</td></tr>
+<tr valign="top" class="even"><td >Group 2 finishes (success)</td><td ></td></tr>
+<tr valign="top" class="odd"><td >Group 3 starts</td><td >Returns <a href="tasking.html#SetupResult-enum" translate="no">StopWithError</a>, so Process 3 is skipped and Group 3 reports an error.</td></tr>
+<tr valign="top" class="even"><td >Group 3 finishes (error)</td><td ></td></tr>
+<tr valign="top" class="odd"><td >Root Group finishes (error)</td><td >Group 3, which is a direct child of the root group, finished with an error, so the root group stops executing, skips Process 4, which has not started yet, and reports an error.</td></tr>
+</table></div>
+<h4 id="groups-s-done-handler">Groups's Done Handler</h4>
+<p>A Group's done handler is executed after the successful or failed execution of its tasks. The final value reported by the group depends on its <a href="tasking-tasktree.html#workflow-policy" translate="no">Workflow Policy</a>. The handler can apply other necessary actions. The done handler is defined inside the <a href="tasking.html#onGroupDone" translate="no">onGroupDone</a>() element of a group. It may take the optional <a href="tasking.html#DoneWith-enum" translate="no">DoneWith</a> argument, indicating the successful or failed execution:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">const</span> Group root {
+     onGroupSetup(<span class="operator">[</span><span class="operator">]</span> { qDebug() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;Root setup&quot;</span>; })<span class="operator">,</span>
+     <span class="type">QProcessTask</span>(<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>)<span class="operator">,</span>
+     onGroupDone(<span class="operator">[</span><span class="operator">]</span>(DoneWith result) {
+         <span class="keyword">if</span> (result <span class="operator">=</span><span class="operator">=</span> DoneWith<span class="operator">::</span>Success)
+             qDebug() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;Root finished with success&quot;</span>;
+         <span class="keyword">else</span>
+             qDebug() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;Root finished with an error&quot;</span>;
+     })
+ };
+</pre>
+<p>The group done handler is optional. If you add more than one <a href="tasking.html#onGroupDone" translate="no">onGroupDone</a>() to a group, an assert is triggered at runtime that includes an error message.</p>
+<div class="admonition note">
+<p><b>Note: </b>Even if the group setup handler returns <a href="tasking.html#SetupResult-enum" translate="no">StopWithSuccess</a> or <a href="tasking.html#SetupResult-enum" translate="no">StopWithError</a>, the group's done handler is invoked. This behavior differs from that of task done handler and might change in the future.</p>
+</div>
+<h3 id="other-group-elements">Other Group Elements</h3>
+<p>A group can contain other elements that describe the processing flow, such as the execution mode or workflow policy. It can also contain storage elements that are responsible for collecting and sharing custom common data gathered during group execution.</p>
+<h4 id="execution-mode">Execution Mode</h4>
+<p>The execution mode element in a Group specifies how the direct child tasks of the Group are started. The most common execution modes are <a href="tasking.html#sequential-var" translate="no">sequential</a> and <a href="tasking.html#parallel-var" translate="no">parallel</a>. It's also possible to specify the limit of tasks running in parallel by using the <a href="tasking.html#parallelLimit" translate="no">parallelLimit</a>() function.</p>
+<p>In all execution modes, a group starts tasks in the oder in which they appear.</p>
+<p>If a child of a group is also a group, the child group runs its tasks according to its own execution mode.</p>
+<h4 id="workflow-policy">Workflow Policy</h4>
+<p>The workflow policy element in a Group specifies how the group should behave when any of its <i>direct</i> child's tasks finish. For a detailed description of possible policies, refer to <a href="tasking.html#WorkflowPolicy-enum" translate="no">WorkflowPolicy</a>.</p>
+<p>If a child of a group is also a group, the child group runs its tasks according to its own workflow policy.</p>
+<h4 id="storage">Storage</h4>
+<p>Use the <a href="tasking-storage.html" translate="no">Storage</a> element to exchange information between tasks. Especially, in the sequential execution mode, when a task needs data from another, already finished task, before it can start. For example, a task tree that copies data by reading it from a source and writing it to a destination might look as follows:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">static</span> <span class="type">QByteArray</span> load(<span class="keyword">const</span> <span class="type">QString</span> <span class="operator">&amp;</span>fileName) { <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span> }
+ <span class="keyword">static</span> <span class="type">void</span> save(<span class="keyword">const</span> <span class="type">QString</span> <span class="operator">&amp;</span>fileName<span class="operator">,</span> <span class="keyword">const</span> <span class="type">QByteArray</span> <span class="operator">&amp;</span>array) { <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span> }
+
+ <span class="keyword">static</span> Group copyRecipe(<span class="keyword">const</span> <span class="type">QString</span> <span class="operator">&amp;</span>source<span class="operator">,</span> <span class="keyword">const</span> <span class="type">QString</span> <span class="operator">&amp;</span>destination)
+ {
+     <span class="keyword">struct</span> CopyStorage { <span class="comment">// [1] custom inter-task struct</span>
+         <span class="type">QByteArray</span> content; <span class="comment">// [2] custom inter-task data</span>
+     };
+
+     <span class="comment">// [3] instance of custom inter-task struct manageable by task tree</span>
+     <span class="keyword">const</span> Storage<span class="operator">&lt;</span>CopyStorage<span class="operator">&gt;</span> storage;
+
+     <span class="keyword">const</span> <span class="keyword">auto</span> onLoaderSetup <span class="operator">=</span> <span class="operator">[</span>source<span class="operator">]</span>(ConcurrentCall<span class="operator">&lt;</span><span class="type">QByteArray</span><span class="operator">&gt;</span> <span class="operator">&amp;</span>async) {
+         async<span class="operator">.</span>setConcurrentCallData(<span class="operator">&amp;</span>load<span class="operator">,</span> source);
+     };
+     <span class="comment">// [4] runtime: task tree activates the instance from [7] before invoking handler</span>
+     <span class="keyword">const</span> <span class="keyword">auto</span> onLoaderDone <span class="operator">=</span> <span class="operator">[</span>storage<span class="operator">]</span>(<span class="keyword">const</span> ConcurrentCall<span class="operator">&lt;</span><span class="type">QByteArray</span><span class="operator">&gt;</span> <span class="operator">&amp;</span>async) {
+         storage<span class="operator">-</span><span class="operator">&gt;</span>content <span class="operator">=</span> async<span class="operator">.</span>result(); <span class="comment">// [5] loader stores the result in storage</span>
+     };
+
+     <span class="comment">// [4] runtime: task tree activates the instance from [7] before invoking handler</span>
+     <span class="keyword">const</span> <span class="keyword">auto</span> onSaverSetup <span class="operator">=</span> <span class="operator">[</span>storage<span class="operator">,</span> destination<span class="operator">]</span>(ConcurrentCall<span class="operator">&lt;</span><span class="type">void</span><span class="operator">&gt;</span> <span class="operator">&amp;</span>async) {
+         <span class="keyword">const</span> <span class="type">QByteArray</span> content <span class="operator">=</span> storage<span class="operator">-</span><span class="operator">&gt;</span>content; <span class="comment">// [6] saver takes data from storage</span>
+         async<span class="operator">.</span>setConcurrentCallData(<span class="operator">&amp;</span>save<span class="operator">,</span> destination<span class="operator">,</span> content);
+     };
+     <span class="keyword">const</span> <span class="keyword">auto</span> onSaverDone <span class="operator">=</span> <span class="operator">[</span><span class="operator">]</span>(<span class="keyword">const</span> ConcurrentCall<span class="operator">&lt;</span><span class="type">void</span><span class="operator">&gt;</span> <span class="operator">&amp;</span>async) {
+         qDebug() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;Save done successfully&quot;</span>;
+     };
+
+     <span class="keyword">const</span> Group root {
+         <span class="comment">// [7] runtime: task tree creates an instance of CopyStorage when root is entered</span>
+         storage<span class="operator">,</span>
+         ConcurrentCallTask<span class="operator">&lt;</span><span class="type">QByteArray</span><span class="operator">&gt;</span>(onLoaderSetup<span class="operator">,</span> onLoaderDone<span class="operator">,</span> CallDoneIf<span class="operator">::</span>Success)<span class="operator">,</span>
+         ConcurrentCallTask<span class="operator">&lt;</span><span class="type">void</span><span class="operator">&gt;</span>(onSaverSetup<span class="operator">,</span> onSaverDone<span class="operator">,</span> CallDoneIf<span class="operator">::</span>Success)
+     };
+     <span class="keyword">return</span> root;
+ }
+
+ <span class="keyword">const</span> <span class="type">QString</span> source <span class="operator">=</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>;
+ <span class="keyword">const</span> <span class="type">QString</span> destination <span class="operator">=</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>;
+ TaskTree taskTree(copyRecipe(source<span class="operator">,</span> destination));
+ connect(<span class="operator">&amp;</span>taskTree<span class="operator">,</span> <span class="operator">&amp;</span>TaskTree<span class="operator">::</span>done<span class="operator">,</span>
+         <span class="operator">&amp;</span>taskTree<span class="operator">,</span> <span class="operator">[</span><span class="operator">]</span>(DoneWith result) {
+     <span class="keyword">if</span> (result <span class="operator">=</span><span class="operator">=</span> DoneWith<span class="operator">::</span>Success)
+         qDebug() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;The copying finished successfully.&quot;</span>;
+ });
+ tasktree<span class="operator">.</span>start();
+</pre>
+<p>In the example above, the inter-task data consists of a QByteArray content variable [2] enclosed in a <code translate="no">CopyStorage</code> custom struct [1]. If the loader finishes successfully, it stores the data in a <code translate="no">CopyStorage::content</code> variable [5]. The saver then uses the variable to configure the saving task [6].</p>
+<p>To enable a task tree to manage the <code translate="no">CopyStorage</code> struct, an instance of <a href="tasking-storage.html" translate="no">Storage</a>&lt;<code translate="no">CopyStorage&gt;</code> is created [3]. If a copy of this object is inserted as the group's child item [7], an instance of the <code translate="no">CopyStorage</code> struct is created dynamically when the task tree enters this group. When the task tree leaves this group, the existing instance of the <code translate="no">CopyStorage</code> struct is destructed as it's no longer needed.</p>
+<p>If several task trees holding a copy of the common <a href="tasking-storage.html" translate="no">Storage</a>&lt;<code translate="no">CopyStorage&gt;</code> instance run simultaneously (including the case when the task trees are run in different threads), each task tree contains its own copy of the <code translate="no">CopyStorage</code> struct.</p>
+<p>You can access <code translate="no">CopyStorage</code> from any handler in the group with a storage object. This includes all handlers of all descendant tasks of the group with a storage object. To access the custom struct in a handler, pass the copy of the <a href="tasking-storage.html" translate="no">Storage</a>&lt;<code translate="no">CopyStorage&gt;</code> object to the handler (for example, in a lambda capture) [4].</p>
+<p>When the task tree invokes a handler in a subtree containing the storage [7], the task tree activates its own <code translate="no">CopyStorage</code> instance inside the <a href="tasking-storage.html" translate="no">Storage</a>&lt;<code translate="no">CopyStorage&gt;</code> object. Therefore, the <code translate="no">CopyStorage</code> struct may be accessed only from within the handler body. To access the currently active <code translate="no">CopyStorage</code> from within <a href="tasking-storage.html" translate="no">Storage</a>&lt;<code translate="no">CopyStorage&gt;</code>, use the <a href="tasking-storage.html#operator--gt" translate="no">Storage::operator-&gt;</a>(), <a href="tasking-storage.html#operator-2a" translate="no">Storage::operator*</a>(), or <a href="tasking-storage.html#activeStorage" translate="no">Storage::activeStorage</a>() method.</p>
+<p>The following list summarizes how to employ a Storage object into the task tree:</p>
+<ol class="1" type="1"><li>Define the custom structure <code translate="no">MyStorage</code> with custom data [1], [2]</li>
+<li>Create an instance of the <a href="tasking-storage.html" translate="no">Storage</a>&lt;<code translate="no">MyStorage&gt;</code> storage [3]</li>
+<li>Pass the <a href="tasking-storage.html" translate="no">Storage</a>&lt;<code translate="no">MyStorage&gt;</code> instance to handlers [4]</li>
+<li>Access the <code translate="no">MyStorage</code> instance in handlers [5], [6]</li>
+<li>Insert the <a href="tasking-storage.html" translate="no">Storage</a>&lt;<code translate="no">MyStorage&gt;</code> instance into a group [7]</li>
+</ol>
+<h3 id="tasktree-class">TaskTree class</h3>
+<p>TaskTree executes the tree structure of asynchronous tasks according to the recipe described by the Group root element.</p>
+<p>As TaskTree is also an asynchronous task, it can be a part of another TaskTree. To place a nested TaskTree inside another TaskTree, insert the <a href="tasking.html#TaskTreeTask-typedef" translate="no">TaskTreeTask</a> element into another Group element.</p>
+<p>TaskTree reports progress of completed tasks when running. The progress value is increased when a task finishes or is skipped or canceled. When TaskTree is finished and the <a href="tasking-tasktree.html#done" translate="no">TaskTree::done</a>() signal is emitted, the current value of the progress equals the maximum progress value. Maximum progress equals the total number of asynchronous tasks in a tree. A nested TaskTree is counted as a single task, and its child tasks are not counted in the top level tree. Groups themselves are not counted as tasks, but their tasks are counted. <a href="tasking-sync.html" translate="no">Sync</a> tasks are not asynchronous, so they are not counted as tasks.</p>
+<p>To set additional initial data for the running tree, modify the storage instances in a tree when it creates them by installing a storage setup handler:</p>
+<pre class="cpp" translate="no">
+ Storage<span class="operator">&lt;</span>CopyStorage<span class="operator">&gt;</span> storage;
+ <span class="keyword">const</span> Group root <span class="operator">=</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>; <span class="comment">// storage placed inside root's group and inside handlers</span>
+ TaskTree taskTree(root);
+ <span class="keyword">auto</span> initStorage <span class="operator">=</span> <span class="operator">[</span><span class="operator">]</span>(CopyStorage <span class="operator">&amp;</span>storage) {
+     storage<span class="operator">.</span>content <span class="operator">=</span> <span class="string">&quot;initial content&quot;</span>;
+ };
+ taskTree<span class="operator">.</span>onStorageSetup(storage<span class="operator">,</span> initStorage);
+ taskTree<span class="operator">.</span>start();
+</pre>
+<p>When the running task tree creates a <code translate="no">CopyStorage</code> instance, and before any handler inside a tree is called, the task tree calls the initStorage handler, to enable setting up initial data of the storage, unique to this particular run of taskTree.</p>
+<p>Similarly, to collect some additional result data from the running tree, read it from storage instances in the tree when they are about to be destroyed. To do this, install a storage done handler:</p>
+<pre class="cpp" translate="no">
+ Storage<span class="operator">&lt;</span>CopyStorage<span class="operator">&gt;</span> storage;
+ <span class="keyword">const</span> Group root <span class="operator">=</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>; <span class="comment">// storage placed inside root's group and inside handlers</span>
+ TaskTree taskTree(root);
+ <span class="keyword">auto</span> collectStorage <span class="operator">=</span> <span class="operator">[</span><span class="operator">]</span>(<span class="keyword">const</span> CopyStorage <span class="operator">&amp;</span>storage) {
+     qDebug() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;final content&quot;</span> <span class="operator">&lt;</span><span class="operator">&lt;</span> storage<span class="operator">.</span>content;
+ };
+ taskTree<span class="operator">.</span>onStorageDone(storage<span class="operator">,</span> collectStorage);
+ taskTree<span class="operator">.</span>start();
+</pre>
+<p>When the running task tree is about to destroy a <code translate="no">CopyStorage</code> instance, the task tree calls the collectStorage handler, to enable reading the final data from the storage, unique to this particular run of taskTree.</p>
+<h3 id="task-adapters">Task Adapters</h3>
+<p>To extend a TaskTree with a new task type, implement a simple adapter class derived from the <a href="tasking-taskadapter.html" translate="no">TaskAdapter</a> class template. The following class is an adapter for a single shot timer, which may be considered as a new asynchronous task:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">class</span> TimerTaskAdapter : <span class="keyword">public</span> TaskAdapter<span class="operator">&lt;</span><span class="type">QTimer</span><span class="operator">&gt;</span>
+ {
+ <span class="keyword">public</span>:
+     TimerTaskAdapter() {
+         task()<span class="operator">-</span><span class="operator">&gt;</span>setSingleShot(<span class="keyword">true</span>);
+         task()<span class="operator">-</span><span class="operator">&gt;</span>setInterval(<span class="number">1000</span>);
+         connect(task()<span class="operator">,</span> <span class="operator">&amp;</span><span class="type">QTimer</span><span class="operator">::</span>timeout<span class="operator">,</span> <span class="keyword">this</span><span class="operator">,</span> <span class="operator">[</span><span class="keyword">this</span><span class="operator">]</span> { <span class="keyword">emit</span> done(DoneResult<span class="operator">::</span>Success); });
+     }
+ <span class="keyword">private</span>:
+     <span class="type">void</span> start() final { task()<span class="operator">-</span><span class="operator">&gt;</span>start(); }
+ };
+
+ <span class="keyword">using</span> TimerTask <span class="operator">=</span> CustomTask<span class="operator">&lt;</span>TimerTaskAdapter<span class="operator">&gt;</span>;
+</pre>
+<p>You must derive the custom adapter from the <a href="tasking-taskadapter.html" translate="no">TaskAdapter</a> class template instantiated with a template parameter of the class implementing a running task. The code above uses QTimer to run the task. This class appears later as an argument to the task's handlers. The instance of this class parameter automatically becomes a member of the <a href="tasking-taskadapter.html" translate="no">TaskAdapter</a> template, and is accessible through the <a href="tasking-taskadapter.html#task" translate="no">TaskAdapter::task</a>() method. The constructor of <code translate="no">TimerTaskAdapter</code> initially configures the QTimer object and connects to the QTimer::timeout() signal. When the signal is triggered, <code translate="no">TimerTaskAdapter</code> emits the <a href="tasking-taskinterface.html#done" translate="no">TaskInterface::done</a>(<a href="tasking.html#DoneResult-enum" translate="no">DoneResult::Success</a>) signal to inform the task tree that the task finished successfully. If it emits <a href="tasking-taskinterface.html#done" translate="no">TaskInterface::done</a>(<a href="tasking.html#DoneResult-enum" translate="no">DoneResult::Error</a>), the task finished with an error. The <a href="tasking-taskinterface.html#start" translate="no">TaskAdapter::start</a>() method starts the timer.</p>
+<p>To make QTimer accessible inside TaskTree under the <code translate="no">TimerTask</code> name, define <code translate="no">TimerTask</code> to be an alias to the <a href="tasking-customtask.html" translate="no">CustomTask</a>&lt;<code translate="no">TimerTaskAdapter&gt;</code>. <code translate="no">TimerTask</code> becomes a new custom task type, using <code translate="no">TimerTaskAdapter</code>.</p>
+<p>The new task type is now registered, and you can use it in TaskTree:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">const</span> <span class="keyword">auto</span> onSetup <span class="operator">=</span> <span class="operator">[</span><span class="operator">]</span>(<span class="type">QTimer</span> <span class="operator">&amp;</span>task) { task<span class="operator">.</span>setInterval(<span class="number">2000</span>); };
+ <span class="keyword">const</span> <span class="keyword">auto</span> onDone <span class="operator">=</span> <span class="operator">[</span><span class="operator">]</span> { qDebug() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;timer triggered&quot;</span>; };
+ <span class="keyword">const</span> Group root {
+     TimerTask(onSetup<span class="operator">,</span> onDone)
+ };
+</pre>
+<p>When a task tree containing the root from the above example is started, it prints a debug message within two seconds and then finishes successfully.</p>
+<div class="admonition note">
+<p><b>Note: </b>The class implementing the running task should have a default constructor, and objects of this class should be freely destructible. It should be allowed to destroy a running object, preferably without waiting for the running task to finish (that is, safe non-blocking destructor of a running task). To achieve a non-blocking destruction of a task that has a blocking destructor, consider using the optional <code translate="no">Deleter</code> template parameter of the <a href="tasking-taskadapter.html" translate="no">TaskAdapter</a>.</p>
+</div>
+</div>
+<!-- @@@TaskTree -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$TaskTree[overload1]$$$TaskTree -->
+<h3 class="fn" translate="no" id="TaskTree">TaskTree::<span class="name">TaskTree</span>()</h3>
+<p>Constructs an empty task tree. Use <a href="tasking-tasktree.html#setRecipe" translate="no">setRecipe</a>() to pass a declarative description on how the task tree should execute the tasks and how it should handle the finished tasks.</p>
+<p>Starting an empty task tree is no-op and the relevant warning message is issued.</p>
+<p><b>See also </b><a href="tasking-tasktree.html#setRecipe" translate="no">setRecipe</a>() and <a href="tasking-tasktree.html#start" translate="no">start</a>().</p>
+<!-- @@@TaskTree -->
+<!-- $$$TaskTree$$$TaskTreeconstTasking::Group& -->
+<h3 class="fn" translate="no" id="TaskTree-1">TaskTree::<span class="name">TaskTree</span>(const <span class="type"><a href="tasking-group.html" translate="no">Tasking::Group</a></span> &amp;<i>recipe</i>)</h3>
+<p>This is an overloaded function.</p>
+<p>Constructs a task tree with a given <i translate="no">recipe</i>. After the task tree is started, it executes the tasks contained inside the <i translate="no">recipe</i> and handles finished tasks according to the passed description.</p>
+<p><b>See also </b><a href="tasking-tasktree.html#setRecipe" translate="no">setRecipe</a>() and <a href="tasking-tasktree.html#start" translate="no">start</a>().</p>
+<!-- @@@TaskTree -->
+<!-- $$$~TaskTree[overload1]$$$~TaskTree -->
+<h3 class="fn" translate="no" id="dtor.TaskTree"><code translate="no">[virtual noexcept] </code>TaskTree::<span class="name">~TaskTree</span>()</h3>
+<p>Destroys the task tree.</p>
+<p>When the task tree is running while being destructed, it cancels all the running tasks immediately. In this case, no handlers are called, not even the groups' and tasks' done handlers or <a href="tasking-tasktree.html#onStorageDone" translate="no">onStorageDone</a>() handlers. The task tree also doesn't emit any signals from the destructor, not even <a href="tasking-tasktree.html#done" translate="no">done</a>() or <a href="tasking-tasktree.html#progressValueChanged" translate="no">progressValueChanged</a>() signals. This behavior may always be relied on. It is completely safe to destruct the running task tree.</p>
+<p>It's a usual pattern to destruct the running task tree. It's guaranteed that the destruction will run quickly, without having to wait for the currently running tasks to finish, provided that the used tasks implement their destructors in a non-blocking way.</p>
+<div class="admonition note">
+<p><b>Note: </b>Do not call the destructor directly from any of the running task's handlers or task tree's signals. In these cases, use deleteLater() instead.</p>
+</div>
+<p><b>See also </b><a href="tasking-tasktree.html#cancel" translate="no">cancel</a>().</p>
+<!-- @@@~TaskTree -->
+<!-- $$$asyncCount[overload1]$$$asyncCount -->
+<h3 class="fn" translate="no" id="asyncCount"><span class="type">int</span> TaskTree::<span class="name">asyncCount</span>() const</h3>
+<p>Returns the current real count of asynchronous chains of invocations.</p>
+<p>The returned value indicates how many times the control returns to the caller's event loop while the task tree is running. Initially, this value is 0. If the execution of the task tree finishes fully synchronously, this value remains 0. If the task tree contains any asynchronous tasks that are successfully started during a call to <a href="tasking-tasktree.html#start" translate="no">start</a>(), this value is bumped to 1 just before the call to <a href="tasking-tasktree.html#start" translate="no">start</a>() finishes. Later, when any asynchronous task finishes and any possible continuations are started, this value is bumped again. The bumping continues until the task tree finishes. When the task tree emits the <a href="tasking-tasktree.html#done" translate="no">done</a>() signal, the bumping stops. The <a href="tasking-tasktree.html#asyncCountChanged" translate="no">asyncCountChanged</a>() signal is emitted on every bump of this value.</p>
+<p><b>See also </b><a href="tasking-tasktree.html#asyncCountChanged" translate="no">asyncCountChanged</a>().</p>
+<!-- @@@asyncCount -->
+<!-- $$$asyncCountChanged[overload1]$$$asyncCountChangedint -->
+<h3 class="fn" translate="no" id="asyncCountChanged"><code translate="no">[signal] </code><span class="type">void</span> TaskTree::<span class="name">asyncCountChanged</span>(<span class="type">int</span> <i>count</i>)</h3>
+<p>This signal is emitted when the running task tree is about to return control to the caller's event loop. When the task tree is started, this signal is emitted with <i translate="no">count</i> value of 0, and emitted later on every <a href="tasking-tasktree.html#asyncCount" translate="no">asyncCount</a>() value bump with an updated <i translate="no">count</i> value. Every signal sent (except the initial one with the value of 0) guarantees that the task tree is still running asynchronously after the emission.</p>
+<p><b>See also </b><a href="tasking-tasktree.html#asyncCount" translate="no">asyncCount</a>().</p>
+<!-- @@@asyncCountChanged -->
+<!-- $$$cancel[overload1]$$$cancel -->
+<h3 class="fn" translate="no" id="cancel"><span class="type">void</span> TaskTree::<span class="name">cancel</span>()</h3>
+<p>Cancels the execution of the running task tree.</p>
+<p>Cancels all the running tasks immediately. All running tasks finish with an error, invoking their error handlers. All running groups dispatch their handlers according to their workflow policies, invoking their done handlers. The storages' <a href="tasking-tasktree.html#onStorageDone" translate="no">onStorageDone</a>() handlers are invoked, too. The <a href="tasking-tasktree.html#progressValueChanged" translate="no">progressValueChanged</a>() signals are also being sent. This behavior may always be relied on.</p>
+<p>The <code translate="no">cancel()</code> function is executed synchronously, so that after a call to <code translate="no">cancel()</code> all running tasks are finished and the tree is already canceled. It's guaranteed that <code translate="no">cancel()</code> will run quickly, without any blocking wait for the currently running tasks to finish, provided the used tasks implement their destructors in a non-blocking way.</p>
+<p>When the task tree is empty, that is, constructed with a default constructor, a call to <code translate="no">cancel()</code> is no-op and the relevant warning message is issued.</p>
+<p>Otherwise, when the task tree wasn't started, a call to <code translate="no">cancel()</code> is ignored.</p>
+<div class="admonition note">
+<p><b>Note: </b>Do not call this function directly from any of the running task's handlers or task tree's signals.</p>
+</div>
+<p><b>See also </b><a href="tasking-tasktree.html#dtor.TaskTree" translate="no">~TaskTree</a>().</p>
+<!-- @@@cancel -->
+<!-- $$$done[overload1]$$$doneTasking::DoneWith -->
+<h3 class="fn" translate="no" id="done"><code translate="no">[signal] </code><span class="type">void</span> TaskTree::<span class="name">done</span>(<span class="type"><a href="tasking.html#DoneWith-enum" translate="no">Tasking::DoneWith</a></span> <i>result</i>)</h3>
+<p>This signal is emitted when the task tree finished, passing the final <i translate="no">result</i> of the execution. The task tree neither calls any handler, nor emits any signal anymore after this signal was emitted.</p>
+<div class="admonition note">
+<p><b>Note: </b>Do not delete the task tree directly from this signal's handler. Use deleteLater() instead.</p>
+</div>
+<p><b>See also </b><a href="tasking-tasktree.html#started" translate="no">started</a>().</p>
+<!-- @@@done -->
+<!-- $$$isRunning[overload1]$$$isRunning -->
+<h3 class="fn" translate="no" id="isRunning"><span class="type">bool</span> TaskTree::<span class="name">isRunning</span>() const</h3>
+<p>Returns <code translate="no">true</code> if the task tree is currently running; otherwise returns <code translate="no">false</code>.</p>
+<p><b>See also </b><a href="tasking-tasktree.html#start" translate="no">start</a>() and <a href="tasking-tasktree.html#cancel" translate="no">cancel</a>().</p>
+<!-- @@@isRunning -->
+<!-- $$$onStorageDone[overload1]$$$onStorageDoneconstStorage<StorageStruct>&Handler&& -->
+<h3 class="fn" translate="no" id="onStorageDone">template &lt;typename StorageStruct, typename Handler&gt; <span class="type">void</span> TaskTree::<span class="name">onStorageDone</span>(const <span class="type"><a href="tasking-storage.html" translate="no">Storage</a></span>&lt;<span class="type">StorageStruct</span>&gt; &amp;<i>storage</i>, <span class="type">Handler</span> &amp;&amp;<i>handler</i>)</h3>
+<p>Installs a storage done <i translate="no">handler</i> for the <i translate="no">storage</i> to retrieve the final data dynamically from the running task tree.</p>
+<p>The <code translate="no">StorageHandler</code> takes a <code translate="no">const</code> <i>reference</i> to the <code translate="no">StorageStruct</code> instance:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">static</span> <span class="type">QByteArray</span> load(<span class="keyword">const</span> <span class="type">QString</span> <span class="operator">&amp;</span>fileName) { <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span> }
+
+ Storage<span class="operator">&lt;</span><span class="type">QByteArray</span><span class="operator">&gt;</span> storage;
+
+ <span class="keyword">const</span> <span class="keyword">auto</span> onLoaderSetup <span class="operator">=</span> <span class="operator">[</span><span class="operator">]</span>(ConcurrentCall<span class="operator">&lt;</span><span class="type">QByteArray</span><span class="operator">&gt;</span> <span class="operator">&amp;</span>concurrent) {
+     concurrent<span class="operator">.</span>setConcurrentCallData(<span class="operator">&amp;</span>load<span class="operator">,</span> <span class="string">&quot;foo.txt&quot;</span>);
+ };
+ <span class="keyword">const</span> <span class="keyword">auto</span> onLoaderDone <span class="operator">=</span> <span class="operator">[</span>storage<span class="operator">]</span>(<span class="keyword">const</span> ConcurrentCall<span class="operator">&lt;</span><span class="type">QByteArray</span><span class="operator">&gt;</span> <span class="operator">&amp;</span>concurrent) {
+     <span class="operator">*</span>storage <span class="operator">=</span> concurrent<span class="operator">.</span>result();
+ };
+
+ <span class="keyword">const</span> Group root {
+     storage<span class="operator">,</span>
+     ConcurrentCallTask(onLoaderSetup<span class="operator">,</span> onLoaderDone<span class="operator">,</span> CallDoneIf<span class="operator">::</span>Success)
+ };
+
+ TaskTree taskTree(root);
+ <span class="keyword">auto</span> collectStorage <span class="operator">=</span> <span class="operator">[</span><span class="operator">]</span>(<span class="keyword">const</span> <span class="type">QByteArray</span> <span class="operator">&amp;</span>storage){
+     qDebug() <span class="operator">&lt;</span><span class="operator">&lt;</span> <span class="string">&quot;final content&quot;</span> <span class="operator">&lt;</span><span class="operator">&lt;</span> storage;
+ };
+ taskTree<span class="operator">.</span>onStorageDone(storage<span class="operator">,</span> collectStorage);
+ taskTree<span class="operator">.</span>start();
+</pre>
+<p>When the running task tree is about to leave a Group where the <i translate="no">storage</i> is placed in, it destructs a <code translate="no">StorageStruct</code> instance. Just before the <code translate="no">StorageStruct</code> instance is destructed, and after all possible handlers from this group were called, the task tree invokes the passed <i translate="no">handler</i>. This enables reading the final content of the given storage dynamically and processing it further outside of the task tree.</p>
+<p>This handler is called also when the running tree is canceled. However, it's not called when the running tree is destructed.</p>
+<p><b>See also </b><a href="tasking-tasktree.html#onStorageSetup" translate="no">onStorageSetup</a>().</p>
+<!-- @@@onStorageDone -->
+<!-- $$$onStorageSetup[overload1]$$$onStorageSetupconstStorage<StorageStruct>&Handler&& -->
+<h3 class="fn" translate="no" id="onStorageSetup">template &lt;typename StorageStruct, typename Handler&gt; <span class="type">void</span> TaskTree::<span class="name">onStorageSetup</span>(const <span class="type"><a href="tasking-storage.html" translate="no">Storage</a></span>&lt;<span class="type">StorageStruct</span>&gt; &amp;<i>storage</i>, <span class="type">Handler</span> &amp;&amp;<i>handler</i>)</h3>
+<p>Installs a storage setup <i translate="no">handler</i> for the <i translate="no">storage</i> to pass the initial data dynamically to the running task tree.</p>
+<p>The <code translate="no">StorageHandler</code> takes a <i>reference</i> to the <code translate="no">StorageStruct</code> instance:</p>
+<pre class="cpp" translate="no">
+ <span class="keyword">static</span> <span class="type">void</span> save(<span class="keyword">const</span> <span class="type">QString</span> <span class="operator">&amp;</span>fileName<span class="operator">,</span> <span class="keyword">const</span> <span class="type">QByteArray</span> <span class="operator">&amp;</span>array) { <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span> }
+
+ Storage<span class="operator">&lt;</span><span class="type">QByteArray</span><span class="operator">&gt;</span> storage;
+
+ <span class="keyword">const</span> <span class="keyword">auto</span> onSaverSetup <span class="operator">=</span> <span class="operator">[</span>storage<span class="operator">]</span>(ConcurrentCall<span class="operator">&lt;</span><span class="type">QByteArray</span><span class="operator">&gt;</span> <span class="operator">&amp;</span>concurrent) {
+     concurrent<span class="operator">.</span>setConcurrentCallData(<span class="operator">&amp;</span>save<span class="operator">,</span> <span class="string">&quot;foo.txt&quot;</span><span class="operator">,</span> <span class="operator">*</span>storage);
+ };
+
+ <span class="keyword">const</span> Group root {
+     storage<span class="operator">,</span>
+     ConcurrentCallTask(onSaverSetup)
+ };
+
+ TaskTree taskTree(root);
+ <span class="keyword">auto</span> initStorage <span class="operator">=</span> <span class="operator">[</span><span class="operator">]</span>(<span class="type">QByteArray</span> <span class="operator">&amp;</span>storage){
+     storage <span class="operator">=</span> <span class="string">&quot;initial content&quot;</span>;
+ };
+ taskTree<span class="operator">.</span>onStorageSetup(storage<span class="operator">,</span> initStorage);
+ taskTree<span class="operator">.</span>start();
+</pre>
+<p>When the running task tree enters a Group where the <i translate="no">storage</i> is placed in, it creates a <code translate="no">StorageStruct</code> instance, ready to be used inside this group. Just after the <code translate="no">StorageStruct</code> instance is created, and before any handler of this group is called, the task tree invokes the passed <i translate="no">handler</i>. This enables setting up initial content for the given storage dynamically. Later, when any group's handler is invoked, the task tree activates the created and initialized storage, so that it's available inside any group's handler.</p>
+<p><b>See also </b><a href="tasking-tasktree.html#onStorageDone" translate="no">onStorageDone</a>().</p>
+<!-- @@@onStorageSetup -->
+<!-- $$$progressMaximum[overload1]$$$progressMaximum -->
+<h3 class="fn" translate="no" id="progressMaximum"><span class="type">int</span> TaskTree::<span class="name">progressMaximum</span>() const</h3>
+<p>Returns the maximum <a href="tasking-tasktree.html#progressValue" translate="no">progressValue</a>().</p>
+<div class="admonition note">
+<p><b>Note: </b>Currently, it's the same as <a href="tasking-tasktree.html#taskCount" translate="no">taskCount</a>(). This might change in the future.</p>
+</div>
+<p><b>See also </b><a href="tasking-tasktree.html#progressValue" translate="no">progressValue</a>().</p>
+<!-- @@@progressMaximum -->
+<!-- $$$progressValue[overload1]$$$progressValue -->
+<h3 class="fn" translate="no" id="progressValue"><span class="type">int</span> TaskTree::<span class="name">progressValue</span>() const</h3>
+<p>Returns the current progress value, which is between the <code translate="no">0</code> and <a href="tasking-tasktree.html#progressMaximum" translate="no">progressMaximum</a>().</p>
+<p>The returned number indicates how many tasks have been already finished, canceled, or skipped while the task tree is running. When the task tree is started, this number is set to <code translate="no">0</code>. When the task tree is finished, this number always equals <a href="tasking-tasktree.html#progressMaximum" translate="no">progressMaximum</a>().</p>
+<p><b>See also </b><a href="tasking-tasktree.html#progressMaximum" translate="no">progressMaximum</a>() and <a href="tasking-tasktree.html#progressValueChanged" translate="no">progressValueChanged</a>().</p>
+<!-- @@@progressValue -->
+<!-- $$$progressValueChanged[overload1]$$$progressValueChangedint -->
+<h3 class="fn" translate="no" id="progressValueChanged"><code translate="no">[signal] </code><span class="type">void</span> TaskTree::<span class="name">progressValueChanged</span>(<span class="type">int</span> <i>value</i>)</h3>
+<p>This signal is emitted when the running task tree finished, canceled, or skipped some tasks. The <i translate="no">value</i> gives the current total number of finished, canceled or skipped tasks. When the task tree is started, and after the <a href="tasking-tasktree.html#started" translate="no">started</a>() signal was emitted, this signal is emitted with an initial <i translate="no">value</i> of <code translate="no">0</code>. When the task tree is about to finish, and before the <a href="tasking-tasktree.html#done" translate="no">done</a>() signal is emitted, this signal is emitted with the final <i translate="no">value</i> of <a href="tasking-tasktree.html#progressMaximum" translate="no">progressMaximum</a>().</p>
+<p><b>See also </b><a href="tasking-tasktree.html#progressValue" translate="no">progressValue</a>() and <a href="tasking-tasktree.html#progressMaximum" translate="no">progressMaximum</a>().</p>
+<!-- @@@progressValueChanged -->
+<!-- $$$runBlocking[overload1]$$$runBlocking -->
+<h3 class="fn" translate="no" id="runBlocking"><span class="type"><a href="tasking.html#DoneWith-enum" translate="no">Tasking::DoneWith</a></span> TaskTree::<span class="name">runBlocking</span>()</h3>
+<p>Executes a local event loop with QEventLoop::ExcludeUserInputEvents and starts the task tree.</p>
+<p>Returns <a href="tasking.html#DoneWith-enum" translate="no">DoneWith::Success</a> if the task tree finished successfully; otherwise returns <a href="tasking.html#DoneWith-enum" translate="no">DoneWith::Error</a>.</p>
+<div class="admonition note">
+<p><b>Note: </b>Avoid using this method from the main thread. Use asynchronous <a href="tasking-tasktree.html#start" translate="no">start</a>() instead. This method is to be used in non-main threads or in auto tests.</p>
+</div>
+<p><b>See also </b><a href="tasking-tasktree.html#start" translate="no">start</a>().</p>
+<!-- @@@runBlocking -->
+<!-- $$$runBlocking$$$runBlockingconstQFuture<void>& -->
+<h3 class="fn" translate="no" id="runBlocking-1"><span class="type"><a href="tasking.html#DoneWith-enum" translate="no">Tasking::DoneWith</a></span> TaskTree::<span class="name">runBlocking</span>(const <span class="type">QFuture</span>&lt;<span class="type">void</span>&gt; &amp;<i>future</i>)</h3>
+<p>This function overloads runBlocking().</p>
+<p>The passed <i translate="no">future</i> is used for listening to the cancel event. When the task tree is canceled, this method cancels the passed <i translate="no">future</i>.</p>
+<!-- @@@runBlocking -->
+<!-- $$$runBlocking$$$runBlockingconstTasking::Group&std::chrono::milliseconds -->
+<h3 class="fn" translate="no" id="runBlocking-2"><code translate="no">[static] </code><span class="type"><a href="tasking.html#DoneWith-enum" translate="no">Tasking::DoneWith</a></span> TaskTree::<span class="name">runBlocking</span>(const <span class="type"><a href="tasking-group.html" translate="no">Tasking::Group</a></span> &amp;<i>recipe</i>, <span class="type">std::chrono::milliseconds</span> <i>timeout</i> = std::chrono::milliseconds::max())</h3>
+<p>Constructs a temporary task tree using the passed <i translate="no">recipe</i> and runs it blocking.</p>
+<p>The optionally provided <i translate="no">timeout</i> is used to cancel the tree automatically after <i translate="no">timeout</i> milliseconds have passed.</p>
+<p>Returns <a href="tasking.html#DoneWith-enum" translate="no">DoneWith::Success</a> if the task tree finished successfully; otherwise returns <a href="tasking.html#DoneWith-enum" translate="no">DoneWith::Error</a>.</p>
+<div class="admonition note">
+<p><b>Note: </b>Avoid using this method from the main thread. Use asynchronous <a href="tasking-tasktree.html#start" translate="no">start</a>() instead. This method is to be used in non-main threads or in auto tests.</p>
+</div>
+<p><b>See also </b><a href="tasking-tasktree.html#start" translate="no">start</a>().</p>
+<!-- @@@runBlocking -->
+<!-- $$$runBlocking$$$runBlockingconstTasking::Group&constQFuture<void>&std::chrono::milliseconds -->
+<h3 class="fn" translate="no" id="runBlocking-3"><code translate="no">[static] </code><span class="type"><a href="tasking.html#DoneWith-enum" translate="no">Tasking::DoneWith</a></span> TaskTree::<span class="name">runBlocking</span>(const <span class="type"><a href="tasking-group.html" translate="no">Tasking::Group</a></span> &amp;<i>recipe</i>, const <span class="type">QFuture</span>&lt;<span class="type">void</span>&gt; &amp;<i>future</i>, <span class="type">std::chrono::milliseconds</span> <i>timeout</i> = std::chrono::milliseconds::max())</h3>
+<p>This function overloads runBlocking(const Group &amp;recipe, milliseconds timeout).</p>
+<p>The passed <i translate="no">future</i> is used for listening to the cancel event. When the task tree is canceled, this method cancels the passed <i translate="no">future</i>.</p>
+<!-- @@@runBlocking -->
+<!-- $$$setRecipe[overload1]$$$setRecipeconstTasking::Group& -->
+<h3 class="fn" translate="no" id="setRecipe"><span class="type">void</span> TaskTree::<span class="name">setRecipe</span>(const <span class="type"><a href="tasking-group.html" translate="no">Tasking::Group</a></span> &amp;<i>recipe</i>)</h3>
+<p>Sets a given <i translate="no">recipe</i> for the task tree. After the task tree is started, it executes the tasks contained inside the <i translate="no">recipe</i> and handles finished tasks according to the passed description.</p>
+<div class="admonition note">
+<p><b>Note: </b>When called for a running task tree, the call is ignored.</p>
+</div>
+<p><b>See also </b><a href="tasking-tasktree.html#TaskTree-1" translate="no">TaskTree</a>(const Tasking::Group &amp;recipe) and <a href="tasking-tasktree.html#start" translate="no">start</a>().</p>
+<!-- @@@setRecipe -->
+<!-- $$$start[overload1]$$$start -->
+<h3 class="fn" translate="no" id="start"><span class="type">void</span> TaskTree::<span class="name">start</span>()</h3>
+<p>Starts the task tree.</p>
+<p>Use <a href="tasking-tasktree.html#setRecipe" translate="no">setRecipe</a>() or the constructor to set the declarative description according to which the task tree will execute the contained tasks and handle finished tasks.</p>
+<p>When the task tree is empty, that is, constructed with a default constructor, a call to <code translate="no">start()</code> is no-op and the relevant warning message is issued.</p>
+<p>Otherwise, when the task tree is already running, a call to <i>start()</i> is ignored and the relevant warning message is issued.</p>
+<p>Otherwise, the task tree is started.</p>
+<p>The started task tree may finish synchronously, for example when the main group's start handler returns <a href="tasking.html#SetupResult-enum" translate="no">SetupResult::StopWithError</a>. For this reason, the connection to the done signal should be established before calling <code translate="no">start()</code>. Use <a href="tasking-tasktree.html#isRunning" translate="no">isRunning</a>() in order to detect whether the task tree is still running after a call to <code translate="no">start()</code>.</p>
+<p>The task tree implementation relies on the running event loop. Make sure you have a QEventLoop or QCoreApplication or one of its subclasses running (or about to be run) when calling this method.</p>
+<p><b>See also </b><a href="tasking-tasktree.html#TaskTree-1" translate="no">TaskTree</a>(const Tasking::Group &amp;), <a href="tasking-tasktree.html#setRecipe" translate="no">setRecipe</a>(), <a href="tasking-tasktree.html#isRunning" translate="no">isRunning</a>(), and <a href="tasking-tasktree.html#cancel" translate="no">cancel</a>().</p>
+<!-- @@@start -->
+<!-- $$$started[overload1]$$$started -->
+<h3 class="fn" translate="no" id="started"><code translate="no">[signal] </code><span class="type">void</span> TaskTree::<span class="name">started</span>()</h3>
+<p>This signal is emitted when the task tree is started. The emission of this signal is followed synchronously by the <a href="tasking-tasktree.html#progressValueChanged" translate="no">progressValueChanged</a>() signal with an initial <code translate="no">0</code> value.</p>
+<p><b>See also </b><a href="tasking-tasktree.html#start" translate="no">start</a>() and <a href="tasking-tasktree.html#done" translate="no">done</a>().</p>
+<!-- @@@started -->
+<!-- $$$taskCount[overload1]$$$taskCount -->
+<h3 class="fn" translate="no" id="taskCount"><span class="type">int</span> TaskTree::<span class="name">taskCount</span>() const</h3>
+<p>Returns the number of asynchronous tasks contained in the stored recipe.</p>
+<div class="admonition note">
+<p><b>Note: </b>The returned number doesn't include <a href="tasking-sync.html" translate="no">Sync</a> tasks.</p>
+</div>
+<div class="admonition note">
+<p><b>Note: </b>Any task or group that was set up using withTimeout() increases the total number of tasks by <code translate="no">1</code>.</p>
+</div>
+<p><b>See also </b><a href="tasking-tasktree.html#setRecipe" translate="no">setRecipe</a>() and <a href="tasking-tasktree.html#progressMaximum" translate="no">progressMaximum</a>().</p>
+<!-- @@@taskCount -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

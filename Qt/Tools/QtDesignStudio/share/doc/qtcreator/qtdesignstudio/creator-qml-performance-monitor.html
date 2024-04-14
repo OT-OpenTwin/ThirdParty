@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- qtquick-profiler.qdoc -->
+  <title>Profiling QML Applications | Qt Design Studio Manual 4.4.0</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Design Studio Manual</a></li>
+<li>Profiling QML Applications</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Design Studio Manual 4.4.0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-qml-debugging-example.html" />
+  <link rel="next" href="studio-advanced.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-qml-debugging-example.html">Debugging a Qt Quick Example Application</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-advanced.html">Advanced Designer Topics</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#using-qml-profiler">Using QML Profiler</a></li>
+<li class="level1"><a href="#specifying-flushing-settings">Specifying Flushing Settings</a></li>
+<li class="level1"><a href="#attaching-to-running-qt-quick-applications">Attaching to Running Qt Quick Applications</a></li>
+<li class="level1"><a href="#analyzing-collected-data">Analyzing Collected Data</a></li>
+<li class="level2"><a href="#selecting-event-ranges">Selecting Event Ranges</a></li>
+<li class="level2"><a href="#understanding-the-data">Understanding the Data</a></li>
+<li class="level2"><a href="#analyzing-scene-graph-events">Analyzing Scene Graph Events</a></li>
+<li class="level2"><a href="#analyzing-qt-quick-3d-events">Analyzing Qt Quick 3D Events</a></li>
+<li class="level1"><a href="#viewing-statistics">Viewing Statistics</a></li>
+<li class="level2"><a href="#visualizing-statistics-as-flame-graphs">Visualizing Statistics as Flame Graphs</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Profiling QML Applications</h1>
+<!-- $$$creator-qml-performance-monitor.html-description -->
+<div class="descr" id="details">
+<p>You can use the QML Profiler to find causes for typical performance problems in your applications, such as slowness and unresponsive, stuttering user interfaces. Typical causes include executing too much JavaScript in too few frames. All JavaScript must return before the GUI thread can proceed, and frames are delayed or dropped if the GUI thread is not ready.</p>
+<p>Another typical cause for similar performance problems is creating, painting, or updating invisible items, which takes time in the GUI thread.</p>
+<p>To find excessive use of JavaScript, check the frame rate in animations and Scene Graph events, look for gaps, and check whether the application behaves as expected. The JavaScript category displays the run time of functions, which you should try to keep below 16 ms per frame.</p>
+<p>To find problems caused by handling invisible items, look for dropped frames and check that you are not using too many short bindings or signal handlers that are updated per frame. You can also <a href="https://doc.qt.io/qt/qtquick-visualcanvas-scenegraph-renderer.html#visualizing-overdraw" translate="no">visualize Scene Graph overdraw</a> to check scene layout and find items that are never visible to the users because they are located outside the screen or hidden beneath other, visible elements.</p>
+<div class="admonition note">
+<p><b>Note: </b>In this section, you are using advanced menu items. These are not visible by default. To toggle the visibility of advanced menu items, see <a href="creator-quick-tour.html#customizing-the-menu" translate="no">Customizing the Menu</a>.</p>
+</div>
+<h2 id="using-qml-profiler">Using QML Profiler</h2>
+<p>To monitor the performance of an application in the QML Profiler:</p>
+<ol class="1" type="1"><li>To be able to profile an application, you must set up QML debugging for the project. For more information, see <a href="creator-debugging-qml.html#setting-up-qml-debugging" translate="no">Setting Up QML Debugging</a>.<div class="admonition note">
+<p><b>Note: </b>To profile applications on <a href="studio-terms.html#glossary-device" translate="no">devices</a>, you must install Qt libraries on them.</p>
+</div>
+</li>
+<li>Select <b translate="no">Analyze</b> &gt; <b translate="no">QML Profiler</b> to profile the current application.</li>
+<li>Select the <img src="images/qtcreator-analyze-start-button.png" alt="" /> (<b translate="no">Start</b>) button to start the application from the QML Profiler.<div class="admonition note">
+<p><b>Note: </b>If data collection does not start automatically, select the <img src="images/recordfill.png" alt="" /> (<b translate="no">Enable Profiling</b>) button.</p>
+</div>
+</li>
+</ol>
+<p>When you start analyzing an application, the application is launched, and the QML Profiler immediately begins to collect data. This is indicated by the time running in the <b translate="no">Elapsed</b> field.</p>
+<p>Data is collected until you select the <b translate="no">Enable Profiling</b> button. Data collection takes time, and therefore, there might be a delay before the data is displayed.</p>
+<p>Do not use application commands to exit the application because data is sent to the QML Profiler when you select the <b translate="no">Enable Profiling</b> button. The application continues to run for some seconds, after which it is stopped automatically. If you exit the application, the data is not sent.</p>
+<p>Select the <b translate="no">Disable Profiling</b> button to disable the automatic start of the data collection when an application is launched. Data collection starts when you select the button again.</p>
+<p>To save all the collected data, select <b translate="no">Analyze</b> &gt; <b translate="no">QML Profiler Options</b> &gt; <b translate="no">Save QML Trace</b>. To view the saved data, select <b translate="no">Load QML Trace</b>. You can also deliver the saved data to others for examination or load data saved by them.</p>
+<h2 id="specifying-flushing-settings">Specifying Flushing Settings</h2>
+<p>You can specify flushing settings for the QML Profiler either globally for all projects or separately for each project. To specify global settings, select <a href="creator-how-to-find-preferences.html" translate="no">Preferences</a> &gt; <b translate="no">Analyzer</b>.</p>
+<p>To specify custom QML Profiler settings for a particular project, select <b translate="no">Projects</b> &gt; <b translate="no">Run</b> and then select <b translate="no">Custom</b> in <b translate="no">QML Profiler Settings</b>. To restore the global settings for the project, select <b translate="no">Restore Global</b>.</p>
+<p class="centerAlign"><img src="images/qml-profiler-settings.png" alt="&quot;QML Profiler Settings&quot;" /></p><p>Select the <b translate="no">Flush data while profiling</b> check box to flush the data periodically instead of flushing all data when profiling stops. This saves memory on the target device and shortens the wait between the profiling being stopped and the data being displayed.</p>
+<p>In the <b translate="no">Flush interval</b> field, set the flush interval in milliseconds. The shorter the interval, the more often the data is flushed. The longer the interval, the more data has to be buffered in the target application, potentially wasting memory. However, the flushing itself takes time, which can distort the profiling results.</p>
+<p>If you have multiple QML engines and you want to aggregate the data produced by all of them into one trace, select the <b translate="no">Process data only when process ends</b> check box. Otherwise, the profiling stops when one of the engines stops.</p>
+<h2 id="attaching-to-running-qt-quick-applications">Attaching to Running Qt Quick Applications</h2>
+<p>You can profile Qt Quick applications that are not launched by Qt Design Studio. However, you must enable QML debugging and profiling for the application in the project build settings. For more information, see <a href="creator-debugging-qml.html#setting-up-qml-debugging" translate="no">Setting Up QML Debugging</a>.</p>
+<p>To attach to waiting applications:</p>
+<ol class="1" type="1"><li>Select <b translate="no">Analyze</b> &gt; <b translate="no">QML Profiler (Attach to Waiting Application)</b>.<p class="centerAlign"><img src="images/qml-profiler-start-dialog.png" alt="&quot;Start QML Profiler dialog&quot;" /></p></li>
+<li>In <b translate="no">Kit</b>, select the kit used to build the application.</li>
+<li>In <b translate="no">Port</b>, specify the port to listen to.</li>
+<li>Select <b translate="no">OK</b>.</li>
+</ol>
+<h2 id="analyzing-collected-data">Analyzing Collected Data</h2>
+<p>The <b translate="no">Timeline</b> view displays graphical representations of QML and JavaScript execution and a condensed view of all recorded events.</p>
+<p class="centerAlign"><img src="images/qtcreator-qml-performance-monitor.png" alt="&quot;QML Profiler&quot;" /></p><p>Each row in the timeline (6) describes a type of QML events that were recorded. Move the cursor on an event on a row to see how long it takes and where in the source it is being called. To display the information only when an event is selected, disable the <b translate="no">View Event Information on Mouseover</b> button (4).</p>
+<p>The outline (10) summarizes the period for which data was collected. Drag the zoom range (8) or click the outline to move on the outline. You can also move between events by selecting the <b translate="no">Jump to Previous Event</b> and <b translate="no">Jump to Next Event</b> buttons (1).</p>
+<p>Select the <b translate="no">Show Zoom Slider</b> button (2) to open a slider that you can use to set the zoom level. You can also drag the zoom handles (9). To reset the default zoom level, right-click the timeline to open the context menu, and select <b translate="no">Reset Zoom</b>.</p>
+<p>Click the time ruler to add vertical orientation lines (5) to the timeline.</p>
+<h3 id="selecting-event-ranges">Selecting Event Ranges</h3>
+<p>You can select an event range (7) to view the frame rate of events and to compare it with the frame rate of similar events. Select the <b translate="no">Select Range</b> button (3) to activate the selection tool. Then click in the timeline to specify the beginning of the event range. Drag the selection handle to define the end of the range. The length of the range indicates the frame rate of the event.</p>
+<p>You can use event ranges also to measure delays between two subsequent events. Place a range between the end of the first event and the beginning of the second event. The <b translate="no">Duration</b> field displays the delay between the events in milliseconds.</p>
+<p>To zoom into an event range, double-click it.</p>
+<p>To narrow down the current range in the <b translate="no">Timeline</b>, <b translate="no">Statistics</b>, and <b translate="no">Flame Graph</b> views, right-click the range and select <b translate="no">Analyze Current Range</b>. To return to the full range, select <b translate="no">Analyze Full Range</b> in the context menu.</p>
+<p>To remove an event range, close the <b translate="no">Selection</b> dialog.</p>
+<h3 id="understanding-the-data">Understanding the Data</h3>
+<p>Generally, events in the timeline view indicate how long QML or JavaScript execution took. Move the mouse over them to see details. For most events, they include location in source code, duration and some relevant parts of the source code itself.</p>
+<p>You can click on an event to move the cursor in the code editor to the part of the code the event is associated with.</p>
+<p>The following types of events are displayed in the timeline view on one or several rows. The availability of event types depends on the version of Qt the application was compiled with and the version of Qt Quick it is using.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Event Category</th><th >Description</th><th >Minimum Qt Version</th><th >Qt Quick Version</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Pixmap Cache</b></td><td >Displays the general amount of pixmap data cached, in pixels. In addition, displays a separate event for each picture being loaded, with specifics about its file name and size.</td><td >Qt 5.1</td><td >Qt Quick 2</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Scene Graph</b></td><td >Displays the time when scene graph frames are rendered and some additional timing information for the various stages executed to do so.</td><td >Qt 5.1</td><td >Qt Quick 2</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Memory Usage</b></td><td >Displays block allocations of the JavaScript memory manager. Generally, the memory manager will reserve larger blocks of memory in one piece and later hand them out to the application in smaller bits. If the application requests single blocks of memory surpassing a certain size, the memory manager will allocate those separately. Those two modes of operation are shown as events of different colors. The second row displays the actual usage of the allocated memory. This is the amount of JavaScript heap the application has actually requested.</td><td >Qt 5.4</td><td >Qt Quick 2</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Input Events</b></td><td >Displays mouse and keyboard events.</td><td >Qt 4.7.4</td><td >Qt Quick 1 or Qt Quick 2</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Painting</b></td><td >Displays the time spent painting the scene for each frame.</td><td >Qt 4.7.4</td><td >Qt Quick 1</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Animations</b></td><td >Displays the amount of animations that are active and the frame rate that they are running at. Information about render thread animations is displayed for applications that are built with Qt 5.3 or later. Render thread animations are shown in a separate row then.</td><td >Qt 5.0 (Qt 5.3)</td><td >Qt Quick 2</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Compiling</b></td><td >Displays the time spent compiling the QML files.</td><td >Qt 4.7.4</td><td >Qt Quick 1 or Qt Quick 2</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Creating</b></td><td >Displays the time spent creating the elements in the scene. In Qt Quick 2, creation of elements takes place in two stages. The first stage is for the creation of the data structures, including child elements. The second stage represents the completion callbacks. Not all elements trigger completion callbacks, though. The stages are shown as separate events in the timeline. For Qt Quick 2 applications compiled with versions of Qt before 5.2.1 only the creation of top-level elements is shown, as single events.</td><td >Qt 4.7.4 (Qt 5.2.1)</td><td >Qt Quick 1 or Qt Quick 2</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Binding</b></td><td >Displays the time when a binding is evaluated and how long the evaluation takes.</td><td >Qt 4.7.4</td><td >Qt Quick 1 or Qt Quick 2</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Handling Signal</b></td><td >Displays the time when a signal is handled and how long the handling takes.</td><td >Qt 4.7.4</td><td >Qt Quick 1 or Qt Quick 2</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">JavaScript</b></td><td >Displays the time spent executing the actual JavaScript behind bindings and signal handlers. It lists all the JavaScript functions you may be using to evaluate bindings or handle signals.</td><td >Qt 5.3</td><td >Qt Quick 2</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Quick3D</b></td><td >Displays the time spent rendering Qt Quick 3D frames, timing information for frame preparation and synchronization, particle system update times and particle update count, as well as texture and mesh memory allocations and memory consumption.</td><td >Qt 6.3</td><td >Qt Quick 3D</td></tr>
+</table></div>
+<h3 id="analyzing-scene-graph-events">Analyzing Scene Graph Events</h3>
+<p>In order to understand the scene graph category, it's important to understand how the Qt Quick scene graph works. See <a href="https://doc.qt.io/qt/qtquick-visualcanvas-scenegraph.html" translate="no">Qt Quick Scene Graph</a> and <a href="https://doc.qt.io/qt/qtquick-visualcanvas-scenegraph-renderer.html" translate="no">Qt Quick Scene Graph Default Renderer</a> for a detailed description. The following events are reported in the <b translate="no">Scene Graph</b> category. Not all events are generated by all render loops. In the Windows and Basic render loops everything runs in the same thread and the distinction between GUI thread and render thread is meaningless.</p>
+<p>If you set the environment variable QSG_RENDER_TIMING, you get a textual output of similar, but slightly different timings from the application being profiled. For easier orientation, the differences are listed below.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Event Type</th><th >Thread</th><th >Render Loop Types</th><th >Label in output of QSG_RENDER_TIMING</th><th >Description</th><th >Caveats</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Polish</b></td><td >GUI</td><td >Threaded, Basic, Windows</td><td >polish</td><td >Final touch-up of items before they are rendered using <a href="https://doc.qt.io/qt/qquickitem.html#updatePolish" translate="no">QQuickItem::updatePolish</a>().</td><td >Versions of Qt prior to Qt 5.4 record no polish times for the basic render loop and incorrect ones for the windows render loop.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">GUI Thread Wait</b></td><td >GUI</td><td >Threaded</td><td >lock</td><td >Executing slots connected to the <a href="https://doc.qt.io/qt/qquickwindow.html#afterAnimating" translate="no">QQuickWindow::afterAnimating</a>() signal and then locking the render thread's mutex before waiting on the same mutex at <b translate="no">GUI Thread Sync</b>. If this starts long before <b translate="no">Render Thread Sync</b>, there is <i>free</i> time in the GUI thread you could be using for running additional QML or JavaScript.</td><td >None</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">GUI Thread Sync</b></td><td >GUI</td><td >Threaded</td><td >blockedForSync</td><td >The time the GUI thread is blocked, waiting for the render thread.</td><td >None</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Animations</b></td><td >GUI</td><td >Threaded, Windows</td><td >animations</td><td >Advancing animations in the GUI thread. The basic render loop does not drive animations in sync with the rendering. This is why no animation events will be shown when using the basic render loop. Watch the <b translate="no">Animations</b> category to see animation timing in this case.</td><td >None</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Render Thread Sync</b></td><td >Render</td><td >Threaded, Basic, Windows</td><td >Frame rendered ... sync</td><td >Synchronizing the QML state into the scene graph using <a href="https://doc.qt.io/qt/qquickitem.html#updatePaintNode" translate="no">QQuickItem::updatePaintNode</a>().</td><td >None</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Render</b></td><td >Render</td><td >Threaded, Basic, Windows</td><td >Frame rendered ... render</td><td >Total time spent rendering the frame, including preparing and uploading all the necessary data to the GPU. This is the <i>gross</i> render time. Do not confuse it with the <i>net</i> <b translate="no">Render Render</b> time below.</td><td >With versions of Qt prior to Qt 5.5, the gross render time and the below breakup of render times may be misaligned by some microseconds due to different, unsynchronized timers being used to measure them. For example <b translate="no">Render Preprocess</b> might seem to start before <b translate="no">Render Thread Sync</b> is finished.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Swap</b></td><td >Render</td><td >Threaded, Basic, Windows</td><td >Frame rendered ... swap</td><td >Swapping frames after rendering.</td><td >The output of swap times triggered by setting QSG_RENDER_TIMING is incorrect for the basic render loop and versions of Qt prior to Qt 5.4. The QML profiler shows the correct swap times.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Render Preprocess</b></td><td >Render</td><td >Threaded, Basic, Windows</td><td >time in renderer ... preprocess</td><td >Calling <a href="https://doc.qt.io/qt/qsgnode.html#preprocess" translate="no">QSGNode::preprocess</a>() on all nodes that need to be preprocessed. This is part of the gross <b translate="no">Render</b> step.</td><td >May not be properly aligned with <b translate="no">Render</b> with versions of Qt prior to Qt 5.5.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Render Update</b></td><td >Render</td><td >Threaded, Basic, Windows</td><td >time in renderer ... updates</td><td >Iterating and processing all the nodes in the scene graph to update their geometry, transformations, opacity, and other state. In the <b translate="no">Render Thread Sync</b> stage, each node is updated separately with state from the GUI thread. In <b translate="no">Render Update</b>, all the nodes are combined to create the final scene. This is part of the gross <b translate="no">Render</b> step.</td><td >May not be properly aligned with <b translate="no">Render</b> with versions of Qt prior to Qt 5.5.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Render Bind</b></td><td >Render</td><td >Threaded, Basic, Windows</td><td >time in renderer ... binding</td><td >Binding the correct framebuffer for OpenGL rendering. This is part of the gross <b translate="no">Render</b> step.</td><td >May not be properly aligned with <b translate="no">Render</b> with versions of Qt prior to Qt 5.5.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Render Render</b></td><td >Render</td><td >Threaded, Basic, Windows</td><td >time in renderer ... rendering</td><td >The actual process of sending all the data to the GPU via OpenGL. This is part of the gross <b translate="no">Render</b> step.</td><td >May not be properly aligned with <b translate="no">Render</b> with versions of Qt prior to Qt 5.5.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Material Compile</b></td><td >Render</td><td >Threaded, Basic, Windows</td><td >shader compiled</td><td >Compiling GLSL shader programs.</td><td >None</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Glyph Render</b></td><td >Render</td><td >Threaded, Basic, Windows</td><td >glyphs ... rendering</td><td >Rendering of font glyphs into textures.</td><td >Versions of Qt prior to Qt 5.4 report incorrect times for these events.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Glyph Upload</b></td><td >Render</td><td >Threaded, Basic, Windows</td><td >glyphs ... upload</td><td >Uploading of glyph textures to the GPU.</td><td >Versions of Qt prior to Qt 5.4 report incorrect times for these events.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Texture Bind</b></td><td >Render</td><td >Threaded, Basic, Windows</td><td >plain texture ... bind</td><td >Binding a texture in the OpenGL context using glBindTextures.</td><td >None</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Texture Convert</b></td><td >Render</td><td >Threaded, Basic, Windows</td><td >plain texture ... convert</td><td >Converting the format and downscaling an image to make it suitable for usage as a texture.</td><td >None</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Texture Swizzle</b></td><td >Render</td><td >Threaded, Basic, Windows</td><td >plain texture ... swizzle</td><td >Swizzling the texture data on the CPU if necessary.</td><td >None</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Texture Upload</b></td><td >Render</td><td >Threaded, Basic, Windows</td><td >plain texture ... upload / atlastexture uploaded</td><td >Uploading the texture data to the GPU.</td><td >None</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Texture Mipmap</b></td><td >Render</td><td >Threaded, Basic, Windows</td><td >plain texture ... mipmap</td><td >Mipmapping a texture on the GPU.</td><td >None</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Texture Delete</b></td><td >Render</td><td >Threaded, Basic, Windows</td><td >plain texture deleted</td><td >Deleting a texture from the GPU that became unnecessary.</td><td >None</td></tr>
+</table></div>
+<h3 id="analyzing-qt-quick-3d-events">Analyzing Qt Quick 3D Events</h3>
+<p>The following is the list of events for Qt Quick 3D. Each rendered frame consists of synchronize, prepare, and render phases, which are done in that order. Synchronize happens in scene graph synchronizing phase, while prepare and render happen in scene graph rendering phase.</p>
+<p>Setting the environment variable <code translate="no">QSG_RENDERER_DEBUG=render</code> will also give additional textual output of render call counts of different rendering passes. These call counts are summed up in the Render Frame event.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Event Type</th><th >Thread</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td ><b translate="no">Render Frame</b></td><td >Render</td><td >Render time of a frame. Also shows the number of draw calls.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Prepare Frame</b></td><td >Render</td><td >Time taken for preparing a frame. Resources are allocated and loaded in the prepare phase. The first frame after scene loading usually takes longer than others since most resources are loaded at that time.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Synchronize Frame</b></td><td >Render</td><td >Synchronize time of a frame. Synchronize takes care of updating backend values from the frontend. Also manages shared resources between Qt Quick Scene Graph and Qt Quick 3D.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Mesh Load</b></td><td >Render</td><td >Load time of a mesh. Shows total memory usage of all meshes. Also shows unloads.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Custom Mesh Load</b></td><td >Render</td><td >Load time of a custom mesh. Shows total memory usage of all meshes. Also shows unloads.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Texture Load</b></td><td >Render</td><td >Load time of a texture. Shows total memory usage of all textures. Also shows unloads.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Generate Shader</b></td><td >Render</td><td >Time for generating a shader for a material.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Load Shader</b></td><td >Render</td><td >Time for loading a built-in shader.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Particle Update</b></td><td >GUI</td><td >Update time of a particle system. Shows the number of particles updated.</td></tr>
+<tr valign="top" class="even"><td ><b translate="no">Mesh Memory Consumption</b></td><td >Render</td><td >Shows a bar view of total mesh memory consumption.</td></tr>
+<tr valign="top" class="odd"><td ><b translate="no">Texture Memory Consumption</b></td><td >Render</td><td >Shows a bar view of total texture memory consumption.</td></tr>
+</table></div>
+<h2 id="viewing-statistics">Viewing Statistics</h2>
+<p>The <b translate="no">Statistics</b> view displays the number of times each binding, create, compile, JavaScript, or signal event is triggered and the average time it takes. This allows you to examine which events you need to optimize. A high number of occurrences might indicate that an event is triggered unnecessarily. To view the median, longest, and shortest time for the occurrences, select <b translate="no">Extended Event Statistics</b> in the context menu.</p>
+<p>Click on an event to move to it in the source code in the code editor.</p>
+<p class="centerAlign"><img src="images/qml-profiler-statistics.png" alt="&quot;Statistics view&quot;" /></p><p>The <b translate="no">Callers</b> and <b translate="no">Callees</b> panes show dependencies between events. They allow you to examine the internal functions of the application. The <b translate="no">Callers</b> pane summarizes the QML events that trigger a binding. This tells you what caused a change in a binding. The <b translate="no">Callees</b> pane summarizes the QML events that a binding triggers. This tells you which QML events are affected if you change a binding.</p>
+<p>Click on an event to move to it in the source code in the code editor.</p>
+<p>When you select an event in the <b translate="no">Timeline</b> view, information about it is displayed in the <b translate="no">Statistics</b> and <b translate="no">Flame Graph</b> views.</p>
+<p>To copy the contents of one view or row to the clipboard, select <b translate="no">Copy Table</b> or <b translate="no">Copy Row</b> in the context menu.</p>
+<p>JavaScript events are shown in the <b translate="no">Statistics</b> view only for applications that use Qt Quick 2 and are compiled with Qt 5.3 or later.</p>
+<h3 id="visualizing-statistics-as-flame-graphs">Visualizing Statistics as Flame Graphs</h3>
+<p>The <b translate="no">Flame Graph</b> view shows a more concise statistical overview of QML and JavaScript execution. In the <b translate="no">Total Time</b> view, the horizontal bars show the amount of time all invocations of a certain function took together, relative to the total runtime of all JavaScript and QML events. The nesting shows which functions were called by which other ones.</p>
+<p class="centerAlign"><img src="images/qml-profiler-flamegraph.png" alt="&quot;Flame Graph View&quot;" /></p><p>To view the total amount of memory allocated by the functions, select <b translate="no">Memory</b> in the drop-down menu.</p>
+<p>To view the number of memory allocations performed by the functions, select <b translate="no">Allocations</b>.</p>
+<p>Double-click an item in a view to zoom into it. Double-click an empty area in the view to zoom out again.</p>
+<p>Unlike the <b translate="no">Timeline</b> view, the <b translate="no">Flame Graph</b> view does not show the time spans when no QML or JavaScript is running at all. Thus, it is not suitable for analyzing per frame execution times. However, it is very easy to see the total impact of the various QML and JavaScript events there.</p>
+</div>
+<!-- @@@creator-qml-performance-monitor.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-qml-debugging-example.html">Debugging a Qt Quick Example Application</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="studio-advanced.html">Advanced Designer Topics</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2023 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br/>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br/>    Qt and respective logos are <a href="https://doc.qt.io/qt/trademarks.html">    trademarks</a> of The Qt Company Ltd. in Finland and/or other countries
+   worldwide. All other trademarks are property of their respective owners. </p>
+</div>
+</body>
+</html>

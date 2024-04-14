@@ -30,6 +30,7 @@
 
 var FileInfo = require("qbs.FileInfo");
 var ModUtils = require("qbs.ModUtils");
+var ExporterHelpers = require("../exporter.js");
 
 function tagListToString(tagList)
 {
@@ -74,7 +75,7 @@ function writeTargetArtifactGroups(product, output, moduleFile)
         var tag = product.Exporter.qbs._artifactTypes[i];
         var artifactsForTag = product.artifacts[tag] || [];
         for (var j = 0; j < artifactsForTag.length; ++j) {
-            if (!relevantArtifacts.contains(artifactsForTag[j]))
+            if (!relevantArtifacts.includes(artifactsForTag[j]))
                 relevantArtifacts.push(artifactsForTag[j]);
         }
     }
@@ -82,7 +83,7 @@ function writeTargetArtifactGroups(product, output, moduleFile)
     var artifactCount = relevantArtifacts ? relevantArtifacts.length : 0;
     for (i = 0; i < artifactCount; ++i) {
         var artifact = relevantArtifacts[i];
-        if (!artifact.fileTags.contains("installable"))
+        if (!artifact.fileTags.includes("installable"))
             continue;
 
         // Put all artifacts with the same set of file tags into the same group, so we don't
@@ -102,18 +103,9 @@ function writeTargetArtifactGroups(product, output, moduleFile)
     }
 }
 
-function checkValuePrefix(name, value, forbiddenPrefix, prefixDescription)
-{
-    if (value.startsWith(forbiddenPrefix)) {
-        throw "Value '" + value + "' for exported property '" + name + "' in product '"
-                + product.name + "' points into " + prefixDescription + ".\n"
-                + "Did you forget to set the prefixMapping property in an Export item?";
-    }
-}
-
 function stringifyValue(project, product, moduleInstallDir, prop, value)
 {
-    if (Array.isArray(value)) {
+    if (value instanceof Array) {
         var repr = "[";
         for (var i = 0; i < value.length; ++i) {
             repr += stringifyValue(project, product, moduleInstallDir, prop, value[i]) + ", ";
@@ -128,29 +120,9 @@ function stringifyValue(project, product, moduleInstallDir, prop, value)
         return value;
     }
 
-    // Catch user oversights: Paths that point into the project source or build directories
-    // make no sense in the module.
-    if (!value.startsWith(product.qbs.installRoot)) {
-        checkValuePrefix(prop.name, value, project.buildDirectory, "project build directory");
-        checkValuePrefix(prop.name, value, project.sourceDirectory, "project source directory");
-    }
-
-    // Adapt file paths pointing into the install dir, that is, make them relative to the
-    // module file for relocatability. We accept them with or without the install root.
-    // The latter form will typically be a result of applying the prefixMapping property,
-    // while the first one could be an untransformed path, for instance if the project
-    // file is written in such a way that include paths are picked up from the installed
-    // location rather than the source directory.
-    var valuePrefixToStrip;
-    var fullInstallPrefix = FileInfo.joinPaths(product.qbs.installRoot, product.qbs.installPrefix);
-    if (fullInstallPrefix.length > 1 && value.startsWith(fullInstallPrefix)) {
-        valuePrefixToStrip = fullInstallPrefix;
-    } else {
-        var installPrefix = FileInfo.joinPaths("/", product.qbs.installPrefix);
-        if (installPrefix.length > 1 && value.startsWith(installPrefix))
-            valuePrefixToStrip = installPrefix;
-    }
+    var valuePrefixToStrip = ExporterHelpers.getPrefixToStrip(project, product, prop.name, value);
     if (valuePrefixToStrip) {
+        var fullInstallPrefix = FileInfo.joinPaths(product.qbs.installRoot, product.qbs.installPrefix);
         var deployedModuleInstallDir = moduleInstallDir.slice(fullInstallPrefix.length);
         return "FileInfo.cleanPath(FileInfo.joinPaths(path, FileInfo.relativePath("
                 + JSON.stringify(deployedModuleInstallDir) + ", "
@@ -172,14 +144,14 @@ function writeProperty(project, product, moduleInstallDir, prop, indentation, co
     var moduleName;
     if (isModuleProperty) {
         moduleName = prop.name.slice(0, separatorIndex);
-        if ((product.Exporter.qbs.excludedDependencies || []).contains(moduleName))
+        if ((product.Exporter.qbs.excludedDependencies || []).includes(moduleName))
             return;
     }
     line += prop.name + ": ";
 
     // We emit the literal value, unless the source code clearly refers to values from inside the
     // original project, in which case the evaluated value is used.
-    if (considerValue && /(project|product)\./.test(prop.sourceCode)) {
+    if (considerValue && /(project|product|exportingProduct)\./.test(prop.sourceCode)) {
         var value;
         if (isModuleProperty) {
             var propertyName = prop.name.slice(separatorIndex + 1);
@@ -244,7 +216,7 @@ function isExcludedDependency(product, childItem)
     for (var i = 0; i < childItem.properties.length; ++i) {
         var prop = childItem.properties[i];
         var unquotedRhs = prop.sourceCode.slice(1, -1);
-        if (prop.name === "name" && product.Exporter.qbs.excludedDependencies.contains(unquotedRhs))
+        if (prop.name === "name" && product.Exporter.qbs.excludedDependencies.includes(unquotedRhs))
             return true;
     }
     return false;
@@ -264,9 +236,9 @@ function writeImportStatements(product, moduleFile)
     var imports = product.exports.imports;
 
     // We potentially use FileInfo ourselves when transforming paths in stringifyValue().
-    if (!imports.contains("import qbs.FileInfo"))
+    if (!imports.includes("import qbs.FileInfo"))
         imports.push("import qbs.FileInfo");
 
-    for (var i = 0; i < product.exports.imports.length; ++i)
-        moduleFile.writeLine(product.exports.imports[i]);
+    for (var i = 0; i < imports.length; ++i)
+        moduleFile.writeLine(imports[i]);
 }

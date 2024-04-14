@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-how-to-add-wizards.qdoc -->
+  <title>Add wizards | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Add wizards</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Add wizards</h1>
+<!-- $$$creator-how-to-add-wizards.html-description -->
+<div class="descr" id="details">
+<p>Qt Creator has wizards for adding classes, files, and projects that you can copy and edit to create your own wizards. Create the wizard directory in the <code translate="no">templates/wizards/</code> directory in your <a href="creator-project-wizards.html#locating-wizards" translate="no">user settings directory</a>.</p>
+<p class="centerAlign"><img src="images/qtcreator-cpp-class-wizard.png" alt="" /></p><p>To create a new wizard:</p>
+<ol class="1" type="1"><li>Start Qt Creator with the <code translate="no">-customwizard-verbose</code> argument to receive feedback during wizard development. For more information, see <a href="creator-project-wizards.html#verbose-output" translate="no">Verbose Output</a>.</li>
+<li>Set keyboard shortcuts for the <b translate="no">Inspect</b> and <b translate="no">Factory.Reset</b> actions, as described in <a href="creator-project-wizards.html#tips-for-wizard-development" translate="no">Tips for Wizard Development</a>.</li>
+<li>Copy a directory that contains a wizard and rename it. For example, copy <code translate="no">share/qtcreator/templates/wizards/classes/cpp</code> as <code translate="no">$HOME/.config/QtProject/qtcreator/templates/wizards/classes/mycpp</code>.</li>
+<li>Use the <b translate="no">Factory.Reset</b> action to make the wizard appear in <b translate="no">File</b> &gt; <b translate="no">New File</b> without restarting Qt Creator.</li>
+<li>Open the wizard configuration file, <code translate="no">wizard.json</code> for editing, as described in <a href="creator-project-wizards.html" translate="no">Custom Wizards</a>.</li>
+<li>Change the <code translate="no">id</code> to something unique. Wizards are sorted by the ID in alphabetic order within a <code translate="no">category</code>. You can use a leading letter to specify the position of the wizard. For example, <code translate="no">B.MyClass</code>.</li>
+</ol>
+</div>
+<p><b>See also </b><a href="creator-project-wizards.html" translate="no">Custom Wizards</a> and <a href="creator-how-to-find-settings-files.html" translate="no">Find settings files</a>.</p>
+<!-- @@@creator-how-to-add-wizards.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

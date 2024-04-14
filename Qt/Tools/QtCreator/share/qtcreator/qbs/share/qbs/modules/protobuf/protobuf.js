@@ -1,7 +1,7 @@
 /****************************************************************************
 **
-** Copyright (C) 2018 Ivan Komissarov
-** Contact: abbapoh@gmail.com
+** Copyright (C) 2018 Ivan Komissarov (abbapoh@gmail.com)
+** Contact: https://www.qt.io/licensing/
 **
 ** This file is part of Qbs.
 **
@@ -31,8 +31,15 @@
 var File = require("qbs.File");
 var FileInfo = require("qbs.FileInfo");
 
-var checkPath = function(path) {
-    return path && File.exists(path)
+function validateCompiler(compilerName, compilerPath) {
+    if (!File.exists(compilerPath)) {
+        throw "Can't find '" + compilerName + "' binary. Please set the compilerPath property or "
+                +  "make sure the compiler is found in PATH";
+    }
+}
+
+function checkPath(path) {
+    return path && File.exists(path);
 };
 
 function toCamelCase(str){
@@ -46,13 +53,13 @@ function toCamelCase(str){
     }).join('');
 }
 
-function getOutputDir(module, product, input)  {
+function getOutputDir(module, input)  {
     var outputDir = module.outputDir;
     var importPaths = module.importPaths;
     if (importPaths.length !== 0) {
         var canonicalInput = File.canonicalFilePath(FileInfo.path(input.filePath));
         for (var i = 0; i < importPaths.length; ++i) {
-            path = File.canonicalFilePath(importPaths[i]);
+            var path = File.canonicalFilePath(importPaths[i]);
 
             if (canonicalInput.startsWith(path)) {
                 return outputDir + "/" + FileInfo.relativePath(path, canonicalInput);
@@ -62,36 +69,44 @@ function getOutputDir(module, product, input)  {
     return outputDir;
 }
 
-function cppArtifact(module, product, input, tag, suffix) {
-    var outputDir = getOutputDir(module, product, input);
+function cppArtifact(outputDir, input, tags, suffix) {
     return {
-        fileTags: [tag],
-        filePath: outputDir + "/" + FileInfo.baseName(input.fileName) + suffix,
+        fileTags: tags,
+        filePath: FileInfo.joinPaths(outputDir, FileInfo.baseName(input.fileName) + suffix),
         cpp: {
             includePaths: [].concat(input.cpp.includePaths, outputDir),
+            defines: ["NDEBUG"],
             warningLevel: "none",
         }
     };
 }
 
-function objcArtifact(module, product, input, tag, suffix) {
-    var outputDir = getOutputDir(module, product, input);
+function objcArtifact(outputDir, input, tags, suffix) {
     return {
-        fileTags: [tag],
-        filePath: outputDir + "/" + toCamelCase(FileInfo.baseName(input.fileName)) + suffix,
+        fileTags: tags,
+        filePath: FileInfo.joinPaths(
+                      outputDir, toCamelCase(FileInfo.baseName(input.fileName)) + suffix),
         cpp: {
+            automaticReferenceCounting: false,
             includePaths: [].concat(input.cpp.includePaths, outputDir),
             warningLevel: "none",
         }
     }
 }
 
-function doPrepare(module, product, input, outputs, lang)
+function doPrepare(module, product, input, outputs, generator, plugin, generatorOptions)
 {
     var outputDir = module.outputDir;
     var args = [];
 
-    args.push("--" + lang + "_out", outputDir);
+    if (!!plugin)
+        args.push("--plugin=" + plugin)
+
+    args.push("--" + generator + "_out", outputDir);
+    if (!!generatorOptions) {
+        for (var i = 0; i < generatorOptions.length; ++i)
+            args.push("--" + generator + "_opt=" + generatorOptions[i])
+    }
 
     var importPaths = module.importPaths;
     if (importPaths.length === 0)
@@ -104,8 +119,8 @@ function doPrepare(module, product, input, outputs, lang)
 
     args.push(input.filePath);
 
-    var cmd = new Command(module.protocBinary, args);
+    var cmd = new Command(module.compilerPath, args);
     cmd.highlight = "codegen";
-    cmd.description = "generating " + lang + " files for " + input.fileName;
+    cmd.description = "generating " + generator + " files for " + input.fileName;
     return [cmd];
 }

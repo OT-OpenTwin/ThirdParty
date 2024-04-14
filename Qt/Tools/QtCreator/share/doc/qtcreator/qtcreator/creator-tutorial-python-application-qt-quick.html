@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!-- creator-tutorial-python-application-qtquick.qdoc -->
+  <meta name="description" content="How to develop a Qt Quick application with Python.">
+  <title>Creating a Qt for Python Application with Qt Quick | Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html" translate="no">Qt Creator Manual</a></li>
+<li>Creating a Qt for Python Application with Qt Quick</li>
+<li id="buildversion"><a href="index.html" translate="no">Qt Creator Manual 13.0&#x2e;0</a></li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="creator-tutorials.html" />
+  <link rel="next" href="creator-how-tos.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="creator-tutorials.html">Tutorials</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-how-tos.html">How To</a>
+</p>
+<div class="sidebar">
+<div class="toc">
+<h3 id="toc">Contents</h3>
+<ul>
+<li class="level1"><a href="#creating-an-empty-project">Creating an Empty Project</a></li>
+<li class="level1"><a href="#adding-qt-quick-imports">Adding Qt Quick Imports</a></li>
+<li class="level1"><a href="#adding-a-main-function">Adding a Main Function</a></li>
+<li class="level1"><a href="#loading-the-qml-file">Loading the QML File</a></li>
+<li class="level1"><a href="#designing-the-ui">Designing the UI</a></li>
+<li class="level2"><a href="#adding-imports">Adding Imports</a></li>
+<li class="level2"><a href="#adding-properties-and-functions">Adding Properties and Functions</a></li>
+<li class="level2"><a href="#adding-qt-quick-controls">Adding Qt Quick Controls</a></li>
+<li class="level1"><a href="#running-the-application">Running the Application</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Creating a Qt for Python Application with Qt Quick</h1>
+<!-- $$$creator-tutorial-python-application-qt-quick.html-description -->
+<div class="descr" id="details">
+<p>First, create a Qt for Python application project. Then, edit the boilerplate code to develop a small application that uses Qt Quick to display the text <i>Hello World</i> in several languages.</p>
+<p class="centerAlign"><img src="images/qtcreator-new-qt-for-python-app-qt-quick-empty-project-ready.webp" alt="{A small Qt Quick application}" /></p><p>For more examples of creating Qt for Python applications, see <a href="https://doc.qt.io/qtforpython/tutorials/index.html" translate="no">Qt for Python Examples and Tutorials</a>.</p>
+<h2 id="creating-an-empty-project">Creating an Empty Project</h2>
+<p>To create a Qt for Python application that has a main QML file:</p>
+<ol class="1" type="1"><li>Go to <b translate="no">File</b> &gt; <b translate="no">New Project</b>.</li>
+<li>Select <b translate="no">Application (Qt for Python)</b> &gt; <b translate="no">Qt Quick Application - Empty</b> &gt; <b translate="no">Choose</b> to open the <b translate="no">Project Location</b> dialog.<p class="centerAlign"><img src="images/qtcreator-new-qt-for-python-app-qt-quick-empty-project-location.webp" alt="{Project Location dialog}" /></p></li>
+<li>In <b translate="no">Name</b>, enter the project name. For example, <i>hello_world_quick</i>.</li>
+<li>In <b translate="no">Create in</b>, enter the path for the project files. For example, <code translate="no">C:\Examples</code>.</li>
+<li>Select <b translate="no">Next</b> (on Windows and Linux) or <b translate="no">Continue</b> (on macOS) to open the <b translate="no">Define Project Details</b> dialog.<p class="centerAlign"><img src="images/qtcreator-new-qt-for-python-app-project-details.webp" alt="{Define Project Details dialog}" /></p></li>
+<li>In <b translate="no">PySide version</b>, select the PySide version of the generated code.</li>
+<li>Select <b translate="no">Next</b> or <b translate="no">Continue</b> to open the <b translate="no">Kit Selection</b> dialog.<p class="centerAlign"><img src="images/qtcreator-new-project-qt-for-python-kit-selection.webp" alt="{Selecting a kit for a Python project}" /></p></li>
+<li>Select Qt for Python kits for building, deploying, and running the project.</li>
+<li>Review the project settings, and select <b translate="no">Finish</b> (on Windows and Linux) or <b translate="no">Done</b> (on macOS) to create the project.</li>
+</ol>
+<p>The wizard generates the following files:</p>
+<ul>
+<li><code translate="no">hello_world_quick.pyproject</code>, which lists the files in the Python project.</li>
+<li><code translate="no">main.py</code>, which has some boilerplate code.</li>
+<li><code translate="no">main.qml</code>, which imports Qt Quick controls.</li>
+<li><code translate="no">reguirements.txt</code>, which stores the PySide version of the generated code.</li>
+</ul>
+<h2 id="adding-qt-quick-imports">Adding Qt Quick Imports</h2>
+<p>The wizard adds the following imports to the <code translate="no">main.py</code> source file for access to QGuiApplication and QQmlApplicationEngine:</p>
+<pre class="cpp plain" translate="no">
+ import sys
+ from pathlib import Path
+
+ from PySide6.QtGui import QGuiApplication
+ from PySide6.QtQml import QQmlApplicationEngine
+</pre>
+<h2 id="adding-a-main-function">Adding a Main Function</h2>
+<p>The wizard also adds a main function, where it creates a QGuiApplication instance and passes system arguments to the QGuiApplication object:</p>
+<pre class="cpp plain" translate="no">
+ if __name__ == &quot;__main__&quot;:
+     app = QGuiApplication(sys.argv)
+     ..&#x2e;
+</pre>
+<h2 id="loading-the-qml-file">Loading the QML File</h2>
+<p>The following lines in the main class create a QQmlApplicationEngine instance and load the generated QML file to the engine object:</p>
+<pre class="cpp plain" translate="no">
+ ..&#x2e;
+ engine = QQmlApplicationEngine()
+ qml_file = Path(__file__).resolve().parent / &quot;main.qml&quot;
+ engine.load(qml_file)
+ ..&#x2e;
+</pre>
+<p>Finally, the wizard adds code that checks whether the file was successfully loaded. If loading the file fails, the application exits with an error code. If loading succeeds, the wizard calls the <code translate="no">app.exec()</code> method to enter the Qt main loop and start executing the Qt code:</p>
+<pre class="cpp plain" translate="no">
+ ..&#x2e;
+ if not engine.rootObjects():
+     sys.exit(-1)
+ sys.exit(app.exec())
+ ..&#x2e;
+</pre>
+<h2 id="designing-the-ui">Designing the UI</h2>
+<p>Open the <code translate="no">main.qml</code> file in the <b translate="no">Edit</b> mode to design a Qt Quick UI.</p>
+<h3 id="adding-imports">Adding Imports</h3>
+<p>Add imports for Qt Quick Controls and Layouts:</p>
+<pre class="cpp plain" translate="no">
+ import QtQuick
+ import QtQuick.Window
+ import QtQuick.Controls
+ import QtQuick.Layouts
+</pre>
+<h3 id="adding-properties-and-functions">Adding Properties and Functions</h3>
+<p>The wizard adds a main window:</p>
+<pre class="cpp plain" translate="no">
+ Window {
+     width: 640
+     height: 480
+     visible: true
+     title: qsTr(&quot;Hello World&quot;)
+ }
+</pre>
+<p>Add a property and function to randomly select the language of the displayed text:</p>
+<pre class="cpp plain" translate="no">
+     ..&#x2e;
+     readonly property list&lt;string&gt; texts: [&quot;Hallo Welt&quot;, &quot;Hei maailma&quot;,
+                                        &quot;Hola Mundo&quot;, &quot;Привет мир&quot;]
+
+ function setText() {
+     var i = Math.round(Math.random() * 3)
+     text.text = texts[i]
+ }
+</pre>
+<h3 id="adding-qt-quick-controls">Adding Qt Quick Controls</h3>
+<p>Add Text and Button QML types within a ColumnLayout type to design the UI:</p>
+<pre class="cpp plain" translate="no">
+     ColumnLayout {
+     anchors.fill:  parent
+
+     Text {
+         id: text
+         text: &quot;Hello World&quot;
+         Layout.alignment: Qt.AlignHCenter
+     }
+     Button {
+         text: &quot;Click me&quot;
+         Layout.alignment: Qt.AlignHCenter
+         onClicked:  setText()
+     }
+ }
+</pre>
+<p>You can also use <a href="https://doc.qt.io/qtdesignstudio/index.html" translate="no">Qt Design Studio</a> to design Qt Quick UIs.</p>
+<h2 id="running-the-application">Running the Application</h2>
+<p>Select the <img src="images/run_small.png" alt="" /> button to run the application.</p>
+</div>
+<p><b>See also </b><a href="creator-tutorial-python-application-qt-widgets.html" translate="no">Creating a Qt for Python Application with Qt Widgets</a> and <a href="creator-python-development.html" translate="no">Develop Qt for Python Applications</a>.</p>
+<!-- @@@creator-tutorial-python-application-qt-quick.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="creator-tutorials.html">Tutorials</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="creator-how-tos.html">How To</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2024 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>
