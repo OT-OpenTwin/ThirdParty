@@ -47,7 +47,7 @@ REM SET QWTPOLAR_LIB_DLLD=%QWTPOLAR_LIB_ROOT%\lib
 REM SET QWTPOLAR_LIB_DLLR=%QWTPOLAR_LIB_ROOT%\lib
 
 REM Advanced Docking System
-SET QT_ADS_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\QtAdvancedDockingSystem\Qt-Advanced-Docking-System-4.2.1
+SET QT_ADS_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\QtAdvancedDockingSystem\Qt-Advanced-Docking-System-4.3.0
 
 REM Set Open Scene Graph (OSG) Root Directory
 SET OSG_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenSceneGraph\OpenSceneGraph-OpenSceneGraph-3.6.3
