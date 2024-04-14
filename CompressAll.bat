@@ -43,6 +43,10 @@ CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6QmlLS.lib" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6QmlLS.7z"
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6BundledResonanceAudiod.lib" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6BundledResonanceAudiod.7z"
 
+REM Qt Tools
+CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\Tools\QtDesignStudio\qt6_design_studio_reduced_version\bin\Qt6WebEngineCore.dll" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\Tools\QtDesignStudio\qt6_design_studio_reduced_version\bin\Qt6WebEngineCore.7z"
+CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\CompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\Tools\QtDesignStudio\qt6_design_studio_reduced_version\bin\Qt6WebEngineCored.dll" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\Tools\QtDesignStudio\qt6_design_studio_reduced_version\bin\Qt6WebEngineCored.7z"
+
 goto END
 :PAUSE_END
 pause

@@ -34,6 +34,7 @@ CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\DecompressFile.bat" "%OPENTWIN_THIRDPART
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\DecompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt6Quickd.7z" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin"
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\DecompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin\Qt63DRenderd.7z" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\bin"
 
+REM Qt lib
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\DecompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6QmlDomd.7z" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib"
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\DecompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6BundledPhysXd.7z" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib"
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\DecompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6QmlLSd.7z" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib"
@@ -41,6 +42,10 @@ CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\DecompressFile.bat" "%OPENTWIN_THIRDPART
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\DecompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6QmlDom.7z" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib"
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\DecompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6QmlLS.7z" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib"
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\DecompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib\Qt6BundledResonanceAudiod.7z" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib"
+
+REM Qt Tools
+CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\DecompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\Tools\QtDesignStudio\qt6_design_studio_reduced_version\bin\Qt6WebEngineCore.7z" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib"
+CALL "%OPENTWIN_DEV_ROOT%\Scripts\Other\DecompressFile.bat" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\Tools\QtDesignStudio\qt6_design_studio_reduced_version\bin\Qt6WebEngineCored.7z" "%OPENTWIN_THIRDPARTY_ROOT%\Qt\6.6.1\msvc2019_64\lib"
 
 goto END
 :PAUSE_END
