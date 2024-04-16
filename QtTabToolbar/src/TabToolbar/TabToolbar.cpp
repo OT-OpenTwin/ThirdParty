@@ -26,8 +26,6 @@
 #include <QTimer>
 #include <TabToolbar/TabToolbar.h>
 #include <TabToolbar/Page.h>
-#include <TabToolbar/Styles.h>
-#include <TabToolbar/StyleTools.h>
 #include <cassert>
 
 using namespace tt;
@@ -50,8 +48,10 @@ TabToolbar::TabToolbar(QWidget* parent, unsigned _groupMaxHeight, unsigned _grou
     setMovable(false);
     setAllowedAreas(Qt::TopToolBarArea);
     tabBar = new QTabWidget(this);
+    tabBar->setObjectName("TTTabWidget"); // Changed by Alexander Kuester
 	tabBar->setContextMenuPolicy(Qt::ContextMenuPolicy::NoContextMenu);
     tabBar->setProperty("TTWidget", QVariant(true));
+    tabBar->setProperty("TTBHidden", false); // Changed by Alexander Kuester
     tabBar->tabBar()->setProperty("TTTab", QVariant(true));
     tabBarHandle = addWidget(tabBar);
     tabBar->setUsesScrollButtons(true);
@@ -76,16 +76,20 @@ TabToolbar::TabToolbar(QWidget* parent, unsigned _groupMaxHeight, unsigned _grou
     hideButton->setDefaultAction(hideAction);
     hideButton->setAutoRaise(true);
     hideButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    hideButton->setToolTip("");
+    hideButton->setToolTipDuration(0);
     QObject::connect(hideAction, &QAction::triggered, [this]()
     {
         tempShowTimer.start();
         isMinimized = hideAction->isChecked();
         hideAction->setText(isMinimized ? "▼" : "▲");
         HideAt(tabBar->currentIndex());
-        if(isMinimized)
+        if (isMinimized) {
             emit Minimized();
-        else
+        }
+        else {
             emit Maximized();
+        }
     });
 	// Changed by Alexander Kuester
     //QObject::connect(tabBar, &QTabWidget::tabBarDoubleClicked, hideAction, &QAction::trigger);
@@ -95,8 +99,6 @@ TabToolbar::TabToolbar(QWidget* parent, unsigned _groupMaxHeight, unsigned _grou
     QObject::connect((QApplication*)QApplication::instance(), &QApplication::focusChanged, this, &TabToolbar::FocusChanged);
     cornerLayout->addWidget(hideButton);
     tabBar->setCornerWidget(cornerActions);
-
-    SetStyle(GetDefaultStyle());
 }
 
 TabToolbar::~TabToolbar()
@@ -106,12 +108,6 @@ TabToolbar::~TabToolbar()
 // Changed by Alexander Kuester
 bool TabToolbar::event(QEvent* event)
 {
-    /*if(event->type() == QEvent::StyleChange && !ignoreStyleEvent)
-        QTimer::singleShot(0, this, [this]()
-        { // on KDE new palette is not ready yet, wait
-            const QString styleName = (style ? style->objectName() : GetDefaultStyle());
-            SetStyle(styleName);
-        }); */
     return QToolBar::event(event);
 }
 
@@ -143,24 +139,6 @@ unsigned TabToolbar::RowCount() const
 unsigned TabToolbar::GroupMaxHeight() const
 {
     return groupMaxHeight;
-}
-
-// Changed by Alexander Kuester
-void TabToolbar::SetStyle(const QString& styleName)
-{
-	return;	// New
-    ignoreStyleEvent = true;
-    style.reset(CreateStyle(styleName).release());
-    setStyleSheet(GetSheetForStyle(*style));
-    ignoreStyleEvent = false;
-    emit StyleChanged();
-}
-
-QString TabToolbar::GetStyle() const
-{
-    if(style)
-        return style->objectName();
-    return "";
 }
 
 void TabToolbar::AddCornerAction(QAction* action)
@@ -248,13 +226,15 @@ void TabToolbar::HideAt(int index)
 {
     if(isMinimized)
     {
-        const int minHeight = tabBar->tabBar()->height() + 2;
+        tabBar->setProperty("TTBHidden", true); // Changed by Alexander Kuester
+        const int minHeight = tabBar->tabBar()->height() + 1;
         tabBar->setMaximumHeight(minHeight);
         tabBar->setMinimumHeight(minHeight);
         setMaximumHeight(minHeight);
         setMinimumHeight(minHeight);
         isShown = false;
     } else {
+        tabBar->setProperty("TTBHidden", false); // Changed by Alexander Kuester
         tabBar->setCurrentIndex(index);
         if(!isShown)
         {
@@ -312,26 +292,6 @@ Page* TabToolbar::AddPage(const QString& pageName)
     tabBar->addTab(page, pageName);
 	pages.push_back(page);
     return page;
-}
-
-// Created by Alexander Kuester
-void TabToolbar::SetStylesheet(const QString& styleSheet) {
-	setStyleSheet(styleSheet);
-}
-
-// Created by Alexander Kuester
-void TabToolbar::SetTabBarStylesheet(const QString& styleSheet) {
-	tabBar->setStyleSheet(styleSheet);
-}
-
-// Created by Alexander Kuester
-void TabToolbar::SetTabBarTabStylesheet(const QString& styleSheet) {
-	tabBar->tabBar()->setStyleSheet(styleSheet);
-}
-
-// Created by Alexander Kuester
-void TabToolbar::SetHideButtonStylesheet(const QString& styleSheet) {
-	hideButton->setStyleSheet(styleSheet);
 }
 
 // Created by Alexander Kuester

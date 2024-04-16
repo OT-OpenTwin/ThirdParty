@@ -31,7 +31,6 @@ class QMenu;
 namespace tt
 {
 class Page;
-class StyleParams;
 
 class TT_API TabToolbar : public QToolBar
 {
@@ -44,18 +43,13 @@ public:
     Page*    AddPage(const QString& pageName);						// Changed by Alexander Kuester (uiCore)
     QAction* HideAction();
     void     AddCornerAction(QAction* action);
-    void     SetStyle(const QString& styleName);					// Changed by Alexander Kuester (uiCore)
-    QString  GetStyle() const;
+    // QString  GetStyle() const; // Removed by Alexander Kuester (uiCore)
     unsigned RowCount() const;
     unsigned GroupMaxHeight() const;
     int      CurrentTab() const;
 	int      TabCount() const;										// Created by Alexander Kuester (uiCore)
     void     SetCurrentTab(int index);
 	void     SetAllowDoubleClickOnTab(bool allow);					// Created by Alexander Kuester (uiCore)
-	void     SetStylesheet(const QString& styleSheet);				// Created by Alexander Kuester (uiCore)
-    void     SetTabBarStylesheet(const QString& styleSheet);		// Created by Alexander Kuester (uiCore)
-	void     SetTabBarTabStylesheet(const QString& styleSheet);		// Created by Alexander Kuester (uiCore)
-	void     SetHideButtonStylesheet(const QString& styleSheet);	// Created by Alexander Kuester (uiCore)
 	void	 DestroyPage(int index);								// Created by Alexander Kuester (uiCore)
 	void	 DestroyPage(Page * page);								// Created by Alexander Kuester (uiCore)
 	QTabWidget *	tabWidget(void) const { return tabBar; }		// Created by Alexander Kuester (uiCore)
@@ -97,8 +91,7 @@ private:
     bool           isMinimized = false;
     bool           isShown = true;
     QTimer         tempShowTimer;
-    std::unique_ptr<StyleParams> style;
-
+    
 	std::vector<Page *>	pages;
 
     friend class Page;

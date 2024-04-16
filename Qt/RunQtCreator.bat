@@ -36,5 +36,3 @@ ECHO %OPENTWIN_THIRDPARTY_ROOT%\Qt\Tools\QtCreator\bin\qtcreator.exe
 :END
 
 ECHO Done
-
-pause

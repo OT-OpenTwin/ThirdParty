@@ -43,8 +43,6 @@ public:
     void        AddWidget(QWidget* widget);
 
 	void	    RemoveAction(QAction* action);		// Added by Alexander Kuester
-	void		SetToolButtonStylesheet(const QString & sheet); // Added by Alexander Kuester
-	void		SetSeparatorStyleSheet(const QString & sheet); // Added by Alexander Kuester
 private:
     QFrame*     CreateSeparator();		// Modified by Alexander Kuester
 
