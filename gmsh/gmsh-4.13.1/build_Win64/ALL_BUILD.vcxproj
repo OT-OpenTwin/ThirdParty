@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6FBF12EE-0487-3907-9E2D-F691902E439C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\WinslowUntangler;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\QuadMeshingTools;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\tetMesh\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\tetMesh\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\tetBR\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\tetBR\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\predicates\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\predicates\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\reparam\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\reparam\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\core\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\core\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\Combine\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\eigen;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\onelab;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\ANN\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\ALGLIB;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\DiscreteIntegration;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\kbipack;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\MathEx;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\tinyxml2;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\metis\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\metis\libmetis;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\metis\GKlib;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\voro++\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\HighOrderMeshOptimizer;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\MeshOptimizer;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\contrib\MeshOptimizer;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\MeshQualityOptimizer;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\domhex;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\QuadTri;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\blossom\MATCH;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\blossom\concorde97;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\blossom\concorde97\INCLUDE;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\nii2mesh;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\untangle;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\Netgen;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\Netgen\libsrc\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\Netgen\nglib;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\bamg;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\bamg\bamglib;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\gmm;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\common;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\fltk;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\geo;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\graphics;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\mesh;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\solver;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\numeric;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\parser;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\plugin;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\post;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\api;C:\OT\ThirdParty\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\freetype-2.5.5-vc14-64\include;C:\OT\ThirdParty\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\opencascade-7.8.0\inc;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\src\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\WinslowUntangler;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\QuadMeshingTools;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\tetMesh\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\tetMesh\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\tetBR\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\tetBR\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\predicates\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\predicates\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\reparam\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\reparam\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\core\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\core\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\Combine\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\eigen;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\onelab;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\ANN\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\ALGLIB;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\DiscreteIntegration;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\kbipack;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\MathEx;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\tinyxml2;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\metis\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\metis\libmetis;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\metis\GKlib;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\voro++\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\HighOrderMeshOptimizer;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\MeshOptimizer;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\contrib\MeshOptimizer;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\MeshQualityOptimizer;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\domhex;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\QuadTri;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\blossom\MATCH;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\blossom\concorde97;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\blossom\concorde97\INCLUDE;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\nii2mesh;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\untangle;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\Netgen;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\Netgen\libsrc\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\Netgen\nglib;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\bamg;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\bamg\bamglib;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\gmm;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\common;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\fltk;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\geo;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\graphics;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\mesh;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\solver;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\numeric;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\parser;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\plugin;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\post;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\api;C:\OT\ThirdParty\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\freetype-2.5.5-vc14-64\include;C:\OT\ThirdParty\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\opencascade-7.8.0\inc;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\src\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\WinslowUntangler;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\QuadMeshingTools;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\tetMesh\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\tetMesh\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\tetBR\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\tetBR\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\predicates\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\predicates\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\reparam\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\reparam\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\core\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\core\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\Combine\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\eigen;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\onelab;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\ANN\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\ALGLIB;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\DiscreteIntegration;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\kbipack;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\MathEx;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\tinyxml2;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\metis\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\metis\libmetis;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\metis\GKlib;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\voro++\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\HighOrderMeshOptimizer;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\MeshOptimizer;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\contrib\MeshOptimizer;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\MeshQualityOptimizer;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\domhex;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\QuadTri;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\blossom\MATCH;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\blossom\concorde97;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\blossom\concorde97\INCLUDE;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\nii2mesh;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\untangle;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\Netgen;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\Netgen\libsrc\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\Netgen\nglib;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\bamg;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\bamg\bamglib;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\gmm;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\common;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\fltk;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\geo;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\graphics;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\mesh;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\solver;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\numeric;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\parser;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\plugin;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\post;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\api;C:\OT\ThirdParty\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\freetype-2.5.5-vc14-64\include;C:\OT\ThirdParty\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\opencascade-7.8.0\inc;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\src\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\WinslowUntangler;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\QuadMeshingTools;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\tetMesh\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\tetMesh\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\tetBR\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\tetBR\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\predicates\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\predicates\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\reparam\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\reparam\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\core\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\core\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\hxt\Combine\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\eigen;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\onelab;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\ANN\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\ALGLIB;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\DiscreteIntegration;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\kbipack;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\MathEx;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\tinyxml2;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\metis\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\metis\libmetis;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\metis\GKlib;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\voro++\src;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\HighOrderMeshOptimizer;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\MeshOptimizer;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\contrib\MeshOptimizer;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\MeshQualityOptimizer;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\domhex;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\QuadTri;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\blossom\MATCH;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\blossom\concorde97;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\blossom\concorde97\INCLUDE;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\nii2mesh;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\untangle;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\Netgen;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\Netgen\libsrc\include;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\Netgen\nglib;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\bamg;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\bamg\bamglib;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\contrib\gmm;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\common;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\fltk;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\geo;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\graphics;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\mesh;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\solver;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\numeric;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\parser;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\plugin;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\post;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\api;C:\OT\ThirdParty\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\freetype-2.5.5-vc14-64\include;C:\OT\ThirdParty\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\opencascade-7.8.0\inc;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\src\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/OT/ThirdParty/gmsh/gmsh-4.13.1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/OT/ThirdParty/gmsh/gmsh-4.13.1 -BC:/OT/ThirdParty/gmsh/gmsh-4.13.1/build_Win64 --check-stamp-file C:/OT/ThirdParty/gmsh/gmsh-4.13.1/build_Win64/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\3.28.3\CMakeCCompiler.cmake;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\3.28.3\CMakeCXXCompiler.cmake;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\3.28.3\CMakeRCCompiler.cmake;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\3.28.3\CMakeSystem.cmake;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\hdf5\cmake_hdf5_test.c;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\doc\texinfo\version.texi.in;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\common\GmshConfig.h.in;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\common\GmshVersion.h.in;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\utils\pypi\METADATA.in;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.28\Modules\FindFreetype.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindHDF5.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.28\Templates\CPackConfig.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/OT/ThirdParty/gmsh/gmsh-4.13.1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/OT/ThirdParty/gmsh/gmsh-4.13.1 -BC:/OT/ThirdParty/gmsh/gmsh-4.13.1/build_Win64 --check-stamp-file C:/OT/ThirdParty/gmsh/gmsh-4.13.1/build_Win64/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\3.28.3\CMakeCCompiler.cmake;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\3.28.3\CMakeCXXCompiler.cmake;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\3.28.3\CMakeRCCompiler.cmake;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\3.28.3\CMakeSystem.cmake;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\hdf5\cmake_hdf5_test.c;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\doc\texinfo\version.texi.in;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\common\GmshConfig.h.in;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\common\GmshVersion.h.in;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\utils\pypi\METADATA.in;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.28\Modules\FindFreetype.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindHDF5.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.28\Templates\CPackConfig.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/OT/ThirdParty/gmsh/gmsh-4.13.1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/OT/ThirdParty/gmsh/gmsh-4.13.1 -BC:/OT/ThirdParty/gmsh/gmsh-4.13.1/build_Win64 --check-stamp-file C:/OT/ThirdParty/gmsh/gmsh-4.13.1/build_Win64/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\3.28.3\CMakeCCompiler.cmake;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\3.28.3\CMakeCXXCompiler.cmake;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\3.28.3\CMakeRCCompiler.cmake;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\3.28.3\CMakeSystem.cmake;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\hdf5\cmake_hdf5_test.c;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\doc\texinfo\version.texi.in;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\common\GmshConfig.h.in;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\common\GmshVersion.h.in;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\utils\pypi\METADATA.in;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.28\Modules\FindFreetype.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindHDF5.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.28\Templates\CPackConfig.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/OT/ThirdParty/gmsh/gmsh-4.13.1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/OT/ThirdParty/gmsh/gmsh-4.13.1 -BC:/OT/ThirdParty/gmsh/gmsh-4.13.1/build_Win64 --check-stamp-file C:/OT/ThirdParty/gmsh/gmsh-4.13.1/build_Win64/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\3.28.3\CMakeCCompiler.cmake;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\3.28.3\CMakeCXXCompiler.cmake;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\3.28.3\CMakeRCCompiler.cmake;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\3.28.3\CMakeSystem.cmake;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\hdf5\cmake_hdf5_test.c;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\doc\texinfo\version.texi.in;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\common\GmshConfig.h.in;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\src\common\GmshVersion.h.in;C:\OT\ThirdParty\gmsh\gmsh-4.13.1\utils\pypi\METADATA.in;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.28\Modules\FindFreetype.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindHDF5.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.28\Templates\CPackConfig.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\ZERO_CHECK.vcxproj">
+      <Project>{77CAE120-0F32-3F9B-97DB-59D4F129B859}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\gmsh.vcxproj">
+      <Project>{A129A232-D681-3725-B8CE-A4FE23C42974}</Project>
+      <Name>gmsh</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\lib.vcxproj">
+      <Project>{750AFDA7-743E-38EF-B4A5-0A04D8D5B79E}</Project>
+      <Name>lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\shared.vcxproj">
+      <Project>{65ED33E9-2034-3FBF-8BAE-23E64F941C86}</Project>
+      <Name>shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t10_cpp.vcxproj">
+      <Project>{AA4D7FC2-1E01-3FEE-A3B3-B92EE199AA6D}</Project>
+      <Name>t10_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t11_cpp.vcxproj">
+      <Project>{AEC74B0E-2EC2-3A0F-B2A8-F0378F350D67}</Project>
+      <Name>t11_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t12_cpp.vcxproj">
+      <Project>{FB7C2153-EDD4-3F3E-A8D3-652C0DC006BD}</Project>
+      <Name>t12_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t13_cpp.vcxproj">
+      <Project>{A92E542B-515F-3597-A534-3FB593C7BB97}</Project>
+      <Name>t13_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t14_cpp.vcxproj">
+      <Project>{A9602370-8216-3ADD-A39D-CFA922C8ED9F}</Project>
+      <Name>t14_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t15_cpp.vcxproj">
+      <Project>{2AF74DCC-1DCE-33FF-9A3F-A47C255EFBC5}</Project>
+      <Name>t15_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t16_c.vcxproj">
+      <Project>{B5D23CA5-8A79-361D-ADE5-8D2574DCC761}</Project>
+      <Name>t16_c</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t16_cpp.vcxproj">
+      <Project>{CD2F19C7-5DE1-30E3-BAF5-008100066F06}</Project>
+      <Name>t16_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t17_cpp.vcxproj">
+      <Project>{46E8FEAC-CBC4-3A3F-AFF0-79DEFD3B788C}</Project>
+      <Name>t17_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t18_cpp.vcxproj">
+      <Project>{2A6E60E3-5C79-3FFF-BD86-55394371B181}</Project>
+      <Name>t18_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t19_cpp.vcxproj">
+      <Project>{6CDB7BB5-AF1F-3262-A85D-CFBEBE548E8F}</Project>
+      <Name>t19_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t1_c.vcxproj">
+      <Project>{5F06704D-D48C-3DC5-ABC4-7C83EB92C34E}</Project>
+      <Name>t1_c</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t1_cpp.vcxproj">
+      <Project>{FC1DA12A-6EC4-364A-915E-77E33AAEFAE4}</Project>
+      <Name>t1_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t20_cpp.vcxproj">
+      <Project>{F5C9E4EC-D044-391F-B540-D5B9A1902E45}</Project>
+      <Name>t20_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t21_cpp.vcxproj">
+      <Project>{442FD80D-140C-3FC6-AD68-31041ED6FF07}</Project>
+      <Name>t21_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t2_c.vcxproj">
+      <Project>{9BCD9D62-4B4C-3E50-8D87-A0E98F0912B5}</Project>
+      <Name>t2_c</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t2_cpp.vcxproj">
+      <Project>{3F367FCE-0A1D-3306-B1B9-D4D46F1590F4}</Project>
+      <Name>t2_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t3_cpp.vcxproj">
+      <Project>{D6EADBA3-3037-3747-B686-4A3867282357}</Project>
+      <Name>t3_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t4_cpp.vcxproj">
+      <Project>{CE5F0A0B-D688-3F9B-A0C1-A2C19DFC9D12}</Project>
+      <Name>t4_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t5_cpp.vcxproj">
+      <Project>{CF3728CB-A613-3214-9B46-7953E92DACAF}</Project>
+      <Name>t5_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t6_c.vcxproj">
+      <Project>{E71AC092-18D9-3F07-80B0-931ADB92085C}</Project>
+      <Name>t6_c</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t6_cpp.vcxproj">
+      <Project>{1C2127DC-3065-3111-81E7-830758AD4FC2}</Project>
+      <Name>t6_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t7_cpp.vcxproj">
+      <Project>{435E8CDF-9807-3249-BCA2-BC00A80D7678}</Project>
+      <Name>t7_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t8_cpp.vcxproj">
+      <Project>{53B3B107-7014-3FD7-ADCB-EBE3195AB8F4}</Project>
+      <Name>t8_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\t9_cpp.vcxproj">
+      <Project>{4A68C160-C239-391D-8A01-3D029E2B71B1}</Project>
+      <Name>t9_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\x1_cpp.vcxproj">
+      <Project>{E9A59C5F-0D3D-32AE-AC72-BC315CCD7B96}</Project>
+      <Name>x1_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\x2_cpp.vcxproj">
+      <Project>{C5283692-7D00-3F70-9FD1-7142E9103B42}</Project>
+      <Name>x2_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\x3_cpp.vcxproj">
+      <Project>{01A7CC61-D1D6-3C56-863E-662F8F332445}</Project>
+      <Name>x3_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\x4_cpp.vcxproj">
+      <Project>{24C805DF-FF69-3E2B-A05C-BF0E14D01DEB}</Project>
+      <Name>x4_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\x5_cpp.vcxproj">
+      <Project>{57A1B829-CAC4-347F-8FBC-D61C37196254}</Project>
+      <Name>x5_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\x6_cpp.vcxproj">
+      <Project>{122D0B49-7DA7-3698-AC76-E9DEC5C16E3B}</Project>
+      <Name>x6_cpp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\OT\ThirdParty\gmsh\gmsh-4.13.1\build_Win64\x7_cpp.vcxproj">
+      <Project>{456B59DA-F587-3D18-8C47-FE3EC5F3D164}</Project>
+      <Name>x7_cpp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

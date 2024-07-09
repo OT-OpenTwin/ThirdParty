@@ -1,0 +1,10 @@
+^C:\OT\THIRDPARTY\GMSH\GMSH-4.13.1\BUILD_WIN64\CMAKEFILES\ACE534FBDA685C5003E7EF8297B84F24\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/OT/ThirdParty/gmsh/gmsh-4.13.1 -BC:/OT/ThirdParty/gmsh/gmsh-4.13.1/build_Win64 --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/OT/ThirdParty/gmsh/gmsh-4.13.1/build_Win64/gmsh.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

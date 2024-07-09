@@ -19,22 +19,29 @@ Open cmake GUI, select the source code root and the build directory.
 Press configure
 
 Add a path variable:
-MAKE_PREFIX_PATH=c:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\OpenCASCADE-7.3.0-vc14-64\opencascade-7.3.0;c:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\OpenBLAS\OpenBLAS-0.3.9\build;c:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\OpenCASCADE-7.3.0-vc14-64\freetype-2.5.5-vc14-64;c:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\OpenCASCADE-7.3.0-vc14-64\opencascade-7.3.0\win64\vc14
+MAKE_PREFIX_PATH=C:\OT\ThirdParty\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\opencascade-7.8.0;C:\OT\ThirdParty\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\freetype-2.5.5-vc14-64;C:\OT\ThirdParty\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\opencascade-7.3.0\win64\vc14
 
-Enable / Disable the build options as needed. Make sure to enable the build of the shared libraries and DISABLE OpenMP. The build of FLTK can be disabled.
+Enable Build Shared
+Enable Build LIB
+Enable Build Dynamic
+Disable OpenMP
+Diable FLTK
+
+The following path entries need to be specified:
+FREETYPE_INCLUDE_DIRS=C:\OT\ThirdParty\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64/freetype-2.5.5-vc14-64/include
+FREETYPE_LIBRARY=C:\OT\ThirdParty\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\freetype-2.5.5-vc14-64\lib\freetype.lib
+
+Also the Windows system environment variable needs to be set for Open Cascade:
+
+CASROOT=C:\OT\ThirdParty\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\opencascade-7.8.0;C:\OT\ThirdParty\OpenCASCADE\OpenCASCADE-7.3.0-vc14-64\opencascade-7.3.0\win64\vc14\lib
 
 Press Configure again
 Press Generate
 
 Open the project and rebuild everything (Release) from scratch.
 
-From 4.8.0 the following path entries need to be specified:
-FREETYPE_INCLUDE_DIRS=C:/Daten/Projekte/SimulationPlatform/Third_Party_Libraries/OpenCASCADE-7.3.0-vc14-64/freetype-2.5.5-vc14-64/include
-FREETYPE_LIBRARY=C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\OpenCASCADE-7.3.0-vc14-64\freetype-2.5.5-vc14-64\lib\freetype.lib
+Remove the large files (.vs) from the build results to ensure that there will be no problems when pushing the results to GitHub. The tests tXX_cpp.dir can also be removed. Same for xXX_cpp.dir.
 
-Also the environment variable needs to be set for Open Cascade:
-
-CASROOT=C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\OpenCASCADE-7.3.0-vc14-64\opencascade-7.3.0;C:\Daten\Projekte\SimulationPlatform\Third_Party_Libraries\OpenCASCADE-7.3.0-vc14-64\opencascade-7.3.0\win64\vc14\lib
 
 
 
