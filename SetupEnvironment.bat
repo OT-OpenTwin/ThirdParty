@@ -62,7 +62,7 @@ SET OSG_DLLD=%OSG_ROOT%\bin\Debug
 SET OSG_DLLR=%OSG_ROOT%\bin\Release
 
 REM Set Open Cascade Root Directory
-SET OC_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenCASCADE\OpenCASCADE-7.5.0-vc14-64\opencascade-7.5.0
+SET OC_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\opencascade-7.8.0
 SET OC_INCD=%OC_ROOT%\inc
 SET OC_INCR=%OC_ROOT%\inc
 SET OC_LIBPATHD=%OC_ROOT%\win64\vc14\lib
@@ -70,23 +70,26 @@ SET OC_LIBPATHR=%OC_ROOT%\win64\vc14\lib
 SET OC_DLLD=%OC_ROOT%\win64\vc14\bin
 SET OC_DLLR=%OC_ROOT%\win64\vc14\bin
 
-SET TBB_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenCASCADE\OpenCASCADE-7.5.0-vc14-64\tbb_2017.0.100
+SET TBB_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\tbb2021.5-vc14-x64
 SET TBB_DLLR=%TBB_ROOT%\bin\intel64\vc14
 
-SET FRI_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenCASCADE\OpenCASCADE-7.5.0-vc14-64\freeimage-3.17.0-vc14-64
+SET FRI_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\freeimage-3.17.0-vc14-64
 SET FRI_DLLR=%FRI_ROOT%\bin
 
-SET FRT_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenCASCADE\OpenCASCADE-7.5.0-vc14-64\freetype-2.5.5-vc14-64
+SET FRT_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\freetype-2.5.5-vc14-64
 SET FRT_DLLR=%FRT_ROOT%\bin
 
-SET FMP_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenCASCADE\OpenCASCADE-7.5.0-vc14-64\ffmpeg-3.3.4-64
+SET FMP_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\ffmpeg-3.3.4-64
 SET FMP_DLLR=%FMP_ROOT%\bin
 
-SET OVR_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenCASCADE\OpenCASCADE-7.5.0-vc14-64\openvr-1.14.15-64
+SET OVR_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\openvr-1.14.15-64
 SET OVR_DLLR=%OVR_ROOT%\bin\win64
 
-SET CFG_OC_LIBS=TKBin.lib;TKBinL.lib;TKBinTObj.lib;TKBinXCAF.lib;TKBO.lib;TKBool.lib;TKBRep.lib;TKCAF.lib;TKCDF.lib;TKD3DHost.lib;TKDCAF.lib;TKDFBrowser.lib;TKDraw.lib;TKernel.lib;TKFeat.lib;TKFillet.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKHLR.lib;TKIGES.lib;TKIVtk.lib;TKIVtkDraw.lib;TKLCAF.lib;TKMath.lib;TKMesh.lib;TKMeshVS.lib;TKOffset.lib;TKOpenGl.lib;TKPrim.lib;TKQADraw.lib;TKService.lib;TKShapeView.lib;TKShHealing.lib;TKStd.lib;TKStdL.lib;TKSTEP.lib;TKSTEP209.lib;TKSTEPAttr.lib;TKSTEPBase.lib;TKSTL.lib;TKTInspector.lib;TKTInspectorAPI.lib;TKTObj.lib;TKTObjDRAW.lib;TKToolsDraw.lib;TKTopAlgo.lib;TKTopTest.lib;TKTreeModel.lib;TKV3d.lib;TKVCAF.lib;TKView.lib;TKViewerTest.lib;TKVInspector.lib;TKVRML.lib;TKXCAF.lib;TKXDEDRAW.lib;TKXDEIGES.lib;TKXDESTEP.lib;TKXMesh.lib;TKXml.lib;TKXmlL.lib;TKXmlTObj.lib;TKXmlXCAF.lib;TKXSBase.lib;TKXSDRAW.lib
-SET CFG_OC_DLLS=$(OC_ROOT)\win64\vc14\bin\TKBin.dll;$(OC_ROOT)\win64\vc14\bin\TKBinL.dll;$(OC_ROOT)\win64\vc14\bin\TKBinTObj.dll;$(OC_ROOT)\win64\vc14\bin\TKBinXCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKBO.dll;$(OC_ROOT)\win64\vc14\bin\TKBool.dll;$(OC_ROOT)\win64\vc14\bin\TKBRep.dll;$(OC_ROOT)\win64\vc14\bin\TKCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKCDF.dll;$(OC_ROOT)\win64\vc14\bin\TKD3DHost.dll;$(OC_ROOT)\win64\vc14\bin\TKDCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKDFBrowser.dll;$(OC_ROOT)\win64\vc14\bin\TKDraw.dll;$(OC_ROOT)\win64\vc14\bin\TKernel.dll;$(OC_ROOT)\win64\vc14\bin\TKFeat.dll;$(OC_ROOT)\win64\vc14\bin\TKFillet.dll;$(OC_ROOT)\win64\vc14\bin\TKG2d.dll;$(OC_ROOT)\win64\vc14\bin\TKG3d.dll;$(OC_ROOT)\win64\vc14\bin\TKGeomAlgo.dll;$(OC_ROOT)\win64\vc14\bin\TKGeomBase.dll;$(OC_ROOT)\win64\vc14\bin\TKHLR.dll;$(OC_ROOT)\win64\vc14\bin\TKIGES.dll;$(OC_ROOT)\win64\vc14\bin\TKIVtk.dll;$(OC_ROOT)\win64\vc14\bin\TKIVtkDraw.dll;$(OC_ROOT)\win64\vc14\bin\TKLCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKMath.dll;$(OC_ROOT)\win64\vc14\bin\TKMesh.dll;$(OC_ROOT)\win64\vc14\bin\TKMeshVS.dll;$(OC_ROOT)\win64\vc14\bin\TKOffset.dll;$(OC_ROOT)\win64\vc14\bin\TKOpenGl.dll;$(OC_ROOT)\win64\vc14\bin\TKPrim.dll;$(OC_ROOT)\win64\vc14\bin\TKQADraw.dll;$(OC_ROOT)\win64\vc14\bin\TKService.dll;$(OC_ROOT)\win64\vc14\bin\TKShapeView.dll;$(OC_ROOT)\win64\vc14\bin\TKShHealing.dll;$(OC_ROOT)\win64\vc14\bin\TKStd.dll;$(OC_ROOT)\win64\vc14\bin\TKStdL.dll;$(OC_ROOT)\win64\vc14\bin\TKSTEP.dll;$(OC_ROOT)\win64\vc14\bin\TKSTEP209.dll;$(OC_ROOT)\win64\vc14\bin\TKSTEPAttr.dll;$(OC_ROOT)\win64\vc14\bin\TKSTEPBase.dll;$(OC_ROOT)\win64\vc14\bin\TKSTL.dll;$(OC_ROOT)\win64\vc14\bin\TKTInspector.dll;$(OC_ROOT)\win64\vc14\bin\TKTInspectorAPI.dll;$(OC_ROOT)\win64\vc14\bin\TKTObj.dll;$(OC_ROOT)\win64\vc14\bin\TKTObjDRAW.dll;$(OC_ROOT)\win64\vc14\bin\TKToolsDraw.dll;$(OC_ROOT)\win64\vc14\bin\TKTopAlgo.dll;$(OC_ROOT)\win64\vc14\bin\TKTopTest.dll;$(OC_ROOT)\win64\vc14\bin\TKTreeModel.dll;$(OC_ROOT)\win64\vc14\bin\TKV3d.dll;$(OC_ROOT)\win64\vc14\bin\TKVCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKView.dll;$(OC_ROOT)\win64\vc14\bin\TKViewerTest.dll;$(OC_ROOT)\win64\vc14\bin\TKVInspector.dll;$(OC_ROOT)\win64\vc14\bin\TKVRML.dll;$(OC_ROOT)\win64\vc14\bin\TKXCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKXDEDRAW.dll;$(OC_ROOT)\win64\vc14\bin\TKXDEIGES.dll;$(OC_ROOT)\win64\vc14\bin\TKXDESTEP.dll;$(OC_ROOT)\win64\vc14\bin\TKXMesh.dll;$(OC_ROOT)\win64\vc14\bin\TKXml.dll;$(OC_ROOT)\win64\vc14\bin\TKXmlL.dll;$(OC_ROOT)\win64\vc14\bin\TKXmlTObj.dll;$(OC_ROOT)\win64\vc14\bin\TKXmlXCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKXSBase.dll;$(OC_ROOT)\win64\vc14\bin\TKXSDRAW.dll
+SET JEM_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenCASCADE\OpenCASCADE-7.8.0-vc14-64\jemalloc-vc14-64
+SET JEM_DLLR=%JEM_ROOT%\bin\
+
+SET CFG_OC_LIBS=TKBin.lib;TKBinL.lib;TKBinTObj.lib;TKBinXCAF.lib;TKBO.lib;TKBool.lib;TKBRep.lib;TKCAF.lib;TKCDF.lib;TKD3DHost.lib;TKDCAF.lib;TKDFBrowser.lib;TKDraw.lib;TKernel.lib;TKFeat.lib;TKFillet.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKHLR.lib;TKDEIGES.lib;TKIVtk.lib;TKIVtkDraw.lib;TKLCAF.lib;TKMath.lib;TKMesh.lib;TKMeshVS.lib;TKOffset.lib;TKOpenGl.lib;TKPrim.lib;TKQADraw.lib;TKService.lib;TKShapeView.lib;TKShHealing.lib;TKStd.lib;TKStdL.lib;TKDESTEP.lib;TKDESTL.lib;TKTInspector.lib;TKTInspectorAPI.lib;TKTObj.lib;TKTObjDRAW.lib;TKToolsDraw.lib;TKTopAlgo.lib;TKTopTest.lib;TKTreeModel.lib;TKV3d.lib;TKVCAF.lib;TKView.lib;TKViewerTest.lib;TKVInspector.lib;TKDEVRML.lib;TKXCAF.lib;TKXDEDRAW.lib;TKXMesh.lib;TKXml.lib;TKXmlL.lib;TKXmlTObj.lib;TKXmlXCAF.lib;TKXSBase.lib;TKXSDRAW.lib
+SET CFG_OC_DLLS=$(OC_ROOT)\win64\vc14\bin\TKBin.dll;$(OC_ROOT)\win64\vc14\bin\TKBinL.dll;$(OC_ROOT)\win64\vc14\bin\TKBinTObj.dll;$(OC_ROOT)\win64\vc14\bin\TKBinXCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKBO.dll;$(OC_ROOT)\win64\vc14\bin\TKBool.dll;$(OC_ROOT)\win64\vc14\bin\TKBRep.dll;$(OC_ROOT)\win64\vc14\bin\TKCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKCDF.dll;$(OC_ROOT)\win64\vc14\bin\TKD3DHost.dll;$(OC_ROOT)\win64\vc14\bin\TKDCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKDFBrowser.dll;$(OC_ROOT)\win64\vc14\bin\TKDraw.dll;$(OC_ROOT)\win64\vc14\bin\TKernel.dll;$(OC_ROOT)\win64\vc14\bin\TKFeat.dll;$(OC_ROOT)\win64\vc14\bin\TKFillet.dll;$(OC_ROOT)\win64\vc14\bin\TKG2d.dll;$(OC_ROOT)\win64\vc14\bin\TKG3d.dll;$(OC_ROOT)\win64\vc14\bin\TKGeomAlgo.dll;$(OC_ROOT)\win64\vc14\bin\TKGeomBase.dll;$(OC_ROOT)\win64\vc14\bin\TKHLR.dll;$(OC_ROOT)\win64\vc14\bin\TKDEIGES.dll;$(OC_ROOT)\win64\vc14\bin\TKIVtk.dll;$(OC_ROOT)\win64\vc14\bin\TKIVtkDraw.dll;$(OC_ROOT)\win64\vc14\bin\TKLCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKMath.dll;$(OC_ROOT)\win64\vc14\bin\TKMesh.dll;$(OC_ROOT)\win64\vc14\bin\TKMeshVS.dll;$(OC_ROOT)\win64\vc14\bin\TKOffset.dll;$(OC_ROOT)\win64\vc14\bin\TKOpenGl.dll;$(OC_ROOT)\win64\vc14\bin\TKPrim.dll;$(OC_ROOT)\win64\vc14\bin\TKQADraw.dll;$(OC_ROOT)\win64\vc14\bin\TKService.dll;$(OC_ROOT)\win64\vc14\bin\TKShapeView.dll;$(OC_ROOT)\win64\vc14\bin\TKShHealing.dll;$(OC_ROOT)\win64\vc14\bin\TKStd.dll;$(OC_ROOT)\win64\vc14\bin\TKStdL.dll;$(OC_ROOT)\win64\vc14\bin\TKDESTEP.dll;$(OC_ROOT)\win64\vc14\bin\TKDESTL.dll;$(OC_ROOT)\win64\vc14\bin\TKTInspector.dll;$(OC_ROOT)\win64\vc14\bin\TKTInspectorAPI.dll;$(OC_ROOT)\win64\vc14\bin\TKTObj.dll;$(OC_ROOT)\win64\vc14\bin\TKTObjDRAW.dll;$(OC_ROOT)\win64\vc14\bin\TKToolsDraw.dll;$(OC_ROOT)\win64\vc14\bin\TKTopAlgo.dll;$(OC_ROOT)\win64\vc14\bin\TKTopTest.dll;$(OC_ROOT)\win64\vc14\bin\TKTreeModel.dll;$(OC_ROOT)\win64\vc14\bin\TKV3d.dll;$(OC_ROOT)\win64\vc14\bin\TKVCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKView.dll;$(OC_ROOT)\win64\vc14\bin\TKViewerTest.dll;$(OC_ROOT)\win64\vc14\bin\TKVInspector.dll;$(OC_ROOT)\win64\vc14\bin\TKDEVRML.dll;$(OC_ROOT)\win64\vc14\bin\TKXCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKXDEDRAW.dll;$(OC_ROOT)\win64\vc14\bin\TKXMesh.dll;$(OC_ROOT)\win64\vc14\bin\TKXml.dll;$(OC_ROOT)\win64\vc14\bin\TKXmlL.dll;$(OC_ROOT)\win64\vc14\bin\TKXmlTObj.dll;$(OC_ROOT)\win64\vc14\bin\TKXmlXCAF.dll;$(OC_ROOT)\win64\vc14\bin\TKXSBase.dll;$(OC_ROOT)\win64\vc14\bin\TKXSDRAW.dll
 
 REM Set Tab Toolbar Root Directory
 SET QT_TT_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\QtTabToolbar
@@ -105,8 +108,8 @@ SET R_JSON_INCD=%R_JSON_ROOT%\include
 SET R_JSON_INCR=%R_JSON_ROOT%\include
 
 REM Set Gmsh Root Directory
-SET GMSH_ROOT_INC=%OPENTWIN_THIRDPARTY_ROOT%\gmsh\gmsh-4.8.0\api
-SET GMSH_ROOT_BIN=%OPENTWIN_THIRDPARTY_ROOT%\gmsh\gmsh-4.8.0\build_win64\Release
+SET GMSH_ROOT_INC=%OPENTWIN_THIRDPARTY_ROOT%\gmsh\gmsh-4.13.1\api
+SET GMSH_ROOT_BIN=%OPENTWIN_THIRDPARTY_ROOT%\gmsh\gmsh-4.13.1\build_win64\Release
 
 REM Set MongoDb Directory
 SET MONGO_C_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\MongoDb\mongo-c-1.21.0\x64
