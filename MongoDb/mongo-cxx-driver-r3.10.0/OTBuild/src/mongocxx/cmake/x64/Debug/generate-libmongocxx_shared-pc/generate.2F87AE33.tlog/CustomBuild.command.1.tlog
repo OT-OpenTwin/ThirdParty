@@ -1,0 +1,28 @@
+^C:\USERS\JWAGNER\DOWNLOADS\MONGO-CXX-DRIVER-R3.10.0\SRC\MONGOCXX\CMAKE\LIBMONGOCXX.PC.IN
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -D src_dir="C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/src/mongocxx/cmake" -D bin_dir="C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild/src/mongocxx/cmake" -D prefix="C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/x64" -D includedir="include" -D libdir="lib" -D output_name="mongocxx" -D version="3.10.0" -D is_static="0" -D bsoncxx_name="bsoncxx" -D libmongoc_req_abi_ver="1.0" -D libmongoc_req_ver="1.25.0" -P C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/src/mongocxx/cmake/generate-pc.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\JWAGNER\DOWNLOADS\MONGO-CXX-DRIVER-R3.10.0\OTBUILD\CMAKEFILES\2ED967F63A5D0BF3051C1B23A0132674\GENERATE-LIBMONGOCXX_SHARED-PC.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\JWAGNER\DOWNLOADS\MONGO-CXX-DRIVER-R3.10.0\SRC\MONGOCXX\CMAKE\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0 -BC:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild --check-stamp-file C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild/src/mongocxx/cmake/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

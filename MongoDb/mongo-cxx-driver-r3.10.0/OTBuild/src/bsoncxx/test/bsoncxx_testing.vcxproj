@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{599FC5A8-1763-3E12-8102-F421B500A978}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>bsoncxx_testing</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\test\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">bsoncxx_testing.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">bsoncxx-testing</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\test\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">bsoncxx_testing.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">bsoncxx-testing</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/JWagner/Downloads/mongo-c-driver-1.27.3/x64/Debug/include/libbson-1.0"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;BSONCXX_TESTING;MONGO_CXX_DRIVER_COMPILING;CMAKE_INTDIR="Debug";BSONCXX_EXPORT</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;BSONCXX_TESTING;MONGO_CXX_DRIVER_COMPILING;CMAKE_INTDIR=\"Debug\";BSONCXX_EXPORT</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-c-driver-1.27.3\x64\Debug\include\libbson-1.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-c-driver-1.27.3\x64\Debug\include\libbson-1.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>C:\Users\JWagner\Downloads\mongo-c-driver-1.27.3\x64\Debug\lib\bson-1.0.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild/src/bsoncxx/test/Debug/bsoncxx-testing.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild/src/bsoncxx/test/Debug/bsoncxx-testing.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/JWagner/Downloads/mongo-c-driver-1.27.3/x64/Debug/include/libbson-1.0"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;BSONCXX_TESTING;MONGO_CXX_DRIVER_COMPILING;CMAKE_INTDIR="Release";BSONCXX_EXPORT</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;BSONCXX_TESTING;MONGO_CXX_DRIVER_COMPILING;CMAKE_INTDIR=\"Release\";BSONCXX_EXPORT</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-c-driver-1.27.3\x64\Debug\include\libbson-1.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-c-driver-1.27.3\x64\Debug\include\libbson-1.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>C:\Users\JWagner\Downloads\mongo-c-driver-1.27.3\x64\Debug\lib\bson-1.0.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild/src/bsoncxx/test/Release/bsoncxx-testing.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild/src/bsoncxx/test/Release/bsoncxx-testing.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\test\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/src/bsoncxx/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0 -BC:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild --check-stamp-file C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild/src/bsoncxx/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/src/bsoncxx/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0 -BC:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild --check-stamp-file C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild/src/bsoncxx/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi\bsoncxx\array\element.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/bsoncxx/v_noabi/bsoncxx/array/element.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi\bsoncxx\array\value.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/bsoncxx/v_noabi/bsoncxx/array/value.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi\bsoncxx\array\view.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/bsoncxx/v_noabi/bsoncxx/array/view.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi\bsoncxx\builder\core.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi\bsoncxx\decimal128.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi\bsoncxx\document\element.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/bsoncxx/v_noabi/bsoncxx/document/element.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi\bsoncxx\document\value.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/bsoncxx/v_noabi/bsoncxx/document/value.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi\bsoncxx\document\view.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/bsoncxx/v_noabi/bsoncxx/document/view.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi\bsoncxx\exception\error_code.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi\bsoncxx\json.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi\bsoncxx\oid.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi\bsoncxx\private\itoa.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi\bsoncxx\string\view_or_value.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi\bsoncxx\types.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi\bsoncxx\types\bson_value\value.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/bsoncxx/v_noabi/bsoncxx/types/bson_value/value.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi\bsoncxx\types\bson_value\view.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/bsoncxx/v_noabi/bsoncxx/types/bson_value/view.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi\bsoncxx\validate.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\ZERO_CHECK.vcxproj">
+      <Project>{E579EE87-AF60-3F13-901D-C27F4875B147}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,835 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4121DAA7-DC8A-38F8-9A03-AB887CBC622A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>run-examples</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>																														</Message>
+      <Command>setlocal
+mongocxx\Debug\aggregate.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\bulk_write.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\connect.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\create.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\document_validation.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\get_values_from_documents.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\gridfs.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\index.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\inserted_id.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\instance_management.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\aggregation_examples.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\runcommand_examples.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\index_examples.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\documentation_examples.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\usage_overview.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\query_projection.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\query.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\remove.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\tailable_cursor.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\tutorial.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\update.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\view_or_value_variant.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Debug\pool.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bsoncxx\Debug\builder_core.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bsoncxx\Debug\builder_list.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bsoncxx\Debug\builder_basic.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bsoncxx\Debug\builder_stream.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bsoncxx\Debug\builder_stream_customization.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bsoncxx\Debug\decimal128.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bsoncxx\Debug\getting_values.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bsoncxx\Debug\view_and_value.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>																														</Message>
+      <Command>setlocal
+mongocxx\Release\aggregate.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\bulk_write.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\connect.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\create.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\document_validation.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\get_values_from_documents.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\gridfs.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\index.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\inserted_id.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\instance_management.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\aggregation_examples.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\runcommand_examples.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\index_examples.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\documentation_examples.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\usage_overview.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\query_projection.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\query.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\remove.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\tailable_cursor.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\tutorial.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\update.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\view_or_value_variant.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+mongocxx\Release\pool.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bsoncxx\Release\builder_core.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bsoncxx\Release\builder_list.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bsoncxx\Release\builder_basic.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bsoncxx\Release\builder_stream.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bsoncxx\Release\builder_stream_customization.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bsoncxx\Release\decimal128.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bsoncxx\Release\getting_values.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+bsoncxx\Release\view_and_value.exe
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\CMakeFiles\f9d94062c84458b7e2d9710570685596\run-examples.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\CMakeFiles\run-examples</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\CMakeFiles\run-examples</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\examples\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/examples/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0 -BC:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild --check-stamp-file C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild/examples/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/examples/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0 -BC:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild --check-stamp-file C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild/examples/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\CMakeFiles\run-examples">
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\ZERO_CHECK.vcxproj">
+      <Project>{E579EE87-AF60-3F13-901D-C27F4875B147}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\aggregate.vcxproj">
+      <Project>{82F50F12-6AF1-3ED3-8567-71DB5CEB1F05}</Project>
+      <Name>aggregate</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\aggregation_examples.vcxproj">
+      <Project>{0A18258C-D908-336A-AB40-DFECF77A6044}</Project>
+      <Name>aggregation_examples</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\bsoncxx\builder_basic.vcxproj">
+      <Project>{AFEC40D7-9311-3E23-BB20-A7C01E08525C}</Project>
+      <Name>builder_basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\bsoncxx\builder_core.vcxproj">
+      <Project>{4B921C7D-BA81-31A9-B7F4-746E28E44057}</Project>
+      <Name>builder_core</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\bsoncxx\builder_list.vcxproj">
+      <Project>{77A70952-C88A-3838-8048-AC9FA2588FB8}</Project>
+      <Name>builder_list</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\bsoncxx\builder_stream.vcxproj">
+      <Project>{597340DB-E7CE-39C4-A7F3-079380EED6F6}</Project>
+      <Name>builder_stream</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\bsoncxx\builder_stream_customization.vcxproj">
+      <Project>{3B7907E2-C7AD-3324-8761-6FEF497AA7BA}</Project>
+      <Name>builder_stream_customization</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\bulk_write.vcxproj">
+      <Project>{37EECE45-94F8-3A10-AE85-10514694B051}</Project>
+      <Name>bulk_write</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\connect.vcxproj">
+      <Project>{E11D9B02-FDAC-3721-B1E8-3F428675B772}</Project>
+      <Name>connect</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\create.vcxproj">
+      <Project>{67093DBC-7E3C-361D-8FE3-218420CE4576}</Project>
+      <Name>create</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\bsoncxx\decimal128.vcxproj">
+      <Project>{253A72D4-9271-3383-A2F1-0C8A76C9F89E}</Project>
+      <Name>decimal128</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\document_validation.vcxproj">
+      <Project>{5772B7E2-1EE7-3505-8B6F-E7C3A4A65525}</Project>
+      <Name>document_validation</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\documentation_examples.vcxproj">
+      <Project>{FDE3ECE2-4847-3A4E-A614-C01A2FCB0281}</Project>
+      <Name>documentation_examples</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\examples.vcxproj">
+      <Project>{0F446D1F-027A-351F-9815-9599EEB23789}</Project>
+      <Name>examples</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\get_values_from_documents.vcxproj">
+      <Project>{BCD0282A-886A-3F4F-847C-08961E14EA66}</Project>
+      <Name>get_values_from_documents</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\bsoncxx\getting_values.vcxproj">
+      <Project>{96E362E6-256B-372A-8255-0BC730FE1947}</Project>
+      <Name>getting_values</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\gridfs.vcxproj">
+      <Project>{71BE162A-FF68-37CD-BA3D-4724D89CA9ED}</Project>
+      <Name>gridfs</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\index.vcxproj">
+      <Project>{77D3903C-A320-33DC-9BA2-2EA555346B5F}</Project>
+      <Name>index</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\index_examples.vcxproj">
+      <Project>{C7453861-EE42-3A6B-8DFB-045ABCD27758}</Project>
+      <Name>index_examples</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\inserted_id.vcxproj">
+      <Project>{C90D57AE-8DBF-3E8E-986C-E38CF2E9F883}</Project>
+      <Name>inserted_id</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\instance_management.vcxproj">
+      <Project>{2F54A7CE-FB82-31EB-A741-4C1229CA79A4}</Project>
+      <Name>instance_management</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\pool.vcxproj">
+      <Project>{0DA12447-6A43-3F5D-959D-886D706A542E}</Project>
+      <Name>pool</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\query.vcxproj">
+      <Project>{2DC73CAC-1139-37E9-A9E9-4B84D81D339F}</Project>
+      <Name>query</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\query_projection.vcxproj">
+      <Project>{E9906E36-F7CC-3DE2-8033-D1CF36E0FFC6}</Project>
+      <Name>query_projection</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\remove.vcxproj">
+      <Project>{D4B8C318-CAEB-3855-AB63-AE1FA0A459AB}</Project>
+      <Name>remove</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\runcommand_examples.vcxproj">
+      <Project>{96EE160A-1E3D-34F7-8031-81223AE99C15}</Project>
+      <Name>runcommand_examples</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\tailable_cursor.vcxproj">
+      <Project>{6E70A0EB-CE9D-3B73-8A4B-956043748EEE}</Project>
+      <Name>tailable_cursor</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\tutorial.vcxproj">
+      <Project>{AB72A731-163B-3CDE-8DCD-5B0067E07FAF}</Project>
+      <Name>tutorial</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\update.vcxproj">
+      <Project>{E28348BF-6A16-3A3D-B3BA-F9FAB1BEEFA0}</Project>
+      <Name>update</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\usage_overview.vcxproj">
+      <Project>{2C8EFD75-F17A-331D-907B-375A3987B9F7}</Project>
+      <Name>usage_overview</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\bsoncxx\view_and_value.vcxproj">
+      <Project>{5D3A4200-8891-3623-BF99-0882AA60594F}</Project>
+      <Name>view_and_value</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\examples\mongocxx\view_or_value_variant.vcxproj">
+      <Project>{48EDDDA6-1348-3BF6-9419-BB0031DFAB64}</Project>
+      <Name>view_or_value_variant</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F1EF3785-52D3-3B75-ADD9-BC624F9A2882}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>mongocxx_mocked</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\mongocxx\test\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">mongocxx_mocked.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">mongocxx-mocked</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\mongocxx\test\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">mongocxx_mocked.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">mongocxx-mocked</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\include\mongocxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\include;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\mongocxx\lib\mongocxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\mongocxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/JWagner/Downloads/mongo-c-driver-1.27.3/x64/Debug/include/libmongoc-1.0" /external:I "C:/Users/JWagner/Downloads/mongo-c-driver-1.27.3/x64/Debug/include/libbson-1.0" /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;MONGOCXX_TESTING;MONGO_CXX_DRIVER_COMPILING;BSONCXX_TESTING;CMAKE_INTDIR="Debug";MONGOCXX_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;MONGOCXX_TESTING;MONGO_CXX_DRIVER_COMPILING;BSONCXX_TESTING;CMAKE_INTDIR=\"Debug\";MONGOCXX_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\include\mongocxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\include;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\mongocxx\lib\mongocxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\mongocxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-c-driver-1.27.3\x64\Debug\include\libmongoc-1.0;C:\Users\JWagner\Downloads\mongo-c-driver-1.27.3\x64\Debug\include\libbson-1.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\include\mongocxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\include;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\mongocxx\lib\mongocxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\mongocxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-c-driver-1.27.3\x64\Debug\include\libmongoc-1.0;C:\Users\JWagner\Downloads\mongo-c-driver-1.27.3\x64\Debug\include\libbson-1.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>C:\Users\JWagner\Downloads\mongo-c-driver-1.27.3\x64\Debug\lib\mongoc-1.0.lib;..\..\bsoncxx\test\Debug\bsoncxx-testing.lib;Bcrypt.lib;secur32.lib;crypt32.lib;Shlwapi.lib;Dnsapi.lib;C:\Users\JWagner\Downloads\mongo-c-driver-1.27.3\x64\Debug\lib\bson-1.0.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild/src/mongocxx/test/Debug/mongocxx-mocked.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild/src/mongocxx/test/Debug/mongocxx-mocked.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\include\mongocxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\include;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\mongocxx\lib\mongocxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\mongocxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/JWagner/Downloads/mongo-c-driver-1.27.3/x64/Debug/include/libmongoc-1.0" /external:I "C:/Users/JWagner/Downloads/mongo-c-driver-1.27.3/x64/Debug/include/libbson-1.0" /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;MONGOCXX_TESTING;MONGO_CXX_DRIVER_COMPILING;BSONCXX_TESTING;CMAKE_INTDIR="Release";MONGOCXX_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;MONGOCXX_TESTING;MONGO_CXX_DRIVER_COMPILING;BSONCXX_TESTING;CMAKE_INTDIR=\"Release\";MONGOCXX_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\include\mongocxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\include;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\mongocxx\lib\mongocxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\mongocxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-c-driver-1.27.3\x64\Debug\include\libmongoc-1.0;C:\Users\JWagner\Downloads\mongo-c-driver-1.27.3\x64\Debug\include\libbson-1.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\include\mongocxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\include;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\mongocxx\lib\mongocxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\mongocxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\include;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib\bsoncxx\v_noabi;C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\lib;C:\Users\JWagner\Downloads\mongo-c-driver-1.27.3\x64\Debug\include\libmongoc-1.0;C:\Users\JWagner\Downloads\mongo-c-driver-1.27.3\x64\Debug\include\libbson-1.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>C:\Users\JWagner\Downloads\mongo-c-driver-1.27.3\x64\Debug\lib\mongoc-1.0.lib;..\..\bsoncxx\test\Release\bsoncxx-testing.lib;Bcrypt.lib;secur32.lib;crypt32.lib;Shlwapi.lib;Dnsapi.lib;C:\Users\JWagner\Downloads\mongo-c-driver-1.27.3\x64\Debug\lib\bson-1.0.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild/src/mongocxx/test/Release/mongocxx-mocked.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild/src/mongocxx/test/Release/mongocxx-mocked.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\test\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/src/mongocxx/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0 -BC:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild --check-stamp-file C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild/src/mongocxx/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindThreads.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\mongocxx\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/src/mongocxx/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0 -BC:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild --check-stamp-file C:/Users/JWagner/Downloads/mongo-cxx-driver-r3.10.0/OTBuild/src/mongocxx/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.30\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.30\Modules\FindThreads.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\mongocxx\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\bulk_write.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/bulk_write.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\change_stream.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/change_stream.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\client.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/client.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\client_encryption.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/client_encryption.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\client_session.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/client_session.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\collection.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\cursor.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\database.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\events\command_failed_event.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\events\command_started_event.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\events\command_succeeded_event.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\events\heartbeat_failed_event.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\events\heartbeat_started_event.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\events\heartbeat_succeeded_event.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\events\server_changed_event.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\events\server_closed_event.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\events\server_description.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\events\server_opening_event.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\events\topology_changed_event.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\events\topology_closed_event.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\events\topology_description.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\events\topology_opening_event.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\exception\error_code.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\exception\operation_exception.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\exception\server_error_code.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\gridfs\bucket.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/gridfs/bucket.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\gridfs\downloader.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\gridfs\uploader.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\hint.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\index_model.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\index_view.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/index_view.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\instance.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\logger.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\model\delete_many.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\model\delete_one.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\model\insert_one.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/model/insert_one.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\model\replace_one.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/model/replace_one.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\model\update_many.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\model\update_one.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\model\write.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\aggregate.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\apm.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\auto_encryption.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\bulk_write.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/options/bulk_write.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\change_stream.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/options/change_stream.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\client.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/options/client.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\client_encryption.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/options/client_encryption.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\client_session.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/options/client_session.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\count.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\create_collection.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\data_key.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\delete.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/options/delete.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\distinct.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\encrypt.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\estimated_document_count.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\find.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\find_one_and_delete.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\find_one_and_replace.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\find_one_and_update.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\gridfs\bucket.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/options/gridfs/bucket.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\gridfs\upload.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/options/gridfs/upload.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\index.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\index_view.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/options/index_view.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\insert.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\pool.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/options/pool.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\range.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\replace.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\rewrap_many_datakey.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/options/rewrap_many_datakey.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\server_api.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\tls.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\transaction.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\options\update.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/options/update.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\pipeline.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\pool.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/pool.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\private\conversions.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\private\libbson.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\private\libmongoc.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\private\numeric_casting.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\read_concern.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\read_preference.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\result\bulk_write.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/result/bulk_write.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\result\delete.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/result/delete.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\result\gridfs\upload.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/result/gridfs/upload.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\result\insert_many.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\result\insert_one.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/result/insert_one.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\result\replace_one.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/result/replace_one.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\result\rewrap_many_datakey.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/result/rewrap_many_datakey.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\result\update.cpp">
+      <ObjectFileName>$(IntDir)/__/lib/mongocxx/v_noabi/mongocxx/result/update.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\search_index_model.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\search_index_view.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\uri.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\validation_criteria.cpp" />
+    <ClCompile Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\src\mongocxx\lib\mongocxx\v_noabi\mongocxx\write_concern.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\ZERO_CHECK.vcxproj">
+      <Project>{E579EE87-AF60-3F13-901D-C27F4875B147}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\JWagner\Downloads\mongo-cxx-driver-r3.10.0\OTBuild\src\bsoncxx\test\bsoncxx_testing.vcxproj">
+      <Project>{599FC5A8-1763-3E12-8102-F421B500A978}</Project>
+      <Name>bsoncxx_testing</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

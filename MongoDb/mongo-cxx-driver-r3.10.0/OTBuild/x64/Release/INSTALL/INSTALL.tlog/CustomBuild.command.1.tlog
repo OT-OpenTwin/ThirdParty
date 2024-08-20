@@ -1,0 +1,10 @@
+^C:\USERS\JWAGNER\DOWNLOADS\MONGO-CXX-DRIVER-R3.10.0\OTBUILD\CMAKEFILES\C1F7741DF9C3214355B5B1975FF177F9\INSTALL_FORCE.RULE
+setlocal
+cd .
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

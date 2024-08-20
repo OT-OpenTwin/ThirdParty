@@ -1,0 +1,10 @@
+^C:\USERS\JWAGNER\DOWNLOADS\MONGO-C-DRIVER-1.27.3\SRC\LIBMONGOC\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/JWagner/Downloads/mongo-c-driver-1.27.3 -BC:/Users/JWagner/Downloads/mongo-c-driver-1.27.3/OTBuild --check-stamp-file C:/Users/JWagner/Downloads/mongo-c-driver-1.27.3/OTBuild/src/libmongoc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
