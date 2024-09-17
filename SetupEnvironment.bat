@@ -247,6 +247,9 @@ SET APACHE_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\Apache\Apache24\Windows
 REM Set Certificate creation tools Directory
 SET CERT_CREATE_TOOLS=%OPENTWIN_THIRDPARTY_ROOT%\CertificateCreation
 
+SET NGSPICE_LIBPATHD=%OPENTWIN_THIRDPARTY_ROOT%\mySpice\ngspice-41\visualc\sharedspice\Debug.x64
+SET NGSPICE_LIBPATHR=%OPENTWIN_THIRDPARTY_ROOT%\mySpice\ngspice-41\visualc\sharedspice\Release.x64
+
 ECHO OpenTwin Third Party environment was set up successfully.
 
 :END
