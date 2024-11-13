@@ -23,7 +23,7 @@ SET QT_DLLR=%QDIR%\bin
 SET QT_DLLD=%QDIR%\bin
 SET QT_INC=%QDIR%\include
 SET QT_LIBPATH=%QDIR%\lib
-
+SET QT_PLUGINS=%QDIR%\plugins
 
 REM Set QWT and QWT wrapper Environment
 SET QWT_LIB_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\qwt\qwt-6.2.0
