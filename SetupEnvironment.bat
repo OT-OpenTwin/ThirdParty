@@ -252,8 +252,7 @@ SET NGSPICE_LIBPATHR=%OPENTWIN_THIRDPARTY_ROOT%\mySpice\ngspice-41\visualc\share
 
 SET GRAPHVIZ_BIN=%OPENTWIN_THIRDPARTY_ROOT%\Graphviz\Graphviz-12.2.1-win64\bin
 
-:: The suffix will be used to build the relative path to the MathJax library.
-:: The suffix should contain the path relative to the third party root.
+SET MATHJAX_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\MathJax\MathJax-3.2.2\es5
 SET MATHJAX_REL_PATH_SUFFIX=MathJax\MathJax-3.2.2\es5
 
 ECHO OpenTwin Third Party environment was set up successfully.
