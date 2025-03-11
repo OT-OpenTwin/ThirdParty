@@ -1,0 +1,87 @@
+Metadata-Version: 2.1
+Name: pypardiso
+Version: 0.4.6
+Summary: Python interface to the Intel MKL Pardiso library to solve large sparse linear systems of equations
+Author: Adrian Haas
+License: Copyright (c) 2016, Adrian Haas and ETH Zürich
+        All rights reserved.
+        
+        Redistribution and use in source and binary forms, with or without 
+        modification, are permitted provided that the following conditions are met:
+        
+        Redistributions of source code must retain the above copyright notice, this 
+        list of conditions and the following disclaimer. Redistributions in binary 
+        form must reproduce the above copyright notice, this list of conditions and the 
+        following disclaimer in the documentation and/or other materials provided 
+        with the distribution.
+        Neither the name of ETH Zürich nor the names of its contributors may be used 
+        to endorse or promote products derived from this software without specific 
+        prior written permission.
+        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+        AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+        IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+        DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE 
+        FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
+        DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
+        SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+        CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
+        OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+        OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Project-URL: Homepage, https://github.com/haasad/PyPardiso
+Project-URL: Repository, https://github.com/haasad/PyPardiso.git
+Project-URL: Changelog, https://github.com/haasad/PyPardiso/releases
+Keywords: pardiso,sparse solver
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: mkl !=2024.0
+Requires-Dist: numpy
+Requires-Dist: scipy
+
+[![pypardiso-tests](https://github.com/haasad/PyPardisoProject/actions/workflows/tests.yaml/badge.svg?branch=master)](https://github.com/haasad/PyPardisoProject/actions/workflows/tests.yaml)
+# PyPardiso
+
+PyPardiso is a python package to solve large sparse linear systems of equations with the [Intel oneAPI Math Kernel Library PARDISO solver](https://www.intel.com/content/www/us/en/develop/documentation/onemkl-developer-reference-fortran/top/sparse-solver-routines/onemkl-pardiso-parallel-direct-sparse-solver-iface.html), a shared-memory multiprocessing parallel direct sparse solver.
+
+PyPardiso provides the same functionality as SciPy's [scipy.sparse.linalg.spsolve](https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.linalg.spsolve.html#scipy.sparse.linalg.spsolve) for solving the sparse linear system `Ax=b`. However in many cases it is significantly faster than SciPy's built-in single-threaded SuperLU solver.
+
+PyPardiso is not a python interface to the PARDISO Solver from the [PARDISO 7.2 Solver Project](https://www.pardiso-project.org/) and it also doesn't currently support complex numbers. Check out [JuliaSparse/Pardiso.jl](https://github.com/JuliaSparse/Pardiso.jl/) for these more advanced use cases.
+
+## Installation
+
+PyPardiso runs on Linux, Windows and MacOS. It can be installed with __conda__ or __pip__. It is recommended to install PyPardiso using a virtual environment.
+
+conda-forge | PyPI
+:---:|:---:
+[![conda-forge version](https://anaconda.org/conda-forge/pypardiso/badges/version.svg)](https://anaconda.org/conda-forge/pypardiso) | [![PyPI version](https://badge.fury.io/py/pypardiso.svg)](https://pypi.org/project/pypardiso/)
+`conda install -c conda-forge pypardiso` | `pip install pypardiso`
+
+
+## Basic usage
+
+How to solve the sparse linear system `Ax=b` for `x`, where `A` is a square, sparse matrix in CSR (or CSC) format and `b` is a vector (or matrix):
+```python
+In [1]: import pypardiso
+
+In [2]: import numpy as np
+
+In [3]: import scipy.sparse as sp
+
+In [4]: A = sp.rand(10, 10, density=0.5, format='csr')
+
+In [5]: A
+Out[5]:
+<10x10 sparse matrix of type '<class 'numpy.float64'>'
+	with 50 stored elements in Compressed Sparse Row format>
+
+In [6]: b = np.random.rand(10)
+
+In [7]: x = pypardiso.spsolve(A, b)
+
+In [8]: x
+Out[8]:
+array([ 0.02918389,  0.59629935,  0.33407289, -0.48788966,  3.44508841,
+        0.52565687, -0.48420646,  0.22136413, -0.95464127,  0.58297397])
+```
