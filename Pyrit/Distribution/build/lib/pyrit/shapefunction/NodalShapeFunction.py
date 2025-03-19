@@ -13,6 +13,8 @@ import numpy as np
 from numpy import ndarray
 from scipy.sparse import coo_matrix, csr_matrix, hstack, vstack, bmat
 
+import scipy.spatial as spa
+
 from pyrit.mesh import TriMesh, TetMesh
 from pyrit.excitation import ChargeDensity, SourceDField
 from .ShapeFunction import ShapeFunction, NumericalData, MaterialData, ExcitationData
@@ -201,7 +203,7 @@ class NodalShapeFunction(ShapeFunction):
 
     @abstractmethod
     def neumann_term(self, *args: Union[Tuple['Regions', 'BdryCond'],
-                                        Tuple[ndarray, Union[Callable[..., float], ndarray, float]]],
+                     Tuple[ndarray, Union[Callable[..., float], ndarray, float]]],
                      integration_order: int = 1) -> coo_matrix:
         r"""Compute the Neumann term on a part of the boundary (see the notes).
 
@@ -288,8 +290,9 @@ class NodalShapeFunction(ShapeFunction):
                                             integration_order)
 
         if bc_by_type['binary']:
-            matrix, rhs, num_lagrange_mul_binary = self.shrink_binary(matrix, rhs, problem.boundary_conditions,
-                                                                      bc_by_type['binary'])
+            matrix, rhs, num_lagrange_mul_binary = self.shrink_binary(matrix, rhs, bc_by_type['binary'],
+                                                                      problem.regions, problem.mesh,
+                                                                      problem.boundary_conditions)
 
         if bc_by_type['floating']:
             matrix, rhs, num_lagrange_mul_floating = self.shrink_floating(matrix, rhs, bc_by_type['floating'],
@@ -420,8 +423,9 @@ class NodalShapeFunction(ShapeFunction):
         rhs_shrink = rhs + vector_neumann
         return matrix_shrink.tocoo(), rhs_shrink.tocoo()
 
-    def shrink_binary(self, matrix: coo_matrix, rhs: coo_matrix, boundary_conditions: 'BdryCond',
-                      binary_boundary_conditions: List[int]):
+    def shrink_binary(self, matrix: coo_matrix, rhs: coo_matrix, binary_boundary_conditions: List[int],
+                      regions: 'Regions', mesh: 'Mesh', boundary_conditions: 'BdryCond') \
+            -> Tuple[coo_matrix, coo_matrix, int]:
         """Shrink with binary boundary conditions.
 
         Parameters
@@ -430,10 +434,14 @@ class NodalShapeFunction(ShapeFunction):
             The matrix of the system of equations.
         rhs : coo_matrix
             The right-hand-side of the system of equations.
-        boundary_conditions : BdryCond
-            A boundary condition object.
         binary_boundary_conditions : List[int]
             A list of the IDs of binary boundary conditions.
+        regions : Regions
+            A regions object.
+        mesh : Mesh
+            A mesh object.
+        boundary_conditions : BdryCond
+            A boundary condition object.
 
         Returns
         -------
@@ -444,14 +452,18 @@ class NodalShapeFunction(ShapeFunction):
         num_lagrange_mul : int
             The number of lagrange multipliers
         """
-        lines, columns, values = self._calc_values_for_binary(boundary_conditions, binary_boundary_conditions)
+        matrix_data, rhs_data = self._calc_values_for_binary(binary_boundary_conditions, mesh,
+                                                             regions, boundary_conditions)
+        lines, columns, values = matrix_data
+        rhs_lines, rhs_columns, rhs_values = rhs_data
 
         # Build the matrix B, the zeros vector for the right-hand-side and the zero block matrix
         binary_matrix = coo_matrix(
             (np.concatenate(values), (np.concatenate(lines), np.concatenate(columns))))
         binary_matrix.resize((binary_matrix.shape[0], matrix.shape[1]))
         num_lagrange_mul = binary_matrix.shape[0]  # Number of lagrange multiplicators
-        binary_vector = coo_matrix((num_lagrange_mul, 1))
+        binary_vector = coo_matrix((np.concatenate(rhs_values),
+                                    (np.concatenate(rhs_lines), np.concatenate(rhs_columns))))
         bottom_right_matrix = coo_matrix((num_lagrange_mul, num_lagrange_mul))
 
         # Update system matrix and rhs vector
@@ -647,8 +659,13 @@ class NodalShapeFunction(ShapeFunction):
 
     # noinspection PyUnresolvedReferences
     @staticmethod
-    def _calc_values_for_binary(boundary_conditions: 'BdryCond', keys: List[int]) \
-            -> Tuple[List[int], List[int], List[float]]:
+    def _calc_values_for_binary(keys: List[int], msh: 'Mesh', regions: 'Regions', boundary_conditions: 'BdryCond') \
+            -> Tuple[Tuple[List[np.ndarray],
+                           List[np.ndarray],
+                           List[np.ndarray]],
+                     Tuple[List[np.ndarray],
+                           List[np.ndarray],
+                           List[np.ndarray]]]:
         """Caluclate some data needed for shrinking binary boundary conditions.
 
         Parameters
@@ -667,22 +684,62 @@ class NodalShapeFunction(ShapeFunction):
         values : List[float]
             Values of the binary boundary conditions.
         """
-        lines = []
-        columns = []
-        values = []
+        lines, columns, values = [], [], []
+        rhs_lines, rhs_columns, rhs_values = [], [], []
+
         lines_previous = 0
         for key in keys:
             bc_binary = boundary_conditions.get_bc(key)
 
-            lines.append(np.arange(len(bc_binary.primary_nodes)) + lines_previous)
-            columns.append(bc_binary.primary_nodes)
-            values.append(-bc_binary.value * np.ones(len(bc_binary.primary_nodes)))
+            primary_ID = bc_binary.primary_boundary
+            primary_nodes = np.unique(msh.bound2node[msh.bound2regi == primary_ID])
+            primary_pos = msh.node[primary_nodes]
 
-            lines.append(np.arange(len(bc_binary.replica_nodes)) + lines_previous)
-            columns.append(bc_binary.replica_nodes)
-            values.append(np.ones(len(bc_binary.replica_nodes)))
-            lines_previous += len(bc_binary.primary_nodes)
-        return lines, columns, values
+            secondary_ID = bc_binary.secondary_boundary
+            secondary_nodes = np.unique(msh.bound2node[msh.bound2regi == secondary_ID])
+            secondary_pos = msh.node[secondary_nodes]
+
+            transformed_primary = bc_binary.bc_to_primary(primary_pos)
+            transformed_secondary = bc_binary.bc_to_secondary(secondary_pos)
+            # bc_binary.value = bc_binary.primary_transform(bc_binary.primary_nodes)
+
+            master_tree = spa.KDTree(transformed_primary)
+            _, idxs = master_tree.query(x=transformed_secondary, k=regions.get_regi(primary_ID).dim + 1, workers=-1)
+            nearest_nodes = primary_nodes[idxs]  # first dim: node of x , second dim:  k neighbours
+
+            primary_rows = np.tile(np.arange(0, len(primary_pos))[:, np.newaxis], (1, nearest_nodes.shape[1]))
+            primary_cols = nearest_nodes
+            triangles = transformed_primary[idxs]
+            points = transformed_secondary
+            primary_vals = (bc_binary.primary_transform(primary_nodes[idxs])
+                            * barycentric_coordinates(triangles=triangles,
+                                                      points=points,
+                                                      dim=regions.get_regi(primary_ID).dim))
+
+            primary_rows = primary_rows.flatten() + lines_previous
+            primary_cols, primary_vals = primary_cols.flatten(), primary_vals.flatten()
+
+            # Add slave nodes
+            secondary_rows = np.arange(0, len(primary_nodes)) + lines_previous
+            secondary_cols = secondary_nodes
+            secondary_vals = bc_binary.secondary_transform(secondary_nodes) * np.ones_like(secondary_rows)
+
+            new_lines = np.concatenate((primary_rows, secondary_rows))
+            new_columns = np.concatenate((primary_cols, secondary_cols))
+            new_values = np.concatenate((primary_vals, secondary_vals))
+
+            lines.append(new_lines)
+            columns.append(new_columns)
+            values.append(new_values)
+
+            # Add RHS shift
+            rhs_lines.append(secondary_rows)
+            rhs_columns.append(np.zeros_like(secondary_rows))
+            rhs_values.append(bc_binary.dirichlet_shift(secondary_pos))
+
+            lines_previous += len(primary_nodes)
+
+        return (lines, columns, values), (rhs_lines, rhs_columns, rhs_values)
 
     # noinspection PyUnresolvedReferences
     @staticmethod
@@ -839,7 +896,9 @@ class NodalShapeFunction(ShapeFunction):
         indices_on_dirichlet, indices_not_on_dirichlet, values_on_dirichlet = None, None, None
 
         if dict_of_bc['binary']:
-            lines, _, _ = self._calc_values_for_binary(problem.boundary_conditions, dict_of_bc['binary'])
+            _, rhs_data = self._calc_values_for_binary(dict_of_bc['binary'],
+                                                       problem.mesh, problem.regions, problem.boundary_conditions)
+            lines, _, _ = rhs_data
             num_lagrange_mul_binary = np.max(lines) + 1
 
         if dict_of_bc['floating']:
@@ -868,3 +927,51 @@ class NodalShapeFunction(ShapeFunction):
         return support_data
 
     # endregion
+
+
+def barycentric_coordinates(triangles: np.ndarray, points: np.ndarray, dim: int = 1):
+    """
+    Compute the barycentric coordinates of multiple points P inside multiple triangles with vertices A, B, and C.
+
+    Parameters
+    ----------
+    triangles : ndarray, shape=(n_triangles, 3, 2)
+        Positions of the triangle vertices (A, B, C) for each triangle.
+    points : ndarray, shape=(n_points, 2)
+        Positions of the points P.
+
+    Returns
+    -------
+    alpha, beta, gamma : ndarray, shape=(n_triangles, n_points)
+        Barycentric coordinates of the points P for each triangle.
+    """
+    if dim == 2:
+        # Compute vectors AB, AC, and AP
+        ab = triangles[:, 1] - triangles[:, 0, np.newaxis]
+        ac = triangles[:, 2] - triangles[:, 0, np.newaxis]
+        ap = points - triangles[:, 0, np.newaxis]
+
+        # Compute dot products
+        ab_dot_ab = np.sum(ab * ab, axis=1, keepdims=True)
+        ac_dot_ac = np.sum(ac * ac, axis=1, keepdims=True)
+        ab_dot_ap = np.sum(ab[:, np.newaxis] * ap[:, :, np.newaxis], axis=2)
+        ac_dot_ap = np.sum(ac[:, np.newaxis] * ap[:, :, np.newaxis], axis=2)
+
+        # Compute barycentric coordinates
+        inv_denom = 1 / (ab_dot_ab * ac_dot_ac - np.sum(ab * ac, axis=1, keepdims=True) ** 2)
+        alpha = (ab_dot_ab * ac_dot_ap - np.sum(ab * ac, axis=1, keepdims=True) * ab_dot_ap) * inv_denom
+        beta = (ac_dot_ac * ab_dot_ap - np.sum(ab * ac, axis=1, keepdims=True) * ac_dot_ap) * inv_denom
+        gamma = 1 - alpha - beta
+
+        return np.hstack((alpha, beta, gamma))
+
+    if dim == 1:
+        ap = points - triangles[:, 0]
+
+        ab = triangles[:, 1] - triangles[:, 0]
+
+        delta = ap / ab
+
+        return np.hstack((1 - delta, delta))
+
+    raise ValueError(dim, "Dimension is not {1,2}")
