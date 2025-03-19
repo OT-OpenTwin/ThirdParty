@@ -137,80 +137,6 @@ class MatrixType(enum.Enum):
 
 
 # pylint: disable=invalid-name,consider-using-f-string,logging-too-many-args,logging-format-interpolation
-class PyritPardisoSolver(pypardiso.PyPardisoSolver):
-    """Extension of the class PyPardisoSolver from pypardiso
-
-    For documentation on pardiso, see https://pardiso-project.org/manual/manual.pdf
-    """
-
-    MatrixType = MatrixType
-
-    def _check_A(self, A):
-        if A.shape[0] != A.shape[1]:
-            raise ValueError('Matrix A needs to be square, but has shape: {}'.format(A.shape))
-
-        if sparse.isspmatrix_csr(A):
-            self._solve_transposed = False
-            self.set_iparm(12, 0)
-        elif sparse.isspmatrix_csc(A):
-            self._solve_transposed = True
-            self.set_iparm(12, 1)
-        else:
-            msg = 'PyPardiso requires matrix A to be in CSR or CSC format, but matrix A is: {}'.format(type(A))
-            raise TypeError(msg)
-
-        # scipy allows unsorted csr-indices, which lead to completely wrong pardiso results
-        if not A.has_sorted_indices:
-            A.sort_indices()
-
-        # scipy allows csr matrices with empty rows. a square matrix with an empty row is singular. calling
-        # pardiso with a matrix A that contains empty rows leads to a segfault, same applies for csc with
-        # empty columns
-        if not np.diff(A.indptr).all():
-            row_col = 'column' if self._solve_transposed else 'row'
-            raise ValueError('Matrix A is singular, because it contains empty {}(s)'.format(row_col))
-
-    def _check_b(self, A, b):
-        if sparse.isspmatrix(b):
-            logger.warning('PyPardiso requires the right-hand side b to be a dense array for maximum efficiency',
-                           sparse.SparseEfficiencyWarning)
-            b = b.todense()
-
-        # pardiso expects fortran (column-major) order for b
-        if not b.flags.f_contiguous:
-            b = np.asfortranarray(b)
-
-        if b.shape[0] != A.shape[0]:
-            raise ValueError("Dimension mismatch: Matrix A {} and array b {}".format(A.shape, b.shape))
-
-        if b.dtype in [np.float16, np.float32, np.int16, np.int32, np.int64]:
-            logger.warning("Array b's data type was converted from {} to float64".format(str(b.dtype)))
-            b = b.astype(np.float64)
-
-        return b
-
-    def solve(self, A, b):
-        """Solve a linear system Ax=b"""
-        return super().solve(A, b)
-
-    def __call__(self, A: sparse.csr_matrix, b: Union[sparse.spmatrix, np.ndarray], **kwargs):
-        if "print_info" in kwargs:
-            self.msglvl = int(bool(kwargs.pop("print_info")))
-        mtype = kwargs.pop("mtype", self.MatrixType.REAL_AND_NONSYMMETRIC)
-
-        if not isinstance(mtype, self.MatrixType):
-            raise ValueError("Wrong type of mtype")
-
-        if np.issubdtype(A.dtype, np.complexfloating) or np.issubdtype(b.dtype, np.complexfloating):
-            mtype = self.MatrixType.COMPLEX_AND_NONSYMMETRIC
-        self.mtype = mtype.value
-
-        if isinstance(b, sparse.spmatrix):
-            return pypardiso.spsolve(A, b.toarray(), solver=self)
-        return pypardiso.spsolve(A, b, solver=self)
-
-
-pyrit_pardiso_solver = PyritPardisoSolver()
 
 
 # pylint: disable=line-too-long
@@ -248,7 +174,7 @@ def solve_linear_system(matrix: sparse.spmatrix, rhs: Union[sparse.spmatrix, np.
         A dictionary with information from the solver.
     """
     if not solver:
-        solver = kwargs.get('solver', 'pardiso') if _pypardiso_available else kwargs.get('solver', 'spsolve')
+        solver = kwargs.get('solver', 'spsolve')
 
     matrix = matrix.tocsr()
     if not isinstance(rhs, (sparse.spmatrix, np.ndarray)):
@@ -269,9 +195,6 @@ def solve_linear_system(matrix: sparse.spmatrix, rhs: Union[sparse.spmatrix, np.
         elif solver in iteratiev_solvers:
             result, conv_info = iteratiev_solvers[solver](matrix, rhs, **kwargs)
             info = {'convergence info': conv_info}
-        elif solver == 'pardiso':
-            result = pyrit_pardiso_solver(matrix, rhs, **kwargs)
-            info = {}
         else:
             raise SolverUnknownError(f"Solver '{solver}' not known.")
 
