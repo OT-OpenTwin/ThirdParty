@@ -223,6 +223,9 @@ REM Set Expression Evaluator Directory
 SET EXPREVAL_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\tinyexpr
 SET EXPREVAL_INC=%EXPREVAL_ROOT%
 
+REM Set earcut (triangulation header only library) Directory
+SET EARCUT_INC=%OPENTWIN_THIRDPARTY_ROOT%\earcut\include\mapbox
+
 REM Set Google Test Directories
 SET GOOGLE_TEST_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\GoogleTest
 SET GOOGLE_TEST_INC=%GOOGLE_TEST_ROOT%\googletest\include
