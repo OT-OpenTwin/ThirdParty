@@ -16,7 +16,6 @@ IF "%DEVENV_ROOT_2022%" == "" (
 ECHO Setting up environment
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\SetupEnvironment.bat"
 
-"%DEVENV_ROOT_2022%\devenv.exe"
+START "" "%DEVENV_ROOT_2022%\devenv.exe" "%OPENTWIN_THIRDPARTY_ROOT%\qwt\qwt-6.2.0\qwt.sln"
 
-  
 :END
