@@ -1,0 +1,8 @@
+
+#define QT_VERSION_STR "6.10.0"
+
+#define QT_VERSION_MAJOR 6
+
+#define QT_VERSION_MINOR 10
+
+#define QT_VERSION_PATCH 0

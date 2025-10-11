@@ -1,0 +1,463 @@
+SPDXVersion: SPDX-2.3
+DataLicense: CC0-1.0
+SPDXID: SPDXRef-DOCUMENT
+DocumentName: qthttpserver-6.10.0
+DocumentNamespace: https://qt.io/spdxdocs/qthttpserver-6.10.0
+Creator: Organization: TheQtCompany
+Creator: Tool: Qt Build System
+CreatorComment: <text>This SPDX document was created from CMake 3.30.5, using the qt
+build system from https://code.qt.io/cgit/qt/qtbase.git/tree/cmake/QtPublicSbomHelpers.cmake</text>
+Created: 2025-10-01T23:30:37Z
+ExternalDocumentRef: DocumentRef-qtbase https://qt.io/spdxdocs/qtbase-5a8637e4+HEAD SHA1: 5ffd15d0b3b0dfbed5f9302602018f8bfed209f7
+ExternalDocumentRef: DocumentRef-qtwebsockets https://qt.io/spdxdocs/qtwebsockets-6.10.0 SHA1: a38a1650abb19b4ef484fe7687110cd74cf65502
+
+PackageName: MSVC
+SPDXID: SPDXRef-compiler
+PackageVersion: 19.39.33520.0
+PackageDownloadLocation: NOASSERTION
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: NOASSERTION
+PackageSupplier: Organization: Anonymous
+FilesAnalyzed: false
+PackageSummary: <text>The compiler as identified by CMake, running on Windows (AMD64)</text>
+PrimaryPackagePurpose: APPLICATION
+Relationship: SPDXRef-compiler BUILD_DEPENDENCY_OF SPDXRef-Package-qthttpserver
+RelationshipComment: <text>SPDXRef-Package-qthttpserver is built by compiler MSVC version 19.39.33520.0</text>
+
+PackageName: qthttpserver
+SPDXID: SPDXRef-Package-qthttpserver
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qthttpserver:6.10.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qthttpserver@6.10.0
+PackageVersion: 6.10.0
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qthttpserver@6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageDownloadLocation: git://code.qt.io/qt/qthttpserver.git
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: Copyright (C) The Qt Company Ltd. and other contributors.
+PackageHomePage: https://qt.io
+PackageComment: <text>Built by CMake 3.30.5 with RelWithDebInfo;Debug configuration for Windows (AMD64)
+qthttpserver was configured with:
+    qt-configure-module <sources>/qthttpserver -- -DFFMPEG_DIR=C:\FFmpeg-n7.1.1\build\msvc\installed -DQT_DEPLOY_FFMPEG=TRUE -DFEATURE_clangcpp=OFF -DINPUT_headersclean=ON -DQT_INSTALL_CONFIG_INFO_FILES=ON -DQT_GENERATE_SBOM=ON -DQT_GENERATE_SOURCE_SBOM=ON -DQT_SBOM_PYTHON_INTERP=C:\Python38_64 -DQT_SBOM_PYTHON_APPS_PATH=C:\Python310_64\Scripts -DQT_LINT_SOURCE_SBOM=ON -DQT_INTERNAL_SBOM_DEFAULT_CHECKS=ON -DQT_INTERNAL_SBOM_AUDIT=ON -DQT_INTERNAL_SBOM_AUDIT_NO_ERROR=ON -DQT_BUILD_TESTS=OFF -DCMAKE_AUTOGEN_VERBOSE=ON -DCMAKE_MESSAGE_LOG_LEVEL=STATUS -DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache
+</text>
+FilesAnalyzed: false
+BuiltDate: 2025-10-01T23:30:37Z
+Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-Package-qthttpserver
+
+PackageName: HttpServer
+SPDXID: SPDXRef-Package-qthttpserver-qt-module-HttpServer
+PackageDownloadLocation: git://code.qt.io/qt/qthttpserver.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qthttpserver?library_name=HttpServer#src/httpserver
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qthttpserver-HttpServer?vcs_url=https://code.qt.io/qt/qthttpserver.git&library_name=HttpServer#src/httpserver
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: HttpServer
+CMake exported target name: Qt6::HttpServer
+Contained in CMake package: Qt6HttpServer
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qthttpserver:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 187c9d985867b509ee9dfbba60c4d8194fc7f6a5
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qthttpserver-qt-module-HttpServer DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qthttpserver-qt-module-HttpServer DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Network
+Relationship: SPDXRef-Package-qthttpserver-qt-module-HttpServer DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qthttpserver-qt-module-HttpServer DEPENDS_ON DocumentRef-qtwebsockets:SPDXRef-Package-qtwebsockets-qt-module-WebSockets
+Relationship: SPDXRef-Package-qthttpserver CONTAINS SPDXRef-Package-qthttpserver-qt-module-HttpServer
+
+FileName: ./bin/Qt6HttpServer.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 3ed8c3ddc3435b24c5858d432ef599015b953f94
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qthttpserver-qt-module-HttpServer CONTAINS SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/C:/Users/qt/work/qt/qthttpserver_build/src/httpserver/HttpServer_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qthttpserver/include/QtHttpServer/qthttpserverexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qabstracthttpserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qabstracthttpserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qabstracthttpserver_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserver_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverconfiguration.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverconfiguration.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverhttp1protocolhandler.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverhttp1protocolhandler_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverliterals.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverliterals_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverparser.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverparser_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequest.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequest.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequest_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequestfilter.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequestfilter_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponder.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponder.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponder_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponse.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponse.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponse_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouter.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouter.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouter_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouterrule.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouterrule.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouterrule_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouterviewtraits.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverstream.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverstream_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverviewtraits_impl.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverwebsocketupgraderesponse.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverwebsocketupgraderesponse.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qthttpserverglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverhttp2protocolhandler.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverhttp2protocolhandler_p.h
+
+FileName: ./bin/Qt6HttpServerd.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-HttpServer-Debug
+FileType: BINARY
+FileChecksum: SHA1: 21560cc5edda8ef5a5d8f3d39cb3224d37e6b368
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qthttpserver-qt-module-HttpServer CONTAINS SPDXRef-PackagedFile-qt-module-HttpServer-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/C:/Users/qt/work/qt/qthttpserver_build/src/httpserver/HttpServer_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qthttpserver/include/QtHttpServer/qthttpserverexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qabstracthttpserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qabstracthttpserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qabstracthttpserver_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserver_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverconfiguration.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverconfiguration.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverhttp1protocolhandler.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverhttp1protocolhandler_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverliterals.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverliterals_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverparser.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverparser_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequest.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequest.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequest_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequestfilter.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequestfilter_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponder.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponder.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponder_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponse.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponse.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponse_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouter.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouter.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouter_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouterrule.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouterrule.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouterrule_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouterviewtraits.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverstream.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverstream_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverviewtraits_impl.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverwebsocketupgraderesponse.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverwebsocketupgraderesponse.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qthttpserverglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverhttp2protocolhandler.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverhttp2protocolhandler_p.h
+
+FileName: ./lib/Qt6HttpServer.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 75853331e1a56ca6d8bbed52e00a746918019fc7
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qthttpserver-qt-module-HttpServer CONTAINS SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/C:/Users/qt/work/qt/qthttpserver_build/src/httpserver/HttpServer_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qthttpserver/include/QtHttpServer/qthttpserverexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qabstracthttpserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qabstracthttpserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qabstracthttpserver_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserver_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverconfiguration.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverconfiguration.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverhttp1protocolhandler.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverhttp1protocolhandler_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverliterals.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverliterals_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverparser.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverparser_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequest.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequest.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequest_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequestfilter.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequestfilter_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponder.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponder.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponder_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponse.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponse.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponse_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouter.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouter.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouter_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouterrule.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouterrule.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouterrule_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouterviewtraits.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverstream.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverstream_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverviewtraits_impl.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverwebsocketupgraderesponse.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverwebsocketupgraderesponse.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qthttpserverglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverhttp2protocolhandler.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverhttp2protocolhandler_p.h
+
+FileName: ./lib/Qt6HttpServerd.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: f2c989aae408f6ae06ad698385939a52b02be995
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qthttpserver-qt-module-HttpServer CONTAINS SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/C:/Users/qt/work/qt/qthttpserver_build/src/httpserver/HttpServer_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qthttpserver/include/QtHttpServer/qthttpserverexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qabstracthttpserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qabstracthttpserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qabstracthttpserver_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserver_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverconfiguration.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverconfiguration.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverhttp1protocolhandler.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverhttp1protocolhandler_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverliterals.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverliterals_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverparser.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverparser_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequest.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequest.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequest_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequestfilter.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrequestfilter_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponder.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponder.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponder_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponse.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponse.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverresponse_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouter.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouter.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouter_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouterrule.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouterrule.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouterrule_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverrouterviewtraits.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverstream.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverstream_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverviewtraits_impl.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverwebsocketupgraderesponse.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverwebsocketupgraderesponse.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qthttpserverglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverhttp2protocolhandler.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-HttpServer-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qthttpserver/src/httpserver/qhttpserverhttp2protocolhandler_p.h
+
+LicenseID: LicenseRef-Qt-Commercial
+ExtractedText: <text>Licensees holding valid commercial Qt licenses may use this software in
+accordance with the the terms contained in a written agreement between
+you and The Qt Company. Alternatively, the terms and conditions that were
+accepted by the licensee when buying and/or downloading the
+software do apply.
+
+For the latest licensing terms and conditions, see https://www.qt.io/terms-conditions.
+For further information use the contact form at https://www.qt.io/contact-us.
+</text>

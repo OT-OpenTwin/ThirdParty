@@ -1,0 +1,1071 @@
+[
+    {
+        "classes": [
+            {
+                "className": "QWindowsCamera",
+                "lineNumber": 25,
+                "object": true,
+                "qualifiedClassName": "QWindowsCamera",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QPlatformCamera"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qwindowscamera_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "QFFmpegAudioDecoder",
+                "lineNumber": 28,
+                "object": true,
+                "qualifiedClassName": "QFFmpegAudioDecoder",
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "b",
+                                "type": "QAudioBuffer"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 51,
+                        "name": "newAudioBuffer",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 52,
+                        "name": "done",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "err",
+                                "type": "int"
+                            },
+                            {
+                                "name": "errorString",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 53,
+                        "name": "errorSignal",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QPlatformAudioDecoder"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegaudiodecoder_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "QFFmpegAudioInput",
+                "lineNumber": 30,
+                "object": true,
+                "qualifiedClassName": "QFFmpegAudioInput",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QAudioBufferSource"
+                    },
+                    {
+                        "access": "public",
+                        "name": "QPlatformAudioInput"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegaudioinput_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "AudioRenderer",
+                "lineNumber": 32,
+                "object": true,
+                "qualifiedClassName": "QFFmpeg::AudioRenderer",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "fullyQualifiedName": "QFFmpeg::Renderer",
+                        "name": "Renderer"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegaudiorenderer_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "Demuxer",
+                "lineNumber": 29,
+                "object": true,
+                "qualifiedClassName": "QFFmpeg::Demuxer",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "type": "Packet"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 45,
+                        "name": "requestProcessAudioPacket",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "type": "Packet"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 46,
+                        "name": "requestProcessVideoPacket",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "type": "Packet"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 47,
+                        "name": "requestProcessSubtitlePacket",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "Id"
+                            },
+                            {
+                                "name": "absSeekPos",
+                                "type": "TrackPosition"
+                            }
+                        ],
+                        "index": 3,
+                        "lineNumber": 48,
+                        "name": "firstPacketFound",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "lineNumber": 49,
+                        "name": "packetsBuffered",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "type": "Packet"
+                            }
+                        ],
+                        "index": 5,
+                        "lineNumber": 42,
+                        "name": "onPacketProcessed",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "fullyQualifiedName": "QFFmpeg::PlaybackEngineObject",
+                        "name": "PlaybackEngineObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegdemuxer_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "EncoderThread",
+                "lineNumber": 29,
+                "object": true,
+                "qualifiedClassName": "QFFmpeg::EncoderThread",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 74,
+                        "name": "canPushFrameChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 75,
+                        "name": "endOfSourceStream",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 76,
+                        "name": "initialized",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "ConsumerThread"
+                    },
+                    {
+                        "access": "public",
+                        "name": "QMediaInputEncoderInterface"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegencoderthread_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "QFFmpegImageCapture",
+                "lineNumber": 27,
+                "object": true,
+                "qualifiedClassName": "QFFmpegImageCapture",
+                "slots": [
+                    {
+                        "access": "protected",
+                        "arguments": [
+                            {
+                                "name": "frame",
+                                "type": "QVideoFrame"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 52,
+                        "name": "newVideoFrame",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "protected",
+                        "index": 1,
+                        "lineNumber": 53,
+                        "name": "onVideoSourceChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QPlatformImageCapture"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegimagecapture_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "QFFmpegMediaCaptureSession",
+                "lineNumber": 35,
+                "object": true,
+                "qualifiedClassName": "QFFmpegMediaCaptureSession",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 84,
+                        "name": "primaryActiveVideoSourceChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "private",
+                        "index": 1,
+                        "lineNumber": 78,
+                        "name": "updateAudioSink",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "index": 2,
+                        "lineNumber": 79,
+                        "name": "updateVolume",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "index": 3,
+                        "lineNumber": 80,
+                        "name": "updateVideoFrameConnection",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "index": 4,
+                        "lineNumber": 81,
+                        "name": "updatePrimaryActiveVideoSource",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QPlatformMediaCaptureSession"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegmediacapturesession_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "QFFmpegMediaPlayer",
+                "lineNumber": 36,
+                "object": true,
+                "qualifiedClassName": "QFFmpegMediaPlayer",
+                "slots": [
+                    {
+                        "access": "private",
+                        "index": 0,
+                        "lineNumber": 90,
+                        "name": "updatePosition",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "index": 1,
+                        "lineNumber": 91,
+                        "name": "endOfStream",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "error",
+                                "type": "QMediaPlayer::Error"
+                            },
+                            {
+                                "name": "errorString",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 92,
+                        "name": "error",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "index": 3,
+                        "lineNumber": 96,
+                        "name": "onLoopChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "index": 4,
+                        "lineNumber": 97,
+                        "name": "onBuffered",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    },
+                    {
+                        "access": "public",
+                        "name": "QPlatformMediaPlayer"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegmediaplayer_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "QFFmpegMediaRecorder",
+                "lineNumber": 29,
+                "object": true,
+                "qualifiedClassName": "QFFmpegMediaRecorder",
+                "slots": [
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "d",
+                                "type": "qint64"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 51,
+                        "name": "newDuration",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "index": 1,
+                        "lineNumber": 52,
+                        "name": "finalizationDone",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "code",
+                                "type": "QMediaRecorder::Error"
+                            },
+                            {
+                                "name": "description",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 53,
+                        "name": "handleSessionError",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    },
+                    {
+                        "access": "public",
+                        "name": "QPlatformMediaRecorder"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegmediarecorder_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "PlaybackEngine",
+                "lineNumber": 72,
+                "object": true,
+                "qualifiedClassName": "QFFmpeg::PlaybackEngine",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 128,
+                        "name": "endOfStream",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "type": "QMediaPlayer::Error"
+                            },
+                            {
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 129,
+                        "name": "errorOccured",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 130,
+                        "name": "loopChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "lineNumber": 131,
+                        "name": "buffered",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegplaybackengine_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "PlaybackEngineObject",
+                "lineNumber": 30,
+                "object": true,
+                "qualifiedClassName": "QFFmpeg::PlaybackEngineObject",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 53,
+                        "name": "atEnd",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "type": "QMediaPlayer::Error"
+                            },
+                            {
+                                "name": "errorString",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 55,
+                        "name": "error",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "private",
+                        "index": 2,
+                        "lineNumber": 73,
+                        "name": "onTimeout",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegplaybackengineobject_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "RecordingEngine",
+                "lineNumber": 43,
+                "object": true,
+                "qualifiedClassName": "QFFmpeg::RecordingEngine",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "duration",
+                                "type": "qint64"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 76,
+                        "name": "durationChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "code",
+                                "type": "QMediaRecorder::Error"
+                            },
+                            {
+                                "name": "description",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 77,
+                        "name": "sessionError",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "code",
+                                "type": "QMediaRecorder::Error"
+                            },
+                            {
+                                "name": "description",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 78,
+                        "name": "streamInitializationError",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "lineNumber": 79,
+                        "name": "finalizationDone",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "lineNumber": 80,
+                        "name": "autoStopped",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "time",
+                                "type": "qint64"
+                            }
+                        ],
+                        "index": 5,
+                        "lineNumber": 73,
+                        "name": "newTimeStamp",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegrecordingengine_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "Renderer",
+                "lineNumber": 30,
+                "object": true,
+                "qualifiedClassName": "QFFmpeg::Renderer",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "type": "Frame"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 59,
+                        "name": "frameProcessed",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "Id"
+                            },
+                            {
+                                "name": "tp",
+                                "type": "TimePoint"
+                            },
+                            {
+                                "name": "pos",
+                                "type": "TrackPosition"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 61,
+                        "name": "synchronized",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 63,
+                        "name": "forceStepDone",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "Id"
+                            },
+                            {
+                                "name": "offset",
+                                "type": "TrackPosition"
+                            },
+                            {
+                                "name": "index",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 3,
+                        "lineNumber": 65,
+                        "name": "loopChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "lineNumber": 54,
+                        "name": "onFinalFrameReceived",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "type": "Frame"
+                            }
+                        ],
+                        "index": 5,
+                        "lineNumber": 56,
+                        "name": "render",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "fullyQualifiedName": "QFFmpeg::PlaybackEngineObject",
+                        "name": "PlaybackEngineObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegrenderer_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "StreamDecoder",
+                "lineNumber": 30,
+                "object": true,
+                "qualifiedClassName": "QFFmpeg::StreamDecoder",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "frame",
+                                "type": "Frame"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 52,
+                        "name": "requestHandleFrame",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "type": "Packet"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 54,
+                        "name": "packetProcessed",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "type": "Packet"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 45,
+                        "name": "decode",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "lineNumber": 47,
+                        "name": "onFinalPacketReceived",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "frame",
+                                "type": "Frame"
+                            }
+                        ],
+                        "index": 4,
+                        "lineNumber": 49,
+                        "name": "onFrameProcessed",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "fullyQualifiedName": "QFFmpeg::PlaybackEngineObject",
+                        "name": "PlaybackEngineObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegstreamdecoder_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "SubtitleRenderer",
+                "lineNumber": 27,
+                "object": true,
+                "qualifiedClassName": "QFFmpeg::SubtitleRenderer",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "fullyQualifiedName": "QFFmpeg::Renderer",
+                        "name": "Renderer"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegsubtitlerenderer_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "QFFmpegSurfaceCaptureGrabber",
+                "lineNumber": 37,
+                "object": true,
+                "qualifiedClassName": "QFFmpegSurfaceCaptureGrabber",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "type": "QVideoFrame"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 61,
+                        "name": "frameGrabbed",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "error",
+                                "type": "QPlatformSurfaceCapture::Error"
+                            },
+                            {
+                                "name": "description",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 62,
+                        "name": "errorUpdated",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegsurfacecapturegrabber_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "VideoRenderer",
+                "lineNumber": 28,
+                "object": true,
+                "qualifiedClassName": "QFFmpeg::VideoRenderer",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "fullyQualifiedName": "QFFmpeg::Renderer",
+                        "name": "Renderer"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegvideorenderer_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "QFFmpegVideoSink",
+                "lineNumber": 27,
+                "object": true,
+                "qualifiedClassName": "QFFmpegVideoSink",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QPlatformVideoSink"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegvideosink_p.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "SteppingAudioRenderer",
+                "lineNumber": 19,
+                "object": true,
+                "qualifiedClassName": "QFFmpeg::SteppingAudioRenderer",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "type": "QAudioBuffer"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 40,
+                        "name": "newAudioBuffer",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "fullyQualifiedName": "QFFmpeg::Renderer",
+                        "name": "Renderer"
+                    }
+                ]
+            },
+            {
+                "className": "AudioDecoder",
+                "lineNumber": 47,
+                "object": true,
+                "qualifiedClassName": "QFFmpeg::AudioDecoder",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "type": "QAudioBuffer"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 80,
+                        "name": "newAudioBuffer",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "fullyQualifiedName": "QFFmpeg::PlaybackEngine",
+                        "name": "PlaybackEngine"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegaudiodecoder.cpp",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "AudioSourceIO",
+                "lineNumber": 16,
+                "object": true,
+                "qualifiedClassName": "QFFmpeg::AudioSourceIO",
+                "slots": [
+                    {
+                        "access": "private",
+                        "index": 0,
+                        "lineNumber": 113,
+                        "name": "updateVolume",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "index": 1,
+                        "lineNumber": 118,
+                        "name": "updateRunning",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QIODevice"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qffmpegaudioinput.cpp",
+        "outputRevision": 69
+    }
+]

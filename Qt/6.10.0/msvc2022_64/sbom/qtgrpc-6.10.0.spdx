@@ -1,0 +1,2161 @@
+SPDXVersion: SPDX-2.3
+DataLicense: CC0-1.0
+SPDXID: SPDXRef-DOCUMENT
+DocumentName: qtgrpc-6.10.0
+DocumentNamespace: https://qt.io/spdxdocs/qtgrpc-6.10.0
+Creator: Organization: TheQtCompany
+Creator: Tool: Qt Build System
+CreatorComment: <text>This SPDX document was created from CMake 3.30.5, using the qt
+build system from https://code.qt.io/cgit/qt/qtbase.git/tree/cmake/QtPublicSbomHelpers.cmake</text>
+Created: 2025-10-01T23:05:07Z
+ExternalDocumentRef: DocumentRef-qtbase https://qt.io/spdxdocs/qtbase-5a8637e4+HEAD SHA1: 5ffd15d0b3b0dfbed5f9302602018f8bfed209f7
+ExternalDocumentRef: DocumentRef-qtdeclarative https://qt.io/spdxdocs/qtdeclarative-7e0ab1d9+HEAD SHA1: abe2fefc07c2482cfcc5aa4055014d6869372c22
+
+PackageName: MSVC
+SPDXID: SPDXRef-compiler
+PackageVersion: 19.39.33520.0
+PackageDownloadLocation: NOASSERTION
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: NOASSERTION
+PackageSupplier: Organization: Anonymous
+FilesAnalyzed: false
+PackageSummary: <text>The compiler as identified by CMake, running on Windows (AMD64)</text>
+PrimaryPackagePurpose: APPLICATION
+Relationship: SPDXRef-compiler BUILD_DEPENDENCY_OF SPDXRef-Package-qtgrpc
+RelationshipComment: <text>SPDXRef-Package-qtgrpc is built by compiler MSVC version 19.39.33520.0</text>
+
+PackageName: qtgrpc
+SPDXID: SPDXRef-Package-qtgrpc
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtgrpc:6.10.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtgrpc@6.10.0
+PackageVersion: 6.10.0
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtgrpc@6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageDownloadLocation: git://code.qt.io/qt/qtgrpc.git
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: Copyright (C) The Qt Company Ltd. and other contributors.
+PackageHomePage: https://qt.io
+PackageComment: <text>Built by CMake 3.30.5 with RelWithDebInfo;Debug configuration for Windows (AMD64)
+qtgrpc was configured with:
+    qt-configure-module <sources>/qtgrpc -- -DFFMPEG_DIR=C:\FFmpeg-n7.1.1\build\msvc\installed -DQT_DEPLOY_FFMPEG=TRUE -DFEATURE_clangcpp=OFF -DINPUT_headersclean=ON -DQT_INSTALL_CONFIG_INFO_FILES=ON -DQT_GENERATE_SBOM=ON -DQT_GENERATE_SOURCE_SBOM=ON -DQT_SBOM_PYTHON_INTERP=C:\Python38_64 -DQT_SBOM_PYTHON_APPS_PATH=C:\Python310_64\Scripts -DQT_LINT_SOURCE_SBOM=ON -DQT_INTERNAL_SBOM_DEFAULT_CHECKS=ON -DQT_INTERNAL_SBOM_AUDIT=ON -DQT_INTERNAL_SBOM_AUDIT_NO_ERROR=ON -DQT_BUILD_TESTS=OFF -DCMAKE_AUTOGEN_VERBOSE=ON -DCMAKE_MESSAGE_LOG_LEVEL=STATUS -DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache
+</text>
+FilesAnalyzed: false
+BuiltDate: 2025-10-01T23:05:07Z
+Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-Package-qtgrpc
+
+PackageName: Protobuf
+SPDXID: SPDXRef-Package-qtgrpc-qt-module-Protobuf
+PackageDownloadLocation: git://code.qt.io/qt/qtgrpc.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtgrpc?library_name=Protobuf#src/protobuf
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtgrpc-Protobuf?vcs_url=https://code.qt.io/qt/qtgrpc.git&library_name=Protobuf#src/protobuf
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: Protobuf
+CMake exported target name: Qt6::Protobuf
+Contained in CMake package: Qt6Protobuf
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtgrpc:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: dabd94397a75f1a8662bc28aa8b30cdf3dfcc2b6
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtgrpc-qt-module-Protobuf DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtgrpc-qt-module-Protobuf DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtgrpc CONTAINS SPDXRef-Package-qtgrpc-qt-module-Protobuf
+
+FileName: ./bin/Qt6Protobuf.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 1ce2fbd884f1a9a452ec4f52fca588390b0ad3d3
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-Protobuf CONTAINS SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/C:/Users/qt/work/qt/qtgrpc_build/src/protobuf/Protobuf_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobuf/qtprotobufexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/protobuffieldpresencechecker_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/protobufscalarserializers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/protobufscalarserializers_p.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/protobufscalarjsonserializers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobufglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qabstractprotobufserializer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qabstractprotobufserializer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufdeserializerbase_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufdeserializerbase.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufjsonserializer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufjsonserializer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufjsonserializer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobuflazymessagepointer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufmessage.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufmessage.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufmessage_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufobject.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufoneof.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufoneof.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufpropertyordering.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufpropertyordering.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufpropertyorderingbuilder_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufregistration.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufregistration.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufregistration_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufrepeatediterator.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufrepeatediterator.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufselfcheckiterator_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobufdefs_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobuflogging.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobuflogging_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobufserializerhelpers.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobufserializerhelpers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobuftypes.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobuftypes.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializerbase_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializerbase.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobuf/qtprotobuf-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobuf/qtprotobuf-config_p.h
+
+FileName: ./bin/Qt6Protobufd.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-Protobuf-Debug
+FileType: BINARY
+FileChecksum: SHA1: 7a1c4fa4757fea8d5f5e6091357fff34ddd50405
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-Protobuf CONTAINS SPDXRef-PackagedFile-qt-module-Protobuf-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/C:/Users/qt/work/qt/qtgrpc_build/src/protobuf/Protobuf_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobuf/qtprotobufexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/protobuffieldpresencechecker_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/protobufscalarserializers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/protobufscalarserializers_p.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/protobufscalarjsonserializers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobufglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qabstractprotobufserializer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qabstractprotobufserializer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufdeserializerbase_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufdeserializerbase.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufjsonserializer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufjsonserializer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufjsonserializer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobuflazymessagepointer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufmessage.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufmessage.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufmessage_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufobject.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufoneof.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufoneof.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufpropertyordering.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufpropertyordering.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufpropertyorderingbuilder_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufregistration.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufregistration.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufregistration_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufrepeatediterator.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufrepeatediterator.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufselfcheckiterator_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobufdefs_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobuflogging.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobuflogging_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobufserializerhelpers.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobufserializerhelpers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobuftypes.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobuftypes.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializerbase_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializerbase.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobuf/qtprotobuf-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobuf/qtprotobuf-config_p.h
+
+FileName: ./lib/Qt6Protobuf.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 08b0e0633282de5801424c9c84324417e95479fe
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-Protobuf CONTAINS SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/C:/Users/qt/work/qt/qtgrpc_build/src/protobuf/Protobuf_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobuf/qtprotobufexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/protobuffieldpresencechecker_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/protobufscalarserializers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/protobufscalarserializers_p.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/protobufscalarjsonserializers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobufglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qabstractprotobufserializer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qabstractprotobufserializer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufdeserializerbase_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufdeserializerbase.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufjsonserializer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufjsonserializer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufjsonserializer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobuflazymessagepointer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufmessage.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufmessage.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufmessage_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufobject.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufoneof.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufoneof.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufpropertyordering.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufpropertyordering.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufpropertyorderingbuilder_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufregistration.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufregistration.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufregistration_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufrepeatediterator.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufrepeatediterator.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufselfcheckiterator_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobufdefs_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobuflogging.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobuflogging_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobufserializerhelpers.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobufserializerhelpers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobuftypes.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobuftypes.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializerbase_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializerbase.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobuf/qtprotobuf-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobuf/qtprotobuf-config_p.h
+
+FileName: ./lib/Qt6Protobufd.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: 797b2adf586600fa695981e359e70efa243ba8f3
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-Protobuf CONTAINS SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/C:/Users/qt/work/qt/qtgrpc_build/src/protobuf/Protobuf_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobuf/qtprotobufexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/protobuffieldpresencechecker_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/protobufscalarserializers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/protobufscalarserializers_p.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/protobufscalarjsonserializers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobufglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qabstractprotobufserializer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qabstractprotobufserializer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufdeserializerbase_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufdeserializerbase.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufjsonserializer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufjsonserializer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufjsonserializer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobuflazymessagepointer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufmessage.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufmessage.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufmessage_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufobject.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufoneof.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufoneof.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufpropertyordering.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufpropertyordering.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufpropertyorderingbuilder_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufregistration.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufregistration.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufregistration_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufrepeatediterator.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufrepeatediterator.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufselfcheckiterator_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobufdefs_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobuflogging.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobuflogging_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobufserializerhelpers.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobufserializerhelpers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobuftypes.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qtprotobuftypes.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializerbase_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobuf/qprotobufserializerbase.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobuf/qtprotobuf-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-Protobuf-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobuf/qtprotobuf-config_p.h
+
+PackageName: ProtobufQuick
+SPDXID: SPDXRef-Package-qtgrpc-qt-module-ProtobufQuick
+PackageDownloadLocation: git://code.qt.io/qt/qtgrpc.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtgrpc?library_name=ProtobufQuick#src/protobufquick
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtgrpc-ProtobufQuick?vcs_url=https://code.qt.io/qt/qtgrpc.git&library_name=ProtobufQuick#src/protobufquick
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: ProtobufQuick
+CMake exported target name: Qt6::ProtobufQuick
+Contained in CMake package: Qt6ProtobufQuick
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtgrpc:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 48311f06759c751a8475705dfc50f6098ae32b4a
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQuick DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQuick DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQuick DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQuick DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Quick
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQuick DEPENDS_ON SPDXRef-Package-qtgrpc-qt-module-Protobuf
+Relationship: SPDXRef-Package-qtgrpc CONTAINS SPDXRef-Package-qtgrpc-qt-module-ProtobufQuick
+
+FileName: ./bin/Qt6ProtobufQuick.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-ProtobufQuick-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: d2bd9e920dd1c239d534eb26097ed1b9cad17311
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQuick CONTAINS SPDXRef-PackagedFile-qt-module-ProtobufQuick-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufquick/C:/Users/qt/work/qt/qtgrpc_build/src/protobufquick/ProtobufQuick_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufquick/
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobufQuick/qtprotobufquickexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufquick/qqmlprotobuftypes_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufquick/protobufquick_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufquick/.qt/rcc/qrc_qmake_QtProtobuf.cpp
+
+FileName: ./bin/Qt6ProtobufQuickd.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-ProtobufQuick-Debug
+FileType: BINARY
+FileChecksum: SHA1: 3eeb0c39e36add3809138469afe2ad06d7cdb661
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQuick CONTAINS SPDXRef-PackagedFile-qt-module-ProtobufQuick-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufquick/
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufquick/C:/Users/qt/work/qt/qtgrpc_build/src/protobufquick/ProtobufQuick_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobufQuick/qtprotobufquickexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufquick/qqmlprotobuftypes_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufquick/protobufquick_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufquick/.qt/rcc/qrc_qmake_QtProtobuf.cpp
+
+FileName: ./lib/Qt6ProtobufQuick.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-ProtobufQuick-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 6c8a1ddceeb7c1e07d6cfe9755b16fd9ee10d620
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQuick CONTAINS SPDXRef-PackagedFile-qt-module-ProtobufQuick-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufquick/C:/Users/qt/work/qt/qtgrpc_build/src/protobufquick/ProtobufQuick_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufquick/
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobufQuick/qtprotobufquickexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufquick/qqmlprotobuftypes_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufquick/protobufquick_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufquick/.qt/rcc/qrc_qmake_QtProtobuf.cpp
+
+FileName: ./lib/Qt6ProtobufQuickd.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-ProtobufQuick-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: 28c449db1f11dc2b16485193ddb148feb2fbbc5b
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQuick CONTAINS SPDXRef-PackagedFile-qt-module-ProtobufQuick-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufquick/
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufquick/C:/Users/qt/work/qt/qtgrpc_build/src/protobufquick/ProtobufQuick_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobufQuick/qtprotobufquickexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufquick/qqmlprotobuftypes_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufquick/protobufquick_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufquick/.qt/rcc/qrc_qmake_QtProtobuf.cpp
+
+PackageName: protobufquickplugin
+SPDXID: SPDXRef-Package-qtgrpc-qt-plugin-protobufquickplugin
+PackageDownloadLocation: git://code.qt.io/qt/qtgrpc.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtgrpc?library_name=protobufquickplugin#src/protobufquick
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtgrpc-protobufquickplugin?vcs_url=https://code.qt.io/qt/qtgrpc.git&library_name=protobufquickplugin#src/protobufquick
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: protobufquickplugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtgrpc:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 4162e7f03f2bcdf49044447cca762368415cfbbc
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtgrpc-qt-plugin-protobufquickplugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtgrpc-qt-plugin-protobufquickplugin DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtgrpc-qt-plugin-protobufquickplugin DEPENDS_ON SPDXRef-Package-qtgrpc-qt-module-ProtobufQuick
+Relationship: SPDXRef-Package-qtgrpc CONTAINS SPDXRef-Package-qtgrpc-qt-plugin-protobufquickplugin
+
+FileName: ./qml/QtProtobuf/protobufquickplugin.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-protobufquickplugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 0f3ef0bc0bf7e907a9d980e6007c97da7d214399
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-plugin-protobufquickplugin CONTAINS SPDXRef-PackagedFile-qt-plugin-protobufquickplugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-protobufquickplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufquick/protobufquickplugin_ProtobufQuickPlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-protobufquickplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufquick/C:/Users/qt/work/qt/qtgrpc_build/src/protobufquick/protobufquickplugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-protobufquickplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufquick/
+
+FileName: ./qml/QtProtobuf/protobufquickplugind.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-protobufquickplugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: c91623c49df4d9da235c704062719ce6f4a327a0
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-plugin-protobufquickplugin CONTAINS SPDXRef-PackagedFile-qt-plugin-protobufquickplugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-protobufquickplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufquick/protobufquickplugin_ProtobufQuickPlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-protobufquickplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufquick/
+Relationship: SPDXRef-PackagedFile-qt-plugin-protobufquickplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufquick/C:/Users/qt/work/qt/qtgrpc_build/src/protobufquick/protobufquickplugin_resource-Debug.rc
+
+PackageName: Grpc
+SPDXID: SPDXRef-Package-qtgrpc-qt-module-Grpc
+PackageDownloadLocation: git://code.qt.io/qt/qtgrpc.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtgrpc?library_name=Grpc#src/grpc
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtgrpc-Grpc?vcs_url=https://code.qt.io/qt/qtgrpc.git&library_name=Grpc#src/grpc
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: Grpc
+CMake exported target name: Qt6::Grpc
+Contained in CMake package: Qt6Grpc
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtgrpc:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 516c2fe015100f31cc4053062231834c44435da8
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtgrpc-qt-module-Grpc DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtgrpc-qt-module-Grpc DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Network
+Relationship: SPDXRef-Package-qtgrpc-qt-module-Grpc DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtgrpc-qt-module-Grpc DEPENDS_ON SPDXRef-Package-qtgrpc-qt-module-Protobuf
+Relationship: SPDXRef-Package-qtgrpc CONTAINS SPDXRef-Package-qtgrpc-qt-module-Grpc
+
+FileName: ./bin/Qt6Grpc.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 4fd1387360504be9394a7f4943a12de653386fc8
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-Grpc CONTAINS SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/C:/Users/qt/work/qt/qtgrpc_build/src/grpc/Grpc_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtGrpc/qtgrpcexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperation.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperation_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperation.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperationcontext.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperationcontext_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperationcontext.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccallreply.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccallreply.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcstream.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcstream.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcstatus.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcstatus.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qabstractgrpcchannel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qabstractgrpcchannel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qabstractgrpcchannel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpchttp2channel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpchttp2channel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcclientbase.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcclientbase.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccommonoptions_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccommonoptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccalloptions.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccalloptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcchanneloptions.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcchanneloptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qtgrpcglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qtgrpclogging_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qtgrpclogging.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qtgrpcnamespace.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcserializationformat.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcserializationformat.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/grpc/qtgrpc-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/grpc/qtgrpc-config_p.h
+
+FileName: ./bin/Qt6Grpcd.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-Grpc-Debug
+FileType: BINARY
+FileChecksum: SHA1: e041f0118e8d2306200d7145ff72e9e27b505c5b
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-Grpc CONTAINS SPDXRef-PackagedFile-qt-module-Grpc-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/C:/Users/qt/work/qt/qtgrpc_build/src/grpc/Grpc_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtGrpc/qtgrpcexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperation.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperation_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperation.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperationcontext.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperationcontext_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperationcontext.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccallreply.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccallreply.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcstream.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcstream.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcstatus.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcstatus.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qabstractgrpcchannel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qabstractgrpcchannel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qabstractgrpcchannel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpchttp2channel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpchttp2channel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcclientbase.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcclientbase.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccommonoptions_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccommonoptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccalloptions.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccalloptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcchanneloptions.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcchanneloptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qtgrpcglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qtgrpclogging_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qtgrpclogging.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qtgrpcnamespace.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcserializationformat.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcserializationformat.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/grpc/qtgrpc-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/grpc/qtgrpc-config_p.h
+
+FileName: ./lib/Qt6Grpc.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 972bc7e52b01f63312e0ef1c1ce582d0d28bd88f
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-Grpc CONTAINS SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/C:/Users/qt/work/qt/qtgrpc_build/src/grpc/Grpc_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtGrpc/qtgrpcexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperation.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperation_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperation.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperationcontext.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperationcontext_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperationcontext.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccallreply.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccallreply.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcstream.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcstream.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcstatus.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcstatus.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qabstractgrpcchannel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qabstractgrpcchannel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qabstractgrpcchannel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpchttp2channel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpchttp2channel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcclientbase.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcclientbase.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccommonoptions_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccommonoptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccalloptions.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccalloptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcchanneloptions.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcchanneloptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qtgrpcglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qtgrpclogging_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qtgrpclogging.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qtgrpcnamespace.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcserializationformat.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcserializationformat.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/grpc/qtgrpc-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/grpc/qtgrpc-config_p.h
+
+FileName: ./lib/Qt6Grpcd.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: 49612e06529497d5e2b181ded0cb15705e25dee1
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-Grpc CONTAINS SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/C:/Users/qt/work/qt/qtgrpc_build/src/grpc/Grpc_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtGrpc/qtgrpcexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperation.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperation_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperation.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperationcontext.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperationcontext_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcoperationcontext.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccallreply.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccallreply.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcstream.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcstream.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcstatus.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcstatus.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qabstractgrpcchannel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qabstractgrpcchannel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qabstractgrpcchannel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpchttp2channel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpchttp2channel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcclientbase.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcclientbase.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccommonoptions_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccommonoptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccalloptions.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpccalloptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcchanneloptions.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcchanneloptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qtgrpcglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qtgrpclogging_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qtgrpclogging.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qtgrpcnamespace.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcserializationformat.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpc/qgrpcserializationformat.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/grpc/qtgrpc-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-Grpc-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/grpc/qtgrpc-config_p.h
+
+PackageName: GrpcQuick
+SPDXID: SPDXRef-Package-qtgrpc-qt-module-GrpcQuick
+PackageDownloadLocation: git://code.qt.io/qt/qtgrpc.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtgrpc?library_name=GrpcQuick#src/grpcquick
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtgrpc-GrpcQuick?vcs_url=https://code.qt.io/qt/qtgrpc.git&library_name=GrpcQuick#src/grpcquick
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: GrpcQuick
+CMake exported target name: Qt6::GrpcQuick
+Contained in CMake package: Qt6GrpcQuick
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtgrpc:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: da4ac22652c75c8352728a386377d36a68dfd1b7
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtgrpc-qt-module-GrpcQuick DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtgrpc-qt-module-GrpcQuick DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtgrpc-qt-module-GrpcQuick DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-QmlNetwork
+Relationship: SPDXRef-Package-qtgrpc-qt-module-GrpcQuick DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Quick
+Relationship: SPDXRef-Package-qtgrpc-qt-module-GrpcQuick DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtgrpc-qt-module-GrpcQuick DEPENDS_ON SPDXRef-Package-qtgrpc-qt-module-Grpc
+Relationship: SPDXRef-Package-qtgrpc CONTAINS SPDXRef-Package-qtgrpc-qt-module-GrpcQuick
+
+FileName: ./bin/Qt6GrpcQuick.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: c8326b205a573302e0863c5d51e224604554074d
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-GrpcQuick CONTAINS SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/C:/Users/qt/work/qt/qtgrpc_build/src/grpcquick/GrpcQuick_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtGrpcQuick/qtgrpcquickexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlabstractgrpcchannel.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlabstractgrpcchannel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlabstractgrpcchannel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcnamespace_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpchttp2channel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpchttp2channel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcchanneloptions_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcchanneloptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpccalloptions.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpccalloptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcmetadata_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcmetadata.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcfunctionalhandlers.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcfunctionalhandlers.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qtgrpcquicklogging_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qtgrpcquicklogging.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qtqmlgrpcstreamsender.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qtqmlgrpcstreamsender.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/grpcquick/grpcquick_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/grpcquick/.qt/rcc/qrc_qmake_QtGrpc.cpp
+
+FileName: ./bin/Qt6GrpcQuickd.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug
+FileType: BINARY
+FileChecksum: SHA1: 5875f5f8bf29883763a402540ab55c929f4bdde1
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-GrpcQuick CONTAINS SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/C:/Users/qt/work/qt/qtgrpc_build/src/grpcquick/GrpcQuick_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtGrpcQuick/qtgrpcquickexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlabstractgrpcchannel.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlabstractgrpcchannel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlabstractgrpcchannel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcnamespace_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpchttp2channel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpchttp2channel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcchanneloptions_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcchanneloptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpccalloptions.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpccalloptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcmetadata_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcmetadata.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcfunctionalhandlers.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcfunctionalhandlers.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qtgrpcquicklogging_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qtgrpcquicklogging.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qtqmlgrpcstreamsender.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qtqmlgrpcstreamsender.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/grpcquick/grpcquick_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/grpcquick/.qt/rcc/qrc_qmake_QtGrpc.cpp
+
+FileName: ./lib/Qt6GrpcQuick.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: cef0667d72acca92acbbc5fed1595f401a7e33c5
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-GrpcQuick CONTAINS SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/C:/Users/qt/work/qt/qtgrpc_build/src/grpcquick/GrpcQuick_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtGrpcQuick/qtgrpcquickexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlabstractgrpcchannel.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlabstractgrpcchannel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlabstractgrpcchannel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcnamespace_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpchttp2channel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpchttp2channel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcchanneloptions_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcchanneloptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpccalloptions.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpccalloptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcmetadata_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcmetadata.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcfunctionalhandlers.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcfunctionalhandlers.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qtgrpcquicklogging_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qtgrpcquicklogging.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qtqmlgrpcstreamsender.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qtqmlgrpcstreamsender.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/grpcquick/grpcquick_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/grpcquick/.qt/rcc/qrc_qmake_QtGrpc.cpp
+
+FileName: ./lib/Qt6GrpcQuickd.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: 17fea13fb87cf6f9ae92ddeb14fd061f083f7062
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-GrpcQuick CONTAINS SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/C:/Users/qt/work/qt/qtgrpc_build/src/grpcquick/GrpcQuick_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtGrpcQuick/qtgrpcquickexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlabstractgrpcchannel.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlabstractgrpcchannel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlabstractgrpcchannel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcnamespace_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpchttp2channel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpchttp2channel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcchanneloptions_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcchanneloptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpccalloptions.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpccalloptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcmetadata_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcmetadata.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcfunctionalhandlers.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qqmlgrpcfunctionalhandlers.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qtgrpcquicklogging_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qtgrpcquicklogging.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qtqmlgrpcstreamsender.h
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/qtqmlgrpcstreamsender.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/grpcquick/grpcquick_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-GrpcQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/grpcquick/.qt/rcc/qrc_qmake_QtGrpc.cpp
+
+PackageName: grpcquickplugin
+SPDXID: SPDXRef-Package-qtgrpc-qt-plugin-grpcquickplugin
+PackageDownloadLocation: git://code.qt.io/qt/qtgrpc.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtgrpc?library_name=grpcquickplugin#src/grpcquick
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtgrpc-grpcquickplugin?vcs_url=https://code.qt.io/qt/qtgrpc.git&library_name=grpcquickplugin#src/grpcquick
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: grpcquickplugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtgrpc:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 4083b33c7cd7cff2244a121d455bada75b088920
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtgrpc-qt-plugin-grpcquickplugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtgrpc-qt-plugin-grpcquickplugin DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtgrpc-qt-plugin-grpcquickplugin DEPENDS_ON SPDXRef-Package-qtgrpc-qt-module-GrpcQuick
+Relationship: SPDXRef-Package-qtgrpc CONTAINS SPDXRef-Package-qtgrpc-qt-plugin-grpcquickplugin
+
+FileName: ./qml/QtGrpc/grpcquickplugin.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-grpcquickplugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 662ae5ec5b0db87e920ba55dd565cd23d07ee774
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-plugin-grpcquickplugin CONTAINS SPDXRef-PackagedFile-qt-plugin-grpcquickplugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-grpcquickplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/grpcquick/grpcquickplugin_GrpcQuickPlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-grpcquickplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/C:/Users/qt/work/qt/qtgrpc_build/src/grpcquick/grpcquickplugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-grpcquickplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/
+
+FileName: ./qml/QtGrpc/grpcquickplugind.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-grpcquickplugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: 9df81f92799b5ea104c373ccdca6fcd2d99804ee
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-plugin-grpcquickplugin CONTAINS SPDXRef-PackagedFile-qt-plugin-grpcquickplugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-grpcquickplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/grpcquick/grpcquickplugin_GrpcQuickPlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-grpcquickplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/
+Relationship: SPDXRef-PackagedFile-qt-plugin-grpcquickplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/grpcquick/C:/Users/qt/work/qt/qtgrpc_build/src/grpcquick/grpcquickplugin_resource-Debug.rc
+
+PackageName: qtprotobufgen_Attribution_protobuf
+SPDXID: SPDXRef-Package-qtgrpc-qt-3rdparty-sources-qtprotobufgen-Attribution-protobuf
+PackageDownloadLocation: https://protobuf.dev
+PackageVersion: 21.9
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: BSD-3-Clause
+PackageLicenseDeclared: NOASSERTION
+ExternalRef: PACKAGE-MANAGER purl pkg:github/protocolbuffers/protobuf@v21.9
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtgrpc?library_name=qtprotobufgen_Attribution_protobuf#src/tools/qtprotobufgen
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtgrpc-qtprotobufgen_Attribution_protobuf?vcs_url=https://code.qt.io/qt/qtgrpc.git&library_name=qtprotobufgen_Attribution_protobuf#src/tools/qtprotobufgen
+PackageCopyrightText: <text>Copyright 2008 Google Inc.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: qtprotobufgen_Attribution_protobuf
+    Information extracted from:
+     /src_dir/qtgrpc/qt_attribution.json
+    Entry index: 0
+    Id: protobuf
+    Name: protobuf
+    Qt usage: Used in the qtprotobufgen generator.
+    License: BSD 3-clause "New" or "Revised" License
+    License file: LICENSES/LicenseRef-protobuf.txt
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:google:protobuf:21.9:*:*:*:*:*:*:*
+FilesAnalyzed: false
+Relationship: SPDXRef-Package-qtgrpc CONTAINS SPDXRef-Package-qtgrpc-qt-3rdparty-sources-qtprotobufgen-Attribution-protobuf
+
+PackageName: qtprotobufgen_Attribution_protobuf-qtgrpcgen
+SPDXID: SPDXRef-Package-qtgrpc-qt-3rdparty-sources-qtprotobufgen-Attribution-protobuf-qtgrpcgen
+PackageDownloadLocation: https://protobuf.dev
+PackageVersion: 21.9
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: BSD-3-Clause
+PackageLicenseDeclared: NOASSERTION
+ExternalRef: PACKAGE-MANAGER purl pkg:github/protocolbuffers/protobuf@v21.9
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtgrpc?library_name=qtprotobufgen_Attribution_protobuf-qtgrpcgen#src/tools/qtprotobufgen
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtgrpc-qtprotobufgen_Attribution_protobuf-qtgrpcgen?vcs_url=https://code.qt.io/qt/qtgrpc.git&library_name=qtprotobufgen_Attribution_protobuf-qtgrpcgen#src/tools/qtprotobufgen
+PackageCopyrightText: <text>Copyright 2008 Google Inc.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: qtprotobufgen_Attribution_protobuf-qtgrpcgen
+    Information extracted from:
+     /src_dir/qtgrpc/qt_attribution.json
+    Entry index: 1
+    Id: protobuf-qtgrpcgen
+    Name: protobuf
+    Qt usage: Used in the qtgrpcgen generator.
+    License: BSD 3-clause "New" or "Revised" License
+    License file: LICENSES/LicenseRef-protobuf.txt
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:google:protobuf:21.9:*:*:*:*:*:*:*
+FilesAnalyzed: false
+Relationship: SPDXRef-Package-qtgrpc CONTAINS SPDXRef-Package-qtgrpc-qt-3rdparty-sources-qtprotobufgen-Attribution-protobuf-qtgrpcgen
+
+PackageName: qtprotobufgen_Attribution_grpc
+SPDXID: SPDXRef-Package-qtgrpc-qt-3rdparty-sources-qtprotobufgen-Attribution-grpc
+PackageDownloadLocation: https://grpc.io
+PackageVersion: 1.50.1
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: Apache-2.0
+PackageLicenseDeclared: NOASSERTION
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtgrpc?library_name=qtprotobufgen_Attribution_grpc#src/tools/qtprotobufgen
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtgrpc-qtprotobufgen_Attribution_grpc?vcs_url=https://code.qt.io/qt/qtgrpc.git&library_name=qtprotobufgen_Attribution_grpc#src/tools/qtprotobufgen
+PackageCopyrightText: <text>Copyright 2015 gRPC authors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: qtprotobufgen_Attribution_grpc
+    Information extracted from:
+     /src_dir/qtgrpc/qt_attribution.json
+    Entry index: 2
+    Id: grpc
+    Name: gRPC
+    Qt usage: Used in the gRPC examples and tests.
+    License: Apache License 2.0
+    License file: LICENSE.Apache-2.0.txt
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtgrpc:6.10.0:*:*:*:*:*:*:*
+FilesAnalyzed: false
+Relationship: SPDXRef-Package-qtgrpc CONTAINS SPDXRef-Package-qtgrpc-qt-3rdparty-sources-qtprotobufgen-Attribution-grpc
+
+PackageName: qtprotobufgen
+SPDXID: SPDXRef-Package-qtgrpc-qt-tool-qtprotobufgen
+PackageDownloadLocation: git://code.qt.io/qt/qtgrpc.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtgrpc?library_name=qtprotobufgen#src/tools/qtprotobufgen
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtgrpc-qtprotobufgen?vcs_url=https://code.qt.io/qt/qtgrpc.git&library_name=qtprotobufgen#src/tools/qtprotobufgen
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: APPLICATION
+PackageComment: <text>
+CMake target name: qtprotobufgen
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtgrpc:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 420877a64db048453506613ed5194ff73908bf27
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtgrpc-qt-tool-qtprotobufgen DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformToolInternal
+Relationship: SPDXRef-Package-qtgrpc-qt-tool-qtprotobufgen DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformCommonInternal
+Relationship: SPDXRef-Package-qtgrpc-qt-tool-qtprotobufgen DEPENDS_ON SPDXRef-Package-qtgrpc-qt-3rdparty-sources-qtprotobufgen-Attribution-protobuf
+Relationship: SPDXRef-Package-qtgrpc-qt-tool-qtprotobufgen DEPENDS_ON SPDXRef-Package-qtgrpc-qt-3rdparty-sources-qtprotobufgen-Attribution-protobuf-qtgrpcgen
+Relationship: SPDXRef-Package-qtgrpc-qt-tool-qtprotobufgen DEPENDS_ON SPDXRef-Package-qtgrpc-qt-3rdparty-sources-qtprotobufgen-Attribution-grpc
+Relationship: SPDXRef-Package-qtgrpc CONTAINS SPDXRef-Package-qtgrpc-qt-tool-qtprotobufgen
+
+FileName: ./bin/qtprotobufgen.exe
+SPDXID: SPDXRef-PackagedFile-qt-tool-qtprotobufgen-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 5255934c7b1a644ee3efcfe1567e97eef0ad0569
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-tool-qtprotobufgen CONTAINS SPDXRef-PackagedFile-qt-tool-qtprotobufgen-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-tool-qtprotobufgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtprotobufgen/C:/Users/qt/work/qt/qtgrpc_build/src/tools/qtprotobufgen/qtprotobufgen_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-tool-qtprotobufgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtprotobufgen/
+Relationship: SPDXRef-PackagedFile-qt-tool-qtprotobufgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtprotobufgen/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qtprotobufgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtprotobufgen/qprotobufgenerator.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qtprotobufgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtprotobufgen/qprotobufgenerator.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qtprotobufgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtprotobufgen/messagedeclarationprinter.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qtprotobufgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtprotobufgen/messagedeclarationprinter.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qtprotobufgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtprotobufgen/messagedefinitionprinter.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qtprotobufgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtprotobufgen/messagedefinitionprinter.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qtprotobufgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtprotobufgen/enumdeclarationprinter.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qtprotobufgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtprotobufgen/enumdeclarationprinter.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qtprotobufgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtprotobufgen/enumdefinitionprinter.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qtprotobufgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtprotobufgen/enumdefinitionprinter.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qtprotobufgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/tools/qtprotobufgen/qtprotobufgen_longpath.manifest
+
+PackageName: qtgrpcgen_Attribution_protobuf-qtgrpcgen
+SPDXID: SPDXRef-Package-qtgrpc-qt-3rdparty-sources-qtgrpcgen-Attribution-protobuf-qtgrpcgen
+PackageDownloadLocation: https://protobuf.dev
+PackageVersion: 21.9
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: BSD-3-Clause
+PackageLicenseDeclared: NOASSERTION
+ExternalRef: PACKAGE-MANAGER purl pkg:github/protocolbuffers/protobuf@v21.9
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtgrpc?library_name=qtgrpcgen_Attribution_protobuf-qtgrpcgen#src/tools/qtgrpcgen
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtgrpc-qtgrpcgen_Attribution_protobuf-qtgrpcgen?vcs_url=https://code.qt.io/qt/qtgrpc.git&library_name=qtgrpcgen_Attribution_protobuf-qtgrpcgen#src/tools/qtgrpcgen
+PackageCopyrightText: <text>Copyright 2008 Google Inc.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: qtgrpcgen_Attribution_protobuf-qtgrpcgen
+    Information extracted from:
+     /src_dir/qtgrpc/qt_attribution.json
+    Entry index: 1
+    Id: protobuf-qtgrpcgen
+    Name: protobuf
+    Qt usage: Used in the qtgrpcgen generator.
+    License: BSD 3-clause "New" or "Revised" License
+    License file: LICENSES/LicenseRef-protobuf.txt
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:google:protobuf:21.9:*:*:*:*:*:*:*
+FilesAnalyzed: false
+Relationship: SPDXRef-Package-qtgrpc CONTAINS SPDXRef-Package-qtgrpc-qt-3rdparty-sources-qtgrpcgen-Attribution-protobuf-qtgrpcgen
+
+PackageName: qtgrpcgen_Attribution_grpc
+SPDXID: SPDXRef-Package-qtgrpc-qt-3rdparty-sources-qtgrpcgen-Attribution-grpc
+PackageDownloadLocation: https://grpc.io
+PackageVersion: 1.50.1
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: Apache-2.0
+PackageLicenseDeclared: NOASSERTION
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtgrpc?library_name=qtgrpcgen_Attribution_grpc#src/tools/qtgrpcgen
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtgrpc-qtgrpcgen_Attribution_grpc?vcs_url=https://code.qt.io/qt/qtgrpc.git&library_name=qtgrpcgen_Attribution_grpc#src/tools/qtgrpcgen
+PackageCopyrightText: <text>Copyright 2015 gRPC authors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: qtgrpcgen_Attribution_grpc
+    Information extracted from:
+     /src_dir/qtgrpc/qt_attribution.json
+    Entry index: 2
+    Id: grpc
+    Name: gRPC
+    Qt usage: Used in the gRPC examples and tests.
+    License: Apache License 2.0
+    License file: LICENSE.Apache-2.0.txt
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtgrpc:6.10.0:*:*:*:*:*:*:*
+FilesAnalyzed: false
+Relationship: SPDXRef-Package-qtgrpc CONTAINS SPDXRef-Package-qtgrpc-qt-3rdparty-sources-qtgrpcgen-Attribution-grpc
+
+PackageName: qtgrpcgen
+SPDXID: SPDXRef-Package-qtgrpc-qt-tool-qtgrpcgen
+PackageDownloadLocation: git://code.qt.io/qt/qtgrpc.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtgrpc?library_name=qtgrpcgen#src/tools/qtgrpcgen
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtgrpc-qtgrpcgen?vcs_url=https://code.qt.io/qt/qtgrpc.git&library_name=qtgrpcgen#src/tools/qtgrpcgen
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: APPLICATION
+PackageComment: <text>
+CMake target name: qtgrpcgen
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtgrpc:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 26c065b24da1e48850dec3f0ff438d63b81db87e
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtgrpc-qt-tool-qtgrpcgen DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformToolInternal
+Relationship: SPDXRef-Package-qtgrpc-qt-tool-qtgrpcgen DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformCommonInternal
+Relationship: SPDXRef-Package-qtgrpc-qt-tool-qtgrpcgen DEPENDS_ON SPDXRef-Package-qtgrpc-qt-3rdparty-sources-qtgrpcgen-Attribution-protobuf-qtgrpcgen
+Relationship: SPDXRef-Package-qtgrpc-qt-tool-qtgrpcgen DEPENDS_ON SPDXRef-Package-qtgrpc-qt-3rdparty-sources-qtgrpcgen-Attribution-grpc
+Relationship: SPDXRef-Package-qtgrpc CONTAINS SPDXRef-Package-qtgrpc-qt-tool-qtgrpcgen
+
+FileName: ./bin/qtgrpcgen.exe
+SPDXID: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 0d2c0f11dafca6d3cae679fca4cd5c1fe3ef0469
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-tool-qtgrpcgen CONTAINS SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtgrpcgen/C:/Users/qt/work/qt/qtgrpc_build/src/tools/qtgrpcgen/qtgrpcgen_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtgrpcgen/
+Relationship: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtgrpcgen/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtgrpcgen/qgrpcgenerator.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtgrpcgen/qgrpcgenerator.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtgrpcgen/grpctemplates.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtgrpcgen/grpctemplates.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtgrpcgen/serverdeclarationprinter.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtgrpcgen/serverdeclarationprinter.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtgrpcgen/clientdeclarationprinter.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtgrpcgen/clientdeclarationprinter.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtgrpcgen/clientdefinitionprinter.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtgrpcgen/clientdefinitionprinter.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtgrpcgen/qmlclientdeclarationprinter.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtgrpcgen/qmlclientdeclarationprinter.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtgrpcgen/qmlclientdefinitionprinter.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/tools/qtgrpcgen/qmlclientdefinitionprinter.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qtgrpcgen-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/tools/qtgrpcgen/qtgrpcgen_longpath.manifest
+
+PackageName: ProtobufWellKnownTypes
+SPDXID: SPDXRef-Package-qtgrpc-qt-module-ProtobufWellKnownTypes
+PackageDownloadLocation: git://code.qt.io/qt/qtgrpc.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtgrpc?library_name=ProtobufWellKnownTypes#src/wellknown
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtgrpc-ProtobufWellKnownTypes?vcs_url=https://code.qt.io/qt/qtgrpc.git&library_name=ProtobufWellKnownTypes#src/wellknown
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: ProtobufWellKnownTypes
+CMake exported target name: Qt6::ProtobufWellKnownTypes
+Contained in CMake package: Qt6ProtobufWellKnownTypes
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtgrpc:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 9e7b06f4d686dfa02d630dddde2314367360f8ee
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufWellKnownTypes DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufWellKnownTypes DEPENDS_ON SPDXRef-Package-qtgrpc-qt-module-Protobuf
+Relationship: SPDXRef-Package-qtgrpc CONTAINS SPDXRef-Package-qtgrpc-qt-module-ProtobufWellKnownTypes
+
+FileName: ./bin/Qt6ProtobufWellKnownTypes.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: eee641de26f16bd5d65c8eaa898e79ed63bb82ad
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufWellKnownTypes CONTAINS SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/C:/Users/qt/work/qt/qtgrpc_build/src/wellknown/ProtobufWellKnownTypes_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobufWellKnownTypes/qtprotobufwellknowntypesexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qtprotobufwellknowntypesglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qprotobufanysupport.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qprotobufanysupport.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qprotobufwellknowntypesjsonserializers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qprotobufwellknowntypesjsonserializers.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/any.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/any.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/protobufwellknowntypes_exports.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/api.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/api.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/duration.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/duration.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/empty.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/empty.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/field_mask.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/field_mask.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/source_context.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/source_context.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/struct.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/struct.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/timestamp.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/timestamp.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/type.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/type.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/wrappers.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/wrappers.qpb.cpp
+
+FileName: ./bin/Qt6ProtobufWellKnownTypesd.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug
+FileType: BINARY
+FileChecksum: SHA1: fcd5f771792402fe61e871096ecb76c75c04d7c7
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufWellKnownTypes CONTAINS SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/C:/Users/qt/work/qt/qtgrpc_build/src/wellknown/ProtobufWellKnownTypes_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobufWellKnownTypes/qtprotobufwellknowntypesexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qtprotobufwellknowntypesglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qprotobufanysupport.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qprotobufanysupport.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qprotobufwellknowntypesjsonserializers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qprotobufwellknowntypesjsonserializers.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/any.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/any.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/protobufwellknowntypes_exports.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/api.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/api.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/duration.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/duration.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/empty.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/empty.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/field_mask.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/field_mask.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/source_context.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/source_context.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/struct.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/struct.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/timestamp.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/timestamp.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/type.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/type.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/wrappers.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/wrappers.qpb.cpp
+
+FileName: ./lib/Qt6ProtobufWellKnownTypes.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: cfa666d3d73e2333736d2cc2b0c22b68a6ec9cf1
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufWellKnownTypes CONTAINS SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/C:/Users/qt/work/qt/qtgrpc_build/src/wellknown/ProtobufWellKnownTypes_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobufWellKnownTypes/qtprotobufwellknowntypesexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qtprotobufwellknowntypesglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qprotobufanysupport.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qprotobufanysupport.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qprotobufwellknowntypesjsonserializers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qprotobufwellknowntypesjsonserializers.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/any.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/any.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/protobufwellknowntypes_exports.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/api.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/api.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/duration.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/duration.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/empty.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/empty.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/field_mask.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/field_mask.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/source_context.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/source_context.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/struct.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/struct.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/timestamp.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/timestamp.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/type.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/type.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/wrappers.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/wrappers.qpb.cpp
+
+FileName: ./lib/Qt6ProtobufWellKnownTypesd.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: db2d3aa5e9ee718e533c2b233cb5144c0ce229ef
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufWellKnownTypes CONTAINS SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/C:/Users/qt/work/qt/qtgrpc_build/src/wellknown/ProtobufWellKnownTypes_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobufWellKnownTypes/qtprotobufwellknowntypesexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qtprotobufwellknowntypesglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qprotobufanysupport.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qprotobufanysupport.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qprotobufwellknowntypesjsonserializers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/wellknown/qprotobufwellknowntypesjsonserializers.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/any.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/any.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/protobufwellknowntypes_exports.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/api.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/api.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/duration.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/duration.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/empty.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/empty.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/field_mask.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/field_mask.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/source_context.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/source_context.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/struct.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/struct.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/timestamp.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/timestamp.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/type.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/type.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/wrappers.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufWellKnownTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/wellknown/google/protobuf/wrappers.qpb.cpp
+
+PackageName: ProtobufQtCoreTypes
+SPDXID: SPDXRef-Package-qtgrpc-qt-module-ProtobufQtCoreTypes
+PackageDownloadLocation: git://code.qt.io/qt/qtgrpc.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtgrpc?library_name=ProtobufQtCoreTypes#src/protobufqttypes/protobufqtcoretypes
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtgrpc-ProtobufQtCoreTypes?vcs_url=https://code.qt.io/qt/qtgrpc.git&library_name=ProtobufQtCoreTypes#src/protobufqttypes/protobufqtcoretypes
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: ProtobufQtCoreTypes
+CMake exported target name: Qt6::ProtobufQtCoreTypes
+Contained in CMake package: Qt6ProtobufQtCoreTypes
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtgrpc:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: b2306789c2776c4d8538d10d3e921b12a6b58cb5
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQtCoreTypes DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQtCoreTypes DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQtCoreTypes DEPENDS_ON SPDXRef-Package-qtgrpc-qt-module-Protobuf
+Relationship: SPDXRef-Package-qtgrpc CONTAINS SPDXRef-Package-qtgrpc-qt-module-ProtobufQtCoreTypes
+
+FileName: ./bin/Qt6ProtobufQtCoreTypes.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 0b50095af9c666afe46633ee1913befb3ac3a342
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQtCoreTypes CONTAINS SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/C:/Users/qt/work/qt/qtgrpc_build/src/protobufqttypes/protobufqtcoretypes/ProtobufQtCoreTypes_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobufQtCoreTypes/qtprotobufqtcoretypesexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/qtprotobufqtcoretypes.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/qtprotobufqtcoretypes.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/qtprotobufqtcoretypesglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/qtprotobufqttypescommon_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/QtCore/QtCore.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/QtCore/QtCore.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/protobufqtcoretypes_exports.qpb.h
+
+FileName: ./bin/Qt6ProtobufQtCoreTypesd.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-Debug
+FileType: BINARY
+FileChecksum: SHA1: 010e41e1edd881bcacd68d1247e30bd2d623977f
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQtCoreTypes CONTAINS SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/C:/Users/qt/work/qt/qtgrpc_build/src/protobufqttypes/protobufqtcoretypes/ProtobufQtCoreTypes_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobufQtCoreTypes/qtprotobufqtcoretypesexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/qtprotobufqtcoretypes.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/qtprotobufqtcoretypes.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/qtprotobufqtcoretypesglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/qtprotobufqttypescommon_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/QtCore/QtCore.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/QtCore/QtCore.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/protobufqtcoretypes_exports.qpb.h
+
+FileName: ./lib/Qt6ProtobufQtCoreTypes.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 6af3de07a0baf9a732fb264f35c61792c0a26773
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQtCoreTypes CONTAINS SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/C:/Users/qt/work/qt/qtgrpc_build/src/protobufqttypes/protobufqtcoretypes/ProtobufQtCoreTypes_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobufQtCoreTypes/qtprotobufqtcoretypesexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/qtprotobufqtcoretypes.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/qtprotobufqtcoretypes.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/qtprotobufqtcoretypesglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/qtprotobufqttypescommon_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/QtCore/QtCore.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/QtCore/QtCore.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/protobufqtcoretypes_exports.qpb.h
+
+FileName: ./lib/Qt6ProtobufQtCoreTypesd.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: 5e778a9b9b21763a2da9c2dc95864b0769404779
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQtCoreTypes CONTAINS SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/C:/Users/qt/work/qt/qtgrpc_build/src/protobufqttypes/protobufqtcoretypes/ProtobufQtCoreTypes_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobufQtCoreTypes/qtprotobufqtcoretypesexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/qtprotobufqtcoretypes.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/qtprotobufqtcoretypes.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/qtprotobufqtcoretypesglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/qtprotobufqttypescommon_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/QtCore/QtCore.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/QtCore/QtCore.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtCoreTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtcoretypes/protobufqtcoretypes_exports.qpb.h
+
+PackageName: ProtobufQtGuiTypes
+SPDXID: SPDXRef-Package-qtgrpc-qt-module-ProtobufQtGuiTypes
+PackageDownloadLocation: git://code.qt.io/qt/qtgrpc.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtgrpc?library_name=ProtobufQtGuiTypes#src/protobufqttypes/protobufqtguitypes
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtgrpc-ProtobufQtGuiTypes?vcs_url=https://code.qt.io/qt/qtgrpc.git&library_name=ProtobufQtGuiTypes#src/protobufqttypes/protobufqtguitypes
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: ProtobufQtGuiTypes
+CMake exported target name: Qt6::ProtobufQtGuiTypes
+Contained in CMake package: Qt6ProtobufQtGuiTypes
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtgrpc:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: f6bc933401674876f7fafb1ce01c03bfb8422800
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQtGuiTypes DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQtGuiTypes DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Gui
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQtGuiTypes DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQtGuiTypes DEPENDS_ON SPDXRef-Package-qtgrpc-qt-module-Protobuf
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQtGuiTypes DEPENDS_ON SPDXRef-Package-qtgrpc-qt-module-ProtobufQtCoreTypes
+Relationship: SPDXRef-Package-qtgrpc CONTAINS SPDXRef-Package-qtgrpc-qt-module-ProtobufQtGuiTypes
+
+FileName: ./bin/Qt6ProtobufQtGuiTypes.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 28e617e8e0be92fbaab1ad990cbeef3f3e0380c1
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQtGuiTypes CONTAINS SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/C:/Users/qt/work/qt/qtgrpc_build/src/protobufqttypes/protobufqtguitypes/ProtobufQtGuiTypes_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobufQtGuiTypes/qtprotobufqtguitypesexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/qtprotobufqtguitypes.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/qtprotobufqtguitypes.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/qtprotobufqtguitypesglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/QtGui/QtGui.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/QtGui/QtGui.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/protobufqtguitypes_exports.qpb.h
+
+FileName: ./bin/Qt6ProtobufQtGuiTypesd.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-Debug
+FileType: BINARY
+FileChecksum: SHA1: 4e2610122aca09784aeb59b6b7a2a79a64ab69fe
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQtGuiTypes CONTAINS SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/C:/Users/qt/work/qt/qtgrpc_build/src/protobufqttypes/protobufqtguitypes/ProtobufQtGuiTypes_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobufQtGuiTypes/qtprotobufqtguitypesexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/qtprotobufqtguitypes.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/qtprotobufqtguitypes.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/qtprotobufqtguitypesglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/QtGui/QtGui.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/QtGui/QtGui.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/protobufqtguitypes_exports.qpb.h
+
+FileName: ./lib/Qt6ProtobufQtGuiTypes.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 523657dfb681648e59dae8004c7fff59c47401c7
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQtGuiTypes CONTAINS SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/C:/Users/qt/work/qt/qtgrpc_build/src/protobufqttypes/protobufqtguitypes/ProtobufQtGuiTypes_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobufQtGuiTypes/qtprotobufqtguitypesexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/qtprotobufqtguitypes.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/qtprotobufqtguitypes.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/qtprotobufqtguitypesglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/QtGui/QtGui.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/QtGui/QtGui.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/protobufqtguitypes_exports.qpb.h
+
+FileName: ./lib/Qt6ProtobufQtGuiTypesd.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: c8155695d24cf935534fecea7f84572943514b30
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtgrpc-qt-module-ProtobufQtGuiTypes CONTAINS SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/C:/Users/qt/work/qt/qtgrpc_build/src/protobufqttypes/protobufqtguitypes/ProtobufQtGuiTypes_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/include/QtProtobufQtGuiTypes/qtprotobufqtguitypesexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/qtprotobufqtguitypes.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/qtprotobufqtguitypes.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/qtprotobufqtguitypesglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/QtGui/QtGui.qpb.h
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/QtGui/QtGui.qpb.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ProtobufQtGuiTypes-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtgrpc/src/protobufqttypes/protobufqtguitypes/protobufqtguitypes_exports.qpb.h
+
+LicenseID: LicenseRef-Qt-Commercial
+ExtractedText: <text>Licensees holding valid commercial Qt licenses may use this software in
+accordance with the the terms contained in a written agreement between
+you and The Qt Company. Alternatively, the terms and conditions that were
+accepted by the licensee when buying and/or downloading the
+software do apply.
+
+For the latest licensing terms and conditions, see https://www.qt.io/terms-conditions.
+For further information use the contact form at https://www.qt.io/contact-us.
+</text>
+
+LicenseID: LicenseRef-protobuf
+ExtractedText: <text>Copyright 2008 Google Inc.  All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+    * Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer
+in the documentation and/or other materials provided with the
+distribution.
+    * Neither the name of Google Inc. nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Code generated by the Protocol Buffer compiler is owned by the owner
+of the input file used when generating it.  This code is not
+standalone and requires a support library to be linked with it.  This
+support library is itself covered by the above license.
+</text>

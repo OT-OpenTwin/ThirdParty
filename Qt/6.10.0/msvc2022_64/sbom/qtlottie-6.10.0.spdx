@@ -1,0 +1,1077 @@
+SPDXVersion: SPDX-2.3
+DataLicense: CC0-1.0
+SPDXID: SPDXRef-DOCUMENT
+DocumentName: qtlottie-6.10.0
+DocumentNamespace: https://qt.io/spdxdocs/qtlottie-6.10.0
+Creator: Organization: TheQtCompany
+Creator: Tool: Qt Build System
+CreatorComment: <text>This SPDX document was created from CMake 3.30.5, using the qt
+build system from https://code.qt.io/cgit/qt/qtbase.git/tree/cmake/QtPublicSbomHelpers.cmake</text>
+Created: 2025-10-01T23:11:04Z
+ExternalDocumentRef: DocumentRef-qtdeclarative https://qt.io/spdxdocs/qtdeclarative-7e0ab1d9+HEAD SHA1: abe2fefc07c2482cfcc5aa4055014d6869372c22
+ExternalDocumentRef: DocumentRef-qtbase https://qt.io/spdxdocs/qtbase-5a8637e4+HEAD SHA1: 5ffd15d0b3b0dfbed5f9302602018f8bfed209f7
+
+PackageName: MSVC
+SPDXID: SPDXRef-compiler
+PackageVersion: 19.39.33520.0
+PackageDownloadLocation: NOASSERTION
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: NOASSERTION
+PackageSupplier: Organization: Anonymous
+FilesAnalyzed: false
+PackageSummary: <text>The compiler as identified by CMake, running on Windows (AMD64)</text>
+PrimaryPackagePurpose: APPLICATION
+Relationship: SPDXRef-compiler BUILD_DEPENDENCY_OF SPDXRef-Package-qtlottie
+RelationshipComment: <text>SPDXRef-Package-qtlottie is built by compiler MSVC version 19.39.33520.0</text>
+
+PackageName: qtlottie
+SPDXID: SPDXRef-Package-qtlottie
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtlottie:6.10.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtlottie@6.10.0
+PackageVersion: 6.10.0
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtlottie@6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageDownloadLocation: git://code.qt.io/qt/qtlottie.git
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: Copyright (C) The Qt Company Ltd. and other contributors.
+PackageHomePage: https://qt.io
+PackageComment: <text>Built by CMake 3.30.5 with RelWithDebInfo;Debug configuration for Windows (AMD64)
+qtlottie was configured with:
+    qt-configure-module <sources>/qtlottie -- -DFFMPEG_DIR=C:\FFmpeg-n7.1.1\build\msvc\installed -DQT_DEPLOY_FFMPEG=TRUE -DFEATURE_clangcpp=OFF -DINPUT_headersclean=ON -DQT_INSTALL_CONFIG_INFO_FILES=ON -DQT_GENERATE_SBOM=ON -DQT_GENERATE_SOURCE_SBOM=ON -DQT_SBOM_PYTHON_INTERP=C:\Python38_64 -DQT_SBOM_PYTHON_APPS_PATH=C:\Python310_64\Scripts -DQT_LINT_SOURCE_SBOM=ON -DQT_INTERNAL_SBOM_DEFAULT_CHECKS=ON -DQT_INTERNAL_SBOM_AUDIT=ON -DQT_INTERNAL_SBOM_AUDIT_NO_ERROR=ON -DQT_BUILD_TESTS=OFF -DCMAKE_AUTOGEN_VERBOSE=ON -DCMAKE_MESSAGE_LOG_LEVEL=STATUS -DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache
+</text>
+FilesAnalyzed: false
+BuiltDate: 2025-10-01T23:11:04Z
+Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-Package-qtlottie
+
+PackageName: LottieVectorImageHelpers
+SPDXID: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageHelpers
+PackageDownloadLocation: git://code.qt.io/qt/qtlottie.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtlottie?library_name=LottieVectorImageHelpers#src/vectorimagehelpers
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtlottie-LottieVectorImageHelpers?vcs_url=https://code.qt.io/qt/qtlottie.git&library_name=LottieVectorImageHelpers#src/vectorimagehelpers
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: LottieVectorImageHelpers
+CMake exported target name: Qt6::LottieVectorImageHelpers
+Contained in CMake package: Qt6LottieVectorImageHelpers
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtlottie:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 2c8d477cfa8bf1f9be98421a22f0e8b49ad6dca5
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageHelpers DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Quick
+Relationship: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageHelpers DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageHelpers DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtlottie CONTAINS SPDXRef-Package-qtlottie-qt-module-LottieVectorImageHelpers
+
+FileName: ./bin/Qt6LottieVectorImageHelpers.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 69a7d8a81e1e9fe818c7c8df61b0d50cfd9e4a5b
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageHelpers CONTAINS SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/C:/Users/qt/work/qt/qtlottie_build/src/vectorimagehelpers/LottieVectorImageHelpers_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/include/QtLottieVectorImageHelpers/qtlottievectorimagehelpersexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/qquicklayeritem_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/qquicklayeritem.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/vectorimagehelpers/lottievectorimagehelpers_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/vectorimagehelpers/.qt/rcc/qrc_qmake_Qt_labs_lottieqt_VectorImageHelpers.cpp
+
+FileName: ./bin/Qt6LottieVectorImageHelpersd.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-Debug
+FileType: BINARY
+FileChecksum: SHA1: 3accfc2d54987ba8de958d9e38a500a1110b0a7b
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageHelpers CONTAINS SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/C:/Users/qt/work/qt/qtlottie_build/src/vectorimagehelpers/LottieVectorImageHelpers_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/include/QtLottieVectorImageHelpers/qtlottievectorimagehelpersexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/qquicklayeritem_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/qquicklayeritem.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/vectorimagehelpers/lottievectorimagehelpers_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/vectorimagehelpers/.qt/rcc/qrc_qmake_Qt_labs_lottieqt_VectorImageHelpers.cpp
+
+FileName: ./lib/Qt6LottieVectorImageHelpers.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: f21496fb383eac06a8079d64153958fb70a078ae
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageHelpers CONTAINS SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/C:/Users/qt/work/qt/qtlottie_build/src/vectorimagehelpers/LottieVectorImageHelpers_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/include/QtLottieVectorImageHelpers/qtlottievectorimagehelpersexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/qquicklayeritem_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/qquicklayeritem.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/vectorimagehelpers/lottievectorimagehelpers_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/vectorimagehelpers/.qt/rcc/qrc_qmake_Qt_labs_lottieqt_VectorImageHelpers.cpp
+
+FileName: ./lib/Qt6LottieVectorImageHelpersd.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: 3fdc4f571a33a4b09922772b07aa726bb357517b
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageHelpers CONTAINS SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/C:/Users/qt/work/qt/qtlottie_build/src/vectorimagehelpers/LottieVectorImageHelpers_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/include/QtLottieVectorImageHelpers/qtlottievectorimagehelpersexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/qquicklayeritem_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/qquicklayeritem.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/vectorimagehelpers/lottievectorimagehelpers_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageHelpers-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/vectorimagehelpers/.qt/rcc/qrc_qmake_Qt_labs_lottieqt_VectorImageHelpers.cpp
+
+PackageName: LottieVectorImageHelpersplugin
+SPDXID: SPDXRef-Package-qtlottie-qt-plugin-LottieVectorImageHelpersplugin
+PackageDownloadLocation: git://code.qt.io/qt/qtlottie.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtlottie?library_name=LottieVectorImageHelpersplugin#src/vectorimagehelpers
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtlottie-LottieVectorImageHelpersplugin?vcs_url=https://code.qt.io/qt/qtlottie.git&library_name=LottieVectorImageHelpersplugin#src/vectorimagehelpers
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: LottieVectorImageHelpersplugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtlottie:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: aacc7e9a043cfc43caf88e284ba25423384435ea
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtlottie-qt-plugin-LottieVectorImageHelpersplugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtlottie-qt-plugin-LottieVectorImageHelpersplugin DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtlottie-qt-plugin-LottieVectorImageHelpersplugin DEPENDS_ON SPDXRef-Package-qtlottie-qt-module-LottieVectorImageHelpers
+Relationship: SPDXRef-Package-qtlottie CONTAINS SPDXRef-Package-qtlottie-qt-plugin-LottieVectorImageHelpersplugin
+
+FileName: ./qml/Qt/labs/lottieqt/VectorImageHelpers/lottievectorimagehelpersplugin.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-LottieVectorImageHelpersplugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 8d206ae111dc81264147447eb65cfc800c89faad
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-plugin-LottieVectorImageHelpersplugin CONTAINS SPDXRef-PackagedFile-qt-plugin-LottieVectorImageHelpersplugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-LottieVectorImageHelpersplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/vectorimagehelpers/LottieVectorImageHelpersplugin_QLottieVectorImageHelpersPlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-LottieVectorImageHelpersplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/C:/Users/qt/work/qt/qtlottie_build/src/vectorimagehelpers/LottieVectorImageHelpersplugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-LottieVectorImageHelpersplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/
+
+FileName: ./qml/Qt/labs/lottieqt/VectorImageHelpers/lottievectorimagehelpersplugind.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-LottieVectorImageHelpersplugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: 065ea484d66f9ef084055be1b8d1b728d5f588b2
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-plugin-LottieVectorImageHelpersplugin CONTAINS SPDXRef-PackagedFile-qt-plugin-LottieVectorImageHelpersplugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-LottieVectorImageHelpersplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/vectorimagehelpers/LottieVectorImageHelpersplugin_QLottieVectorImageHelpersPlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-LottieVectorImageHelpersplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/
+Relationship: SPDXRef-PackagedFile-qt-plugin-LottieVectorImageHelpersplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/vectorimagehelpers/C:/Users/qt/work/qt/qtlottie_build/src/vectorimagehelpers/LottieVectorImageHelpersplugin_resource-Debug.rc
+
+PackageName: LottieVectorImageGeneratorPrivate
+SPDXID: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageGeneratorPrivate
+PackageDownloadLocation: git://code.qt.io/qt/qtlottie.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtlottie?library_name=LottieVectorImageGeneratorPrivate#src/lottiegenerator
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtlottie-LottieVectorImageGeneratorPrivate?vcs_url=https://code.qt.io/qt/qtlottie.git&library_name=LottieVectorImageGeneratorPrivate#src/lottiegenerator
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: LottieVectorImageGeneratorPrivate
+CMake exported target name: Qt6::LottieVectorImageGenerator
+Contained in CMake package: Qt6LottieVectorImageGeneratorPrivate
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtlottie:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: b2d71d20a451bf92eb747fff3d8ca9a137905fe3
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageGeneratorPrivate DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageGeneratorPrivate DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Quick
+Relationship: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageGeneratorPrivate DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-QuickShapesPrivate
+Relationship: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageGeneratorPrivate DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-QuickVectorImageGeneratorPrivate
+Relationship: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageGeneratorPrivate DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageGeneratorPrivate DEPENDS_ON SPDXRef-Package-qtlottie-qt-module-Lottie
+Relationship: SPDXRef-Package-qtlottie CONTAINS SPDXRef-Package-qtlottie-qt-module-LottieVectorImageGeneratorPrivate
+
+FileName: ./bin/Qt6LottieVectorImageGenerator.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 1b634e0835c07981a2702971550b6af2c07e85e6
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageGeneratorPrivate CONTAINS SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottiegenerator/C:/Users/qt/work/qt/qtlottie_build/src/lottiegenerator/LottieVectorImageGeneratorPrivate_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottiegenerator/
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/include/QtLottieVectorImageGenerator/qtlottievectorimagegeneratorexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottiegenerator/qlottievisitor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottiegenerator/qlottievisitor.cpp
+
+FileName: ./bin/Qt6LottieVectorImageGeneratord.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-Debug
+FileType: BINARY
+FileChecksum: SHA1: d8a147bf174a84287a4ce4c19542d95ac72a4e7d
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageGeneratorPrivate CONTAINS SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottiegenerator/
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottiegenerator/C:/Users/qt/work/qt/qtlottie_build/src/lottiegenerator/LottieVectorImageGeneratorPrivate_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/include/QtLottieVectorImageGenerator/qtlottievectorimagegeneratorexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottiegenerator/qlottievisitor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottiegenerator/qlottievisitor.cpp
+
+FileName: ./lib/Qt6LottieVectorImageGenerator.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: ee1650643cb6e9e86aa4eae5a243b72e6395455e
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageGeneratorPrivate CONTAINS SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottiegenerator/C:/Users/qt/work/qt/qtlottie_build/src/lottiegenerator/LottieVectorImageGeneratorPrivate_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottiegenerator/
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/include/QtLottieVectorImageGenerator/qtlottievectorimagegeneratorexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottiegenerator/qlottievisitor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottiegenerator/qlottievisitor.cpp
+
+FileName: ./lib/Qt6LottieVectorImageGeneratord.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: 683d43a9579da98d3759903a487941baf104d298
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-module-LottieVectorImageGeneratorPrivate CONTAINS SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottiegenerator/
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottiegenerator/C:/Users/qt/work/qt/qtlottie_build/src/lottiegenerator/LottieVectorImageGeneratorPrivate_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/include/QtLottieVectorImageGenerator/qtlottievectorimagegeneratorexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottiegenerator/qlottievisitor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-LottieVectorImageGeneratorPrivate-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottiegenerator/qlottievisitor.cpp
+
+PackageName: QLottieVectorImagePlugin
+SPDXID: SPDXRef-Package-qtlottie-qt-plugin-QLottieVectorImagePlugin
+PackageDownloadLocation: git://code.qt.io/qt/qtlottie.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtlottie?library_name=QLottieVectorImagePlugin#src/plugins/vectorimageformats/lottie
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtlottie-QLottieVectorImagePlugin?vcs_url=https://code.qt.io/qt/qtlottie.git&library_name=QLottieVectorImagePlugin#src/plugins/vectorimageformats/lottie
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: QLottieVectorImagePlugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtlottie:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 042cbde5a8347821734e7f628ac59ab79f7d7455
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtlottie-qt-plugin-QLottieVectorImagePlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Gui
+Relationship: SPDXRef-Package-qtlottie-qt-plugin-QLottieVectorImagePlugin DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Quick
+Relationship: SPDXRef-Package-qtlottie-qt-plugin-QLottieVectorImagePlugin DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-QuickVectorImageGeneratorPrivate
+Relationship: SPDXRef-Package-qtlottie-qt-plugin-QLottieVectorImagePlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtlottie-qt-plugin-QLottieVectorImagePlugin DEPENDS_ON SPDXRef-Package-qtlottie-qt-module-LottieVectorImageGeneratorPrivate
+Relationship: SPDXRef-Package-qtlottie-qt-plugin-QLottieVectorImagePlugin DEPENDS_ON SPDXRef-Package-qtlottie-qt-module-Lottie
+Relationship: SPDXRef-Package-qtlottie CONTAINS SPDXRef-Package-qtlottie-qt-plugin-QLottieVectorImagePlugin
+
+FileName: ./plugins/vectorimageformats/qlottievectorimage.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-QLottieVectorImagePlugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 88fbbd0ca52eb4edeed494d48924b2f011ce62df
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-plugin-QLottieVectorImagePlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-QLottieVectorImagePlugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-QLottieVectorImagePlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/plugins/vectorimageformats/lottie/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QLottieVectorImagePlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/plugins/vectorimageformats/lottie/C:/Users/qt/work/qt/qtlottie_build/src/plugins/vectorimageformats/lottie/QLottieVectorImagePlugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-QLottieVectorImagePlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/plugins/vectorimageformats/lottie/
+
+FileName: ./plugins/vectorimageformats/qlottievectorimaged.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-QLottieVectorImagePlugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: a23a638681d6b0f423e5be1fc27e13600dae864d
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-plugin-QLottieVectorImagePlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-QLottieVectorImagePlugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-QLottieVectorImagePlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/plugins/vectorimageformats/lottie/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QLottieVectorImagePlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/plugins/vectorimageformats/lottie/
+Relationship: SPDXRef-PackagedFile-qt-plugin-QLottieVectorImagePlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/plugins/vectorimageformats/lottie/C:/Users/qt/work/qt/qtlottie_build/src/plugins/vectorimageformats/lottie/QLottieVectorImagePlugin_resource-Debug.rc
+
+PackageName: Lottie
+SPDXID: SPDXRef-Package-qtlottie-qt-module-Lottie
+PackageDownloadLocation: git://code.qt.io/qt/qtlottie.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtlottie?library_name=Lottie#src
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtlottie-Lottie?vcs_url=https://code.qt.io/qt/qtlottie.git&library_name=Lottie#src
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: Lottie
+CMake exported target name: Qt6::Lottie
+Contained in CMake package: Qt6Lottie
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtlottie:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 6d957f801638a1f470ba1a152d20eb630a7ab3f8
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtlottie-qt-module-Lottie DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtlottie-qt-module-Lottie DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Gui
+Relationship: SPDXRef-Package-qtlottie-qt-module-Lottie DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtlottie-qt-module-Lottie DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Quick
+Relationship: SPDXRef-Package-qtlottie-qt-module-Lottie DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtlottie CONTAINS SPDXRef-Package-qtlottie-qt-module-Lottie
+
+FileName: ./bin/Qt6Lottie.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: a45dbedc54a1c45e817d26be29d8ac8f9e95a6fa
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-module-Lottie CONTAINS SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/C:/Users/qt/work/qt/qtlottie_build/src/Lottie_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/include/QtLottie/qtlottieexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/lottie_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/.qt/rcc/qrc_qmake_Qt_labs_lottieqt.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qbeziereasing.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qbeziereasing_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiebase.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiebase_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiebasictransform.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiebasictransform_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieconstants_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieellipse.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieellipse_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefill.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefill_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefilleffect.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefilleffect_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefreeformshape.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefreeformshape_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiegfill.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiegfill_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiegroup.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiegroup_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieimage.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieimage_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieflatlayers.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieflatlayers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottielayer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottielayer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiepolystar.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiepolystar_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieprecomplayer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieprecomplayer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieproperty_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierect.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierect_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierepeater.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierepeater_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierepeatertransform.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierepeatertransform_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieroot.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieroot_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieround.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieround_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshape.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshape_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshapelayer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshapelayer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshapetransform.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshapetransform_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiespatialproperty_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiestroke.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiestroke_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottietrimpath.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottietrimpath_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qbatchrenderer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qbatchrenderer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qlottierenderer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qlottierenderer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qlottierasterrenderer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qlottierasterrenderer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/qml/qlottieanimation.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/qml/qlottieanimation_p.h
+
+FileName: ./bin/Qt6Lottied.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-Lottie-Debug
+FileType: BINARY
+FileChecksum: SHA1: f9a1ace6a8e81e8dfe1384e1c71a99bac639516f
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-module-Lottie CONTAINS SPDXRef-PackagedFile-qt-module-Lottie-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/C:/Users/qt/work/qt/qtlottie_build/src/Lottie_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/include/QtLottie/qtlottieexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/lottie_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/.qt/rcc/qrc_qmake_Qt_labs_lottieqt.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qbeziereasing.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qbeziereasing_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiebase.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiebase_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiebasictransform.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiebasictransform_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieconstants_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieellipse.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieellipse_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefill.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefill_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefilleffect.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefilleffect_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefreeformshape.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefreeformshape_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiegfill.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiegfill_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiegroup.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiegroup_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieimage.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieimage_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieflatlayers.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieflatlayers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottielayer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottielayer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiepolystar.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiepolystar_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieprecomplayer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieprecomplayer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieproperty_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierect.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierect_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierepeater.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierepeater_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierepeatertransform.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierepeatertransform_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieroot.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieroot_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieround.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieround_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshape.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshape_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshapelayer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshapelayer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshapetransform.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshapetransform_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiespatialproperty_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiestroke.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiestroke_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottietrimpath.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottietrimpath_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qbatchrenderer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qbatchrenderer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qlottierenderer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qlottierenderer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qlottierasterrenderer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qlottierasterrenderer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/qml/qlottieanimation.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/qml/qlottieanimation_p.h
+
+FileName: ./lib/Qt6Lottie.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 10ada09b0181053513605dcc6af959c1a6b90353
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-module-Lottie CONTAINS SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/C:/Users/qt/work/qt/qtlottie_build/src/Lottie_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/include/QtLottie/qtlottieexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/lottie_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/.qt/rcc/qrc_qmake_Qt_labs_lottieqt.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qbeziereasing.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qbeziereasing_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiebase.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiebase_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiebasictransform.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiebasictransform_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieconstants_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieellipse.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieellipse_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefill.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefill_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefilleffect.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefilleffect_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefreeformshape.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefreeformshape_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiegfill.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiegfill_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiegroup.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiegroup_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieimage.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieimage_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieflatlayers.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieflatlayers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottielayer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottielayer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiepolystar.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiepolystar_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieprecomplayer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieprecomplayer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieproperty_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierect.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierect_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierepeater.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierepeater_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierepeatertransform.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierepeatertransform_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieroot.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieroot_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieround.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieround_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshape.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshape_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshapelayer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshapelayer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshapetransform.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshapetransform_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiespatialproperty_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiestroke.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiestroke_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottietrimpath.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottietrimpath_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qbatchrenderer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qbatchrenderer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qlottierenderer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qlottierenderer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qlottierasterrenderer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qlottierasterrenderer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/qml/qlottieanimation.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/qml/qlottieanimation_p.h
+
+FileName: ./lib/Qt6Lottied.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: 069e7cef5fe14552b67c0bfe39e4968cc02dea09
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-module-Lottie CONTAINS SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/C:/Users/qt/work/qt/qtlottie_build/src/Lottie_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/include/QtLottie/qtlottieexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/lottie_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/.qt/rcc/qrc_qmake_Qt_labs_lottieqt.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qbeziereasing.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qbeziereasing_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiebase.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiebase_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiebasictransform.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiebasictransform_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieconstants_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieellipse.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieellipse_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefill.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefill_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefilleffect.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefilleffect_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefreeformshape.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiefreeformshape_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiegfill.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiegfill_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiegroup.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiegroup_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieimage.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieimage_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieflatlayers.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieflatlayers_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottielayer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottielayer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiepolystar.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiepolystar_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieprecomplayer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieprecomplayer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieproperty_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierect.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierect_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierepeater.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierepeater_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierepeatertransform.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottierepeatertransform_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieroot.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieroot_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieround.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieround_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshape.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshape_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshapelayer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshapelayer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshapetransform.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottieshapetransform_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiespatialproperty_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiestroke.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottiestroke_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottietrimpath.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/qlottietrimpath_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qbatchrenderer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qbatchrenderer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qlottierenderer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qlottierenderer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qlottierasterrenderer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/lottie/renderer/qlottierasterrenderer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/qml/qlottieanimation.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Lottie-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/qml/qlottieanimation_p.h
+
+PackageName: Lottieplugin
+SPDXID: SPDXRef-Package-qtlottie-qt-plugin-Lottieplugin
+PackageDownloadLocation: git://code.qt.io/qt/qtlottie.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtlottie?library_name=Lottieplugin#src
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtlottie-Lottieplugin?vcs_url=https://code.qt.io/qt/qtlottie.git&library_name=Lottieplugin#src
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: Lottieplugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtlottie:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 6dfa283fbba47718443a9a15a91b16b62621b0f7
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtlottie-qt-plugin-Lottieplugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtlottie-qt-plugin-Lottieplugin DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtlottie-qt-plugin-Lottieplugin DEPENDS_ON SPDXRef-Package-qtlottie-qt-module-Lottie
+Relationship: SPDXRef-Package-qtlottie CONTAINS SPDXRef-Package-qtlottie-qt-plugin-Lottieplugin
+
+FileName: ./qml/Qt/labs/lottieqt/lottieplugin.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-Lottieplugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 179c006747f3bb006d431ea6f46e691dd15ada7e
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-plugin-Lottieplugin CONTAINS SPDXRef-PackagedFile-qt-plugin-Lottieplugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-Lottieplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/Lottieplugin_Qt_labs_lottieqtPlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-Lottieplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/C:/Users/qt/work/qt/qtlottie_build/src/Lottieplugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-Lottieplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/
+
+FileName: ./qml/Qt/labs/lottieqt/lottieplugind.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-Lottieplugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: 738ef3417b62c0ae76130592151523d7c4db1b13
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-plugin-Lottieplugin CONTAINS SPDXRef-PackagedFile-qt-plugin-Lottieplugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-Lottieplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/src/Lottieplugin_Qt_labs_lottieqtPlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-Lottieplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/
+Relationship: SPDXRef-PackagedFile-qt-plugin-Lottieplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/src/C:/Users/qt/work/qt/qtlottie_build/src/Lottieplugin_resource-Debug.rc
+
+PackageName: lottietoqml
+SPDXID: SPDXRef-Package-qtlottie-qt-tool-lottietoqml
+PackageDownloadLocation: git://code.qt.io/qt/qtlottie.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtlottie?library_name=lottietoqml#tools/lottietoqml
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtlottie-lottietoqml?vcs_url=https://code.qt.io/qt/qtlottie.git&library_name=lottietoqml#tools/lottietoqml
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: APPLICATION
+PackageComment: <text>
+CMake target name: lottietoqml
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtlottie:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 783b13da4f118fbfaebd4e61a43c1eee2077b283
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtlottie-qt-tool-lottietoqml DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtlottie-qt-tool-lottietoqml DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Gui
+Relationship: SPDXRef-Package-qtlottie-qt-tool-lottietoqml DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtlottie-qt-tool-lottietoqml DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Quick
+Relationship: SPDXRef-Package-qtlottie-qt-tool-lottietoqml DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-QuickVectorImageGeneratorPrivate
+Relationship: SPDXRef-Package-qtlottie-qt-tool-lottietoqml DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformToolInternal
+Relationship: SPDXRef-Package-qtlottie-qt-tool-lottietoqml DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformCommonInternal
+Relationship: SPDXRef-Package-qtlottie-qt-tool-lottietoqml DEPENDS_ON SPDXRef-Package-qtlottie-qt-module-LottieVectorImageGeneratorPrivate
+Relationship: SPDXRef-Package-qtlottie-qt-tool-lottietoqml DEPENDS_ON SPDXRef-Package-qtlottie-qt-module-Lottie
+Relationship: SPDXRef-Package-qtlottie CONTAINS SPDXRef-Package-qtlottie-qt-tool-lottietoqml
+
+FileName: ./bin/lottietoqml.exe
+SPDXID: SPDXRef-PackagedFile-qt-tool-lottietoqml-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: ac6091e91d8fdc0857e468446990440385f52714
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtlottie-qt-tool-lottietoqml CONTAINS SPDXRef-PackagedFile-qt-tool-lottietoqml-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-tool-lottietoqml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/tools/lottietoqml/C:/Users/qt/work/qt/qtlottie_build/tools/lottietoqml/lottietoqml_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-tool-lottietoqml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/tools/lottietoqml/
+Relationship: SPDXRef-PackagedFile-qt-tool-lottietoqml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtlottie/tools/lottietoqml/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-lottietoqml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/tools/lottietoqml/lottietoqml_longpath.manifest
+Relationship: SPDXRef-PackagedFile-qt-tool-lottietoqml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtlottie/tools/lottietoqml/.qt/rcc/qrc_qml.cpp
+
+LicenseID: LicenseRef-Lottie-Simple-License-9.13.21
+ExtractedText: <text>Lottie Simple License (FL 9.13.21)
+
+Copyright © 2021 Design Barn Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of the public animation files available for download at the LottieFiles site (“Files”) to download, reproduce, modify, publish, distribute, publicly display, and publicly digitally perform such Files, including for commercial purposes, provided that any display, publication, performance, or distribution of Files must contain (and be subject to) the same terms and conditions of this license. Modifications to Files are deemed derivative works and must also be expressly distributed under the same terms and conditions of this license. You may not purport to impose any additional or different terms or conditions on, or apply any technical measures that restrict exercise of, the rights granted under this license. This license does not include the right to collect or compile Files from LottieFiles to replicate or develop a similar or competing service.
+
+
+Use of Files without attributing the creator(s) of the Files is permitted under this license, though attribution is strongly encouraged. If attributions are included, such attributions should be visible to the end user.
+
+
+FILES ARE PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. EXCEPT TO THE EXTENT REQUIRED BY APPLICABLE LAW, IN NO EVENT WILL THE CREATOR(S) OF FILES OR DESIGN BARN, INC. BE LIABLE ON ANY LEGAL THEORY FOR ANY SPECIAL, INCIDENTAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES ARISING OUT OF THIS LICENSE OR THE USE OF SUCH FILES. 
+</text>
+
+LicenseID: LicenseRef-Qt-Commercial
+ExtractedText: <text>Licensees holding valid commercial Qt licenses may use this software in
+accordance with the the terms contained in a written agreement between
+you and The Qt Company. Alternatively, the terms and conditions that were
+accepted by the licensee when buying and/or downloading the
+software do apply.
+
+For the latest licensing terms and conditions, see https://www.qt.io/terms-conditions.
+For further information use the contact form at https://www.qt.io/contact-us.
+</text>

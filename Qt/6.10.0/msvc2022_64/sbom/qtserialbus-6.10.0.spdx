@@ -1,0 +1,1126 @@
+SPDXVersion: SPDX-2.3
+DataLicense: CC0-1.0
+SPDXID: SPDXRef-DOCUMENT
+DocumentName: qtserialbus-6.10.0
+DocumentNamespace: https://qt.io/spdxdocs/qtserialbus-6.10.0
+Creator: Organization: TheQtCompany
+Creator: Tool: Qt Build System
+CreatorComment: <text>This SPDX document was created from CMake 3.30.5, using the qt
+build system from https://code.qt.io/cgit/qt/qtbase.git/tree/cmake/QtPublicSbomHelpers.cmake</text>
+Created: 2025-10-01T19:45:01Z
+ExternalDocumentRef: DocumentRef-qtbase https://qt.io/spdxdocs/qtbase-5a8637e4+HEAD SHA1: 5ffd15d0b3b0dfbed5f9302602018f8bfed209f7
+ExternalDocumentRef: DocumentRef-qtserialport https://qt.io/spdxdocs/qtserialport-6.10.0 SHA1: 04a52788d3013fb7bedd68411854f85c7a721385
+
+PackageName: MSVC
+SPDXID: SPDXRef-compiler
+PackageVersion: 19.39.33520.0
+PackageDownloadLocation: NOASSERTION
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: NOASSERTION
+PackageSupplier: Organization: Anonymous
+FilesAnalyzed: false
+PackageSummary: <text>The compiler as identified by CMake, running on Windows (AMD64)</text>
+PrimaryPackagePurpose: APPLICATION
+Relationship: SPDXRef-compiler BUILD_DEPENDENCY_OF SPDXRef-Package-qtserialbus
+RelationshipComment: <text>SPDXRef-Package-qtserialbus is built by compiler MSVC version 19.39.33520.0</text>
+
+PackageName: qtserialbus
+SPDXID: SPDXRef-Package-qtserialbus
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtserialbus:6.10.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtserialbus@6.10.0
+PackageVersion: 6.10.0
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtserialbus@6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageDownloadLocation: git://code.qt.io/qt/qtserialbus.git
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: Copyright (C) The Qt Company Ltd. and other contributors.
+PackageHomePage: https://qt.io
+PackageComment: <text>Built by CMake 3.30.5 with RelWithDebInfo;Debug configuration for Windows (AMD64)
+qtserialbus was configured with:
+    qt-configure-module <sources>/qtserialbus -- -DFFMPEG_DIR=C:\FFmpeg-n7.1.1\build\msvc\installed -DQT_DEPLOY_FFMPEG=TRUE -DFEATURE_clangcpp=OFF -DINPUT_headersclean=ON -DQT_INSTALL_CONFIG_INFO_FILES=ON -DQT_GENERATE_SBOM=ON -DQT_GENERATE_SOURCE_SBOM=ON -DQT_SBOM_PYTHON_INTERP=C:\Python38_64 -DQT_SBOM_PYTHON_APPS_PATH=C:\Python310_64\Scripts -DQT_LINT_SOURCE_SBOM=ON -DQT_INTERNAL_SBOM_DEFAULT_CHECKS=ON -DQT_INTERNAL_SBOM_AUDIT=ON -DQT_INTERNAL_SBOM_AUDIT_NO_ERROR=ON -DQT_BUILD_TESTS=OFF -DCMAKE_AUTOGEN_VERBOSE=ON -DCMAKE_MESSAGE_LOG_LEVEL=STATUS -DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache
+</text>
+FilesAnalyzed: false
+BuiltDate: 2025-10-01T19:45:01Z
+Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-Package-qtserialbus
+
+PackageName: SerialBus
+SPDXID: SPDXRef-Package-qtserialbus-qt-module-SerialBus
+PackageDownloadLocation: git://code.qt.io/qt/qtserialbus.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtserialbus?library_name=SerialBus#src/serialbus
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtserialbus-SerialBus?vcs_url=https://code.qt.io/qt/qtserialbus.git&library_name=SerialBus#src/serialbus
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: SerialBus
+CMake exported target name: Qt6::SerialBus
+Contained in CMake package: Qt6SerialBus
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtserialbus:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 762eb4c7982e032142b6e396bc71669278f109d8
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtserialbus-qt-module-SerialBus DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtserialbus-qt-module-SerialBus DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtserialbus-qt-module-SerialBus DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Network
+Relationship: SPDXRef-Package-qtserialbus-qt-module-SerialBus DEPENDS_ON DocumentRef-qtserialport:SPDXRef-Package-qtserialport-qt-module-SerialPort
+Relationship: SPDXRef-Package-qtserialbus CONTAINS SPDXRef-Package-qtserialbus-qt-module-SerialBus
+
+FileName: ./bin/Qt6SerialBus.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: f9e281c3f0fe5ea6e0fc22ee002a498933d636e2
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtserialbus-qt-module-SerialBus CONTAINS SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/C:/Users/qt/work/qt/qtserialbus_build/src/serialbus/SerialBus_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtserialbus/include/QtSerialBus/qtserialbusexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbus.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbus.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdevice.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdevice.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdevice_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdeviceinfo.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdeviceinfo.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdeviceinfo_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusfactory.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusfactory.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusframe.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusframe.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcancommondefinitions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcancommondefinitions.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcandbcfileparser.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcandbcfileparser.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcandbcfileparser_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanframeprocessor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanframeprocessor.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanframeprocessor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanmessagedescription.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanmessagedescription.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanmessagedescription_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcansignaldescription.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcansignaldescription.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcansignaldescription_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanuniqueiddescription.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanuniqueiddescription.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanuniqueiddescription_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbus_symbols_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusadu_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusclient.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusclient.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusclient_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbuscommevent_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdataunit.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdataunit.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdevice.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdevice.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdevice_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdeviceidentification.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdeviceidentification.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbuspdu.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbuspdu.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusreply.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusreply.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusserver_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpclient.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpclient.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpclient_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpserver_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qtserialbusglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtserialbus/src/serialbus/qtserialbus-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtserialbus/src/serialbus/qtserialbus-config_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialclient.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialclient.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialclient_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialserver_p.h
+
+FileName: ./bin/Qt6SerialBusd.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-SerialBus-Debug
+FileType: BINARY
+FileChecksum: SHA1: 6d2908f038c1db03e3ec6ebc255c883cdb19c59d
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtserialbus-qt-module-SerialBus CONTAINS SPDXRef-PackagedFile-qt-module-SerialBus-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/C:/Users/qt/work/qt/qtserialbus_build/src/serialbus/SerialBus_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtserialbus/include/QtSerialBus/qtserialbusexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbus.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbus.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdevice.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdevice.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdevice_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdeviceinfo.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdeviceinfo.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdeviceinfo_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusfactory.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusfactory.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusframe.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusframe.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcancommondefinitions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcancommondefinitions.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcandbcfileparser.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcandbcfileparser.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcandbcfileparser_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanframeprocessor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanframeprocessor.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanframeprocessor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanmessagedescription.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanmessagedescription.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanmessagedescription_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcansignaldescription.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcansignaldescription.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcansignaldescription_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanuniqueiddescription.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanuniqueiddescription.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanuniqueiddescription_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbus_symbols_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusadu_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusclient.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusclient.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusclient_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbuscommevent_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdataunit.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdataunit.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdevice.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdevice.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdevice_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdeviceidentification.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdeviceidentification.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbuspdu.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbuspdu.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusreply.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusreply.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusserver_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpclient.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpclient.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpclient_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpserver_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qtserialbusglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtserialbus/src/serialbus/qtserialbus-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtserialbus/src/serialbus/qtserialbus-config_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialclient.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialclient.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialclient_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialserver_p.h
+
+FileName: ./lib/Qt6SerialBus.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: e1ea24b187219e2b8c9d0b2486206cb9c9e0fba9
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtserialbus-qt-module-SerialBus CONTAINS SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/C:/Users/qt/work/qt/qtserialbus_build/src/serialbus/SerialBus_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtserialbus/include/QtSerialBus/qtserialbusexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbus.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbus.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdevice.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdevice.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdevice_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdeviceinfo.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdeviceinfo.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdeviceinfo_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusfactory.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusfactory.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusframe.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusframe.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcancommondefinitions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcancommondefinitions.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcandbcfileparser.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcandbcfileparser.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcandbcfileparser_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanframeprocessor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanframeprocessor.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanframeprocessor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanmessagedescription.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanmessagedescription.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanmessagedescription_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcansignaldescription.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcansignaldescription.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcansignaldescription_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanuniqueiddescription.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanuniqueiddescription.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanuniqueiddescription_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbus_symbols_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusadu_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusclient.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusclient.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusclient_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbuscommevent_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdataunit.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdataunit.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdevice.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdevice.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdevice_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdeviceidentification.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdeviceidentification.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbuspdu.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbuspdu.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusreply.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusreply.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusserver_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpclient.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpclient.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpclient_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpserver_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qtserialbusglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtserialbus/src/serialbus/qtserialbus-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtserialbus/src/serialbus/qtserialbus-config_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialclient.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialclient.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialclient_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialserver_p.h
+
+FileName: ./lib/Qt6SerialBusd.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: 99c1233622bd1a0a0e9b397e7e32741aa2bf68ba
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtserialbus-qt-module-SerialBus CONTAINS SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/C:/Users/qt/work/qt/qtserialbus_build/src/serialbus/SerialBus_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtserialbus/include/QtSerialBus/qtserialbusexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbus.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbus.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdevice.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdevice.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdevice_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdeviceinfo.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdeviceinfo.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusdeviceinfo_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusfactory.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusfactory.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusframe.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanbusframe.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcancommondefinitions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcancommondefinitions.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcandbcfileparser.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcandbcfileparser.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcandbcfileparser_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanframeprocessor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanframeprocessor.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanframeprocessor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanmessagedescription.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanmessagedescription.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanmessagedescription_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcansignaldescription.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcansignaldescription.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcansignaldescription_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanuniqueiddescription.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanuniqueiddescription.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qcanuniqueiddescription_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbus_symbols_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusadu_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusclient.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusclient.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusclient_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbuscommevent_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdataunit.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdataunit.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdevice.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdevice.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdevice_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdeviceidentification.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusdeviceidentification.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbuspdu.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbuspdu.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusreply.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusreply.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusserver_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpclient.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpclient.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpclient_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbustcpserver_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qtserialbusglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtserialbus/src/serialbus/qtserialbus-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtserialbus/src/serialbus/qtserialbus-config_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialclient.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialclient.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialclient_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-SerialBus-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/serialbus/qmodbusrtuserialserver_p.h
+
+PackageName: VirtualCanBusPlugin
+SPDXID: SPDXRef-Package-qtserialbus-qt-plugin-VirtualCanBusPlugin
+PackageDownloadLocation: git://code.qt.io/qt/qtserialbus.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtserialbus?library_name=VirtualCanBusPlugin#src/plugins/canbus/virtualcan
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtserialbus-VirtualCanBusPlugin?vcs_url=https://code.qt.io/qt/qtserialbus.git&library_name=VirtualCanBusPlugin#src/plugins/canbus/virtualcan
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: VirtualCanBusPlugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtserialbus:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: ff0d6cfb0519a468866b2a5aff0ff53f2d348fdd
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-VirtualCanBusPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-VirtualCanBusPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Network
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-VirtualCanBusPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-VirtualCanBusPlugin DEPENDS_ON SPDXRef-Package-qtserialbus-qt-module-SerialBus
+Relationship: SPDXRef-Package-qtserialbus CONTAINS SPDXRef-Package-qtserialbus-qt-plugin-VirtualCanBusPlugin
+
+FileName: ./plugins/canbus/qtvirtualcanbus.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-VirtualCanBusPlugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 168118a613287af33034ca287fabd6676b6f2f1b
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-VirtualCanBusPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-VirtualCanBusPlugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-VirtualCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/virtualcan/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-VirtualCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/virtualcan/virtualcanbackend.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-VirtualCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/virtualcan/virtualcanbackend.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-VirtualCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/virtualcan/C:/Users/qt/work/qt/qtserialbus_build/src/plugins/canbus/virtualcan/VirtualCanBusPlugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-VirtualCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/virtualcan/
+
+FileName: ./plugins/canbus/qtvirtualcanbusd.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-VirtualCanBusPlugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: 4159ccb35075271fa0782147f8bea753d3365b10
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-VirtualCanBusPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-VirtualCanBusPlugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-VirtualCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/virtualcan/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-VirtualCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/virtualcan/virtualcanbackend.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-VirtualCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/virtualcan/virtualcanbackend.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-VirtualCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/virtualcan/
+Relationship: SPDXRef-PackagedFile-qt-plugin-VirtualCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/virtualcan/C:/Users/qt/work/qt/qtserialbus_build/src/plugins/canbus/virtualcan/VirtualCanBusPlugin_resource-Debug.rc
+
+PackageName: PassThruCanBusPlugin
+SPDXID: SPDXRef-Package-qtserialbus-qt-plugin-PassThruCanBusPlugin
+PackageDownloadLocation: git://code.qt.io/qt/qtserialbus.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtserialbus?library_name=PassThruCanBusPlugin#src/plugins/canbus/passthrucan
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtserialbus-PassThruCanBusPlugin?vcs_url=https://code.qt.io/qt/qtserialbus.git&library_name=PassThruCanBusPlugin#src/plugins/canbus/passthrucan
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: PassThruCanBusPlugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtserialbus:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: f59c533d8802ac5f284eb9c95038691410ce64c5
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-PassThruCanBusPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Network
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-PassThruCanBusPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-PassThruCanBusPlugin DEPENDS_ON SPDXRef-Package-qtserialbus-qt-module-SerialBus
+Relationship: SPDXRef-Package-qtserialbus CONTAINS SPDXRef-Package-qtserialbus-qt-plugin-PassThruCanBusPlugin
+
+FileName: ./plugins/canbus/qtpassthrucanbus.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: d3d13efa0e30095015fb1b94545e10e536c1a70f
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-PassThruCanBusPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/passthrucan/j2534passthru.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/passthrucan/j2534passthru.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/passthrucan/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/passthrucan/passthrucanbackend.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/passthrucan/passthrucanbackend.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/passthrucan/passthrucanio.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/passthrucan/passthrucanio.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/passthrucan/C:/Users/qt/work/qt/qtserialbus_build/src/plugins/canbus/passthrucan/PassThruCanBusPlugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/passthrucan/
+
+FileName: ./plugins/canbus/qtpassthrucanbusd.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: 716efc99b8f5a6f519bdc93db2d61fead7c2fff7
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-PassThruCanBusPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/passthrucan/j2534passthru.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/passthrucan/j2534passthru.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/passthrucan/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/passthrucan/passthrucanbackend.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/passthrucan/passthrucanbackend.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/passthrucan/passthrucanio.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/passthrucan/passthrucanio.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/passthrucan/
+Relationship: SPDXRef-PackagedFile-qt-plugin-PassThruCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/passthrucan/C:/Users/qt/work/qt/qtserialbus_build/src/plugins/canbus/passthrucan/PassThruCanBusPlugin_resource-Debug.rc
+
+PackageName: PeakCanBusPlugin
+SPDXID: SPDXRef-Package-qtserialbus-qt-plugin-PeakCanBusPlugin
+PackageDownloadLocation: git://code.qt.io/qt/qtserialbus.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtserialbus?library_name=PeakCanBusPlugin#src/plugins/canbus/peakcan
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtserialbus-PeakCanBusPlugin?vcs_url=https://code.qt.io/qt/qtserialbus.git&library_name=PeakCanBusPlugin#src/plugins/canbus/peakcan
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: PeakCanBusPlugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtserialbus:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: dbe89140f004ec9bd1b3c686a070935b83cac7dc
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-PeakCanBusPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-PeakCanBusPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Network
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-PeakCanBusPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-PeakCanBusPlugin DEPENDS_ON SPDXRef-Package-qtserialbus-qt-module-SerialBus
+Relationship: SPDXRef-Package-qtserialbus CONTAINS SPDXRef-Package-qtserialbus-qt-plugin-PeakCanBusPlugin
+
+FileName: ./plugins/canbus/qtpeakcanbus.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-PeakCanBusPlugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 826d69e545c30398928976a4eb4920cf970a3dd9
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-PeakCanBusPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-PeakCanBusPlugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-PeakCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/peakcan/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-PeakCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/peakcan/peakcan_symbols_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-PeakCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/peakcan/peakcanbackend.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-PeakCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/peakcan/peakcanbackend.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-PeakCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/peakcan/peakcanbackend_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-PeakCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/peakcan/C:/Users/qt/work/qt/qtserialbus_build/src/plugins/canbus/peakcan/PeakCanBusPlugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-PeakCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/peakcan/
+
+FileName: ./plugins/canbus/qtpeakcanbusd.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-PeakCanBusPlugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: ec88c8e668168261fb7101a714cb33c8d304dc84
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-PeakCanBusPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-PeakCanBusPlugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-PeakCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/peakcan/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-PeakCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/peakcan/peakcan_symbols_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-PeakCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/peakcan/peakcanbackend.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-PeakCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/peakcan/peakcanbackend.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-PeakCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/peakcan/peakcanbackend_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-PeakCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/peakcan/
+Relationship: SPDXRef-PackagedFile-qt-plugin-PeakCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/peakcan/C:/Users/qt/work/qt/qtserialbus_build/src/plugins/canbus/peakcan/PeakCanBusPlugin_resource-Debug.rc
+
+PackageName: TinyCanBusPlugin
+SPDXID: SPDXRef-Package-qtserialbus-qt-plugin-TinyCanBusPlugin
+PackageDownloadLocation: git://code.qt.io/qt/qtserialbus.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtserialbus?library_name=TinyCanBusPlugin#src/plugins/canbus/tinycan
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtserialbus-TinyCanBusPlugin?vcs_url=https://code.qt.io/qt/qtserialbus.git&library_name=TinyCanBusPlugin#src/plugins/canbus/tinycan
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: TinyCanBusPlugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtserialbus:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 72b0f5d4b7d54fdfcee013821b8eb73a25196816
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-TinyCanBusPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-TinyCanBusPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Network
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-TinyCanBusPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-TinyCanBusPlugin DEPENDS_ON SPDXRef-Package-qtserialbus-qt-module-SerialBus
+Relationship: SPDXRef-Package-qtserialbus CONTAINS SPDXRef-Package-qtserialbus-qt-plugin-TinyCanBusPlugin
+
+FileName: ./plugins/canbus/qttinycanbus.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-TinyCanBusPlugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 1f3e5ad77efbff94e70161a5b296e5d4296febc1
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-TinyCanBusPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-TinyCanBusPlugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-TinyCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/tinycan/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-TinyCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/tinycan/tinycan_symbols_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-TinyCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/tinycan/tinycanbackend.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-TinyCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/tinycan/tinycanbackend.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-TinyCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/tinycan/tinycanbackend_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-TinyCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/tinycan/C:/Users/qt/work/qt/qtserialbus_build/src/plugins/canbus/tinycan/TinyCanBusPlugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-TinyCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/tinycan/
+
+FileName: ./plugins/canbus/qttinycanbusd.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-TinyCanBusPlugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: 5c482b5bd8419d43612c0fcc5b8fd59ab9f7fe81
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-TinyCanBusPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-TinyCanBusPlugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-TinyCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/tinycan/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-TinyCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/tinycan/tinycan_symbols_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-TinyCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/tinycan/tinycanbackend.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-TinyCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/tinycan/tinycanbackend.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-TinyCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/tinycan/tinycanbackend_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-TinyCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/tinycan/
+Relationship: SPDXRef-PackagedFile-qt-plugin-TinyCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/tinycan/C:/Users/qt/work/qt/qtserialbus_build/src/plugins/canbus/tinycan/TinyCanBusPlugin_resource-Debug.rc
+
+PackageName: SystecCanBusPlugin
+SPDXID: SPDXRef-Package-qtserialbus-qt-plugin-SystecCanBusPlugin
+PackageDownloadLocation: git://code.qt.io/qt/qtserialbus.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtserialbus?library_name=SystecCanBusPlugin#src/plugins/canbus/systeccan
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtserialbus-SystecCanBusPlugin?vcs_url=https://code.qt.io/qt/qtserialbus.git&library_name=SystecCanBusPlugin#src/plugins/canbus/systeccan
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: SystecCanBusPlugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtserialbus:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 2a88eb6d645028b3082c2a351571d4c8e352296f
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-SystecCanBusPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-SystecCanBusPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Network
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-SystecCanBusPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-SystecCanBusPlugin DEPENDS_ON SPDXRef-Package-qtserialbus-qt-module-SerialBus
+Relationship: SPDXRef-Package-qtserialbus CONTAINS SPDXRef-Package-qtserialbus-qt-plugin-SystecCanBusPlugin
+
+FileName: ./plugins/canbus/qtsysteccanbus.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-SystecCanBusPlugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 672bf8a13d44a17ff6a59271204044a49d20eb82
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-SystecCanBusPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-SystecCanBusPlugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-SystecCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/systeccan/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-SystecCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/systeccan/systeccan_symbols_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-SystecCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/systeccan/systeccanbackend.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-SystecCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/systeccan/systeccanbackend.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-SystecCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/systeccan/systeccanbackend_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-SystecCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/systeccan/C:/Users/qt/work/qt/qtserialbus_build/src/plugins/canbus/systeccan/SystecCanBusPlugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-SystecCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/systeccan/
+
+FileName: ./plugins/canbus/qtsysteccanbusd.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-SystecCanBusPlugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: af3e5ad05076a2f9a3399873542115118f7cfbd4
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-SystecCanBusPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-SystecCanBusPlugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-SystecCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/systeccan/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-SystecCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/systeccan/systeccan_symbols_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-SystecCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/systeccan/systeccanbackend.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-SystecCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/systeccan/systeccanbackend.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-SystecCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/systeccan/systeccanbackend_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-SystecCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/systeccan/
+Relationship: SPDXRef-PackagedFile-qt-plugin-SystecCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/systeccan/C:/Users/qt/work/qt/qtserialbus_build/src/plugins/canbus/systeccan/SystecCanBusPlugin_resource-Debug.rc
+
+PackageName: VectorCanBusPlugin
+SPDXID: SPDXRef-Package-qtserialbus-qt-plugin-VectorCanBusPlugin
+PackageDownloadLocation: git://code.qt.io/qt/qtserialbus.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtserialbus?library_name=VectorCanBusPlugin#src/plugins/canbus/vectorcan
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtserialbus-VectorCanBusPlugin?vcs_url=https://code.qt.io/qt/qtserialbus.git&library_name=VectorCanBusPlugin#src/plugins/canbus/vectorcan
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: VectorCanBusPlugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtserialbus:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: d425c2da284422ed6bbc72b84d28316bda707534
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-VectorCanBusPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-VectorCanBusPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Network
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-VectorCanBusPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-VectorCanBusPlugin DEPENDS_ON SPDXRef-Package-qtserialbus-qt-module-SerialBus
+Relationship: SPDXRef-Package-qtserialbus CONTAINS SPDXRef-Package-qtserialbus-qt-plugin-VectorCanBusPlugin
+
+FileName: ./plugins/canbus/qtvectorcanbus.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-VectorCanBusPlugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: df1797c0601e574458d81014667e346a8d77dd30
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-VectorCanBusPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-VectorCanBusPlugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-VectorCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/vectorcan/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-VectorCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/vectorcan/vectorcan_symbols_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-VectorCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/vectorcan/vectorcanbackend.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-VectorCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/vectorcan/vectorcanbackend.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-VectorCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/vectorcan/vectorcanbackend_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-VectorCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/vectorcan/C:/Users/qt/work/qt/qtserialbus_build/src/plugins/canbus/vectorcan/VectorCanBusPlugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-VectorCanBusPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/vectorcan/
+
+FileName: ./plugins/canbus/qtvectorcanbusd.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-VectorCanBusPlugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: dbbb422ac3055db7e713c89aed9dd3323f756063
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtserialbus-qt-plugin-VectorCanBusPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-VectorCanBusPlugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-VectorCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/vectorcan/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-VectorCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/vectorcan/vectorcan_symbols_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-VectorCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/vectorcan/vectorcanbackend.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-VectorCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/vectorcan/vectorcanbackend.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-VectorCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/vectorcan/vectorcanbackend_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-VectorCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/vectorcan/
+Relationship: SPDXRef-PackagedFile-qt-plugin-VectorCanBusPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/plugins/canbus/vectorcan/C:/Users/qt/work/qt/qtserialbus_build/src/plugins/canbus/vectorcan/VectorCanBusPlugin_resource-Debug.rc
+
+PackageName: canbusutil
+SPDXID: SPDXRef-Package-qtserialbus-qt-app-canbusutil
+PackageDownloadLocation: git://code.qt.io/qt/qtserialbus.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtserialbus?library_name=canbusutil#src/tools/canbusutil
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtserialbus-canbusutil?vcs_url=https://code.qt.io/qt/qtserialbus.git&library_name=canbusutil#src/tools/canbusutil
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: APPLICATION
+PackageComment: <text>
+CMake target name: canbusutil
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtserialbus:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 621dfebfeeb4ce58509fe49cd14a1e6469494d6f
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtserialbus-qt-app-canbusutil DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Network
+Relationship: SPDXRef-Package-qtserialbus-qt-app-canbusutil DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformAppInternal
+Relationship: SPDXRef-Package-qtserialbus-qt-app-canbusutil DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformCommonInternal
+Relationship: SPDXRef-Package-qtserialbus-qt-app-canbusutil DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtserialbus-qt-app-canbusutil DEPENDS_ON SPDXRef-Package-qtserialbus-qt-module-SerialBus
+Relationship: SPDXRef-Package-qtserialbus CONTAINS SPDXRef-Package-qtserialbus-qt-app-canbusutil
+
+FileName: ./bin/canbusutil.exe
+SPDXID: SPDXRef-PackagedFile-qt-app-canbusutil-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: a85a7e635b7760cc93c759c20cb0124d8ef8a607
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtserialbus-qt-app-canbusutil CONTAINS SPDXRef-PackagedFile-qt-app-canbusutil-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-app-canbusutil-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/tools/canbusutil/canbusutil.cpp
+Relationship: SPDXRef-PackagedFile-qt-app-canbusutil-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/tools/canbusutil/canbusutil.h
+Relationship: SPDXRef-PackagedFile-qt-app-canbusutil-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/tools/canbusutil/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-app-canbusutil-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/tools/canbusutil/readtask.cpp
+Relationship: SPDXRef-PackagedFile-qt-app-canbusutil-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/tools/canbusutil/readtask.h
+Relationship: SPDXRef-PackagedFile-qt-app-canbusutil-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/tools/canbusutil/sigtermhandler.cpp
+Relationship: SPDXRef-PackagedFile-qt-app-canbusutil-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/tools/canbusutil/sigtermhandler.h
+Relationship: SPDXRef-PackagedFile-qt-app-canbusutil-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/tools/canbusutil/C:/Users/qt/work/qt/qtserialbus_build/src/tools/canbusutil/canbusutil_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-app-canbusutil-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtserialbus/src/tools/canbusutil/
+
+LicenseID: LicenseRef-Qt-Commercial
+ExtractedText: <text>Licensees holding valid commercial Qt licenses may use this software in
+accordance with the the terms contained in a written agreement between
+you and The Qt Company. Alternatively, the terms and conditions that were
+accepted by the licensee when buying and/or downloading the
+software do apply.
+
+For the latest licensing terms and conditions, see https://www.qt.io/terms-conditions.
+For further information use the contact form at https://www.qt.io/contact-us.
+</text>

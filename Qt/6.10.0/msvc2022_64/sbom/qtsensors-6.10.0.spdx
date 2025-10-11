@@ -1,0 +1,1290 @@
+SPDXVersion: SPDX-2.3
+DataLicense: CC0-1.0
+SPDXID: SPDXRef-DOCUMENT
+DocumentName: qtsensors-6.10.0
+DocumentNamespace: https://qt.io/spdxdocs/qtsensors-6.10.0
+Creator: Organization: TheQtCompany
+Creator: Tool: Qt Build System
+CreatorComment: <text>This SPDX document was created from CMake 3.30.5, using the qt
+build system from https://code.qt.io/cgit/qt/qtbase.git/tree/cmake/QtPublicSbomHelpers.cmake</text>
+Created: 2025-10-01T23:13:47Z
+ExternalDocumentRef: DocumentRef-qtbase https://qt.io/spdxdocs/qtbase-5a8637e4+HEAD SHA1: 5ffd15d0b3b0dfbed5f9302602018f8bfed209f7
+ExternalDocumentRef: DocumentRef-qtdeclarative https://qt.io/spdxdocs/qtdeclarative-7e0ab1d9+HEAD SHA1: abe2fefc07c2482cfcc5aa4055014d6869372c22
+
+PackageName: MSVC
+SPDXID: SPDXRef-compiler
+PackageVersion: 19.39.33520.0
+PackageDownloadLocation: NOASSERTION
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: NOASSERTION
+PackageSupplier: Organization: Anonymous
+FilesAnalyzed: false
+PackageSummary: <text>The compiler as identified by CMake, running on Windows (AMD64)</text>
+PrimaryPackagePurpose: APPLICATION
+Relationship: SPDXRef-compiler BUILD_DEPENDENCY_OF SPDXRef-Package-qtsensors
+RelationshipComment: <text>SPDXRef-Package-qtsensors is built by compiler MSVC version 19.39.33520.0</text>
+
+PackageName: qtsensors
+SPDXID: SPDXRef-Package-qtsensors
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtsensors:6.10.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtsensors@6.10.0
+PackageVersion: 6.10.0
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtsensors@6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageDownloadLocation: git://code.qt.io/qt/qtsensors.git
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: Copyright (C) The Qt Company Ltd. and other contributors.
+PackageHomePage: https://qt.io
+PackageComment: <text>Built by CMake 3.30.5 with RelWithDebInfo;Debug configuration for Windows (AMD64)
+qtsensors was configured with:
+    qt-configure-module <sources>/qtsensors -- -DFFMPEG_DIR=C:\FFmpeg-n7.1.1\build\msvc\installed -DQT_DEPLOY_FFMPEG=TRUE -DFEATURE_clangcpp=OFF -DINPUT_headersclean=ON -DQT_INSTALL_CONFIG_INFO_FILES=ON -DQT_GENERATE_SBOM=ON -DQT_GENERATE_SOURCE_SBOM=ON -DQT_SBOM_PYTHON_INTERP=C:\Python38_64 -DQT_SBOM_PYTHON_APPS_PATH=C:\Python310_64\Scripts -DQT_LINT_SOURCE_SBOM=ON -DQT_INTERNAL_SBOM_DEFAULT_CHECKS=ON -DQT_INTERNAL_SBOM_AUDIT=ON -DQT_INTERNAL_SBOM_AUDIT_NO_ERROR=ON -DQT_BUILD_TESTS=OFF -DCMAKE_AUTOGEN_VERBOSE=ON -DCMAKE_MESSAGE_LOG_LEVEL=STATUS -DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache
+</text>
+FilesAnalyzed: false
+BuiltDate: 2025-10-01T23:13:47Z
+Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-Package-qtsensors
+
+PackageName: Sensors
+SPDXID: SPDXRef-Package-qtsensors-qt-module-Sensors
+PackageDownloadLocation: git://code.qt.io/qt/qtsensors.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtsensors?library_name=Sensors#src/sensors
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtsensors-Sensors?vcs_url=https://code.qt.io/qt/qtsensors.git&library_name=Sensors#src/sensors
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: Sensors
+CMake exported target name: Qt6::Sensors
+Contained in CMake package: Qt6Sensors
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtsensors:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: f3ead0e058986fa00651845f9f4a8b5c50299e70
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtsensors-qt-module-Sensors DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtsensors-qt-module-Sensors DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtsensors CONTAINS SPDXRef-Package-qtsensors-qt-module-Sensors
+
+FileName: ./bin/Qt6Sensors.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 38b20a4df9c03f3fde520f8b56de5ff94c971b74
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtsensors-qt-module-Sensors CONTAINS SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/C:/Users/qt/work/qt/qtsensors_build/src/sensors/Sensors_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/include/QtSensors/qtsensorsexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorbackend.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorbackend.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensormanager.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensormanager.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorplugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorplugin.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorsglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/sensorlog_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qaccelerometer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambientlightsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambienttemperaturesensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qcompass.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlightsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qmagnetometer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qorientationsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qproximitysensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qirproximitysensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qrotationsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtapsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtiltsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qgyroscope.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qpressuresensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qhumiditysensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlidsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qaccelerometer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambientlightsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambienttemperaturesensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qcompass_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlightsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qmagnetometer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qorientationsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qproximitysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qirproximitysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qrotationsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtapsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtiltsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qgyroscope_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qpressuresensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qhumiditysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlidsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qaccelerometer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambientlightsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambienttemperaturesensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qcompass.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlightsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qmagnetometer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qorientationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qproximitysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qirproximitysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qrotationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtapsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtiltsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qgyroscope.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qpressuresensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qhumiditysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlidsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/src/sensors/qtsensors-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/src/sensors/qtsensors-config_p.h
+
+FileName: ./bin/Qt6Sensorsd.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-Sensors-Debug
+FileType: BINARY
+FileChecksum: SHA1: ea8bd30e87f2d872c18f53f43d7910a25360e90d
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtsensors-qt-module-Sensors CONTAINS SPDXRef-PackagedFile-qt-module-Sensors-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/C:/Users/qt/work/qt/qtsensors_build/src/sensors/Sensors_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/include/QtSensors/qtsensorsexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorbackend.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorbackend.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensormanager.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensormanager.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorplugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorplugin.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorsglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/sensorlog_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qaccelerometer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambientlightsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambienttemperaturesensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qcompass.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlightsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qmagnetometer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qorientationsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qproximitysensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qirproximitysensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qrotationsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtapsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtiltsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qgyroscope.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qpressuresensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qhumiditysensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlidsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qaccelerometer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambientlightsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambienttemperaturesensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qcompass_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlightsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qmagnetometer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qorientationsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qproximitysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qirproximitysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qrotationsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtapsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtiltsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qgyroscope_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qpressuresensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qhumiditysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlidsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qaccelerometer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambientlightsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambienttemperaturesensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qcompass.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlightsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qmagnetometer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qorientationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qproximitysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qirproximitysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qrotationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtapsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtiltsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qgyroscope.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qpressuresensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qhumiditysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlidsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/src/sensors/qtsensors-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/src/sensors/qtsensors-config_p.h
+
+FileName: ./lib/Qt6Sensors.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 768527790fac3eaebdaf1a746720c6bc88334995
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtsensors-qt-module-Sensors CONTAINS SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/C:/Users/qt/work/qt/qtsensors_build/src/sensors/Sensors_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/include/QtSensors/qtsensorsexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorbackend.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorbackend.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensormanager.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensormanager.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorplugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorplugin.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorsglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/sensorlog_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qaccelerometer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambientlightsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambienttemperaturesensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qcompass.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlightsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qmagnetometer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qorientationsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qproximitysensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qirproximitysensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qrotationsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtapsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtiltsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qgyroscope.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qpressuresensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qhumiditysensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlidsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qaccelerometer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambientlightsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambienttemperaturesensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qcompass_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlightsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qmagnetometer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qorientationsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qproximitysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qirproximitysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qrotationsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtapsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtiltsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qgyroscope_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qpressuresensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qhumiditysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlidsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qaccelerometer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambientlightsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambienttemperaturesensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qcompass.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlightsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qmagnetometer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qorientationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qproximitysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qirproximitysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qrotationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtapsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtiltsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qgyroscope.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qpressuresensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qhumiditysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlidsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/src/sensors/qtsensors-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/src/sensors/qtsensors-config_p.h
+
+FileName: ./lib/Qt6Sensorsd.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: 7502732e815d1e14021868a1c9f27bc640224bae
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtsensors-qt-module-Sensors CONTAINS SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/C:/Users/qt/work/qt/qtsensors_build/src/sensors/Sensors_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/include/QtSensors/qtsensorsexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorbackend.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorbackend.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensormanager.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensormanager.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorplugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorplugin.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensorsglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/sensorlog_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qaccelerometer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambientlightsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambienttemperaturesensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qcompass.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlightsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qmagnetometer.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qorientationsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qproximitysensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qirproximitysensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qrotationsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtapsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtiltsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qgyroscope.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qpressuresensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qhumiditysensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlidsensor.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qaccelerometer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambientlightsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambienttemperaturesensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qcompass_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlightsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qmagnetometer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qorientationsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qproximitysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qirproximitysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qrotationsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtapsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtiltsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qgyroscope_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qpressuresensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qhumiditysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlidsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qaccelerometer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambientlightsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qambienttemperaturesensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qcompass.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlightsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qmagnetometer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qorientationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qproximitysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qirproximitysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qrotationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtapsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qtiltsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qgyroscope.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qpressuresensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qhumiditysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensors/qlidsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/src/sensors/qtsensors-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-Sensors-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/src/sensors/qtsensors-config_p.h
+
+PackageName: genericSensorPlugin
+SPDXID: SPDXRef-Package-qtsensors-qt-plugin-genericSensorPlugin
+PackageDownloadLocation: git://code.qt.io/qt/qtsensors.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtsensors?library_name=genericSensorPlugin#src/plugins/sensors/generic
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtsensors-genericSensorPlugin?vcs_url=https://code.qt.io/qt/qtsensors.git&library_name=genericSensorPlugin#src/plugins/sensors/generic
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: genericSensorPlugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtsensors:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 59f85dea6dbfbeaba8bf97dab846585596742ed9
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtsensors-qt-plugin-genericSensorPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtsensors-qt-plugin-genericSensorPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtsensors-qt-plugin-genericSensorPlugin DEPENDS_ON SPDXRef-Package-qtsensors-qt-module-Sensors
+Relationship: SPDXRef-Package-qtsensors CONTAINS SPDXRef-Package-qtsensors-qt-plugin-genericSensorPlugin
+
+FileName: ./plugins/sensors/qtsensors_generic.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: b1e5b0cdaca72380d381ac340d190f116eb40fef
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtsensors-qt-plugin-genericSensorPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/genericalssensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/genericalssensor.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/genericorientationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/genericorientationsensor.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/generictiltsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/generictiltsensor.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/genericrotationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/genericrotationsensor.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/C:/Users/qt/work/qt/qtsensors_build/src/plugins/sensors/generic/genericSensorPlugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/
+
+FileName: ./plugins/sensors/qtsensors_genericd.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: 3ba4382b30b32aa41f33b3bdfe86eedc8639c0c2
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtsensors-qt-plugin-genericSensorPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/genericalssensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/genericalssensor.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/genericorientationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/genericorientationsensor.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/generictiltsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/generictiltsensor.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/genericrotationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/genericrotationsensor.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/
+Relationship: SPDXRef-PackagedFile-qt-plugin-genericSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/generic/C:/Users/qt/work/qt/qtsensors_build/src/plugins/sensors/generic/genericSensorPlugin_resource-Debug.rc
+
+PackageName: WinRtSensorPlugin
+SPDXID: SPDXRef-Package-qtsensors-qt-plugin-WinRtSensorPlugin
+PackageDownloadLocation: git://code.qt.io/qt/qtsensors.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtsensors?library_name=WinRtSensorPlugin#src/plugins/sensors/winrt
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtsensors-WinRtSensorPlugin?vcs_url=https://code.qt.io/qt/qtsensors.git&library_name=WinRtSensorPlugin#src/plugins/sensors/winrt
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: WinRtSensorPlugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtsensors:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: d637847be747fa6b98ecd7234ab782bf3f61041d
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtsensors-qt-plugin-WinRtSensorPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtsensors-qt-plugin-WinRtSensorPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtsensors-qt-plugin-WinRtSensorPlugin DEPENDS_ON SPDXRef-Package-qtsensors-qt-module-Sensors
+Relationship: SPDXRef-Package-qtsensors CONTAINS SPDXRef-Package-qtsensors-qt-plugin-WinRtSensorPlugin
+
+FileName: ./plugins/sensors/qtsensors_winrt.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 196f3ea59265458816fc8dd448c71fa36b5f299f
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtsensors-qt-plugin-WinRtSensorPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtaccelerometer.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtaccelerometer.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtambientlightsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtambientlightsensor.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtcommon.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtcommon.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtcompass.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtcompass.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtgyroscope.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtgyroscope.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtorientationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtorientationsensor.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtrotationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtrotationsensor.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/C:/Users/qt/work/qt/qtsensors_build/src/plugins/sensors/winrt/WinRtSensorPlugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/
+
+FileName: ./plugins/sensors/qtsensors_winrtd.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: 297d286189d0557833af27ecab2e4f47114fdcdb
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtsensors-qt-plugin-WinRtSensorPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtaccelerometer.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtaccelerometer.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtambientlightsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtambientlightsensor.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtcommon.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtcommon.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtcompass.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtcompass.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtgyroscope.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtgyroscope.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtorientationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtorientationsensor.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtrotationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/winrtrotationsensor.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/
+Relationship: SPDXRef-PackagedFile-qt-plugin-WinRtSensorPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/plugins/sensors/winrt/C:/Users/qt/work/qt/qtsensors_build/src/plugins/sensors/winrt/WinRtSensorPlugin_resource-Debug.rc
+
+PackageName: SensorsQuick
+SPDXID: SPDXRef-Package-qtsensors-qt-module-SensorsQuick
+PackageDownloadLocation: git://code.qt.io/qt/qtsensors.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtsensors?library_name=SensorsQuick#src/sensorsquick
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtsensors-SensorsQuick?vcs_url=https://code.qt.io/qt/qtsensors.git&library_name=SensorsQuick#src/sensorsquick
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: SensorsQuick
+CMake exported target name: Qt6::SensorsQuick
+Contained in CMake package: Qt6SensorsQuick
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtsensors:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 7cf01b194c1b52e4c97eb090db86506346139a6c
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtsensors-qt-module-SensorsQuick DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtsensors-qt-module-SensorsQuick DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtsensors-qt-module-SensorsQuick DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtsensors-qt-module-SensorsQuick DEPENDS_ON SPDXRef-Package-qtsensors-qt-module-Sensors
+Relationship: SPDXRef-Package-qtsensors CONTAINS SPDXRef-Package-qtsensors-qt-module-SensorsQuick
+
+FileName: ./bin/Qt6SensorsQuick.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 19012f2ac8bc5a83d745749e6ffd41bc230e99a6
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtsensors-qt-module-SensorsQuick CONTAINS SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/C:/Users/qt/work/qt/qtsensors_build/src/sensorsquick/SensorsQuick_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/include/QtSensorsQuick/qtsensorsquickexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlaccelerometer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlaccelerometer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlambientlightsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlambientlightsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlambienttemperaturesensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlambienttemperaturesensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlcompass.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlcompass_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlgyroscope.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlgyroscope_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlhumiditysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlhumiditysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlirproximitysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlirproximitysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmllidsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmllidsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmllightsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmllightsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlmagnetometer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlmagnetometer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlorientationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlorientationsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlpressuresensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlpressuresensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlproximitysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlproximitysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlrotationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlrotationsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensorglobal.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensorglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensorrange.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensorrange_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmltapsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmltapsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmltiltsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmltiltsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qsensorsquickglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/src/sensorsquick/sensorsquick_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/src/sensorsquick/.qt/rcc/qrc_qmake_QtSensors.cpp
+
+FileName: ./bin/Qt6SensorsQuickd.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug
+FileType: BINARY
+FileChecksum: SHA1: 512aa134e4ef89741bb1abbbdc56936f9df3e42b
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtsensors-qt-module-SensorsQuick CONTAINS SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/C:/Users/qt/work/qt/qtsensors_build/src/sensorsquick/SensorsQuick_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/include/QtSensorsQuick/qtsensorsquickexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlaccelerometer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlaccelerometer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlambientlightsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlambientlightsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlambienttemperaturesensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlambienttemperaturesensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlcompass.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlcompass_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlgyroscope.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlgyroscope_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlhumiditysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlhumiditysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlirproximitysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlirproximitysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmllidsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmllidsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmllightsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmllightsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlmagnetometer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlmagnetometer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlorientationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlorientationsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlpressuresensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlpressuresensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlproximitysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlproximitysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlrotationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlrotationsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensorglobal.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensorglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensorrange.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensorrange_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmltapsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmltapsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmltiltsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmltiltsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qsensorsquickglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/src/sensorsquick/sensorsquick_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/src/sensorsquick/.qt/rcc/qrc_qmake_QtSensors.cpp
+
+FileName: ./lib/Qt6SensorsQuick.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: b3c31fbea27e48f2c7cc7d5d6e0aaa63192e0a20
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtsensors-qt-module-SensorsQuick CONTAINS SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/C:/Users/qt/work/qt/qtsensors_build/src/sensorsquick/SensorsQuick_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/include/QtSensorsQuick/qtsensorsquickexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlaccelerometer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlaccelerometer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlambientlightsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlambientlightsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlambienttemperaturesensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlambienttemperaturesensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlcompass.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlcompass_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlgyroscope.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlgyroscope_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlhumiditysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlhumiditysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlirproximitysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlirproximitysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmllidsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmllidsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmllightsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmllightsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlmagnetometer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlmagnetometer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlorientationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlorientationsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlpressuresensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlpressuresensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlproximitysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlproximitysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlrotationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlrotationsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensorglobal.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensorglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensorrange.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensorrange_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmltapsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmltapsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmltiltsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmltiltsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qsensorsquickglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/src/sensorsquick/sensorsquick_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/src/sensorsquick/.qt/rcc/qrc_qmake_QtSensors.cpp
+
+FileName: ./lib/Qt6SensorsQuickd.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: ae26ce4f2f88173a6de89dd87cf401ae7c9cb072
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtsensors-qt-module-SensorsQuick CONTAINS SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/C:/Users/qt/work/qt/qtsensors_build/src/sensorsquick/SensorsQuick_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/include/QtSensorsQuick/qtsensorsquickexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlaccelerometer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlaccelerometer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlambientlightsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlambientlightsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlambienttemperaturesensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlambienttemperaturesensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlcompass.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlcompass_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlgyroscope.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlgyroscope_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlhumiditysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlhumiditysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlirproximitysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlirproximitysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmllidsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmllidsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmllightsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmllightsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlmagnetometer.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlmagnetometer_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlorientationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlorientationsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlpressuresensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlpressuresensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlproximitysensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlproximitysensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlrotationsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlrotationsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensorglobal.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensorglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensorrange.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmlsensorrange_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmltapsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmltapsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmltiltsensor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qmltiltsensor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/qsensorsquickglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/src/sensorsquick/sensorsquick_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-SensorsQuick-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/src/sensorsquick/.qt/rcc/qrc_qmake_QtSensors.cpp
+
+PackageName: SensorsQuickplugin
+SPDXID: SPDXRef-Package-qtsensors-qt-plugin-SensorsQuickplugin
+PackageDownloadLocation: git://code.qt.io/qt/qtsensors.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtsensors?library_name=SensorsQuickplugin#src/sensorsquick
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtsensors-SensorsQuickplugin?vcs_url=https://code.qt.io/qt/qtsensors.git&library_name=SensorsQuickplugin#src/sensorsquick
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: SensorsQuickplugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtsensors:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: c8607705402c982294897be31ea753d3f436eb9f
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtsensors-qt-plugin-SensorsQuickplugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtsensors-qt-plugin-SensorsQuickplugin DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtsensors-qt-plugin-SensorsQuickplugin DEPENDS_ON SPDXRef-Package-qtsensors-qt-module-SensorsQuick
+Relationship: SPDXRef-Package-qtsensors CONTAINS SPDXRef-Package-qtsensors-qt-plugin-SensorsQuickplugin
+
+FileName: ./qml/QtSensors/sensorsquickplugin.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-SensorsQuickplugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: b0e1600ed391ed2875e36598fa76c7e77d429dc3
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtsensors-qt-plugin-SensorsQuickplugin CONTAINS SPDXRef-PackagedFile-qt-plugin-SensorsQuickplugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-SensorsQuickplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/src/sensorsquick/SensorsQuickplugin_QtSensorsPlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-SensorsQuickplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/C:/Users/qt/work/qt/qtsensors_build/src/sensorsquick/SensorsQuickplugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-SensorsQuickplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/
+
+FileName: ./qml/QtSensors/sensorsquickplugind.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-SensorsQuickplugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: e4d026da6dc065f062f42798635feb2ca0e6de59
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtsensors-qt-plugin-SensorsQuickplugin CONTAINS SPDXRef-PackagedFile-qt-plugin-SensorsQuickplugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-SensorsQuickplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtsensors/src/sensorsquick/SensorsQuickplugin_QtSensorsPlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-SensorsQuickplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/
+Relationship: SPDXRef-PackagedFile-qt-plugin-SensorsQuickplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtsensors/src/sensorsquick/C:/Users/qt/work/qt/qtsensors_build/src/sensorsquick/SensorsQuickplugin_resource-Debug.rc
+
+LicenseID: LicenseRef-Qt-Commercial
+ExtractedText: <text>Licensees holding valid commercial Qt licenses may use this software in
+accordance with the the terms contained in a written agreement between
+you and The Qt Company. Alternatively, the terms and conditions that were
+accepted by the licensee when buying and/or downloading the
+software do apply.
+
+For the latest licensing terms and conditions, see https://www.qt.io/terms-conditions.
+For further information use the contact form at https://www.qt.io/contact-us.
+</text>

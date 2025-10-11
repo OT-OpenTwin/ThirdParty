@@ -1,0 +1,1445 @@
+SPDXVersion: SPDX-2.3
+DataLicense: CC0-1.0
+SPDXID: SPDXRef-DOCUMENT
+DocumentName: qtscxml-6.10.0
+DocumentNamespace: https://qt.io/spdxdocs/qtscxml-6.10.0
+Creator: Organization: TheQtCompany
+Creator: Tool: Qt Build System
+CreatorComment: <text>This SPDX document was created from CMake 3.30.5, using the qt
+build system from https://code.qt.io/cgit/qt/qtbase.git/tree/cmake/QtPublicSbomHelpers.cmake</text>
+Created: 2025-10-01T23:14:33Z
+ExternalDocumentRef: DocumentRef-qtbase https://qt.io/spdxdocs/qtbase-5a8637e4+HEAD SHA1: 5ffd15d0b3b0dfbed5f9302602018f8bfed209f7
+ExternalDocumentRef: DocumentRef-qtdeclarative https://qt.io/spdxdocs/qtdeclarative-7e0ab1d9+HEAD SHA1: abe2fefc07c2482cfcc5aa4055014d6869372c22
+
+PackageName: MSVC
+SPDXID: SPDXRef-compiler
+PackageVersion: 19.39.33520.0
+PackageDownloadLocation: NOASSERTION
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: NOASSERTION
+PackageSupplier: Organization: Anonymous
+FilesAnalyzed: false
+PackageSummary: <text>The compiler as identified by CMake, running on Windows (AMD64)</text>
+PrimaryPackagePurpose: APPLICATION
+Relationship: SPDXRef-compiler BUILD_DEPENDENCY_OF SPDXRef-Package-qtscxml
+RelationshipComment: <text>SPDXRef-Package-qtscxml is built by compiler MSVC version 19.39.33520.0</text>
+
+PackageName: qtscxml
+SPDXID: SPDXRef-Package-qtscxml
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtscxml:6.10.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtscxml@6.10.0
+PackageVersion: 6.10.0
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtscxml@6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageDownloadLocation: git://code.qt.io/qt/qtscxml.git
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: Copyright (C) The Qt Company Ltd. and other contributors.
+PackageHomePage: https://qt.io
+PackageComment: <text>Built by CMake 3.30.5 with RelWithDebInfo;Debug configuration for Windows (AMD64)
+qtscxml was configured with:
+    qt-configure-module <sources>/qtscxml -- -DFFMPEG_DIR=C:\FFmpeg-n7.1.1\build\msvc\installed -DQT_DEPLOY_FFMPEG=TRUE -DFEATURE_clangcpp=OFF -DINPUT_headersclean=ON -DQT_INSTALL_CONFIG_INFO_FILES=ON -DQT_GENERATE_SBOM=ON -DQT_GENERATE_SOURCE_SBOM=ON -DQT_SBOM_PYTHON_INTERP=C:\Python38_64 -DQT_SBOM_PYTHON_APPS_PATH=C:\Python310_64\Scripts -DQT_LINT_SOURCE_SBOM=ON -DQT_INTERNAL_SBOM_DEFAULT_CHECKS=ON -DQT_INTERNAL_SBOM_AUDIT=ON -DQT_INTERNAL_SBOM_AUDIT_NO_ERROR=ON -DQT_BUILD_TESTS=OFF -DCMAKE_AUTOGEN_VERBOSE=ON -DCMAKE_MESSAGE_LOG_LEVEL=STATUS -DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache
+</text>
+FilesAnalyzed: false
+BuiltDate: 2025-10-01T23:14:33Z
+Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-Package-qtscxml
+
+PackageName: ScxmlGlobalPrivate
+SPDXID: SPDXRef-Package-qtscxml-qt-module-ScxmlGlobalPrivate
+PackageDownloadLocation: git://code.qt.io/qt/qtscxml.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtscxml?library_name=ScxmlGlobalPrivate#src/global
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtscxml-ScxmlGlobalPrivate?vcs_url=https://code.qt.io/qt/qtscxml.git&library_name=ScxmlGlobalPrivate#src/global
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: ScxmlGlobalPrivate
+CMake exported target name: Qt6::ScxmlGlobal
+Contained in CMake package: Qt6ScxmlGlobalPrivate
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtscxml:6.10.0:*:*:*:*:*:*:*
+FilesAnalyzed: false
+Relationship: SPDXRef-Package-qtscxml CONTAINS SPDXRef-Package-qtscxml-qt-module-ScxmlGlobalPrivate
+
+PackageName: Scxml
+SPDXID: SPDXRef-Package-qtscxml-qt-module-Scxml
+PackageDownloadLocation: git://code.qt.io/qt/qtscxml.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtscxml?library_name=Scxml#src/scxml
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtscxml-Scxml?vcs_url=https://code.qt.io/qt/qtscxml.git&library_name=Scxml#src/scxml
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: Scxml
+CMake exported target name: Qt6::Scxml
+Contained in CMake package: Qt6Scxml
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtscxml:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: d8006d77ca170c7aa406dec7a7ba3f3ad2472ff7
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtscxml-qt-module-Scxml DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtscxml-qt-module-Scxml DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtscxml-qt-module-Scxml DEPENDS_ON SPDXRef-Package-qtscxml-qt-module-ScxmlGlobalPrivate
+Relationship: SPDXRef-Package-qtscxml CONTAINS SPDXRef-Package-qtscxml-qt-module-Scxml
+
+FileName: ./bin/Qt6Scxml.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 4850c459700bdf37a1f399e63c86fe20dacc4bdb
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-module-Scxml CONTAINS SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/C:/Users/qt/work/qt/qtscxml_build/src/scxml/Scxml_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/include/QtScxml/qtscxmlexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcompiler.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcompiler.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcompiler_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcppdatamodel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcppdatamodel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcppdatamodel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlerror.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlerror.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlevent.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlevent.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlevent_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlexecutablecontent.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlexecutablecontent.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlexecutablecontent_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlglobals.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlglobals_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlinvokableservice.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlinvokableservice.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlinvokableservice_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlnulldatamodel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlnulldatamodel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachine.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachine.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachine_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachineinfo.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachineinfo_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmltabledata.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmltabledata.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmltabledata_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodelplugin_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodelplugin.cpp
+
+FileName: ./bin/Qt6Scxmld.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-Scxml-Debug
+FileType: BINARY
+FileChecksum: SHA1: db47c9585e66da9ccba52b0bd92a1281a449dd1a
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-module-Scxml CONTAINS SPDXRef-PackagedFile-qt-module-Scxml-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/C:/Users/qt/work/qt/qtscxml_build/src/scxml/Scxml_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/include/QtScxml/qtscxmlexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcompiler.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcompiler.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcompiler_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcppdatamodel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcppdatamodel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcppdatamodel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlerror.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlerror.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlevent.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlevent.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlevent_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlexecutablecontent.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlexecutablecontent.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlexecutablecontent_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlglobals.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlglobals_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlinvokableservice.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlinvokableservice.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlinvokableservice_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlnulldatamodel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlnulldatamodel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachine.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachine.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachine_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachineinfo.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachineinfo_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmltabledata.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmltabledata.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmltabledata_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodelplugin_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodelplugin.cpp
+
+FileName: ./lib/Qt6Scxml.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 28abcc796a97fc06ba1b412f82a222319c5bcd29
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-module-Scxml CONTAINS SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/C:/Users/qt/work/qt/qtscxml_build/src/scxml/Scxml_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/include/QtScxml/qtscxmlexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcompiler.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcompiler.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcompiler_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcppdatamodel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcppdatamodel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcppdatamodel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlerror.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlerror.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlevent.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlevent.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlevent_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlexecutablecontent.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlexecutablecontent.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlexecutablecontent_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlglobals.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlglobals_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlinvokableservice.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlinvokableservice.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlinvokableservice_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlnulldatamodel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlnulldatamodel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachine.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachine.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachine_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachineinfo.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachineinfo_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmltabledata.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmltabledata.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmltabledata_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodelplugin_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodelplugin.cpp
+
+FileName: ./lib/Qt6Scxmld.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: f01369a1f2ea6b4570c0dddec06508be01cd84c8
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-module-Scxml CONTAINS SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/C:/Users/qt/work/qt/qtscxml_build/src/scxml/Scxml_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/include/QtScxml/qtscxmlexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcompiler.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcompiler.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcompiler_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcppdatamodel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcppdatamodel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcppdatamodel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodel_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlerror.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlerror.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlevent.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlevent.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlevent_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlexecutablecontent.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlexecutablecontent.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlexecutablecontent_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlglobals.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlglobals_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlinvokableservice.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlinvokableservice.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlinvokableservice_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlnulldatamodel.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlnulldatamodel.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachine.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachine.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachine_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachineinfo.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlstatemachineinfo_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmltabledata.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmltabledata.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmltabledata_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodelplugin_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-Scxml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmldatamodelplugin.cpp
+
+PackageName: ScxmlQml
+SPDXID: SPDXRef-Package-qtscxml-qt-module-ScxmlQml
+PackageDownloadLocation: git://code.qt.io/qt/qtscxml.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtscxml?library_name=ScxmlQml#src/scxmlqml
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtscxml-ScxmlQml?vcs_url=https://code.qt.io/qt/qtscxml.git&library_name=ScxmlQml#src/scxmlqml
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: ScxmlQml
+CMake exported target name: Qt6::ScxmlQml
+Contained in CMake package: Qt6ScxmlQml
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtscxml:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 80f80b0f1c76ea3efb4664551094be07a6fb246e
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtscxml-qt-module-ScxmlQml DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtscxml-qt-module-ScxmlQml DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtscxml-qt-module-ScxmlQml DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtscxml-qt-module-ScxmlQml DEPENDS_ON SPDXRef-Package-qtscxml-qt-module-Scxml
+Relationship: SPDXRef-Package-qtscxml CONTAINS SPDXRef-Package-qtscxml-qt-module-ScxmlQml
+
+FileName: ./bin/Qt6ScxmlQml.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-ScxmlQml-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 43a84eaaf93769bdeb36901f47a16a492f0f1d7f
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-module-ScxmlQml CONTAINS SPDXRef-PackagedFile-qt-module-ScxmlQml-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/C:/Users/qt/work/qt/qtscxml_build/src/scxmlqml/ScxmlQml_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/include/QtScxmlQml/qtscxmlqmlexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/eventconnection.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/eventconnection_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/invokedservices.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/invokedservices_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/statemachineextended.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/statemachineextended_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/statemachineloader.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/statemachineloader_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/qscxmlqmlglobals_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/scxmlqml/scxmlqml_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/scxmlqml/.qt/rcc/qrc_qmake_QtScxml.cpp
+
+FileName: ./bin/Qt6ScxmlQmld.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-ScxmlQml-Debug
+FileType: BINARY
+FileChecksum: SHA1: 642de8a6ed0282b149fa8cc015b2c15856c34f88
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-module-ScxmlQml CONTAINS SPDXRef-PackagedFile-qt-module-ScxmlQml-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/C:/Users/qt/work/qt/qtscxml_build/src/scxmlqml/ScxmlQml_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/include/QtScxmlQml/qtscxmlqmlexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/eventconnection.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/eventconnection_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/invokedservices.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/invokedservices_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/statemachineextended.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/statemachineextended_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/statemachineloader.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/statemachineloader_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/qscxmlqmlglobals_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/scxmlqml/scxmlqml_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/scxmlqml/.qt/rcc/qrc_qmake_QtScxml.cpp
+
+FileName: ./lib/Qt6ScxmlQml.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 6aa96eacba75fa73bf37b2b88e17104136260aab
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-module-ScxmlQml CONTAINS SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/C:/Users/qt/work/qt/qtscxml_build/src/scxmlqml/ScxmlQml_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/include/QtScxmlQml/qtscxmlqmlexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/eventconnection.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/eventconnection_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/invokedservices.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/invokedservices_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/statemachineextended.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/statemachineextended_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/statemachineloader.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/statemachineloader_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/qscxmlqmlglobals_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/scxmlqml/scxmlqml_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/scxmlqml/.qt/rcc/qrc_qmake_QtScxml.cpp
+
+FileName: ./lib/Qt6ScxmlQmld.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: 775a95c2accdb1f47b84dab3877ab94563b72cb8
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-module-ScxmlQml CONTAINS SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/C:/Users/qt/work/qt/qtscxml_build/src/scxmlqml/ScxmlQml_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/include/QtScxmlQml/qtscxmlqmlexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/eventconnection.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/eventconnection_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/invokedservices.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/invokedservices_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/statemachineextended.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/statemachineextended_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/statemachineloader.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/statemachineloader_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/qscxmlqmlglobals_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/scxmlqml/scxmlqml_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-ScxmlQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/scxmlqml/.qt/rcc/qrc_qmake_QtScxml.cpp
+
+PackageName: declarative_scxml
+SPDXID: SPDXRef-Package-qtscxml-qt-plugin-declarative-scxml
+PackageDownloadLocation: git://code.qt.io/qt/qtscxml.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtscxml?library_name=declarative_scxml#src/scxmlqml
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtscxml-declarative_scxml?vcs_url=https://code.qt.io/qt/qtscxml.git&library_name=declarative_scxml#src/scxmlqml
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: declarative_scxml
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtscxml:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: f8fb7257a88997c8aecc0626c0629a9b79be1007
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtscxml-qt-plugin-declarative-scxml DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtscxml-qt-plugin-declarative-scxml DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtscxml-qt-plugin-declarative-scxml DEPENDS_ON SPDXRef-Package-qtscxml-qt-module-ScxmlQml
+Relationship: SPDXRef-Package-qtscxml CONTAINS SPDXRef-Package-qtscxml-qt-plugin-declarative-scxml
+
+FileName: ./qml/QtScxml/declarative_scxmlplugin.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-declarative-scxml-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 48501a575a91d2792fbd491d27d293808e133614
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-plugin-declarative-scxml CONTAINS SPDXRef-PackagedFile-qt-plugin-declarative-scxml-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-declarative-scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/scxmlqml/declarative_scxml_QScxmlStateMachinePlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-declarative-scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/C:/Users/qt/work/qt/qtscxml_build/src/scxmlqml/declarative_scxml_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-declarative-scxml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/
+
+FileName: ./qml/QtScxml/declarative_scxmlplugind.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-declarative-scxml-Debug
+FileType: BINARY
+FileChecksum: SHA1: 0393670685f573f4d086b341afd5a1824208713d
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-plugin-declarative-scxml CONTAINS SPDXRef-PackagedFile-qt-plugin-declarative-scxml-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-declarative-scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/scxmlqml/declarative_scxml_QScxmlStateMachinePlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-declarative-scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/
+Relationship: SPDXRef-PackagedFile-qt-plugin-declarative-scxml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxmlqml/C:/Users/qt/work/qt/qtscxml_build/src/scxmlqml/declarative_scxml_resource-Debug.rc
+
+PackageName: StateMachine
+SPDXID: SPDXRef-Package-qtscxml-qt-module-StateMachine
+PackageDownloadLocation: git://code.qt.io/qt/qtscxml.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtscxml?library_name=StateMachine#src/statemachine
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtscxml-StateMachine?vcs_url=https://code.qt.io/qt/qtscxml.git&library_name=StateMachine#src/statemachine
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: StateMachine
+CMake exported target name: Qt6::StateMachine
+Contained in CMake package: Qt6StateMachine
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtscxml:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 8d341a101177b4d580567939d62fff81fc1ea006
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtscxml-qt-module-StateMachine DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtscxml-qt-module-StateMachine DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtscxml-qt-module-StateMachine DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Gui
+Relationship: SPDXRef-Package-qtscxml-qt-module-StateMachine DEPENDS_ON SPDXRef-Package-qtscxml-qt-module-ScxmlGlobalPrivate
+Relationship: SPDXRef-Package-qtscxml CONTAINS SPDXRef-Package-qtscxml-qt-module-StateMachine
+
+FileName: ./bin/Qt6StateMachine.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 7cd7ffef1a6986706f43300d1902846637d5c8dd
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-module-StateMachine CONTAINS SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/C:/Users/qt/work/qt/qtscxml_build/src/statemachine/StateMachine_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/include/QtStateMachine/qtstatemachineexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstractstate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstractstate.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstractstate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstracttransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstracttransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstracttransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qfinalstate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qfinalstate.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qfinalstate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qhistorystate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qhistorystate.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qhistorystate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qsignaleventgenerator_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qsignaltransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qsignaltransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qsignaltransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstate.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachine.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachine.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachine_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachineglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachineglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qbasickeyeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qbasickeyeventtransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qbasicmouseeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qbasicmouseeventtransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qkeyeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qkeyeventtransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qmouseeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qmouseeventtransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qeventtransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qeventtransition_p.h
+
+FileName: ./bin/Qt6StateMachined.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-StateMachine-Debug
+FileType: BINARY
+FileChecksum: SHA1: 4f840435eb93fe93b09c76286a3d5d89f5099aa5
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-module-StateMachine CONTAINS SPDXRef-PackagedFile-qt-module-StateMachine-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/C:/Users/qt/work/qt/qtscxml_build/src/statemachine/StateMachine_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/include/QtStateMachine/qtstatemachineexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstractstate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstractstate.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstractstate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstracttransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstracttransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstracttransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qfinalstate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qfinalstate.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qfinalstate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qhistorystate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qhistorystate.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qhistorystate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qsignaleventgenerator_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qsignaltransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qsignaltransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qsignaltransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstate.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachine.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachine.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachine_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachineglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachineglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qbasickeyeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qbasickeyeventtransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qbasicmouseeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qbasicmouseeventtransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qkeyeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qkeyeventtransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qmouseeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qmouseeventtransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qeventtransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qeventtransition_p.h
+
+FileName: ./lib/Qt6StateMachine.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: b8ae6793d1434d84c3fcb3a01937207a73135607
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-module-StateMachine CONTAINS SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/C:/Users/qt/work/qt/qtscxml_build/src/statemachine/StateMachine_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/include/QtStateMachine/qtstatemachineexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstractstate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstractstate.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstractstate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstracttransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstracttransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstracttransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qfinalstate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qfinalstate.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qfinalstate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qhistorystate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qhistorystate.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qhistorystate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qsignaleventgenerator_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qsignaltransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qsignaltransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qsignaltransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstate.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachine.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachine.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachine_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachineglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachineglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qbasickeyeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qbasickeyeventtransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qbasicmouseeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qbasicmouseeventtransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qkeyeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qkeyeventtransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qmouseeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qmouseeventtransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qeventtransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qeventtransition_p.h
+
+FileName: ./lib/Qt6StateMachined.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: bf524e981504dc9e58f0bdd03ce233fa95042643
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-module-StateMachine CONTAINS SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/C:/Users/qt/work/qt/qtscxml_build/src/statemachine/StateMachine_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/include/QtStateMachine/qtstatemachineexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstractstate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstractstate.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstractstate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstracttransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstracttransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qabstracttransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qfinalstate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qfinalstate.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qfinalstate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qhistorystate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qhistorystate.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qhistorystate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qsignaleventgenerator_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qsignaltransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qsignaltransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qsignaltransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstate.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachine.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachine.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachine_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachineglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qstatemachineglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qbasickeyeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qbasickeyeventtransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qbasicmouseeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qbasicmouseeventtransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qkeyeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qkeyeventtransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qmouseeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/gui/qmouseeventtransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qeventtransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qeventtransition.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachine-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachine/qeventtransition_p.h
+
+PackageName: StateMachineQml
+SPDXID: SPDXRef-Package-qtscxml-qt-module-StateMachineQml
+PackageDownloadLocation: git://code.qt.io/qt/qtscxml.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtscxml?library_name=StateMachineQml#src/statemachineqml
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtscxml-StateMachineQml?vcs_url=https://code.qt.io/qt/qtscxml.git&library_name=StateMachineQml#src/statemachineqml
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: StateMachineQml
+CMake exported target name: Qt6::StateMachineQml
+Contained in CMake package: Qt6StateMachineQml
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtscxml:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 4756cf2948bafd61daaa542b2263ccfd4cd5610a
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtscxml-qt-module-StateMachineQml DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtscxml-qt-module-StateMachineQml DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtscxml-qt-module-StateMachineQml DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtscxml-qt-module-StateMachineQml DEPENDS_ON SPDXRef-Package-qtscxml-qt-module-StateMachine
+Relationship: SPDXRef-Package-qtscxml CONTAINS SPDXRef-Package-qtscxml-qt-module-StateMachineQml
+
+FileName: ./bin/Qt6StateMachineQml.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 746bc78edfa7c10a2eba76f29fae544363e1e561
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-module-StateMachineQml CONTAINS SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/C:/Users/qt/work/qt/qtscxml_build/src/statemachineqml/StateMachineQml_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/include/QtStateMachineQml/qtstatemachineqmlexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/qstatemachineqmlglobals_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/finalstate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/finalstate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/signaltransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/signaltransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/state_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/state.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/statemachine_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/statemachine.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/timeouttransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/timeouttransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/childrenprivate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/statemachineforeign_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/statemachineqml/statemachineqml_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/statemachineqml/.qt/rcc/qrc_qmake_QtQml_StateMachine.cpp
+
+FileName: ./bin/Qt6StateMachineQmld.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug
+FileType: BINARY
+FileChecksum: SHA1: 03ac39dc08bede3c631d5776ad0a3bfa1ee7639c
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-module-StateMachineQml CONTAINS SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/C:/Users/qt/work/qt/qtscxml_build/src/statemachineqml/StateMachineQml_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/include/QtStateMachineQml/qtstatemachineqmlexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/qstatemachineqmlglobals_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/finalstate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/finalstate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/signaltransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/signaltransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/state_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/state.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/statemachine_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/statemachine.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/timeouttransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/timeouttransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/childrenprivate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/statemachineforeign_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/statemachineqml/statemachineqml_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/statemachineqml/.qt/rcc/qrc_qmake_QtQml_StateMachine.cpp
+
+FileName: ./lib/Qt6StateMachineQml.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: d73687a866687fa57495ceb43cd6f5b0a10ae0ce
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-module-StateMachineQml CONTAINS SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/C:/Users/qt/work/qt/qtscxml_build/src/statemachineqml/StateMachineQml_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/include/QtStateMachineQml/qtstatemachineqmlexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/qstatemachineqmlglobals_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/finalstate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/finalstate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/signaltransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/signaltransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/state_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/state.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/statemachine_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/statemachine.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/timeouttransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/timeouttransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/childrenprivate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/statemachineforeign_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/statemachineqml/statemachineqml_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/statemachineqml/.qt/rcc/qrc_qmake_QtQml_StateMachine.cpp
+
+FileName: ./lib/Qt6StateMachineQmld.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: 1571219266b5bb575d301be9d672e05db9f6cc94
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-module-StateMachineQml CONTAINS SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/C:/Users/qt/work/qt/qtscxml_build/src/statemachineqml/StateMachineQml_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/include/QtStateMachineQml/qtstatemachineqmlexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/qstatemachineqmlglobals_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/finalstate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/finalstate.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/signaltransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/signaltransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/state_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/state.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/statemachine_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/statemachine.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/timeouttransition_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/timeouttransition.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/childrenprivate_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/statemachineforeign_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/statemachineqml/statemachineqml_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-StateMachineQml-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/statemachineqml/.qt/rcc/qrc_qmake_QtQml_StateMachine.cpp
+
+PackageName: qtqmlstatemachine
+SPDXID: SPDXRef-Package-qtscxml-qt-plugin-qtqmlstatemachine
+PackageDownloadLocation: git://code.qt.io/qt/qtscxml.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtscxml?library_name=qtqmlstatemachine#src/statemachineqml
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtscxml-qtqmlstatemachine?vcs_url=https://code.qt.io/qt/qtscxml.git&library_name=qtqmlstatemachine#src/statemachineqml
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: qtqmlstatemachine
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtscxml:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 5469a0893482e88f4348e64a64d152b3b8981ffc
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtscxml-qt-plugin-qtqmlstatemachine DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtscxml-qt-plugin-qtqmlstatemachine DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtscxml-qt-plugin-qtqmlstatemachine DEPENDS_ON SPDXRef-Package-qtscxml-qt-module-StateMachineQml
+Relationship: SPDXRef-Package-qtscxml CONTAINS SPDXRef-Package-qtscxml-qt-plugin-qtqmlstatemachine
+
+FileName: ./qml/QtQml/StateMachine/qtqmlstatemachineplugin.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-qtqmlstatemachine-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 380b3e7bddd75fd3da687dbf09f15a0e603482ea
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-plugin-qtqmlstatemachine CONTAINS SPDXRef-PackagedFile-qt-plugin-qtqmlstatemachine-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-qtqmlstatemachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/statemachineqml/qtqmlstatemachine_QtQmlStateMachinePlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-qtqmlstatemachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/C:/Users/qt/work/qt/qtscxml_build/src/statemachineqml/qtqmlstatemachine_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-qtqmlstatemachine-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/
+
+FileName: ./qml/QtQml/StateMachine/qtqmlstatemachineplugind.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-qtqmlstatemachine-Debug
+FileType: BINARY
+FileChecksum: SHA1: 02c2b1ec1f5da114ff2646d002b1c458b6f0f1df
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-plugin-qtqmlstatemachine CONTAINS SPDXRef-PackagedFile-qt-plugin-qtqmlstatemachine-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-qtqmlstatemachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/src/statemachineqml/qtqmlstatemachine_QtQmlStateMachinePlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-qtqmlstatemachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/
+Relationship: SPDXRef-PackagedFile-qt-plugin-qtqmlstatemachine-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/statemachineqml/C:/Users/qt/work/qt/qtscxml_build/src/statemachineqml/qtqmlstatemachine_resource-Debug.rc
+
+PackageName: QScxmlEcmaScriptDataModelPlugin
+SPDXID: SPDXRef-Package-qtscxml-qt-plugin-QScxmlEcmaScriptDataModelPlugin
+PackageDownloadLocation: git://code.qt.io/qt/qtscxml.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtscxml?library_name=QScxmlEcmaScriptDataModelPlugin#src/plugins/ecmascriptdatamodel
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtscxml-QScxmlEcmaScriptDataModelPlugin?vcs_url=https://code.qt.io/qt/qtscxml.git&library_name=QScxmlEcmaScriptDataModelPlugin#src/plugins/ecmascriptdatamodel
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: QScxmlEcmaScriptDataModelPlugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtscxml:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 9152388665e0ddd7b411073d6e24dc6ff3ff0154
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtscxml-qt-plugin-QScxmlEcmaScriptDataModelPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtscxml-qt-plugin-QScxmlEcmaScriptDataModelPlugin DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtscxml-qt-plugin-QScxmlEcmaScriptDataModelPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtscxml-qt-plugin-QScxmlEcmaScriptDataModelPlugin DEPENDS_ON SPDXRef-Package-qtscxml-qt-module-Scxml
+Relationship: SPDXRef-Package-qtscxml CONTAINS SPDXRef-Package-qtscxml-qt-plugin-QScxmlEcmaScriptDataModelPlugin
+
+FileName: ./plugins/scxmldatamodel/qscxmlecmascriptdatamodel.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 6c5dc661e7be8ff438b3f041a6e59606916b0a57
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-plugin-QScxmlEcmaScriptDataModelPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/plugins/ecmascriptdatamodel/qscxmlecmascriptdatamodelplugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/plugins/ecmascriptdatamodel/qscxmlecmascriptdatamodelplugin_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/plugins/ecmascriptdatamodel/qscxmlecmascriptdatamodel_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/plugins/ecmascriptdatamodel/qscxmlecmascriptdatamodel.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/plugins/ecmascriptdatamodel/qscxmlecmascriptplatformproperties.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/plugins/ecmascriptdatamodel/qscxmlecmascriptplatformproperties_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/plugins/ecmascriptdatamodel/C:/Users/qt/work/qt/qtscxml_build/src/plugins/ecmascriptdatamodel/QScxmlEcmaScriptDataModelPlugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/plugins/ecmascriptdatamodel/
+
+FileName: ./plugins/scxmldatamodel/qscxmlecmascriptdatamodeld.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: 3c5d6fb2c42c9f806f7b925467e973d8954f62ef
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-plugin-QScxmlEcmaScriptDataModelPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/plugins/ecmascriptdatamodel/qscxmlecmascriptdatamodelplugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/plugins/ecmascriptdatamodel/qscxmlecmascriptdatamodelplugin_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/plugins/ecmascriptdatamodel/qscxmlecmascriptdatamodel_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/plugins/ecmascriptdatamodel/qscxmlecmascriptdatamodel.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/plugins/ecmascriptdatamodel/qscxmlecmascriptplatformproperties.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/plugins/ecmascriptdatamodel/qscxmlecmascriptplatformproperties_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/plugins/ecmascriptdatamodel/
+Relationship: SPDXRef-PackagedFile-qt-plugin-QScxmlEcmaScriptDataModelPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/plugins/ecmascriptdatamodel/C:/Users/qt/work/qt/qtscxml_build/src/plugins/ecmascriptdatamodel/QScxmlEcmaScriptDataModelPlugin_resource-Debug.rc
+
+PackageName: qscxmlc
+SPDXID: SPDXRef-Package-qtscxml-qt-tool-qscxmlc
+PackageDownloadLocation: git://code.qt.io/qt/qtscxml.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtscxml?library_name=qscxmlc#tools/qscxmlc
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtscxml-qscxmlc?vcs_url=https://code.qt.io/qt/qtscxml.git&library_name=qscxmlc#tools/qscxmlc
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: APPLICATION
+PackageComment: <text>
+CMake target name: qscxmlc
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtscxml:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: e72320a0a37116dea7495fc9a13256c9865d9673
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtscxml-qt-tool-qscxmlc DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtscxml-qt-tool-qscxmlc DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformToolInternal
+Relationship: SPDXRef-Package-qtscxml-qt-tool-qscxmlc DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformCommonInternal
+Relationship: SPDXRef-Package-qtscxml CONTAINS SPDXRef-Package-qtscxml-qt-tool-qscxmlc
+
+FileName: ./bin/qscxmlc.exe
+SPDXID: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: a67615e64a4466d469aff508be119e61aa69a372
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtscxml-qt-tool-qscxmlc CONTAINS SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/tools/qscxmlc/C:/Users/qt/work/qt/qtscxml_build/tools/qscxmlc/qscxmlc_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/tools/qscxmlc/
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcompiler.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcompiler.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlcompiler_p.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlerror.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlerror.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlexecutablecontent.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlexecutablecontent.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlexecutablecontent_p.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmlglobals.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmltabledata.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/src/scxml/qscxmltabledata.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/tools/qscxmlc/generator.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/tools/qscxmlc/generator.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/tools/qscxmlc/main.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/tools/qscxmlc/moc.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/tools/qscxmlc/moc.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/tools/qscxmlc/outputrevision.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/tools/qscxmlc/qscxmlc.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/tools/qscxmlc/qscxmlc.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/tools/qscxmlc/scxmlcppdumper.cpp
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/tools/qscxmlc/scxmlcppdumper.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtscxml/tools/qscxmlc/utils.h
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/tools/qscxmlc/qscxmlc_longpath.manifest
+Relationship: SPDXRef-PackagedFile-qt-tool-qscxmlc-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtscxml/tools/qscxmlc/.qt/rcc/qrc_templates.cpp
+
+LicenseID: LicenseRef-Qt-Commercial
+ExtractedText: <text>Licensees holding valid commercial Qt licenses may use this software in
+accordance with the the terms contained in a written agreement between
+you and The Qt Company. Alternatively, the terms and conditions that were
+accepted by the licensee when buying and/or downloading the
+software do apply.
+
+For the latest licensing terms and conditions, see https://www.qt.io/terms-conditions.
+For further information use the contact form at https://www.qt.io/contact-us.
+</text>

@@ -1,0 +1,524 @@
+SPDXVersion: SPDX-2.3
+DataLicense: CC0-1.0
+SPDXID: SPDXRef-DOCUMENT
+DocumentName: qtspeech-6.10.0
+DocumentNamespace: https://qt.io/spdxdocs/qtspeech-6.10.0
+Creator: Organization: TheQtCompany
+Creator: Tool: Qt Build System
+CreatorComment: <text>This SPDX document was created from CMake 3.30.5, using the qt
+build system from https://code.qt.io/cgit/qt/qtbase.git/tree/cmake/QtPublicSbomHelpers.cmake</text>
+Created: 2025-10-02T02:00:22Z
+ExternalDocumentRef: DocumentRef-qtbase https://qt.io/spdxdocs/qtbase-5a8637e4+HEAD SHA1: 5ffd15d0b3b0dfbed5f9302602018f8bfed209f7
+ExternalDocumentRef: DocumentRef-qtdeclarative https://qt.io/spdxdocs/qtdeclarative-7e0ab1d9+HEAD SHA1: abe2fefc07c2482cfcc5aa4055014d6869372c22
+ExternalDocumentRef: DocumentRef-qtmultimedia https://qt.io/spdxdocs/qtmultimedia-6.10.0 SHA1: 1043c16b50e67a4548575fad72d8dba10d9aa32d
+
+PackageName: MSVC
+SPDXID: SPDXRef-compiler
+PackageVersion: 19.39.33520.0
+PackageDownloadLocation: NOASSERTION
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: NOASSERTION
+PackageSupplier: Organization: Anonymous
+FilesAnalyzed: false
+PackageSummary: <text>The compiler as identified by CMake, running on Windows (AMD64)</text>
+PrimaryPackagePurpose: APPLICATION
+Relationship: SPDXRef-compiler BUILD_DEPENDENCY_OF SPDXRef-Package-qtspeech
+RelationshipComment: <text>SPDXRef-Package-qtspeech is built by compiler MSVC version 19.39.33520.0</text>
+
+PackageName: qtspeech
+SPDXID: SPDXRef-Package-qtspeech
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtspeech:6.10.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtspeech@6.10.0
+PackageVersion: 6.10.0
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtspeech@6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageDownloadLocation: git://code.qt.io/qt/qtspeech.git
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: Copyright (C) The Qt Company Ltd. and other contributors.
+PackageHomePage: https://qt.io
+PackageComment: <text>Built by CMake 3.30.5 with RelWithDebInfo;Debug configuration for Windows (AMD64)
+qtspeech was configured with:
+    qt-configure-module <sources>/qtspeech -- -DFFMPEG_DIR=C:\FFmpeg-n7.1.1\build\msvc\installed -DQT_DEPLOY_FFMPEG=TRUE -DFEATURE_clangcpp=OFF -DINPUT_headersclean=ON -DQT_INSTALL_CONFIG_INFO_FILES=ON -DQT_GENERATE_SBOM=ON -DQT_GENERATE_SOURCE_SBOM=ON -DQT_SBOM_PYTHON_INTERP=C:\Python38_64 -DQT_SBOM_PYTHON_APPS_PATH=C:\Python310_64\Scripts -DQT_LINT_SOURCE_SBOM=ON -DQT_INTERNAL_SBOM_DEFAULT_CHECKS=ON -DQT_INTERNAL_SBOM_AUDIT=ON -DQT_INTERNAL_SBOM_AUDIT_NO_ERROR=ON -DQT_BUILD_TESTS=OFF -DCMAKE_AUTOGEN_VERBOSE=ON -DCMAKE_MESSAGE_LOG_LEVEL=STATUS -DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache
+</text>
+FilesAnalyzed: false
+BuiltDate: 2025-10-02T02:00:22Z
+Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-Package-qtspeech
+
+PackageName: TextToSpeechQml
+SPDXID: SPDXRef-Package-qtspeech-qt-plugin-TextToSpeechQml
+PackageDownloadLocation: git://code.qt.io/qt/qtspeech.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtspeech?library_name=TextToSpeechQml#src/tts/qml
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtspeech-TextToSpeechQml?vcs_url=https://code.qt.io/qt/qtspeech.git&library_name=TextToSpeechQml#src/tts/qml
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: TextToSpeechQml
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtspeech:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: e23902fe13521b56f06aba2debbea7220a2c8693
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-TextToSpeechQml DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-TextToSpeechQml DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-TextToSpeechQml DEPENDS_ON SPDXRef-Package-qtspeech-qt-module-TextToSpeech
+Relationship: SPDXRef-Package-qtspeech CONTAINS SPDXRef-Package-qtspeech-qt-plugin-TextToSpeechQml
+
+FileName: ./qml/QtTextToSpeech/texttospeechqmlplugin.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 4c2714193bf424352e519f28a7816a15e83435fa
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-TextToSpeechQml CONTAINS SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qml/qtexttospeech_qmltypes_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qml/qdeclarativetexttospeech.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qml/qdeclarativetexttospeech_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qml/qvoiceselectorattached.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qml/qvoiceselectorattached_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtspeech/src/tts/qml/texttospeechqml_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtspeech/src/tts/qml/.qt/rcc/qrc_qmake_QtTextToSpeech.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtspeech/src/tts/qml/TextToSpeechQml_QtTextToSpeechPlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qml/C:/Users/qt/work/qt/qtspeech_build/src/tts/qml/TextToSpeechQml_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qml/
+
+FileName: ./qml/QtTextToSpeech/texttospeechqmlplugind.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-Debug
+FileType: BINARY
+FileChecksum: SHA1: fb85c73d8f945ecb3ec407cef2e0bc27895415f2
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-TextToSpeechQml CONTAINS SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qml/qtexttospeech_qmltypes_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qml/qdeclarativetexttospeech.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qml/qdeclarativetexttospeech_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qml/qvoiceselectorattached.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qml/qvoiceselectorattached_p.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtspeech/src/tts/qml/texttospeechqml_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtspeech/src/tts/qml/.qt/rcc/qrc_qmake_QtTextToSpeech.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtspeech/src/tts/qml/TextToSpeechQml_QtTextToSpeechPlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qml/
+Relationship: SPDXRef-PackagedFile-qt-plugin-TextToSpeechQml-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qml/C:/Users/qt/work/qt/qtspeech_build/src/tts/qml/TextToSpeechQml_resource-Debug.rc
+
+PackageName: TextToSpeech
+SPDXID: SPDXRef-Package-qtspeech-qt-module-TextToSpeech
+PackageDownloadLocation: git://code.qt.io/qt/qtspeech.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtspeech?library_name=TextToSpeech#src/tts
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtspeech-TextToSpeech?vcs_url=https://code.qt.io/qt/qtspeech.git&library_name=TextToSpeech#src/tts
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: TextToSpeech
+CMake exported target name: Qt6::TextToSpeech
+Contained in CMake package: Qt6TextToSpeech
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtspeech:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: b10f4985e3373eafedc98591e12f359fce4a0676
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtspeech-qt-module-TextToSpeech DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtspeech-qt-module-TextToSpeech DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtspeech-qt-module-TextToSpeech DEPENDS_ON DocumentRef-qtmultimedia:SPDXRef-Package-qtmultimedia-qt-module-Multimedia
+Relationship: SPDXRef-Package-qtspeech CONTAINS SPDXRef-Package-qtspeech-qt-module-TextToSpeech
+
+FileName: ./bin/Qt6TextToSpeech.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-TextToSpeech-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: ec6120b9fb188a4c22c7d81e8cb12e017a03507a
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtspeech-qt-module-TextToSpeech CONTAINS SPDXRef-PackagedFile-qt-module-TextToSpeech-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/C:/Users/qt/work/qt/qtspeech_build/src/tts/TextToSpeech_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeech.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeech.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeech_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeech_global.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeechengine.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeechengine.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeechplugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeechplugin.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qvoice.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qvoice.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qvoice_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtspeech/src/tts/qttexttospeech-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtspeech/src/tts/qttexttospeech-config_p.h
+
+FileName: ./bin/Qt6TextToSpeechd.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-TextToSpeech-Debug
+FileType: BINARY
+FileChecksum: SHA1: e3caf554abc992147c8b0545580ae1a8910c1fbf
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtspeech-qt-module-TextToSpeech CONTAINS SPDXRef-PackagedFile-qt-module-TextToSpeech-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/C:/Users/qt/work/qt/qtspeech_build/src/tts/TextToSpeech_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeech.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeech.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeech_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeech_global.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeechengine.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeechengine.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeechplugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeechplugin.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qvoice.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qvoice.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qvoice_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtspeech/src/tts/qttexttospeech-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtspeech/src/tts/qttexttospeech-config_p.h
+
+FileName: ./lib/Qt6TextToSpeech.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 57d488cb188fcb67672076827c700f9fd484f77a
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtspeech-qt-module-TextToSpeech CONTAINS SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/C:/Users/qt/work/qt/qtspeech_build/src/tts/TextToSpeech_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeech.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeech.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeech_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeech_global.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeechengine.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeechengine.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeechplugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeechplugin.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qvoice.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qvoice.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qvoice_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtspeech/src/tts/qttexttospeech-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtspeech/src/tts/qttexttospeech-config_p.h
+
+FileName: ./lib/Qt6TextToSpeechd.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: 280bb9d2503848c74e52c1d2727c6e29c209c3bf
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtspeech-qt-module-TextToSpeech CONTAINS SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/C:/Users/qt/work/qt/qtspeech_build/src/tts/TextToSpeech_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeech.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeech.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeech_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeech_global.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeechengine.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeechengine.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeechplugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qtexttospeechplugin.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qvoice.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qvoice.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/tts/qvoice_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtspeech/src/tts/qttexttospeech-config.h
+Relationship: SPDXRef-PackagedFile-qt-module-TextToSpeech-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtspeech/src/tts/qttexttospeech-config_p.h
+
+PackageName: QTextToSpeechMockPlugin
+SPDXID: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechMockPlugin
+PackageDownloadLocation: git://code.qt.io/qt/qtspeech.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtspeech?library_name=QTextToSpeechMockPlugin#src/plugins/tts/mock
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtspeech-QTextToSpeechMockPlugin?vcs_url=https://code.qt.io/qt/qtspeech.git&library_name=QTextToSpeechMockPlugin#src/plugins/tts/mock
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: QTextToSpeechMockPlugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtspeech:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 26d0b2a6f29b174bb44e5a5e8cc8e0ce611e3f42
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechMockPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechMockPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechMockPlugin DEPENDS_ON SPDXRef-Package-qtspeech-qt-module-TextToSpeech
+Relationship: SPDXRef-Package-qtspeech CONTAINS SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechMockPlugin
+
+FileName: ./plugins/texttospeech/qtexttospeech_mock.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechMockPlugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: b71446f5834a78c8dcc6d3602fd296de1b66b938
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechMockPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-QTextToSpeechMockPlugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechMockPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/mock/qtexttospeech_mock.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechMockPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/mock/qtexttospeech_mock.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechMockPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/mock/qtexttospeech_mock_plugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechMockPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/mock/qtexttospeech_mock_plugin.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechMockPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/mock/C:/Users/qt/work/qt/qtspeech_build/src/plugins/tts/mock/QTextToSpeechMockPlugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechMockPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/mock/
+
+FileName: ./plugins/texttospeech/qtexttospeech_mockd.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechMockPlugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: 2da2ab6dfd85b4b185e922457c98c01810633991
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechMockPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-QTextToSpeechMockPlugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechMockPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/mock/qtexttospeech_mock.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechMockPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/mock/qtexttospeech_mock.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechMockPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/mock/qtexttospeech_mock_plugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechMockPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/mock/qtexttospeech_mock_plugin.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechMockPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/mock/
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechMockPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/mock/C:/Users/qt/work/qt/qtspeech_build/src/plugins/tts/mock/QTextToSpeechMockPlugin_resource-Debug.rc
+
+PackageName: QTextToSpeechSapiPlugin
+SPDXID: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechSapiPlugin
+PackageDownloadLocation: git://code.qt.io/qt/qtspeech.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtspeech?library_name=QTextToSpeechSapiPlugin#src/plugins/tts/sapi
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtspeech-QTextToSpeechSapiPlugin?vcs_url=https://code.qt.io/qt/qtspeech.git&library_name=QTextToSpeechSapiPlugin#src/plugins/tts/sapi
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: QTextToSpeechSapiPlugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtspeech:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: f655d99a09008092c32e2c27f7a32e67b26bb78a
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechSapiPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechSapiPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechSapiPlugin DEPENDS_ON SPDXRef-Package-qtspeech-qt-module-TextToSpeech
+Relationship: SPDXRef-Package-qtspeech CONTAINS SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechSapiPlugin
+
+FileName: ./plugins/texttospeech/qtexttospeech_sapi.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechSapiPlugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 552f8c86719b698e82b0108fb7e62415f3756565
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechSapiPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-QTextToSpeechSapiPlugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechSapiPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/sapi/qtexttospeech_sapi.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechSapiPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/sapi/qtexttospeech_sapi.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechSapiPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/sapi/qtexttospeech_sapi_plugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechSapiPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/sapi/qtexttospeech_sapi_plugin.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechSapiPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/sapi/C:/Users/qt/work/qt/qtspeech_build/src/plugins/tts/sapi/QTextToSpeechSapiPlugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechSapiPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/sapi/
+
+FileName: ./plugins/texttospeech/qtexttospeech_sapid.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechSapiPlugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: 4ec9f16e7096f60325506f84f8d2b21e592aab94
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechSapiPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-QTextToSpeechSapiPlugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechSapiPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/sapi/qtexttospeech_sapi.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechSapiPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/sapi/qtexttospeech_sapi.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechSapiPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/sapi/qtexttospeech_sapi_plugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechSapiPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/sapi/qtexttospeech_sapi_plugin.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechSapiPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/sapi/
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechSapiPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/sapi/C:/Users/qt/work/qt/qtspeech_build/src/plugins/tts/sapi/QTextToSpeechSapiPlugin_resource-Debug.rc
+
+PackageName: QTextToSpeechWinRTPlugin
+SPDXID: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechWinRTPlugin
+PackageDownloadLocation: git://code.qt.io/qt/qtspeech.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtspeech?library_name=QTextToSpeechWinRTPlugin#src/plugins/tts/winrt
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtspeech-QTextToSpeechWinRTPlugin?vcs_url=https://code.qt.io/qt/qtspeech.git&library_name=QTextToSpeechWinRTPlugin#src/plugins/tts/winrt
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: QTextToSpeechWinRTPlugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtspeech:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: b733f23bb2fbcba43fe1396f68c4ade8131d3fb5
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechWinRTPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechWinRTPlugin DEPENDS_ON DocumentRef-qtmultimedia:SPDXRef-Package-qtmultimedia-qt-module-Multimedia
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechWinRTPlugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechWinRTPlugin DEPENDS_ON SPDXRef-Package-qtspeech-qt-module-TextToSpeech
+Relationship: SPDXRef-Package-qtspeech CONTAINS SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechWinRTPlugin
+
+FileName: ./plugins/texttospeech/qtexttospeech_winrt.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 18a29f71390a9e594cb484273e17190401a87282
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechWinRTPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/winrt/qtexttospeech_winrt.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/winrt/qtexttospeech_winrt.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/winrt/qtexttospeech_winrt_audiosource.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/winrt/qtexttospeech_winrt_audiosource.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/winrt/qtexttospeech_winrt_plugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/winrt/qtexttospeech_winrt_plugin.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/winrt/C:/Users/qt/work/qt/qtspeech_build/src/plugins/tts/winrt/QTextToSpeechWinRTPlugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/winrt/
+
+FileName: ./plugins/texttospeech/qtexttospeech_winrtd.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: be734bfb7140d25fbedd930a1235de9294e406a2
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtspeech-qt-plugin-QTextToSpeechWinRTPlugin CONTAINS SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/winrt/qtexttospeech_winrt.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/winrt/qtexttospeech_winrt.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/winrt/qtexttospeech_winrt_audiosource.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/winrt/qtexttospeech_winrt_audiosource.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/winrt/qtexttospeech_winrt_plugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/winrt/qtexttospeech_winrt_plugin.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/winrt/
+Relationship: SPDXRef-PackagedFile-qt-plugin-QTextToSpeechWinRTPlugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtspeech/src/plugins/tts/winrt/C:/Users/qt/work/qt/qtspeech_build/src/plugins/tts/winrt/QTextToSpeechWinRTPlugin_resource-Debug.rc
+
+LicenseID: LicenseRef-Qt-Commercial
+ExtractedText: <text>Licensees holding valid commercial Qt licenses may use this software in
+accordance with the the terms contained in a written agreement between
+you and The Qt Company. Alternatively, the terms and conditions that were
+accepted by the licensee when buying and/or downloading the
+software do apply.
+
+For the latest licensing terms and conditions, see https://www.qt.io/terms-conditions.
+For further information use the contact form at https://www.qt.io/contact-us.
+</text>

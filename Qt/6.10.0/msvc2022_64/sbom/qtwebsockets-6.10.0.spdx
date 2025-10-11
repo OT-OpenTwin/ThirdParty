@@ -1,0 +1,460 @@
+SPDXVersion: SPDX-2.3
+DataLicense: CC0-1.0
+SPDXID: SPDXRef-DOCUMENT
+DocumentName: qtwebsockets-6.10.0
+DocumentNamespace: https://qt.io/spdxdocs/qtwebsockets-6.10.0
+Creator: Organization: TheQtCompany
+Creator: Tool: Qt Build System
+CreatorComment: <text>This SPDX document was created from CMake 3.30.5, using the qt
+build system from https://code.qt.io/cgit/qt/qtbase.git/tree/cmake/QtPublicSbomHelpers.cmake</text>
+Created: 2025-10-01T23:04:06Z
+ExternalDocumentRef: DocumentRef-qtbase https://qt.io/spdxdocs/qtbase-5a8637e4+HEAD SHA1: 5ffd15d0b3b0dfbed5f9302602018f8bfed209f7
+ExternalDocumentRef: DocumentRef-qtdeclarative https://qt.io/spdxdocs/qtdeclarative-7e0ab1d9+HEAD SHA1: abe2fefc07c2482cfcc5aa4055014d6869372c22
+
+PackageName: MSVC
+SPDXID: SPDXRef-compiler
+PackageVersion: 19.39.33520.0
+PackageDownloadLocation: NOASSERTION
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: NOASSERTION
+PackageSupplier: Organization: Anonymous
+FilesAnalyzed: false
+PackageSummary: <text>The compiler as identified by CMake, running on Windows (AMD64)</text>
+PrimaryPackagePurpose: APPLICATION
+Relationship: SPDXRef-compiler BUILD_DEPENDENCY_OF SPDXRef-Package-qtwebsockets
+RelationshipComment: <text>SPDXRef-Package-qtwebsockets is built by compiler MSVC version 19.39.33520.0</text>
+
+PackageName: qtwebsockets
+SPDXID: SPDXRef-Package-qtwebsockets
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtwebsockets:6.10.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtwebsockets@6.10.0
+PackageVersion: 6.10.0
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtwebsockets@6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageDownloadLocation: git://code.qt.io/qt/qtwebsockets.git
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: Copyright (C) The Qt Company Ltd. and other contributors.
+PackageHomePage: https://qt.io
+PackageComment: <text>Built by CMake 3.30.5 with RelWithDebInfo;Debug configuration for Windows (AMD64)
+qtwebsockets was configured with:
+    qt-configure-module <sources>/qtwebsockets -- -DFFMPEG_DIR=C:\FFmpeg-n7.1.1\build\msvc\installed -DQT_DEPLOY_FFMPEG=TRUE -DFEATURE_clangcpp=OFF -DINPUT_headersclean=ON -DQT_INSTALL_CONFIG_INFO_FILES=ON -DQT_GENERATE_SBOM=ON -DQT_GENERATE_SOURCE_SBOM=ON -DQT_SBOM_PYTHON_INTERP=C:\Python38_64 -DQT_SBOM_PYTHON_APPS_PATH=C:\Python310_64\Scripts -DQT_LINT_SOURCE_SBOM=ON -DQT_INTERNAL_SBOM_DEFAULT_CHECKS=ON -DQT_INTERNAL_SBOM_AUDIT=ON -DQT_INTERNAL_SBOM_AUDIT_NO_ERROR=ON -DQT_BUILD_TESTS=OFF -DCMAKE_AUTOGEN_VERBOSE=ON -DCMAKE_MESSAGE_LOG_LEVEL=STATUS -DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache
+</text>
+FilesAnalyzed: false
+BuiltDate: 2025-10-01T23:04:06Z
+Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-Package-qtwebsockets
+
+PackageName: WebSockets
+SPDXID: SPDXRef-Package-qtwebsockets-qt-module-WebSockets
+PackageDownloadLocation: git://code.qt.io/qt/qtwebsockets.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtwebsockets?library_name=WebSockets#src/websockets
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtwebsockets-WebSockets?vcs_url=https://code.qt.io/qt/qtwebsockets.git&library_name=WebSockets#src/websockets
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: WebSockets
+CMake exported target name: Qt6::WebSockets
+Contained in CMake package: Qt6WebSockets
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtwebsockets:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 17d0274c6289774c4dc08dbc5798b317ab41f70f
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtwebsockets-qt-module-WebSockets DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtwebsockets-qt-module-WebSockets DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Network
+Relationship: SPDXRef-Package-qtwebsockets-qt-module-WebSockets DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtwebsockets CONTAINS SPDXRef-Package-qtwebsockets-qt-module-WebSockets
+
+FileName: ./bin/Qt6WebSockets.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: b9488cd82640c1535fc96b20a46d168d50e52c56
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtwebsockets-qt-module-WebSockets CONTAINS SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/C:/Users/qt/work/qt/qtwebsockets_build/src/websockets/WebSockets_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtwebsockets/include/QtWebSockets/qtwebsocketsexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qdefaultmaskgenerator_p.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qdefaultmaskgenerator_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qmaskgenerator.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qmaskgenerator.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocket.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocket.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocket_p.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocket_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketcorsauthenticator.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketcorsauthenticator.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketcorsauthenticator_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketdataprocessor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketdataprocessor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketframe.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketframe_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeoptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeoptions.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeoptions_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakerequest.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakerequest_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeresponse.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeresponse_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketprotocol.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketprotocol.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketprotocol_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockets_global.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketserver_p.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketserver_p.h
+
+FileName: ./bin/Qt6WebSocketsd.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-WebSockets-Debug
+FileType: BINARY
+FileChecksum: SHA1: cb511555c97c937fab37751754f873f26150391d
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtwebsockets-qt-module-WebSockets CONTAINS SPDXRef-PackagedFile-qt-module-WebSockets-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/C:/Users/qt/work/qt/qtwebsockets_build/src/websockets/WebSockets_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtwebsockets/include/QtWebSockets/qtwebsocketsexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qdefaultmaskgenerator_p.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qdefaultmaskgenerator_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qmaskgenerator.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qmaskgenerator.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocket.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocket.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocket_p.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocket_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketcorsauthenticator.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketcorsauthenticator.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketcorsauthenticator_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketdataprocessor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketdataprocessor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketframe.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketframe_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeoptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeoptions.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeoptions_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakerequest.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakerequest_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeresponse.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeresponse_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketprotocol.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketprotocol.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketprotocol_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockets_global.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketserver_p.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketserver_p.h
+
+FileName: ./lib/Qt6WebSockets.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: d36e2475e67a62fa403722ac3aa5861cbdd4c55e
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtwebsockets-qt-module-WebSockets CONTAINS SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/C:/Users/qt/work/qt/qtwebsockets_build/src/websockets/WebSockets_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtwebsockets/include/QtWebSockets/qtwebsocketsexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qdefaultmaskgenerator_p.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qdefaultmaskgenerator_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qmaskgenerator.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qmaskgenerator.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocket.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocket.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocket_p.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocket_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketcorsauthenticator.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketcorsauthenticator.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketcorsauthenticator_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketdataprocessor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketdataprocessor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketframe.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketframe_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeoptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeoptions.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeoptions_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakerequest.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakerequest_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeresponse.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeresponse_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketprotocol.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketprotocol.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketprotocol_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockets_global.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketserver_p.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketserver_p.h
+
+FileName: ./lib/Qt6WebSocketsd.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: e16616dcace2fcf19ea64fcbc962deba4bcc337c
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtwebsockets-qt-module-WebSockets CONTAINS SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/C:/Users/qt/work/qt/qtwebsockets_build/src/websockets/WebSockets_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtwebsockets/include/QtWebSockets/qtwebsocketsexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qdefaultmaskgenerator_p.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qdefaultmaskgenerator_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qmaskgenerator.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qmaskgenerator.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocket.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocket.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocket_p.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocket_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketcorsauthenticator.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketcorsauthenticator.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketcorsauthenticator_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketdataprocessor.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketdataprocessor_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketframe.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketframe_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeoptions.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeoptions.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeoptions_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakerequest.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakerequest_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeresponse.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockethandshakeresponse_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketprotocol.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketprotocol.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketprotocol_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsockets_global.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketserver.h
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketserver_p.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-WebSockets-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/websockets/qwebsocketserver_p.h
+
+PackageName: qmlwebsockets
+SPDXID: SPDXRef-Package-qtwebsockets-qt-plugin-qmlwebsockets
+PackageDownloadLocation: git://code.qt.io/qt/qtwebsockets.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtwebsockets?library_name=qmlwebsockets#src/imports/qmlwebsockets
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtwebsockets-qmlwebsockets?vcs_url=https://code.qt.io/qt/qtwebsockets.git&library_name=qmlwebsockets#src/imports/qmlwebsockets
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: qmlwebsockets
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtwebsockets:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 2c0d322efdb1870245599911a09d12cdc0bfa97f
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtwebsockets-qt-plugin-qmlwebsockets DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtwebsockets-qt-plugin-qmlwebsockets DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtwebsockets-qt-plugin-qmlwebsockets DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtwebsockets-qt-plugin-qmlwebsockets DEPENDS_ON SPDXRef-Package-qtwebsockets-qt-module-WebSockets
+Relationship: SPDXRef-Package-qtwebsockets CONTAINS SPDXRef-Package-qtwebsockets-qt-plugin-qmlwebsockets
+
+FileName: ./qml/QtWebSockets/qmlwebsocketsplugin.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 9da907ac0de0dc4fcc28822a42459f000f99f269
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtwebsockets-qt-plugin-qmlwebsockets CONTAINS SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/imports/qmlwebsockets/qmlwebsockets_plugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/imports/qmlwebsockets/qmlwebsockets_plugin.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/imports/qmlwebsockets/qqmlwebsocket.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/imports/qmlwebsockets/qqmlwebsocket.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/imports/qmlwebsockets/qqmlwebsocketserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/imports/qmlwebsockets/qqmlwebsocketserver.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtwebsockets/src/imports/qmlwebsockets/.qt/rcc/qrc_qmake_QtWebSockets.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/imports/qmlwebsockets/C:/Users/qt/work/qt/qtwebsockets_build/src/imports/qmlwebsockets/qmlwebsockets_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/imports/qmlwebsockets/
+
+FileName: ./qml/QtWebSockets/qmlwebsocketsplugind.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-Debug
+FileType: BINARY
+FileChecksum: SHA1: 16992c0eca027660ed4463b454c593d092a85259
+LicenseConcluded: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtwebsockets-qt-plugin-qmlwebsockets CONTAINS SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/imports/qmlwebsockets/qmlwebsockets_plugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/imports/qmlwebsockets/qmlwebsockets_plugin.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/imports/qmlwebsockets/qqmlwebsocket.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/imports/qmlwebsockets/qqmlwebsocket.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/imports/qmlwebsockets/qqmlwebsocketserver.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/imports/qmlwebsockets/qqmlwebsocketserver.h
+Relationship: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtwebsockets/src/imports/qmlwebsockets/.qt/rcc/qrc_qmake_QtWebSockets.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/imports/qmlwebsockets/
+Relationship: SPDXRef-PackagedFile-qt-plugin-qmlwebsockets-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtwebsockets/src/imports/qmlwebsockets/C:/Users/qt/work/qt/qtwebsockets_build/src/imports/qmlwebsockets/qmlwebsockets_resource-Debug.rc
+
+LicenseID: LicenseRef-Qt-Commercial
+ExtractedText: <text>Licensees holding valid commercial Qt licenses may use this software in
+accordance with the the terms contained in a written agreement between
+you and The Qt Company. Alternatively, the terms and conditions that were
+accepted by the licensee when buying and/or downloading the
+software do apply.
+
+For the latest licensing terms and conditions, see https://www.qt.io/terms-conditions.
+For further information use the contact form at https://www.qt.io/contact-us.
+</text>

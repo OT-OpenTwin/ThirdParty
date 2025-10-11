@@ -1,0 +1,11 @@
+QT.protobufqtguitypes_private.VERSION = 6.10.0
+QT.protobufqtguitypes_private.name = QtProtobufQtGuiTypes
+QT.protobufqtguitypes_private.module =
+QT.protobufqtguitypes_private.libs = $$QT_MODULE_LIB_BASE
+QT.protobufqtguitypes_private.includes = $$QT_MODULE_INCLUDE_BASE/QtProtobufQtGuiTypes/6.10.0 $$QT_MODULE_INCLUDE_BASE/QtProtobufQtGuiTypes/6.10.0/QtProtobufQtGuiTypes
+QT.protobufqtguitypes_private.frameworks = 
+QT.protobufqtguitypes_private.depends = protobufqtguitypes
+QT.protobufqtguitypes_private.uses = 
+QT.protobufqtguitypes_private.module_config = v2 internal_module
+QT.protobufqtguitypes_private.enabled_features = 
+QT.protobufqtguitypes_private.disabled_features = 

@@ -1,0 +1,11 @@
+QT.protobufquick_private.VERSION = 6.10.0
+QT.protobufquick_private.name = QtProtobufQuick
+QT.protobufquick_private.module =
+QT.protobufquick_private.libs = $$QT_MODULE_LIB_BASE
+QT.protobufquick_private.includes = $$QT_MODULE_INCLUDE_BASE/QtProtobufQuick/6.10.0 $$QT_MODULE_INCLUDE_BASE/QtProtobufQuick/6.10.0/QtProtobufQuick
+QT.protobufquick_private.frameworks = 
+QT.protobufquick_private.depends = protobufquick
+QT.protobufquick_private.uses = 
+QT.protobufquick_private.module_config = v2 internal_module
+QT.protobufquick_private.enabled_features = 
+QT.protobufquick_private.disabled_features = 

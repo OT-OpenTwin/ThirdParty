@@ -1,0 +1,504 @@
+SPDXVersion: SPDX-2.3
+DataLicense: CC0-1.0
+SPDXID: SPDXRef-DOCUMENT
+DocumentName: qtquicktimeline-6.10.0
+DocumentNamespace: https://qt.io/spdxdocs/qtquicktimeline-6.10.0
+Creator: Organization: TheQtCompany
+Creator: Tool: Qt Build System
+CreatorComment: <text>This SPDX document was created from CMake 3.30.5, using the qt
+build system from https://code.qt.io/cgit/qt/qtbase.git/tree/cmake/QtPublicSbomHelpers.cmake</text>
+Created: 2025-10-01T23:05:07Z
+ExternalDocumentRef: DocumentRef-qtdeclarative https://qt.io/spdxdocs/qtdeclarative-7e0ab1d9+HEAD SHA1: abe2fefc07c2482cfcc5aa4055014d6869372c22
+ExternalDocumentRef: DocumentRef-qtbase https://qt.io/spdxdocs/qtbase-5a8637e4+HEAD SHA1: 5ffd15d0b3b0dfbed5f9302602018f8bfed209f7
+
+PackageName: MSVC
+SPDXID: SPDXRef-compiler
+PackageVersion: 19.39.33520.0
+PackageDownloadLocation: NOASSERTION
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: NOASSERTION
+PackageSupplier: Organization: Anonymous
+FilesAnalyzed: false
+PackageSummary: <text>The compiler as identified by CMake, running on Windows (AMD64)</text>
+PrimaryPackagePurpose: APPLICATION
+Relationship: SPDXRef-compiler BUILD_DEPENDENCY_OF SPDXRef-Package-qtquicktimeline
+RelationshipComment: <text>SPDXRef-Package-qtquicktimeline is built by compiler MSVC version 19.39.33520.0</text>
+
+PackageName: qtquicktimeline
+SPDXID: SPDXRef-Package-qtquicktimeline
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtquicktimeline:6.10.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtquicktimeline@6.10.0
+PackageVersion: 6.10.0
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtquicktimeline@6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageDownloadLocation: git://code.qt.io/qt/qtquicktimeline.git
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: Copyright (C) The Qt Company Ltd. and other contributors.
+PackageHomePage: https://qt.io
+PackageComment: <text>Built by CMake 3.30.5 with RelWithDebInfo;Debug configuration for Windows (AMD64)
+qtquicktimeline was configured with:
+    qt-configure-module <sources>/qtquicktimeline -- -DFFMPEG_DIR=C:\FFmpeg-n7.1.1\build\msvc\installed -DQT_DEPLOY_FFMPEG=TRUE -DFEATURE_clangcpp=OFF -DINPUT_headersclean=ON -DQT_INSTALL_CONFIG_INFO_FILES=ON -DQT_GENERATE_SBOM=ON -DQT_GENERATE_SOURCE_SBOM=ON -DQT_SBOM_PYTHON_INTERP=C:\Python38_64 -DQT_SBOM_PYTHON_APPS_PATH=C:\Python310_64\Scripts -DQT_LINT_SOURCE_SBOM=ON -DQT_INTERNAL_SBOM_DEFAULT_CHECKS=ON -DQT_INTERNAL_SBOM_AUDIT=ON -DQT_INTERNAL_SBOM_AUDIT_NO_ERROR=ON -DQT_BUILD_TESTS=OFF -DCMAKE_AUTOGEN_VERBOSE=ON -DCMAKE_MESSAGE_LOG_LEVEL=STATUS -DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache
+</text>
+FilesAnalyzed: false
+BuiltDate: 2025-10-01T23:05:07Z
+Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-Package-qtquicktimeline
+
+PackageName: QuickTimelineBlendTrees
+SPDXID: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimelineBlendTrees
+PackageDownloadLocation: git://code.qt.io/qt/qtquicktimeline.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtquicktimeline?library_name=QuickTimelineBlendTrees#src/timeline/blendtrees
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtquicktimeline-QuickTimelineBlendTrees?vcs_url=https://code.qt.io/qt/qtquicktimeline.git&library_name=QuickTimelineBlendTrees#src/timeline/blendtrees
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: QuickTimelineBlendTrees
+CMake exported target name: Qt6::QuickTimelineBlendTrees
+Contained in CMake package: Qt6QuickTimelineBlendTrees
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtquicktimeline:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 82e70db5f689803741fb810e155c641055a1f2ff
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimelineBlendTrees DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Quick
+Relationship: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimelineBlendTrees DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimelineBlendTrees DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimelineBlendTrees DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimelineBlendTrees DEPENDS_ON SPDXRef-Package-qtquicktimeline-qt-module-QuickTimeline
+Relationship: SPDXRef-Package-qtquicktimeline CONTAINS SPDXRef-Package-qtquicktimeline-qt-module-QuickTimelineBlendTrees
+
+FileName: ./bin/Qt6QuickTimelineBlendTrees.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: a92f04e4f7477540a05e24505df79b6b4921bfaf
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimelineBlendTrees CONTAINS SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/C:/Users/qt/work/qt/qtquicktimeline_build/src/timeline/blendtrees/QuickTimelineBlendTrees_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/include/QtQuickTimelineBlendTrees/qtquicktimelineblendtreesexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qblendtreenode.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qblendtreenode_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qtimelineanimationnode.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qtimelineanimationnode_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qblendanimationnode.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qblendanimationnode_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qtquicktimelineblendtreesglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qtquicktimelineblendtreesglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/blendtrees/quicktimelineblendtrees_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/blendtrees/.qt/rcc/qrc_qmake_QtQuick_Timeline_BlendTrees.cpp
+
+FileName: ./bin/Qt6QuickTimelineBlendTreesd.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-Debug
+FileType: BINARY
+FileChecksum: SHA1: 1ca67a3ba732e88207b8877a2bb370bbaee3c6d1
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimelineBlendTrees CONTAINS SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/C:/Users/qt/work/qt/qtquicktimeline_build/src/timeline/blendtrees/QuickTimelineBlendTrees_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/include/QtQuickTimelineBlendTrees/qtquicktimelineblendtreesexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qblendtreenode.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qblendtreenode_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qtimelineanimationnode.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qtimelineanimationnode_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qblendanimationnode.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qblendanimationnode_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qtquicktimelineblendtreesglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qtquicktimelineblendtreesglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/blendtrees/quicktimelineblendtrees_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/blendtrees/.qt/rcc/qrc_qmake_QtQuick_Timeline_BlendTrees.cpp
+
+FileName: ./lib/Qt6QuickTimelineBlendTrees.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: a66b571ae0fc1f4924c64eb64eab21871990baea
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimelineBlendTrees CONTAINS SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/C:/Users/qt/work/qt/qtquicktimeline_build/src/timeline/blendtrees/QuickTimelineBlendTrees_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/include/QtQuickTimelineBlendTrees/qtquicktimelineblendtreesexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qblendtreenode.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qblendtreenode_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qtimelineanimationnode.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qtimelineanimationnode_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qblendanimationnode.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qblendanimationnode_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qtquicktimelineblendtreesglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qtquicktimelineblendtreesglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/blendtrees/quicktimelineblendtrees_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/blendtrees/.qt/rcc/qrc_qmake_QtQuick_Timeline_BlendTrees.cpp
+
+FileName: ./lib/Qt6QuickTimelineBlendTreesd.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: 988fed32105005dbdbd09b03a01b253012271cc2
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimelineBlendTrees CONTAINS SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/C:/Users/qt/work/qt/qtquicktimeline_build/src/timeline/blendtrees/QuickTimelineBlendTrees_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/include/QtQuickTimelineBlendTrees/qtquicktimelineblendtreesexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qblendtreenode.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qblendtreenode_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qtimelineanimationnode.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qtimelineanimationnode_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qblendanimationnode.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qblendanimationnode_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qtquicktimelineblendtreesglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/qtquicktimelineblendtreesglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/blendtrees/quicktimelineblendtrees_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimelineBlendTrees-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/blendtrees/.qt/rcc/qrc_qmake_QtQuick_Timeline_BlendTrees.cpp
+
+PackageName: qtquicktimelineblendtreesplugin
+SPDXID: SPDXRef-Package-qtquicktimeline-qt-plugin-qtquicktimelineblendtreesplugin
+PackageDownloadLocation: git://code.qt.io/qt/qtquicktimeline.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtquicktimeline?library_name=qtquicktimelineblendtreesplugin#src/timeline/blendtrees
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtquicktimeline-qtquicktimelineblendtreesplugin?vcs_url=https://code.qt.io/qt/qtquicktimeline.git&library_name=qtquicktimelineblendtreesplugin#src/timeline/blendtrees
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: qtquicktimelineblendtreesplugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtquicktimeline:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: 4cb4e6ee1b732c34fc3d6dbf70cdf029a825e81c
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtquicktimeline-qt-plugin-qtquicktimelineblendtreesplugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtquicktimeline-qt-plugin-qtquicktimelineblendtreesplugin DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtquicktimeline-qt-plugin-qtquicktimelineblendtreesplugin DEPENDS_ON SPDXRef-Package-qtquicktimeline-qt-module-QuickTimelineBlendTrees
+Relationship: SPDXRef-Package-qtquicktimeline CONTAINS SPDXRef-Package-qtquicktimeline-qt-plugin-qtquicktimelineblendtreesplugin
+
+FileName: ./qml/QtQuick/Timeline/BlendTrees/qtquicktimelineblendtreesplugin.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-qtquicktimelineblendtreesplugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: cb069767cc479672d92148747d2e470a1b96d42a
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtquicktimeline-qt-plugin-qtquicktimelineblendtreesplugin CONTAINS SPDXRef-PackagedFile-qt-plugin-qtquicktimelineblendtreesplugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-qtquicktimelineblendtreesplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/blendtrees/qtquicktimelineblendtreesplugin_QtQuickTimelineBlendTreesPlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-qtquicktimelineblendtreesplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/C:/Users/qt/work/qt/qtquicktimeline_build/src/timeline/blendtrees/qtquicktimelineblendtreesplugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-qtquicktimelineblendtreesplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/
+
+FileName: ./qml/QtQuick/Timeline/BlendTrees/qtquicktimelineblendtreesplugind.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-qtquicktimelineblendtreesplugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: cdabbbe783038d25d39aa29cd6b04dabf0e8dd59
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtquicktimeline-qt-plugin-qtquicktimelineblendtreesplugin CONTAINS SPDXRef-PackagedFile-qt-plugin-qtquicktimelineblendtreesplugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-qtquicktimelineblendtreesplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/blendtrees/qtquicktimelineblendtreesplugin_QtQuickTimelineBlendTreesPlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-qtquicktimelineblendtreesplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/
+Relationship: SPDXRef-PackagedFile-qt-plugin-qtquicktimelineblendtreesplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/blendtrees/C:/Users/qt/work/qt/qtquicktimeline_build/src/timeline/blendtrees/qtquicktimelineblendtreesplugin_resource-Debug.rc
+
+PackageName: QuickTimeline
+SPDXID: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimeline
+PackageDownloadLocation: git://code.qt.io/qt/qtquicktimeline.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtquicktimeline?library_name=QuickTimeline#src/timeline
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtquicktimeline-QuickTimeline?vcs_url=https://code.qt.io/qt/qtquicktimeline.git&library_name=QuickTimeline#src/timeline
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: QuickTimeline
+CMake exported target name: Qt6::QuickTimeline
+Contained in CMake package: Qt6QuickTimeline
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtquicktimeline:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: f19e10c6be91eb54ea0e7dbfbfae55c7f16476f3
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimeline DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Quick
+Relationship: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimeline DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformModuleInternal
+Relationship: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimeline DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-Core
+Relationship: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimeline DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtquicktimeline CONTAINS SPDXRef-Package-qtquicktimeline-qt-module-QuickTimeline
+
+FileName: ./bin/Qt6QuickTimeline.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-QuickTimeline-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 23eb23fb08d7b70da70d5e21c0fc3e7d4b3e9fb9
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimeline CONTAINS SPDXRef-PackagedFile-qt-module-QuickTimeline-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/C:/Users/qt/work/qt/qtquicktimeline_build/src/timeline/QuickTimeline_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/include/QtQuickTimeline/qtquicktimelineexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquickkeyframedatautils_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquickkeyframe.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquickkeyframe_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquicktimeline.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquicktimeline_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquicktimelineanimation.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquicktimelineanimation_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qtquicktimelineglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qtquicktimelineglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/quicktimeline_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/.qt/rcc/qrc_qmake_QtQuick_Timeline.cpp
+
+FileName: ./bin/Qt6QuickTimelined.dll
+SPDXID: SPDXRef-PackagedFile-qt-module-QuickTimeline-Debug
+FileType: BINARY
+FileChecksum: SHA1: 09221a958321b33f8bb73493ab52df4172672ffa
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimeline CONTAINS SPDXRef-PackagedFile-qt-module-QuickTimeline-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/C:/Users/qt/work/qt/qtquicktimeline_build/src/timeline/QuickTimeline_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/include/QtQuickTimeline/qtquicktimelineexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquickkeyframedatautils_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquickkeyframe.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquickkeyframe_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquicktimeline.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquicktimeline_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquicktimelineanimation.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquicktimelineanimation_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qtquicktimelineglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qtquicktimelineglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/quicktimeline_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/.qt/rcc/qrc_qmake_QtQuick_Timeline.cpp
+
+FileName: ./lib/Qt6QuickTimeline.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: 02acbe221e54ab6f559ef0698004927a957c5ea3
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimeline CONTAINS SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/C:/Users/qt/work/qt/qtquicktimeline_build/src/timeline/QuickTimeline_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/include/QtQuickTimeline/qtquicktimelineexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquickkeyframedatautils_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquickkeyframe.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquickkeyframe_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquicktimeline.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquicktimeline_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquicktimelineanimation.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquicktimelineanimation_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qtquicktimelineglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qtquicktimelineglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/quicktimeline_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/.qt/rcc/qrc_qmake_QtQuick_Timeline.cpp
+
+FileName: ./lib/Qt6QuickTimelined.lib
+SPDXID: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-Debug
+FileType: BINARY
+FileChecksum: SHA1: 5aab56758c4ccb410edcb7c62331d606bbf72dad
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtquicktimeline-qt-module-QuickTimeline CONTAINS SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-Debug
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/C:/Users/qt/work/qt/qtquicktimeline_build/src/timeline/QuickTimeline_resource-Debug.rc
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/include/QtQuickTimeline/qtquicktimelineexports.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquickkeyframedatautils_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquickkeyframe.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquickkeyframe_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquicktimeline.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquicktimeline_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquicktimelineanimation.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qquicktimelineanimation_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qtquicktimelineglobal.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/qtquicktimelineglobal_p.h
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/quicktimeline_qmltyperegistrations.cpp
+Relationship: SPDXRef-PackagedFile-qt-module-QuickTimeline-ImportLibrary-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/.qt/rcc/qrc_qmake_QtQuick_Timeline.cpp
+
+PackageName: qtquicktimelineplugin
+SPDXID: SPDXRef-Package-qtquicktimeline-qt-plugin-qtquicktimelineplugin
+PackageDownloadLocation: git://code.qt.io/qt/qtquicktimeline.git
+PackageVersion: 6.10.0
+PackageSupplier: Organization: TheQtCompany
+PackageLicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+PackageLicenseDeclared: LicenseRef-Qt-Commercial OR GPL-3.0-only
+ExternalRef: PACKAGE-MANAGER purl pkg:github/qt/qtquicktimeline?library_name=qtquicktimelineplugin#src/timeline
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qtquicktimeline-qtquicktimelineplugin?vcs_url=https://code.qt.io/qt/qtquicktimeline.git&library_name=qtquicktimelineplugin#src/timeline
+PackageCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+PrimaryPackagePurpose: LIBRARY
+PackageComment: <text>
+CMake target name: qtquicktimelineplugin
+</text>
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.10.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qtquicktimeline:6.10.0:*:*:*:*:*:*:*
+PackageVerificationCode: f167a8d07c60c138db633f5754cc36e28e9eba29
+FilesAnalyzed: true
+Relationship: SPDXRef-Package-qtquicktimeline-qt-plugin-qtquicktimelineplugin DEPENDS_ON DocumentRef-qtbase:SPDXRef-Package-qtbase-qt-module-PlatformPluginInternal
+Relationship: SPDXRef-Package-qtquicktimeline-qt-plugin-qtquicktimelineplugin DEPENDS_ON DocumentRef-qtdeclarative:SPDXRef-Package-qtdeclarative-qt-module-Qml
+Relationship: SPDXRef-Package-qtquicktimeline-qt-plugin-qtquicktimelineplugin DEPENDS_ON SPDXRef-Package-qtquicktimeline-qt-module-QuickTimeline
+Relationship: SPDXRef-Package-qtquicktimeline CONTAINS SPDXRef-Package-qtquicktimeline-qt-plugin-qtquicktimelineplugin
+
+FileName: ./qml/QtQuick/Timeline/qtquicktimelineplugin.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-qtquicktimelineplugin-RelWithDebInfo
+FileType: BINARY
+FileChecksum: SHA1: b12b06d7da137a4dde9cfa404ea7730709e039e0
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtquicktimeline-qt-plugin-qtquicktimelineplugin CONTAINS SPDXRef-PackagedFile-qt-plugin-qtquicktimelineplugin-RelWithDebInfo
+Relationship: SPDXRef-PackagedFile-qt-plugin-qtquicktimelineplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/qtquicktimelineplugin_QtQuickTimelinePlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-qtquicktimelineplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/C:/Users/qt/work/qt/qtquicktimeline_build/src/timeline/qtquicktimelineplugin_resource-RelWithDebInfo.rc
+Relationship: SPDXRef-PackagedFile-qt-plugin-qtquicktimelineplugin-RelWithDebInfo GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/
+
+FileName: ./qml/QtQuick/Timeline/qtquicktimelineplugind.dll
+SPDXID: SPDXRef-PackagedFile-qt-plugin-qtquicktimelineplugin-Debug
+FileType: BINARY
+FileChecksum: SHA1: a82f5f45d712f2fe7a5ffee09df6b6c5f0c2a3ac
+LicenseConcluded: LicenseRef-Qt-Commercial OR GPL-3.0-only
+FileCopyrightText: <text>Copyright (C) The Qt Company Ltd. and other contributors.</text>
+LicenseInfoInFile: NOASSERTION
+Relationship: SPDXRef-Package-qtquicktimeline-qt-plugin-qtquicktimelineplugin CONTAINS SPDXRef-PackagedFile-qt-plugin-qtquicktimelineplugin-Debug
+Relationship: SPDXRef-PackagedFile-qt-plugin-qtquicktimelineplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /build_dir/qtquicktimeline/src/timeline/qtquicktimelineplugin_QtQuickTimelinePlugin.cpp
+Relationship: SPDXRef-PackagedFile-qt-plugin-qtquicktimelineplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/
+Relationship: SPDXRef-PackagedFile-qt-plugin-qtquicktimelineplugin-Debug GENERATED_FROM NOASSERTION
+RelationshipComment: /src_dir/qtquicktimeline/src/timeline/C:/Users/qt/work/qt/qtquicktimeline_build/src/timeline/qtquicktimelineplugin_resource-Debug.rc
+
+LicenseID: LicenseRef-Qt-Commercial
+ExtractedText: <text>Licensees holding valid commercial Qt licenses may use this software in
+accordance with the the terms contained in a written agreement between
+you and The Qt Company. Alternatively, the terms and conditions that were
+accepted by the licensee when buying and/or downloading the
+software do apply.
+
+For the latest licensing terms and conditions, see https://www.qt.io/terms-conditions.
+For further information use the contact form at https://www.qt.io/contact-us.
+</text>
