@@ -1,0 +1,41 @@
+--- .upstream/moc.cpp	2025-06-30 09:17:40.517007436 +0200
++++ moc.cpp	2025-08-05 11:30:27.602092370 +0200
+@@ -12,15 +12,15 @@
+ #include <QtCore/qdir.h>
+ #include <QtCore/qjsondocument.h>
+ 
+-// for normalizeTypeInternal
+-#include <private/qmetaobject_p.h>
+-#include <private/qmetaobject_moc_p.h>
+-#include <private/qduplicatetracker_p.h>
++// -- QtScxml
++#include <QtCore/qjsonobject.h>
++// -- QtScxml
+ 
+ QT_BEGIN_NAMESPACE
+ 
+ using namespace Qt::StringLiterals;
+ 
++#if 0 // -- QtScxml
+ // only moc needs this function
+ static QByteArray normalizeType(const QByteArray &ba)
+ {
+@@ -2042,6 +2042,7 @@
+         }
+     }
+ }
++#endif // -- QtScxml
+ 
+ QJsonObject ClassDef::toJson() const
+ {
+@@ -2235,8 +2236,8 @@
+         def["alias"_L1] = QString::fromUtf8(enumName);
+     if (!type.isEmpty())
+         def["type"_L1] = QString::fromUtf8(type);
+-    def["isFlag"_L1] = (flags & EnumIsFlag) != 0;
+-    def["isClass"_L1] = (flags & EnumIsScoped) != 0;
++    def["isFlag"_L1] = (flags & QtMocConstants::EnumIsFlag) != 0;
++    def["isClass"_L1] = (flags & QtMocConstants::EnumIsScoped) != 0;
+ 
+     QJsonArray valueArr;
+     for (const QByteArray &value: values)
