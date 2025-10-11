@@ -1,0 +1,228 @@
+// Copyright (C) 2023 The Qt Company Ltd.
+// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GFDL-1.3-no-invariants-only
+
+/*!
+\page qtqml-tooling-qmlformat.html
+\title qmlformat
+\brief A tool that automatically formats QML files according to QML coding convention.
+\ingroup qtqml-tooling
+\ingroup qtqml-tooling-devtools
+
+\section1 qmlformat
+\e qmlformat is a tool that automatically formats QML files in accordance
+with the \l{QML Coding Conventions}. \l{Details}{More...}
+
+\table
+\header
+    \li Usage:
+\row
+    \li qmlformat [\l{options}] \l{arguments}
+\endtable
+
+\section2 Options
+\target options
+The following options are available:
+
+\table
+\header
+    \li Option
+    \li Default Value
+    \li Description
+\row
+    \li \c{-h}, \c{--help}
+    \li
+    \li Displays help on commandline options.
+\row
+    \li \c{--help-all}
+    \li
+    \li Displays help, including generic Qt options.
+
+\row
+    \li \c{-v}, \c{--version}
+    \li
+    \li Displays version information.
+\row
+    \li \c{-V}, \c{--verbose}
+    \li
+    \li Verbose mode. Outputs more detailed information.
+\row
+    \li \c{--write-defaults}
+    \li
+    \li Writes defaults settings to .qmlformat.ini and exits
+        (Warning: This will overwrite any existing settings and comments!)
+\row
+    \li \c{--ignore-settings}
+    \li
+    \li Ignores all settings files and only takes command line options into consideration
+\row
+    \li \c{-i}, \c{--inplace}
+    \li
+    \li Edit file in-place instead of outputting to stdout.
+\row
+    \li \c{-f}, \c{--force}
+    \li
+    \li Continue even if an error has occurred.
+\row
+    \li \c{-t}, \c{--tabs}
+    \li
+    \li Use tabs instead of spaces.
+\row
+    \li \c{-w}, \c{--indent-width <width>}
+    \li 4
+    \li How many spaces are used when indenting.
+\row
+    \li \c{-W}, \c{--column-width <width>}
+    \li -1
+    \li Breaks the line into multiple lines if it exceeds
+        the specified width. Use -1 to disable line
+        wrapping. (default).
+\row
+    \li \c{-n}, \c{--normalize}
+    \li
+    \li Reorders the attributes of the objects according to the QML Coding Guidelines.
+\row
+    \li \c{-F}, \c{--files <file>}
+    \li
+    \li Format all files listed in file, in-place
+\row
+    \li \c{-l}, \c{--newline <newline>}
+    \li
+    \li Override the new line format to use (native macos unix windows).
+\row
+    \li \c{-S}, \c{--sort-imports}
+    \li
+    \li Sort imports alphabetically
+        (Warning: this might change semantics if a given name identifies types in multiple modules!).
+\row
+    \li \c{--objects-spacing}
+    \li
+    \li Ensure spaces between objects (only works with normalize option).
+\row
+    \li \c{--functions-spacing}
+    \li
+    \li Ensure spaces between functions (only works with normalize option).
+\row
+    \li \c{--semicolon-rule}
+    \li always
+    \li Customize the addition of semicolons at the end of  JS statements.
+\endtable
+
+\section2 Arguments
+\target arguments
+\table
+\header
+    \li Arguments:
+\row
+    \li filenames
+\endtable
+
+\section2 Details
+\e qmlformat is flexible and can be configured according to your needs.
+
+\section3 Output
+qmlformat writes the formatted version of the file to stdout.
+If you wish to have your file updated in-place specify the \c{-i} flag.
+
+\section3 Grouping Properties, Functions, and Signals Together
+With \c{-n} or \c{--normalize} flag, \e qmlformat groups all properties, functions,
+and signals together, instead of retaining the order you specified.
+
+\section3 Settings File
+You can configure \e qmlformat by including a settings file \c{.qmlformat.ini} in your
+project source or in the parent directories of your project source folder. A default
+settings file can be obtained by passing the \c{--write-defaults} flag. This generates the
+\c{.qmlformat.ini} file in the current working directory.
+
+\warning \c{--write-defaults} will overwrite any existing settings and comments!
+
+\target qmlformat-settings
+The following settings are available in the \c{.qmlformat.ini} file:
+\table
+\header
+    \li Setting
+    \li Default Value
+    \li Description
+
+\row
+    \li UseTabs
+    \li false
+    \li Uses tabs instead of spaces.
+
+\row
+    \li IndentWidth
+    \li 4
+    \li How many spaces are used when indenting.
+
+\row
+    \li NewlineType
+    \li native
+    \li Overrides the new line format to use (\c {native}, \c {macos}, \c {unix}, \c {windows}).
+
+\row
+    \li NormalizeOrder
+    \li false
+    \li Reorders the attributes of the objects according to the QML coding guidelines.
+
+\row
+    \li FunctionsSpacing
+    \li false
+    \li Ensures spaces between functions (only works with normalize option).
+
+\row
+    \li ObjectsSpacing
+    \li false
+    \li Ensures spaces between objects (only works with normalize option).
+
+\row
+    \li MaxColumnWidth
+    \li -1
+    \li Breaks the line into multiple lines if it exceeds
+        the specified width. Use -1 to disable line
+        wrapping (default).
+
+\row
+    \li SortImports
+    \li false
+    \li Sorts imports alphabetically.
+        \note This might change semantics if a given name identifies types in multiple modules.
+
+\row
+    \li SemicolonRule
+    \li always
+    \li Customizes the addition of semicolons at the end of JS statements (\c {always}, \c {essential}).
+        \note See \l{Semicolon Rule} for more details.
+
+\endtable
+
+\section3 Formatting a List of Files
+While you can pass a list of files to be formatted as arguments, qmlformat provides
+\c {-F} option to format a set of files stored in a file. In this case, formatting will happen
+inplace.
+
+\code
+    // FileList.txt
+    main.qml
+    mycomponent.qml
+\endcode
+
+Then, use it like
+\code
+    qmlformat -F FileList.txt
+\endcode
+
+\note If the file contains an invalid entry, for example, a file path that
+doesn't exist or a valid file path but the content is an invalid qml document,
+then \c qmlformat will error out for that particular entry. It will still format
+the valid file entries in place.
+
+\warning If you provide -F option, qmlformat will ignore the positional arguments.
+
+\section3 Semicolon Rule
+The \c{--semicolon-rule} option allows you to customize the addition of semicolons at the end of JS statements.
+The following values are accepted:
+\list
+    \li \c{always} - Always add semicolons (default).
+    \li \c{essential} - Remove semicolons unless omitting them would cause issues.
+\endlist
+
+*/
