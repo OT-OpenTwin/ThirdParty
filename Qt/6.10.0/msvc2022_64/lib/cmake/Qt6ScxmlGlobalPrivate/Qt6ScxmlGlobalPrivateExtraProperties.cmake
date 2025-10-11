@@ -1,0 +1,8 @@
+set_property(TARGET Qt6::ScxmlGlobalPrivate PROPERTY INTERFACE_QT_ENABLED_PUBLIC_FEATURES "$<$<OR:$<CONFIG:RelWithDebInfo>,$<NOT:$<BOOL:$<CONFIG>>>>:>")
+set_property(TARGET Qt6::ScxmlGlobalPrivate PROPERTY INTERFACE_QT_DISABLED_PUBLIC_FEATURES "$<$<OR:$<CONFIG:RelWithDebInfo>,$<NOT:$<BOOL:$<CONFIG>>>>:>")
+set_property(TARGET Qt6::ScxmlGlobalPrivate PROPERTY INTERFACE_QT_ENABLED_PRIVATE_FEATURES "$<$<OR:$<CONFIG:RelWithDebInfo>,$<NOT:$<BOOL:$<CONFIG>>>>:scxml;scxml_qml;scxml_ecmascriptdatamodel;statemachine;statemachine_qml;qeventtransition>")
+set_property(TARGET Qt6::ScxmlGlobalPrivate PROPERTY INTERFACE_QT_DISABLED_PRIVATE_FEATURES "$<$<OR:$<CONFIG:RelWithDebInfo>,$<NOT:$<BOOL:$<CONFIG>>>>:>")
+set_property(TARGET Qt6::ScxmlGlobalPrivate PROPERTY INTERFACE_QT_QMAKE_PUBLIC_CONFIG "$<$<OR:$<CONFIG:RelWithDebInfo>,$<NOT:$<BOOL:$<CONFIG>>>>:>")
+set_property(TARGET Qt6::ScxmlGlobalPrivate PROPERTY INTERFACE_QT_QMAKE_PRIVATE_CONFIG "$<$<OR:$<CONFIG:RelWithDebInfo>,$<NOT:$<BOOL:$<CONFIG>>>>:>")
+set_property(TARGET Qt6::ScxmlGlobalPrivate PROPERTY INTERFACE_QT_QMAKE_PUBLIC_QT_CONFIG "$<$<OR:$<CONFIG:RelWithDebInfo>,$<NOT:$<BOOL:$<CONFIG>>>>:>")
+include("${CMAKE_CURRENT_LIST_DIR}/Qt6ScxmlGlobalPrivateExtraProperties-Debug.cmake")
