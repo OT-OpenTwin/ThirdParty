@@ -89,6 +89,8 @@ static inline void qwtExecCommand(
         {
             bool doMap = false;
 
+            painter->resetTransform(); // OpenTwin change: Fixed leged rendering issue after Qt 6.10.0 update
+
             if ( painter->transform().isScaling() )
             {
                 bool isCosmetic = painter->pen().isCosmetic();
