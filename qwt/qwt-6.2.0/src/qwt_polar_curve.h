@@ -129,7 +129,7 @@ class QWT_EXPORT QwtPolarCurve : public QwtPolarItem
         const QwtScaleMap& azimuthMap, const QwtScaleMap& radialMap,
         const QPointF& pole, int from, int to ) const;
 
-    void drawLines( QPainter*,
+    virtual void drawLines( QPainter*,
         const QwtScaleMap& azimuthMap, const QwtScaleMap& radialMap,
         const QPointF& pole, int from, int to ) const;
 
