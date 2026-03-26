@@ -1,0 +1,27 @@
+If the openEMS version is updated, the Python site package needs to be updated as well.
+
+The site package is located in the following folder: C:\OT\ThirdParty\Python\Python3_11_9\Environments\OpenEMSEnvironment
+This folder will be copied into the deployment directory if the deployment folder is re-created.
+
+Steps to update the site package:
+---------------------------------
+
+1. Clear the contents of the site package directory.
+
+2. Create an Anaconda environment with the same version of Python as the built-in interpreter:
+
+	conda create -n py311_env python=3.11
+	conda activate py311_env
+	
+3. Use the pip tool in the Anaconda Python installation to install the wheels into the directory
+   (make sure to use the wheels for the current Python version)
+   
+	pip install C:\OT\ThirdParty\openEMS\openEMS_vX.Y.Z\python\CSXCAD-0.6.3-cp311-cp311-win_amd64.whl --target C:\OT\ThirdParty\Python\Python3_11_9\Environments\OpenEMSEnvironment
+	pip install C:\OT\ThirdParty\openEMS\openEMS_vX.Y.Z\python\openEMS-0.0.36-cp311-cp311-win_amd64.whl --target C:\OT\ThirdParty\Python\Python3_11_9\Environments\OpenEMSEnvironment
+	
+4. Install numpy and h5py as well
+
+	pip install numpy --target C:\OT\ThirdParty\Python\Python3_11_9\Environments\OpenEMSEnvironment
+	pip install h5py --target C:\OT\ThirdParty\Python\Python3_11_9\Environments\OpenEMSEnvironment
+
+Make sure that there are no identical folder names in the Deployment directory as the package names in the site package directory.
