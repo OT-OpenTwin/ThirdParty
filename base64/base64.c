@@ -82,6 +82,8 @@
 /* Base64 encoder/decoder. Originally Apache file ap_base64.c
  */
 
+#pragma warning( disable : 5033 )
+
 #include <string.h>
 
 #include "base64.h"
