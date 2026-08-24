@@ -239,6 +239,24 @@ VARS = {
     # ===== MathJax =====
     "MATHJAX_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\MathJax\MathJax-3.2.2\es5",
     "MATHJAX_REL_PATH_SUFFIX": r"MathJax\MathJax-3.2.2\es5",
+
+    # ===== expat =====
+    "EXPAT_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\expat\2.8.3",
+    "EXPAT_INC": r"%EXPAT_ROOT%\include",
+    "EXPAT_LIBPATHD": r"%EXPAT_ROOT%\Bin",
+    "EXPAT_LIBPATHR": r"%EXPAT_ROOT%\Bin",
+    "EXPAT_LIBD": "libexpat.lib",
+    "EXPAT_LIBR": "libexpat.lib",
+    "EXPAT_BIN": r"%EXPAT_ROOT%\Bin",
+
+    # ===== mdflib =====
+    "MDFLIB_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\mdflib\mdflib-2.3.0",
+    "MDFLIB_INC": r"%MDFLIB_ROOT%\include",
+    "MDFLIB_BIN": r"%MDFLIB_ROOT%\bin",
+    "MDFLIB_LIBPATHD": r"%MDFLIB_ROOT%\lib",
+    "MDFLIB_LIBPATHR": r"%MDFLIB_ROOT%\lib",
+    "MDFLIB_LIBD": "mdfd.lib",
+    "MDFLIB_LIBR": "mdf.lib",
 }
 
 
