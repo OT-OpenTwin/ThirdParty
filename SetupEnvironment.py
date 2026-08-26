@@ -153,6 +153,7 @@ VARS = {
     "EMBREE_BIN": r"%EMBREE_ROOT%\bin",
 
     # ===== Python =====
+    "OT_PYTHON_BIN_NAME": r"python311",
     "OT_CURRENT_PYTHON_PATH": r"Python\Python3_11_9",
     "OT_PYTHON_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\%OT_CURRENT_PYTHON_PATH%",
     "OT_PYTHON_INC": r"%OT_PYTHON_ROOT%\include",
