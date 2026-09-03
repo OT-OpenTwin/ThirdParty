@@ -38,11 +38,11 @@ SET QWT_LIB_DLLD=%QWT_LIB_ROOT%\lib
 SET QWT_LIB_DLLR=%QWT_LIB_ROOT%\lib
 
 REM Advanced Docking System
-SET QT_ADS_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\QtAdvancedDockingSystem\Qt-Advanced-Docking-System-4.3.0
+SET QT_ADS_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\QtAdvancedDockingSystem\Qt-Advanced-Docking-System-5.1.1
 SET QT_ADS_INC=%QT_ADS_ROOT%\include
 SET QT_ADS_LIBPATH=%QT_ADS_ROOT%\lib
-SET QT_ADS_LIBD=qtadvanceddockingd.lib
-SET QT_ADS_LIBR=qtadvanceddocking.lib
+SET QT_ADS_LIBD=qtadvanceddocking-qt6d.lib
+SET QT_ADS_LIBR=qtadvanceddocking-qt6.lib
 
 REM Set Open Scene Graph (OSG) Root Directory
 SET OSG_ROOT=%OPENTWIN_THIRDPARTY_ROOT%\OpenSceneGraph\OpenSceneGraph-OpenSceneGraph-3.6.3

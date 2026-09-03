@@ -27,11 +27,11 @@ VARS = {
     "QWT_LIB_DLLR": r"%QWT_LIB_ROOT%\lib",
 
     # ===== Advanced Docking System =====
-    "QT_ADS_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\QtAdvancedDockingSystem\Qt-Advanced-Docking-System-4.3.0",
+    "QT_ADS_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\QtAdvancedDockingSystem\Qt-Advanced-Docking-System-5.1.1",
     "QT_ADS_INC": r"%QT_ADS_ROOT%\include",
     "QT_ADS_LIBPATH": r"%QT_ADS_ROOT%\lib",
-    "QT_ADS_LIBD": "qtadvanceddockingd.lib",
-    "QT_ADS_LIBR": "qtadvanceddocking.lib",
+    "QT_ADS_LIBD": "qtadvanceddocking-qt6d.lib",
+    "QT_ADS_LIBR": "qtadvanceddocking-qt6.lib",
 
     # ===== Open Scene Graph =====
     "OSG_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\OpenSceneGraph\OpenSceneGraph-OpenSceneGraph-3.6.3",
