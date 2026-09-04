@@ -17,6 +17,7 @@ namespace ads
 class CDockWidget;
 class CDockManager;
 class CDockAreaWidget;
+class CFloatingDragPreview;
 class CFloatingDockContainer;
 
 /**
@@ -57,6 +58,12 @@ public:
      */
     virtual CFloatingDockContainer* createFloatingDockContainer(
         CDockWidget* DockWidget) const;
+
+    virtual CFloatingDragPreview* createFloatingDragPreview(
+        CDockAreaWidget* DockArea) const;
+
+    virtual CFloatingDragPreview* createFloatingDragPreview(
+        CDockWidget* Content) const;
 
     /**
      * Returns the default components factory

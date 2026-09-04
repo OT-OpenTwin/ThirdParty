@@ -318,7 +318,7 @@ IFloatingWidget* DockAreaTitleBarPrivate::makeAreaFloating(const QPoint& Offset,
 	}
 	else
 	{
-		auto w = new CFloatingDragPreview(DockArea);
+        auto w = CComponentsFactory::factory()->createFloatingDragPreview(DockArea);
 		QObject::connect(w, &CFloatingDragPreview::draggingCanceled, [this]()
 		{
 			this->DragState = DraggingInactive;

@@ -43,6 +43,7 @@
 #include "DockWidget.h"
 #include "FloatingDragPreview.h"
 #include "DockOverlay.h"
+#include "ComponentsFactory.h"
 #include "ads_globals.h"
 
 namespace ads
@@ -138,7 +139,7 @@ struct AutoHideTabPrivate
 	template <typename T>
 	IFloatingWidget* createFloatingWidget(T* Widget)
 	{
-		auto w = new CFloatingDragPreview(Widget);
+		auto w = CComponentsFactory::factory()->createFloatingDragPreview(Widget);
 		_this->connect(w, &CFloatingDragPreview::draggingCanceled, [this]()
 		{
 			DragState = DraggingInactive;

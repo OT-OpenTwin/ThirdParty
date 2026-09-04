@@ -26,7 +26,7 @@ struct FloatingDragPreviewPrivate;
  * This widget is used as a placeholder for drag operations for non-opaque
  * docking
  */
-class CFloatingDragPreview : public QWidget, public IFloatingWidget
+class ADS_EXPORT CFloatingDragPreview : public QWidget, public IFloatingWidget
 {
 	Q_OBJECT
 private:

@@ -15,6 +15,7 @@
 #include "DockAreaTitleBar.h"
 #include "DockWidget.h"
 #include "DockAreaWidget.h"
+#include "FloatingDragPreview.h"
 
 namespace ads
 {
@@ -39,6 +40,18 @@ CFloatingDockContainer* CComponentsFactory::createFloatingDockContainer(
     CDockWidget* DockWidget) const
 {
     return new CFloatingDockContainer(DockWidget);
+}
+
+CFloatingDragPreview* CComponentsFactory::createFloatingDragPreview(
+    CDockAreaWidget* DockArea) const
+{
+    return new CFloatingDragPreview(DockArea);
+}
+
+CFloatingDragPreview* CComponentsFactory::createFloatingDragPreview(
+    CDockWidget* Content) const
+{
+    return new CFloatingDragPreview(Content);
 }
 
 //============================================================================
