@@ -19,11 +19,7 @@ IF "%DEVENV_ROOT_2022%"=="" (
 
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\Python\set_python.bat"
 
-ECHO Setup Qt6 enviroment
-
-ECHO call cmake-gui
-
-"%OT_PYTHON%" "%OPENTWIN_DEV_ROOT%\Scripts\Python\run.py" "Qt6Core_DIR=%%QDIR%%\lib\cmake\Qt6Core" "Qt6Gui_DIR=%%QDIR%%\lib\cmake\Qt6Gui" "Qt6Widgets_DIR=%%QDIR%%\lib\cmake\Qt6Widgets" cmake-gui %cd%
+"%OT_PYTHON%" "%OPENTWIN_DEV_ROOT%\Scripts\Python\helpers.py" cmake-gui-qt %cd%
 
 :END
 

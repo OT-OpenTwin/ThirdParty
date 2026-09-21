@@ -17,40 +17,7 @@ ECHO Setting up environment
 
 CALL "%OPENTWIN_DEV_ROOT%\Scripts\Python\set_python.bat"
 
-ECHO Building Project
-
-REM Open project
-
-SET RELEASE=1
-SET DEBUG=1
-
-IF "%1"=="RELEASE" (
-  SET RELEASE=1
-  SET DEBUG=0
-)
-
-IF "%1"=="DEBUG" (
-  SET RELEASE=0
-  SET DEBUG=1
-)
-
-SET TYPE=/Rebuild
-SET TYPE_NAME=REBUILD
-
-IF "%2"=="BUILD" (
-	SET TYPE=/Build
-	SET TYPE_NAME=BUILD
-)
-
-IF %DEBUG%==1 (
-	ECHO %TYPE_NAME% DEBUG
-	"%OT_PYTHON%" "%OPENTWIN_DEV_ROOT%\Scripts\Python\run.py" "%DEVENV_ROOT_2022%\devenv.exe" "%OPENTWIN_THIRDPARTY_ROOT%\qwt\qwt-6.1.4\qwt.sln" %TYPE% "Debug|x64" /Out buildLog_Debug.txt
-)
-
-IF %RELEASE%==1 (
-	ECHO %TYPE_NAME% RELEASE
-	"%OT_PYTHON%" "%OPENTWIN_DEV_ROOT%\Scripts\Python\run.py" "%DEVENV_ROOT_2022%\devenv.exe" "%OPENTWIN_THIRDPARTY_ROOT%\qwt\qwt-6.1.4\qwt.sln" %TYPE% "Release|x64" /Out buildLog_Release.txt
-) 
+"%OT_PYTHON%" "%OPENTWIN_DEV_ROOT%\Scripts\Python\helpers.py" build-solution "%OPENTWIN_THIRDPARTY_ROOT%\qwt\qwt-6.1.4\qwt.sln" %1 %2
   
 :END
 
