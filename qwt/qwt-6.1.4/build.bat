@@ -15,8 +15,7 @@ IF "%DEVENV_ROOT%" == "" (
 
 ECHO Setting up environment
 
-rem Setup eviroment
-CALL "%OPENTWIN_DEV_ROOT%\Scripts\SetupEnvironment.bat"
+CALL "%OPENTWIN_DEV_ROOT%\Scripts\Python\set_python.bat"
 
 ECHO Building Project
 
@@ -45,12 +44,12 @@ IF "%2"=="BUILD" (
 
 IF %DEBUG%==1 (
 	ECHO %TYPE_NAME% DEBUG
-	"%DEVENV_ROOT_2022%\devenv.exe" "%OPENTWIN_THIRDPARTY_ROOT%\qwt\qwt-6.1.4\qwt.sln" %TYPE% "Debug|x64" /Out buildLog_Debug.txt
+	"%OT_PYTHON%" "%OPENTWIN_DEV_ROOT%\Scripts\Python\run.py" "%DEVENV_ROOT_2022%\devenv.exe" "%OPENTWIN_THIRDPARTY_ROOT%\qwt\qwt-6.1.4\qwt.sln" %TYPE% "Debug|x64" /Out buildLog_Debug.txt
 )
 
 IF %RELEASE%==1 (
 	ECHO %TYPE_NAME% RELEASE
-	"%DEVENV_ROOT_2022%\devenv.exe" "%OPENTWIN_THIRDPARTY_ROOT%\qwt\qwt-6.1.4\qwt.sln" %TYPE% "Release|x64" /Out buildLog_Release.txt
+	"%OT_PYTHON%" "%OPENTWIN_DEV_ROOT%\Scripts\Python\run.py" "%DEVENV_ROOT_2022%\devenv.exe" "%OPENTWIN_THIRDPARTY_ROOT%\qwt\qwt-6.1.4\qwt.sln" %TYPE% "Release|x64" /Out buildLog_Release.txt
 ) 
   
 :END

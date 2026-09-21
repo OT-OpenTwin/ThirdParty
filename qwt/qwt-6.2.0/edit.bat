@@ -14,8 +14,8 @@ IF "%DEVENV_ROOT_2022%" == "" (
 )
 
 ECHO Setting up environment
-CALL "%OPENTWIN_DEV_ROOT%\Scripts\SetupEnvironment.bat"
+CALL "%OPENTWIN_DEV_ROOT%\Scripts\Python\set_python.bat"
 
-START "" "%DEVENV_ROOT_2022%\devenv.exe" "%OPENTWIN_THIRDPARTY_ROOT%\qwt\qwt-6.2.0\qwt.sln"
+"%OT_PYTHON%" "%OPENTWIN_DEV_ROOT%\Scripts\Python\run.py" --detach "%DEVENV_ROOT_2022%\devenv.exe" "%OPENTWIN_THIRDPARTY_ROOT%\qwt\qwt-6.2.0\qwt.sln"
 
 :END
