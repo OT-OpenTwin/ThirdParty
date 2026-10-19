@@ -1,4 +1,7 @@
+import os
 import re
+
+WINDOWS = os.name == "nt"
 
 _VAR = re.compile(r"%([^%]+)%")
 
@@ -260,6 +263,13 @@ VARS = {
     "MDFLIB_LIBR": "mdf.lib",
 }
 
+VARS_LINUX = {
+    # ===== Google Test =====
+    "GOOGLE_TEST_LIBPATHD": r"%GOOGLE_TEST_ROOT%\build\linux-debug\lib",
+    "GOOGLE_TEST_LIBPATHR": r"%GOOGLE_TEST_ROOT%\build\linux-release\lib",
+    "GOOGLE_TEST_LIB": "gtest_main;gtest",
+}
+
 
 def _get(env, name):
     if name in env:
@@ -276,7 +286,8 @@ def apply(env):
     if env.get("OPENTWIN_THIRDPARTY_ENV_DEFINED") == "1":
         return env
     env["OPENTWIN_THIRDPARTY_ENV_DEFINED"] = "1"
-    for name, template in VARS.items():
+    variables = VARS if WINDOWS else {**VARS, **VARS_LINUX}
+    for name, template in variables.items():
         env[name] = _expand(env, template)
     env["VTK_DIR"] = env["VTK_DIR"].replace("\\", "/")
     env["PATH"] = _expand(env, r"%OT_PYTHONPATH_LEGACY%;%OPENTWIN_THIRDPARTY_ROOT%\doxygen;%PATH%")
