@@ -157,7 +157,7 @@ VARS = {
 
     # ===== Python =====
     "OT_PYTHON_BIN_NAME": r"python311",
-    "OT_CURRENT_PYTHON_PATH": r"Python\Python3_11_9",
+    "OT_CURRENT_PYTHON_PATH": r"Python\Python3_11_9\windows",
     "OT_PYTHON_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\%OT_CURRENT_PYTHON_PATH%",
     "OT_PYTHON_INC": r"%OT_PYTHON_ROOT%\include",
     "OT_PYTHON_LIBPATH": r"%OT_PYTHON_ROOT%\libs",
@@ -264,6 +264,13 @@ VARS = {
 }
 
 VARS_LINUX = {
+    # ===== Python =====
+    "OT_CURRENT_PYTHON_PATH": r"Python\Python3_11_9\linux",
+    "OT_PYTHON_BIN_NAME": r"python3.11",
+    "OT_PYTHON_BIN": r"%OT_PYTHON_ROOT%\python\bin",
+    "OT_PYTHON_INC": r"%OT_PYTHON_ROOT%\python\include\python3.11",
+    "OT_PYTHON_LIBPATH": r"%OT_PYTHON_ROOT%\python\lib",
+
     # ===== Google Test =====
     "GOOGLE_TEST_LIBPATHD": r"%GOOGLE_TEST_ROOT%\build\linux-debug\lib",
     "GOOGLE_TEST_LIBPATHR": r"%GOOGLE_TEST_ROOT%\build\linux-release\lib",
@@ -290,6 +297,7 @@ def apply(env):
     for name, template in variables.items():
         env[name] = _expand(env, template)
     env["VTK_DIR"] = env["VTK_DIR"].replace("\\", "/")
-    env["PATH"] = _expand(env, r"%OT_PYTHONPATH_LEGACY%;%OPENTWIN_THIRDPARTY_ROOT%\doxygen;%PATH%")
+    if WINDOWS:
+        env["PATH"] = _expand(env, r"%OT_PYTHONPATH_LEGACY%;%OPENTWIN_THIRDPARTY_ROOT%\doxygen;%PATH%")
     print("OpenTwin Third Party environment was set up successfully.")
     return env
