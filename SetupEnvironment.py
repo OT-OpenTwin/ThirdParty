@@ -118,20 +118,20 @@ VARS = {
     "VTK_LIBLIST_DEBUG": "vtkChartsCore-9.0d.lib;vtkCommonColor-9.0d.lib;vtkCommonComputationalGeometry-9.0d.lib;vtkCommonCore-9.0d.lib;vtkCommonDataModel-9.0d.lib;vtkCommonExecutionModel-9.0d.lib;vtkCommonMath-9.0d.lib;vtkCommonMisc-9.0d.lib;vtkCommonSystem-9.0d.lib;vtkCommonTransforms-9.0d.lib;vtkDICOMParser-9.0d.lib;vtkDomainsChemistry-9.0d.lib;vtkDomainsChemistryOpenGL2-9.0d.lib;vtkdoubleconversion-9.0d.lib;vtkexodusII-9.0d.lib;vtkexpat-9.0d.lib;vtkFiltersAMR-9.0d.lib;vtkFiltersCore-9.0d.lib;vtkFiltersExtraction-9.0d.lib;vtkFiltersFlowPaths-9.0d.lib;vtkFiltersGeneral-9.0d.lib;vtkFiltersGeneric-9.0d.lib;vtkFiltersGeometry-9.0d.lib;vtkFiltersHybrid-9.0d.lib;vtkFiltersHyperTree-9.0d.lib;vtkFiltersImaging-9.0d.lib;vtkFiltersModeling-9.0d.lib;vtkFiltersParallel-9.0d.lib;vtkFiltersParallelImaging-9.0d.lib;vtkFiltersPoints-9.0d.lib;vtkFiltersProgrammable-9.0d.lib;vtkFiltersSelection-9.0d.lib;vtkFiltersSMP-9.0d.lib;vtkFiltersSources-9.0d.lib;vtkFiltersStatistics-9.0d.lib;vtkFiltersTexture-9.0d.lib;vtkFiltersTopology-9.0d.lib;vtkFiltersVerdict-9.0d.lib;vtkfreetype-9.0d.lib;vtkGeovisCore-9.0d.lib;vtkgl2ps-9.0d.lib;vtkglew-9.0d.lib;vtkhdf5-9.0d.lib;vtkhdf5_hl-9.0d.lib;vtkImagingColor-9.0d.lib;vtkImagingCore-9.0d.lib;vtkImagingFourier-9.0d.lib;vtkImagingGeneral-9.0d.lib;vtkImagingHybrid-9.0d.lib;vtkImagingMath-9.0d.lib;vtkImagingMorphological-9.0d.lib;vtkImagingSources-9.0d.lib;vtkImagingStatistics-9.0d.lib;vtkImagingStencil-9.0d.lib;vtkInfovisCore-9.0d.lib;vtkInfovisLayout-9.0d.lib;vtkInteractionImage-9.0d.lib;vtkInteractionStyle-9.0d.lib;vtkInteractionWidgets-9.0d.lib;vtkIOAMR-9.0d.lib;vtkIOAsynchronous-9.0d.lib;vtkIOCityGML-9.0d.lib;vtkIOCore-9.0d.lib;vtkIOEnSight-9.0d.lib;vtkIOExodus-9.0d.lib;vtkIOExport-9.0d.lib;vtkIOExportGL2PS-9.0d.lib;vtkIOExportPDF-9.0d.lib;vtkIOGeometry-9.0d.lib;vtkIOImage-9.0d.lib;vtkIOImport-9.0d.lib;vtkIOInfovis-9.0d.lib;vtkIOLegacy-9.0d.lib;vtkIOLSDyna-9.0d.lib;vtkIOMINC-9.0d.lib;vtkIOMotionFX-9.0d.lib;vtkIOMovie-9.0d.lib;vtkIONetCDF-9.0d.lib;vtkIOOggTheora-9.0d.lib;vtkIOParallel-9.0d.lib;vtkIOParallelXML-9.0d.lib;vtkIOPLY-9.0d.lib;vtkIOSegY-9.0d.lib;vtkIOSQL-9.0d.lib;vtkIOTecplotTable-9.0d.lib;vtkIOVeraOut-9.0d.lib;vtkIOVideo-9.0d.lib;vtkIOXML-9.0d.lib;vtkIOXMLParser-9.0d.lib;vtkjpeg-9.0d.lib;vtkjsoncpp-9.0d.lib;vtklibharu-9.0d.lib;vtklibproj-9.0d.lib;vtklibxml2-9.0d.lib;vtkloguru-9.0d.lib;vtklz4-9.0d.lib;vtklzma-9.0d.lib;vtkmetaio-9.0d.lib;vtknetcdf-9.0d.lib;vtkogg-9.0d.lib;vtkParallelCore-9.0d.lib;vtkParallelDIY-9.0d.lib;vtkpng-9.0d.lib;vtkpugixml-9.0d.lib;vtkRenderingAnnotation-9.0d.lib;vtkRenderingContext2D-9.0d.lib;vtkRenderingContextOpenGL2-9.0d.lib;vtkRenderingCore-9.0d.lib;vtkRenderingFreeType-9.0d.lib;vtkRenderingGL2PSOpenGL2-9.0d.lib;vtkRenderingImage-9.0d.lib;vtkRenderingLabel-9.0d.lib;vtkRenderingLOD-9.0d.lib;vtkRenderingOpenGL2-9.0d.lib;vtkRenderingSceneGraph-9.0d.lib;vtkRenderingUI-9.0d.lib;vtkRenderingVolume-9.0d.lib;vtkRenderingVolumeOpenGL2-9.0d.lib;vtkRenderingVtkJS-9.0d.lib;vtksqlite-9.0d.lib;vtksys-9.0d.lib;vtkTestingRendering-9.0d.lib;vtktheora-9.0d.lib;vtktiff-9.0d.lib;vtkverdict-9.0d.lib;vtkViewsContext2D-9.0d.lib;vtkViewsCore-9.0d.lib;vtkViewsInfovis-9.0d.lib;vtkWrappingTools-9.0d.lib;vtkzlib-9.0d.lib",
 
     # ===== CURL =====
-    "CURL_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\curl\curl-7.62.0",
-    "CURL_INCD": r"%CURL_ROOT%\build-win-x64\Debug\include",
-    "CURL_INCR": r"%CURL_ROOT%\build-win-x64\Release\include",
-    "CURL_LIBD": "libcurl_debug.lib",
+    "CURL_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\curl\curl-8.23.0\windows",
+    "CURL_INCD": r"%CURL_ROOT%\include",
+    "CURL_INCR": r"%CURL_ROOT%\include",
+    "CURL_LIBD": "libcurl.lib",
     "CURL_LIBR": "libcurl.lib",
-    "CURL_LIBPATHD": r"%CURL_ROOT%\build-win-x64\Debug\lib",
-    "CURL_LIBPATHR": r"%CURL_ROOT%\build-win-x64\Release\lib",
-    "CURL_DLLD": r"%CURL_ROOT%\build-win-x64\Debug\bin",
-    "CURL_DLLR": r"%CURL_ROOT%\build-win-x64\Release\bin",
+    "CURL_LIBPATHD": r"%CURL_ROOT%\lib",
+    "CURL_LIBPATHR": r"%CURL_ROOT%\lib",
+    "CURL_DLLD": r"%CURL_ROOT%\bin",
+    "CURL_DLLR": r"%CURL_ROOT%\bin",
 
     # ===== OpenSSL =====
-    "OPENSSL_WEBSOCKET_DLLR": r"%OPENTWIN_THIRDPARTY_ROOT%\OpenSSL\LibsForQtWebsocket",
-    "OPENSSL_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\OpenSSL\OpenSSL-1.1.1",
-    "OPENSSL_DLL": r"%OPENSSL_ROOT%\build-win-x64\dll\x64\Release\bin",
+    # "OPENSSL_WEBSOCKET_DLLR": r"%OPENTWIN_THIRDPARTY_ROOT%\OpenSSL\LibsForQtWebsocket",
+    "OPENSSL_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\OpenSSL\OpenSSL-3.5.9\windows",
+    "OPENSSL_DLL": r"%OPENSSL_ROOT%\bin",
 
     # ===== BASE64 =====
     "BASE64_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\base64",
@@ -228,7 +228,7 @@ VARS = {
     "VC_REDIST_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\VisualStudioRuntime",
 
     # ===== Apache =====
-    "APACHE_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\Apache\Apache24\Windows",
+    "APACHE_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\Apache\Apache-2.4.69\windows",
 
     # ===== Certificate creation tools =====
     "CERT_CREATE_TOOLS": r"%OPENTWIN_THIRDPARTY_ROOT%\CertificateCreation",
