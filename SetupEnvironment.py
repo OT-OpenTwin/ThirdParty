@@ -131,6 +131,10 @@ VARS = {
     # ===== OpenSSL =====
     # "OPENSSL_WEBSOCKET_DLLR": r"%OPENTWIN_THIRDPARTY_ROOT%\OpenSSL\LibsForQtWebsocket",
     "OPENSSL_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\OpenSSL\OpenSSL-3.5.9\windows",
+    "OPENSSL_INC": r"%OPENSSL_ROOT%\include",
+    "OPENSSL_LIBPATHD": r"%OPENSSL_ROOT%\lib",
+    "OPENSSL_LIBPATHR": r"%OPENSSL_ROOT%\lib",
+    "OPENSSL_LIB": "libssl.lib;libcrypto.lib",
     "OPENSSL_DLL": r"%OPENSSL_ROOT%\bin",
 
     # ===== BASE64 =====
