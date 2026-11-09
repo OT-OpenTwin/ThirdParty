@@ -129,7 +129,6 @@ VARS = {
     "CURL_DLLR": r"%CURL_ROOT%\bin",
 
     # ===== OpenSSL =====
-    # "OPENSSL_WEBSOCKET_DLLR": r"%OPENTWIN_THIRDPARTY_ROOT%\OpenSSL\LibsForQtWebsocket",
     "OPENSSL_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\OpenSSL\OpenSSL-3.5.9\windows",
     "OPENSSL_INC": r"%OPENSSL_ROOT%\include",
     "OPENSSL_LIBPATHD": r"%OPENSSL_ROOT%\lib",
@@ -232,7 +231,7 @@ VARS = {
     "VC_REDIST_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\VisualStudioRuntime",
 
     # ===== Apache =====
-    "APACHE_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\Apache\Apache-2.4.69\windows",
+    "APACHE_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\Apache\Apache-2.4.70\windows",
 
     # ===== Certificate creation tools =====
     "CERT_CREATE_TOOLS": r"%OPENTWIN_THIRDPARTY_ROOT%\CertificateCreation",
