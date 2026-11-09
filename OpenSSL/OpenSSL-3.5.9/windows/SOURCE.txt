@@ -1,18 +1,14 @@
-OpenSSL 3.5.9 LTS for Windows (x64), prebuilt
+OpenSSL 3.5.9 LTS, Windows x64, prebuilt
 
-Project: conda-forge (openssl-feedstock), MSVC build
-Release: OpenSSL 3.5.9, 29 Sep 2026, LTS (end of life 08 Apr 2030)
-Archive: win-64/openssl-3.5.9-hf411b9b_0.conda
-SHA256: 827e55e37cc3208f285ae435b13bd1f389d35728d3aa6974ee447c7086232cc5
+Project: conda-forge, openssl-feedstock commit 68ce32fd2222acc165362d6618aae91c837fec2d, MSVC 14.44
+Release: OpenSSL 3.5.9, 29 Sep 2026, LTS until 08 Apr 2030
 Source: https://conda.anaconda.org/conda-forge/win-64/openssl-3.5.9-hf411b9b_0.conda
-Recipe: https://github.com/conda-forge/openssl-feedstock, commit 68ce32fd2222acc165362d6618aae91c837fec2d
+Archive: openssl-3.5.9-hf411b9b_0.conda, not kept (conda-forge keeps old packages); metadata in ../archive/windows/
+SHA256: 827e55e37cc3208f285ae435b13bd1f389d35728d3aa6974ee447c7086232cc5
+Signature: none, conda-forge does not sign packages
+Key-Fingerprint: B146 647E 45A7 B339 47AB  226B 2A2C 87D1 6169 2D40
 Upstream: https://github.com/openssl/openssl/releases/download/openssl-3.5.9/openssl-3.5.9.tar.gz
-Upstream SHA256: 603f5602e2eef00d77fbd429d34dcd5822bb301757a1bc9cdb24c670f1eb859a (pinned in the recipe)
-Verified: 2026-11-06, upstream GPG signature (OpenSSL release key, fingerprint checked against openssl-library.org), upstream SHA256 = recipe SHA256, package SHA256 = conda-forge API
-License: Apache-2.0, see LICENSE.txt
-Toolset: MSVC 14.44; imports only vcruntime140.dll (all imports present in runtime 14.24+)
-
-Contents: from Library/ in the archive
-  bin/      libcrypto-3-x64.dll, libssl-3-x64.dll, openssl.exe
-  lib/      libcrypto.lib, libssl.lib
-  include/  openssl/
+Upstream-SHA256: 603f5602e2eef00d77fbd429d34dcd5822bb301757a1bc9cdb24c670f1eb859a, pinned in the recipe; .sha256, .asc and key in ../archive/windows/
+Verified: 2026-11-06, package SHA256 matches conda-forge, upstream signature OK, fingerprint matches openssl-library.org; 2026-11-09, windows/ matches the package's paths.json
+License: Apache-2.0, LICENSE.txt
+Security: https://openssl-library.org/news/vulnerabilities/
