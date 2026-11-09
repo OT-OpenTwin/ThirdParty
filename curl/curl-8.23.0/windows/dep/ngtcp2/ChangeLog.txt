@@ -1,0 +1,2576 @@
+commit 6a22a4d7a111f6b52391910e40ad3681a09cfb9c
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-11-02
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-11-02
+
+    Bump package and library versions
+
+commit 520569b3941c67671cf9a49a4417347e3d381ceb
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-11-02
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-11-02
+
+    Update AUTHORS
+
+commit 7e8c8af74fe5cae4c33b0c0b48f33cd9bd8061ac
+Merge: a08611c0 91344a96
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-11-02
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-11-02
+
+    Merge pull request #2403 from ngtcp2/gha-remove-macos-15
+    
+    GHA: Remove macos-15
+
+commit 91344a96fbffb4b84b98f5c8a966f49e48b0d80b
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-11-02
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-11-02
+
+    GHA: Remove macos-15
+
+commit a08611c06a2a5c564fc539fee87fa3bef8009a96
+Merge: b7dd8906 b7993be0
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-11-01
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-11-01
+
+    Merge pull request #2402 from ngtcp2/deal-with-if_indextoname-failure
+    
+    examples: Deal with if_indextoname failure
+
+commit b7993be0496b7c7c92605727ab468a60fbcf320f
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-11-01
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-11-01
+
+    examples: Deal with if_indextoname failure
+
+commit b7dd890633803272c298620e55d2a52bd12a84c9
+Merge: dcc02866 0176e583
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-11-01
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-11-01
+
+    Merge pull request #2400 from TheClockTwister/main
+    
+    Fix heap overruns when malloc is only 4-byte aligned (like on ESP32)
+
+commit dcc028661b4de096f8b43763324df2a50c2dc027
+Merge: d7a8f9bd 6d7f8f57
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-11-01
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-11-01
+
+    Merge pull request #2401 from ngtcp2/bump-tls-deps
+    
+    Bump tls deps
+
+commit 6d7f8f5715c4d686cf1dbeb7325ea84b610f70f2
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-11-01
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-11-01
+
+    Disable picotls-ossl resume and earlydata tests
+
+commit 4ba419a82c64a445663736f4e796e1c523c067ee
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-11-01
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-11-01
+
+    Deal with the TLS stacks that emit 0RTT key more than once
+
+commit 0176e5839eb8ff1c2d139cce2d01070761daff8d
+Author:     TheClockTwister <wiesen.leon@gmail.com>
+AuthorDate: 2026-10-31
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-31
+
+    balloc: reserve enough space to align the first object
+    
+    ngtcp2_balloc_get() reserves 8 bytes to align the objects of a block
+    to 16 bytes.  This is only enough if malloc returns 8-byte aligned
+    memory.  With a 4-byte aligned allocator, the objects can start 12
+    bytes after the header, and the last object overruns the allocation
+    by 4 bytes.
+
+commit b10bd7dd4d073ae5c34764ea44c8d2ca3fcadaa9
+Author:     TheClockTwister <wiesen.leon@gmail.com>
+AuthorDate: 2026-10-31
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-31
+
+    fix heap overrun in conn_new when malloc is only 4-byte aligned
+
+commit 1f6b76e61e58dd08905cf25a7aac1a322b90a4d9
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-31
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-31
+
+    Fix build error with picotls
+
+commit d3de1f03b49e6b2904f1943b46ab3bab0f65f957
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-31
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-31
+
+    Bump wolfssl to v5.9.4-stable
+
+commit 3959573eede054ca57080b8eb6bc48aa5b0e844d
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-31
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-31
+
+    Bump picotls
+
+commit 1d9484342cc28abc42cca1638e2177c09182ffdc
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-31
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-31
+
+    Bump aws-lc to v5.12.0
+
+commit ab0f12e0ae6591a81af6aa7a706cc66ba9cd0626
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-31
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-31
+
+    Bump boringssl
+
+commit d7a8f9bd8c10e3c586b255aba181b98851ad18a1
+Merge: ddb4e893 38c5de04
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-31
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-31
+
+    Merge pull request #2397 from ngtcp2/simplify-map-insertion
+    
+    Simplify map insert
+
+commit 38c5de04e7c40b43fd87a637a4e5c692bf15211c
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-31
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-31
+
+    Simplify map insert
+
+commit ddb4e8934fe6a34abd619136704bf17cfc6a6996
+Merge: acf20f81 e520e684
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-31
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-31
+
+    Merge pull request #2396 from ngtcp2/stop-path-validation-upfront
+    
+    Stop the path validation upfront
+
+commit e520e684165cc26cf97dc89486bd13331620ab52
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-30
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-30
+
+    Stop the path validation upfront
+    
+    Stop the path validation upfront which makes the state back to the
+    previous state.
+
+commit acf20f81dc6afa6306a23bff452494b6eb886e2c
+Merge: 96169df5 90e2eee7
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-29
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-29
+
+    Merge pull request #2395 from ngtcp2/fix-vec-merge
+    
+    Fix ngtcp2_vec_merge
+
+commit 90e2eee70b0efc4b0680da38ac8fc189776e344e
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-29
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-29
+
+    Fix ngtcp2_vec_merge
+
+commit 96169df561b7453c7ff9a7d87fdd5ca4225ceb88
+Merge: 1095bfe0 f96b3560
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-29
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-29
+
+    Merge pull request #2394 from ngtcp2/write-stream-data-thresh
+    
+    Write stream data thresh
+
+commit f96b3560683e921bdccf16d6405acc12d3cb6e50
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-29
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-29
+
+    examples/server: Add write-stream-data-thresh option
+
+commit a2693adc1b193616eae6cd56d21a35b7cd3a7a2a
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-29
+
+    Introduce ngtcp2_settings.write_stream_data_thresh
+
+commit 1095bfe05729348979506e23f078383ce1788ee7
+Merge: 4a3e4db3 9cf58000
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2393 from ngtcp2/remove-problematic-glitch-counter
+    
+    Remove problematic glitch counter for some frames
+
+commit 9cf5800091fb66a703227e3cab6982d5c08ef040
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Remove problematic glitch counter for some frames
+
+commit 4a3e4db3fc4b2d81b546cdd8fc1fcf5366d6f78e
+Merge: bc003578 7be28b21
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2392 from ngtcp2/deal-with-nomem-after-getting-conn-id
+    
+    Deal with out of memory after getting Connection ID
+
+commit 7be28b2174c9034b0ad797d3b66f6c5f4d98d6ef
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Deal with out of memory after getting Connection ID
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-XK7VSMXB
+
+commit bc0035782af7f95a8a543dabc6306f266dd6721f
+Merge: d4df37a6 76aa253f
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2391 from ngtcp2/fix-qlog-padding-only-frame
+    
+    Fix invalid qlog with PADDING only packet
+
+commit 76aa253f1022cfa8c2aa5e6d691672853a161e29
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Fix invalid qlog with PADDING only packet
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-UBFKEVDG
+
+commit d4df37a68d9a08c7d5ef7f035acb22c84abadc6b
+Merge: ae13aad6 88fb9a06
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2390 from ngtcp2/revert-count-empty-stream-frame-glitch
+    
+    Revert "Count empty STREAM frame toward glitch counter"
+
+commit 88fb9a068481fccfd4ede5b5044e89a0827b8a35
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Revert "Count empty STREAM frame toward glitch counter"
+    
+    This reverts commit 051e1aec8e3f143bcee7e17e2b02c709b2d6bbba.
+
+commit ae13aad644ce852d4dc85ec3577488716e90e39c
+Merge: 4653e8e0 e21be2c8
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2389 from ngtcp2/send-ctrl-frames-0rtt
+    
+    Send the control frames in 0RTT
+
+commit e21be2c859343eaa75c19626864b238cffeb0bf8
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Send the control frames in 0RTT
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-RC8APQ16
+
+commit 4653e8e09c7274354879250e4caa527779ad8e45
+Merge: adb200e5 9a933c85
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2388 from ngtcp2/zero-rtt-not-discarded-with-callback
+    
+    Fix 0RTT key not discarded with callback
+
+commit 9a933c8572e72a8e4990970d41c54f74097309a4
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Fix 0RTT key not discarded with callback
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-P30ZH6G2
+
+commit adb200e57fe0838425ae50a4da3813d89bdf890e
+Merge: d3823921 a4cb5868
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2387 from ngtcp2/hqclient-remove-stream-on-close
+    
+    hqclient: Remove streams on close
+
+commit a4cb586805ff8f23e2a026802588c719d7a983c1
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    hqclient: Remove streams on close
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-NAGRGHO5
+
+commit d3823921f21c2053de4d4f2f9fd7268179d9d8a9
+Merge: 8e040bae bd9bfb7f
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2386 from ngtcp2/ossl-guard-tx_level
+    
+    crypto/ossl: Guard tx_level from 0RTT as well
+
+commit bd9bfb7fa12a37cfcf36494e38fd8e4d0612d141
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    crypto/ossl: Guard tx_level from 0RTT as well
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-M8VQKOLA
+
+commit 8e040baea59cbeed00948c0ff8ba7482edda7b44
+Merge: f5df6957 aa5d59f4
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2385 from ngtcp2/fix-lost-datagram-not-called
+    
+    Fix bug that lost_datagram is not called
+
+commit aa5d59f42b574b92fc1060f1db7288842ab13976
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Fix bug that lost_datagram is not called
+    
+    Discovered by Anthropic's OSS Scanner:  ANT-2026-M5QC6QOO
+
+commit f5df69578fdf39144c01354363f6de33f986412e
+Merge: be6eb7bf 4e1a29ea
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2384 from ngtcp2/leave-pto-eliciting-flag
+    
+    Do not clear PTO eliciting flag
+
+commit 4e1a29ea201b4c065c45329c1c2b290fc0c8bcc0
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Do not clear PTO eliciting flag
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-L7U6UXML
+
+commit be6eb7bfbb57eb8f30103a935e8a035608dc4695
+Merge: af9a8ccb 051e1aec
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2383 from ngtcp2/count-empty-stream-frame-glitch
+    
+    Count empty STREAM frame toward glitch counter
+
+commit 051e1aec8e3f143bcee7e17e2b02c709b2d6bbba
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Count empty STREAM frame toward glitch counter
+    
+    ADiscovered by Anthropic's OSS Scanner: NT-2026-F7HO8HSL
+
+commit af9a8ccbca9a51f842cf57e25f1f2524c834b3e2
+Merge: e7c7305a bad97a2e
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2382 from ngtcp2/ppe-ensure-frame
+    
+    Ensure at least 1 byte frame is allocated on encoding
+
+commit bad97a2e2bd451a352b1c8a7f51868de34d8f3a6
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Ensure at least 1 byte frame is allocated on encoding
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-ERANASWP
+
+commit e7c7305a18becf7c12214f6d95a4c4a6c9705901
+Merge: d51f6668 28090a2d
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2381 from ngtcp2/paddr-before-05rtt-pkts
+    
+    Install preferred address before reading server 0.5RTT packets
+
+commit 28090a2db4430d5a0825aeed6a015f2ed6ff9228
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Install preferred address before reading server 0.5RTT packets
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-DBVEWBTA
+
+commit d51f6668b625d135be9c8f3c5219274ec55e6041
+Merge: 8603acdc ac6fcf38
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2380 from ngtcp2/server-fix-handler-leak
+    
+    examples/server Fix handler leak
+
+commit ac6fcf381705ab9445a3c7f6f511d8e0af3c16c6
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    examples/server Fix handler leak
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-AJ14IDN8
+
+commit 8603acdc1ed3dc99754d3f319914f5ba38f3eab4
+Merge: 6784fdd6 3ee1e2ff
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2379 from ngtcp2/count-decryption-failrue
+    
+    Count decryption failures for Handshake and 0RTT keys
+
+commit 3ee1e2ff83533479449304d76b4f1f294be71c3a
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Count decryption failures for Handshake and 0RTT keys
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-A1W5N1DQ
+
+commit 6784fdd61aeeee1ff8eebfd5b8a4d1b1d9da493f
+Merge: a2db7d6c e5b80423
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2378 from ngtcp2/fix-mem-leak
+    
+    Fix memory leak
+
+commit e5b804230851ede606c7d7aa73b8229c08b63dd7
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Fix memory leak
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-8UH2DDQ4
+
+commit a2db7d6c976464150a0a85a67441db165c70cd37
+Merge: 9b39a5bd c18068e5
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2377 from ngtcp2/tweak-key-update-confirmation
+    
+    Tweak key update confirmation
+
+commit c18068e5be32698d41c916143be4eb25000c2d57
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Tweak key update confirmation
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-4Z7DSYYU
+
+commit 9b39a5bd3e32d92943b14c334665963a5aaf59b9
+Merge: 3b0c8dd1 e4b26f6e
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2376 from ngtcp2/fix-conn-shutdown-stream-read
+    
+    Fix conn_shutdown_stream_read
+
+commit e4b26f6ea147bd679902d7be77a6c4379c7a0b51
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Fix conn_shutdown_stream_read
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-1HO1RD4B
+
+commit 3b0c8dd1286eded89c813fc5a13b13b896f6327a
+Merge: 19117324 5c37f641
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2375 from ngtcp2/reset-cubic-undo
+    
+    Reset CUBIC undo variables once a loss is confirmed
+
+commit 5c37f64117e666c8d49a4120e1b5d49122f05f7a
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Reset CUBIC undo variables once a loss is confirmed
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-WQ2Q88SG
+
+commit 1911732447a22e684be7c85bb93fb06f9ca2a7b1
+Merge: 84b2567a 80336959
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2374 from ngtcp2/do-not-block-path-response
+    
+    Do not block PATH_RESPONSE due to lack of DCID and credit
+
+commit 84b2567a47aa360d3d9542a55cc294122da7b98e
+Merge: 760f566e 5a27f1c4
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2373 from ngtcp2/revert-ppe-pending-assertions
+    
+    Revert "Make sure that NGTCP2_CONN_FLAG_PPE_PENDING is not leaked"
+
+commit 8033695969454e2360e0e5b659bf9c18dd1f330e
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Do not block PATH_RESPONSE due to lack of DCID and credit
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-DRZWOIXW
+
+commit 5a27f1c4bc415a845a1fb4edcc75358a55589261
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Revert "Make sure that NGTCP2_CONN_FLAG_PPE_PENDING is not leaked"
+    
+    This reverts commit 2c473aef365a16e02438328c6119eb7c220d6235.
+
+commit 760f566edb72ded6e440e3d08b669f1862e73bb8
+Merge: fe9d53d6 b541fcb2
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2372 from ngtcp2/delay-dcid-status-after-handshake
+    
+    Do not call dcid_status callback until handshake completes
+
+commit b541fcb2ef2105e9e2ad1ba6fb7c5e675a68446a
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Do not call dcid_status callback until handshake completes
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-AHG1HZHL
+
+commit fe9d53d677ea73668529af65605eabcb13fd2067
+Merge: 77c63f0f 4753b44c
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2371 from ngtcp2/avoid-active-dcid-retirement-take2
+    
+    Prevent a used DCID from being retired in the another way
+
+commit 4753b44c5d6387959ce291edf5708d302c29b576
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Prevent a used DCID from being retired in the another way
+
+commit 77c63f0f0581f3948af9f6da0621978e067e340a
+Merge: 812ad6a8 6e8ed36a
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2370 from ngtcp2/derive-ini-key-before-vneg
+    
+    Derive initial key before version is negotiated
+
+commit 6e8ed36a5da3bdaebcfbc26640fc1e532a277a66
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-27
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Derive initial key before version is negotiated
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-5LJE4MXI
+
+commit 812ad6a884c80b8cc419e432fc7852a07e288637
+Merge: 52938556 d4ccb557
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2369 from ngtcp2/avoid-dcid-reuse
+    
+    Avoid DCID reuse
+
+commit d4ccb557ff70b25be2bbccd8a45106f955f9b826
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-27
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Avoid DCID reuse
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-40ILVIHL
+
+commit 5293855625fd915b2c524c720e64d351c1fef2e5
+Merge: 988eb237 ad4e1036
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2368 from ngtcp2/init-key-update-during-handshake
+    
+    Return error when ngtcp2_conn_initiate_key_update called during handshake
+
+commit ad4e103609f91d31134be51f58138a6e9f591c87
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-27
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-28
+
+    Return error when ngtcp2_conn_initiate_key_update called during handshake
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-3Z96TJ84
+
+commit 988eb237c590f006c5dd3dcf4da34833ed32e783
+Merge: d31be83c 921a2021
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-28
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-28
+
+    Merge pull request #2367 from ngtcp2/avoid-dcid-stranded
+    
+    Avoid abandoned DCID stranded
+
+commit 921a20219dc1d3b0aa6056e4cde61ee4bd91dc7a
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-27
+
+    Avoid abandoned DCID stranded
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-0NID57J1
+
+commit d31be83c0b93e1cd5067390a7b37c8e24c0ca5f0
+Merge: 6f00573e a359eba9
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-27
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-27
+
+    Merge pull request #2366 from ngtcp2/avoid-active-dcid-retirement
+    
+    Prevent a used DCID from being retired
+
+commit a359eba92519ebed1339e1efbd309fc00c65a1d7
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-27
+
+    Prevent a used DCID from being retired
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-0M0ZL419
+
+commit 6f00573e40e5846b6691a3248c6f9f0270eff854
+Merge: 0452969b a2ccd168
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-27
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-27
+
+    Merge pull request #2365 from ngtcp2/revert-stop-buffering-data-after-stop-sending
+    
+    Revert "Stop buffering data after shutting downstream read"
+
+commit a2ccd1687656992d316d48036b2c918bc851929e
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-27
+
+    Revert "Stop buffering data after shutting downstream read"
+    
+    This reverts commit 3204235b34db669f88ba3676daadda3bbd792006.
+
+commit 0452969bf8f09bb7f42a4e00c9405c355be9f856
+Merge: b38a1a7a 907a33d1
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-27
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-27
+
+    Merge pull request #2364 from ngtcp2/stream-shutdown-inside-stop-sending
+    
+    Deal with stream shutdown in stop_sending callback
+
+commit 907a33d117da009e7a0abc1e36858e10f1b4f03b
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-27
+
+    Deal with stream shutdown in stop_sending callback
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-XB084G26
+
+commit b38a1a7a289922b8723fe700f957eef244d7b3a0
+Merge: 1ae69ddd a51504b6
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-27
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-27
+
+    Merge pull request #2363 from ngtcp2/reset-ppe-state
+    
+    Reset ppe pending state without WRITE_MORE flag set
+
+commit a51504b60497731341408338549e7a38f5dd3df4
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-27
+
+    Reset ppe pending state without WRITE_MORE flag set
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-VMTWMRAN
+
+commit 1ae69ddd0aa39916f0c5ebfc6cbbf4c3d1292ed8
+Merge: dbcd9fc1 f95272be
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-27
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-27
+
+    Merge pull request #2362 from ngtcp2/remove-handshake-addr-rejection
+    
+    Remove rejection from handshake address because it is unreliable
+
+commit f95272beb65844ee985a6e1ae617c796bf024dbb
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-27
+
+    Remove rejection from handshake address because it is unreliable
+
+commit dbcd9fc12d7724c26c1504b85ef184bdfab6f7ee
+Merge: 90e85240 f67c9a08
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-27
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-27
+
+    Merge pull request #2361 from ngtcp2/reject-ack-future-pkt
+    
+    Reject ACK that acknowledges packet that is sent later
+
+commit f67c9a08805645071d855329e0077687dcf8ce9c
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-27
+
+    Reject ACK that acknowledges packet that is sent later
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-TKDASE3H
+
+commit 90e852406c2425983350400fa8a362ab3172ac06
+Merge: 7d36160f 18baa5b8
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-27
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-27
+
+    Merge pull request #2360 from ngtcp2/conn-id-limit-error
+    
+    Deal with the connection ID limit error
+
+commit 18baa5b829469185d211e2428aa118990b1e117f
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-27
+
+    Deal with the connection ID limit error
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-TF2RWXOV
+
+commit 7d36160f79aaee9205e96d0123327c39fbc36124
+Merge: bc241bcd 67ff4fdc
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-27
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-27
+
+    Merge pull request #2359 from ngtcp2/fix-pkt-num-decoding
+    
+    Fix packet number decoding
+
+commit 67ff4fdc89af2761a08edd23609c05636104ca47
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-27
+
+    Fix packet number decoding
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-TELGO1RO
+
+commit bc241bcdb8e7d3b53c2b1c87f8df8aed70a276ff
+Merge: aec31bea 82de9494
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-27
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-27
+
+    Merge pull request #2358 from ngtcp2/tls-no-tp
+    
+    Deal with TLS stack that does not bail out without transport params
+
+commit 82de9494a1f9ebe86c0b812b17d7b10f0335b012
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-27
+
+    Deal with TLS stack that does not bail out without transport params
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-TAWRSE60
+
+commit aec31beae24dc6c61d432e93118410daa668443d
+Merge: 3c266f8d 41c0e0f1
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-27
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-27
+
+    Merge pull request #2357 from ngtcp2/keep-congestion-state
+    
+    Keep congestion state if nothing has been delivered
+
+commit 41c0e0f1d6def3a240315c89b74408d5d5e9bd4d
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-27
+
+    Keep congestion state if nothing has been delivered
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-SZPA5FD0
+
+commit 3c266f8dc72ca2f0b2cd96384d491b81a6cfe23a
+Merge: 81a80429 571ace9f
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-27
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-27
+
+    Merge pull request #2356 from ngtcp2/decode-version-cid-zero-len
+    
+    Make ngtcp2_pkt_decode_version_cid return error on zero input
+
+commit 571ace9fab9874130714ecf93e94346d1071bb57
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-27
+
+    Make ngtcp2_pkt_decode_version_cid return error on zero input
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-SMHBZM6I
+
+commit 81a80429c3270ae4a1502581a781810fb916b15e
+Merge: fcaf5bfc 38dd1bdf
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-27
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-27
+
+    Merge pull request #2352 from ngtcp2/no-pv-without-path-challenge
+    
+    Do not start pv round if no PATH_CHALLENGE is sent
+
+commit 38dd1bdf7f508cdd1aa65514d0819bd603b224f8
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-26
+
+    Do not start pv round if no PATH_CHALLENGE is sent
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-QA2U8XHW
+
+commit fcaf5bfc75479fb4f22250b9c750735373a8a90d
+Merge: c106202f 768010c4
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-26
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-26
+
+    Merge pull request #2351 from ngtcp2/client-migrate-back
+    
+    Properly handle the case when client migrates back to the original path
+
+commit 768010c43b2cfde354d68f27bfef3ec41f67b9d8
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-26
+
+    Properly handle the case when client migrates back to the original path
+
+commit c106202fe099757218ce6b04fc865421a17fc92a
+Merge: b27fb86a aed39f83
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-26
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-26
+
+    Merge pull request #2350 from ngtcp2/rearm-loss-timer-after-anti-amp-cancel
+    
+    Rearm loss timer after it is cancelled by anti-amplification limit
+
+commit aed39f831edb11824096fedac260e33ef810747d
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-26
+
+    Rearm loss timer after it is cancelled by anti-amplification limit
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-LQUO6CMG
+
+commit b27fb86a6addb0673e07b277842f3a828237d600
+Merge: 638f5d08 c931d929
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-26
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-26
+
+    Merge pull request #2349 from ngtcp2/map-hasher
+    
+    Improve map hasher
+
+commit c931d929eecd32d1353779380a450b2a91c75048
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-26
+
+    Improve map hasher
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-LHHDI8FF
+
+commit 638f5d08a8abbfea75582e550c43a62abddb8ce4
+Merge: 5f2dc4c2 cf44f3a2
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-26
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-26
+
+    Merge pull request #2348 from ngtcp2/early-handshake-done
+    
+    Deal with the early HANDSHAKE_DONE from server
+
+commit cf44f3a29610c54ab76bfc4db849c1623e66b4b2
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-26
+
+    Deal with the early HANDSHAKE_DONE from server
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-KRLQTCPZ
+
+commit 5f2dc4c2c2f61edf35570d451355962cf0c82fd4
+Merge: eacf5d9a a02ecbc9
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-26
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-26
+
+    Merge pull request #2347 from ngtcp2/refine-rob-fragmentation-thresh
+    
+    Refine ngtcp2_rob fragmentation threshold detection
+
+commit a02ecbc99b1f9012914bc45b3daa0033a371d1b3
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-26
+
+    Refine ngtcp2_rob fragmentation threshold detection
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-IEAJSA6U
+
+commit eacf5d9a5b87b8bfdb1933d296ffea300eb28db7
+Merge: 1e49808b 97794fed
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-26
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-26
+
+    Merge pull request #2346 from ngtcp2/reclaim-fc-credit-on-close
+    
+    Reclaim connection level flow control window in stream close for RESET_STREAM
+
+commit 97794fed39abe3a53cc34be5f90df9ac24374fa7
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-24
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-26
+
+    Reclaim connection level flow control window in stream close for RESET_STREAM
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-HQAAKZI0
+
+commit 1e49808ba99d5dcfb293ae7e0b35cc4b280e06f2
+Merge: 6a9030e9 4fe2c3f3
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-26
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-26
+
+    Merge pull request #2345 from ngtcp2/path-response-pto-eliciting
+    
+    Make PATH_RESPONSE PTO eliciting
+
+commit 4fe2c3f344718e132dacd295b6dec13c338c786c
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-24
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-26
+
+    Make PATH_RESPONSE PTO eliciting
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-FZS9EZIV
+
+commit 6a9030e9672a609fad6c9433fc2a0a5241a248a2
+Merge: 06c4c750 248bf78f
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-26
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-26
+
+    Merge pull request #2344 from ngtcp2/verify-path-validation-timeout
+    
+    Explicitly verify path validation timeout
+
+commit 248bf78f8dd9adf29696d00bbba0964988d24a42
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-24
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-26
+
+    Explicitly verify path validation timeout
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-DHI3V7A1
+
+commit 06c4c7505478c2fb04dd38ce68fa70042a2164fe
+Merge: 5ff06976 f1784255
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-26
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-26
+
+    Merge pull request #2343 from ngtcp2/limit-client-path-response
+    
+    Limit client's PATH_RESPONSE to the unvalidated path
+
+commit f178425556875e09b5cbfbd055e073e67e887145
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-24
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-26
+
+    Limit client's PATH_RESPONSE to the unvalidated path
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-BGKGOVG8
+
+commit 5ff0697641a2aae9cd7f52abbccddba1eee58d3d
+Merge: 45c93e74 9182110e
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-26
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-26
+
+    Merge pull request #2342 from ngtcp2/delay-zero-rtt-data-processing
+    
+    Process 0RTT packet only after 0RTT and 1RTT keys are available
+
+commit 9182110e5c1064d4e555b59df55a4335e07c0d11
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-24
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-26
+
+    Process 0RTT packet only after 0RTT and 1RTT keys are available
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-A07I6MAZ
+
+commit 45c93e7466faea6b011a68c441c9a2a03fef8785
+Merge: 0f8efd23 a5970874
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-26
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-26
+
+    Merge pull request #2341 from ngtcp2/dup-1rtt-keys
+    
+    Graceful connection closure when 1 RTT key is installed more than once
+
+commit a5970874ecd1bb9d6d5e8903a543d7a08c8647b3
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-24
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-26
+
+    Graceful connection closure when 1 RTT key is installed more than once
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-942Z58N5
+
+commit 0f8efd233829649e3681f4eceac57ae7e3af2386
+Merge: f27971f7 fda49448
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-26
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-26
+
+    Merge pull request #2340 from ngtcp2/fix-validated-path-use
+    
+    Use validated_path before it is gone
+
+commit fda49448eab98fd5f71097223844d72a337ae457
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-24
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-26
+
+    Use validated_path before it is gone
+
+commit f27971f78ba2e9fc1620f8849ee71512eea92af3
+Merge: 20da63db afcd05da
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-26
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-26
+
+    Merge pull request #2339 from ngtcp2/clamp-send-quantum
+    
+    send_quantum should be at least single MTU
+
+commit afcd05da976975c7318ac23318648328af982ed9
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-24
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-26
+
+    send_quantum should be at least single MTU
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-90M6D50T
+
+commit 20da63db12a3e7fd2a3ae1a9f15be3cadd3f2695
+Merge: b54fd4fd 840c2a65
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-26
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-26
+
+    Merge pull request #2332 from nak3/libressl-440
+    
+    Bump libressl to v4.4.0
+
+commit b54fd4fdd0ab1a42b5c4ea71dfd1992adb366d34
+Merge: c6ebe27b 31023599
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-25
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-25
+
+    Merge pull request #2338 from ngtcp2/aggregate-check-path
+    
+    ngtcp2_conn_write_aggregate_pkt2: Check path to end aggregation
+
+commit 31023599678afec1c57023cc12ce295ec1895676
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-24
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-25
+
+    ngtcp2_conn_write_aggregate_pkt2: Check path to end aggregation
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-7HICYVOG
+
+commit c6ebe27b6e615cecf164045f861a837d9abe9ffb
+Merge: 768a95e9 0ed50c6b
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-25
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-25
+
+    Merge pull request #2337 from ngtcp2/optimize-rtb-reclaim-on-pto
+    
+    Optimize ngtcp2_rtb_reclaim_on_pto
+
+commit 0ed50c6bcb307c15ff1793e94c026beacb569ead
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-24
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-25
+
+    Optimize ngtcp2_rtb_reclaim_on_pto
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-77BU34MK
+
+commit 768a95e9b069b84cfc08bebec7b9bc92153c03ba
+Merge: a6492175 3be6b7fb
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-25
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-25
+
+    Merge pull request #2336 from ngtcp2/penalize-short-stream-data-write
+    
+    Penalize the short stream data write
+
+commit 3be6b7fb3105b5aec390b10d0228ce831f1fe005
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-24
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-25
+
+    Penalize the short stream data write
+
+commit a6492175879a5cdf5786547741a72a9110ec8bf6
+Merge: 97cf44d1 b33093ad
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-25
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-25
+
+    Merge pull request #2335 from ngtcp2/fix-decrypt-pkt-marker
+    
+    Fix max decryptable pkt num marker before first decryption
+
+commit b33093adb96654b6677a824e019246122d71bcee
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-24
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-25
+
+    Fix max decryptable pkt num marker before first decryption
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-50T2VG19
+
+commit 97cf44d11ad53c453cc44892bda2d44cf5fc154d
+Merge: 5ff54cf8 92f1644a
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-25
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-25
+
+    Merge pull request #2334 from ngtcp2/zerolen-stream-frame-filter
+    
+    Add 0 length STREAM frame filter to rtb_reclaim_on_retry
+
+commit 92f1644a5021ad14028de66b141c5602bf5b84f6
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-24
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-25
+
+    Add 0 length STREAM frame filter to rtb_reclaim_on_retry
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-319IBV21
+
+commit 5ff54cf8c0c2f6e44e82c15707b8115798e4a947
+Merge: 77227b0d 891b2e37
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-25
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-25
+
+    Merge pull request #2333 from ngtcp2/limit-token-length
+    
+    Limit token length
+
+commit 891b2e375cf3a7134d68c2f1861bfbdd54cf9cb8
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-24
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-25
+
+    Limit token length
+    
+    Discovered by Anthropic's OSS Scanner: ANT-2026-2OERGJHH
+
+commit 840c2a655eed798a3f5a6635b36125408c6d8c90
+Author:     Kenjiro Nakayama <nakayamakenjiro@gmail.com>
+AuthorDate: 2026-10-23
+Commit:     Kenjiro Nakayama <nakayamakenjiro@gmail.com>
+CommitDate: 2026-10-23
+
+    Bump libressl to v4.4.0
+
+commit 77227b0dc186b5605ba332cfcc95810743fbea2b
+Merge: 66e02538 432225a5
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-22
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-22
+
+    Merge pull request #2330 from kraj/server-size_t-len
+    
+    examples/server: Do not truncate file sizes on 32-bit targets
+
+commit 432225a55a2c70f39a9bfdc0e5d429294b75774f
+Author:     Khem Raj <khem.raj@oss.qualcomm.com>
+AuthorDate: 2026-10-21
+Commit:     Khem Raj <khem.raj@oss.qualcomm.com>
+CommitDate: 2026-10-21
+
+    examples/server: Do not truncate file sizes on 32-bit targets
+    
+    FileEntry::len is a uint64_t, but it is used for mmap() and as the size
+    of the resp_data std::span, both of which take a size_t. On targets
+    where size_t is 32 bits, such as riscv32, clang rejects the narrowing in
+    the span initializer:
+    
+      examples/server.cc:236:54: error: non-constant-expression cannot be
+      narrowed from type 'uint64_t' (aka 'unsigned long long') to
+      'size_type' (aka 'unsigned int') in initializer list [-Wc++11-narrowing]
+    
+    The value is already truncated earlier, where st_size is cast to size_t
+    before mmap(), so a file larger than the address space would be served
+    with the wrong length.
+    
+    Store the length as a size_t, and fail open_file() with
+    Error::INTEGER_OVERFLOW when the file is too large to map, instead of
+    truncating its size.
+    
+    Signed-off-by: Khem Raj <khem.raj@oss.qualcomm.com>
+
+commit 66e02538edc6400747268c184eacfea3ac89f193
+Merge: 464d809c d55fca2f
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-21
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-21
+
+    Merge pull request #2329 from ngtcp2/examples-client-fix-div-by-zero
+    
+    examples/client: Fix div by zero
+
+commit d55fca2fcc777b729dac084ce18f8ed865b9af58
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-21
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-21
+
+    examples/client: Fix div by zero
+
+commit 464d809c480a65e7f5691631821926a1e2270542
+Merge: f67788be 3a23a215
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-20
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-20
+
+    Merge pull request #2328 from ngtcp2/oss-scanner
+    
+    Add oss-scanner files
+
+commit 3a23a2150a57f1cf80b6e3dbab5b60e2d22ab65a
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-20
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-20
+
+    Add oss-scanner files
+
+commit f67788be27065e9581dfe35ebd0b6d6f5b1c4ead
+Merge: 48228939 c031a1fb
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-20
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-20
+
+    Merge pull request #2327 from ngtcp2/gha-macos-libressl
+    
+    GHA: Use libressl for macos build
+
+commit c031a1fb81d744b467924515bd608f82612f371b
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-20
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-20
+
+    GHA: Use libressl for macos build
+
+commit 48228939787d4b5bea94c7795b8c7fe0781d918e
+Merge: 066f0bb8 3444b7f7
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-11
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-11
+
+    Merge pull request #2326 from ngtcp2/server-send-conn-close
+    
+    Server should send CONNECTION_CLOSE in earlier level
+
+commit 3444b7f7bce9f85b1b92e7a1131a3c23c91630da
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-11
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-11
+
+    Server should send CONNECTION_CLOSE in earlier level
+    
+    Server should send CONNECTION_CLOSE in earlier level if key is
+    available.
+
+commit 066f0bb84adb384e2c1ed7af6e0708714c48090c
+Merge: fbf28a6d c71d7801
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-11
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-11
+
+    Merge pull request #2325 from ngtcp2/ossl-check-level
+    
+    Check ossl encryption level
+
+commit c71d7801cc53e2230f623dbc151ede014798160d
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-11
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-11
+
+    Check ossl encryption level
+
+commit fbf28a6dccbaf1e9b357806c122ca06ba4bec1e5
+Merge: b9fc4d55 b4637e0a
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-11
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-11
+
+    Merge pull request #2324 from ngtcp2/picotls-check-level
+    
+    Check picotls encryption level
+
+commit b4637e0a1c78b0558d017f13a4194a194d20db66
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-10-11
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-10-11
+
+    Check picotls encryption level
+
+commit b9fc4d55ce6035a4cc76dc456ced6371e98f9214
+Merge: a4925d70 a0cfeaf8
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-10-04
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-10-04
+
+    Merge pull request #2323 from jagerman/server-peer-ip-change-pmtu
+    
+    Reset max UDP payload size when the peer's IP address changes
+
+commit a0cfeaf8b43da9a2e7133c6034661cbbdd741f7f
+Author:     Jason Rhinelander <jason@imaginary.ca>
+AuthorDate: 2026-10-02
+Commit:     Jason Rhinelander <jason@imaginary.ca>
+CommitDate: 2026-10-03
+
+    Reset max UDP payload size when the peer's IP address changes
+    
+    When a non-probing packet arrives from a new remote IP address with
+    the same DCID (e.g. a client whose network changed under a socket
+    bound to the wildcard address), the server reuses the current DCID
+    for the new path, and ngtcp2_dcid_copy carries over the old path's
+    max_udp_payload_size.  PMTUD, restarted once the new path is
+    validated, only probes upward from there, so a smaller PMTU on the
+    new path black-holes every full-size packet.
+    
+    RFC 9000 Section 14.2 says the maximum datagram size should be kept
+    for each combination of local and remote IP addresses (not ports).
+    Start a new combination at the minimum, under the same condition that
+    already resets congestion state; port-only changes and returning to a
+    path in the path history keep their size.
+
+commit a4925d70647b75286b28c37be260de3729c2de3d
+Merge: 3c23148e 5620bff8
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-26
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-26
+
+    Merge pull request #2320 from ngtcp2/fix-slow-start-pacing-gain
+    
+    Fix slow start pacing gain
+
+commit 5620bff842dd34941b44b7e0351d4b70ee2be944
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-26
+
+    Fix slow start pacing gain
+
+commit 3c23148ef32596cb75720b94615d9650cdec5391
+Merge: 0d2fb721 c92a689f
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-13
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-13
+
+    Merge pull request #2316 from ngtcp2/update-doc
+    
+    Update doc
+
+commit c92a689fd2698d01a429b2773951b6ea6de9090d
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-13
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-13
+
+    Update doc
+
+commit 0d2fb721b5da58f88e024ca4f43fd8b6afd5d8ab
+Merge: 4e229ccf bc912374
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-13
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-13
+
+    Merge pull request #2315 from ngtcp2/tweak-ratelim-max-burst
+    
+    Tweak the maximum value of ngtcp2_ratelim.burst
+
+commit bc912374abe0f0e58ee4274b531a41dc71ed413c
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-13
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-13
+
+    Tweak the maximum value of ngtcp2_ratelim.burst
+    
+    Clamp burst to UINT64_MAX / NGTCP2_SECONDS, so that we can use burst
+    value when the token gain overflows.
+
+commit 4e229ccf336c01dcad4b4aee2ea34610bac9730e
+Merge: cc568525 246a5eac
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-13
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-13
+
+    Merge pull request #2313 from ngtcp2/gha-fix-quic-itnerop-runner
+    
+    GHA: Fix quic interop runner
+
+commit 246a5eac4486161fecd047646827bd8467c9f09e
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-13
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-13
+
+    GHA: Fix quic interop runner
+
+commit cc56852530bc3c7c294f82e19c85265b25686c6c
+Merge: d13adacf 74444289
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-13
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-13
+
+    Merge pull request #2312 from ngtcp2/gha-reduce-cmake-jobs
+    
+    GHA: Reduce cmake jobs
+
+commit 744442890390f9427d97f7956009a9b60d333436
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-13
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-13
+
+    GHA: Reduce cmake jobs
+
+commit d13adacf0008bc5046c983aa469c8c71304c7559
+Merge: f3a899ae 32d894a7
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-12
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-12
+
+    Merge pull request #2311 from ngtcp2/gha-reduce-openssl13-jobs
+    
+    GHA: Reduce openssl1/3 jobs
+
+commit 32d894a78af28963c103231afc7bced34b22681e
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-12
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-12
+
+    GHA: Reduce openssl1/3 jobs
+
+commit f3a899ae529a15fb0c5888fd48f491546b902188
+Merge: ce1596b0 a0229c8b
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-12
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-12
+
+    Merge pull request #2310 from ngtcp2/use-packaged-ossl
+    
+    Use packaged ossl
+
+commit a0229c8b44dfad0ae11ff66023c88694c1cab504
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-12
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-12
+
+    examples/tests: Support client side certificate compression
+
+commit 6bcfcc58086f692490c47dc7d572add1273b10fb
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-12
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-12
+
+    GHA: Use the packaged openssl
+
+commit ce1596b023093ac51fef8d889c4ad32f34f70d30
+Merge: 72a85865 c6caf954
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-12
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-12
+
+    Merge pull request #2309 from ngtcp2/bump-ubuntu
+    
+    GHA: Bump ubuntu to 26.04
+
+commit c6caf9546d8a5c26b7d2c173d6e9ff4b6d1ac2a2
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-12
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-12
+
+    GHA: Bump ubuntu to 26.04
+
+commit 72a85865dd3a4b33fe5830baf461ed50ebb7ad0e
+Merge: 2cd46ea3 726c982a
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-11
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-11
+
+    Merge pull request #2308 from ngtcp2/gha-bump-clang
+    
+    GHA: Bump clang to 21
+
+commit 726c982a2ef42aad36daa64eb7eacfd08fd49607
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-10
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-10
+
+    GHA: Bump clang to 21
+
+commit 2cd46ea324d0cf9fbdaefc5c8d977444fa9bba1d
+Merge: dd2308cb d0846c17
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-10
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-10
+
+    Merge pull request #2307 from ngtcp2/bump-clang-format
+    
+    Bump clang-format to 21
+
+commit d0846c1735f9beeb0db2ac6004db035cb47dd470
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-10
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-10
+
+    Bump clang-format to 21
+
+commit dd2308cb605dc5d1e51cbbfcc65923ebaaa8cf42
+Merge: 55f5237d 1677aefd
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-10
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-10
+
+    Merge pull request #2306 from ngtcp2/examples-rewrite-tests-with-new-munit-cxx-assertions
+    
+    Examples rewrite tests with new munit cxx assertions
+
+commit 1677aefd84a5e51ec47eaa0e59f42b9a91e8c94d
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-10
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-10
+
+    examples: Rewrite tests with new munit C++ assertions
+
+commit 7b1b8a2f7d11cdd3c06e1dd0a2943ffc8cbdf0e2
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-10
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-10
+
+    Use gcc-15
+
+commit 939514fed2d9cd0453bc7e786c3b35cba82b7193
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-10
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-10
+
+    tests: Bump munit
+
+commit 55f5237d6b807a8a40042ea9e42a6b672a7b685d
+Merge: 3b0b91c3 63421624
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-07
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-07
+
+    Merge pull request #2305 from ngtcp2/gha-bump-ubuntu
+    
+    GHA: Bump Ubuntu to 26.04
+
+commit 63421624918cb359d853c27e8f114c5b70deeb03
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-06-28
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-07
+
+    GHA: Bump Ubuntu to 26.04
+
+commit 3b0b91c3e2e27cbb51400daa09cf1d33647f5042
+Merge: ccf1750a 92359846
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-06
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-06
+
+    Merge pull request #2304 from ngtcp2/simplify-conn-test
+    
+    Simplify conn test
+
+commit 923598462b33af0a39caef08c90001bc1bc537a4
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-06
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-06
+
+    Remove null_datav use ngtcp2_conn_write_stream instead
+
+commit 28855a0060a723c44da88edd928f3e2465e00ffb
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-06
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-06
+
+    Initialize ngtcp2_stream.data with compound literals
+
+commit 762b79571ff66ff81b5a05969a580414dc42b7eb
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-06
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-06
+
+    Use -1 as an invalid initial Stream ID
+
+commit 4b327383ad7551ff51af36378d065c0bcbe2cd50
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-06
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-06
+
+    Use ngtcp2_conn_write_pkt with no flag and no stream data
+
+commit ccf1750a51814d237e4caf4d630721ab93253c2e
+Merge: 822af9d1 19ad3568
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-06
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-06
+
+    Merge pull request #2303 from ngtcp2/rtb-test
+    
+    Rtb test
+
+commit 19ad35686d1bd53a5472d5d263292db1e9e34264
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-06
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-06
+
+    Add test for lost_datagram callback
+
+commit 2126b093d6e9f6579f7acd30b20a12ffb3999278
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-05
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-06
+
+    Add test for RETIRE_CONNECTION_ID acknowledgement
+
+commit 822af9d1ca42f1e2ef015c62bda58b0308d1e584
+Merge: 83b01c15 b74c1322
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-05
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-05
+
+    Merge pull request #2302 from ngtcp2/rtb-resend-new-token-test
+    
+    Add test for resending NEW_TOKEN
+
+commit b74c1322982350e27c92ac288498334e6805c5a4
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-05
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-05
+
+    Add test for resending NEW_TOKEN
+
+commit 83b01c1566907756b3dc3ecdc8a389c94298eb29
+Merge: 4636c648 ab9b6179
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-05
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-05
+
+    Merge pull request #2301 from ngtcp2/add-wf-test
+    
+    Add wf test
+
+commit ab9b617929a6f7a1131e658145dc367b590a9896
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-05
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-05
+
+    Add wf test
+
+commit 4636c64880e67c0c3a0ba0c833b18cea22282823
+Merge: f550fce8 8f0831a8
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-05
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-05
+
+    Merge pull request #2300 from ngtcp2/tp-tests
+    
+    Add more transport parameter decoding tests
+
+commit 8f0831a84fcb9eaa80049ee1773cacc0ff77a7ae
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-05
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-05
+
+    Add more transport parameter decoding tests
+
+commit f550fce8881eb9ce639337a0a4e3fdff498e62c4
+Merge: 99148e5d 2d37ad46
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-05
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-05
+
+    Merge pull request #2299 from ngtcp2/add-transport-params-decode-tests
+    
+    Add transport parameters decode tests
+
+commit 2d37ad4613f49fb215fa67cf0091060396474156
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-04
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-04
+
+    Add transport parameters decode tests
+    
+    This fixes the invaild handling of too large max_idle_timeout.
+
+commit 99148e5d131e77227a97ca6f6ab286da60bcb4e3
+Merge: b5de53af bb22787b
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-04
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-04
+
+    Merge pull request #2298 from ngtcp2/rename-blocked-offset
+    
+    Rename offset in ngtcp2_data_blocked and ngtcp2_stream_data_blocked
+
+commit bb22787bd2d8642d24d1a78053212a0933f37e49
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-04
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-04
+
+    Rename offset in ngtcp2_data_blocked and ngtcp2_stream_data_blocked
+    
+    Rename offset in ngtcp2_data_blocked and ngtcp2_stream_data_blocked to
+    max_data and max_stream_data respectively to follow RFC 9000.
+
+commit b5de53af61597f298d3ee13e94953b1c2081ff53
+Merge: 1107a68f 12732511
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-02
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-02
+
+    Merge pull request #2297 from ngtcp2/simplify-max-data-length
+    
+    Remove the code that handles the case that is too large for UDP datagram
+
+commit 12732511ea528859b8e35c5d31e9665bcf23f3f4
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-02
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-02
+
+    Remove the code that handles the case that is too large for UDP datagram
+
+commit 1107a68f61b500b9d8e38c36022a563a61be8fb1
+Merge: af7f83f3 0a73341b
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-02
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-02
+
+    Merge pull request #2296 from ngtcp2/reset-stream-local-uni-stream
+    
+    Return NGTCP2_ERR_STREAM_STATE for RESET_STREAM against local uni stream
+
+commit 0a73341b3df19e9bfab63a1bdf5cb0fd2503f249
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-02
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-02
+
+    Return NGTCP2_ERR_STREAM_STATE for RESET_STREAM against local uni stream
+
+commit af7f83f3b72d21736e1432cbd4abcdf1d3ef7273
+Merge: 2ce971d5 950ade70
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-09-02
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-09-02
+
+    Merge pull request #2295 from ngtcp2/early-data-rejected-client-only
+    
+    Assert that ngtcp2_conn_tls_early_data_rejected only called from client
+
+commit 950ade702316806948d9a35fcc1c599689fcce76
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-09-02
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-09-02
+
+    Assert that ngtcp2_conn_tls_early_data_rejected only called from client
+    
+    ngtcp2_conn_tls_early_data_rejected is meant for client only.  We have
+    mixed up some unneeded code in this call path.  Remove the code
+    targeted for server that is never be used.
+
+commit 2ce971d5fef2972e2bf332c8172f6f00b480c008
+Merge: 1dd90979 47dafd1c
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-08-25
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-25
+
+    Merge pull request #2294 from ngtcp2/rework-ncid-validation
+    
+    Rework the incoming NEW_CONNECTION_ID validation
+
+commit 47dafd1c33b1ae6ad1ddff1b3ee4efe9b319dbcd
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-25
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-25
+
+    Rework the incoming NEW_CONNECTION_ID validation
+    
+    First check that the sequence number has been received.  If so, ignore
+    the frame.  RFC 9000 allows the implementation to deal with the
+    duplicates with the sequence number.  Then we simplify require that
+    the newly received Connection ID is unique among the Connection IDs we
+    still retain.
+
+commit 1dd90979bc9ddddaab76d4a6733dd12a3317e901
+Merge: f3af8b14 2bc7c7dd
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-08-24
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-24
+
+    Merge pull request #2293 from ngtcp2/simplify-write-stream
+    
+    Simplify ngtcp2_conn_write_stream
+
+commit 2bc7c7ddef4f3c821e8908fbc26d79dd9ba7acfa
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-24
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-24
+
+    Simplify ngtcp2_conn_write_stream
+
+commit f3af8b14670bffa2e341b2bb45da75bc3ed71c46
+Merge: a07c3a53 c8aada1a
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-08-22
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-22
+
+    Merge pull request #2292 from ngtcp2/update-doc
+    
+    Update doc
+
+commit c8aada1ad8200c138f33771935f5c907805daed8
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-22
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-22
+
+    Update doc
+
+commit a07c3a53c9784e9198dee7198d3c9dfe0bd64ccf
+Merge: dbb5e146 b3be1fcf
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-08-22
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-22
+
+    Merge pull request #2291 from ngtcp2/stream-data-blocked
+    
+    Send STREAM_DATA_BLOCKED/DATA_BLOCKED when data is actually blocked
+
+commit b3be1fcfa80ff785e02064c4cf5a626bced48fa1
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-22
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-22
+
+    Send STREAM_DATA_BLOCKED/DATA_BLOCKED when data is actually blocked
+
+commit dbb5e1463063c4959f1d3a83442803b64768fdc5
+Merge: a71ae53f d041d0fb
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-08-22
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-22
+
+    Merge pull request #2290 from ngtcp2/tx_strm_push_if_not
+    
+    Add ngtcp2_conn_tx_strmq_push_if_not
+
+commit d041d0fbbb657a227f5cd1648b9dc318011732cf
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-22
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-22
+
+    Add ngtcp2_conn_tx_strmq_push_if_not
+
+commit a71ae53f06cc2bc7b9b253788538aa9c41eb87eb
+Merge: 5977c53f ee7a54b6
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-08-22
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-22
+
+    Merge pull request #2289 from ngtcp2/streams-blocked-err-code
+    
+    Return STREAM_LIMIT error if the limit is violated by STREAMS_BLOCKED
+
+commit ee7a54b6385da6d98a6e35ac223180562a31fa12
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-21
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-21
+
+    Return STREAM_LIMIT error if the limit is violated by STREAMS_BLOCKED
+
+commit 5977c53f5cbff656bc969b0a39f1dbcd137cdf01
+Merge: 7f7e24b1 c50562ff
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-08-19
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-19
+
+    Merge pull request #2288 from ngtcp2/call-extend-max-data-on-handshake-completion
+    
+    Call extend_max_data on handshake completion
+
+commit c50562fff1d3b6e6887ef1c241ae6780a6a79081
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-19
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-19
+
+    Call extend_max_data on handshake completion
+    
+    This is where we call extend_max_local_streams, and best single place
+    to call this kind of callbacks.
+
+commit 7f7e24b1deb1dc94985c2d6345ca68cc387b4709
+Merge: 994c858f 42d626f8
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-08-18
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-18
+
+    Merge pull request #2287 from ngtcp2/fix-cubic-delayed-ack
+    
+    Fix CUBIC CWND increment function
+
+commit 42d626f89983671e6f27c1ce25cd3b5e8714b227
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-18
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-18
+
+    Fix CUBIC CWND increment function
+    
+    As suggested by
+    https://mailarchive.ietf.org/arch/msg/quic/_Ej4qt7TVgDzgc0pmFV0D3n0ihw/
+
+commit 994c858f8fa712dd301c87a6e3fa7184d87fabb3
+Merge: 051ba13c 1ffa646c
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-08-18
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-18
+
+    Merge pull request #2286 from ngtcp2/fix-fallback-dcid-retirement
+    
+    Do not retire the fallback DCID if it is still used
+
+commit 1ffa646cb33ad8e7e64d21d97fa90205e6c6635d
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-18
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-18
+
+    Do not retire the fallback DCID if it is still used
+
+commit 051ba13cab91e2f11eb7ab4457057eb28e4db595
+Merge: a7786266 54af3554
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-08-16
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-16
+
+    Merge pull request #2284 from ngtcp2/update-callback-tests
+    
+    Update callback tests
+
+commit 54af3554b7eda24707d8664c0fe782724bed2047
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-16
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-16
+
+    Update callback tests
+
+commit a77862665f34b17e3fb4d7232d76b0ac8dbfd563
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-16
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-16
+
+    clang-format
+
+commit 61c802bedcd15fec7339b04d0e3a5ee898fa14ed
+Merge: 76a41a1b cb0cfcf9
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-08-16
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-16
+
+    Merge pull request #2283 from martenrichter/callbackmaxdata
+    
+    Add callback for extendmaxdata
+
+commit cb0cfcf9afff9cf89fc9c1949fff74db12e7badb
+Author:     Marten Richter <marten.richter@tu-berlin.de>
+AuthorDate: 2026-08-15
+Commit:     Marten Richter <marten.richter@tu-berlin.de>
+CommitDate: 2026-08-15
+
+    Add callback for extendmaxdata
+    
+    Some users of the library (node.js),
+    require a callback, that signals, when new
+    maxdata values are available, as the maxdata
+    value is cached and evaluated outside ngtcp2.
+    
+    Fixes #2243
+    
+    Signed-off-by: Marten Richter <marten.richter@freenet.de>
+
+commit 76a41a1bc83a639f813d1313bb1af5bc61696e70
+Merge: 064f0c14 96b28bbb
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-08-15
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-15
+
+    Merge pull request #2282 from ngtcp2/examples-server-check-version
+    
+    examples/server: Check QUIC version
+
+commit 96b28bbbfaa86c42b4dde5610d0ca22837a601a7
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-15
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-15
+
+    examples/server: Check QUIC version
+
+commit 064f0c1441fc9fb91e732d8d3327d03206f1f3d0
+Merge: cc467e05 5c6db9d8
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-08-15
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-15
+
+    Merge pull request #2281 from ngtcp2/map-remove-key-on-resize-failure
+    
+    map: Remove key if resizing table fails
+
+commit 5c6db9d80668d94cd00b2d8c0a8a781fb546cd93
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-15
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-15
+
+    map: Remove key if resizing table fails
+
+commit cc467e055cded1ddcbf00f655cb61eee73f9ca22
+Merge: 643e42a9 2e47b5db
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-08-15
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-15
+
+    Merge pull request #2280 from ngtcp2/fix-pktlen-check
+    
+    Tighten long header packet length check for 32-bit platform
+
+commit 2e47b5dbac26ee280f832046186bdcd0883dc096
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-15
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-15
+
+    Tighten long header packet length check for 32-bit platform
+
+commit 643e42a9968211ee701d6d89efe30391bb7f542f
+Merge: 0134a19b cbac04bc
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-08-11
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-11
+
+    Merge pull request #2278 from ngtcp2/restructure-conn
+    
+    Restructure conn
+
+commit cbac04bc89e7c51cc69ce3e65d4339d580580602
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-06
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-11
+
+    Move ingress stream budgets from remote to rx
+
+commit e1644b156b91b3ed56b8671c106e8c5c584f8db1
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-06
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-11
+
+    Move egress stream budgets from local to tx
+
+commit cdd5a3d4229c20a390ea599ff5e6dfb2f5bc5874
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-06
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-11
+
+    Extract idtr from remote struct because it is not limited to remote
+
+commit 0134a19b63f0a3578a3879a557a8c0bb52d28fdc
+Merge: d7fb3ed0 fc0a8c04
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-08-11
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-11
+
+    Merge pull request #2277 from ngtcp2/stop-sending-no-close
+    
+    No stream is closed just because STOP_SENDING is received
+
+commit fc0a8c0467e84833f7b0447cb8065c2b26f89b76
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-06
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-11
+
+    No stream is closed just because STOP_SENDING is received
+
+commit d7fb3ed0407e1333e4ecbd011fcfd9c16499d5e0
+Merge: 6ce75f02 6dc5bf0b
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-08-07
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-07
+
+    Merge pull request #2275 from ngtcp2/cleanup
+    
+    Cleanup
+
+commit 6dc5bf0b2b6399f7322c809724ce5a098ffb68bc
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-06
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-06
+
+    Simplify and cleanup
+
+commit 44881a16638198c87268cdd44cd445d91991caff
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-08-06
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-08-06
+
+    Update doc
+
+commit 6ce75f02029ff595e96b9e8aa94e0dab6f9b68d1
+Merge: 2c417ef4 745fa747
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-08-03
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-03
+
+    Merge pull request #2271 from ngtcp2/dependabot/github_actions/actions/stale-11
+    
+    build(deps): bump actions/stale from 10 to 11
+
+commit 745fa7472768cff53d2050fd18024149fe55e5d1
+Author:     dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+AuthorDate: 2026-08-03
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-08-03
+
+    build(deps): bump actions/stale from 10 to 11
+    
+    Bumps [actions/stale](https://github.com/actions/stale) from 10 to 11.
+    - [Release notes](https://github.com/actions/stale/releases)
+    - [Changelog](https://github.com/actions/stale/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/actions/stale/compare/v10...v11)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: actions/stale
+      dependency-version: '11'
+      dependency-type: direct:production
+      update-type: version-update:semver-major
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+
+commit 2c417ef4228d162ce2260871398fc83344d269c1
+Merge: 960d5dc7 e72c0f08
+Author:     Tatsuhiro Tsujikawa <404610+tatsuhiro-t@users.noreply.github.com>
+AuthorDate: 2026-07-31
+Commit:     GitHub <noreply@github.com>
+CommitDate: 2026-07-31
+
+    Merge pull request #2270 from ngtcp2/doc-gso-write-sample
+    
+    doc: Add pseudo code and documentation for writing packets with GSO
+
+commit e72c0f08745acd960d9ad4431cd0337b65f52ff4
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-07-31
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-07-31
+
+    doc: Add pseudo code and documentation for writing packets with GSO
+
+commit 960d5dc7c02615ddf5e7c5451ca52161031ebae6
+Author:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+AuthorDate: 2026-07-26
+Commit:     Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+CommitDate: 2026-07-26
+
+    Bump package version

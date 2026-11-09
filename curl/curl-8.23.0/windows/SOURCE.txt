@@ -1,25 +1,16 @@
-curl 8.23.0 for Windows (x64), prebuilt
+curl 8.23.0, Windows x64, prebuilt
 
-Project: curl-for-win (official curl Windows builds, https://github.com/curl/curl-for-win)
-Release: curl 8.23.0, build 8.23.0_8
-Archive: curl-8.23.0_8-win64-mingw.zip
-SHA256: ca5b0fd6e7a6dbde210281f545c73a89784f2e88104a2cdfe0b73ea3dfed5b3a
+Project: curl-for-win, official curl Windows builds, https://github.com/curl/curl-for-win, MinGW/LLVM build 8.23.0_8
+Release: curl 8.23.0
 Source: https://curl.se/windows/dl-8.23.0_8/curl-8.23.0_8-win64-mingw.zip
-Signature: curl-8.23.0_8-win64-mingw.zip.sig (OpenSSH signature), key from the curl/curl-for-win repository README
-Verified: 2026-11-06, SSH signature good; all 123 files match the package's BUILD-HASHES.txt
-License: curl license, see COPYING.txt
-Toolchain: MinGW/LLVM; imports only Windows system DLLs and the Universal CRT (no vcruntime140.dll)
+Archive: curl-8.23.0_8-win64-mingw.zip; .zip.txt checksums in ../archive/windows/
+SHA256: ca5b0fd6e7a6dbde210281f545c73a89784f2e88104a2cdfe0b73ea3dfed5b3a
+Signature: SSH, .zip.sig and signing key (.id) in ../archive/windows/
+Key-Fingerprint: SHA256:4XoVc6BoX9VqDd7VhM3dNj0DS5hfutXGdbn/FSxPkoo
+Upstream: -, source URLs in BUILD-MANIFEST.txt
+Upstream-SHA256: -
+Verified: 2026-11-06, SSH signature OK, all files match the package's BUILD-HASHES.txt; 2026-11-09, SHA256 and SSH signature OK
+License: curl license, COPYING.txt
+Security: https://curl.se/docs/security.html
 
-Bundled (statically linked, see BUILD-MANIFEST.txt for source URLs):
-  TLS:   LibreSSL 4.4.0 (default), Schannel
-  HTTP:  nghttp2 1.71.0, nghttp3 1.19.0, ngtcp2 1.26.0
-  Other: zlib-ng 2.3.3, zstd 1.5.7, brotli 1.2.1, libssh2 1.11.1, libpsl 0.23.3
-
-Contents:
-  bin/      libcurl-x64.dll   SHA256 aca58bba0543abd52b28247c693c047c236b6ea9b88b7d363b116ff7926d0551
-  lib/      libcurl-x64.def   SHA256 db4bdf56c8961da1c321fddf6dc1b97f5b1fd15b91424a4a0eb0452b7f51968e
-            libcurl.lib       SHA256 d289f0ed86af7a7da27439e3d0acbce29f072f9bbb3c842fafe4c2a08611f41b
-                              = lib/libcurl.dll.a from the archive, renamed (LLVM short-import format,
-                              the same format MSVC lib.exe produces; x64, 100 imports for libcurl-x64.dll)
-  include/  curl/
-  COPYING.txt, BUILD-MANIFEST.txt from the archive
+windows/ = archive contents, lib/ and include/ trimmed to curl, lib/libcurl.lib = copy of libcurl.dll.a
