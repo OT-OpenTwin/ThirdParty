@@ -278,6 +278,15 @@ VARS_LINUX = {
     "GOOGLE_TEST_LIBPATHD": r"%GOOGLE_TEST_ROOT%\build\linux-debug\lib",
     "GOOGLE_TEST_LIBPATHR": r"%GOOGLE_TEST_ROOT%\build\linux-release\lib",
     "GOOGLE_TEST_LIB": "gtest_main;gtest",
+
+    # ===== zlib ======
+    "ZLIB_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\zlib\zlib-1.4\linux",
+    "ZLIB_INCD": r"%ZLIB_ROOT%\Debug\include",
+    "ZLIB_INCR": r"%ZLIB_ROOT%\Release\include",
+    "ZLIB_LIBPATHD": r"%ZLIB_ROOT%\Debug\lib",
+    "ZLIB_LIBPATHR": r"%ZLIB_ROOT%\Release\lib",
+    "ZLIB_LIBD": "libz.a",
+    "ZLIB_LIBR": "libz.a",
 }
 
 
