@@ -140,13 +140,13 @@ VARS = {
     "BASE64_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\base64",
 
     # ===== ZLIB =====
-    "ZLIB_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\zlib\zlib-1.2.11\x64",
+    "ZLIB_ROOT": r"%OPENTWIN_THIRDPARTY_ROOT%\zlib\zlib-1.4\windows",
     "ZLIB_INCD": r"%ZLIB_ROOT%\Debug\include",
     "ZLIB_INCR": r"%ZLIB_ROOT%\Release\include",
     "ZLIB_LIBPATHD": r"%ZLIB_ROOT%\Debug\lib",
     "ZLIB_LIBPATHR": r"%ZLIB_ROOT%\Release\lib",
-    "ZLIB_LIBD": "zlibd.lib",
-    "ZLIB_LIBR": "zlib.lib",
+    "ZLIB_LIBD": "libzd.lib",
+    "ZLIB_LIBR": "libz.lib",
     "ZLIB_DLLPATHD": r"%ZLIB_ROOT%\Debug\bin",
     "ZLIB_DLLPATHR": r"%ZLIB_ROOT%\Release\bin",
 
